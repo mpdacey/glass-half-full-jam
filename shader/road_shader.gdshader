@@ -1,7 +1,7 @@
 // NOTE: Shader automatically converted from Godot Engine 4.5.stable's StandardMaterial3D.
 
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode skip_vertex_transform, blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
@@ -21,15 +21,20 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
-uniform float CURVATURE = 2;
-uniform float CURVATURE_DISTANCE = 25.0;
+uniform float curve_amount = -0.1;
 
-void vertex() {
+float remap(float value, float i_min, float i_max, float o_min, float o_max) {
+    return o_min + ((value - i_min) / (i_max - i_min) * (o_max - o_min));
+}
+
+void vertex(){
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
 	
-	NORMAL = (MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz;
-	float dist = length(MAIN_CAM_INV_VIEW_MATRIX[3].xyz - VERTEX) / CURVATURE_DISTANCE;
-	VERTEX.y -= pow(dist, CURVATURE);
+	// Vertex code pinched from blakeccross curved world shader 
+	// https://github.com/blakeccross/animal-crossing-world-generation/blob/main/shaders/curved_world.gdshader
+	VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	float sq_distance = VERTEX.z * VERTEX.z;
+	VERTEX.y += remap(curve_amount,-1.0,1.0,-0.015,0.015) * sq_distance;
 }
 
 void fragment() {

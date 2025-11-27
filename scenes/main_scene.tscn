@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=15 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
 [ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="2_pu3yx"]
 [ext_resource type="Texture2D" uid="uid://cgf82balpvyuf" path="res://concept art.png" id="2_pw63i"]
 [ext_resource type="Script" uid="uid://v3tu21cue7ug" path="res://scripts/fuel_controller.gd" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://cooy4rj1ddjjn" path="res://scenes/ui/fuel_gauge_hud.tscn" id="4_pu3yx"]
+[ext_resource type="Script" uid="uid://cue23yim4fd65" path="res://scripts/drive_controller.gd" id="5_rt2n2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_und3l"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -106,7 +107,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_gubc5")
 }
 autoplay = "temp"
-speed_scale = 3.0
 
 [node name="Player" type="Node3D" parent="."]
 
@@ -119,8 +119,16 @@ fov = 45.0
 [node name="FuelController" type="Node" parent="Player"]
 script = ExtResource("4_gubc5")
 
+[node name="DriveController" type="Node" parent="Player" node_paths=PackedStringArray("road_animator")]
+script = ExtResource("5_rt2n2")
+road_animator = NodePath("../../Road/AnimationPlayer")
+boosted_acceleration_rate = 35.0
+cruise_acceleration_rate = 15.0
+drained_acceleration_rate = -10.0
+
 [node name="UI" type="Node" parent="."]
 
 [node name="FuelGaugeHUD" parent="UI" instance=ExtResource("4_pu3yx")]
 
+[connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]

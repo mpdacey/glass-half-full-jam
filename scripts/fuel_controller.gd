@@ -1,6 +1,8 @@
 extends Node
+class_name FuelController
 
 signal fuel_amount_updated(remaining_fuel: float)
+signal engine_state_changed(state: EngineState)
 
 enum EngineState {
 	BOOST,
@@ -28,9 +30,13 @@ func _process(delta: float) -> void:
 	set_engine_state()
 
 func set_engine_state() -> void:
+	var state_cache := current_state
 	if remaining_fuel > 0.55:
 		current_state = EngineState.BOOST
 	elif remaining_fuel > 0.2:
 		current_state = EngineState.CRUISE
 	else:
 		current_state = EngineState.DRAINED
+	
+	if state_cache != current_state:
+		engine_state_changed.emit(current_state)

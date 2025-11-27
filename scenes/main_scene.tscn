@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=9 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
 [ext_resource type="Texture2D" uid="uid://cgf82balpvyuf" path="res://concept art.png" id="2_pw63i"]
+[ext_resource type="Script" uid="uid://cscsc5nnfu2sa" path="res://scripts/road_movement_controller.gd" id="3_7ykc4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_und3l"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -52,3 +53,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7ykc4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 0)
 mesh = SubResource("PlaneMesh_w2twt")
 surface_material_override/0 = SubResource("StandardMaterial3D_7ykc4")
+
+[node name="RoadMovementController" type="Node" parent="Road" node_paths=PackedStringArray("road_root")]
+script = ExtResource("3_7ykc4")
+road_root = NodePath("..")

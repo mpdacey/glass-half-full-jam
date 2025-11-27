@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://cooy4rj1ddjjn"]
+
+[ext_resource type="Script" uid="uid://dmgkgph7taxvj" path="res://scripts/fuel_gauge_ui_controller.gd" id="1_n1ybh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fdc15"]
+size = Vector2(0, 0)
+
+[node name="FuelGaugeHUD" type="CanvasLayer" node_paths=PackedStringArray("fuel_gauge")]
+script = ExtResource("1_n1ybh")
+fuel_gauge = NodePath("Control/HSlider")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 971.0
+offset_top = 472.0
+offset_right = 971.0
+offset_bottom = 472.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 3.0
+offset_right = 101.0
+offset_bottom = 99.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 50.0
+pivot_offset = Vector2(36.5, 25)
+theme_override_font_sizes/font_size = 36
+text = "Fuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 89.333336
+offset_top = 55.333336
+offset_right = 162.33334
+offset_bottom = 63.33334
+scale = Vector2(-1.36, 2.385)
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_fdc15")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_fdc15")
+theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_fdc15")
+max_value = 1.0
+step = 0.01
+value = 0.41
+editable = false
+scrollable = false
+tick_count = 3
+ticks_on_borders = true
+ticks_position = 2

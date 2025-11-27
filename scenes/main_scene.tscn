@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=10 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
+[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="2_pu3yx"]
 [ext_resource type="Texture2D" uid="uid://cgf82balpvyuf" path="res://concept art.png" id="2_pw63i"]
 [ext_resource type="Script" uid="uid://cscsc5nnfu2sa" path="res://scripts/road_movement_controller.gd" id="3_7ykc4"]
 
@@ -19,11 +20,28 @@ sky_material = SubResource("ProceduralSkyMaterial_und3l")
 background_mode = 2
 sky = SubResource("Sky_w2twt")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_w2twt"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_pu3yx"]
 size = Vector2(100, 20)
+subdivide_width = 20
+subdivide_depth = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ykc4"]
-albedo_texture = ExtResource("2_pw63i")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gubc5"]
+render_priority = 0
+shader = ExtResource("2_pu3yx")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_pw63i")
+shader_parameter/albedo_texture_size = Vector2i(1080, 720)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/CURVATURE = 2.5
+shader_parameter/CURVATURE_DISTANCE = 35.0
 
 [node name="MainScene" type="Node3D"]
 
@@ -44,16 +62,11 @@ environment = SubResource("Environment_pw63i")
 [node name="Road" type="Node3D" parent="."]
 
 [node name="RoadSegment1" type="MeshInstance3D" parent="Road"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
-mesh = SubResource("PlaneMesh_w2twt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 0)
+mesh = SubResource("PlaneMesh_pu3yx")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_7ykc4")
+surface_material_override/0 = SubResource("ShaderMaterial_gubc5")
 
-[node name="RoadSegment2" type="MeshInstance3D" parent="Road"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 0)
-mesh = SubResource("PlaneMesh_w2twt")
-surface_material_override/0 = SubResource("StandardMaterial3D_7ykc4")
-
-[node name="RoadMovementController" type="Node" parent="Road" node_paths=PackedStringArray("road_root")]
+[node name="RoadMovementController" type="Node" parent="Road"]
 script = ExtResource("3_7ykc4")
-road_root = NodePath("..")
+road_segment_material = SubResource("ShaderMaterial_gubc5")

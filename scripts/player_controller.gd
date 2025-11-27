@@ -6,11 +6,9 @@ class_name PlayerVehicleController
 var remapped_vehicle_position := 0.0
 
 func _physics_process(delta: float) -> void:
-	position.z = move_toward(position.z, remapped_vehicle_position, mouse_tracking_speed * delta)
-	
-	var car_rotation := clampf(position.z - remapped_vehicle_position, -5.0, 5.0) / 5.0
-	rotation.y = move_toward(rotation.y, deg_to_rad(car_rotation * 30), deg_to_rad(180) * delta)
-	
+	var car_tilt_ratio := clampf(position.z - remapped_vehicle_position, -5.0, 5.0) / 5.0
+	position.z = move_toward(position.z, remapped_vehicle_position, abs(mouse_tracking_speed * car_tilt_ratio) * delta)
+	rotation.y = move_toward(rotation.y, deg_to_rad(car_tilt_ratio * 30), deg_to_rad(270) * delta)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is not InputEventMouseMotion:

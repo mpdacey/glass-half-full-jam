@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c0gpax6g2inuo"]
+
+[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_7kfbw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7kfbw")
+shader_parameter/albedo = Color(0.91, 0.12133333, 0, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.65
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.36
+shader_parameter/metallic = 0.38
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = -0.1

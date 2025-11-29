@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 gdscript/warnings/untyped_declaration=2
 
+[layer_names]
+
+3d_physics/layer_1="Pickups"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

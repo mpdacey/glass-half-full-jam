@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=23 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
 [ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="2_pu3yx"]
@@ -25,14 +25,36 @@ background_mode = 2
 sky = SubResource("Sky_w2twt")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pu3yx"]
-size = Vector2(200, 20)
+size = Vector2(200, 120)
 subdivide_width = 20
 subdivide_depth = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gubc5"]
 render_priority = 0
 shader = ExtResource("2_pu3yx")
-shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo = Color(1, 0.31799996, 0.06999999, 1)
+shader_parameter/texture_albedo = ExtResource("2_pw63i")
+shader_parameter/albedo_texture_size = Vector2i(1080, 720)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(2, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = -0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_18nlu"]
+size = Vector2(200, 20)
+subdivide_width = 20
+subdivide_depth = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1pb6"]
+render_priority = 0
+shader = ExtResource("2_pu3yx")
+shader_parameter/albedo = Color(0.66999996, 0.95600003, 1, 1)
 shader_parameter/texture_albedo = ExtResource("2_pw63i")
 shader_parameter/albedo_texture_size = Vector2i(1080, 720)
 shader_parameter/point_size = 1.0
@@ -86,69 +108,6 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c1pb6"]
 radius = 1.5
-
-[sub_resource type="Animation" id="Animation_18nlu"]
-resource_name = "collect_fuel"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("fuel-canister:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("fuel-canister:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.23, 0.6333333, 0.8666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(3.15, 0, 0), Vector3(1.605, 1.394, 0), Vector3(-0.285, 2, 0), Vector3(-0.285, 2, 0), Vector3(-0.285, -0.25, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("fuel-canister:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.36666667, 0.6333333, 0.8666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(1, 0.805, 1), Vector3(0.7, 0.7, 0.7), Vector3(0.7, 0.7, 0.7), Vector3(0.225, 0.65, 0.225)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("fuel-canister:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.36666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -6.2831855, 0), Vector3(0, 0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.76666665, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 0.8, 1.1), Vector3(1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_c1pb6"]
 length = 0.001
@@ -213,6 +172,69 @@ tracks/4/keys = {
 "values": [Vector3(1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_18nlu"]
+resource_name = "collect_fuel"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fuel-canister:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fuel-canister:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.23, 0.6333333, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(3.15, 0, 0), Vector3(1.605, 1.394, 0), Vector3(-0.285, 2, 0), Vector3(-0.285, 2, 0), Vector3(-0.285, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fuel-canister:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.6333333, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 0.805, 1), Vector3(0.7, 0.7, 0.7), Vector3(0.7, 0.7, 0.7), Vector3(0.225, 0.65, 0.225)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fuel-canister:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -6.2831855, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.76666665, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.8, 1.1), Vector3(1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6wevv"]
 _data = {
 &"RESET": SubResource("Animation_c1pb6"),
@@ -232,11 +254,16 @@ environment = SubResource("Environment_pw63i")
 
 [node name="Road" type="Node3D" parent="."]
 
+[node name="Offroad" type="MeshInstance3D" parent="Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, -0.1, 0)
+mesh = SubResource("PlaneMesh_pu3yx")
+surface_material_override/0 = SubResource("ShaderMaterial_gubc5")
+
 [node name="RoadSegment1" type="MeshInstance3D" parent="Road"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 0, 0)
-mesh = SubResource("PlaneMesh_pu3yx")
+mesh = SubResource("PlaneMesh_18nlu")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_gubc5")
+surface_material_override/0 = SubResource("ShaderMaterial_c1pb6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Road"]
 root_node = NodePath("../../Player/Camera3D")
@@ -280,8 +307,8 @@ script = ExtResource("4_gubc5")
 [node name="DriveController" type="Node" parent="Player" node_paths=PackedStringArray("road_animator")]
 script = ExtResource("5_rt2n2")
 road_animator = NodePath("../../Road/AnimationPlayer")
-boosted_acceleration_rate = 20.0
-cruise_acceleration_rate = 10.0
+boosted_acceleration_rate = 15.0
+cruise_acceleration_rate = 5.0
 drained_acceleration_rate = -15.0
 
 [node name="PlayerCollisionController" type="Node" parent="Player"]

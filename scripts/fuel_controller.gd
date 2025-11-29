@@ -10,7 +10,9 @@ enum EngineState {
 	DRAINED
 }
 
+@export_range(0, 1, 0.01) var fuel_canister_replenishment : float = 0.3
 ## Amount of fuel drained per second.
+@export_group("Decay Rates")
 @export_range(0, 1, 0.01) var boost_decay_rate : float = 0.15
 @export_range(0, 1, 0.01) var cruise_decay_rate : float = 0.05
 @export_range(0, 1, 0.01) var drained_decay_rate : float = 0.03
@@ -40,3 +42,6 @@ func set_engine_state() -> void:
 	
 	if state_cache != current_state:
 		engine_state_changed.emit(current_state)
+
+func _on_fuel_collected() -> void:
+	remaining_fuel += fuel_canister_replenishment

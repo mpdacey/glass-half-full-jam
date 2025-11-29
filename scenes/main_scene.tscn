@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=18 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
 [ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="2_pu3yx"]
 [ext_resource type="Texture2D" uid="uid://cgf82balpvyuf" path="res://concept art.png" id="2_pw63i"]
+[ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_c16ls"]
 [ext_resource type="Script" uid="uid://v3tu21cue7ug" path="res://scripts/fuel_controller.gd" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://cooy4rj1ddjjn" path="res://scenes/ui/fuel_gauge_hud.tscn" id="4_pu3yx"]
 [ext_resource type="Script" uid="uid://cue23yim4fd65" path="res://scripts/drive_controller.gd" id="5_rt2n2"]
+[ext_resource type="Script" uid="uid://dr0u7hy6jirbi" path="res://scripts/player_collision_controller.gd" id="7_18nlu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_und3l"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -82,6 +84,9 @@ _data = {
 &"temp": SubResource("Animation_pu3yx")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_c1pb6"]
+radius = 1.5
+
 [node name="MainScene" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -108,9 +113,19 @@ libraries = {
 }
 autoplay = "temp"
 
+[node name="fuel-canister" parent="Road" instance=ExtResource("3_c16ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.229076, -9.536743e-07, -4.143158)
+
 [node name="Player" type="Node3D" parent="."]
 
 [node name="PlayerVehicle" parent="Player" instance=ExtResource("1_w2twt")]
+
+[node name="PlayerArea" type="Area3D" parent="Player/PlayerVehicle"]
+collision_layer = 0
+
+[node name="PlayerHurtbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
+shape = SubResource("SphereShape3D_c1pb6")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(-4.371139e-08, 0.34202015, -0.9396927, 0, 0.9396927, 0.34202015, 1, 1.4950176e-08, -4.107527e-08, -15, 10, 0)
@@ -122,13 +137,18 @@ script = ExtResource("4_gubc5")
 [node name="DriveController" type="Node" parent="Player" node_paths=PackedStringArray("road_animator")]
 script = ExtResource("5_rt2n2")
 road_animator = NodePath("../../Road/AnimationPlayer")
-boosted_acceleration_rate = 35.0
-cruise_acceleration_rate = 15.0
-drained_acceleration_rate = -10.0
+boosted_acceleration_rate = 20.0
+cruise_acceleration_rate = 10.0
+drained_acceleration_rate = -15.0
+
+[node name="PlayerCollisionController" type="Node" parent="Player"]
+script = ExtResource("7_18nlu")
 
 [node name="UI" type="Node" parent="."]
 
 [node name="FuelGaugeHUD" parent="UI" instance=ExtResource("4_pu3yx")]
 
+[connection signal="area_entered" from="Player/PlayerVehicle/PlayerArea" to="Player/PlayerCollisionController" method="_on_area_3d_area_entered"]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]
+[connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/FuelController" method="_on_fuel_collected"]

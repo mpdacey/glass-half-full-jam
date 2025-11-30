@@ -230,6 +230,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 
 [node name="PlayerVehicle" parent="Player" instance=ExtResource("1_w2twt")]
 transform = Transform3D(0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0, 0, 1, 0, -0.1, 0)
+surface_transition_time = 0.3
 
 [node name="PlayerArea" type="Area3D" parent="Player/PlayerVehicle"]
 collision_layer = 0

@@ -7,8 +7,10 @@ class_name PlayerVehicleController
 		SurfaceController.SurfaceType.DIRT : 10,
 		SurfaceController.SurfaceType.OIL : 0
 }
+@export var surface_transition_time := 0.7
 var remapped_vehicle_position := 0.0
 var _mouse_tracking_speed := mouse_tracking_surface_speeds[SurfaceController.SurfaceType.ROAD]
+var _surface_change_tween : Tween
 
 func _physics_process(delta: float) -> void:
 	var car_tilt_ratio := clampf(position.z - remapped_vehicle_position, -5.0, 5.0) / 5.0
@@ -30,7 +32,13 @@ func _calc_vehicle_position() -> void:
 	remapped_vehicle_position = remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
 
 func _on_surface_type_changed(road_type: SurfaceController.SurfaceType) -> void:
+	if _surface_change_tween:
+		_surface_change_tween.kill()
+	_surface_change_tween = create_tween()
+	
 	if mouse_tracking_surface_speeds.has(road_type):
-		_mouse_tracking_speed = mouse_tracking_surface_speeds[road_type]
+		_surface_change_tween.tween_property(
+			self, "_mouse_tracking_speed", mouse_tracking_surface_speeds[road_type], surface_transition_time)
 	else:
-		_mouse_tracking_speed = mouse_tracking_surface_speeds[0]
+		_surface_change_tween.tween_property(
+			self, "_mouse_tracking_speed", mouse_tracking_surface_speeds[0], surface_transition_time)

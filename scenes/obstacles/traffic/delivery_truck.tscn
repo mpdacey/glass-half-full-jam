@@ -5,9 +5,10 @@
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="3_pbdek"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30yfe"]
-size = Vector3(2.432, 3.282, 5.718)
+size = Vector3(2.432, 2.2932217, 5.718)
 
 [node name="TrafficCore" instance=ExtResource("1_3mm47")]
+driving_speed = 12.0
 
 [node name="CollisionShape3D" parent="ObstacleHitBox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.789281, 0.3523264)

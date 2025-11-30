@@ -1,7 +1,7 @@
 extends Node
 class_name DriveController
 
-const COMPLETE_CYCLE_DISTANCE : float = 100.0
+const COMPLETE_CYCLE_DISTANCE : float = 400.0
 
 @export var road_animator: AnimationPlayer
 @export_group("Acceleration Rates")

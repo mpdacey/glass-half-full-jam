@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1015ymjaa0vo"
-path.s3tc="res://.godot/imported/Road007_1K-PNG_Color.png-07be635dcc2d67618471fbe5d8cd17b6.s3tc.ctex"
+uid="uid://cowgv8gpdrktb"
+path.s3tc="res://.godot/imported/Rock029_1K-PNG_NormalDX.png-d4fa7d699a357eb39af187f9a209e07b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Textures/Road007_1K-PNG_Color.png"
-dest_files=["res://.godot/imported/Road007_1K-PNG_Color.png-07be635dcc2d67618471fbe5d8cd17b6.s3tc.ctex"]
+source_file="res://models/traffic/Textures/offroad/Rock029_1K-PNG_NormalDX.png"
+dest_files=["res://.godot/imported/Rock029_1K-PNG_NormalDX.png-d4fa7d699a357eb39af187f9a209e07b.s3tc.ctex"]
 
 [params]
 

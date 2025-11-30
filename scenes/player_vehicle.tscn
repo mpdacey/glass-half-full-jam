@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfjmcr7rm4hc"]
 
-[ext_resource type="Script" uid="uid://dc8lavwyjhvjp" path="res://scripts/player_controller.gd" id="1_hw5rl"]
+[ext_resource type="Script" uid="uid://dc8lavwyjhvjp" path="res://scripts/player_controllers/player_controller.gd" id="1_hw5rl"]
 [ext_resource type="ArrayMesh" uid="uid://chihm7c3ll6qe" path="res://models/sedan-sports.obj" id="2_qt1cm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fvray"]

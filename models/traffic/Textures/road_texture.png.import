@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cihfpj2b8j3w"
-path.s3tc="res://.godot/imported/Rock029_1K-PNG_Displacement.png-54c5fcbbcbd6fcf6cdd1ea5a9a4ebdc3.s3tc.ctex"
+uid="uid://dr8px6kbtv7y4"
+path.s3tc="res://.godot/imported/road_texture.png-a2a5c6405b0107ff6c73984e71ee311e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Textures/offroad/Rock029_1K-PNG_Displacement.png"
-dest_files=["res://.godot/imported/Rock029_1K-PNG_Displacement.png-54c5fcbbcbd6fcf6cdd1ea5a9a4ebdc3.s3tc.ctex"]
+source_file="res://models/traffic/Textures/road_texture.png"
+dest_files=["res://.godot/imported/road_texture.png-a2a5c6405b0107ff6c73984e71ee311e.s3tc.ctex"]
 
 [params]
 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=4 uid="uid://bdo53jatg2dfc"]
+[gd_scene load_steps=18 format=4 uid="uid://bdo53jatg2dfc"]
 
 [ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_gf765"]
-[ext_resource type="Texture2D" uid="uid://dr8px6kbtv7y4" path="res://models/Textures/road_texture.png" id="2_c3e3h"]
-[ext_resource type="Texture2D" uid="uid://bmy84snp5l1el" path="res://models/Textures/offroad/Rock029_1K-PNG_Color.png" id="3_47du0"]
-[ext_resource type="Texture2D" uid="uid://cowgv8gpdrktb" path="res://models/Textures/offroad/Rock029_1K-PNG_NormalDX.png" id="4_2xm5a"]
-[ext_resource type="Texture2D" uid="uid://8hs54vgjcsq" path="res://models/Textures/offroad/Rock029_1K-PNG_Roughness.png" id="5_ifpta"]
+[ext_resource type="Texture2D" uid="uid://dr8px6kbtv7y4" path="res://models/traffic/Textures/road_texture.png" id="2_c3e3h"]
+[ext_resource type="Texture2D" uid="uid://bmy84snp5l1el" path="res://models/traffic/Textures/offroad/Rock029_1K-PNG_Color.png" id="3_47du0"]
+[ext_resource type="Texture2D" uid="uid://cowgv8gpdrktb" path="res://models/traffic/Textures/offroad/Rock029_1K-PNG_NormalDX.png" id="4_2xm5a"]
+[ext_resource type="Texture2D" uid="uid://8hs54vgjcsq" path="res://models/traffic/Textures/offroad/Rock029_1K-PNG_Roughness.png" id="5_ifpta"]
+[ext_resource type="ArrayMesh" uid="uid://d25b0yjt1tilp" path="res://models/traffic/delivery.obj" id="6_c3e3h"]
+[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://models/traffic/Textures/colormap.png" id="7_47du0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhvqo"]
 resource_name = "Road"
@@ -88,10 +90,41 @@ shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/curve_amount = -0.1
 
+[sub_resource type="Curve3D" id="Curve3D_c3e3h"]
+_data = {
+"points": PackedVector3Array(-35.78, 0, 0, 27.785, 0, 0, 0, 0, 0, -18.35, 0, 0, 19.51, 0, 0, 56.722744, 0, -4.895851, -32.585, 0, 0, 22.2, 0, 0, 128.18, 0, 5.6488543, -35.78, 0, 0, 22.2, 0, 0, 199.955, 0, -0.08),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_gf765"]
+_data = {
+"points": PackedVector3Array(-35.78, 0, 0, -35.78, 0, 0, 199.955, 0, -0.08, 22.2, 0, 0, -32.585, 0, 0, 128.18, 0, 5.6488543, 19.51, 0, 0, -18.35, 0, 0, 56.722744, 0, -4.895851, 27.785, 0, 0, 27.785, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xm5a"]
+render_priority = 0
+shader = ExtResource("1_gf765")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("7_47du0")
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = -0.1
+
 [node name="RoadSegment" type="Node3D"]
 
 [node name="Road" type="MeshInstance3D" parent="."]
-transform = Transform3D(150.1, 0, 0, 0, 1, 0, 0, 0, 150, -6.5, 0, 0)
+transform = Transform3D(150.1, 0, 0, 0, 1, 0, 0, 0, 120.015, -6.51447, -0.025951385, 0.00614357)
 mesh = SubResource("ArrayMesh_8fmpn")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_6wevv")
@@ -108,3 +141,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 0, 0)
 mesh = SubResource("PlaneMesh_pu3yx")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_gubc5")
+
+[node name="Paths" type="Node" parent="."]
+
+[node name="OngoingLanePath" type="Path3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 2.84618)
+curve = SubResource("Curve3D_c3e3h")
+
+[node name="IncomingLanePath" type="Path3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, -2.6153383)
+curve = SubResource("Curve3D_gf765")
+
+[node name="Delivery" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.04474639, 0, -1.9994993, 0, 2, 0, 1.9994993, 0, 0.04474639, 6.9264092, -0.624671, 2.929965)
+mesh = ExtResource("6_c3e3h")
+surface_material_override/0 = SubResource("ShaderMaterial_2xm5a")
+surface_material_override/1 = SubResource("ShaderMaterial_2xm5a")
+surface_material_override/2 = SubResource("ShaderMaterial_2xm5a")
+surface_material_override/3 = SubResource("ShaderMaterial_2xm5a")
+surface_material_override/4 = SubResource("ShaderMaterial_2xm5a")
+surface_material_override/5 = SubResource("ShaderMaterial_2xm5a")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdcjrurlteps8"]
+
+[ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_lmph8"]
+[ext_resource type="ArrayMesh" uid="uid://cojfqsiv1ryvp" path="res://models/traffic/suv-luxury.obj" id="2_x6i7l"]
+[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="3_x6i7l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_km2h6"]
+size = Vector3(2.2574768, 2.8142242, 5.1678467)
+
+[node name="TrafficCore" instance=ExtResource("1_lmph8")]
+driving_speed = 13.0
+
+[node name="CollisionShape3D" parent="ObstacleHitBox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4314231, 0.14533937)
+shape = SubResource("BoxShape3D_km2h6")
+
+[node name="SuvLuxury" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
+mesh = ExtResource("2_x6i7l")
+skeleton = NodePath("../ObstacleHitBox")
+surface_material_override/0 = ExtResource("3_x6i7l")
+surface_material_override/1 = ExtResource("3_x6i7l")
+surface_material_override/2 = ExtResource("3_x6i7l")
+surface_material_override/3 = ExtResource("3_x6i7l")
+surface_material_override/4 = ExtResource("3_x6i7l")

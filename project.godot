@@ -23,6 +23,8 @@ gdscript/warnings/untyped_declaration=2
 [layer_names]
 
 3d_physics/layer_1="Pickups"
+3d_physics/layer_2="Obstacle"
+3d_physics/layer_3="PlayerProximity"
 3d_physics/layer_5="Road"
 
 [rendering]

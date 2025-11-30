@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cooy4rj1ddjjn" path="res://scenes/ui/fuel_gauge_hud.tscn" id="4_pu3yx"]
 [ext_resource type="Script" uid="uid://cue23yim4fd65" path="res://scripts/player_controllers/drive_controller.gd" id="5_rt2n2"]
 [ext_resource type="Script" uid="uid://dr0u7hy6jirbi" path="res://scripts/player_controllers/player_collision_controller.gd" id="7_18nlu"]
+[ext_resource type="Script" uid="uid://c44w1ggq0eblg" path="res://scripts/player_controllers/surface_controller.gd" id="7_c1pb6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_und3l"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -248,6 +249,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_6wevv")
 }
 
+[node name="RoadDetector" type="RayCast3D" parent="Player/PlayerVehicle"]
+transform = Transform3D(0.99939084, -0.034899496, 0, 0.034899496, 0.99939084, 0, 0, 0, 1, 0.7, 1.031, 0)
+collision_mask = 16
+
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(-4.371139e-08, 0.34202015, -0.9396927, 0, 0.9396927, 0.34202015, 1, 1.4950176e-08, -4.107527e-08, -15, 10, 0)
 fov = 45.0
@@ -264,6 +269,10 @@ drained_acceleration_rate = -25.0
 
 [node name="PlayerCollisionController" type="Node" parent="Player"]
 script = ExtResource("7_18nlu")
+
+[node name="SurfaceController" type="Node" parent="Player" node_paths=PackedStringArray("road_raycast")]
+script = ExtResource("7_c1pb6")
+road_raycast = NodePath("../PlayerVehicle/RoadDetector")
 
 [node name="UI" type="Node" parent="."]
 

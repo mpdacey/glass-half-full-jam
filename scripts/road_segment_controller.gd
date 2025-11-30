@@ -6,7 +6,7 @@ const ROAD_SEGMENT_LENGTH = 200
 @export var traffic_scenes: Array[PackedScene]
 @export_group("References")
 @export var traffic_paths: Array[Path3D]
-var minimum_distance_between_traffic := 20.0
+var minimum_distance_between_traffic := 25.0
 
 func dress_road_segment() -> void:
 	_clean_road_segment()

@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=4 uid="uid://bdo53jatg2dfc"]
+[gd_scene load_steps=20 format=4 uid="uid://bdo53jatg2dfc"]
 
 [ext_resource type="Script" uid="uid://b0ime6b6ii3ae" path="res://scripts/road_segment_controller.gd" id="1_c3e3h"]
 [ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_gf765"]
 [ext_resource type="Texture2D" uid="uid://dr8px6kbtv7y4" path="res://models/traffic/Textures/road_texture.png" id="2_c3e3h"]
+[ext_resource type="PackedScene" uid="uid://cqo2bxdhr3dui" path="res://scenes/obstacles/traffic/flat_truck.tscn" id="3_2xm5a"]
 [ext_resource type="Texture2D" uid="uid://bmy84snp5l1el" path="res://models/traffic/Textures/offroad/Rock029_1K-PNG_Color.png" id="3_47du0"]
 [ext_resource type="Texture2D" uid="uid://cowgv8gpdrktb" path="res://models/traffic/Textures/offroad/Rock029_1K-PNG_NormalDX.png" id="4_2xm5a"]
+[ext_resource type="PackedScene" uid="uid://dpuwv1tntbgm2" path="res://scenes/obstacles/traffic/hatchback.tscn" id="4_ifpta"]
+[ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="5_8oith"]
 [ext_resource type="Texture2D" uid="uid://8hs54vgjcsq" path="res://models/traffic/Textures/offroad/Rock029_1K-PNG_Roughness.png" id="5_ifpta"]
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="6_c3e3h"]
 
@@ -106,7 +109,7 @@ point_count = 4
 
 [node name="RoadSegment" type="Node3D" node_paths=PackedStringArray("traffic_paths")]
 script = ExtResource("1_c3e3h")
-traffic_scenes = Array[PackedScene]([ExtResource("6_c3e3h")])
+traffic_scenes = Array[PackedScene]([ExtResource("6_c3e3h"), ExtResource("3_2xm5a"), ExtResource("4_ifpta"), ExtResource("5_8oith")])
 traffic_paths = [NodePath("Paths/OngoingLanePath"), NodePath("Paths/IncomingLanePath")]
 
 [node name="Road" type="MeshInstance3D" parent="."]

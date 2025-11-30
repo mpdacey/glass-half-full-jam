@@ -7,6 +7,7 @@ margin = 0.0
 radius = 0.1
 
 [node name="TrafficCore" type="PathFollow3D"]
+loop = false
 script = ExtResource("1_rw0se")
 
 [node name="PlayerNearDetector" type="Area3D" parent="."]
@@ -21,3 +22,5 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleHitBox"]
+
+[connection signal="area_entered" from="PlayerNearDetector" to="." method="_on_player_near" unbinds=1]

@@ -1,8 +1,8 @@
 extends PathFollow3D
 class_name TrafficCoreController
 
-@export var driving_speed : float = 25
-var driving_duration : float = 2.5
+@export var driving_speed : float = 15
+var driving_duration : float = 8
 signal started_driving
 
 func set_traffic_properties(ongoing_path_ratio: float, is_incoming: bool = false) -> void:

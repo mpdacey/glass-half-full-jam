@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=20 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -87,7 +87,7 @@ tracks/2/path = NodePath("../../Terrain/RoadSegment")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(10),
+"times": PackedFloat32Array(12),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -101,7 +101,7 @@ tracks/3/path = NodePath("../../Terrain/RoadSegment2")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -250,6 +250,10 @@ _data = {
 &"collect_fuel": SubResource("Animation_18nlu")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_18nlu"]
+height = 132.28223
+radius = 9.5
+
 [node name="MainScene" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -266,7 +270,7 @@ environment = SubResource("Environment_pw63i")
 [node name="RoadSegment" parent="Terrain" instance=ExtResource("1_mngbo")]
 
 [node name="fuel-canister" parent="Terrain/RoadSegment" instance=ExtResource("3_c16ls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -4.143)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 0, -4.143)
 
 [node name="RoadSegment2" parent="Terrain" instance=ExtResource("1_mngbo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
@@ -277,6 +281,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_gubc5")
 }
 autoplay = "drive"
+speed_scale = 2.3
 
 [node name="Player" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
@@ -327,6 +332,15 @@ script = ExtResource("7_18nlu")
 [node name="SurfaceController" type="Node" parent="Player" node_paths=PackedStringArray("road_raycast")]
 script = ExtResource("7_c1pb6")
 road_raycast = NodePath("../PlayerVehicle/RoadDetector")
+
+[node name="PlayerHorizon" type="Area3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.01162, 0, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PlayerHorizon"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -46.47412, -2.026558e-06, 0)
+shape = SubResource("CylinderShape3D_18nlu")
 
 [node name="UI" type="Node" parent="."]
 

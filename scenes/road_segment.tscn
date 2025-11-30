@@ -129,6 +129,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_gubc5")
 
 [node name="Paths" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
 
 [node name="OngoingLanePath" type="Path3D" parent="Paths"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 2.84618)

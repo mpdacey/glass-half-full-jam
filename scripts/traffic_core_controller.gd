@@ -2,10 +2,10 @@ extends PathFollow3D
 class_name TrafficCoreController
 
 @export var driving_speed : float = 25
-var driving_duration : float = 4
+var driving_duration : float = 2.5
 signal started_driving
 
-func _init(ongoing_path_ratio: float, is_incoming: bool = false) -> void:
+func set_traffic_properties(ongoing_path_ratio: float, is_incoming: bool = false) -> void:
 	if is_incoming:
 		ongoing_path_ratio = 1.0 - ongoing_path_ratio
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=21 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -38,11 +38,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Terrain/RoadSegment:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pu3yx"]
-resource_name = "temp"
-length = 10.0
+resource_name = "drive"
+length = 20.0
 loop_mode = 1
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,20 +63,63 @@ tracks/0/path = NodePath("../../Terrain:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
+"times": PackedFloat32Array(0, 20),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-200, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-400, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Terrain/RoadSegment:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(400, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Terrain/RoadSegment")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(12),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"dress_road_segment"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Terrain/RoadSegment2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"dress_road_segment"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gubc5"]
 _data = {
 &"RESET": SubResource("Animation_gubc5"),
-&"temp": SubResource("Animation_pu3yx")
+&"drive": SubResource("Animation_pu3yx")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_c1pb6"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_18nlu"]
 radius = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c1pb6"]
+radius = 0.9
 
 [sub_resource type="Animation" id="Animation_c1pb6"]
 length = 0.001
@@ -197,6 +253,10 @@ _data = {
 &"collect_fuel": SubResource("Animation_18nlu")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_18nlu"]
+height = 132.28223
+radius = 9.5
+
 [node name="MainScene" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -212,6 +272,9 @@ environment = SubResource("Environment_pw63i")
 
 [node name="RoadSegment" parent="Terrain" instance=ExtResource("1_mngbo")]
 
+[node name="fuel-canister" parent="Terrain/RoadSegment" instance=ExtResource("3_c16ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 0, -4.143)
+
 [node name="RoadSegment2" parent="Terrain" instance=ExtResource("1_mngbo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
@@ -220,10 +283,8 @@ root_node = NodePath("../../Player/Camera3D")
 libraries = {
 &"": SubResource("AnimationLibrary_gubc5")
 }
-autoplay = "temp"
-
-[node name="fuel-canister" parent="Terrain" instance=ExtResource("3_c16ls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.229076, -9.536743e-07, -4.143158)
+autoplay = "drive"
+speed_scale = 2.3
 
 [node name="Player" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
@@ -232,10 +293,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 transform = Transform3D(0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0, 0, 1, 0, -0.1, 0)
 surface_transition_time = 0.3
 
-[node name="PlayerArea" type="Area3D" parent="Player/PlayerVehicle"]
+[node name="PlayerHitboxArea" type="Area3D" parent="Player/PlayerVehicle"]
 collision_layer = 0
 
-[node name="PlayerHurtbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerArea"]
+[node name="PlayerHitbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
+shape = SubResource("SphereShape3D_18nlu")
+
+[node name="PlayerHurtboxArea" type="Area3D" parent="Player/PlayerVehicle"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="PlayerHurtbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHurtboxArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
 shape = SubResource("SphereShape3D_c1pb6")
 
@@ -275,11 +344,21 @@ script = ExtResource("7_18nlu")
 script = ExtResource("7_c1pb6")
 road_raycast = NodePath("../PlayerVehicle/RoadDetector")
 
+[node name="PlayerHorizon" type="Area3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.01162, 0, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PlayerHorizon"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -46.47412, -2.026558e-06, 0)
+shape = SubResource("CylinderShape3D_18nlu")
+
 [node name="UI" type="Node" parent="."]
 
 [node name="FuelGaugeHUD" parent="UI" instance=ExtResource("4_pu3yx")]
 
-[connection signal="area_entered" from="Player/PlayerVehicle/PlayerArea" to="Player/PlayerCollisionController" method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="Player/PlayerVehicle/PlayerHitboxArea" to="Player/PlayerCollisionController" method="_on_player_hitbox_entered" unbinds=1]
+[connection signal="area_entered" from="Player/PlayerVehicle/PlayerHurtboxArea" to="Player/PlayerCollisionController" method="_on_player_hurtbox_entered" unbinds=1]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/FuelController" method="_on_fuel_collected"]

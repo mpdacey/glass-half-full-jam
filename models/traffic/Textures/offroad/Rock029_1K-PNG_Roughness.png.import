@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8hs54vgjcsq"
-path.s3tc="res://.godot/imported/Rock029_1K-PNG_Roughness.png-6cb7d9e282494da2f3bb70a24756e7ec.s3tc.ctex"
+path.s3tc="res://.godot/imported/Rock029_1K-PNG_Roughness.png-aff4eccdbe80518f2b4ef776545c7fec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Textures/offroad/Rock029_1K-PNG_Roughness.png"
-dest_files=["res://.godot/imported/Rock029_1K-PNG_Roughness.png-6cb7d9e282494da2f3bb70a24756e7ec.s3tc.ctex"]
+source_file="res://models/traffic/Textures/offroad/Rock029_1K-PNG_Roughness.png"
+dest_files=["res://.godot/imported/Rock029_1K-PNG_Roughness.png-aff4eccdbe80518f2b4ef776545c7fec.s3tc.ctex"]
 
 [params]
 

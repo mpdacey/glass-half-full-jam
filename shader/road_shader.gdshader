@@ -16,7 +16,7 @@ uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, re
 uniform float specular : hint_range(0.0, 1.0, 0.01);
 uniform float metallic : hint_range(0.0, 1.0, 0.01);
 
-uniform vec3 uv1_scale;
+uniform vec3 uv1_scale = vec3(1.0);
 uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
@@ -33,8 +33,11 @@ void vertex(){
 	// Vertex code pinched from blakeccross curved world shader 
 	// https://github.com/blakeccross/animal-crossing-world-generation/blob/main/shaders/curved_world.gdshader
 	VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	NORMAL = normalize((MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
 	float sq_distance = VERTEX.z * VERTEX.z;
 	VERTEX.y += remap(curve_amount,-1.0,1.0,-0.015,0.015) * sq_distance;
+	//MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
+	//MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
 }
 
 void fragment() {
@@ -50,4 +53,7 @@ void fragment() {
 	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
+	
+	ALPHA_SCISSOR_THRESHOLD = 0.5;
+	ALPHA = albedo_tex.a * albedo.a; 
 }

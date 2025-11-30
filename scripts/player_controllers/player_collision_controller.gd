@@ -2,12 +2,10 @@ extends Node
 class_name PlayerCollisionController
 
 signal fuel_collected
+signal player_crashed
 
-const PICKUP_LAYER = 1
+func _on_player_hitbox_entered() -> void:
+	fuel_collected.emit()
 
-func _on_area_3d_area_entered(area: Area3D) -> void:
-	if area.get_collision_layer_value(PICKUP_LAYER):
-		fuel_collected.emit()
-		#area.get_parent()
-		return
-	
+func _on_player_hurtbox_entered() -> void:
+	player_crashed.emit()

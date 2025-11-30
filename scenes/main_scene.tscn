@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=21 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -115,8 +115,11 @@ _data = {
 &"drive": SubResource("Animation_pu3yx")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_c1pb6"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_18nlu"]
 radius = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c1pb6"]
+radius = 0.9
 
 [sub_resource type="Animation" id="Animation_c1pb6"]
 length = 0.001
@@ -290,10 +293,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 transform = Transform3D(0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0, 0, 1, 0, -0.1, 0)
 surface_transition_time = 0.3
 
-[node name="PlayerArea" type="Area3D" parent="Player/PlayerVehicle"]
+[node name="PlayerHitboxArea" type="Area3D" parent="Player/PlayerVehicle"]
 collision_layer = 0
 
-[node name="PlayerHurtbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerArea"]
+[node name="PlayerHitbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
+shape = SubResource("SphereShape3D_18nlu")
+
+[node name="PlayerHurtboxArea" type="Area3D" parent="Player/PlayerVehicle"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="PlayerHurtbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHurtboxArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
 shape = SubResource("SphereShape3D_c1pb6")
 
@@ -346,7 +357,8 @@ shape = SubResource("CylinderShape3D_18nlu")
 
 [node name="FuelGaugeHUD" parent="UI" instance=ExtResource("4_pu3yx")]
 
-[connection signal="area_entered" from="Player/PlayerVehicle/PlayerArea" to="Player/PlayerCollisionController" method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="Player/PlayerVehicle/PlayerHitboxArea" to="Player/PlayerCollisionController" method="_on_player_hitbox_entered" unbinds=1]
+[connection signal="area_entered" from="Player/PlayerVehicle/PlayerHurtboxArea" to="Player/PlayerCollisionController" method="_on_player_hurtbox_entered" unbinds=1]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/FuelController" method="_on_fuel_collected"]

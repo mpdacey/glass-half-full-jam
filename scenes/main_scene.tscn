@@ -341,44 +341,12 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementArea"]
 shape = SubResource("SphereShape3D_mngbo")
 
-[node name="FuelPlacementController" type="Node" parent="Terrain/FuelLanePath/FuelLanePathFollower" node_paths=PackedStringArray("lane_follower", "placement_follower")]
+[node name="FuelPlacementController" type="Node" parent="Terrain/FuelLanePath/FuelLanePathFollower" node_paths=PackedStringArray("lane_follower", "placement_follower", "fuel_canister")]
 script = ExtResource("3_c1pb6")
 lane_follower = NodePath("..")
 placement_follower = NodePath("../FuelPlacementPath/FuelPlacementFollower")
 warp_shift_amount = 401.88
-
-[node name="FuelLanePath2" type="Path3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -414, 0.1, 0)
-visible = false
-curve = SubResource("Curve3D_6wevv")
-
-[node name="FuelLanePathFollower" type="PathFollow3D" parent="Terrain/FuelLanePath2"]
-transform = Transform3D(3.4049917e-05, 0, -0.99999326, 0, 1, 0, 0.99999326, 0, 3.4049917e-05, 400.0094, 0, -1.7940375e-06)
-progress = 401.88
-
-[node name="FuelPlacementPath" type="Path3D" parent="Terrain/FuelLanePath2/FuelLanePathFollower"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-curve = SubResource("Curve3D_e1cbu")
-
-[node name="FuelPlacementFollower" type="PathFollow3D" parent="Terrain/FuelLanePath2/FuelLanePathFollower/FuelPlacementPath"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 4.5)
-progress = 9.0
-
-[node name="fuel-canister" parent="Terrain/FuelLanePath2/FuelLanePathFollower/FuelPlacementPath/FuelPlacementFollower" instance=ExtResource("3_c16ls")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.1, 0)
-
-[node name="FuelPlacementArea" type="Area3D" parent="Terrain/FuelLanePath2/FuelLanePathFollower"]
-transform = Transform3D(-0.03983592, 0, 0.99921215, 0, 1, 0, -0.99921215, 0, -0.03983592, 0, 0, 0)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/FuelLanePath2/FuelLanePathFollower/FuelPlacementArea"]
-shape = SubResource("SphereShape3D_mngbo")
-
-[node name="FuelPlacementController" type="Node" parent="Terrain/FuelLanePath2/FuelLanePathFollower" node_paths=PackedStringArray("lane_follower", "placement_follower")]
-script = ExtResource("3_c1pb6")
-lane_follower = NodePath("..")
-placement_follower = NodePath("../FuelPlacementPath/FuelPlacementFollower")
+fuel_canister = NodePath("../FuelPlacementPath/FuelPlacementFollower/fuel-canister")
 
 [node name="Player" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
@@ -405,7 +373,7 @@ shape = SubResource("SphereShape3D_c1pb6")
 [node name="fuel-canister" parent="Player/PlayerVehicle" instance=ExtResource("3_c16ls")]
 visible = false
 
-[node name="Area3D" parent="Player/PlayerVehicle/fuel-canister" index="3"]
+[node name="Area3D" parent="Player/PlayerVehicle/fuel-canister" index="0"]
 collision_layer = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/PlayerVehicle"]
@@ -453,8 +421,6 @@ shape = SubResource("CylinderShape3D_18nlu")
 
 [connection signal="area_exited" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementArea" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
 [connection signal="ready" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
-[connection signal="area_exited" from="Terrain/FuelLanePath2/FuelLanePathFollower/FuelPlacementArea" to="Terrain/FuelLanePath2/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
-[connection signal="ready" from="Terrain/FuelLanePath2/FuelLanePathFollower/FuelPlacementController" to="Terrain/FuelLanePath2/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHitboxArea" to="Player/PlayerCollisionController" method="_on_player_hitbox_entered" unbinds=1]
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHurtboxArea" to="Player/PlayerCollisionController" method="_on_player_hurtbox_entered" unbinds=1]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]

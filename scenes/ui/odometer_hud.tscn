@@ -1,13 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cereybnuafmsc"]
+[gd_scene load_steps=3 format=3 uid="uid://cereybnuafmsc"]
 
 [ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="1_t5pxi"]
-[ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="2_i1qea"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0eisf"]
-font = ExtResource("2_i1qea")
-font_size = 32
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="2_i1qea"]
 
 [node name="OdometerHUD" type="CanvasLayer" node_paths=PackedStringArray("odometer_value_label")]
 script = ExtResource("1_t5pxi")
@@ -41,10 +35,10 @@ layout_mode = 2
 [node name="OdometerTitle" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Odometer"
-label_settings = SubResource("LabelSettings_0eisf")
+label_settings = ExtResource("2_i1qea")
 
 [node name="OdometerValue" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "000000.0"
-label_settings = SubResource("LabelSettings_0eisf")
+label_settings = ExtResource("2_i1qea")
 horizontal_alignment = 1

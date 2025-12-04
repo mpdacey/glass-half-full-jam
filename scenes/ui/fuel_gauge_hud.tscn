@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cooy4rj1ddjjn"]
+[gd_scene load_steps=4 format=3 uid="uid://cooy4rj1ddjjn"]
 
 [ext_resource type="Script" uid="uid://dmgkgph7taxvj" path="res://scripts/fuel_gauge_ui_controller.gd" id="1_n1ybh"]
+[ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="2_wkwfr"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fdc15"]
 size = Vector2(0, 0)
@@ -32,6 +33,7 @@ offset_bottom = 50.0
 pivot_offset = Vector2(36.5, 25)
 theme_override_font_sizes/font_size = 36
 text = "Fuel"
+label_settings = ExtResource("2_wkwfr")
 horizontal_alignment = 1
 vertical_alignment = 1
 

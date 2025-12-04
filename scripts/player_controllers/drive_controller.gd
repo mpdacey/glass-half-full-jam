@@ -1,6 +1,8 @@
 extends Node
 class_name DriveController
 
+signal distance_traveled_delta(metres: float)
+
 const COMPLETE_CYCLE_DISTANCE : float = 400.0
 
 @export var road_animator: AnimationPlayer
@@ -22,6 +24,8 @@ var _engine_state : FuelController.EngineState = FuelController.EngineState.CRUI
 var _surface_type_dampener := 0.0
 
 func _process(delta: float) -> void:
+	distance_traveled_delta.emit(road_animator.speed_scale * delta * COMPLETE_CYCLE_DISTANCE / 20)
+	
 	var normalised_acceleration : float = 1
 	match(_engine_state):
 		FuelController.EngineState.BOOST:

@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://cereybnuafmsc"]
+
+[ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="1_t5pxi"]
+[ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="2_i1qea"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0eisf"]
+font = ExtResource("2_i1qea")
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="OdometerHUD" type="CanvasLayer" node_paths=PackedStringArray("odometer_value_label")]
+script = ExtResource("1_t5pxi")
+odometer_value_label = NodePath("Control/PanelContainer/MarginContainer/VBoxContainer/OdometerValue")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 545.0
+offset_right = 16.0
+offset_bottom = 545.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 58.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="OdometerTitle" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Odometer"
+label_settings = SubResource("LabelSettings_0eisf")
+
+[node name="OdometerValue" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "000000.0"
+label_settings = SubResource("LabelSettings_0eisf")
+horizontal_alignment = 1

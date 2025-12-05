@@ -30,6 +30,11 @@ func dress_road_segment() -> void:
 			traffic_paths[lane_index].add_child(vehicle)
 			vehicle.set_traffic_properties(placement * divisor, lane_index == 0)
 
+func halt_traffic() -> void:
+	for path in traffic_paths:
+		for child : TrafficCoreController in path.get_children():
+			child.stop_driving()
+
 func _clean_road_segment() -> void:
 	for lane in traffic_paths:
 		for child in lane.get_children():

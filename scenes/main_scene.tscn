@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=33 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -10,6 +10,11 @@
 [ext_resource type="Script" uid="uid://dr0u7hy6jirbi" path="res://scripts/player_controllers/player_collision_controller.gd" id="7_18nlu"]
 [ext_resource type="Script" uid="uid://c44w1ggq0eblg" path="res://scripts/player_controllers/surface_controller.gd" id="7_c1pb6"]
 [ext_resource type="PackedScene" uid="uid://cereybnuafmsc" path="res://scenes/ui/odometer_hud.tscn" id="10_6wevv"]
+[ext_resource type="AnimationLibrary" uid="uid://dy6jegyq0i7t5" path="res://resources/animation_libraries/gameover_library.tres" id="11_e1cbu"]
+[ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="11_r6p65"]
+[ext_resource type="AnimationLibrary" uid="uid://cid6yse2ny4tw" path="res://resources/animation_libraries/car_flip_library.tres" id="12_mngbo"]
+[ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="12_si52b"]
+[ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="13_si52b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_und3l"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -25,6 +30,8 @@ sky_material = SubResource("ProceduralSkyMaterial_und3l")
 [sub_resource type="Environment" id="Environment_pw63i"]
 background_mode = 2
 sky = SubResource("Sky_w2twt")
+ambient_light_source = 2
+ambient_light_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
 
 [sub_resource type="Animation" id="Animation_gubc5"]
 length = 0.001
@@ -290,10 +297,22 @@ _data = {
 height = 132.28223
 radius = 9.5
 
+[sub_resource type="Environment" id="Environment_6wevv"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_01n6w"]
+font = ExtResource("12_si52b")
+font_size = 64
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [node name="MainScene" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.464628, -0.12539037, 0.8765832, 0.36627862, 0.8740531, 0.31917244, -0.80620134, 0.4693701, -0.36018166, 12.871048, 9, -6)
+layers = 3
 light_color = Color(0.97, 0.8406667, 0.7275, 1)
 shadow_enabled = true
 sky_mode = 1
@@ -308,8 +327,8 @@ environment = SubResource("Environment_pw63i")
 [node name="RoadSegment2" parent="Terrain" instance=ExtResource("1_mngbo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Terrain"]
-root_node = NodePath("../../Player/Camera3D")
+[node name="TerrainPlayer" type="AnimationPlayer" parent="Terrain"]
+root_node = NodePath("../../Player/MainCamera3D")
 libraries = {
 &"": SubResource("AnimationLibrary_gubc5")
 }
@@ -386,16 +405,20 @@ libraries = {
 transform = Transform3D(0.99939084, -0.034899496, 0, 0.034899496, 0.99939084, 0, 0, 0, 1, 0.7, 1.031, 0)
 collision_mask = 16
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
+[node name="MainCamera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(-4.371139e-08, 0.34202015, -0.9396927, 0, 0.9396927, 0.34202015, 1, 1.4950176e-08, -4.107527e-08, -15, 10, 0)
 fov = 45.0
 
 [node name="FuelController" type="Node" parent="Player"]
 script = ExtResource("4_gubc5")
+cruise_threshold = 0.66
+drained_threshold = 0.33
+cruise_decay_rate = 0.1
+drained_decay_rate = 0.15
 
 [node name="DriveController" type="Node" parent="Player" node_paths=PackedStringArray("road_animator")]
 script = ExtResource("5_rt2n2")
-road_animator = NodePath("../../Terrain/AnimationPlayer")
+road_animator = NodePath("../../Terrain/TerrainPlayer")
 boosted_acceleration_rate = 15.0
 cruise_acceleration_rate = 5.0
 drained_acceleration_rate = -25.0
@@ -421,17 +444,98 @@ shape = SubResource("CylinderShape3D_18nlu")
 [node name="FuelGaugeHUD" parent="UI" instance=ExtResource("4_pu3yx")]
 
 [node name="OdometerHUD" parent="UI" instance=ExtResource("10_6wevv")]
+follow_viewport_scale = 1.05
+
+[node name="GameoverLayer" type="CanvasLayer" parent="UI"]
+layer = -100
+visible = false
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/GameoverLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 0
+
+[node name="GameoverCamera3D" type="Camera3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.371139e-08, 0.3420201, -0.93969256, 0, 0.93969256, 0.3420201, 1, 1.4950173e-08, -4.1075264e-08, -15, 9.625, 0)
+visible = false
+cull_mask = 1048574
+environment = SubResource("Environment_6wevv")
+fov = 45.0
+
+[node name="CrashColorRect" type="ColorRect" parent="UI/GameoverLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TravelledVBoxContainer" type="VBoxContainer" parent="UI/GameoverLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_top = 32.0
+offset_right = 154.0
+offset_bottom = 162.0
+grow_horizontal = 2
+
+[node name="TravelledTitle" type="Label" parent="UI/GameoverLayer/TravelledVBoxContainer"]
+layout_mode = 2
+text = "Kilometres Travelled"
+label_settings = ExtResource("11_r6p65")
+vertical_alignment = 1
+
+[node name="TravelledValue" type="Label" parent="UI/GameoverLayer/TravelledVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+text = "0.0"
+label_settings = SubResource("LabelSettings_01n6w")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="OdometerUpdater" type="Node" parent="UI/GameoverLayer" node_paths=PackedStringArray("odometer_value_label")]
+script = ExtResource("13_si52b")
+odometer_value_label = NodePath("../TravelledVBoxContainer/TravelledValue")
+metadata/_custom_type_script = "uid://nw184rqgi02f"
+
+[node name="GameoverPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../WorldEnvironment")
+root_motion_local = true
+libraries = {
+&"": ExtResource("11_e1cbu")
+}
+
+[node name="CarFlipPlayer" type="AnimationPlayer" parent="GameoverPlayer"]
+libraries = {
+&"": ExtResource("12_mngbo")
+}
 
 [connection signal="area_exited" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementArea" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
 [connection signal="ready" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHitboxArea" to="Player/PlayerCollisionController" method="_on_player_hitbox_entered" unbinds=1]
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHurtboxArea" to="Player/PlayerCollisionController" method="_on_player_hurtbox_entered" unbinds=1]
+[connection signal="engine_overloads" from="Player/FuelController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="engine_stalls" from="Player/FuelController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]
-[connection signal="distance_traveled_delta" from="Player/DriveController" to="UI/OdometerHUD" method="update_odometer"]
+[connection signal="distance_traveled" from="Player/DriveController" to="UI/OdometerHUD" method="update_odometer"]
+[connection signal="distance_traveled" from="Player/DriveController" to="UI/GameoverLayer/OdometerUpdater" method="update_odometer" binds= [false]]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/FuelController" method="_on_fuel_collected"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementPath/FuelPlacementFollower/fuel-canister" method="set_visible" binds= [false]]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/AnimationPlayer" method="play" binds= [&"collect_fuel"]]
+[connection signal="player_crashed" from="Player/PlayerCollisionController" to="Terrain/RoadSegment" method="halt_traffic"]
+[connection signal="player_crashed" from="Player/PlayerCollisionController" to="Terrain/RoadSegment2" method="halt_traffic"]
+[connection signal="player_crashed" from="Player/PlayerCollisionController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle" method="_on_surface_type_changed"]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/DriveController" method="_on_surface_type_changed"]
 

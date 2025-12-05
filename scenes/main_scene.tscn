@@ -456,7 +456,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 0
 
 [node name="GameoverCamera3D" type="Camera3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
-transform = Transform3D(-4.371139e-08, 0.34202012, -0.9396926, 0, 0.9396926, 0.34202012, 1, 1.4950174e-08, -4.1075268e-08, -15, 9.625, 0)
+transform = Transform3D(-4.371139e-08, 0.3420201, -0.93969256, 0, 0.93969256, 0.3420201, 1, 1.4950173e-08, -4.1075264e-08, -15, 9.625, 0)
 visible = false
 cull_mask = 1048574
 environment = SubResource("Environment_6wevv")
@@ -493,6 +493,8 @@ libraries = {
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/FuelController" method="_on_fuel_collected"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementPath/FuelPlacementFollower/fuel-canister" method="set_visible" binds= [false]]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/AnimationPlayer" method="play" binds= [&"collect_fuel"]]
+[connection signal="player_crashed" from="Player/PlayerCollisionController" to="Terrain/RoadSegment" method="halt_traffic"]
+[connection signal="player_crashed" from="Player/PlayerCollisionController" to="Terrain/RoadSegment2" method="halt_traffic"]
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle" method="_on_surface_type_changed"]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/DriveController" method="_on_surface_type_changed"]

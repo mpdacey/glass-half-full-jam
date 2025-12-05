@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=34 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -462,7 +462,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1152, 648)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="GameoverCamera3D" type="Camera3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
 transform = Transform3D(-4.371139e-08, 0.3420201, -0.93969256, 0, 0.93969256, 0.3420201, 1, 1.4950173e-08, -4.1075264e-08, -15, 9.625, 0)
@@ -489,10 +489,17 @@ offset_right = 154.0
 offset_bottom = 162.0
 grow_horizontal = 2
 
+[node name="GameOverMessage" type="Label" parent="UI/GameoverLayer/TravelledVBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("11_r6p65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TravelledTitle" type="Label" parent="UI/GameoverLayer/TravelledVBoxContainer"]
 layout_mode = 2
 text = "Kilometres Travelled"
 label_settings = ExtResource("11_r6p65")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TravelledValue" type="Label" parent="UI/GameoverLayer/TravelledVBoxContainer"]
@@ -525,7 +532,9 @@ libraries = {
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHitboxArea" to="Player/PlayerCollisionController" method="_on_player_hitbox_entered" unbinds=1]
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHurtboxArea" to="Player/PlayerCollisionController" method="_on_player_hurtbox_entered" unbinds=1]
 [connection signal="engine_overloads" from="Player/FuelController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="engine_overloads" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You overloaded on fuel"]]
 [connection signal="engine_stalls" from="Player/FuelController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="engine_stalls" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You ran out of fuel"]]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]
 [connection signal="distance_traveled" from="Player/DriveController" to="UI/OdometerHUD" method="update_odometer"]
@@ -536,6 +545,7 @@ libraries = {
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="Terrain/RoadSegment" method="halt_traffic"]
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="Terrain/RoadSegment2" method="halt_traffic"]
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="player_crashed" from="Player/PlayerCollisionController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You crashed"]]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle" method="_on_surface_type_changed"]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/DriveController" method="_on_surface_type_changed"]
 

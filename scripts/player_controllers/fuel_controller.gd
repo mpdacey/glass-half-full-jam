@@ -13,6 +13,10 @@ enum EngineState {
 }
 
 @export_range(0, 1, 0.01) var fuel_canister_replenishment : float = 0.3
+@export_group("State Thresholds")
+@export_range(0, 1, 0.01) var cruise_threshold : float = 0.55
+@export_range(0, 1, 0.01) var drained_threshold : float = 0.2
+
 ## Amount of fuel drained per second.
 @export_group("Decay Rates")
 @export_range(0, 1, 0.01) var boost_decay_rate : float = 0.15
@@ -36,9 +40,9 @@ func _process(delta: float) -> void:
 
 func set_engine_state() -> void:
 	var state_cache := current_state
-	if remaining_fuel > 0.55:
+	if remaining_fuel > cruise_threshold:
 		current_state = EngineState.BOOST
-	elif remaining_fuel > 0.2:
+	elif remaining_fuel > drained_threshold:
 		current_state = EngineState.CRUISE
 	else:
 		current_state = EngineState.DRAINED

@@ -20,4 +20,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hw5rl")
 
 [node name="SedanSports" type="MeshInstance3D" parent="."]
 transform = Transform3D(-6.119594e-08, 0, 1.8, 0, 1.2, 0, -1.4, 0, -7.86805e-08, 0, 0, 0)
+layers = 2
 mesh = ExtResource("2_qt1cm")

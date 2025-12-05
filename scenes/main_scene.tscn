@@ -401,6 +401,10 @@ fov = 45.0
 
 [node name="FuelController" type="Node" parent="Player"]
 script = ExtResource("4_gubc5")
+cruise_threshold = 0.66
+drained_threshold = 0.33
+cruise_decay_rate = 0.1
+drained_decay_rate = 0.15
 
 [node name="DriveController" type="Node" parent="Player" node_paths=PackedStringArray("road_animator")]
 script = ExtResource("5_rt2n2")

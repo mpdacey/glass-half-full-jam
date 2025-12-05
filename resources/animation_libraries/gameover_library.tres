@@ -54,7 +54,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_mngbo"]
-resource_name = "gameover_transition"
+resource_name = "gameover"
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -193,5 +193,5 @@ tracks/9/keys = {
 [resource]
 _data = {
 &"RESET": SubResource("Animation_4w45t"),
-&"gameover_transition": SubResource("Animation_mngbo")
+&"gameover": SubResource("Animation_mngbo")
 }

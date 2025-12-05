@@ -3,6 +3,8 @@ class_name FuelController
 
 signal fuel_amount_updated(remaining_fuel: float)
 signal engine_state_changed(state: EngineState)
+signal engine_stalls
+signal engine_overloads
 
 enum EngineState {
 	BOOST,
@@ -30,6 +32,7 @@ func _process(delta: float) -> void:
 	
 	fuel_amount_updated.emit(remaining_fuel)
 	set_engine_state()
+	check_engine_gameover_conditions()
 
 func set_engine_state() -> void:
 	var state_cache := current_state
@@ -42,6 +45,12 @@ func set_engine_state() -> void:
 	
 	if state_cache != current_state:
 		engine_state_changed.emit(current_state)
+
+func check_engine_gameover_conditions() -> void:
+	if remaining_fuel >= 1.0:
+		engine_overloads.emit()
+	elif remaining_fuel <= 0.0:
+		engine_stalls.emit()
 
 func _on_fuel_collected() -> void:
 	remaining_fuel += fuel_canister_replenishment

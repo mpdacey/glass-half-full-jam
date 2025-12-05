@@ -8,6 +8,7 @@ class_name PlayerVehicleController
 		SurfaceController.SurfaceType.OIL : 0
 }
 @export var surface_transition_time := 0.7
+@export var engine_smoke_emitter: GPUParticles3D
 var remapped_vehicle_position := 0.0
 var _mouse_tracking_speed := mouse_tracking_surface_speeds[SurfaceController.SurfaceType.ROAD]
 var _surface_change_tween : Tween
@@ -42,3 +43,6 @@ func _on_surface_type_changed(road_type: SurfaceController.SurfaceType) -> void:
 	else:
 		_surface_change_tween.tween_property(
 			self, "_mouse_tracking_speed", mouse_tracking_surface_speeds[0], surface_transition_time)
+
+func _set_smoke_particles(on: bool) -> void:
+	engine_smoke_emitter.emitting = on

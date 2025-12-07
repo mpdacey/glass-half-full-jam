@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=39 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="13_si52b"]
 [ext_resource type="AudioStream" uid="uid://jkfxkotxqrne" path="res://audio/music/Taking Out the Garbage OGG.ogg" id="16_bcnxi"]
 [ext_resource type="AudioStream" uid="uid://nmscy0nbmrky" path="res://audio/music/Red Scarlet OGG.ogg" id="17_7nt27"]
+[ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/sizzle.ogg" id="19_7nt27"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_und3l"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -567,6 +568,14 @@ libraries = {
 libraries = {
 &"": ExtResource("12_mngbo")
 }
+
+[node name="GameoverAudio" type="Node" parent="."]
+
+[node name="InitialHit" type="AudioStreamPlayer" parent="GameoverAudio"]
+bus = &"SFX"
+
+[node name="SizzleLoop" type="AudioStreamPlayer" parent="GameoverAudio"]
+stream = ExtResource("19_7nt27")
 
 [connection signal="area_exited" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementArea" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
 [connection signal="ready" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]

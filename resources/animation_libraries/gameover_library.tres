@@ -1,4 +1,9 @@
-[gd_resource type="AnimationLibrary" load_steps=3 format=3 uid="uid://dy6jegyq0i7t5"]
+[gd_resource type="AnimationLibrary" load_steps=7 format=3 uid="uid://dy6jegyq0i7t5"]
+
+[ext_resource type="AudioStream" uid="uid://nu8v60m71787" path="res://audio/sfx/clink.ogg" id="1_g74rb"]
+[ext_resource type="AudioStream" uid="uid://cqxi1efjjlqrp" path="res://audio/sfx/cannon-fire.wav" id="2_sryra"]
+[ext_resource type="AudioStream" uid="uid://dtk22vdgt1xby" path="res://audio/sfx/blastoff.wav" id="2_ymxu6"]
+[ext_resource type="AudioStream" uid="uid://b0rnvnlmby3e3" path="res://audio/sfx/car-crash.wav" id="3_sryra"]
 
 [sub_resource type="Animation" id="Animation_4w45t"]
 length = 0.001
@@ -158,7 +163,7 @@ tracks/12/keys = {
 
 [sub_resource type="Animation" id="Animation_mngbo"]
 resource_name = "gameover"
-length = 2.0
+length = 5.0
 step = 0.1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -430,6 +435,47 @@ tracks/20/keys = {
 "values": [{
 "args": [false],
 "method": &"set_process_unhandled_input"
+}]
+}
+tracks/21/type = "audio"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../GameoverAudio/InitialHit")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_g74rb")
+}, {
+"end_offset": 15.954777,
+"start_offset": 11.619147,
+"stream": ExtResource("2_sryra")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.43000004,
+"stream": ExtResource("2_ymxu6")
+}, {
+"end_offset": 0.3665849,
+"start_offset": 0.39,
+"stream": ExtResource("3_sryra")
+}],
+"times": PackedFloat32Array(0, 0.5, 0.6, 1.4)
+}
+tracks/21/use_blend = true
+tracks/22/type = "method"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("../GameoverAudio/SizzleLoop")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
 }]
 }
 

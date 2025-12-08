@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=49 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -21,9 +21,11 @@
 [ext_resource type="AnimationLibrary" uid="uid://cid6yse2ny4tw" path="res://resources/animation_libraries/car_flip_library.tres" id="12_mngbo"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="12_si52b"]
 [ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="13_si52b"]
+[ext_resource type="Script" uid="uid://k6i3d1744qm6" path="res://scripts/player_controllers/player_click_handler.gd" id="15_u0fll"]
 [ext_resource type="AudioStream" uid="uid://jkfxkotxqrne" path="res://audio/music/Taking Out the Garbage OGG.ogg" id="16_bcnxi"]
 [ext_resource type="AudioStream" uid="uid://nmscy0nbmrky" path="res://audio/music/Red Scarlet OGG.ogg" id="17_7nt27"]
 [ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/sizzle.ogg" id="19_7nt27"]
+[ext_resource type="Script" uid="uid://b7dimn244b6j7" path="res://scripts/reset_handler.gd" id="26_6p3nn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_und3l"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -163,6 +165,9 @@ point_count = 2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mngbo"]
 radius = 10.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6p3nn"]
+size = Vector3(5.166706, 2.0805664, 2.5900192)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_18nlu"]
 radius = 1.5
@@ -424,6 +429,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 transform = Transform3D(0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0, 0, 1, 0, -0.1, 0)
 surface_transition_time = 0.3
 
+[node name="PlayerClickboxArea" type="Area3D" parent="Player/PlayerVehicle"]
+collision_layer = 8
+collision_mask = 0
+priority = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerClickboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07080248, 0.72436607, 0.0035896301)
+shape = SubResource("BoxShape3D_6p3nn")
+
 [node name="PlayerHitboxArea" type="Area3D" parent="Player/PlayerVehicle"]
 collision_layer = 0
 
@@ -479,7 +493,7 @@ bus = &"SFX"
 script = ExtResource("10_to7gp")
 
 [node name="MainCamera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(-4.371139e-08, 0.34202015, -0.9396927, 0, 0.9396927, 0.34202015, 1, 1.4950176e-08, -4.107527e-08, -15, 10, 0)
+transform = Transform3D(-4.371139e-08, 0.34202015, -0.9396926, 0, 0.9396926, 0.34202015, 1, 1.4950176e-08, -4.1075268e-08, -15, 10, 0)
 fov = 45.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Player/MainCamera3D"]
@@ -505,8 +519,12 @@ script = ExtResource("7_18nlu")
 script = ExtResource("7_c1pb6")
 road_raycast = NodePath("../PlayerVehicle/RoadDetector")
 
+[node name="PlayerClickHandler" type="Node" parent="Player"]
+script = ExtResource("15_u0fll")
+
 [node name="PlayerHorizon" type="Area3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.01162, 0, 0)
+visible = false
 collision_layer = 4
 collision_mask = 0
 
@@ -540,6 +558,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
@@ -561,6 +580,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TravelledVBoxContainer" type="VBoxContainer" parent="UI/GameoverLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -599,6 +619,22 @@ script = ExtResource("13_si52b")
 odometer_value_label = NodePath("../TravelledVBoxContainer/TravelledValue")
 metadata/_custom_type_script = "uid://nw184rqgi02f"
 
+[node name="TryAgainLabel" type="Label" parent="UI/GameoverLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -198.5
+offset_top = -62.0
+offset_right = 198.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Click your car to try again"
+label_settings = ExtResource("11_r6p65")
+
 [node name="MusicManager" type="Node" parent="."]
 
 [node name="MainMusicPlayer" type="AudioStreamPlayer" parent="MusicManager"]
@@ -613,35 +649,41 @@ max_polyphony = 4
 bus = &"Music"
 playback_type = 1
 
-[node name="GameoverPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../WorldEnvironment")
+[node name="GameoverNodes" type="Node" parent="."]
+
+[node name="GameoverAudio" type="Node" parent="GameoverNodes"]
+
+[node name="InitialHit" type="AudioStreamPlayer" parent="GameoverNodes/GameoverAudio"]
+bus = &"SFX"
+
+[node name="SizzleLoop" type="AudioStreamPlayer" parent="GameoverNodes/GameoverAudio"]
+stream = ExtResource("19_7nt27")
+
+[node name="GameoverPlayer" type="AnimationPlayer" parent="GameoverNodes"]
+root_node = NodePath("../../WorldEnvironment")
 root_motion_local = true
 libraries = {
 &"": ExtResource("11_e1cbu")
 }
 
-[node name="CarFlipPlayer" type="AnimationPlayer" parent="GameoverPlayer"]
+[node name="CarFlipPlayer" type="AnimationPlayer" parent="GameoverNodes/GameoverPlayer"]
 libraries = {
 &"": ExtResource("12_mngbo")
 }
 
-[node name="GameoverAudio" type="Node" parent="."]
-
-[node name="InitialHit" type="AudioStreamPlayer" parent="GameoverAudio"]
-bus = &"SFX"
-
-[node name="SizzleLoop" type="AudioStreamPlayer" parent="GameoverAudio"]
-stream = ExtResource("19_7nt27")
+[node name="ResetHandler" type="Node" parent="GameoverNodes"]
+script = ExtResource("26_6p3nn")
 
 [connection signal="area_exited" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementArea" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
 [connection signal="ready" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="turned_sharply" from="Player/PlayerVehicle" to="Player/PlayerVehicle/TireScreechAudioPlayer" method="play"]
+[connection signal="input_event" from="Player/PlayerVehicle/PlayerClickboxArea" to="Player/PlayerClickHandler" method="_on_player_clickbox_area_input_event"]
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHitboxArea" to="Player/PlayerCollisionController" method="_on_player_hitbox_entered" unbinds=1]
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHurtboxArea" to="Player/PlayerCollisionController" method="_on_player_hurtbox_entered" unbinds=1]
 [connection signal="engine_overloads" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You overloaded on fuel"]]
-[connection signal="engine_overloads" from="Player/FuelController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="engine_overloads" from="Player/FuelController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="engine_stalls" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You ran out of fuel"]]
-[connection signal="engine_stalls" from="Player/FuelController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="engine_stalls" from="Player/FuelController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/PlayerVehicle/EngineAudioPlayer" method="_on_engine_state_changed"]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]
@@ -654,8 +696,9 @@ stream = ExtResource("19_7nt27")
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="Terrain/RoadSegment" method="halt_traffic"]
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="Terrain/RoadSegment2" method="halt_traffic"]
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You crashed"]]
-[connection signal="player_crashed" from="Player/PlayerCollisionController" to="GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="player_crashed" from="Player/PlayerCollisionController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle" method="_on_surface_type_changed"]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/DriveController" method="_on_surface_type_changed"]
+[connection signal="click_detected" from="Player/PlayerClickHandler" to="GameoverNodes/ResetHandler" method="reset_game"]
 
 [editable path="Player/PlayerVehicle/fuel-canister"]

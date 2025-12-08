@@ -28,7 +28,7 @@ gdscript/warnings/untyped_declaration=2
 
 window/size/viewport_width=720
 window/size/viewport_height=480
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale=0.7
 

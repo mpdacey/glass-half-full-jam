@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=46 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -333,6 +333,19 @@ Vector2i(-1, -1): {
 height = 132.28223
 radius = 9.5
 
+[sub_resource type="Gradient" id="Gradient_to7gp"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.018072288, 0.69076306)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u0fll"]
+gradient = SubResource("Gradient_to7gp")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [sub_resource type="Environment" id="Environment_6wevv"]
 background_mode = 1
 ambient_light_source = 2
@@ -500,6 +513,11 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PlayerHorizon"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -46.47412, -2.026558e-06, 0)
 shape = SubResource("CylinderShape3D_18nlu")
+
+[node name="PseudoSun" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.731323, 10.685489, -8.73238)
+billboard = 1
+texture = SubResource("GradientTexture2D_u0fll")
 
 [node name="UI" type="Node" parent="."]
 

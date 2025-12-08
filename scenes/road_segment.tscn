@@ -114,6 +114,7 @@ traffic_paths = [NodePath("Paths/OngoingLanePath"), NodePath("Paths/IncomingLane
 
 [node name="Road" type="MeshInstance3D" parent="."]
 transform = Transform3D(150.1, 0, 0, 0, 1, 0, 0, 0, 120.015, -6.51447, -0.025951385, 0.00614357)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_8fmpn")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_6wevv")
@@ -127,6 +128,7 @@ shape = SubResource("ConcavePolygonShape3D_gf765")
 
 [node name="Offroad" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 0, 0)
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_pu3yx")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_gubc5")

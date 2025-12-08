@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://nmscy0nbmrky"
+path="res://.godot/imported/Red Scarlet OGG.ogg-490eda5793f17034cb3ffe595b124d18.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Red Scarlet OGG.ogg"
+dest_files=["res://.godot/imported/Red Scarlet OGG.ogg-490eda5793f17034cb3ffe595b124d18.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=6.154
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -32,10 +32,10 @@ func _calc_vehicle_position() -> void:
 	var window_size := DisplayServer.window_get_size()
 	var mouse_coords_ratio := mouse_coords.x / window_size.x
 	
-	var test := remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
-	if abs(remapped_vehicle_position - test) > 1:
+	var new_remapped_position := remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
+	if abs(remapped_vehicle_position - new_remapped_position) > 1:
 		turned_sharply.emit()
-	remapped_vehicle_position = remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
+	remapped_vehicle_position = new_remapped_position
 
 func _on_surface_type_changed(road_type: SurfaceController.SurfaceType) -> void:
 	if _surface_change_tween:

@@ -8,5 +8,5 @@ func _on_player_clickbox_area_input_event(_camera: Node, event : InputEvent, _ev
 		return
 	
 	event = event as InputEventMouseButton
-	if event.button_index == MOUSE_BUTTON_LEFT:
+	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		click_detected.emit()

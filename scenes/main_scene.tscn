@@ -522,15 +522,16 @@ texture = SubResource("GradientTexture2D_u0fll")
 [node name="UI" type="Node" parent="."]
 
 [node name="FuelGaugeHUD" parent="UI" instance=ExtResource("4_pu3yx")]
+layer = -1
 full_fuel_threshold = 0.7
 low_fuel_threshold = 0.4
 
 [node name="OdometerHUD" parent="UI" instance=ExtResource("10_6wevv")]
+layer = -2
 follow_viewport_scale = 1.05
 
 [node name="GameoverLayer" type="CanvasLayer" parent="UI"]
 layer = -100
-visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="UI/GameoverLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -544,7 +545,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1152, 648)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="GameoverCamera3D" type="Camera3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
 transform = Transform3D(-4.371139e-08, 0.3420201, -0.93969256, 0, 0.93969256, 0.3420201, 1, 1.4950173e-08, -4.1075264e-08, -15, 9.625, 0)
@@ -554,6 +555,7 @@ environment = SubResource("Environment_6wevv")
 fov = 45.0
 
 [node name="CrashColorRect" type="ColorRect" parent="UI/GameoverLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

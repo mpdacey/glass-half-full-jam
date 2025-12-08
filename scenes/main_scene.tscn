@@ -522,6 +522,8 @@ texture = SubResource("GradientTexture2D_u0fll")
 [node name="UI" type="Node" parent="."]
 
 [node name="FuelGaugeHUD" parent="UI" instance=ExtResource("4_pu3yx")]
+full_fuel_threshold = 0.7
+low_fuel_threshold = 0.4
 
 [node name="OdometerHUD" parent="UI" instance=ExtResource("10_6wevv")]
 follow_viewport_scale = 1.05

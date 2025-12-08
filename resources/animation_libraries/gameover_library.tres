@@ -1,9 +1,9 @@
 [gd_resource type="AnimationLibrary" load_steps=7 format=3 uid="uid://dy6jegyq0i7t5"]
 
 [ext_resource type="AudioStream" uid="uid://nu8v60m71787" path="res://audio/sfx/clink.ogg" id="1_g74rb"]
-[ext_resource type="AudioStream" uid="uid://cqxi1efjjlqrp" path="res://audio/sfx/cannon-fire.wav" id="2_sryra"]
-[ext_resource type="AudioStream" uid="uid://dtk22vdgt1xby" path="res://audio/sfx/blastoff.wav" id="2_ymxu6"]
-[ext_resource type="AudioStream" uid="uid://b0rnvnlmby3e3" path="res://audio/sfx/car-crash.wav" id="3_sryra"]
+[ext_resource type="AudioStream" uid="uid://mdwwcvxus853" path="res://audio/sfx/cannon-fire.ogg" id="2_sryra"]
+[ext_resource type="AudioStream" uid="uid://cwjtcmn8bei6t" path="res://audio/sfx/blastoff.ogg" id="3_ixcwm"]
+[ext_resource type="AudioStream" uid="uid://dc4b4sa16ck7g" path="res://audio/sfx/car-crash.ogg" id="4_1hi4a"]
 
 [sub_resource type="Animation" id="Animation_4w45t"]
 length = 0.001
@@ -509,11 +509,11 @@ tracks/21/keys = {
 }, {
 "end_offset": 0.0,
 "start_offset": 0.43000004,
-"stream": ExtResource("2_ymxu6")
+"stream": ExtResource("3_ixcwm")
 }, {
 "end_offset": 0.3665849,
 "start_offset": 0.39,
-"stream": ExtResource("3_sryra")
+"stream": ExtResource("4_1hi4a")
 }],
 "times": PackedFloat32Array(0, 0.5, 0.6, 1.4)
 }

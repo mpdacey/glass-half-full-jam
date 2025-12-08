@@ -16,7 +16,6 @@ var _null_surface_type := SurfaceType.DIRT
 var _current_surface_type := SurfaceType.ROAD:
 	set(value):
 		if _current_surface_type != value:
-			print("Surface type changed to : ", str(SurfaceType.keys()[value]).capitalize())
 			road_type_changed.emit(value)
 		_current_surface_type = value
 

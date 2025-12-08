@@ -29,8 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _calc_vehicle_position() -> void:
 	var viewport := get_viewport()
 	var mouse_coords := viewport.get_mouse_position()
-	var window_size := DisplayServer.window_get_size()
-	var mouse_coords_ratio := mouse_coords.x / window_size.x
+	var viewport_size := viewport.get_visible_rect().size
+	var mouse_coords_ratio := mouse_coords.x / viewport_size.x
 	
 	var new_remapped_position := remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
 	if abs(remapped_vehicle_position - new_remapped_position) > 1:

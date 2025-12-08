@@ -1,6 +1,8 @@
 extends Node3D
 class_name PlayerVehicleController
 
+signal turned_sharply()
+
 @export var max_swerve_distance : float = 15.0
 @export var mouse_tracking_surface_speeds : Dictionary[SurfaceController.SurfaceType, float] = {
 		SurfaceController.SurfaceType.ROAD : 20,
@@ -30,6 +32,9 @@ func _calc_vehicle_position() -> void:
 	var window_size := DisplayServer.window_get_size()
 	var mouse_coords_ratio := mouse_coords.x / window_size.x
 	
+	var test := remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
+	if abs(remapped_vehicle_position - test) > 1:
+		turned_sharply.emit()
 	remapped_vehicle_position = remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
 
 func _on_surface_type_changed(road_type: SurfaceController.SurfaceType) -> void:

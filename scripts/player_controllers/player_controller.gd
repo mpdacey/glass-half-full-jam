@@ -10,7 +10,7 @@ signal turned_sharply()
 		SurfaceController.SurfaceType.OIL : 0
 }
 @export var surface_transition_time := 0.7
-@export var engine_smoke_emitter: GPUParticles3D
+@export var engine_smoke_emitter: CPUParticles3D
 var remapped_vehicle_position := 0.0
 var _mouse_tracking_speed := mouse_tracking_surface_speeds[SurfaceController.SurfaceType.ROAD]
 var _surface_change_tween : Tween

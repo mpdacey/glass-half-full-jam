@@ -504,6 +504,8 @@ panning_strength = 2.6
 [node name="MainCamera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(-4.371139e-08, 0.34202015, -0.9396926, 0, 0.9396926, 0.34202015, 1, 1.4950176e-08, -4.1075268e-08, -15, 10, 0)
 fov = 45.0
+near = 8.0
+far = 180.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Player/MainCamera3D"]
 
@@ -581,6 +583,8 @@ visible = false
 cull_mask = 1048574
 environment = SubResource("Environment_6wevv")
 fov = 45.0
+near = 6.0
+far = 120.0
 
 [node name="CrashColorRect" type="ColorRect" parent="UI/GameoverLayer"]
 visible = false

@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Half Fuel"
-run/main_scene="uid://kaxdymo06lyx"
+run/main_scene="uid://b210kvlm3hw7d"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
+boot_splash/bg_color=Color(0.26666668, 0.23921569, 0.23137255, 1)
+boot_splash/image="uid://c3o4f68hm2hmk"
 config/icon="res://icon.svg"
 
 [audio]

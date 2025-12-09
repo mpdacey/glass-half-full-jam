@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfjmcr7rm4hc"]
+[gd_scene load_steps=7 format=3 uid="uid://dfjmcr7rm4hc"]
 
 [ext_resource type="Script" uid="uid://dc8lavwyjhvjp" path="res://scripts/player_controllers/player_controller.gd" id="1_hw5rl"]
 [ext_resource type="ArrayMesh" uid="uid://chihm7c3ll6qe" path="res://models/traffic/sedan-sports.obj" id="2_qt1cm"]
+[ext_resource type="SphereMesh" uid="uid://dmnt18k8cmhp3" path="res://scenes/smoke_particle_mesh.tres" id="3_buo3h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fvray"]
 size = Vector3(4.613, 1.3, 1.73)
@@ -9,20 +10,9 @@ size = Vector3(4.613, 1.3, 1.73)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hw5rl"]
 albedo_color = Color(1, 0.14999998, 0.14999998, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_421eg"]
-transparency = 1
-albedo_color = Color(0.28, 0.28, 0.28, 0.7529412)
-
-[sub_resource type="SphereMesh" id="SphereMesh_1a7i7"]
-material = SubResource("StandardMaterial3D_421eg")
-radius = 0.4
-height = 0.8
-radial_segments = 7
-rings = 7
-
 [sub_resource type="Curve" id="Curve_buo3h"]
-_data = [Vector2(0, 0.025158644), 0.0, 3.4588773, 0, 0, Vector2(0.5217391, 0.81582797), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0.025158644), 0.0, 3.4588773, 0, 0, Vector2(0.5217391, 0.81582797), 0.0, 0.0, 0, 0, Vector2(0.85597825, 0.8126526), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [node name="PlayerVehicle" type="Node3D" node_paths=PackedStringArray("engine_smoke_emitter")]
 script = ExtResource("1_hw5rl")
@@ -42,12 +32,13 @@ mesh = ExtResource("2_qt1cm")
 [node name="EngineSmokeEmitter" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1166298, 0.45262766, 0)
 layers = 2
+emitting = false
 amount = 16
 lifetime = 1.6
 speed_scale = 0.76
 explosiveness = 0.06
 randomness = 0.37
-mesh = SubResource("SphereMesh_1a7i7")
+mesh = ExtResource("3_buo3h")
 emission_shape = 3
 emission_box_extents = Vector3(0.125, 0.2, 0.7)
 gravity = Vector3(1, 3, -0.655)

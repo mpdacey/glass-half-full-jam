@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://b210kvlm3hw7d"]
+
+[ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="1_r0vov"]
+[ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_mwelm"]
+[ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="3_sltll"]
+[ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="4_sltll"]
+[ext_resource type="Script" uid="uid://dixoyaeceooim" path="res://scripts/scene_changer.gd" id="5_6c71x"]
+
+[sub_resource type="Animation" id="Animation_x81ys"]
+resource_name = "compile_animation"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Compiling Shaders.
+", "Compiling Shaders..
+", "Compiling Shaders...
+", "Compiling Shaders.
+", "Compiling Shaders..
+", "Compiling Shaders...
+"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SceneChanger")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"swap_to_main_scene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wsgjl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Compiling Shaders..."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rx5xi"]
+_data = {
+&"RESET": SubResource("Animation_wsgjl"),
+&"compile_animation": SubResource("Animation_x81ys")
+}
+
+[node name="ShaderCompilerScene" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -21.0
+offset_right = 154.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Compiling Shaders..."
+label_settings = ExtResource("1_r0vov")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.9834009, 0, 5.474494, 10.841986)
+
+[node name="TrafficCore" parent="." instance=ExtResource("2_mwelm")]
+script = null
+
+[node name="RoadSegment" parent="." instance=ExtResource("4_sltll")]
+script = null
+
+[node name="PlayerVehicle" parent="." instance=ExtResource("3_sltll")]
+script = null
+
+[node name="EngineSmokeEmitter" parent="PlayerVehicle" index="2"]
+emitting = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rx5xi")
+}
+autoplay = "compile_animation"
+
+[node name="SceneChanger" type="Node" parent="."]
+script = ExtResource("5_6c71x")
+
+[editable path="PlayerVehicle"]

@@ -1,13 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dsnhumsjai7bg"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://sqealwhnnkao"]
 
-[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_3x5y1"]
-[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://models/traffic/Textures/colormap.png" id="2_nvtui"]
+[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_gkpmr"]
+[ext_resource type="Texture2D" uid="uid://dr8px6kbtv7y4" path="res://models/traffic/Textures/road_texture.png" id="2_6bfxd"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_3x5y1")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("2_nvtui")
+shader = ExtResource("1_gkpmr")
+shader_parameter/albedo = Color(1, 0.904, 0.88, 1)
+shader_parameter/texture_albedo = ExtResource("2_6bfxd")
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 0.0
 shader_parameter/roughness = 0.0

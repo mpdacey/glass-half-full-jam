@@ -1,10 +1,11 @@
-[gd_scene load_steps=50 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=51 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
 [ext_resource type="Script" uid="uid://di2puqxd3k4wu" path="res://scripts/fuel_placement_controller.gd" id="3_c1pb6"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_c16ls"]
 [ext_resource type="Script" uid="uid://v3tu21cue7ug" path="res://scripts/player_controllers/fuel_controller.gd" id="4_gubc5"]
+[ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="4_k3g67"]
 [ext_resource type="PackedScene" uid="uid://cooy4rj1ddjjn" path="res://scenes/ui/fuel_gauge_hud.tscn" id="4_pu3yx"]
 [ext_resource type="AudioStream" uid="uid://o30pcxk1vm37" path="res://resources/audio_streams/tire_screech_stream.tres" id="5_01n6w"]
 [ext_resource type="AudioStream" uid="uid://dovis7wk8vv8j" path="res://audio/sfx/refuel.ogg" id="5_6u1mn"]
@@ -424,7 +425,6 @@ warp_shift_amount = 401.88
 fuel_canister = NodePath("../FuelPlacementPath/FuelPlacementFollower/fuel-canister")
 
 [node name="Player" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 
 [node name="PlayerVehicle" parent="Player" instance=ExtResource("1_w2twt")]
 transform = Transform3D(0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0, 0, 1, 0, -0.1, 0)
@@ -547,6 +547,10 @@ shape = SubResource("CylinderShape3D_18nlu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.731323, 10.685489, -8.73238)
 billboard = 1
 texture = SubResource("GradientTexture2D_u0fll")
+
+[node name="TrafficCore" parent="Player" instance=ExtResource("4_k3g67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.27744, 1.1826754, 0)
+visible = false
 
 [node name="UI" type="Node" parent="."]
 

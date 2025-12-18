@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=54 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -364,6 +364,42 @@ font_size = 64
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_4bgka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/MainCamera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.34906587, -1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k3g67"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/MainCamera3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333332, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5707964, -1.5707964, 0), Vector3(0.42001668, -1.5707964, 0), Vector3(-0.34906587, -1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02d50"]
+_data = {
+&"RESET": SubResource("Animation_4bgka"),
+&"intro": SubResource("Animation_k3g67")
+}
+
 [node name="MainScene" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -496,6 +532,7 @@ bus = &"SFX"
 script = ExtResource("10_to7gp")
 
 [node name="HornAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
+visible = false
 stream = ExtResource("11_k67gn")
 unit_size = 23.7
 max_db = 3.005
@@ -578,7 +615,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(720, 480)
+size = Vector2i(1440, 960)
 render_target_update_mode = 4
 
 [node name="GameoverCamera3D" type="Camera3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
@@ -691,6 +728,12 @@ libraries = {
 [node name="ResetHandler" type="Node" parent="GameoverNodes"]
 script = ExtResource("26_6p3nn")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_02d50")
+}
+autoplay = "intro"
+
 [connection signal="area_exited" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementArea" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
 [connection signal="ready" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="turned_sharply" from="Player/PlayerVehicle" to="Player/PlayerVehicle/CarNoises/TireScreechAudioPlayer" method="play"]
@@ -717,6 +760,7 @@ script = ExtResource("26_6p3nn")
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle" method="_on_surface_type_changed"]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/DriveController" method="_on_surface_type_changed"]
 [connection signal="click_detected" from="Player/PlayerClickHandler" to="Player/PlayerVehicle/CarNoises/HornAudioPlayer" method="play"]
-[connection signal="click_detected" from="Player/PlayerClickHandler" to="GameoverNodes/ResetHandler" method="reset_game"]
+[connection signal="click_detected" from="Player/PlayerClickHandler" to="GameoverNodes/ResetHandler" method="request_reset"]
+[connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"retry"]]
 
 [editable path="Player/PlayerVehicle/fuel-canister"]

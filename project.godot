@@ -18,6 +18,10 @@ boot_splash/bg_color=Color(0.26666668, 0.23921569, 0.23137255, 1)
 boot_splash/image="uid://c3o4f68hm2hmk"
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicPlayer="*res://scenes/music_manager.tscn"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=2

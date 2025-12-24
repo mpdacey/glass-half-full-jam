@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=53 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
@@ -24,10 +24,9 @@
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="12_si52b"]
 [ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="13_si52b"]
 [ext_resource type="Script" uid="uid://k6i3d1744qm6" path="res://scripts/player_controllers/player_click_handler.gd" id="15_u0fll"]
-[ext_resource type="AudioStream" uid="uid://jkfxkotxqrne" path="res://audio/music/Taking Out the Garbage OGG.ogg" id="16_bcnxi"]
-[ext_resource type="AudioStream" uid="uid://nmscy0nbmrky" path="res://audio/music/Red Scarlet OGG.ogg" id="17_7nt27"]
 [ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/sizzle.ogg" id="19_7nt27"]
 [ext_resource type="Script" uid="uid://b7dimn244b6j7" path="res://scripts/reset_handler.gd" id="26_6p3nn"]
+[ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="29_4bgka"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_und3l"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -689,20 +688,6 @@ grow_vertical = 0
 text = "Click your car to try again"
 label_settings = ExtResource("11_r6p65")
 
-[node name="MusicManager" type="Node" parent="."]
-
-[node name="MainMusicPlayer" type="AudioStreamPlayer" parent="MusicManager"]
-stream = ExtResource("16_bcnxi")
-autoplay = true
-bus = &"Music"
-playback_type = 1
-
-[node name="GameOverMusic" type="AudioStreamPlayer" parent="MusicManager"]
-stream = ExtResource("17_7nt27")
-max_polyphony = 4
-bus = &"Music"
-playback_type = 1
-
 [node name="GameoverNodes" type="Node" parent="."]
 
 [node name="GameoverAudio" type="Node" parent="GameoverNodes"]
@@ -734,6 +719,10 @@ libraries = {
 }
 autoplay = "intro"
 
+[node name="MusicManager" type="Node" parent="."]
+script = ExtResource("29_4bgka")
+metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
+
 [connection signal="area_exited" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementArea" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
 [connection signal="ready" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="turned_sharply" from="Player/PlayerVehicle" to="Player/PlayerVehicle/CarNoises/TireScreechAudioPlayer" method="play"]
@@ -762,5 +751,6 @@ autoplay = "intro"
 [connection signal="click_detected" from="Player/PlayerClickHandler" to="Player/PlayerVehicle/CarNoises/HornAudioPlayer" method="play"]
 [connection signal="click_detected" from="Player/PlayerClickHandler" to="GameoverNodes/ResetHandler" method="request_reset"]
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"retry"]]
+[connection signal="ready" from="MusicManager" to="MusicManager" method="swap_to_main"]
 
 [editable path="Player/PlayerVehicle/fuel-canister"]

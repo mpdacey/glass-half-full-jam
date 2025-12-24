@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq2rtcoyv5xbn"]
+
+[ext_resource type="AudioStream" uid="uid://jkfxkotxqrne" path="res://audio/music/Taking Out the Garbage OGG.ogg" id="1_hetdf"]
+[ext_resource type="AudioStream" uid="uid://nmscy0nbmrky" path="res://audio/music/Red Scarlet OGG.ogg" id="2_jd6i5"]
+
+[node name="MusicManager" type="Node"]
+metadata/main_music = NodePath("MainMusicPlayer")
+metadata/title_music = NodePath("TitleMusicPlayer")
+metadata/gameover_music = NodePath("GameoverMusicPlayer")
+
+[node name="MainMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_hetdf")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="TitleMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_hetdf")
+bus = &"Title Music"
+
+[node name="GameoverMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jd6i5")
+bus = &"Music"

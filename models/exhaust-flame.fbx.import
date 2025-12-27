@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dy6tatx2t0dkg"
+uid="uid://c63k6whxhnb6s"
 path="res://.godot/imported/exhaust-flame.fbx-de1c27ce089a082bfbdf5ad9dfd9fc5a.scn"
 
 [deps]
@@ -37,28 +37,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"InnerFlame": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://materials/exhaust-flame.tres",
-"use_external/path": "uid://c2tucpjk5ib75"
-},
-"OuterFlame": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://materials/exhaust-flame.tres",
-"use_external/path": "uid://c2tucpjk5ib75"
-}
-},
-"nodes": {
-"PATH:InnerFlame": {
-"mesh_instance/cast_shadow": 0
-},
-"PATH:OuterFlame": {
-"mesh_instance/cast_shadow": 0
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

@@ -379,9 +379,9 @@ _data = {
 &"flame-ignite": SubResource("Animation_ynh7g")
 }
 
-[node name="ExhaustFlame" type="Node3D"]
+[node name="ExhaustFlame" type="Node3D" node_paths=PackedStringArray("transition_animator")]
 script = ExtResource("1_lb12t")
-metadata/flame_transition_animator = NodePath("FlameTransition")
+transition_animator = NodePath("FlameTransition")
 
 [node name="FlameAnchor" type="Node3D" parent="."]
 

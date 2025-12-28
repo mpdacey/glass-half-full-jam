@@ -56,6 +56,11 @@ scale_amount_curve = SubResource("Curve_buo3h")
 [node name="Exhausts" type="Node3D" parent="."]
 transform = Transform3D(0.7443116, -0.66783255, 0, 0.66783255, 0.7443116, 0, 0, 0, 1, -2.215, 0.315, 0)
 
+[node name="ExhaustController" type="Node" parent="Exhausts" node_paths=PackedStringArray("left_flame", "right_flame")]
+script = ExtResource("6_1a7i7")
+left_flame = NodePath("../LeftExhaust/ExhaustFlame")
+right_flame = NodePath("../RightExhaust/ExhaustFlame")
+
 [node name="LeftExhaust" type="Node3D" parent="Exhausts"]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, -0.55)
 
@@ -67,6 +72,3 @@ transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0
 
 [node name="ExhaustFlame" parent="Exhausts/RightExhaust" instance=ExtResource("6_bol71")]
 transform = Transform3D(0.3, 0, -3.5527137e-15, 0, 0.3, -1.7763568e-15, -3.5527137e-15, 0, 0.3, 0, 0, 0)
-
-[node name="ExhaustController" type="Node" parent="."]
-script = ExtResource("6_1a7i7")

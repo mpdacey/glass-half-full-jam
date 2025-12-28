@@ -1,7 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c2tucpjk5ib75"]
 
 [resource]
+transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 disable_receive_shadows = true
-stencil_flags = 2
+stencil_flags = 1

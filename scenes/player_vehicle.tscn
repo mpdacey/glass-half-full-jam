@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://chihm7c3ll6qe" path="res://models/traffic/sedan-sports.obj" id="2_qt1cm"]
 [ext_resource type="SphereMesh" uid="uid://dmnt18k8cmhp3" path="res://scenes/smoke_particle_mesh.tres" id="3_buo3h"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="3_hhg0s"]
-[ext_resource type="Script" uid="uid://boxtrwdsnpohj" path="res://scripts/exhaust_flame_random_rotater.gd" id="6_1a7i7"]
+[ext_resource type="Script" uid="uid://cw32dhn70g4b7" path="res://scripts/exhaust/exhaust_controller.gd" id="6_1a7i7"]
 [ext_resource type="PackedScene" uid="uid://0nnbn1qcmf7c" path="res://scenes/exhaust_flame.tscn" id="6_bol71"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fvray"]
@@ -59,16 +59,8 @@ transform = Transform3D(0.7443116, -0.66783255, 0, 0.66783255, 0.7443116, 0, 0, 
 [node name="LeftExhaust" type="Node3D" parent="Exhausts"]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, -0.55)
 
-[node name="ExhaustFlameRandomRotater" type="Node" parent="Exhausts/LeftExhaust" node_paths=PackedStringArray("exhaust")]
-script = ExtResource("6_1a7i7")
-exhaust = NodePath("..")
-
-[node name="Timer" type="Timer" parent="Exhausts/LeftExhaust/ExhaustFlameRandomRotater"]
-wait_time = 0.042
-autostart = true
-
 [node name="ExhaustFlame" parent="Exhausts/LeftExhaust" instance=ExtResource("6_bol71")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.3, 0, -3.5527137e-15, 0, 0.3, -1.7763568e-15, -3.5527137e-15, 0, 0.3, 0, 0, 0)
 
 [node name="RightExhaust" type="Node3D" parent="Exhausts"]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0.55)
@@ -76,15 +68,5 @@ transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0
 [node name="ExhaustFlame" parent="Exhausts/RightExhaust" instance=ExtResource("6_bol71")]
 transform = Transform3D(0.3, 0, -3.5527137e-15, 0, 0.3, -1.7763568e-15, -3.5527137e-15, 0, 0.3, 0, 0, 0)
 
-[node name="ExhaustFlameRandomRotater" type="Node" parent="Exhausts/RightExhaust" node_paths=PackedStringArray("exhaust")]
+[node name="ExhaustController" type="Node" parent="."]
 script = ExtResource("6_1a7i7")
-exhaust = NodePath("..")
-
-[node name="Timer" type="Timer" parent="Exhausts/RightExhaust/ExhaustFlameRandomRotater"]
-wait_time = 0.042
-autostart = true
-
-[connection signal="timeout" from="Exhausts/LeftExhaust/ExhaustFlameRandomRotater/Timer" to="Exhausts/LeftExhaust/ExhaustFlameRandomRotater" method="rotate_exhaust"]
-[connection signal="timeout" from="Exhausts/LeftExhaust/ExhaustFlameRandomRotater/Timer" to="Exhausts/LeftExhaust/ExhaustFlameRandomRotater/Timer" method="start"]
-[connection signal="timeout" from="Exhausts/RightExhaust/ExhaustFlameRandomRotater/Timer" to="Exhausts/RightExhaust/ExhaustFlameRandomRotater" method="rotate_exhaust"]
-[connection signal="timeout" from="Exhausts/RightExhaust/ExhaustFlameRandomRotater/Timer" to="Exhausts/RightExhaust/ExhaustFlameRandomRotater/Timer" method="start"]

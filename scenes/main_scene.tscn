@@ -733,6 +733,7 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="engine_overloads" from="Player/FuelController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="engine_stalls" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You ran out of fuel"]]
 [connection signal="engine_stalls" from="Player/FuelController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="engine_state_changed" from="Player/FuelController" to="Player/PlayerVehicle/Exhausts/ExhaustController" method="_on_engine_state_changed"]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/PlayerVehicle/CarNoises/EngineAudioPlayer" method="_on_engine_state_changed"]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]
@@ -753,4 +754,5 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"retry"]]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="swap_to_main"]
 
+[editable path="Player/PlayerVehicle"]
 [editable path="Player/PlayerVehicle/fuel-canister"]

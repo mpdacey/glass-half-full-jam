@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://0nnbn1qcmf7c"]
+[gd_scene load_steps=15 format=4 uid="uid://0nnbn1qcmf7c"]
+
+[ext_resource type="Script" uid="uid://d2sklxf0os8s" path="res://scripts/exhaust/exhaust_flame_controller.gd" id="1_lb12t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d5mrk"]
 render_priority = 1
@@ -81,14 +83,334 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mx1eo")
 
-[node name="ExhaustFlame" type="Node3D"]
+[sub_resource type="Gradient" id="Gradient_lb12t"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.26822916, 0.6510417)
+colors = PackedColorArray(0.9372549, 0.8235294, 0.54901963, 1, 1.3265593, 1.3067192, 1.2349893, 0)
 
-[node name="InnerFlame" type="MeshInstance3D" parent="."]
-transform = Transform3D(62.3465, 0, 0, 0, -7.432282e-06, 74.99972, 0, -62.346497, -8.940664e-06, 0, 0.4, 0)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ynh7g"]
+gradient = SubResource("Gradient_lb12t")
+width = 344
+height = 344
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_lb12t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlameAnchor/InnerFlame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(62.3465, 62.346497, 74.99972)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlameAnchor/OuterFlame:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlameAnchor:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.12500417, 0, 0.12500417, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlameAnchor:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.12500417, 0, 0.12500417, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlameAnchor:scale:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.12500417, 0, 0.12500417, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FlameHalo:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FlameAnchor/OuterFlame:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(154.85504, 154.85503, 154.85503)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FlameHalo:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.47058824)]
+}
+
+[sub_resource type="Animation" id="Animation_c7vxp"]
+resource_name = "flame-fizzle"
+length = 0.3333417
+step = 0.083333336
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlameAnchor:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, -0.7916789, 0, -0.16666667, 0.22244461, 0.25, 0),
+"times": PackedFloat32Array(0, 0.33333334)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlameAnchor:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.01839341, -0.08333334, 0.44669667, 0.25, 0),
+"times": PackedFloat32Array(0, 0.33333334)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlameAnchor:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, -0.8199259, 0, -0.16666667, 0.2506916, 0.25, 0),
+"times": PackedFloat32Array(0, 0.33333334)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlameHalo:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.375, 0.375, 0.375)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlameHalo:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d5mrk"]
+resource_name = "flame-idle"
+length = 0.3333417
+loop_mode = 1
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlameAnchor/InnerFlame:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(62.3465, 62.346497, 74.99972), Vector3(35.827, 35.826, 43.098)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlameAnchor/OuterFlame:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 3.4191, 0), Vector3(-1.5707964, 0.86742866, 0), Vector3(-1.5707964, 3.2323499, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlameHalo:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.87, 0.87, 0.87)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlameAnchor/OuterFlame:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(154.85504, 154.85503, 154.85503), Vector3(145.115, 145.115, 145.115)]
+}
+
+[sub_resource type="Animation" id="Animation_ynh7g"]
+resource_name = "flame-ignite"
+length = 0.25000834
+step = 0.083333336
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlameAnchor:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.12500417, 0, 0.083333336, 0.900373, 1, -0.08333333, 0.008133054, 0, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlameAnchor:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.12500417, 0, 0.09316007, 1.8890173, 1, -0.07350659, 0.26052165, 0, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlameAnchor:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.12500417, 0, 0.083333336, 0.8791877, 1, -0.08333333, 0.016891837, 0, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlameHalo:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.5372549), Color(1, 1, 1, 0.654902), Color(1, 1, 1, 0.47058824)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlameHalo:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.515, 0.515, 0.515), Vector3(1.238, 1.238, 1.238), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ynh7g"]
+_data = {
+&"RESET": SubResource("Animation_lb12t"),
+&"flame-fizzle": SubResource("Animation_c7vxp"),
+&"flame-idle": SubResource("Animation_d5mrk"),
+&"flame-ignite": SubResource("Animation_ynh7g")
+}
+
+[node name="ExhaustFlame" type="Node3D"]
+script = ExtResource("1_lb12t")
+metadata/flame_transition_animator = NodePath("FlameTransition")
+
+[node name="FlameAnchor" type="Node3D" parent="."]
+
+[node name="InnerFlame" type="MeshInstance3D" parent="FlameAnchor"]
+transform = Transform3D(62.3465, 0, 0, 0, -2.725252e-06, 74.99972, 0, -62.346497, -3.2783419e-06, 0, 0.4, 0)
 mesh = SubResource("ArrayMesh_lb12t")
 skeleton = NodePath("")
 
-[node name="OuterFlame" type="MeshInstance3D" parent="."]
-transform = Transform3D(154.85504, 0, 0, 0, -1.846016e-05, 154.85503, 0, -154.85503, -1.846016e-05, 0, 0.6689973, 0)
+[node name="OuterFlame" type="MeshInstance3D" parent="FlameAnchor"]
+transform = Transform3D(154.85504, 0, 0, 0, -6.768928e-06, 154.85503, 0, -154.85503, -6.768928e-06, 0, 0.6689973, 0)
 mesh = SubResource("ArrayMesh_c7vxp")
 skeleton = NodePath("")
+
+[node name="FlameHalo" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.076925, 0)
+modulate = Color(1, 1, 1, 0.47058824)
+billboard = 1
+double_sided = false
+texture_filter = 1
+render_priority = -1
+texture = SubResource("GradientTexture2D_ynh7g")
+
+[node name="FlameAuto" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ynh7g")
+}
+autoplay = "flame-idle"
+
+[node name="FlameTransition" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ynh7g")
+}

@@ -1,7 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene load_steps=51 format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="1_w2twt"]
+[ext_resource type="AnimationLibrary" uid="uid://jc8fcqbdm5j4" path="res://resources/terrain_animation_library.tres" id="2_k3g67"]
 [ext_resource type="Script" uid="uid://di2puqxd3k4wu" path="res://scripts/fuel_placement_controller.gd" id="3_c1pb6"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_c16ls"]
 [ext_resource type="Script" uid="uid://v3tu21cue7ug" path="res://scripts/player_controllers/fuel_controller.gd" id="4_gubc5"]
@@ -44,111 +45,6 @@ background_mode = 2
 sky = SubResource("Sky_w2twt")
 ambient_light_source = 2
 ambient_light_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
-
-[sub_resource type="Animation" id="Animation_gubc5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Terrain:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Terrain/RoadSegment:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_pu3yx"]
-resource_name = "drive"
-length = 20.0
-loop_mode = 1
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Terrain:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 20),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-400, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Terrain/RoadSegment:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 10, 20),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector3(0, 0, 0), Vector3(400, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../Terrain/RoadSegment")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(12),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"dress_road_segment"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../../Terrain/RoadSegment2")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"dress_road_segment"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../../Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(20),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"warp_back"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gubc5"]
-_data = {
-&"RESET": SubResource("Animation_gubc5"),
-&"drive": SubResource("Animation_pu3yx")
-}
 
 [sub_resource type="Curve3D" id="Curve3D_6wevv"]
 _data = {
@@ -418,13 +314,17 @@ environment = SubResource("Environment_pw63i")
 [node name="RoadSegment2" parent="Terrain" instance=ExtResource("1_mngbo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="TerrainPlayer" type="AnimationPlayer" parent="Terrain"]
-root_node = NodePath("../../Player/MainCamera3D")
+[node name="TerrainDrivingPlayer" type="AnimationPlayer" parent="Terrain"]
 libraries = {
-&"": SubResource("AnimationLibrary_gubc5")
+&"": ExtResource("2_k3g67")
 }
 autoplay = "drive"
-speed_scale = 2.3
+
+[node name="TerrainDressingPlayer" type="AnimationPlayer" parent="Terrain"]
+libraries = {
+&"": ExtResource("2_k3g67")
+}
+autoplay = "dressing"
 
 [node name="FuelLanePath" type="Path3D" parent="Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 0)
@@ -552,9 +452,8 @@ drained_threshold = 0.33
 cruise_decay_rate = 0.1
 drained_decay_rate = 0.12
 
-[node name="DriveController" type="Node" parent="Player" node_paths=PackedStringArray("road_animator")]
+[node name="DriveController" type="Node" parent="Player"]
 script = ExtResource("5_rt2n2")
-road_animator = NodePath("../../Terrain/TerrainPlayer")
 boosted_acceleration_rate = 15.0
 cruise_acceleration_rate = 5.0
 drained_acceleration_rate = -25.0
@@ -739,6 +638,8 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]
 [connection signal="distance_traveled" from="Player/DriveController" to="UI/OdometerHUD" method="update_odometer"]
 [connection signal="distance_traveled" from="Player/DriveController" to="UI/GameoverLayer/OdometerUpdater" method="update_odometer" binds= [false]]
+[connection signal="speed_scale_updated" from="Player/DriveController" to="Terrain/TerrainDrivingPlayer" method="set_speed_scale"]
+[connection signal="speed_scale_updated" from="Player/DriveController" to="Terrain/TerrainDressingPlayer" method="set_speed_scale"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/CarNoises/FuelCollectedAudioPlayer" method="play"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/FuelController" method="_on_fuel_collected"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementPath/FuelPlacementFollower/fuel-canister" method="set_visible" binds= [false]]

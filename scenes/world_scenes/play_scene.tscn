@@ -1,0 +1,566 @@
+[gd_scene load_steps=42 format=3 uid="uid://dpfq7m4viuno"]
+
+[ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
+[ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="5_dfpoj"]
+[ext_resource type="AudioStream" uid="uid://o30pcxk1vm37" path="res://resources/audio_streams/tire_screech_stream.tres" id="6_pj8nq"]
+[ext_resource type="AudioStream" uid="uid://dovis7wk8vv8j" path="res://audio/sfx/refuel.ogg" id="7_7m3n2"]
+[ext_resource type="AudioStream" uid="uid://dqtt3kpsigjmd" path="res://audio/sfx/engine/engine_rpm_high.ogg" id="8_63m0j"]
+[ext_resource type="AudioStream" uid="uid://dfkflwqql0shl" path="res://audio/sfx/engine/engine_rpm_med.ogg" id="9_dwlll"]
+[ext_resource type="AudioStream" uid="uid://6w855nrm3544" path="res://audio/sfx/engine/engine_rpm_low.ogg" id="10_eg42k"]
+[ext_resource type="Script" uid="uid://cnaa232nmkahm" path="res://scripts/audio/engine_audio_player.gd" id="11_dwjdh"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="12_dyabf"]
+[ext_resource type="AudioStream" uid="uid://b8jjunmusijlp" path="res://audio/sfx/horn.ogg" id="12_wjfxh"]
+[ext_resource type="Script" uid="uid://v3tu21cue7ug" path="res://scripts/player_controllers/fuel_controller.gd" id="13_kd3qq"]
+[ext_resource type="Script" uid="uid://cue23yim4fd65" path="res://scripts/player_controllers/drive_controller.gd" id="14_6bbup"]
+[ext_resource type="Script" uid="uid://dr0u7hy6jirbi" path="res://scripts/player_controllers/player_collision_controller.gd" id="15_83g3t"]
+[ext_resource type="Script" uid="uid://c44w1ggq0eblg" path="res://scripts/player_controllers/surface_controller.gd" id="16_ekkaj"]
+[ext_resource type="Script" uid="uid://k6i3d1744qm6" path="res://scripts/player_controllers/player_click_handler.gd" id="17_edg7r"]
+[ext_resource type="PackedScene" uid="uid://cooy4rj1ddjjn" path="res://scenes/ui/fuel_gauge_hud.tscn" id="19_b3xk2"]
+[ext_resource type="PackedScene" uid="uid://cereybnuafmsc" path="res://scenes/ui/odometer_hud.tscn" id="20_vtgkk"]
+[ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="21_p8ryb"]
+[ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="22_1b2ky"]
+[ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="23_0gf1i"]
+[ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/sizzle.ogg" id="24_q6ljc"]
+[ext_resource type="AnimationLibrary" uid="uid://dy6jegyq0i7t5" path="res://resources/animation_libraries/gameover_library.tres" id="25_ssu4d"]
+[ext_resource type="AnimationLibrary" uid="uid://cid6yse2ny4tw" path="res://resources/animation_libraries/car_flip_library.tres" id="26_kf746"]
+[ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="26_xbx4t"]
+[ext_resource type="Script" uid="uid://b7dimn244b6j7" path="res://scripts/reset_handler.gd" id="27_deyf2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6p3nn"]
+size = Vector3(4.394765, 1.3961182, 1.8012524)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_18nlu"]
+radius = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c1pb6"]
+radius = 0.9
+
+[sub_resource type="Animation" id="Animation_c1pb6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fuel-canister:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fuel-canister:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fuel-canister:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fuel-canister:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_18nlu"]
+resource_name = "collect_fuel"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fuel-canister:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fuel-canister:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.23, 0.6333333, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(3.15, 0, 0), Vector3(1.605, 1.394, 0), Vector3(-0.285, 2, 0), Vector3(-0.285, 2, 0), Vector3(-0.285, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fuel-canister:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.6333333, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 0.805, 1), Vector3(0.7, 0.7, 0.7), Vector3(0.7, 0.7, 0.7), Vector3(0.225, 0.65, 0.225)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fuel-canister:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -6.2831855, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.76666665, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.8, 1.1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wevv"]
+_data = {
+&"RESET": SubResource("Animation_c1pb6"),
+&"collect_fuel": SubResource("Animation_18nlu")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bcnxi"]
+playback_mode = 2
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("7_7m3n2")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_adb74"]
+clip_count = 3
+clip_0/name = &"high"
+clip_0/stream = ExtResource("8_63m0j")
+clip_0/auto_advance = 0
+clip_1/name = &"medium"
+clip_1/stream = ExtResource("9_dwlll")
+clip_1/auto_advance = 0
+clip_2/name = &"low"
+clip_2/stream = ExtResource("10_eg42k")
+clip_2/auto_advance = 0
+initial_clip = 1
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0.2,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_18nlu"]
+height = 132.28223
+radius = 9.5
+
+[sub_resource type="Gradient" id="Gradient_to7gp"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.018072288, 0.69076306)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u0fll"]
+gradient = SubResource("Gradient_to7gp")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Environment" id="Environment_6wevv"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_01n6w"]
+font = ExtResource("22_1b2ky")
+font_size = 64
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_4bgka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/MainCamera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.34906587, -1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k3g67"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/MainCamera3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333332, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5707964, -1.5707964, 0), Vector3(0.42001668, -1.5707964, 0), Vector3(-0.34906587, -1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02d50"]
+_data = {
+&"RESET": SubResource("Animation_4bgka"),
+&"intro": SubResource("Animation_k3g67")
+}
+
+[node name="PlayScene" type="Node3D"]
+
+[node name="Player" type="Node3D" parent="."]
+
+[node name="PlayerVehicle" parent="Player" instance=ExtResource("5_dfpoj")]
+transform = Transform3D(0.99939084, 0.034899496, 0, -0.034899496, 0.99939084, 0, 0, 0, 1, 0, -0.1, 0)
+surface_transition_time = 0.3
+
+[node name="PlayerClickboxArea" type="Area3D" parent="Player/PlayerVehicle"]
+collision_layer = 8
+collision_mask = 0
+priority = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerClickboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083489165, 0.6718148, -0.020205498)
+shape = SubResource("BoxShape3D_6p3nn")
+
+[node name="PlayerHitboxArea" type="Area3D" parent="Player/PlayerVehicle"]
+collision_layer = 0
+
+[node name="PlayerHitbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
+shape = SubResource("SphereShape3D_18nlu")
+
+[node name="PlayerHurtboxArea" type="Area3D" parent="Player/PlayerVehicle"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="PlayerHurtbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHurtboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
+shape = SubResource("SphereShape3D_c1pb6")
+
+[node name="fuel-canister" parent="Player/PlayerVehicle" instance=ExtResource("3_owpoa")]
+visible = false
+
+[node name="Area3D" parent="Player/PlayerVehicle/fuel-canister" index="0"]
+collision_layer = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/PlayerVehicle"]
+libraries = {
+&"": SubResource("AnimationLibrary_6wevv")
+}
+
+[node name="RoadDetector" type="RayCast3D" parent="Player/PlayerVehicle"]
+transform = Transform3D(0.99939084, -0.034899496, 0, 0.034899496, 0.99939084, 0, 0, 0, 1, 0.7, 1.031, 0)
+collision_mask = 16
+
+[node name="CarNoises" type="Node3D" parent="Player/PlayerVehicle"]
+
+[node name="TireScreechAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
+stream = ExtResource("6_pj8nq")
+volume_db = -5.0
+unit_size = 31.63
+pitch_scale = 1.03
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="FuelCollectedAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
+transform = Transform3D(0.99939084, -0.034899496, 0, 0.034899496, 0.99939084, 0, 0, 0, 1, -14.00805, -0.013882279, 4.4999695)
+stream = SubResource("AudioStreamRandomizer_bcnxi")
+volume_db = -5.0
+unit_size = 37.71
+panning_strength = 1.75
+bus = &"SFX"
+
+[node name="EngineAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
+stream = SubResource("AudioStreamInteractive_adb74")
+volume_db = 4.0
+autoplay = true
+panning_strength = 2.0
+bus = &"SFX"
+script = ExtResource("11_dwjdh")
+
+[node name="HornAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
+visible = false
+stream = ExtResource("12_wjfxh")
+unit_size = 23.7
+max_db = 3.005
+panning_strength = 2.6
+
+[node name="MainCamera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(-4.371139e-08, 0.34202015, -0.9396926, 0, 0.9396926, 0.34202015, 1, 1.4950176e-08, -4.1075268e-08, -15, 10, 0)
+fov = 45.0
+near = 8.0
+far = 180.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Player/MainCamera3D"]
+
+[node name="FuelController" type="Node" parent="Player"]
+script = ExtResource("13_kd3qq")
+cruise_threshold = 0.66
+drained_threshold = 0.33
+cruise_decay_rate = 0.1
+drained_decay_rate = 0.12
+
+[node name="DriveController" type="Node" parent="Player"]
+script = ExtResource("14_6bbup")
+boosted_acceleration_rate = 15.0
+cruise_acceleration_rate = 5.0
+drained_acceleration_rate = -25.0
+
+[node name="GlobalSignalInterfacer" type="Node" parent="Player/DriveController"]
+script = ExtResource("12_dyabf")
+global_signal_name = "speed_scale_updated"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="PlayerCollisionController" type="Node" parent="Player"]
+script = ExtResource("15_83g3t")
+
+[node name="SurfaceController" type="Node" parent="Player" node_paths=PackedStringArray("road_raycast")]
+script = ExtResource("16_ekkaj")
+road_raycast = NodePath("../PlayerVehicle/RoadDetector")
+
+[node name="PlayerClickHandler" type="Node" parent="Player"]
+script = ExtResource("17_edg7r")
+
+[node name="PlayerHorizon" type="Area3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.01162, 0, 0)
+visible = false
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PlayerHorizon"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -46.47412, -2.026558e-06, 0)
+shape = SubResource("CylinderShape3D_18nlu")
+
+[node name="PseudoSun" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.731323, 10.685489, -8.73238)
+billboard = 1
+texture = SubResource("GradientTexture2D_u0fll")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="FuelGaugeHUD" parent="UI" instance=ExtResource("19_b3xk2")]
+layer = -1
+full_fuel_threshold = 0.7
+low_fuel_threshold = 0.4
+
+[node name="OdometerHUD" parent="UI" instance=ExtResource("20_vtgkk")]
+layer = -2
+follow_viewport_scale = 1.05
+
+[node name="GameoverLayer" type="CanvasLayer" parent="UI"]
+layer = -100
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/GameoverLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1440, 960)
+render_target_update_mode = 4
+
+[node name="GameoverCamera3D" type="Camera3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.371139e-08, 0.3420201, -0.93969256, 0, 0.93969256, 0.3420201, 1, 1.4950173e-08, -4.1075264e-08, -15, 9.625, 0)
+visible = false
+cull_mask = 1048574
+environment = SubResource("Environment_6wevv")
+fov = 45.0
+near = 6.0
+far = 120.0
+
+[node name="CrashColorRect" type="ColorRect" parent="UI/GameoverLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TravelledVBoxContainer" type="VBoxContainer" parent="UI/GameoverLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_top = 32.0
+offset_right = 154.0
+offset_bottom = 162.0
+grow_horizontal = 2
+
+[node name="GameOverMessage" type="Label" parent="UI/GameoverLayer/TravelledVBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("21_p8ryb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TravelledTitle" type="Label" parent="UI/GameoverLayer/TravelledVBoxContainer"]
+layout_mode = 2
+text = "Kilometres Travelled"
+label_settings = ExtResource("21_p8ryb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TravelledValue" type="Label" parent="UI/GameoverLayer/TravelledVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+text = "0.0"
+label_settings = SubResource("LabelSettings_01n6w")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="OdometerUpdater" type="Node" parent="UI/GameoverLayer" node_paths=PackedStringArray("odometer_value_label")]
+script = ExtResource("23_0gf1i")
+odometer_value_label = NodePath("../TravelledVBoxContainer/TravelledValue")
+metadata/_custom_type_script = "uid://nw184rqgi02f"
+
+[node name="TryAgainLabel" type="Label" parent="UI/GameoverLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -198.5
+offset_top = -62.0
+offset_right = 198.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Click your car to try again"
+label_settings = ExtResource("21_p8ryb")
+
+[node name="GameoverNodes" type="Node" parent="."]
+
+[node name="GameoverAudio" type="Node" parent="GameoverNodes"]
+
+[node name="InitialHit" type="AudioStreamPlayer" parent="GameoverNodes/GameoverAudio"]
+bus = &"SFX"
+
+[node name="SizzleLoop" type="AudioStreamPlayer" parent="GameoverNodes/GameoverAudio"]
+stream = ExtResource("24_q6ljc")
+
+[node name="GameoverPlayer" type="AnimationPlayer" parent="GameoverNodes"]
+root_motion_local = true
+libraries = {
+&"": ExtResource("25_ssu4d")
+}
+
+[node name="CarFlipPlayer" type="AnimationPlayer" parent="GameoverNodes/GameoverPlayer"]
+libraries = {
+&"": ExtResource("26_kf746")
+}
+
+[node name="ResetHandler" type="Node" parent="GameoverNodes"]
+script = ExtResource("27_deyf2")
+
+[node name="GameoverInterfacers" type="Node" parent="GameoverNodes"]
+
+[node name="TerrainGameoverEmitter" type="Node" parent="GameoverNodes/GameoverInterfacers"]
+script = ExtResource("12_dyabf")
+global_signal_name = "terrain_gameover"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="TerrainRetryEmitter" type="Node" parent="GameoverNodes/GameoverInterfacers"]
+script = ExtResource("12_dyabf")
+global_signal_name = "terrain_retry"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_02d50")
+}
+autoplay = "intro"
+
+[node name="MusicManager" type="Node" parent="."]
+script = ExtResource("26_xbx4t")
+metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
+
+[connection signal="turned_sharply" from="Player/PlayerVehicle" to="Player/PlayerVehicle/CarNoises/TireScreechAudioPlayer" method="play"]
+[connection signal="input_event" from="Player/PlayerVehicle/PlayerClickboxArea" to="Player/PlayerClickHandler" method="_on_player_clickbox_area_input_event"]
+[connection signal="area_entered" from="Player/PlayerVehicle/PlayerHitboxArea" to="Player/PlayerCollisionController" method="_on_player_hitbox_entered"]
+[connection signal="area_entered" from="Player/PlayerVehicle/PlayerHurtboxArea" to="Player/PlayerCollisionController" method="_on_player_hurtbox_entered"]
+[connection signal="engine_overloads" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You overloaded on fuel"]]
+[connection signal="engine_overloads" from="Player/FuelController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="engine_stalls" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You ran out of fuel"]]
+[connection signal="engine_stalls" from="Player/FuelController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="engine_state_changed" from="Player/FuelController" to="Player/PlayerVehicle/Exhausts/ExhaustController" method="_on_engine_state_changed"]
+[connection signal="engine_state_changed" from="Player/FuelController" to="Player/PlayerVehicle/CarNoises/EngineAudioPlayer" method="_on_engine_state_changed"]
+[connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
+[connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]
+[connection signal="distance_traveled" from="Player/DriveController" to="UI/OdometerHUD" method="update_odometer"]
+[connection signal="distance_traveled" from="Player/DriveController" to="UI/GameoverLayer/OdometerUpdater" method="update_odometer" binds= [false]]
+[connection signal="speed_scale_updated" from="Player/DriveController" to="Player/DriveController/GlobalSignalInterfacer" method="emit_global_signal_with_value"]
+[connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/CarNoises/FuelCollectedAudioPlayer" method="play"]
+[connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/FuelController" method="_on_fuel_collected"]
+[connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/AnimationPlayer" method="play" binds= [&"collect_fuel"]]
+[connection signal="player_crashed" from="Player/PlayerCollisionController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You crashed"]]
+[connection signal="player_crashed" from="Player/PlayerCollisionController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
+[connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle" method="_on_surface_type_changed"]
+[connection signal="road_type_changed" from="Player/SurfaceController" to="Player/DriveController" method="_on_surface_type_changed"]
+[connection signal="click_detected" from="Player/PlayerClickHandler" to="Player/PlayerVehicle/CarNoises/HornAudioPlayer" method="play"]
+[connection signal="click_detected" from="Player/PlayerClickHandler" to="GameoverNodes/ResetHandler" method="request_reset"]
+[connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"retry"]]
+[connection signal="ready" from="MusicManager" to="MusicManager" method="swap_to_main"]
+
+[editable path="Player/PlayerVehicle"]
+[editable path="Player/PlayerVehicle/fuel-canister"]

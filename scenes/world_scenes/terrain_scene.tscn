@@ -1,0 +1,142 @@
+[gd_scene load_steps=12 format=3 uid="uid://2byllt2m3knb"]
+
+[ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_etbs0"]
+[ext_resource type="AnimationLibrary" uid="uid://jc8fcqbdm5j4" path="res://resources/terrain_animation_library.tres" id="2_i8tcd"]
+[ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_iralt"]
+[ext_resource type="Script" uid="uid://di2puqxd3k4wu" path="res://scripts/fuel_placement_controller.gd" id="4_7qi84"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="5_i8tcd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qsc2p"]
+sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
+sky_horizon_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
+sky_curve = 0.06306743
+ground_bottom_color = Color(0.110400006, 0.23360007, 0.48, 1)
+ground_horizon_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
+ground_curve = 0.32
+
+[sub_resource type="Sky" id="Sky_w2twt"]
+sky_material = SubResource("ProceduralSkyMaterial_qsc2p")
+
+[sub_resource type="Environment" id="Environment_2libc"]
+background_mode = 2
+sky = SubResource("Sky_w2twt")
+ambient_light_source = 2
+ambient_light_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_q2uet"]
+_data = {
+"points": PackedVector3Array(-35.78, 0, 0, 27.785, 0, 0, 0, 0, 0, -18.35, 0, 0, 19.51, 0, 0, 56.723, 0, -3.556, -32.585, 0, 0, 22.2, 0, 0, 128.18, 0, 4.704, -35.78, 0, 0, 27.785, 0, 0, 200, 0, 0, -18.35, 0, 0, 19.51, 0, 0, 256.723, 0, -3.556, -32.585, 0, 0, 22.2, 0, 0, 328.18, 0, 4.704, -35.78, 0, 0, 27.785, 0, 0, 400, 0, 0, -18.35, 0, 0, 19.51, 0, 0, 456.723, 0, -3.556, -32.585, 0, 0, 0, 0, 0, 528.18, 0, 4.704),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="Curve3D" id="Curve3D_7lu5h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -4.5, 0, 0, 0, 0, 0, 0, 0, 0, 4.5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_epala"]
+radius = 10.0
+
+[node name="TerrainScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.46462807, -0.12539037, 0.87658316, 0.36627865, 0.8740532, 0.3191724, -0.80620146, 0.46937016, -0.3601818, 12.871048, 9, -6)
+layers = 3
+light_color = Color(0.97, 0.8406667, 0.7275, 1)
+shadow_enabled = true
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2libc")
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="RoadSegment" parent="Terrain" instance=ExtResource("1_etbs0")]
+
+[node name="RoadSegment2" parent="Terrain" instance=ExtResource("1_etbs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+
+[node name="FuelLanePath" type="Path3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 0)
+curve = SubResource("Curve3D_q2uet")
+
+[node name="FuelLanePathFollower" type="PathFollow3D" parent="Terrain/FuelLanePath"]
+transform = Transform3D(-4.3711093e-08, 0, -0.99999326, 0, 1, 0, 0.99999326, 0, -4.3711093e-08, 0, 0, 0)
+
+[node name="FuelPlacementPath" type="Path3D" parent="Terrain/FuelLanePath/FuelLanePathFollower"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+curve = SubResource("Curve3D_7lu5h")
+
+[node name="FuelPlacementFollower" type="PathFollow3D" parent="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementPath"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 4.5)
+progress = 9.0
+
+[node name="fuel-canister" parent="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementPath/FuelPlacementFollower" instance=ExtResource("3_iralt")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.1, 0)
+
+[node name="FuelPlacementArea" type="Area3D" parent="Terrain/FuelLanePath/FuelLanePathFollower"]
+transform = Transform3D(-0.03983592, 0, 0.99921215, 0, 1, 0, -0.99921215, 0, -0.03983592, 0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementArea"]
+shape = SubResource("SphereShape3D_epala")
+
+[node name="FuelPlacementController" type="Node" parent="Terrain/FuelLanePath/FuelLanePathFollower" node_paths=PackedStringArray("lane_follower", "placement_follower", "fuel_canister")]
+script = ExtResource("4_7qi84")
+lane_follower = NodePath("..")
+placement_follower = NodePath("../FuelPlacementPath/FuelPlacementFollower")
+warp_shift_amount = 401.88
+fuel_canister = NodePath("../FuelPlacementPath/FuelPlacementFollower/fuel-canister")
+
+[node name="TerrainAnimators" type="Node" parent="Terrain"]
+
+[node name="TerrainDrivingPlayer" type="AnimationPlayer" parent="Terrain/TerrainAnimators"]
+root_node = NodePath("../..")
+libraries = {
+&"": ExtResource("2_i8tcd")
+}
+autoplay = "drive"
+speed_scale = 2.3
+
+[node name="TerrainDressingPlayer" type="AnimationPlayer" parent="Terrain/TerrainAnimators"]
+root_node = NodePath("../..")
+libraries = {
+&"": ExtResource("2_i8tcd")
+}
+autoplay = "dressing"
+speed_scale = 2.3
+
+[node name="GlobalSignalInterfacer" type="Node" parent="Terrain/TerrainAnimators"]
+script = ExtResource("5_i8tcd")
+global_signal_name = "speed_scale_updated"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="TerrainGlobalInterfacers" type="Node" parent="Terrain"]
+
+[node name="TerrainGameoverEmitter" type="Node" parent="Terrain/TerrainGlobalInterfacers"]
+script = ExtResource("5_i8tcd")
+global_signal_name = "terrain_gameover"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="HideTerrainTimer" type="Timer" parent="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter"]
+wait_time = 0.3
+
+[node name="TerrainRetryEmitter" type="Node" parent="Terrain/TerrainGlobalInterfacers"]
+script = ExtResource("5_i8tcd")
+global_signal_name = "terrain_retry"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[connection signal="area_exited" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementArea" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
+[connection signal="ready" from="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Terrain/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
+[connection signal="global_signal_emitted_with_value" from="Terrain/TerrainAnimators/GlobalSignalInterfacer" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="set_speed_scale"]
+[connection signal="global_signal_emitted_with_value" from="Terrain/TerrainAnimators/GlobalSignalInterfacer" to="Terrain/TerrainAnimators/TerrainDressingPlayer" method="set_speed_scale"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="pause"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainAnimators/TerrainDressingPlayer" method="pause"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="start"]
+[connection signal="timeout" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" to="Terrain" method="hide"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain" method="show"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="stop"]

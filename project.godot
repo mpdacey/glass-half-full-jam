@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 MusicPlayer="*res://scenes/music_manager.tscn"
+GlobalSignalBus="*res://scripts/global/global_signal_bus.gd"
 
 [debug]
 

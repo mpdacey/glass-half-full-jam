@@ -1,13 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=22 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
-[ext_resource type="ArrayMesh" uid="uid://chihm7c3ll6qe" path="res://models/traffic/sedan-sports.obj" id="1_p6dhs"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="2_pyl7j"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_yql1r"]
 [ext_resource type="PackedScene" uid="uid://dpuwv1tntbgm2" path="res://scenes/obstacles/traffic/hatchback.tscn" id="3_6ppm8"]
 [ext_resource type="PackedScene" uid="uid://cqo2bxdhr3dui" path="res://scenes/obstacles/traffic/flat_truck.tscn" id="4_bre4b"]
 [ext_resource type="Texture2D" uid="uid://ifv81qogdt6x" path="res://thumbnail.png" id="4_pyl7j"]
 [ext_resource type="AudioStream" uid="uid://dfkflwqql0shl" path="res://audio/sfx/engine/engine_rpm_med.ogg" id="5_ofksa"]
+[ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="5_uaep1"]
+[ext_resource type="AnimationLibrary" uid="uid://c5o4iqm3dmff" path="res://resources/animation_libraries/car_putt.tres" id="7_o7kwv"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="7_s8xmt"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_6ppm8"]
 [ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="10_1ot34"]
@@ -32,34 +33,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
-
-[sub_resource type="Animation" id="Animation_b3w7a"]
-length = 0.001
-tracks/0/type = "scale_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1.0000001, 1.0000001, 1)
-
-[sub_resource type="Animation" id="Animation_pyl7j"]
-resource_name = "putt"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "scale_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1.0000001, 1.0000001, 1, 0.1, 1, 1, 0.99, 1, 0.2, 1, 1.0000001, 1.0000001, 1)
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rr2b"]
-_data = {
-&"RESET": SubResource("Animation_b3w7a"),
-&"putt": SubResource("Animation_pyl7j")
-}
 
 [sub_resource type="Animation" id="Animation_ia1n6"]
 length = 0.001
@@ -583,24 +556,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10000001, 0.082)
 curve = SubResource("Curve3D_c3e3h")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Paths/CarPath"]
-transform = Transform3D(0.22081819, 0, -1.7775868, 0, 1.1999838, 0, 1.3824759, 0, 0.28392792, 156.97745, 0, 4.3031716)
+transform = Transform3D(0.21293184, 0, -1.3331019, 0, 1.35, 0, 1.3331019, 0, 0.21293184, 156.97745, 0, 4.3031716)
 progress = 100.774155
 
 [node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D"]
 transform = Transform3D(-1.0000001, 0, -1.509958e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1, 0, 0, 0)
 layers = 2
-mesh = ExtResource("1_p6dhs")
+mesh = ExtResource("5_uaep1")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = ExtResource("2_pyl7j")
 surface_material_override/1 = ExtResource("2_pyl7j")
 surface_material_override/2 = ExtResource("2_pyl7j")
 surface_material_override/3 = ExtResource("2_pyl7j")
 surface_material_override/4 = ExtResource("2_pyl7j")
-surface_material_override/5 = ExtResource("2_pyl7j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports"]
 libraries = {
-&"": SubResource("AnimationLibrary_4rr2b")
+&"": ExtResource("7_o7kwv")
 }
 autoplay = "putt"
 

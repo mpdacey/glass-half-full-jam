@@ -1,33 +1,34 @@
-[gd_scene load_steps=26 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=24 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="ArrayMesh" uid="uid://chihm7c3ll6qe" path="res://models/traffic/sedan-sports.obj" id="1_p6dhs"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="2_pyl7j"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_yql1r"]
-[ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="3_b3w7a"]
+[ext_resource type="PackedScene" uid="uid://dpuwv1tntbgm2" path="res://scenes/obstacles/traffic/hatchback.tscn" id="3_6ppm8"]
+[ext_resource type="PackedScene" uid="uid://cqo2bxdhr3dui" path="res://scenes/obstacles/traffic/flat_truck.tscn" id="4_bre4b"]
 [ext_resource type="Texture2D" uid="uid://ifv81qogdt6x" path="res://thumbnail.png" id="4_pyl7j"]
 [ext_resource type="AudioStream" uid="uid://dfkflwqql0shl" path="res://audio/sfx/engine/engine_rpm_med.ogg" id="5_ofksa"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="7_s8xmt"]
-[ext_resource type="Script" uid="uid://dixoyaeceooim" path="res://scripts/scene_changer.gd" id="8_7rdyk"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_6ppm8"]
 [ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="10_1ot34"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
 _data = {
-"points": PackedVector3Array(-35.78, 0, 0, 27.785, 0, 0, 0, 0, 0, -18.35, 0, 0, 19.51, 0, 0, 56.722744, 0, -3.407879, -32.585, 0, 0, 22.2, 0, 0, 128.18, 0, 5.323365, -35.78, 0, 0, 22.2, 0, 0, 199.955, 0, -0.08),
+"points": PackedVector3Array(-31.417793, 0.45766753, -7.837352, 31.418, 0, 7.837, 56.723, 0, 0, -28.93, 0, -2.896, 28.93, 0, 2.896, 128.18, 0, 5.323365, -28.811, 0, -0.435, 28.811, 0, 0.435, 199.955, 0, -1.0798092, -31.418, 0, -8.671, 36.511, 0, 8.671, 256.723, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_gf765"]
 _data = {
-"points": PackedVector3Array(-35.78, 0, 0, -35.78, 0, 0, 199.955, 0, -0.08, 22.2, 0, 0, -32.585, 0, 0, 128.18, 0, 5.6488543, 19.51, 0, 0, -18.35, 0, 0, 56.722744, 0, -4.895851, 27.785, 0, 0, 27.785, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(0, 0, 0, -35.78, 0, 0, 199.955, 0, -0.08, 22.2, 0, 0, -32.585, 0, 0, 128.18, 0, 5.6488543, 19.51, 0, 0, -18.35, 0, 0, 56.722744, 0, -4.895851, 27.785, 0, 0, 27.785, 0, 0, 0, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_4rr2b"]
 _data = {
-"points": PackedVector3Array(-35.78, 0, 0, 27.785, 0, 0, 0, 0, 0, -19.613865, 0.0003044121, -3.6900823, 19.613865, -0.0003044121, 3.6900823, 62.722744, 0, -1.2258742, -21.691, 0, 1.434, 21.691, 0, -1.434, 121.664246, 0, 7.2328844, -36.476, 0, -0.751, 36.47603, -0.24176101, 0.7513706, 199.955, 0, -0.08),
+"points": PackedVector3Array(-19.613865, 0.0003044121, -3.6900823, 29.709, 0, 3.496, 62.723, 0, 2, -19.575, 0, -2.323, 19.575, 0, 2.323, 121.664246, 0, 11.2574625, -40.68, 0, 2.283, 40.68, 0, -2.283, 190.542, 0, 1.521, -29.709, 0, -3.496, 29.709106, -0.29326326, 3.496437, 262.723, 0, 2),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -89,181 +90,193 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RoadSegment2:position")
+tracks/2/path = NodePath("Paths/OngoingLanePath/TrafficCore:progress_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(200, 0, 0)]
+"values": [0.44869998]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Paths/OngoingLanePath/TrafficCore:progress_ratio")
+tracks/3/path = NodePath("Paths/IncomingLanePath/TrafficCore:progress_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.44869998]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Paths/IncomingLanePath/TrafficCore:progress_ratio")
+tracks/4/path = NodePath("Paths/DollyPath/PathFollow3D/Camera3D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector3(5.734, 1.316, 1.261)]
 }
-tracks/5/type = "value"
+tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Paths/DollyPath/PathFollow3D/Camera3D:position")
+tracks/5/path = NodePath("Paths/DollyPath/PathFollow3D/Camera3D:rotation:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(5.734, 1.316, 1.261)]
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Paths/DollyPath/PathFollow3D/Camera3D:rotation:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("TitleCanvasLayer/CanvasModulate:color")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleCanvasLayer/CanvasModulate:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("TitleCanvasLayer/Button:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TitleCanvasLayer/Button:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("ColorRect:modulate")
+tracks/9/path = NodePath("Paths/DollyPath/PathFollow3D/Camera3D:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector3(0, 0.95294976, 0)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Paths/DollyPath/PathFollow3D/Camera3D:rotation")
+tracks/10/path = NodePath("TitleCanvasLayer/TextureRect:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.95294976, 0)]
+"values": [Vector2(568, 0)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("TitleCanvasLayer/TextureRect:position")
+tracks/11/path = NodePath("TitleCanvasLayer/TextureRect:scale")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(568, 0)]
+"values": [Vector2(1, 1)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("TitleCanvasLayer/TextureRect:scale")
+tracks/12/path = NodePath("TitleCanvasLayer/TextureRect:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("TitleCanvasLayer/TextureRect:modulate")
+tracks/13/path = NodePath("TitleCanvasLayer/Label:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(959, 794)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("TitleCanvasLayer/Label:position")
+tracks/14/path = NodePath("TitleCanvasLayer/Label:scale")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(959, 794)]
+"values": [Vector2(1, 1)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("TitleCanvasLayer/Label:scale")
+tracks/15/path = NodePath("TitleCanvasLayer/Label:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("TitleCanvasLayer/Label:modulate")
+tracks/16/path = NodePath("Paths/IncomingLanePath/TrafficCore2:progress_ratio")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [0.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Paths/IncomingLanePath/TrafficCore3:progress_ratio")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_7rdyk"]
@@ -394,43 +407,43 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.57, -0.10000001, 0, 0, 0),
 "times": PackedFloat32Array(0.1, 0.7)
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SceneChanger")
-tracks/2/interp = 1
+tracks/2/path = NodePath("TitleCanvasLayer/CanvasModulate:color")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.7),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"swap_to_main_scene"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TitleCanvasLayer/CanvasModulate:color")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("TitleCanvasLayer/Button:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleCanvasLayer/Button:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayers/TransitionPlayer/LoadPlaySceneEmitter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_global_signal"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_yql1r"]
@@ -448,7 +461,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.3, 1.3]
+"values": [0.0, 1.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -460,43 +473,55 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.3, 1.3]
+"values": [0.0, 1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RoadSegment2:position")
+tracks/2/path = NodePath("Paths/OngoingLanePath/TrafficCore:progress_ratio")
 tracks/2/interp = 1
-tracks/2/loop_wrap = true
+tracks/2/loop_wrap = false
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.2),
+"times": PackedFloat32Array(0.8893903, 3.684617),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector3(200, 0, 0), Vector3(-200, 0, 0)]
+"update": 0,
+"values": [0.3176, 0.4769]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Paths/OngoingLanePath/TrafficCore:progress_ratio")
+tracks/3/path = NodePath("Paths/IncomingLanePath/TrafficCore:progress_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.29),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.4101, 0.689]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Paths/IncomingLanePath/TrafficCore:progress_ratio")
-tracks/4/interp = 1
-tracks/4/loop_wrap = false
-tracks/4/keys = {
 "times": PackedFloat32Array(1.33, 4.1899996),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0955, 0.426]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Paths/IncomingLanePath/TrafficCore2:progress_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.4775872),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.57, 0.73]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Paths/IncomingLanePath/TrafficCore3:progress_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(-7.450581e-09, 2.5411148),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.65]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hiwto"]
@@ -513,23 +538,6 @@ font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yql1r"]
-sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
-sky_horizon_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
-sky_curve = 0.06306743
-ground_bottom_color = Color(0.110400006, 0.23360007, 0.48, 1)
-ground_horizon_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
-ground_curve = 0.32
-
-[sub_resource type="Sky" id="Sky_w2twt"]
-sky_material = SubResource("ProceduralSkyMaterial_yql1r")
-
-[sub_resource type="Environment" id="Environment_ia1n6"]
-background_mode = 2
-sky = SubResource("Sky_w2twt")
-ambient_light_source = 2
-ambient_light_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
-
 [node name="TitleScene" type="Node3D"]
 
 [node name="Paths" type="Node3D" parent="."]
@@ -540,23 +548,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 2.84618)
 curve = SubResource("Curve3D_c3e3h")
 
 [node name="TrafficCore" parent="Paths/OngoingLanePath" instance=ExtResource("1_4rr2b")]
-transform = Transform3D(-0.1848538, 0, -0.9827065, 0, 1, 0, 0.9827065, 0, -0.1848538, 89.6645, 0, 1.3604918)
-progress = 90.193375
+transform = Transform3D(0.07743609, 0, -0.99682236, 0, 0.9999627, 0, 0.99682236, 0, 0.07743609, 146.71655, 0, 5.551287)
+progress = 90.43472
 
 [node name="IncomingLanePath" type="Path3D" parent="Paths"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, -2.6153383)
 curve = SubResource("Curve3D_gf765")
 
 [node name="TrafficCore" parent="Paths/IncomingLanePath" instance=ExtResource("2_yql1r")]
-transform = Transform3D(-4.3709665e-08, 0, 0.9999606, 0, 1, 0, -0.9999606, 0, -4.3709665e-08, 199.955, 0, -0.08)
+transform = Transform3D(-4.3703793e-08, 0, 0.9998262, 0, 1, 0, -0.9998262, 0, -4.3703793e-08, 199.955, 0, -0.08)
+
+[node name="TrafficCore2" parent="Paths/IncomingLanePath" instance=ExtResource("3_6ppm8")]
+transform = Transform3D(-4.370729e-08, 0, 0.9999062, 0, 1, 0, -0.9999062, 0, -4.370729e-08, 199.955, 0, -0.08)
+
+[node name="TrafficCore3" parent="Paths/IncomingLanePath" instance=ExtResource("4_bre4b")]
+transform = Transform3D(-4.370555e-08, 0, 0.9998665, 0, 1, 0, -0.9998665, 0, -4.370555e-08, 199.955, 0, -0.08)
 
 [node name="DollyPath" type="Path3D" parent="Paths"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10000001, 0.082)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.115, 0.1, 0.082)
 curve = SubResource("Curve3D_4rr2b")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Paths/DollyPath"]
-transform = Transform3D(1.4000007, 0, 0, 0, 1.2, 0, 0, 0, 1.8000053, 99.76034, -7.457414e-05, 6.3177733)
-progress = 100.70204
+transform = Transform3D(1.4000007, 0, 0, 0, 1.2, 0, 0, 0, 1.8000053, 162.18367, 0, 4.9210906)
+progress = 100.92672
 rotation_mode = 0
 tilt_enabled = false
 
@@ -569,8 +583,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10000001, 0.082)
 curve = SubResource("Curve3D_c3e3h")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Paths/CarPath"]
-transform = Transform3D(-0.21068658, 0, -1.7796187, 0, 1.2, 0, 1.384056, 0, -0.27090073, 99.82654, 0, 3.1085217)
-progress = 100.50521
+transform = Transform3D(0.22081819, 0, -1.7775868, 0, 1.1999838, 0, 1.3824759, 0, 0.28392792, 156.97745, 0, 4.3031716)
+progress = 100.774155
 
 [node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D"]
 transform = Transform3D(-1.0000001, 0, -1.509958e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1, 0, 0, 0)
@@ -603,11 +617,6 @@ attenuation_filter_cutoff_hz = 8803.0
 attenuation_filter_db = 0.0
 parameters/looping = true
 
-[node name="RoadSegment" parent="." instance=ExtResource("3_b3w7a")]
-
-[node name="RoadSegment2" parent="." instance=ExtResource("3_b3w7a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
-
 [node name="AnimationPlayers" type="Node" parent="."]
 
 [node name="SceneLoopPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
@@ -623,6 +632,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_hiwto")
 }
 autoplay = "title"
+
+[node name="LoadPlaySceneEmitter" type="Node" parent="AnimationPlayers/TransitionPlayer"]
+script = ExtResource("8_6ppm8")
+global_signal_name = &"scene_change_request_play"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [node name="TitleCanvasLayer" type="CanvasLayer" parent="."]
 
@@ -667,19 +681,8 @@ label_settings = SubResource("LabelSettings_7rdyk")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.22465143, -0.8721514, 0.43460733, -0.8242993, 0.06776976, 0.56208336, -0.519675, -0.48451942, -0.70368934, 12.871048, 9, -6)
-layers = 3
-light_color = Color(0.97, 0.8406667, 0.7275, 1)
-shadow_enabled = true
-sky_mode = 1
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ia1n6")
-
-[node name="SceneChanger" type="Node" parent="."]
-script = ExtResource("8_7rdyk")
-metadata/_custom_type_script = "uid://dixoyaeceooim"
+[node name="MusicManager" type="Node" parent="."]
+script = ExtResource("10_1ot34")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -689,9 +692,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-
-[node name="MusicManager" type="Node" parent="."]
-script = ExtResource("10_1ot34")
 
 [connection signal="pressed" from="TitleCanvasLayer/Button" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]

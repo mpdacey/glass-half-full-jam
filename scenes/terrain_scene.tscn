@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://2byllt2m3knb"]
+
+[ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_l47ob"]
+[ext_resource type="AnimationLibrary" uid="uid://jc8fcqbdm5j4" path="res://resources/terrain_animation_library.tres" id="2_rtf8o"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="3_gil8y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qsc2p"]
+sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
+sky_horizon_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
+sky_curve = 0.06306743
+ground_bottom_color = Color(0.110400006, 0.23360007, 0.48, 1)
+ground_horizon_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
+ground_curve = 0.32
+
+[sub_resource type="Sky" id="Sky_w2twt"]
+sky_material = SubResource("ProceduralSkyMaterial_qsc2p")
+
+[sub_resource type="Environment" id="Environment_2libc"]
+background_mode = 2
+sky = SubResource("Sky_w2twt")
+ambient_light_source = 2
+ambient_light_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
+
+[node name="TerrainScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.46462807, -0.12539037, 0.87658316, 0.36627865, 0.8740532, 0.3191724, -0.80620146, 0.46937016, -0.3601818, 12.871048, 9, -6)
+layers = 3
+light_color = Color(0.97, 0.8406667, 0.7275, 1)
+shadow_enabled = true
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2libc")
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="RoadSegment" parent="Terrain" instance=ExtResource("1_l47ob")]
+
+[node name="RoadSegment2" parent="Terrain" instance=ExtResource("1_l47ob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+
+[node name="TerrainAnimators" type="Node" parent="Terrain"]
+
+[node name="TerrainDrivingPlayer" type="AnimationPlayer" parent="Terrain/TerrainAnimators"]
+root_node = NodePath("../..")
+libraries = {
+&"": ExtResource("2_rtf8o")
+}
+speed_scale = 2.3
+
+[node name="TerrainSpeedListener" type="Node" parent="Terrain/TerrainAnimators"]
+script = ExtResource("3_gil8y")
+global_signal_name = &"speed_scale_updated"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="PlaySceneLoadedListener" type="Node" parent="Terrain/TerrainAnimators"]
+script = ExtResource("3_gil8y")
+global_signal_name = &"scene_changed_play"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="TitleSceneLoadedListener" type="Node" parent="Terrain/TerrainAnimators"]
+script = ExtResource("3_gil8y")
+global_signal_name = &"scene_changed_title"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="TerrainGlobalInterfacers" type="Node" parent="Terrain"]
+
+[node name="TerrainGameoverEmitter" type="Node" parent="Terrain/TerrainGlobalInterfacers"]
+script = ExtResource("3_gil8y")
+global_signal_name = &"terrain_gameover"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="HideTerrainTimer" type="Timer" parent="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter"]
+wait_time = 0.3
+
+[node name="TerrainRetryEmitter" type="Node" parent="Terrain/TerrainGlobalInterfacers"]
+script = ExtResource("3_gil8y")
+global_signal_name = &"terrain_retry"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[connection signal="global_signal_emitted_with_value" from="Terrain/TerrainAnimators/TerrainSpeedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="set_speed_scale"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/PlaySceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
+[connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/TitleSceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="stop" binds= [false]]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="start"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="stop" binds= [true]]
+[connection signal="timeout" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" to="Terrain" method="hide"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain" method="show"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="stop"]

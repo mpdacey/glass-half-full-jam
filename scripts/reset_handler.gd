@@ -10,4 +10,4 @@ func request_reset() -> void:
 
 func reset_game() -> void:
 	if can_reset:
-		get_tree().reload_current_scene()
+		GlobalSignalBus.scene_change_request_play.emit()

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_mwelm"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="3_sltll"]
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="4_sltll"]
-[ext_resource type="Script" uid="uid://dixoyaeceooim" path="res://scripts/scene_changer.gd" id="5_6c71x"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="6_6c71x"]
 
 [sub_resource type="Animation" id="Animation_wsgjl"]
 length = 0.001
@@ -45,7 +45,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SceneChanger")
+tracks/1/path = NodePath("LoadTitleEmitter")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -53,7 +53,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"swap_to_title_scene"
+"method": &"emit_global_signal"
 }]
 }
 
@@ -98,7 +98,6 @@ transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.983
 script = null
 
 [node name="RoadSegment" parent="." instance=ExtResource("4_sltll")]
-script = null
 
 [node name="PlayerVehicle" parent="." instance=ExtResource("3_sltll")]
 script = null
@@ -112,8 +111,9 @@ libraries = {
 }
 autoplay = "compile_animation"
 
-[node name="SceneChanger" type="Node" parent="."]
-script = ExtResource("5_6c71x")
-metadata/_custom_type_script = "uid://dixoyaeceooim"
+[node name="LoadTitleEmitter" type="Node" parent="."]
+script = ExtResource("6_6c71x")
+global_signal_name = &"scene_change_request_title"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [editable path="PlayerVehicle"]

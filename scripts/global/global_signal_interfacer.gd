@@ -4,7 +4,7 @@ class_name GlobalSignalInterfacer
 signal global_signal_emitted()
 signal global_signal_emitted_with_value(value: Variant)
 
-@export var global_signal_name: String
+@export var global_signal_name: StringName
 
 func _ready() -> void:
 	connect_to_global_signal()

@@ -1,7 +1,9 @@
-[gd_scene load_steps=50 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=54 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
+[ext_resource type="AudioStream" uid="uid://druixlt2nm3ew" path="res://audio/sfx/tire-screech/dirt-screech.ogg" id="4_x2qcq"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="5_dfpoj"]
+[ext_resource type="Script" uid="uid://2og5ed1ru6gn" path="res://scripts/audio/tire_screech_audio_player.gd" id="5_yov1g"]
 [ext_resource type="AudioStream" uid="uid://o30pcxk1vm37" path="res://resources/audio_streams/tire_screech_stream.tres" id="6_pj8nq"]
 [ext_resource type="AudioStream" uid="uid://dovis7wk8vv8j" path="res://audio/sfx/refuel.ogg" id="7_7m3n2"]
 [ext_resource type="AudioStream" uid="uid://dqtt3kpsigjmd" path="res://audio/sfx/engine/engine_rpm_high.ogg" id="8_63m0j"]
@@ -168,6 +170,21 @@ _data = {
 &"RESET": SubResource("Animation_c1pb6"),
 &"collect_fuel": SubResource("Animation_18nlu")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yov1g"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_x2qcq")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_owpoa"]
+clip_count = 2
+clip_0/name = &"Road"
+clip_0/stream = ExtResource("6_pj8nq")
+clip_0/auto_advance = 0
+clip_1/name = &"Dirt"
+clip_1/stream = SubResource("AudioStreamRandomizer_yov1g")
+clip_1/auto_advance = 0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bcnxi"]
 playback_mode = 2
@@ -432,12 +449,13 @@ collision_mask = 16
 [node name="CarNoises" type="Node3D" parent="Player/PlayerVehicle"]
 
 [node name="TireScreechAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
-stream = ExtResource("6_pj8nq")
+stream = SubResource("AudioStreamInteractive_owpoa")
 volume_db = -5.0
 unit_size = 31.63
 pitch_scale = 1.03
 panning_strength = 1.5
 bus = &"SFX"
+script = ExtResource("5_yov1g")
 
 [node name="FuelCollectedAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
 transform = Transform3D(0.99939084, -0.034899496, 0, 0.034899496, 0.99939084, 0, 0, 0, 1, -14.00805, -0.013882279, 4.4999695)
@@ -733,6 +751,7 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You crashed"]]
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle" method="_on_surface_type_changed"]
+[connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle/CarNoises/TireScreechAudioPlayer" method="_on_surface_type_changed"]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/DriveController" method="_on_surface_type_changed"]
 [connection signal="click_detected" from="Player/PlayerClickHandler" to="Player/PlayerVehicle/CarNoises/HornAudioPlayer" method="play"]
 [connection signal="click_detected" from="Player/PlayerClickHandler" to="GameoverNodes/ResetHandler" method="request_reset"]

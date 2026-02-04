@@ -14,6 +14,7 @@ signal turned_sharply()
 var remapped_vehicle_position := 0.0
 var _mouse_tracking_speed := mouse_tracking_surface_speeds[SurfaceController.SurfaceType.ROAD]
 var _surface_change_tween : Tween
+var _currently_sharp_turning : bool = false
 
 func _physics_process(delta: float) -> void:
 	var car_tilt_ratio := clampf(position.z - remapped_vehicle_position, -5.0, 5.0) / 5.0
@@ -34,7 +35,11 @@ func _calc_vehicle_position() -> void:
 	
 	var new_remapped_position := remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
 	if abs(remapped_vehicle_position - new_remapped_position) > 1:
-		turned_sharply.emit()
+		if not _currently_sharp_turning:
+			turned_sharply.emit() 
+			_currently_sharp_turning = true
+	else:
+		_currently_sharp_turning = false
 	remapped_vehicle_position = new_remapped_position
 
 func _on_surface_type_changed(road_type: SurfaceController.SurfaceType) -> void:

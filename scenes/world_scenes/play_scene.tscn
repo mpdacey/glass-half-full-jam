@@ -437,7 +437,7 @@ visible = false
 [node name="Area3D" parent="Player/PlayerVehicle/fuel-canister" index="0"]
 collision_layer = 0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/PlayerVehicle"]
+[node name="CollectionAnimationPlayer" type="AnimationPlayer" parent="Player/PlayerVehicle"]
 libraries = {
 &"": SubResource("AnimationLibrary_6wevv")
 }
@@ -747,10 +747,11 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="speed_scale_updated" from="Player/DriveController" to="Player/DriveController/SpeedUpdatedEmitter" method="emit_global_signal_with_value"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/CarNoises/FuelCollectedAudioPlayer" method="play"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/FuelController" method="_on_fuel_collected"]
-[connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/AnimationPlayer" method="play" binds= [&"collect_fuel"]]
+[connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/CollectionAnimationPlayer" method="play" binds= [&"collect_fuel"]]
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You crashed"]]
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle" method="_on_surface_type_changed"]
+[connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle/OffRoadNodes/OffRoadVisualsController" method="_on_surface_type_changed"]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/PlayerVehicle/CarNoises/TireScreechAudioPlayer" method="_on_surface_type_changed"]
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/DriveController" method="_on_surface_type_changed"]
 [connection signal="click_detected" from="Player/PlayerClickHandler" to="Player/PlayerVehicle/CarNoises/HornAudioPlayer" method="play"]

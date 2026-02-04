@@ -734,6 +734,7 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="input_event" from="Player/PlayerVehicle/PlayerClickboxArea" to="Player/PlayerClickHandler" method="_on_player_clickbox_area_input_event"]
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHitboxArea" to="Player/PlayerCollisionController" method="_on_player_hitbox_entered"]
 [connection signal="area_entered" from="Player/PlayerVehicle/PlayerHurtboxArea" to="Player/PlayerCollisionController" method="_on_player_hurtbox_entered"]
+[connection signal="ready" from="Player/PlayerVehicle/CarNoises/TireScreechAudioPlayer" to="Player/PlayerVehicle/CarNoises/TireScreechAudioPlayer" method="_on_surface_type_changed" binds= [0]]
 [connection signal="engine_overloads" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You overloaded on fuel"]]
 [connection signal="engine_overloads" from="Player/FuelController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="engine_stalls" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You ran out of fuel"]]

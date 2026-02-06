@@ -66,6 +66,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SedanSports:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_nojup"]
 resource_name = "dirt"
@@ -78,10 +90,10 @@ tracks/0/path = NodePath("../SedanSports:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -106,6 +118,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SedanSports:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0.04363323), Vector3(0, 1.5707964, -0.04363323)]
 }
 
 [sub_resource type="Animation" id="Animation_esvn5"]
@@ -248,7 +272,7 @@ libraries = {
 }
 autoplay = "road"
 playback_auto_capture_transition_type = 3
-playback_default_blend_time = 0.7
+playback_default_blend_time = 0.35
 
 [node name="OffRoadAudioPlayer" type="AudioStreamPlayer3D" parent="OffRoadNodes"]
 stream = ExtResource("10_nojup")

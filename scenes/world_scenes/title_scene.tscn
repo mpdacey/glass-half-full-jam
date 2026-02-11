@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_yql1r"]
 [ext_resource type="PackedScene" uid="uid://dpuwv1tntbgm2" path="res://scenes/obstacles/traffic/hatchback.tscn" id="3_6ppm8"]
 [ext_resource type="PackedScene" uid="uid://cqo2bxdhr3dui" path="res://scenes/obstacles/traffic/flat_truck.tscn" id="4_bre4b"]
-[ext_resource type="Texture2D" uid="uid://ifv81qogdt6x" path="res://thumbnail.png" id="4_pyl7j"]
+[ext_resource type="Texture2D" uid="uid://c3o4f68hm2hmk" path="res://logo.png" id="4_pyl7j"]
 [ext_resource type="AudioStream" uid="uid://dfkflwqql0shl" path="res://audio/sfx/engine/engine_rpm_med.ogg" id="5_ofksa"]
 [ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="5_uaep1"]
 [ext_resource type="AnimationLibrary" uid="uid://c5o4iqm3dmff" path="res://resources/animation_libraries/car_putt.tres" id="7_o7kwv"]
@@ -158,19 +158,19 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("TitleCanvasLayer/TextureRect:position")
+tracks/10/path = NodePath("TitleCanvasLayer/Logo:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(568, 0)]
+"values": [Vector2(750, 100)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("TitleCanvasLayer/TextureRect:scale")
+tracks/11/path = NodePath("TitleCanvasLayer/Logo:scale")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -182,7 +182,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("TitleCanvasLayer/TextureRect:modulate")
+tracks/12/path = NodePath("TitleCanvasLayer/Logo:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -194,7 +194,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("TitleCanvasLayer/Label:position")
+tracks/13/path = NodePath("TitleCanvasLayer/ClickToPlayText:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -206,7 +206,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("TitleCanvasLayer/Label:scale")
+tracks/14/path = NodePath("TitleCanvasLayer/ClickToPlayText:scale")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -218,7 +218,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("TitleCanvasLayer/Label:modulate")
+tracks/15/path = NodePath("TitleCanvasLayer/ClickToPlayText:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -283,19 +283,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TitleCanvasLayer/TextureRect:position")
+tracks/2/path = NodePath("TitleCanvasLayer/Logo:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.6, 1.1, 1.3000001),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(100, 0), Vector2(568, 0), Vector2(568, 0)]
+"values": [Vector2(350, 100), Vector2(750, 100), Vector2(750, 100)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TitleCanvasLayer/TextureRect:scale")
+tracks/3/path = NodePath("TitleCanvasLayer/Logo:scale")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -307,7 +307,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("TitleCanvasLayer/TextureRect:modulate")
+tracks/4/path = NodePath("TitleCanvasLayer/Logo:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -319,7 +319,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("TitleCanvasLayer/Label:position")
+tracks/5/path = NodePath("TitleCanvasLayer/ClickToPlayText:position")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -331,7 +331,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("TitleCanvasLayer/Label:scale")
+tracks/6/path = NodePath("TitleCanvasLayer/ClickToPlayText:scale")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -343,7 +343,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("TitleCanvasLayer/Label:modulate")
+tracks/7/path = NodePath("TitleCanvasLayer/ClickToPlayText:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -556,7 +556,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10000001, 0.082)
 curve = SubResource("Curve3D_c3e3h")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Paths/CarPath"]
-transform = Transform3D(0.21293184, 0, -1.3331019, 0, 1.35, 0, 1.3331019, 0, 0.21293184, 156.97745, 0, 4.3031716)
+transform = Transform3D(0.21293186, 0, -1.333102, 0, 1.35, 0, 1.333102, 0, 0.21293186, 156.97745, 0, 4.3031716)
 progress = 100.774155
 
 [node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D"]
@@ -621,13 +621,14 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="TitleCanvasLayer"]
+[node name="Logo" type="TextureRect" parent="TitleCanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -872.0
-offset_right = -2.0010986
-offset_bottom = 480.00003
+offset_left = -690.0
+offset_top = 100.0
+offset_right = -9.217285
+offset_bottom = 404.0
 grow_horizontal = 0
 pivot_offset = Vector2(435, 240)
 mouse_filter = 2
@@ -635,7 +636,7 @@ texture = ExtResource("4_pyl7j")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="TitleCanvasLayer"]
+[node name="ClickToPlayText" type="Label" parent="TitleCanvasLayer"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -643,7 +644,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -481.0
 offset_top = -166.0
-offset_right = -104.999756
+offset_right = -104.99939
 offset_bottom = -82.0
 grow_horizontal = 0
 grow_vertical = 0

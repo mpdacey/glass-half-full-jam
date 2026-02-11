@@ -1,5 +1,6 @@
-[gd_scene load_steps=54 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=55 format=3 uid="uid://dpfq7m4viuno"]
 
+[ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
 [ext_resource type="AudioStream" uid="uid://druixlt2nm3ew" path="res://audio/sfx/tire-screech/dirt-screech.ogg" id="4_x2qcq"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="5_dfpoj"]
@@ -416,11 +417,17 @@ priority = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083489165, 0.6718148, -0.020205498)
 shape = SubResource("BoxShape3D_6p3nn")
 
-[node name="PlayerHitboxArea" type="Area3D" parent="Player/PlayerVehicle"]
+[node name="PlayerHitboxArea" type="Area3D" parent="Player/PlayerVehicle" node_paths=PackedStringArray("underflow_collider_shape")]
 collision_layer = 0
+script = ExtResource("2_owpoa")
+underflow_collider_shape = NodePath("PlayerHitboxUnderflow")
 
-[node name="PlayerHitbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHitboxArea"]
+[node name="PlayerHitboxUnderflow" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHitboxArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
+shape = SubResource("SphereShape3D_18nlu")
+
+[node name="PlayerHitboxOverflow" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHitboxArea"]
+transform = Transform3D(0.6, -2.2351743e-09, 0, 2.2351743e-09, 0.6, 0, 0, 0, 0.6, 1.3003249, 0.69498634, 0)
 shape = SubResource("SphereShape3D_18nlu")
 
 [node name="PlayerHurtboxArea" type="Area3D" parent="Player/PlayerVehicle"]
@@ -740,6 +747,7 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="engine_stalls" from="Player/FuelController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You ran out of fuel"]]
 [connection signal="engine_stalls" from="Player/FuelController" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"gameover"]]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/PlayerVehicle/Exhausts/ExhaustController" method="_on_engine_state_changed"]
+[connection signal="engine_state_changed" from="Player/FuelController" to="Player/PlayerVehicle/PlayerHitboxArea" method="_on_engine_state_changed"]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/PlayerVehicle/CarNoises/EngineAudioPlayer" method="_on_engine_state_changed"]
 [connection signal="engine_state_changed" from="Player/FuelController" to="Player/DriveController" method="_on_engine_state_changed"]
 [connection signal="fuel_amount_updated" from="Player/FuelController" to="UI/FuelGaugeHUD" method="_on_fuel_amount_updated"]

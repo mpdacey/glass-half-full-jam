@@ -1,22 +1,168 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcdlgci6a3vwr"]
+[gd_scene load_steps=12 format=3 uid="uid://bcdlgci6a3vwr"]
 
 [ext_resource type="Texture2D" uid="uid://bj5bhv0qlvq3r" path="res://textures/pause_menu/play_cube.png" id="1_k23cl"]
 [ext_resource type="Texture2D" uid="uid://beqqdeg13gv2k" path="res://textures/pause_menu/music_cube_enabled.png" id="2_4x8ym"]
 [ext_resource type="Texture2D" uid="uid://d1jraggcwab1r" path="res://textures/pause_menu/power_cube.png" id="2_qgos8"]
 [ext_resource type="Texture2D" uid="uid://b42rnu12e72a2" path="res://textures/pause_menu/sound_cube_enabled.png" id="3_eq7dk"]
 [ext_resource type="Texture2D" uid="uid://bqrm7ip5t3vpn" path="res://textures/pause_menu/mirror.png" id="5_arkwq"]
+[ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_eq7dk"]
+[ext_resource type="Script" uid="uid://bw1paub1fikwp" path="res://scripts/tree_pause_interfacer.gd" id="7_arkwq"]
 
-[sub_resource type="Curve" id="Curve_jq7is"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9952153, 0.4945106), -1.2705293, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Animation" id="Animation_arkwq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Foreground:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Foreground:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
-[sub_resource type="Gradient" id="Gradient_hi21p"]
-offsets = PackedFloat32Array(0, 0.9973684)
-colors = PackedColorArray(0.35419998, 0.49280006, 0.77, 1, 0.8536, 0.90986, 0.97, 1)
+[sub_resource type="Animation" id="Animation_eq7dk"]
+resource_name = "pause"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Foreground:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-403, -0.25, 0, 0.054685105, 74, 1, -0.07864824, -1, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Foreground:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jq7is"]
+resource_name = "play"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.73333335), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Foreground:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.07864824, -1, 0, 0, -403, -0.25, 0, 0.054685105, 74),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Foreground:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TreePauseInterfacer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"resume_engine"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_arkwq"]
+_data = {
+&"RESET": SubResource("Animation_arkwq"),
+&"pause": SubResource("Animation_eq7dk"),
+&"play": SubResource("Animation_jq7is")
+}
 
 [node name="PauseMenu" type="CanvasLayer"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,6 +171,7 @@ grow_vertical = 2
 color = Color(0, 0.020833338, 0.05, 0.31764707)
 
 [node name="Foreground" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -35,24 +182,19 @@ grow_horizontal = 2
 scale = Vector2(0.6, 0.6)
 
 [node name="PlayButton" type="TextureButton" parent="Foreground"]
+process_mode = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.096
 anchor_bottom = 0.119
 offset_left = -143.0
-offset_top = 356.33334
+offset_top = 344.99997
 offset_right = 159.0
-offset_bottom = 658.3334
+offset_bottom = 647.0
 texture_normal = ExtResource("1_k23cl")
 
-[node name="Line2D" type="Line2D" parent="Foreground/PlayButton"]
-z_index = -1
-points = PackedVector2Array(146, 52, 137, -280)
-width = 20.0
-width_curve = SubResource("Curve_jq7is")
-gradient = SubResource("Gradient_hi21p")
-
-[node name="PlayButton2" type="TextureButton" parent="Foreground"]
+[node name="MusicButton" type="TextureButton" parent="Foreground"]
+process_mode = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.096
@@ -63,14 +205,8 @@ offset_right = 330.0
 offset_bottom = 917.3333
 texture_normal = ExtResource("2_4x8ym")
 
-[node name="Line2D" type="Line2D" parent="Foreground/PlayButton2"]
-z_index = -1
-points = PackedVector2Array(146, 52, 1, -493)
-width = 20.0
-width_curve = SubResource("Curve_jq7is")
-gradient = SubResource("Gradient_hi21p")
-
-[node name="PlayButton3" type="TextureButton" parent="Foreground"]
+[node name="SoundButton" type="TextureButton" parent="Foreground"]
+process_mode = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.096
@@ -81,14 +217,8 @@ offset_right = 17.0
 offset_bottom = 922.3333
 texture_normal = ExtResource("3_eq7dk")
 
-[node name="Line2D" type="Line2D" parent="Foreground/PlayButton3"]
-z_index = -1
-points = PackedVector2Array(146, 52, 283, -464)
-width = 20.0
-width_curve = SubResource("Curve_jq7is")
-gradient = SubResource("Gradient_hi21p")
-
 [node name="QuitButton" type="TextureButton" parent="Foreground"]
+process_mode = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.096
@@ -99,17 +229,28 @@ offset_right = 168.0
 offset_bottom = 1193.3333
 texture_normal = ExtResource("2_qgos8")
 
-[node name="Line2D" type="Line2D" parent="Foreground/QuitButton"]
-z_index = -2
-points = PackedVector2Array(146, 52, 138, -509)
-width = 20.0
-width_curve = SubResource("Curve_jq7is")
-gradient = SubResource("Gradient_hi21p")
-
-[node name="TextureRect" type="TextureRect" parent="Foreground"]
+[node name="Mirror" type="TextureRect" parent="Foreground"]
 layout_mode = 0
 offset_left = -372.0
 offset_top = 13.333336
 offset_right = 376.0
 offset_bottom = 305.33334
 texture = ExtResource("5_arkwq")
+
+[node name="VisibilityListener" type="Node" parent="."]
+script = ExtResource("6_eq7dk")
+metadata/_custom_type_script = "uid://ydy2ddfw32k0"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 2
+libraries = {
+&"": SubResource("AnimationLibrary_arkwq")
+}
+
+[node name="TreePauseInterfacer" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("7_arkwq")
+
+[connection signal="pressed" from="Foreground/PlayButton" to="AnimationPlayer" method="play" binds= [&"play"]]
+[connection signal="shown" from="VisibilityListener" to="TreePauseInterfacer" method="pause_engine"]
+[connection signal="shown" from="VisibilityListener" to="AnimationPlayer" method="play" flags=3 binds= [&"pause"]]

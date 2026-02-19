@@ -43,7 +43,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -53,7 +53,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-185.48, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-128.5, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/4/type = "bezier"
@@ -146,6 +146,100 @@ tracks/11/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(595.3333, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Foreground/QuitButton:position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-121.485, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Foreground/QuitButton:position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(900, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Foreground/QuitButton:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Foreground/Mirror:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-372, 13.333336)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Foreground/PlayButton:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128.5, 332.6)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Foreground/MusicButton:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21, 595.3333)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Foreground/SoundButton:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-295, 593.3333)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Foreground/QuitButton:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-121.485, 900)]
 }
 
 [sub_resource type="Animation" id="Animation_eq7dk"]
@@ -325,7 +419,6 @@ tracks/14/keys = {
 
 [sub_resource type="Animation" id="Animation_jq7is"]
 resource_name = "play"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -338,56 +431,105 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0.73333335), Color(1, 1, 1, 0)]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Foreground:position:y")
+tracks/1/path = NodePath("Foreground:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.07864824, -1, 0, 0, -403, -0.25, 0, 0.054685105, 74),
-"times": PackedFloat32Array(0, 0.4)
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Foreground:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
+"times": PackedFloat32Array(0.5, 0.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TreePauseInterfacer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.4),
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TreePauseInterfacer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"resume_engine"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.4),
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"hide"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Foreground/Mirror:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-372, 13.333336), Vector2(-372, -986.642)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Foreground/PlayButton:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.03333334, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-128.5, 332.6), Vector2(-128.5, -667.4)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Foreground/MusicButton:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(21, 595.3333), Vector2(-10.14, -404.667)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Foreground/SoundButton:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-295, 593.3333), Vector2(-249.91, -406.667)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Foreground/QuitButton:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.2, 0.90000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-121.485, 900), Vector2(-121.485, -100)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_arkwq"]
@@ -409,7 +551,6 @@ grow_vertical = 2
 color = Color(0, 0.020833338, 0.05, 0.31764707)
 
 [node name="Foreground" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -425,10 +566,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.096
 anchor_bottom = 0.119
-offset_left = -185.48
-offset_top = 345.0
-offset_right = 116.520004
-offset_bottom = 647.00354
+offset_left = -128.5
+offset_top = 332.6
+offset_right = 173.5
+offset_bottom = 634.6029
 pivot_offset = Vector2(150.0976, 53.780945)
 texture_normal = ExtResource("1_k23cl")
 
@@ -441,7 +582,7 @@ anchor_bottom = 0.119
 offset_left = 21.0
 offset_top = 595.3333
 offset_right = 330.00055
-offset_bottom = 917.33344
+offset_bottom = 917.3334
 pivot_offset = Vector2(136.66663, 69.93465)
 texture_normal = ExtResource("2_4x8ym")
 
@@ -454,7 +595,7 @@ anchor_bottom = 0.119
 offset_left = -295.0
 offset_top = 593.3333
 offset_right = 17.0
-offset_bottom = 922.3354
+offset_bottom = 922.3352
 pivot_offset = Vector2(175, 69.99999)
 texture_normal = ExtResource("3_eq7dk")
 
@@ -467,7 +608,7 @@ anchor_bottom = 0.119
 offset_left = -121.485
 offset_top = 900.0
 offset_right = 178.515
-offset_bottom = 1197.0005
+offset_bottom = 1197.0007
 pivot_offset = Vector2(158.66663, 58.666687)
 texture_normal = ExtResource("2_qgos8")
 
@@ -484,7 +625,7 @@ script = ExtResource("6_eq7dk")
 metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-process_mode = 2
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_arkwq")
 }

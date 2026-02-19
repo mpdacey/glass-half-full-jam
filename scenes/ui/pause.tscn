@@ -45,10 +45,112 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Foreground/PlayButton:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-185.48, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Foreground/PlayButton:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(345, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Foreground/PlayButton:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Foreground/SoundButton:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-295, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Foreground/SoundButton:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(593.3333, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Foreground/SoundButton:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Foreground/MusicButton:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Foreground/MusicButton:position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(21, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Foreground/MusicButton:position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(595.3333, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_eq7dk"]
 resource_name = "pause"
-length = 0.4
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,6 +185,142 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Foreground/PlayButton:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(-300.54, -0.24999999, 0, 0.25, 0, -270, 0, 0, 0, 0, -60, 0, 0, 0, 0, -128.5, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.36666667, 0.63333327, 0.96666664)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Foreground/PlayButton:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(345, -0.24988614, -4.2168283, 0.26666668, 4.5, 400, -0.06666668, -58, 0, 0, 431.805, -0.16666666, -131, 0.099999964, -83, 332.6, -0.100000024, -51, 0.25, 0),
+"times": PackedFloat32Array(0.06666667, 0.36666662, 0.63333327, 0.96666664)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Foreground/PlayButton:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.16666664, 0.4, 0.7, 1.0666667),
+"transitions": PackedFloat32Array(2.6390154, 1, 1, 1),
+"update": 0,
+"values": [0.09773843811168285, 0.3769911184307756, -0.20943952, 0.0]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Foreground/QuitButton:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-3.6, -0.24999999, 0, 0.25, 0, -29.11, 0, 0, 0, 0, -205.48, 0, 0, 0, 0, -121.485, 0, 0, 0, 0),
+"times": PackedFloat32Array(0.1, 0.46666667, 0.76666653, 1.1)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Foreground/QuitButton:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(468.5, 0, 0, 0.2, 20, 1032.205, -0.024599493, -46.704956, 0, 0, 1003.07, -0.16666666, -131, 0.099999964, -83, 900, -0.100000024, -51, 0.25, 0),
+"times": PackedFloat32Array(0.03333333, 0.4666666, 0.76666653, 1.1)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Foreground/QuitButton:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.26666665, 0.49999997, 0.83333325, 1.1999999),
+"transitions": PackedFloat32Array(1.8025018, 1, 1, 1),
+"update": 0,
+"values": [0.012217304763960109, -0.20943951023931956, 0.20943951023931956, 0.0]
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Foreground/SoundButton:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-510, 0, 0, 0.23333335, -0.5, -259.075, -0.23333335, -165.5, 0.13333333, -87.5, -284.005, -0.16666663, -119.5, 0.10000008, -42.5, -289.145, -0.13333333, -44, 0.13333333, -87.5),
+"times": PackedFloat32Array(0.23333332, 0.6333333, 1.0666666, 1.3333335)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Foreground/SoundButton:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(175.00005, 0, 0, 0.26666665, 149.49995, 593.3333, -0.6333332, 313.1667, 0.06685567, -31.833313, 600.5, -0.066477776, 0, 0, 0),
+"times": PackedFloat32Array(0.23333335, 1.0666666, 1.4333334)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Foreground/SoundButton:rotation")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.23333332, 0.6333333, 1.0666666, 1.4000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.7416295, -0.16755160819145604, -0.3892084231947357, 0.0]
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Foreground/MusicButton:position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(240, 0, 0, 0.16666667, -52.5, 45.57, -0.0333333, 29.93, 0.23333335, 46.93, 5.335, -0.19999993, 49.5, 0.16666663, 23, 13.09, -0.13333333, 31, 0, 0),
+"times": PackedFloat32Array(0.23333332, 0.6333333, 1.0666666, 1.3333333)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Foreground/MusicButton:position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(175.00005, 0, 0, 0.26666665, 149.49995, 593.3333, -0.6333332, 313.1667, 0.06685567, -31.833313, 600.5, -0.066477776, 0, 0, 0),
+"times": PackedFloat32Array(0.23333335, 1.0666666, 1.4333334)
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Foreground/MusicButton:rotation")
+tracks/14/interp = 2
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.23333332, 0.6333333, 1.0666666, 1.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.33335788713091735, 0.24609142453120086, -0.212930168743308, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_jq7is"]
@@ -187,10 +425,11 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.096
 anchor_bottom = 0.119
-offset_left = -143.0
-offset_top = 344.99997
-offset_right = 159.0
-offset_bottom = 647.0
+offset_left = -185.48
+offset_top = 345.0
+offset_right = 116.520004
+offset_bottom = 647.00354
+pivot_offset = Vector2(150.0976, 53.780945)
 texture_normal = ExtResource("1_k23cl")
 
 [node name="MusicButton" type="TextureButton" parent="Foreground"]
@@ -201,8 +440,9 @@ anchor_right = 0.096
 anchor_bottom = 0.119
 offset_left = 21.0
 offset_top = 595.3333
-offset_right = 330.0
-offset_bottom = 917.3333
+offset_right = 330.00055
+offset_bottom = 917.33344
+pivot_offset = Vector2(136.66663, 69.93465)
 texture_normal = ExtResource("2_4x8ym")
 
 [node name="SoundButton" type="TextureButton" parent="Foreground"]
@@ -214,7 +454,8 @@ anchor_bottom = 0.119
 offset_left = -295.0
 offset_top = 593.3333
 offset_right = 17.0
-offset_bottom = 922.3333
+offset_bottom = 922.3354
+pivot_offset = Vector2(175, 69.99999)
 texture_normal = ExtResource("3_eq7dk")
 
 [node name="QuitButton" type="TextureButton" parent="Foreground"]
@@ -223,10 +464,11 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.096
 anchor_bottom = 0.119
-offset_left = -132.0
-offset_top = 896.3333
-offset_right = 168.0
-offset_bottom = 1193.3333
+offset_left = -121.485
+offset_top = 900.0
+offset_right = 178.515
+offset_bottom = 1197.0005
+pivot_offset = Vector2(158.66663, 58.666687)
 texture_normal = ExtResource("2_qgos8")
 
 [node name="Mirror" type="TextureRect" parent="Foreground"]
@@ -246,6 +488,7 @@ process_mode = 2
 libraries = {
 &"": SubResource("AnimationLibrary_arkwq")
 }
+speed_scale = 1.4
 
 [node name="TreePauseInterfacer" type="Node" parent="."]
 process_mode = 3

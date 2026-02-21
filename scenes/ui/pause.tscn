@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcdlgci6a3vwr"]
+[gd_scene load_steps=15 format=3 uid="uid://bcdlgci6a3vwr"]
 
 [ext_resource type="Texture2D" uid="uid://bj5bhv0qlvq3r" path="res://textures/pause_menu/play_cube.png" id="1_k23cl"]
 [ext_resource type="Texture2D" uid="uid://beqqdeg13gv2k" path="res://textures/pause_menu/music_cube_enabled.png" id="2_4x8ym"]
+[ext_resource type="AnimationLibrary" uid="uid://dtlm46ijkgpoj" path="res://resources/animation_libraries/pause_button_library.tres" id="2_caprb"]
 [ext_resource type="Texture2D" uid="uid://d1jraggcwab1r" path="res://textures/pause_menu/power_cube.png" id="2_qgos8"]
 [ext_resource type="Texture2D" uid="uid://b42rnu12e72a2" path="res://textures/pause_menu/sound_cube_enabled.png" id="3_eq7dk"]
+[ext_resource type="Texture2D" uid="uid://d2hdkk8670mvj" path="res://textures/pause_menu/music_cube_disabled.png" id="3_hi21p"]
 [ext_resource type="Texture2D" uid="uid://bqrm7ip5t3vpn" path="res://textures/pause_menu/mirror.png" id="5_arkwq"]
+[ext_resource type="Texture2D" uid="uid://cteacgk8qu0lq" path="res://textures/pause_menu/sound_cube_disabled.png" id="5_caprb"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_eq7dk"]
 [ext_resource type="Script" uid="uid://bw1paub1fikwp" path="res://scripts/tree_pause_interfacer.gd" id="7_arkwq"]
 
@@ -729,7 +732,13 @@ offset_bottom = 634.6022
 pivot_offset = Vector2(150.0976, 53.780945)
 mouse_default_cursor_shape = 2
 disabled = true
+action_mode = 0
 texture_normal = ExtResource("1_k23cl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/PlayButton"]
+libraries = {
+&"": ExtResource("2_caprb")
+}
 
 [node name="MusicButton" type="TextureButton" parent="Foreground"]
 process_mode = 2
@@ -744,7 +753,15 @@ offset_bottom = 917.3333
 pivot_offset = Vector2(136.66663, 69.93465)
 mouse_default_cursor_shape = 2
 disabled = true
+toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("2_4x8ym")
+texture_pressed = ExtResource("3_hi21p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/MusicButton"]
+libraries = {
+&"": ExtResource("2_caprb")
+}
 
 [node name="SoundButton" type="TextureButton" parent="Foreground"]
 process_mode = 2
@@ -759,7 +776,15 @@ offset_bottom = 922.33453
 pivot_offset = Vector2(175, 69.99999)
 mouse_default_cursor_shape = 2
 disabled = true
+toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("3_eq7dk")
+texture_pressed = ExtResource("5_caprb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/SoundButton"]
+libraries = {
+&"": ExtResource("2_caprb")
+}
 
 [node name="QuitButton" type="TextureButton" parent="Foreground"]
 process_mode = 2
@@ -774,7 +799,13 @@ offset_bottom = 1197.0021
 pivot_offset = Vector2(158.66663, 58.666687)
 mouse_default_cursor_shape = 2
 disabled = true
+action_mode = 0
 texture_normal = ExtResource("2_qgos8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/QuitButton"]
+libraries = {
+&"": ExtResource("2_caprb")
+}
 
 [node name="Mirror" type="TextureRect" parent="Foreground"]
 layout_mode = 0
@@ -800,5 +831,9 @@ process_mode = 3
 script = ExtResource("7_arkwq")
 
 [connection signal="pressed" from="Foreground/PlayButton" to="AnimationPlayer" method="play" binds= [&"play"]]
+[connection signal="pressed" from="Foreground/PlayButton" to="Foreground/PlayButton/AnimationPlayer" method="play" binds= [&"pressed"]]
+[connection signal="pressed" from="Foreground/MusicButton" to="Foreground/MusicButton/AnimationPlayer" method="play" binds= [&"pressed"]]
+[connection signal="pressed" from="Foreground/SoundButton" to="Foreground/SoundButton/AnimationPlayer" method="play" binds= [&"pressed"]]
+[connection signal="pressed" from="Foreground/QuitButton" to="Foreground/QuitButton/AnimationPlayer" method="play" binds= [&"pressed"]]
 [connection signal="shown" from="VisibilityListener" to="TreePauseInterfacer" method="pause_engine"]
 [connection signal="shown" from="VisibilityListener" to="AnimationPlayer" method="play" flags=3 binds= [&"pause"]]

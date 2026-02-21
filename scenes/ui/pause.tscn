@@ -512,6 +512,18 @@ tracks/18/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Foreground/Mirror:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-372, 13.333336)]
+}
 
 [sub_resource type="Animation" id="Animation_jq7is"]
 resource_name = "play"
@@ -713,7 +725,7 @@ anchor_bottom = 0.119
 offset_left = -128.5
 offset_top = 332.6
 offset_right = 173.5
-offset_bottom = 634.60205
+offset_bottom = 634.6022
 pivot_offset = Vector2(150.0976, 53.780945)
 mouse_default_cursor_shape = 2
 disabled = true
@@ -728,7 +740,7 @@ anchor_bottom = 0.119
 offset_left = 21.0
 offset_top = 595.3333
 offset_right = 330.00055
-offset_bottom = 917.3334
+offset_bottom = 917.3333
 pivot_offset = Vector2(136.66663, 69.93465)
 mouse_default_cursor_shape = 2
 disabled = true
@@ -743,7 +755,7 @@ anchor_bottom = 0.119
 offset_left = -295.0
 offset_top = 593.3333
 offset_right = 17.0
-offset_bottom = 922.3346
+offset_bottom = 922.33453
 pivot_offset = Vector2(175, 69.99999)
 mouse_default_cursor_shape = 2
 disabled = true
@@ -758,7 +770,7 @@ anchor_bottom = 0.119
 offset_left = -121.485
 offset_top = 900.0
 offset_right = 178.515
-offset_bottom = 1197.0024
+offset_bottom = 1197.0021
 pivot_offset = Vector2(158.66663, 58.666687)
 mouse_default_cursor_shape = 2
 disabled = true
@@ -781,7 +793,7 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_arkwq")
 }
-speed_scale = 1.4
+speed_scale = 1.8
 
 [node name="TreePauseInterfacer" type="Node" parent="."]
 process_mode = 3

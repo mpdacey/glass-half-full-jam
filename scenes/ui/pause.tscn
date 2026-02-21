@@ -564,7 +564,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.8333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": [true],
 "method": &"resume_engine"
 }]
 }
@@ -829,6 +829,7 @@ speed_scale = 1.8
 [node name="TreePauseInterfacer" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("7_arkwq")
+fade_resume_duration = 0.2
 
 [connection signal="pressed" from="Foreground/PlayButton" to="AnimationPlayer" method="play" binds= [&"play"]]
 [connection signal="pressed" from="Foreground/PlayButton" to="Foreground/PlayButton/AnimationPlayer" method="play" binds= [&"pressed"]]

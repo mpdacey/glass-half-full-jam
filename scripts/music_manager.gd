@@ -12,11 +12,21 @@ const MUSIC_PLAYERS : Dictionary[TrackList, StringName] = {
 	TrackList.GAMEOVER  : "gameover_music",
 }
 
+static var swap_to_main_tween : Tween
+
 func play_main_tracks() -> void:
+	if swap_to_main_tween:
+		swap_to_main_tween.kill()
+	
 	var title_player : AudioStreamPlayer = MusicPlayer.get_node(MusicPlayer.get_meta(MUSIC_PLAYERS[TrackList.TITLE]))
+	if title_player.playing:
+		title_player.stop()
 	title_player.play()
+	title_player.volume_db = 0.0
 	
 	var main_player : AudioStreamPlayer = MusicPlayer.get_node(MusicPlayer.get_meta(MUSIC_PLAYERS[TrackList.MAIN]))
+	if main_player.playing:
+		main_player.stop()
 	main_player.play()
 	main_player.volume_db = -80.0
 
@@ -28,13 +38,15 @@ func swap_to_main() -> void:
 		_stop_tracks()
 		main_player.play()
 	
-	var tween : Tween = create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.set_parallel()
-	tween.tween_property(title_player, "volume_db", -80, 4)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(main_player, "volume_db", 0, 0.7)
+	if swap_to_main_tween:
+		swap_to_main_tween.kill()
+	swap_to_main_tween = create_tween()
+	swap_to_main_tween.set_trans(Tween.TRANS_SINE)
+	swap_to_main_tween.set_ease(Tween.EASE_IN_OUT)
+	swap_to_main_tween.set_parallel()
+	swap_to_main_tween.tween_property(title_player, "volume_db", -80, 4)
+	swap_to_main_tween.set_ease(Tween.EASE_IN_OUT)
+	swap_to_main_tween.tween_property(main_player, "volume_db", 0, 0.7)
 
 func play_gameover() -> void:
 	var main_player : AudioStreamPlayer = MusicPlayer.get_node(MusicPlayer.get_meta(MUSIC_PLAYERS[TrackList.MAIN]))

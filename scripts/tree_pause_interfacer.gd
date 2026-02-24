@@ -4,6 +4,7 @@ class_name EnginePauseInterfacer
 @export var fade_resume_duration : float = 0.5
 
 func pause_engine() -> void:
+	Engine.time_scale = 1.0
 	get_tree().paused = true
 
 func resume_engine(fade_resume: bool = false) -> void:

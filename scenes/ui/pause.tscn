@@ -1098,6 +1098,20 @@ tracks/12/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AudioToggleController")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"save_audio_settings"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_emuhb"]
 resource_name = "quit"
@@ -1188,6 +1202,20 @@ tracks/6/keys = {
 "values": [{
 "args": [false],
 "method": &"resume_engine"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioToggleController")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"save_audio_settings"
 }]
 }
 

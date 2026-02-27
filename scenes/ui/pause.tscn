@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcdlgci6a3vwr"]
+[gd_scene load_steps=28 format=3 uid="uid://bcdlgci6a3vwr"]
 
 [ext_resource type="Texture2D" uid="uid://bj5bhv0qlvq3r" path="res://textures/pause_menu/play_cube.png" id="1_k23cl"]
 [ext_resource type="Texture2D" uid="uid://beqqdeg13gv2k" path="res://textures/pause_menu/music_cube_enabled.png" id="2_4x8ym"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" uid="uid://bw1paub1fikwp" path="res://scripts/tree_pause_interfacer.gd" id="7_arkwq"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_emuhb"]
 [ext_resource type="Script" uid="uid://dpdcc7bh4f6ba" path="res://scripts/audio/audio_toggle_controller.gd" id="11_fosa6"]
+[ext_resource type="AudioStream" uid="uid://d3uv12tggp77k" path="res://audio/sfx/pause/dice_bounce_1.ogg" id="13_5amhe"]
+[ext_resource type="AudioStream" uid="uid://d35sfwlk3kyjp" path="res://audio/sfx/pause/dice_bounce_2.ogg" id="14_78mva"]
+[ext_resource type="AudioStream" uid="uid://r5kh0yoajo6h" path="res://audio/sfx/pause/dice_bounce_3.ogg" id="15_ptotp"]
 
 [sub_resource type="Curve2D" id="Curve2D_vfyr0"]
 _data = {
@@ -517,6 +520,12 @@ tracks/40/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yqxs4"]
+streams_count = 3
+stream_0/stream = ExtResource("13_5amhe")
+stream_1/stream = ExtResource("14_78mva")
+stream_2/stream = ExtResource("15_ptotp")
+
 [sub_resource type="Animation" id="Animation_eq7dk"]
 resource_name = "pause"
 length = 1.5
@@ -935,6 +944,25 @@ tracks/35/keys = {
 "update": 0,
 "values": [Vector2(212.50305, 140.93115), Vector2(0, 0), Vector2(-42, 0), Vector2(79.577194, 73.48976), Vector2(0, 0)]
 }
+tracks/36/type = "audio"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("AudioStreamPlayer")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_yqxs4")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_yqxs4")
+}],
+"times": PackedFloat32Array(0.6333333, 1.0597674)
+}
+tracks/36/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jq7is"]
 resource_name = "play"
@@ -1258,7 +1286,7 @@ anchor_bottom = 0.119
 offset_left = -128.5
 offset_top = 332.6
 offset_right = 173.5
-offset_bottom = 634.6002
+offset_bottom = 634.6057
 pivot_offset = Vector2(150.0976, 53.780945)
 mouse_default_cursor_shape = 2
 action_mode = 0
@@ -1292,7 +1320,7 @@ anchor_bottom = 0.119
 offset_left = 21.0
 offset_top = 595.3333
 offset_right = 330.00018
-offset_bottom = 917.3333
+offset_bottom = 917.3334
 pivot_offset = Vector2(136.66663, 69.93465)
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -1328,7 +1356,7 @@ anchor_bottom = 0.119
 offset_left = -295.0
 offset_top = 593.3333
 offset_right = 17.0
-offset_bottom = 922.3333
+offset_bottom = 922.3334
 pivot_offset = Vector2(175, 69.99999)
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -1364,7 +1392,7 @@ anchor_bottom = 0.119
 offset_left = -121.485
 offset_top = 900.0
 offset_right = 178.515
-offset_bottom = 1197.02
+offset_bottom = 1197.0297
 pivot_offset = Vector2(158.66663, 58.666687)
 mouse_default_cursor_shape = 2
 action_mode = 0
@@ -1438,6 +1466,9 @@ fade_resume_duration = 0.2
 
 [node name="AudioToggleController" type="Node" parent="."]
 script = ExtResource("11_fosa6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [connection signal="pressed" from="Foreground/PlayButton" to="Foreground/PlayButton/AnimationPlayer" method="stop"]
 [connection signal="pressed" from="Foreground/PlayButton" to="Foreground/PlayButton/AnimationPlayer" method="play" flags=3 binds= [&"pressed"]]

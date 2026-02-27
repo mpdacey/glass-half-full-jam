@@ -1,4 +1,6 @@
-[gd_resource type="AnimationLibrary" load_steps=3 format=3 uid="uid://dtlm46ijkgpoj"]
+[gd_resource type="AnimationLibrary" load_steps=4 format=3 uid="uid://dtlm46ijkgpoj"]
+
+[ext_resource type="AudioStream" uid="uid://bgtru8p0p10hy" path="res://audio/sfx/pause/dice_pressed.ogg" id="1_4ivp7"]
 
 [sub_resource type="Animation" id="Animation_caprb"]
 length = 0.001
@@ -30,6 +32,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1.05, 1.05), Vector2(1, 1)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.32189006,
+"start_offset": 0.0,
+"stream": ExtResource("1_4ivp7")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [resource]
 _data = {

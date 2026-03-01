@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=58 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
@@ -23,6 +23,9 @@
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="21_p8ryb"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="22_1b2ky"]
 [ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="23_0gf1i"]
+[ext_resource type="PackedScene" uid="uid://bcdlgci6a3vwr" path="res://scenes/ui/pause.tscn" id="23_4nao0"]
+[ext_resource type="Texture2D" uid="uid://cjk3dw4l3y778" path="res://textures/icons/icon_pause.svg" id="23_pj8nq"]
+[ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="24_dfpoj"]
 [ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/sizzle.ogg" id="24_q6ljc"]
 [ext_resource type="AnimationLibrary" uid="uid://dy6jegyq0i7t5" path="res://resources/animation_libraries/gameover_library.tres" id="25_ssu4d"]
 [ext_resource type="AnimationLibrary" uid="uid://cid6yse2ny4tw" path="res://resources/animation_libraries/car_flip_library.tres" id="26_kf746"]
@@ -602,6 +605,39 @@ low_fuel_threshold = 0.4
 layer = -2
 follow_viewport_scale = 1.05
 
+[node name="PauseButtonHUD" type="CanvasLayer" parent="UI"]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PauseButtonHUD"]
+offset_left = 640.0
+offset_top = 48.0
+offset_right = 736.0
+offset_bottom = 144.0
+
+[node name="PauseButton" type="Button" parent="UI/PauseButtonHUD/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PauseButtonHUD/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="UI/PauseButtonHUD/MarginContainer/MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("23_pj8nq")
+expand_mode = 2
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("23_4nao0")]
+visible = false
+
+[node name="PlaySceneVisibilityListener" type="Node" parent="UI/PauseMenu"]
+script = ExtResource("24_dfpoj")
+metadata/_custom_type_script = "uid://ydy2ddfw32k0"
+
 [node name="GameoverLayer" type="CanvasLayer" parent="UI"]
 layer = -100
 
@@ -768,6 +804,13 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="area_exited" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementArea" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
+[connection signal="pressed" from="UI/PauseButtonHUD/MarginContainer/PauseButton" to="UI/PauseMenu" method="show"]
+[connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/FuelGaugeHUD" method="show"]
+[connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/OdometerHUD" method="show"]
+[connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/PauseButtonHUD" method="show"]
+[connection signal="shown" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/FuelGaugeHUD" method="hide"]
+[connection signal="shown" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/OdometerHUD" method="hide"]
+[connection signal="shown" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/PauseButtonHUD" method="hide"]
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"retry"]]
 [connection signal="global_signal_emitted" from="GameoverNodes/GameoverInterfacers/TerrainGameoverEmitter" to="Interactables/TerrainDressingPlayer" method="stop" binds= [true]]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="swap_to_main"]

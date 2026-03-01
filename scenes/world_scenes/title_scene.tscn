@@ -583,6 +583,7 @@ unit_size = 6.26
 max_db = 6.0
 autoplay = true
 panning_strength = 2.1
+bus = &"SFX"
 emission_angle_degrees = 34.0
 emission_angle_filter_attenuation_db = 0.0
 attenuation_filter_cutoff_hz = 8803.0

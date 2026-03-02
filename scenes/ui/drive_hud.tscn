@@ -9,7 +9,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_b2uum"]
 font = ExtResource("3_xw47v")
-font_size = 256
+font_size = 150
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xw47v"]
 blend_mode = 1
@@ -125,9 +125,9 @@ _data = {
 &"sway": SubResource("Animation_ewkrv")
 }
 
-[node name="drive_hud" type="CanvasLayer"]
+[node name="DriveHUD" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Root" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -136,84 +136,84 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="BaseHud" type="TextureRect" parent="Control"]
+[node name="BaseHud" type="TextureRect" parent="Root"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -272.0
-offset_right = 276.7384
-offset_bottom = 296.0
+offset_left = -166.84615
+offset_right = 166.84615
+offset_bottom = 180.0
 grow_horizontal = 2
 texture = ExtResource("1_6b0x4")
 expand_mode = 2
 
-[node name="FuelNeedle" type="TextureRect" parent="Control"]
+[node name="FuelNeedle" type="TextureRect" parent="Root"]
 layout_mode = 0
-offset_left = -21.225891
-offset_top = 108.78784
-offset_right = 26.774109
-offset_bottom = 292.78784
-pivot_offset = Vector2(24, 24)
+offset_left = -15.095459
+offset_top = 66.03275
+offset_right = 12.907959
+offset_bottom = 173.37918
+pivot_offset = Vector2(13.924072, 14.481026)
 texture = ExtResource("2_xw47v")
 expand_mode = 4
 
-[node name="KMLabel" type="Label" parent="Control"]
+[node name="KMLabel" type="Label" parent="Root"]
 modulate = Color(1, 1, 1, 0.92156863)
 layout_mode = 0
-offset_left = 169.90887
-offset_top = 17.966316
-offset_right = 541.9089
-offset_bottom = 350.9663
+offset_left = 91.17401
+offset_top = 14.40612
+offset_right = 352.174
+offset_bottom = 249.40613
 scale = Vector2(0.25, 0.25)
 text = "KM"
 label_settings = SubResource("LabelSettings_b2uum")
 
-[node name="PeriodLabel" type="Label" parent="Control"]
-modulate = Color(0.79, 0.79, 0.79, 1)
+[node name="PeriodLabel" type="Label" parent="Root"]
 material = SubResource("CanvasItemMaterial_xw47v")
 layout_mode = 0
-offset_left = 78.534546
-offset_top = 17.966316
-offset_right = 139.53455
-offset_bottom = 350.9663
+offset_left = 35.04187
+offset_top = 15.05616
+offset_right = 78.04187
+offset_bottom = 250.05615
 scale = Vector2(0.25, 0.25)
 text = "."
 label_settings = SubResource("LabelSettings_b2uum")
 
-[node name="PauseButtonRoot" type="Control" parent="Control"]
+[node name="PauseButtonRoot" type="Control" parent="Root"]
 anchors_preset = 0
-offset_left = -253.806
-offset_top = 156.184
-offset_right = -253.806
-offset_bottom = 156.184
+offset_left = -178.85501
+offset_top = 91.6082
+offset_right = -178.85501
+offset_bottom = 91.6082
 
-[node name="PauseButtonParent" type="Node2D" parent="Control/PauseButtonRoot"]
+[node name="PauseButtonParent" type="Node2D" parent="Root/PauseButtonRoot"]
 
-[node name="PauseButton" type="TextureButton" parent="Control/PauseButtonRoot/PauseButtonParent"]
+[node name="PauseButton" type="TextureButton" parent="Root/PauseButtonRoot/PauseButtonParent"]
 offset_right = 78.030365
 offset_bottom = 77.6911
 texture_normal = ExtResource("4_1287o")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PauseButtonShadowParent" type="Node2D" parent="Control/PauseButtonRoot"]
+[node name="PauseButtonShadowParent" type="Node2D" parent="Root/PauseButtonRoot"]
 
-[node name="PauseButtonShadow" type="TextureRect" parent="Control/PauseButtonRoot/PauseButtonShadowParent"]
+[node name="PauseButtonShadow" type="TextureRect" parent="Root/PauseButtonRoot/PauseButtonShadowParent"]
 z_index = -1
 offset_right = 78.03427
 offset_bottom = 77.69499
 texture = ExtResource("5_tixjq")
 expand_mode = 1
 
-[node name="PauseButtonAnimator" type="AnimationPlayer" parent="Control/PauseButtonRoot"]
+[node name="PauseButtonAnimator" type="AnimationPlayer" parent="Root/PauseButtonRoot"]
 root_node = NodePath("../PauseButtonParent/PauseButton")
 libraries = {
 &"": SubResource("AnimationLibrary_njc0o")
 }
+autoplay = "sway"
 speed_scale = 0.5
 
-[node name="PauseString" type="Line2D" parent="Control/PauseButtonRoot"]
+[node name="PauseString" type="Line2D" parent="Root/PauseButtonRoot"]
 z_index = -1
 texture_repeat = 2
 points = PackedVector2Array(37.922028, 10.825226, 38.066437, -37.94648)

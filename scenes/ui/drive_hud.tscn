@@ -1,0 +1,221 @@
+[gd_scene load_steps=12 format=3 uid="uid://b67sj3e8sr1yb"]
+
+[ext_resource type="Texture2D" uid="uid://bfs7rh3h5hxif" path="res://textures/drive_ui/base.png" id="1_6b0x4"]
+[ext_resource type="Texture2D" uid="uid://b6gssdhdww08g" path="res://textures/drive_ui/needle.png" id="2_xw47v"]
+[ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="3_xw47v"]
+[ext_resource type="Texture2D" uid="uid://57cpm8j7toh7" path="res://textures/drive_ui/pause_button.png" id="4_1287o"]
+[ext_resource type="Texture2D" uid="uid://c65eaukm72ikd" path="res://textures/drive_ui/pause_button_shade.png" id="5_tixjq"]
+[ext_resource type="Texture2D" uid="uid://bwg0odu0qshsp" path="res://textures/pause_menu/cube_string.png" id="6_tixjq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b2uum"]
+font = ExtResource("3_xw47v")
+font_size = 256
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xw47v"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_ewkrv"]
+resource_name = "sway"
+length = 3.0
+loop_mode = 1
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.95, 1), Vector2(1, 1), Vector2(0.95, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(5, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../PauseButtonShadowParent:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../PauseButtonShadowParent:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.95, 1), Vector2(1, 1), Vector2(0.95, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4xnsp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../PauseButtonShadowParent:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../PauseButtonShadowParent:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_njc0o"]
+_data = {
+&"RESET": SubResource("Animation_4xnsp"),
+&"sway": SubResource("Animation_ewkrv")
+}
+
+[node name="drive_hud" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BaseHud" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -272.0
+offset_right = 276.7384
+offset_bottom = 296.0
+grow_horizontal = 2
+texture = ExtResource("1_6b0x4")
+expand_mode = 2
+
+[node name="FuelNeedle" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -21.225891
+offset_top = 108.78784
+offset_right = 26.774109
+offset_bottom = 292.78784
+pivot_offset = Vector2(24, 24)
+texture = ExtResource("2_xw47v")
+expand_mode = 4
+
+[node name="KMLabel" type="Label" parent="Control"]
+modulate = Color(1, 1, 1, 0.92156863)
+layout_mode = 0
+offset_left = 169.90887
+offset_top = 17.966316
+offset_right = 541.9089
+offset_bottom = 350.9663
+scale = Vector2(0.25, 0.25)
+text = "KM"
+label_settings = SubResource("LabelSettings_b2uum")
+
+[node name="PeriodLabel" type="Label" parent="Control"]
+modulate = Color(0.79, 0.79, 0.79, 1)
+material = SubResource("CanvasItemMaterial_xw47v")
+layout_mode = 0
+offset_left = 78.534546
+offset_top = 17.966316
+offset_right = 139.53455
+offset_bottom = 350.9663
+scale = Vector2(0.25, 0.25)
+text = "."
+label_settings = SubResource("LabelSettings_b2uum")
+
+[node name="PauseButtonRoot" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = -253.806
+offset_top = 156.184
+offset_right = -253.806
+offset_bottom = 156.184
+
+[node name="PauseButtonParent" type="Node2D" parent="Control/PauseButtonRoot"]
+
+[node name="PauseButton" type="TextureButton" parent="Control/PauseButtonRoot/PauseButtonParent"]
+offset_right = 78.030365
+offset_bottom = 77.6911
+texture_normal = ExtResource("4_1287o")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PauseButtonShadowParent" type="Node2D" parent="Control/PauseButtonRoot"]
+
+[node name="PauseButtonShadow" type="TextureRect" parent="Control/PauseButtonRoot/PauseButtonShadowParent"]
+z_index = -1
+offset_right = 78.03427
+offset_bottom = 77.69499
+texture = ExtResource("5_tixjq")
+expand_mode = 1
+
+[node name="PauseButtonAnimator" type="AnimationPlayer" parent="Control/PauseButtonRoot"]
+root_node = NodePath("../PauseButtonParent/PauseButton")
+libraries = {
+&"": SubResource("AnimationLibrary_njc0o")
+}
+speed_scale = 0.5
+
+[node name="PauseString" type="Line2D" parent="Control/PauseButtonRoot"]
+z_index = -1
+texture_repeat = 2
+points = PackedVector2Array(37.922028, 10.825226, 38.066437, -37.94648)
+texture = ExtResource("6_tixjq")
+texture_mode = 1

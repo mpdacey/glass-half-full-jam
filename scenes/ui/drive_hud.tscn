@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b67sj3e8sr1yb"]
+[gd_scene load_steps=26 format=3 uid="uid://b67sj3e8sr1yb"]
 
 [ext_resource type="Texture2D" uid="uid://bfs7rh3h5hxif" path="res://textures/drive_ui/base.png" id="1_6b0x4"]
 [ext_resource type="Texture2D" uid="uid://b6gssdhdww08g" path="res://textures/drive_ui/needle.png" id="2_xw47v"]
@@ -195,6 +195,126 @@ _data = {
 &"warning-loop": SubResource("Animation_ssxhy")
 }
 
+[sub_resource type="Animation" id="Animation_qtgir"]
+resource_name = "show"
+length = 0.3333417
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(720, -200), Vector2(720, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hctyk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(720, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7efwg"]
+resource_name = "hide"
+length = 0.166675
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(720, 0), Vector2(720, -200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7efwg"]
+_data = {
+&"RESET": SubResource("Animation_hctyk"),
+&"hide": SubResource("Animation_7efwg"),
+&"show": SubResource("Animation_qtgir")
+}
+
 [node name="DriveHUD" type="CanvasLayer"]
 
 [node name="Root" type="Control" parent="."]
@@ -260,6 +380,7 @@ offset_left = -178.85501
 offset_top = 91.6082
 offset_right = -178.85501
 offset_bottom = 91.6082
+mouse_filter = 2
 
 [node name="PauseButtonParent" type="Node2D" parent="Root/PauseButtonRoot"]
 
@@ -276,6 +397,7 @@ stretch_mode = 0
 z_index = -1
 offset_right = 78.03427
 offset_bottom = 77.69499
+mouse_filter = 2
 texture = ExtResource("5_tixjq")
 expand_mode = 1
 
@@ -387,3 +509,12 @@ instance_shader_parameters/display_number = 0.0
 position = Vector2(62.925415, 36.50187)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
+
+[node name="DisplayAnimator" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_7efwg")
+}
+autoplay = "show"
+
+[connection signal="pressed" from="Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="DisplayAnimator" method="play" binds= ["hide"]]

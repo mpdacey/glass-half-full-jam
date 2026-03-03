@@ -14,9 +14,10 @@ config/name="Half Fuel"
 run/main_scene="uid://kaxdymo06lyx"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
-boot_splash/bg_color=Color(0.26666668, 0.23921569, 0.23137255, 1)
-boot_splash/image="uid://c3o4f68hm2hmk"
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.09, 0.080835, 0.07830001, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://eyw4c58nywm3"
+config/icon="uid://eyw4c58nywm3"
 
 [autoload]
 
@@ -46,3 +47,4 @@ window/stretch/aspect="expand"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_3d=3

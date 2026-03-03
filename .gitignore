@@ -19,3 +19,5 @@ mono_crash.*.json
 *.kra
 *.kra~
 *.png~
+app_icon_root_image.png
+app_icon_root_image.png.import

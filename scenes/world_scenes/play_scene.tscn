@@ -703,6 +703,7 @@ bus = &"SFX"
 
 [node name="SizzleLoop" type="AudioStreamPlayer" parent="GameoverNodes/GameoverAudio"]
 stream = ExtResource("24_q6ljc")
+bus = &"SFX"
 
 [node name="GameoverPlayer" type="AnimationPlayer" parent="GameoverNodes"]
 root_motion_local = true

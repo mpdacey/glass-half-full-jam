@@ -604,6 +604,7 @@ script = ExtResource("24_dfpoj")
 metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
 [node name="GameoverLayer" type="CanvasLayer" parent="UI"]
+visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="UI/GameoverLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -618,7 +619,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1440, 960)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="GameoverCamera3D" type="Camera3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
 transform = Transform3D(-4.371139e-08, 0.3420201, -0.93969256, 0, 0.93969256, 0.3420201, 1, 1.4950173e-08, -4.1075264e-08, -15, 9.625, 0)
@@ -772,8 +773,7 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
 [connection signal="pressed" from="UI/DriveHUD/Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="UI/PauseMenu" method="show"]
-[connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD" method="show"]
-[connection signal="shown" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD" method="hide"]
+[connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD/DisplayAnimator" method="play" binds= ["show"]]
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"retry"]]
 [connection signal="global_signal_emitted" from="GameoverNodes/GameoverInterfacers/TerrainGameoverEmitter" to="Interactables/TerrainDressingPlayer" method="stop" binds= [true]]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="swap_to_main"]

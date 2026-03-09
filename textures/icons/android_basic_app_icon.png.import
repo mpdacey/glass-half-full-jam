@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgf82balpvyuf"
-path.s3tc="res://.godot/imported/concept art.png-f9c842d5e4026dde5d73068c535f16ed.s3tc.ctex"
-path.etc2="res://.godot/imported/concept art.png-f9c842d5e4026dde5d73068c535f16ed.etc2.ctex"
+uid="uid://b17s5cjjnpnj5"
+path="res://.godot/imported/android_basic_app_icon.png-03adc7914d354a41ebf805500ce108a7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://concept art.png"
-dest_files=["res://.godot/imported/concept art.png-f9c842d5e4026dde5d73068c535f16ed.s3tc.ctex", "res://.godot/imported/concept art.png-f9c842d5e4026dde5d73068c535f16ed.etc2.ctex"]
+source_file="res://textures/icons/android_basic_app_icon.png"
+dest_files=["res://.godot/imported/android_basic_app_icon.png-03adc7914d354a41ebf805500ce108a7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -25,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -39,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

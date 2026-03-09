@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmy84snp5l1el"
 path.s3tc="res://.godot/imported/Rock029_1K-PNG_Color.png-80a8245184719169d24e22a43fadee89.s3tc.ctex"
+path.etc2="res://.godot/imported/Rock029_1K-PNG_Color.png-80a8245184719169d24e22a43fadee89.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/traffic/Textures/offroad/Rock029_1K-PNG_Color.png"
-dest_files=["res://.godot/imported/Rock029_1K-PNG_Color.png-80a8245184719169d24e22a43fadee89.s3tc.ctex"]
+dest_files=["res://.godot/imported/Rock029_1K-PNG_Color.png-80a8245184719169d24e22a43fadee89.s3tc.ctex", "res://.godot/imported/Rock029_1K-PNG_Color.png-80a8245184719169d24e22a43fadee89.etc2.ctex"]
 
 [params]
 

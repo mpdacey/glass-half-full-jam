@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=24 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="2_pyl7j"]
@@ -11,6 +11,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://c5o4iqm3dmff" path="res://resources/animation_libraries/car_putt.tres" id="7_o7kwv"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="7_s8xmt"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_6ppm8"]
+[ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="9_bmxmj"]
 [ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="10_1ot34"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
@@ -30,6 +31,13 @@ point_count = 4
 [sub_resource type="Curve3D" id="Curve3D_4rr2b"]
 _data = {
 "points": PackedVector3Array(-19.613865, 0.0003044121, -3.6900823, 29.709, 0, 3.496, 62.723, 0, 2, -19.575, 0, -2.323, 19.575, 0, 2.323, 121.664246, 0, 11.2574625, -40.68, 0, 2.283, 40.68, 0, -2.283, 190.542, 0, 1.521, -29.709, 0, -3.496, 29.709106, -0.29326326, 3.496437, 262.723, 0, 2),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_bmxmj"]
+_data = {
+"points": PackedVector3Array(-31.308388, 0.8552429, -4.7852187, 32.142, 0, 2.992, 56.723, 0, 0, -29.494, 0, 0.746, 29.494, 0, -0.746, 134.037, 0, 5.415, -28.837, 0, -0.465, 28.837, 0, 0.465, 201.07, 0, -5.113, -32.142, 0, -2.992, 32.141556, -0.06802826, 2.99244, 256.723, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -227,6 +235,42 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.7696902, 1.012291, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Paths/PolicePath/PoliceCore:progress_ratio")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Paths/PolicePath/PoliceCore/PoliceCruiser/TopBlueSiren:no_depth_test")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Paths/PolicePath/PoliceCore/PoliceCruiser/TopRedSiren:no_depth_test")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7rdyk"]
@@ -473,6 +517,42 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.5, 0.65]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Paths/PolicePath/PoliceCore:progress_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = false
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Paths/PolicePath/PoliceCore/PoliceCruiser/TopBlueSiren:no_depth_test")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.61, 2.21),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Paths/PolicePath/PoliceCore/PoliceCruiser/TopRedSiren:no_depth_test")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.5500001, 2.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hiwto"]
 _data = {
@@ -498,7 +578,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 2.84618)
 curve = SubResource("Curve3D_c3e3h")
 
 [node name="TrafficCore" parent="Paths/OngoingLanePath" instance=ExtResource("1_4rr2b")]
-transform = Transform3D(0.077436104, 0, -0.9968225, 0, 0.9999627, 0, 0.9968225, 0, 0.077436104, 146.71655, 0, 5.551287)
+transform = Transform3D(0.07743616, 0, -0.9968232, 0, 0.9999627, 0, 0.9968232, 0, 0.07743616, 146.71655, 0, 5.551287)
 progress = 90.43472
 
 [node name="IncomingLanePath" type="Path3D" parent="Paths"]
@@ -506,13 +586,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, -2.6153383)
 curve = SubResource("Curve3D_gf765")
 
 [node name="TrafficCore" parent="Paths/IncomingLanePath" instance=ExtResource("2_yql1r")]
-transform = Transform3D(-4.370383e-08, 0, 0.99982715, 0, 1, 0, -0.99982715, 0, -4.370383e-08, 199.955, 0, -0.08)
+transform = Transform3D(-4.3703782e-08, 0, 0.999826, 0, 1, 0, -0.999826, 0, -4.3703782e-08, 199.955, 0, -0.08)
 
 [node name="TrafficCore2" parent="Paths/IncomingLanePath" instance=ExtResource("3_6ppm8")]
-transform = Transform3D(-4.3704613e-08, 0, 0.999845, 0, 1, 0, -0.999845, 0, -4.3704613e-08, 199.955, 0, -0.08)
+transform = Transform3D(-4.3704e-08, 0, 0.99983096, 0, 1, 0, -0.99983096, 0, -4.3704e-08, 199.955, 0, -0.08)
 
 [node name="TrafficCore3" parent="Paths/IncomingLanePath" instance=ExtResource("4_bre4b")]
-transform = Transform3D(-4.370413e-08, 0, 0.99983394, 0, 1, 0, -0.99983394, 0, -4.370413e-08, 199.955, 0, -0.08)
+transform = Transform3D(-4.3704112e-08, 0, 0.9998335, 0, 1, 0, -0.9998335, 0, -4.3704112e-08, 199.955, 0, -0.08)
 
 [node name="DollyPath" type="Path3D" parent="Paths"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.115, 0.1, 0.082)
@@ -531,9 +611,10 @@ fov = 48.5
 [node name="CarPath" type="Path3D" parent="Paths"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10000001, 0.082)
 curve = SubResource("Curve3D_c3e3h")
+debug_custom_color = Color(0.55, 0.41708338, 0.23100002, 1)
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Paths/CarPath"]
-transform = Transform3D(0.21293357, 0, -1.3331126, 0, 1.35, 0, 1.3331126, 0, 0.21293357, 156.97745, 0, 4.3031716)
+transform = Transform3D(0.2129375, 0, -1.3331373, 0, 1.35, 0, 1.3331373, 0, 0.2129375, 156.97745, 0, 4.3031716)
 progress = 100.774155
 
 [node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D"]
@@ -566,6 +647,20 @@ emission_angle_filter_attenuation_db = 0.0
 attenuation_filter_cutoff_hz = 8803.0
 attenuation_filter_db = 0.0
 parameters/looping = true
+
+[node name="PolicePath" type="Path3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.674988, 0.10000001, 0.082)
+curve = SubResource("Curve3D_bmxmj")
+debug_custom_color = Color(0.44550002, 0.23100002, 0.66, 1)
+
+[node name="PoliceCore" parent="Paths/PolicePath" instance=ExtResource("9_bmxmj")]
+transform = Transform3D(-0.07831861, 0, -0.8413498, 0, 0.8449875, 0, 0.8413498, 0, -0.07831861, 56.723, 0, 0)
+
+[node name="BumperRedSiren" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" index="2"]
+no_depth_test = false
+
+[node name="BumperBlueSiren" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" index="3"]
+no_depth_test = false
 
 [node name="AnimationPlayers" type="Node" parent="."]
 
@@ -646,3 +741,5 @@ color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="TitleCanvasLayer/Button" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
+
+[editable path="Paths/PolicePath/PoliceCore"]

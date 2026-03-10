@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=59 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
@@ -22,6 +22,8 @@
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="22_1b2ky"]
 [ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="23_0gf1i"]
 [ext_resource type="PackedScene" uid="uid://bcdlgci6a3vwr" path="res://scenes/ui/pause.tscn" id="23_4nao0"]
+[ext_resource type="Texture2D" uid="uid://cph7yiesffh3n" path="res://textures/drive_ui/odometer_wheel.png" id="24_7m3n2"]
+[ext_resource type="Shader" uid="uid://7sfyxlr738lf" path="res://shader/odometer_shader.gdshader" id="24_63m0j"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="24_dfpoj"]
 [ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/sizzle.ogg" id="24_q6ljc"]
 [ext_resource type="AnimationLibrary" uid="uid://dy6jegyq0i7t5" path="res://resources/animation_libraries/gameover_library.tres" id="25_ssu4d"]
@@ -354,6 +356,11 @@ _data = {
 &"dressing": SubResource("Animation_7iuxc")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pj8nq"]
+resource_local_to_scene = true
+shader = ExtResource("24_63m0j")
+shader_parameter/numbers = ExtResource("24_7m3n2")
+
 [sub_resource type="Environment" id="Environment_6wevv"]
 background_mode = 1
 ambient_light_source = 2
@@ -489,8 +496,8 @@ max_db = 3.005
 panning_strength = 2.6
 
 [node name="MainCamera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(-4.371139e-08, 0.34202015, -0.9396926, 0, 0.9396926, 0.34202015, 1, 1.4950176e-08, -4.1075268e-08, -15, 10, 0)
-fov = 45.0
+transform = Transform3D(-4.371139e-08, 0.34202015, -0.9396926, 0, 0.9396926, 0.34202015, 1, 1.4950176e-08, -4.1075268e-08, -17, 9, 0)
+fov = 50.0
 near = 8.0
 far = 180.0
 
@@ -542,7 +549,7 @@ texture = SubResource("GradientTexture2D_u0fll")
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="TrafficPaths" parent="Interactables" instance=ExtResource("26_l0tpv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, -0.15, 0)
 
 [node name="TrafficPaths2" parent="Interactables" instance=ExtResource("26_l0tpv")]
 
@@ -596,6 +603,24 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [node name="DriveHUD" parent="UI" instance=ExtResource("29_7m3n2")]
 
+[node name="TenThousandsTexture" parent="UI/DriveHUD/Root/Odometer" index="0"]
+material = SubResource("ShaderMaterial_pj8nq")
+
+[node name="ThousandsTexture" parent="UI/DriveHUD/Root/Odometer" index="1"]
+material = SubResource("ShaderMaterial_pj8nq")
+
+[node name="HundredsTexture" parent="UI/DriveHUD/Root/Odometer" index="2"]
+material = SubResource("ShaderMaterial_pj8nq")
+
+[node name="TensTexture" parent="UI/DriveHUD/Root/Odometer" index="3"]
+material = SubResource("ShaderMaterial_pj8nq")
+
+[node name="OnesTexture" parent="UI/DriveHUD/Root/Odometer" index="4"]
+material = SubResource("ShaderMaterial_pj8nq")
+
+[node name="TenthsTexture" parent="UI/DriveHUD/Root/Odometer" index="5"]
+material = SubResource("ShaderMaterial_pj8nq")
+
 [node name="PauseMenu" parent="UI" instance=ExtResource("23_4nao0")]
 visible = false
 
@@ -618,15 +643,15 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1440, 960)
+size = Vector2i(1080, 2280)
 render_target_update_mode = 0
 
 [node name="GameoverCamera3D" type="Camera3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
-transform = Transform3D(-4.371139e-08, 0.3420201, -0.93969256, 0, 0.93969256, 0.3420201, 1, 1.4950173e-08, -4.1075264e-08, -15, 9.625, 0)
+transform = Transform3D(-4.371139e-08, 0.3420201, -0.93969256, 0, 0.93969256, 0.3420201, 1, 1.4950173e-08, -4.1075264e-08, -17, 9, 0)
 visible = false
 cull_mask = 1048574
 environment = SubResource("Environment_6wevv")
-fov = 45.0
+fov = 50.0
 near = 6.0
 far = 120.0
 
@@ -644,11 +669,12 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -154.0
-offset_top = 32.0
-offset_right = 154.0
-offset_bottom = 162.0
+offset_left = -448.0
+offset_top = 123.99999
+offset_right = 171.0
+offset_bottom = 384.0
 grow_horizontal = 2
+scale = Vector2(1.45, 1.45)
 
 [node name="GameOverMessage" type="Label" parent="UI/GameoverLayer/TravelledVBoxContainer"]
 layout_mode = 2
@@ -683,13 +709,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -198.5
-offset_top = -62.0
-offset_right = 198.5
-offset_bottom = -20.0
+offset_left = -485.0
+offset_top = -218.0
+offset_right = 268.0
+offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Click your car to try again"
+scale = Vector2(1.29, 1.29)
+text = "Tap your car to try again"
 label_settings = ExtResource("21_p8ryb")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="UI/GameoverLayer"]

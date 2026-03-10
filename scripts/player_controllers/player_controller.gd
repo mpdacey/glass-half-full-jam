@@ -22,7 +22,8 @@ func _physics_process(delta: float) -> void:
 	rotation.y = move_toward(rotation.y, deg_to_rad(car_tilt_ratio * 30), deg_to_rad(270) * delta)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is not InputEventMouseMotion:
+	if (event is not InputEventMouseMotion
+	):
 		return
 	
 	_calc_vehicle_position()
@@ -32,6 +33,8 @@ func _calc_vehicle_position() -> void:
 	var mouse_coords := viewport.get_mouse_position()
 	var viewport_size := viewport.get_visible_rect().size
 	var mouse_coords_ratio := mouse_coords.x / viewport_size.x
+	if(OS.has_feature("android") or OS.has_feature("web_android")):
+		mouse_coords_ratio = remap(mouse_coords_ratio, 0.0, 1.0, 0.25, 0.75)
 	
 	var new_remapped_position := remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
 	if abs(remapped_vehicle_position - new_remapped_position) > 1:

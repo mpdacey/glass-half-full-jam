@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c4gnkrrvjtilp"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://0btiwkdgpq5e"]
 
 [ext_resource type="Shader" uid="uid://7sfyxlr738lf" path="res://shader/odometer_shader.gdshader" id="1_be8o3"]
 [ext_resource type="Texture2D" uid="uid://cph7yiesffh3n" path="res://textures/drive_ui/odometer_wheel.png" id="2_2v2ue"]

@@ -1272,10 +1272,10 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = -20.0
+offset_left = -4.0
+offset_right = -4.0
 grow_horizontal = 2
-scale = Vector2(0.6, 0.6)
+scale = Vector2(1.1, 1.1)
 
 [node name="PlayButton" type="TextureButton" parent="Foreground"]
 process_mode = 2

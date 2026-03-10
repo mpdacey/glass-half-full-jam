@@ -716,10 +716,21 @@ offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.29, 1.29)
-text = "Tap your car to try again"
+text = "Tap to try again"
 label_settings = ExtResource("21_p8ryb")
+language = "en_AU"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="UI/GameoverLayer"]
+
+[node name="TryAgainButton" type="Button" parent="UI/GameoverLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="GameoverNodes" type="Node" parent="."]
 
@@ -802,6 +813,7 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
 [connection signal="pressed" from="UI/DriveHUD/Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="UI/PauseMenu" method="show"]
 [connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD/DisplayAnimator" method="play" binds= ["show"]]
+[connection signal="pressed" from="UI/GameoverLayer/TryAgainButton" to="GameoverNodes/ResetHandler" method="request_reset"]
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"retry"]]
 [connection signal="global_signal_emitted" from="GameoverNodes/GameoverInterfacers/TerrainGameoverEmitter" to="Interactables/TerrainDressingPlayer" method="stop" binds= [true]]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="swap_to_main"]

@@ -120,6 +120,12 @@ _data = {
 
 [node name="TrafficCore" instance=ExtResource("1_bjd10")]
 
+[node name="PlayerNearDetector" parent="." index="0"]
+collision_mask = 0
+
+[node name="ObstacleHitBox" parent="." index="1"]
+collision_layer = 0
+
 [node name="CollisionShape3D" parent="ObstacleHitBox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2803704, 0.315318)
 shape = SubResource("BoxShape3D_30yfe")
@@ -168,4 +174,5 @@ texture = ExtResource("4_kefah")
 libraries = {
 &"": SubResource("AnimationLibrary_ut16d")
 }
+autoplay = "strobe_lights"
 speed_scale = 1.6

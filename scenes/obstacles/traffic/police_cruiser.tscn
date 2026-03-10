@@ -1,0 +1,178 @@
+[gd_scene load_steps=9 format=3 uid="uid://ehjl5dkja5qi"]
+
+[ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_bjd10"]
+[ext_resource type="ArrayMesh" uid="uid://d2qp4xbd5cebb" path="res://models/traffic/police.obj" id="2_kefah"]
+[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="3_03auq"]
+[ext_resource type="Texture2D" uid="uid://xw2e5nsicaql" path="res://textures/halo_texture.tres" id="4_kefah"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_30yfe"]
+size = Vector3(2.432, 2.2932217, 5.718)
+
+[sub_resource type="Animation" id="Animation_kefah"]
+resource_name = "strobe_lights"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BumperRedSiren:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.255, 0.255, 0.255), Vector3(0.085, 0.085, 0.085)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BumperBlueSiren:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.085, 0.085, 0.085), Vector3(0.255, 0.255, 0.255)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TopBlueSiren:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.135, 0.135, 0.135), Vector3(0.325, 0.325, 0.325)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TopRedSiren:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.325, 0.325, 0.325), Vector3(0.135, 0.135, 0.135)]
+}
+
+[sub_resource type="Animation" id="Animation_03auq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BumperRedSiren:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.255, 0.255, 0.255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BumperBlueSiren:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.255, 0.255, 0.255)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TopBlueSiren:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.325, 0.325, 0.325)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TopRedSiren:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.325, 0.325, 0.325)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ut16d"]
+_data = {
+&"RESET": SubResource("Animation_03auq"),
+&"strobe_lights": SubResource("Animation_kefah")
+}
+
+[node name="TrafficCore" instance=ExtResource("1_bjd10")]
+
+[node name="PlayerNearDetector" parent="." index="0"]
+collision_mask = 0
+
+[node name="ObstacleHitBox" parent="." index="1"]
+collision_layer = 0
+
+[node name="CollisionShape3D" parent="ObstacleHitBox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2803704, 0.315318)
+shape = SubResource("BoxShape3D_30yfe")
+
+[node name="PoliceCruiser" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
+mesh = ExtResource("2_kefah")
+surface_material_override/0 = ExtResource("3_03auq")
+surface_material_override/1 = ExtResource("3_03auq")
+surface_material_override/2 = ExtResource("3_03auq")
+surface_material_override/3 = ExtResource("3_03auq")
+surface_material_override/4 = ExtResource("3_03auq")
+surface_material_override/5 = ExtResource("3_03auq")
+
+[node name="TopRedSiren" type="Sprite3D" parent="PoliceCruiser" index="0"]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0.24195503, 1.2355804, 0.10851095)
+modulate = Color(1, 0.40600002, 0.33999997, 0.58431375)
+billboard = 1
+no_depth_test = true
+texture = ExtResource("4_kefah")
+
+[node name="TopBlueSiren" type="Sprite3D" parent="PoliceCruiser" index="1"]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, -0.25291693, 1.2355804, 0.108510904)
+modulate = Color(0.41000003, 0.6361666, 1, 0.58431375)
+billboard = 1
+no_depth_test = true
+texture = ExtResource("4_kefah")
+
+[node name="BumperRedSiren" type="Sprite3D" parent="PoliceCruiser" index="2"]
+transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0.35887688, 0.5556392, 1.5006026)
+modulate = Color(1, 0.40784314, 0.34117648, 0.58431375)
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = ExtResource("4_kefah")
+
+[node name="BumperBlueSiren" type="Sprite3D" parent="PoliceCruiser" index="3"]
+transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, -0.34369352, 0.5556392, 1.5006026)
+modulate = Color(0.41000003, 0.6361666, 1, 0.58431375)
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = ExtResource("4_kefah")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PoliceCruiser" index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_ut16d")
+}
+autoplay = "strobe_lights"
+speed_scale = 1.6

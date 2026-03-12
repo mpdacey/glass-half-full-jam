@@ -24,11 +24,14 @@ func _physics_process(delta: float) -> void:
 	rotation.y = move_toward(rotation.y, deg_to_rad(car_tilt_ratio * 30), deg_to_rad(270) * delta)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if (event is not InputEventMouseMotion
+	if (
+		event is InputEventMouseMotion
+		or (
+			event is InputEventMouseButton
+			and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT
+		)
 	):
-		return
-	
-	_calc_vehicle_position()
+		_calc_vehicle_position()
 
 func _calc_vehicle_position() -> void:
 	var viewport := get_viewport()

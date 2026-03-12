@@ -3,7 +3,9 @@ class_name PlayerVehicleController
 
 signal turned_sharply()
 
-@export var max_swerve_distance : float = 15.0
+const IDEAL_RATIO = 0.36477986419691
+
+@export var max_swerve_distance : float = 8.0
 @export var mouse_tracking_surface_speeds : Dictionary[SurfaceController.SurfaceType, float] = {
 		SurfaceController.SurfaceType.ROAD : 20,
 		SurfaceController.SurfaceType.DIRT : 10,
@@ -30,13 +32,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _calc_vehicle_position() -> void:
 	var viewport := get_viewport()
-	var mouse_coords := viewport.get_mouse_position()
+	var mouse_coords := viewport.get_window().get_mouse_position()
+	var viewport_window_size := viewport.get_window().size
 	var viewport_size := viewport.get_visible_rect().size
-	var mouse_coords_ratio := mouse_coords.x / viewport_size.x
-	if(OS.has_feature("android") or OS.has_feature("web_android")):
-		mouse_coords_ratio = remap(mouse_coords_ratio, 0.0, 1.0, 0.25, 0.75)
 	
-	var new_remapped_position := remap(mouse_coords_ratio, 0, 1, -max_swerve_distance, max_swerve_distance)
+	var mouse_coords_ratio := mouse_coords.x / viewport_size.x
+	var window_play_area_size := Vector2i(roundi(viewport_window_size.y * IDEAL_RATIO), viewport_window_size.y)
+	var deadzone_size := (viewport_window_size.x - window_play_area_size.x) * 0.5
+	var deadzone_ratio := deadzone_size / viewport_window_size.x
+	var play_area_ratio := float(window_play_area_size.x) / viewport_window_size.x
+	var clamped_mouse_coords := clampf(mouse_coords_ratio, deadzone_ratio, deadzone_ratio + play_area_ratio)
+	var remapped_mouse_coords := remap(clamped_mouse_coords, deadzone_ratio, deadzone_ratio + play_area_ratio, 0, 1)
+
+	var new_remapped_position := remap(remapped_mouse_coords, 0, 1, -max_swerve_distance, max_swerve_distance)
 	if abs(remapped_vehicle_position - new_remapped_position) > 1:
 		if not _currently_sharp_turning:
 			turned_sharply.emit() 

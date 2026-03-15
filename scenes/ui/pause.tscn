@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bcdlgci6a3vwr"]
+[gd_scene load_steps=29 format=3 uid="uid://bcdlgci6a3vwr"]
 
 [ext_resource type="Texture2D" uid="uid://bj5bhv0qlvq3r" path="res://textures/pause_menu/play_cube.png" id="1_k23cl"]
 [ext_resource type="Texture2D" uid="uid://beqqdeg13gv2k" path="res://textures/pause_menu/music_cube_enabled.png" id="2_4x8ym"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_eq7dk"]
 [ext_resource type="Script" uid="uid://bw1paub1fikwp" path="res://scripts/tree_pause_interfacer.gd" id="7_arkwq"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_emuhb"]
+[ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="10_78mva"]
 [ext_resource type="Script" uid="uid://dpdcc7bh4f6ba" path="res://scripts/audio/audio_toggle_controller.gd" id="11_fosa6"]
 [ext_resource type="AudioStream" uid="uid://d3uv12tggp77k" path="res://audio/sfx/pause/dice_bounce_1.ogg" id="13_5amhe"]
 [ext_resource type="AudioStream" uid="uid://d35sfwlk3kyjp" path="res://audio/sfx/pause/dice_bounce_2.ogg" id="14_78mva"]
@@ -1417,6 +1418,10 @@ points = PackedVector2Array(216, 208, 0, 0)
 width = 16.0
 texture = ExtResource("4_vfyr0")
 texture_mode = 1
+
+[node name="AndroidBackListener" type="Node" parent="Foreground/QuitButton"]
+script = ExtResource("10_78mva")
+metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
 [node name="Mirror" type="TextureRect" parent="Foreground"]
 layout_mode = 0

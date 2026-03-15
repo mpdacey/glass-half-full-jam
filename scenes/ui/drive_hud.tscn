@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b67sj3e8sr1yb"]
+[gd_scene load_steps=27 format=3 uid="uid://b67sj3e8sr1yb"]
 
 [ext_resource type="Texture2D" uid="uid://bfs7rh3h5hxif" path="res://textures/drive_ui/base.png" id="1_6b0x4"]
 [ext_resource type="Texture2D" uid="uid://b6gssdhdww08g" path="res://textures/drive_ui/needle.png" id="2_xw47v"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="3_xw47v"]
 [ext_resource type="Texture2D" uid="uid://57cpm8j7toh7" path="res://textures/drive_ui/pause_button.png" id="4_1287o"]
 [ext_resource type="Texture2D" uid="uid://c65eaukm72ikd" path="res://textures/drive_ui/pause_button_shade.png" id="5_tixjq"]
+[ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="6_hctyk"]
 [ext_resource type="Texture2D" uid="uid://bwg0odu0qshsp" path="res://textures/pause_menu/cube_string.png" id="6_tixjq"]
 [ext_resource type="Script" uid="uid://dkv6y1syb024s" path="res://scripts/warnings_ui_controller.gd" id="8_eq4iw"]
 [ext_resource type="Texture2D" uid="uid://c2t4hlwo6cn28" path="res://textures/high-fuel-warning.png" id="8_njc0o"]
@@ -388,6 +389,10 @@ offset_bottom = 77.6911
 texture_normal = ExtResource("4_1287o")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="AndroidBackListener" type="Node" parent="Root/PauseButtonRoot/PauseButtonParent/PauseButton"]
+script = ExtResource("6_hctyk")
+metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
 [node name="PauseButtonShadowParent" type="Node2D" parent="Root/PauseButtonRoot"]
 

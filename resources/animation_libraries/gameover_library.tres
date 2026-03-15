@@ -726,7 +726,7 @@ tracks/33/keys = {
 
 [sub_resource type="Animation" id="Animation_sryra"]
 resource_name = "retry"
-length = 0.8
+length = 1.2
 step = 0.1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -749,10 +749,10 @@ tracks/1/path = NodePath("../UI/GameoverLayer/SubViewportContainer/SubViewport/C
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.099999994, 0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-9.475, 4.125, -0.255), Vector3(-8.535, 8, 0)]
+"values": [Vector3(-9.475, 4.125, -0.255), Vector3(-9.475, 4.075, -0.255), Vector3(-8.535, 8, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -761,10 +761,10 @@ tracks/2/path = NodePath("../UI/GameoverLayer/SubViewportContainer/SubViewport/C
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.1, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.34906584, -1.5707964, 0), Vector3(1.5707964, -1.5707964, 0)]
+"values": [Vector3(-0.34906584, -1.5707964, 0), Vector3(-0.36651915, -1.5707964, 0), Vector3(1.5707964, -1.5707964, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -773,10 +773,10 @@ tracks/3/path = NodePath("../Player/CameraFollower/MainCamera3D:rotation")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.1, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.34906584, -1.5707964, 0), Vector3(1.5707964, -1.5707964, 0)]
+"values": [Vector3(-0.34906584, -1.5707964, 0), Vector3(-0.36651915, -1.5707964, 0), Vector3(1.5707964, -1.5707964, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -785,10 +785,10 @@ tracks/4/path = NodePath("../Player/CameraFollower/MainCamera3D:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.099999994, 0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-9.475, 4.125, -0.255), Vector3(-8.535, 8, 0)]
+"values": [Vector3(-9.475, 4.125, -0.255), Vector3(-9.377, 4.075, -0.228), Vector3(-8.535, 8, 0)]
 }
 tracks/5/type = "method"
 tracks/5/imported = false
@@ -853,6 +853,34 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Interactables/TrafficPaths")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_clean_road_segment"
+}]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Interactables/TrafficPaths2")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_clean_road_segment"
+}]
 }
 
 [resource]

@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b3o8s"]
 render_priority = 1
 shader = ExtResource("1_b3o8s")
-shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/albedo = Color(0, 0, 0, 0)
 shader_parameter/grow = 0.10000076
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0

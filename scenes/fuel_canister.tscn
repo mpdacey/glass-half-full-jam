@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://bick452yv4p3p"]
+[gd_scene load_steps=13 format=4 uid="uid://bick452yv4p3p"]
 
 [ext_resource type="AnimationLibrary" uid="uid://j1ir62h613ec" path="res://scenes/obstacles/fuel_animation_library.tres" id="1_whhod"]
 [ext_resource type="Material" uid="uid://c0gpax6g2inuo" path="res://materials/gas-canister-body.tres" id="2_whhod"]
+[ext_resource type="Texture2D" uid="uid://c2t4hlwo6cn28" path="res://textures/high-fuel-warning.png" id="3_whhod"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_whhod"]
 custom_solver_bias = 0.095
@@ -110,7 +111,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kvbde")
 
 [node name="fuel-canister" type="Node3D"]
-metadata/animator = NodePath("AnimationPlayer")
+metadata/animator = NodePath("GrowPlayer")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 0
@@ -126,10 +127,16 @@ libraries = {
 }
 autoplay = "spin"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="GrowPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": ExtResource("1_whhod")
 }
+
+[node name="WarningPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": ExtResource("1_whhod")
+}
+autoplay = "warning"
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -153,3 +160,15 @@ instance_shader_parameters/albedo = Color(0.08, 0.08, 0.08, 1)
 mesh = SubResource("ArrayMesh_cuh0w")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_whhod")
+
+[node name="WarningAlarm" type="Sprite3D" parent="Model"]
+transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 0, 1.3407254, 0)
+visible = false
+cast_shadow = 0
+lod_bias = 0.001
+modulate = Color(1, 1, 1, 0.39607844)
+billboard = 1
+no_depth_test = true
+texture_filter = 1
+render_priority = 2
+texture = ExtResource("3_whhod")

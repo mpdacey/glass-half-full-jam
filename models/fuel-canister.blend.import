@@ -41,16 +41,16 @@ _subresources={
 "materials": {
 "@MATERIAL:1": {
 "use_external/enabled": true,
-"use_external/path": "uid://ceyt25npvjufv"
+"use_external/path": "uid://c0gpax6g2inuo"
 },
 "@MATERIAL:2": {
 "use_external/enabled": true,
-"use_external/path": "uid://c6ddplqjyn6wf"
+"use_external/path": "uid://c0gpax6g2inuo"
 },
 "Material": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://materials/gas-canister-body.tres",
-"use_external/path": "uid://ceyt25npvjufv"
+"use_external/path": "uid://c0gpax6g2inuo"
 }
 }
 }

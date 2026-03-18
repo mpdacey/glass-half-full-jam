@@ -12,6 +12,7 @@ enum EngineState {
 	DRAINED
 }
 
+@export_range(0, 1, 0.01) var starting_fuel : float = 0.8
 @export_range(0, 1, 0.01) var fuel_canister_replenishment : float = 0.3
 @export_group("State Thresholds")
 @export_range(0, 1, 0.01) var cruise_threshold : float = 0.55
@@ -22,7 +23,7 @@ enum EngineState {
 @export_range(0, 1, 0.01) var boost_decay_rate : float = 0.15
 @export_range(0, 1, 0.01) var cruise_decay_rate : float = 0.05
 @export_range(0, 1, 0.01) var drained_decay_rate : float = 0.03
-var remaining_fuel : float = 0.9
+@onready var remaining_fuel : float = starting_fuel
 var current_state : EngineState = EngineState.CRUISE
 
 func _process(delta: float) -> void:

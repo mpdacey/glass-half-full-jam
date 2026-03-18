@@ -419,7 +419,7 @@ points = PackedVector2Array(37.922028, 10.825226, 38.066437, -37.94648)
 texture = ExtResource("6_tixjq")
 texture_mode = 1
 
-[node name="Warnings" type="Control" parent="Root" node_paths=PackedStringArray("overflow_warning", "underflow_warning")]
+[node name="Warnings" type="Control" parent="Root" node_paths=PackedStringArray("underflow_warning")]
 modulate = Color(0.84, 0.84, 0.84, 1)
 anchors_preset = 0
 offset_left = 0.6013489
@@ -427,9 +427,7 @@ offset_top = 108.95554
 offset_right = 0.6013489
 offset_bottom = 108.95554
 script = ExtResource("8_eq4iw")
-overflow_warning = NodePath("OverflowWarning")
 underflow_warning = NodePath("UnderflowWarning")
-full_fuel_threshold = 0.7
 low_fuel_threshold = 0.4
 
 [node name="OverflowWarning" type="TextureRect" parent="Root/Warnings"]

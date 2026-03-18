@@ -1,7 +1,8 @@
-[gd_scene load_steps=64 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=68 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
+[ext_resource type="Shader" uid="uid://0t1o1c4mh147" path="res://shader/main_canister_shader.gdshader" id="4_eg42k"]
 [ext_resource type="AudioStream" uid="uid://druixlt2nm3ew" path="res://audio/sfx/tire-screech/dirt-screech.ogg" id="4_x2qcq"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="5_dfpoj"]
 [ext_resource type="Script" uid="uid://2og5ed1ru6gn" path="res://scripts/audio/tire_screech_audio_player.gd" id="5_yov1g"]
@@ -19,8 +20,10 @@
 [ext_resource type="Script" uid="uid://dr0u7hy6jirbi" path="res://scripts/player_controllers/player_collision_controller.gd" id="15_83g3t"]
 [ext_resource type="Script" uid="uid://c44w1ggq0eblg" path="res://scripts/player_controllers/surface_controller.gd" id="16_ekkaj"]
 [ext_resource type="Script" uid="uid://k6i3d1744qm6" path="res://scripts/player_controllers/player_click_handler.gd" id="17_edg7r"]
+[ext_resource type="Script" uid="uid://vopobtxyravj" path="res://scripts/overflow_warning_controller.gd" id="21_dwjdh"]
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="21_p8ryb"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="22_1b2ky"]
+[ext_resource type="Script" uid="uid://dqvr18prfj6k" path="res://scripts/fuel_warning_controller.gd" id="22_dwlll"]
 [ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="23_0gf1i"]
 [ext_resource type="PackedScene" uid="uid://bcdlgci6a3vwr" path="res://scenes/ui/pause.tscn" id="23_4nao0"]
 [ext_resource type="Texture2D" uid="uid://cph7yiesffh3n" path="res://textures/drive_ui/odometer_wheel.png" id="24_7m3n2"]
@@ -44,6 +47,21 @@ radius = 1.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c1pb6"]
 radius = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dwjdh"]
+render_priority = 0
+shader = ExtResource("4_eg42k")
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.65
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.36
+shader_parameter/metallic = 0.38
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = 0.0999999977648
 
 [sub_resource type="Animation" id="Animation_c1pb6"]
 length = 0.001
@@ -516,6 +534,18 @@ visible = false
 [node name="Area3D" parent="Player/PlayerVehicle/fuel-canister" index="0"]
 collision_layer = 0
 
+[node name="WarningPlayer" parent="Player/PlayerVehicle/fuel-canister" index="3"]
+active = false
+
+[node name="Cube" parent="Player/PlayerVehicle/fuel-canister/Model" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_dwjdh")
+
+[node name="BézierCurve" parent="Player/PlayerVehicle/fuel-canister/Model" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_dwjdh")
+
+[node name="Cylinder" parent="Player/PlayerVehicle/fuel-canister/Model" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_dwjdh")
+
 [node name="CollectionAnimationPlayer" type="AnimationPlayer" parent="Player/PlayerVehicle"]
 libraries = {
 &"": SubResource("AnimationLibrary_6wevv")
@@ -604,6 +634,12 @@ road_raycast = NodePath("../PlayerVehicle/RoadDetector")
 [node name="PlayerClickHandler" type="Node" parent="Player"]
 script = ExtResource("17_edg7r")
 
+[node name="OverflowWarningController" type="Node" parent="Player" node_paths=PackedStringArray("fuel_controller", "fuel_placement_controller", "drive_controller")]
+script = ExtResource("21_dwjdh")
+fuel_controller = NodePath("../FuelController")
+fuel_placement_controller = NodePath("../../Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController")
+drive_controller = NodePath("../DriveController")
+
 [node name="PlayerHorizon" type="Area3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.01162, 0, 0)
 visible = false
@@ -652,6 +688,10 @@ script = ExtResource("27_x2qcq")
 lane_follower = NodePath("..")
 placement_follower = NodePath("../FuelPlacementPath/FuelPlacementFollower")
 warp_shift_amount = 401.88
+fuel_canister = NodePath("../FuelPlacementPath/FuelPlacementFollower/fuel-canister")
+
+[node name="FuelWarningController" type="Node" parent="Interactables/FuelLanePath/FuelLanePathFollower" node_paths=PackedStringArray("fuel_canister")]
+script = ExtResource("22_dwlll")
 fuel_canister = NodePath("../FuelPlacementPath/FuelPlacementFollower/fuel-canister")
 
 [node name="TerrainDressingPlayer" type="AnimationPlayer" parent="Interactables"]
@@ -891,6 +931,7 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="speed_scale_updated" from="Player/DriveController" to="Player/DriveController/SpeedUpdatedEmitter" method="emit_global_signal_with_value"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/CarNoises/FuelCollectedAudioPlayer" method="play"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/FuelController" method="_on_fuel_collected"]
+[connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelWarningController" method="stop_warning"]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/PlayerHitboxArea" method="set_monitoring" flags=3 binds= [false]]
 [connection signal="fuel_collected" from="Player/PlayerCollisionController" to="Player/PlayerVehicle/CollectionAnimationPlayer" method="play" binds= [&"collect_fuel"]]
 [connection signal="player_crashed" from="Player/PlayerCollisionController" to="UI/GameoverLayer/TravelledVBoxContainer/GameOverMessage" method="set_text" binds= ["You crashed"]]
@@ -901,7 +942,10 @@ metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
 [connection signal="road_type_changed" from="Player/SurfaceController" to="Player/DriveController" method="_on_surface_type_changed"]
 [connection signal="click_detected" from="Player/PlayerClickHandler" to="Player/PlayerVehicle/CarNoises/HornAudioPlayer" method="play"]
 [connection signal="click_detected" from="Player/PlayerClickHandler" to="GameoverNodes/ResetHandler" method="request_reset"]
+[connection signal="overflow_imminent" from="Player/OverflowWarningController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelWarningController" method="play_warning"]
+[connection signal="overflow_safe" from="Player/OverflowWarningController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelWarningController" method="stop_warning"]
 [connection signal="area_exited" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementArea" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister" unbinds=1]
+[connection signal="next_canister_placed" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Player/OverflowWarningController" method="record_new_values"]
 [connection signal="next_canister_placed" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Player/PlayerVehicle/PlayerHitboxArea" method="set_monitoring" flags=3 binds= [true]]
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]

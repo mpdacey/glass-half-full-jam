@@ -15,7 +15,7 @@ var _current_fuel_value := 0.0
 var _current_speed_value := 0.0
 var _fuel_placement_time_gap := 5.0
 # Just a number that feels right, but isn't exact cause player movement can be variable
-var _fuel_placement_delay := 1.05
+var _fuel_placement_delay := 1.1
 
 func _ready() -> void:
 	var fuel_placement_distance_ratio := fuel_placement_controller.canister_distance / TERRAIN_LOOP_DISTANCE

@@ -227,7 +227,6 @@ clip_1/auto_advance = 0
 clip_2/name = &"low"
 clip_2/stream = ExtResource("10_eg42k")
 clip_2/auto_advance = 0
-initial_clip = 1
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 0.2,

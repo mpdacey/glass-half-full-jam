@@ -24,9 +24,11 @@ enum EngineState {
 @export_range(0, 1, 0.01) var cruise_decay_rate : float = 0.05
 @export_range(0, 1, 0.01) var drained_decay_rate : float = 0.03
 @onready var remaining_fuel : float = starting_fuel
-var current_state : EngineState = EngineState.CRUISE
+@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
+var current_state : EngineState = -1
 
 func _process(delta: float) -> void:
+	set_engine_state()
 	match(current_state):
 		EngineState.BOOST:
 			remaining_fuel -= boost_decay_rate * delta
@@ -36,7 +38,6 @@ func _process(delta: float) -> void:
 			remaining_fuel -= drained_decay_rate * delta
 	
 	fuel_amount_updated.emit(remaining_fuel)
-	set_engine_state()
 	check_engine_gameover_conditions()
 
 func set_engine_state() -> void:

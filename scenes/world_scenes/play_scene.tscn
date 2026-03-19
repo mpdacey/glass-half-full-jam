@@ -588,6 +588,7 @@ stream = ExtResource("12_wjfxh")
 unit_size = 23.7
 max_db = 3.005
 panning_strength = 2.6
+bus = &"SFX"
 
 [node name="CameraFollower" type="Node3D" parent="Player" node_paths=PackedStringArray("player")]
 script = ExtResource("13_63m0j")

@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b210kvlm3hw7d"]
+[gd_scene load_steps=11 format=3 uid="uid://b210kvlm3hw7d"]
 
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="1_r0vov"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_mwelm"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="3_sltll"]
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="4_sltll"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="6_6c71x"]
+[ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="6_tle65"]
+[ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="7_sa032"]
 
 [sub_resource type="Animation" id="Animation_wsgjl"]
 length = 0.001
@@ -92,9 +94,10 @@ text = "Compiling Shaders..."
 label_settings = ExtResource("1_r0vov")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.9834009, 0, 5.474494, 10.841986)
+transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.9834009, 0, 5.474494, 11.435804)
 
 [node name="TrafficCore" parent="." instance=ExtResource("2_mwelm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7918973, 0, -7.0662956)
 script = null
 
 [node name="RoadSegment" parent="." instance=ExtResource("4_sltll")]
@@ -102,8 +105,15 @@ script = null
 [node name="PlayerVehicle" parent="." instance=ExtResource("3_sltll")]
 script = null
 
-[node name="EngineSmokeEmitter" parent="PlayerVehicle" index="2"]
+[node name="SedanSports" parent="PlayerVehicle" index="0"]
+transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.0000001, 0, -1.0000001, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="EngineSmokeEmitter" parent="PlayerVehicle" index="1"]
 emitting = true
+
+[node name="OffRoadAnimator" parent="PlayerVehicle/OffRoadNodes" index="1"]
+active = false
+autoplay = ""
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -115,5 +125,13 @@ autoplay = "compile_animation"
 script = ExtResource("6_6c71x")
 global_signal_name = &"scene_change_request_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="TrafficCore2" parent="." instance=ExtResource("7_sa032")]
+transform = Transform3D(-0.06328675, 0, -0.8447882, 0, 0.99999994, 0, 0.6937904, 0, -0.048542947, -4.2617035, 0.034033537, -2.5469785)
+
+[node name="fuel-canister" parent="." instance=ExtResource("6_tle65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8306751, 1.9226065, -4.581192)
+
+[connection signal="ready" from="PlayerVehicle/OffRoadNodes/DustCloudEmitter" to="PlayerVehicle/OffRoadNodes/DustCloudEmitter" method="set_emitting" binds= [true]]
 
 [editable path="PlayerVehicle"]

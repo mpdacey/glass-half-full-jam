@@ -26,9 +26,9 @@ traffic_scenes = Array[PackedScene]([ExtResource("2_31o3m"), ExtResource("3_25je
 traffic_paths = [NodePath("OngoingLanePath"), NodePath("IncomingLanePath")]
 
 [node name="OngoingLanePath" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 2.84618)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 2.845)
 curve = SubResource("Curve3D_8ly67")
 
 [node name="IncomingLanePath" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, -2.6153383)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -2.615)
 curve = SubResource("Curve3D_0y1vw")

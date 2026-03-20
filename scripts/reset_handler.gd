@@ -1,6 +1,7 @@
 extends Node
 
 signal reset_requested
+signal reset_called
 
 @export var can_reset : bool = false
 
@@ -10,4 +11,4 @@ func request_reset() -> void:
 
 func reset_game() -> void:
 	if can_reset:
-		GlobalSignalBus.scene_change_request_play.emit()
+		reset_called.emit()

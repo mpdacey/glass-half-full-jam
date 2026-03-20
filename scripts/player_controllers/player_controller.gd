@@ -18,6 +18,13 @@ var _mouse_tracking_speed := mouse_tracking_surface_speeds[SurfaceController.Sur
 var _surface_change_tween : Tween
 var _currently_sharp_turning : bool = false
 
+func reset() -> void:
+	set_physics_process(true)
+	set_process_unhandled_input(true)
+	remapped_vehicle_position = 0.0
+	_currently_sharp_turning = false
+	_set_smoke_particles(false)
+
 func _physics_process(delta: float) -> void:
 	var car_tilt_ratio := clampf(position.z - remapped_vehicle_position, -5.0, 5.0) / 5.0
 	position.z = move_toward(position.z, remapped_vehicle_position, abs(_mouse_tracking_speed * car_tilt_ratio) * delta)
@@ -69,4 +76,6 @@ func _on_surface_type_changed(road_type: SurfaceController.SurfaceType) -> void:
 			self, "_mouse_tracking_speed", mouse_tracking_surface_speeds[0], surface_transition_time)
 
 func _set_smoke_particles(on: bool) -> void:
+	engine_smoke_emitter.restart()
 	engine_smoke_emitter.emitting = on
+	engine_smoke_emitter.visible = on

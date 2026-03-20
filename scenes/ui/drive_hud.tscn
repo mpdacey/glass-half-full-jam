@@ -470,6 +470,7 @@ odometer_values = [NodePath("TenthsTexture"), NodePath("OnesTexture"), NodePath(
 [node name="TenThousandsTexture" type="Sprite2D" parent="Root/Odometer"]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
+instance_shader_parameters/display_number = 0.0
 position = Vector2(-128.57169, 36.50187)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")

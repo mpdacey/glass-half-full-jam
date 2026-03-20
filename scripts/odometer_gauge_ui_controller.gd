@@ -5,6 +5,10 @@ const MAX_SCORE = 99999.9
 const NUMBER_CHANGE_TIME = 0.15
 @export var odometer_values : Array[Sprite2D]
 
+func reset_odometer() -> void:
+	for i in range(1, odometer_values.size()):
+		odometer_values[i].set_instance_shader_parameter(DISPLAY_NUMBER_KEY, 0)
+
 func update_odometer(kilometres_travelled: float) -> void:
 	var score : float = min(kilometres_travelled/100, MAX_SCORE)
 	

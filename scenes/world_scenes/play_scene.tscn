@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=69 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://di2puqxd3k4wu" path="res://scripts/fuel_placement_controller.gd" id="27_x2qcq"]
 [ext_resource type="PackedScene" uid="uid://b67sj3e8sr1yb" path="res://scenes/ui/drive_hud.tscn" id="29_7m3n2"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="33_7m3n2"]
+[ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="33_wjfxh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6p3nn"]
 size = Vector3(4.394765, 1.3961182, 1.8012524)
@@ -830,6 +831,12 @@ text = "Tap to try again"
 label_settings = ExtResource("21_p8ryb")
 horizontal_alignment = 1
 language = "en_AU"
+
+[node name="PlatformDependantTextSetter" type="Node" parent="UI/GameoverLayer/TryAgainLabel"]
+script = ExtResource("33_wjfxh")
+mobile_text = "Tap to try again"
+desktop_text = "Click to try again"
+metadata/_custom_type_script = "uid://42ah5w3n1b"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="UI/GameoverLayer"]
 

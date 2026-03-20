@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=26 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="2_pyl7j"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_6ppm8"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="9_bmxmj"]
 [ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="10_1ot34"]
+[ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="13_via76"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="14_ycxqd"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
@@ -579,7 +580,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 2.84618)
 curve = SubResource("Curve3D_c3e3h")
 
 [node name="TrafficCore" parent="Paths/OngoingLanePath" instance=ExtResource("1_4rr2b")]
-transform = Transform3D(0.07743616, 0, -0.9968232, 0, 0.9999627, 0, 0.9968232, 0, 0.07743616, 146.71655, 0, 5.551287)
+transform = Transform3D(0.0774362, 0, -0.9968238, 0, 0.9999627, 0, 0.9968238, 0, 0.0774362, 146.71655, 0, 5.551287)
 progress = 90.43472
 
 [node name="IncomingLanePath" type="Path3D" parent="Paths"]
@@ -587,13 +588,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, -2.6153383)
 curve = SubResource("Curve3D_gf765")
 
 [node name="TrafficCore" parent="Paths/IncomingLanePath" instance=ExtResource("2_yql1r")]
-transform = Transform3D(-4.3703782e-08, 0, 0.999826, 0, 1, 0, -0.999826, 0, -4.3703782e-08, 199.955, 0, -0.08)
+transform = Transform3D(-4.3703793e-08, 0, 0.9998262, 0, 1, 0, -0.9998262, 0, -4.3703793e-08, 199.955, 0, -0.08)
 
 [node name="TrafficCore2" parent="Paths/IncomingLanePath" instance=ExtResource("3_6ppm8")]
-transform = Transform3D(-4.3704e-08, 0, 0.99983096, 0, 1, 0, -0.99983096, 0, -4.3704e-08, 199.955, 0, -0.08)
+transform = Transform3D(-4.3703974e-08, 0, 0.99983037, 0, 1, 0, -0.99983037, 0, -4.3703974e-08, 199.955, 0, -0.08)
 
 [node name="TrafficCore3" parent="Paths/IncomingLanePath" instance=ExtResource("4_bre4b")]
-transform = Transform3D(-4.3704112e-08, 0, 0.9998335, 0, 1, 0, -0.9998335, 0, -4.3704112e-08, 199.955, 0, -0.08)
+transform = Transform3D(-4.370418e-08, 0, 0.9998351, 0, 1, 0, -0.9998351, 0, -4.370418e-08, 199.955, 0, -0.08)
 
 [node name="DollyPath" type="Path3D" parent="Paths"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.115, 0.1, 0.082)
@@ -655,7 +656,7 @@ curve = SubResource("Curve3D_bmxmj")
 debug_custom_color = Color(0.44550002, 0.23100002, 0.66, 1)
 
 [node name="PoliceCore" parent="Paths/PolicePath" instance=ExtResource("9_bmxmj")]
-transform = Transform3D(-0.07831861, 0, -0.8413498, 0, 0.8449875, 0, 0.8413498, 0, -0.07831861, 56.723, 0, 0)
+transform = Transform3D(-0.07831862, 0, -0.8413499, 0, 0.8449875, 0, 0.8413499, 0, -0.07831862, 56.723, 0, 0)
 
 [node name="BumperRedSiren" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" index="2"]
 no_depth_test = false
@@ -725,6 +726,11 @@ grow_vertical = 0
 pivot_offset = Vector2(188, 42)
 text = "Tap to play"
 label_settings = SubResource("LabelSettings_7rdyk")
+
+[node name="PlatformDependantTextSetter" type="Node" parent="TitleCanvasLayer/ClickToPlayText"]
+script = ExtResource("13_via76")
+mobile_text = "Tap to play"
+desktop_text = "Click to play"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer"]
 

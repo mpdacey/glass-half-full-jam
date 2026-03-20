@@ -5,6 +5,7 @@ signal distance_traveled(metres: float)
 signal speed_scale_updated(changed_speed_scale: float)
 
 const COMPLETE_CYCLE_DISTANCE : float = 400.0
+const STARTING_SPEED : float = 2.3
 
 @export_group("Acceleration Rates")
 ## Acceleration value is meters per second
@@ -24,6 +25,11 @@ var _engine_state : FuelController.EngineState = FuelController.EngineState.CRUI
 var _surface_type_dampener := 0.0
 var _metres_travelled := 0.0
 var _speed_scale := 2.3
+
+func reset() -> void:
+	_metres_travelled = 0.0
+	_speed_scale = STARTING_SPEED
+	set_process(true)
 
 func _process(delta: float) -> void:
 	_metres_travelled += _speed_scale * delta * COMPLETE_CYCLE_DISTANCE / 20

@@ -9,6 +9,9 @@ signal next_canister_placed
 @export var warp_shift_amount : float = 400
 @export var fuel_canister : Node3D
 
+func reset() -> void:
+	lane_follower.progress = 0
+
 func place_next_canister() -> void:
 	lane_follower.progress += canister_distance
 	placement_follower.progress_ratio = randf()

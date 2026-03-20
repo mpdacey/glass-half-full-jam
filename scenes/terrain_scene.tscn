@@ -64,6 +64,11 @@ script = ExtResource("3_gil8y")
 global_signal_name = &"scene_changed_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
+[node name="TerrainResetListener" type="Node" parent="Terrain/TerrainAnimators"]
+script = ExtResource("3_gil8y")
+global_signal_name = &"terrain_reset"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
 [node name="TerrainGlobalInterfacers" type="Node" parent="Terrain"]
 
 [node name="TerrainGameoverEmitter" type="Node" parent="Terrain/TerrainGlobalInterfacers"]
@@ -82,6 +87,7 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [connection signal="global_signal_emitted_with_value" from="Terrain/TerrainAnimators/TerrainSpeedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="set_speed_scale"]
 [connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/PlaySceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
 [connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/TitleSceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="stop" binds= [false]]
+[connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/TerrainResetListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
 [connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="start"]
 [connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="stop" binds= [true]]
 [connection signal="timeout" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" to="Terrain" method="hide"]

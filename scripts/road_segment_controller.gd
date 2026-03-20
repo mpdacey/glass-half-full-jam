@@ -2,6 +2,7 @@ extends Node3D
 class_name RoadSegmentController
 
 const ROAD_SEGMENT_LENGTH = 200
+const STARTING_TRAFFIC = 2
 const MAX_TRAFFIC = 7
 
 @export var traffic_scenes: Array[PackedScene]
@@ -9,6 +10,10 @@ const MAX_TRAFFIC = 7
 @export var traffic_paths: Array[Path3D]
 var minimum_distance_between_traffic := 25.0
 var traffic_count : int = 2
+
+func reset_road_segment() -> void:
+	_clean_road_segment()
+	traffic_count = STARTING_TRAFFIC
 
 func dress_road_segment() -> void:
 	_clean_road_segment()

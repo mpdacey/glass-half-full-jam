@@ -4,6 +4,7 @@ extends Node
 signal speed_scale_updated(changed_speed_scale: float)
 signal terrain_gameover
 signal terrain_retry
+signal terrain_reset
 
 #region Scene Management
 signal scene_change_request_play

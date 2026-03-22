@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://drbth85p4ot8"]
+
+[ext_resource type="Texture2D" uid="uid://bav6kw50pbnu1" path="res://textures/material_textures/post_textures/wooden_post_texture.jpg" id="1_aljws"]
+[ext_resource type="Texture2D" uid="uid://c4kjasckh16wr" path="res://textures/material_textures/chain_link_textures/metal_roughness.jpg" id="2_g5itn"]
+
+[resource]
+albedo_texture = ExtResource("1_aljws")
+roughness_texture = ExtResource("2_g5itn")
+uv1_scale = Vector3(0.275, 0.275, 0.275)
+uv1_offset = Vector3(0.04, -0.025, 0)

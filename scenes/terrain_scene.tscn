@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://2byllt2m3knb"]
+[gd_scene load_steps=8 format=3 uid="uid://2byllt2m3knb"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_l47ob"]
 [ext_resource type="AnimationLibrary" uid="uid://jc8fcqbdm5j4" path="res://resources/terrain_animation_library.tres" id="2_rtf8o"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="3_gil8y"]
+[ext_resource type="PackedScene" uid="uid://buc7s25oweoq1" path="res://scenes/fence.tscn" id="4_rtf8o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qsc2p"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -84,6 +85,326 @@ script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_retry"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
+[node name="FenceLine" type="Node3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9917965, 0, -11.102576)
+
+[node name="Fence" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+
+[node name="Fence2" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Fence3" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Fence4" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="Fence5" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
+[node name="Fence6" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+
+[node name="Fence7" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+
+[node name="Fence8" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
+
+[node name="Fence9" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
+
+[node name="Fence10" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
+
+[node name="Fence11" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+
+[node name="Fence12" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 0)
+
+[node name="Fence13" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 0)
+
+[node name="Fence14" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 0, 0)
+
+[node name="Fence14a" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 0)
+
+[node name="Fence15" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 0)
+
+[node name="Fence16" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 0, 0)
+
+[node name="Fence17" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170, 0, 0)
+
+[node name="Fence18" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 0)
+
+[node name="Fence19" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, 0, 0)
+
+[node name="Fence20" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+
+[node name="Fence21" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 0, 0)
+
+[node name="Fence22" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220, 0, 0)
+
+[node name="Fence23" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230, 0, 0)
+
+[node name="Fence24" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 0)
+
+[node name="Fence25" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
+
+[node name="Fence26" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260, 0, 0)
+
+[node name="Fence27" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 0, 0)
+
+[node name="Fence28" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280, 0, 0)
+
+[node name="Fence29" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290, 0, 0)
+
+[node name="Fence30" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0)
+
+[node name="Fence31" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310, 0, 0)
+
+[node name="Fence32" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320, 0, 0)
+
+[node name="Fence33" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 330, 0, 0)
+
+[node name="Fence34" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340, 0, 0)
+
+[node name="Fence35" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350, 0, 0)
+
+[node name="Fence36" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 360, 0, 0)
+
+[node name="Fence37" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370, 0, 0)
+
+[node name="Fence38" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 380, 0, 0)
+
+[node name="Fence39" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 390, 0, 0)
+
+[node name="Fence40" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
+
+[node name="Fence41" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 410, 0, 0)
+
+[node name="Fence42" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 420, 0, 0)
+
+[node name="Fence43" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430, 0, 0)
+
+[node name="Fence44" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 440, 0, 0)
+
+[node name="Fence45" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450, 0, 0)
+
+[node name="Fence46" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460, 0, 0)
+
+[node name="Fence47" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, 0, 0)
+
+[node name="Fence48" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 480, 0, 0)
+
+[node name="Fence49" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 490, 0, 0)
+
+[node name="Fence50" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
+
+[node name="FenceLine2" type="Node3D" parent="Terrain"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 496.008, 0, 11.103)
+
+[node name="SceneChangedPlayListener" type="Node" parent="Terrain/FenceLine2"]
+script = ExtResource("3_gil8y")
+global_signal_name = &"scene_changed_play"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="SceneChangedTitleListener" type="Node" parent="Terrain/FenceLine2"]
+script = ExtResource("3_gil8y")
+global_signal_name = &"scene_changed_title"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="Fence" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+
+[node name="Fence2" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Fence3" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Fence4" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="Fence5" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
+[node name="Fence6" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+
+[node name="Fence7" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+
+[node name="Fence8" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
+
+[node name="Fence9" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
+
+[node name="Fence10" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
+
+[node name="Fence11" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+
+[node name="Fence12" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 0)
+
+[node name="Fence13" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 0)
+
+[node name="Fence14" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 0, 0)
+
+[node name="Fence14a" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 0)
+
+[node name="Fence15" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 0)
+
+[node name="Fence16" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 0, 0)
+
+[node name="Fence17" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170, 0, 0)
+
+[node name="Fence18" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 0)
+
+[node name="Fence19" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, 0, 0)
+
+[node name="Fence20" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+
+[node name="Fence21" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 0, 0)
+
+[node name="Fence22" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220, 0, 0)
+
+[node name="Fence23" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230, 0, 0)
+
+[node name="Fence24" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 0)
+
+[node name="Fence25" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
+
+[node name="Fence26" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260, 0, 0)
+
+[node name="Fence27" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 0, 0)
+
+[node name="Fence28" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280, 0, 0)
+
+[node name="Fence29" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290, 0, 0)
+
+[node name="Fence30" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0)
+
+[node name="Fence31" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310, 0, 0)
+
+[node name="Fence32" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320, 0, 0)
+
+[node name="Fence33" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 330, 0, 0)
+
+[node name="Fence34" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340, 0, 0)
+
+[node name="Fence35" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350, 0, 0)
+
+[node name="Fence36" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 360, 0, 0)
+
+[node name="Fence37" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370, 0, 0)
+
+[node name="Fence38" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 380, 0, 0)
+
+[node name="Fence39" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 390, 0, 0)
+
+[node name="Fence40" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
+
+[node name="Fence41" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 410, 0, 0)
+
+[node name="Fence42" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 420, 0, 0)
+
+[node name="Fence43" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430, 0, 0)
+
+[node name="Fence44" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 440, 0, 0)
+
+[node name="Fence45" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450, 0, 0)
+
+[node name="Fence46" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460, 0, 0)
+
+[node name="Fence47" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, 0, 0)
+
+[node name="Fence48" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 480, 0, 0)
+
+[node name="Fence49" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 490, 0, 0)
+
+[node name="Fence50" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
+
 [connection signal="global_signal_emitted_with_value" from="Terrain/TerrainAnimators/TerrainSpeedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="set_speed_scale"]
 [connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/PlaySceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
 [connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/TitleSceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="stop" binds= [false]]
@@ -93,3 +414,5 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [connection signal="timeout" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" to="Terrain" method="hide"]
 [connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain" method="show"]
 [connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="stop"]
+[connection signal="global_signal_emitted" from="Terrain/FenceLine2/SceneChangedPlayListener" to="Terrain/FenceLine2" method="show"]
+[connection signal="global_signal_emitted" from="Terrain/FenceLine2/SceneChangedTitleListener" to="Terrain/FenceLine2" method="hide"]

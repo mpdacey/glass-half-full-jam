@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://buc7s25oweoq1"]
+
+[ext_resource type="PackedScene" uid="uid://dlwpw2jgytnr8" path="res://models/post.blend" id="1_6ixbi"]
+[ext_resource type="Material" uid="uid://c4hwyjg4piyay" path="res://materials/fence_mesh_material.tres" id="2_agt3l"]
+[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="3_3ip11"]
+[ext_resource type="Texture2D" uid="uid://bav6kw50pbnu1" path="res://textures/material_textures/post_textures/wooden_post_texture.jpg" id="4_0uhok"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvy02"]
+render_priority = 0
+shader = ExtResource("3_3ip11")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("4_0uhok")
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(0.355, 0.475, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = 0.0999999977648
+
+[node name="Fence" instance=ExtResource("1_6ixbi")]
+
+[node name="FenceLink" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_agt3l")
+
+[node name="Post" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_gvy02")

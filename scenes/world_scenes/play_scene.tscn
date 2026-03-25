@@ -40,6 +40,33 @@
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="33_7m3n2"]
 [ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="33_wjfxh"]
 
+[sub_resource type="Animation" id="Animation_kd3qq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/PlayerVehicle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/PlayerVehicle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.034906585)]
+}
+
 [sub_resource type="Animation" id="Animation_wjfxh"]
 resource_name = "start"
 length = 0.001
@@ -258,33 +285,6 @@ tracks/15/keys = {
 "args": [],
 "method": &"reset_odometer"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_kd3qq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player/PlayerVehicle:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player/PlayerVehicle:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -0.034906585)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kd3qq"]
@@ -764,6 +764,7 @@ surface_transition_time = 0.3
 [node name="PlayerClickboxArea" type="Area3D" parent="Player/PlayerVehicle"]
 collision_layer = 8
 collision_mask = 0
+monitorable = false
 priority = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerClickboxArea"]
@@ -772,6 +773,7 @@ shape = SubResource("BoxShape3D_6p3nn")
 
 [node name="PlayerHitboxArea" type="Area3D" parent="Player/PlayerVehicle" node_paths=PackedStringArray("underflow_collider_shape")]
 collision_layer = 0
+monitorable = false
 script = ExtResource("2_owpoa")
 underflow_collider_shape = NodePath("PlayerHitboxUnderflow")
 
@@ -786,6 +788,7 @@ shape = SubResource("SphereShape3D_c1pb6")
 [node name="PlayerHurtboxArea" type="Area3D" parent="Player/PlayerVehicle"]
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 
 [node name="PlayerHurtbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHurtboxArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
@@ -796,6 +799,7 @@ visible = false
 
 [node name="Area3D" parent="Player/PlayerVehicle/fuel-canister" index="0"]
 collision_layer = 0
+monitorable = false
 
 [node name="WarningPlayer" parent="Player/PlayerVehicle/fuel-canister" index="3"]
 active = false
@@ -827,6 +831,7 @@ unit_size = 31.63
 pitch_scale = 1.03
 panning_strength = 1.5
 bus = &"SFX"
+playback_type = 2
 script = ExtResource("5_yov1g")
 
 [node name="FuelCollectedAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
@@ -836,6 +841,7 @@ volume_db = -5.0
 unit_size = 37.71
 panning_strength = 1.75
 bus = &"SFX"
+playback_type = 2
 
 [node name="EngineAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
 stream = SubResource("AudioStreamInteractive_adb74")
@@ -843,6 +849,7 @@ volume_db = 4.0
 autoplay = true
 panning_strength = 2.0
 bus = &"SFX"
+playback_type = 2
 script = ExtResource("11_dwjdh")
 
 [node name="HornAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
@@ -852,6 +859,7 @@ unit_size = 23.7
 max_db = 3.005
 panning_strength = 2.6
 bus = &"SFX"
+playback_type = 2
 
 [node name="CameraFollower" type="Node3D" parent="Player" node_paths=PackedStringArray("player")]
 script = ExtResource("13_63m0j")
@@ -909,6 +917,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.01162, 0, 0)
 visible = false
 collision_layer = 4
 collision_mask = 0
+monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PlayerHorizon"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -46.47412, -2.026558e-06, 0)

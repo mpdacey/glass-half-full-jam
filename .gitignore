@@ -21,3 +21,4 @@ mono_crash.*.json
 *.png~
 app_icon_root_image.png
 app_icon_root_image.png.import
+*.keystore

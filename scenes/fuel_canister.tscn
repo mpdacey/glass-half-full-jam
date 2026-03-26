@@ -221,6 +221,7 @@ metadata/warning_animator = NodePath("WarningPlayer")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 0
+monitoring = false
 metadata/vanish_after_collision = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

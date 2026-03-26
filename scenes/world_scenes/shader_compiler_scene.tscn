@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://b210kvlm3hw7d"]
+[gd_scene load_steps=12 format=3 uid="uid://b210kvlm3hw7d"]
 
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="1_r0vov"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_mwelm"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="3_sltll"]
-[ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="4_sltll"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="6_6c71x"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="6_tle65"]
+[ext_resource type="SphereMesh" uid="uid://bnrbp8k1ac10m" path="res://scenes/particles/dust_particle_mesh.tres" id="7_e1u2q"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="7_sa032"]
+[ext_resource type="SphereMesh" uid="uid://dt68ilnohkb2q" path="res://scenes/particles/smoke_particle_mesh.tres" id="8_v6nyv"]
 
 [sub_resource type="Animation" id="Animation_wsgjl"]
 length = 0.001
@@ -100,8 +101,6 @@ transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.983
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7918973, 0, -7.0662956)
 script = null
 
-[node name="RoadSegment" parent="." instance=ExtResource("4_sltll")]
-
 [node name="PlayerVehicle" parent="." instance=ExtResource("3_sltll")]
 script = null
 
@@ -109,6 +108,9 @@ script = null
 transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.0000001, 0, -1.0000001, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="EngineSmokeEmitter" parent="PlayerVehicle" index="1"]
+emitting = true
+
+[node name="DustCloudEmitter" parent="PlayerVehicle/OffRoadNodes" index="0"]
 emitting = true
 
 [node name="OffRoadAnimator" parent="PlayerVehicle/OffRoadNodes" index="1"]
@@ -131,6 +133,14 @@ transform = Transform3D(-0.06328675, 0, -0.8447882, 0, 0.99999994, 0, 0.6937904,
 
 [node name="fuel-canister" parent="." instance=ExtResource("6_tle65")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8306751, 1.9226065, -4.581192)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2729483, 0)
+mesh = ExtResource("7_e1u2q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5704515, 2.2729483, 0)
+mesh = ExtResource("8_v6nyv")
 
 [connection signal="ready" from="PlayerVehicle/OffRoadNodes/DustCloudEmitter" to="PlayerVehicle/OffRoadNodes/DustCloudEmitter" method="set_emitting" binds= [true]]
 

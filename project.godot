@@ -10,12 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Half Fuel"
+config/name="Gas Half Fuel"
 run/main_scene="uid://kaxdymo06lyx"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.09, 0.080835, 0.07830001, 1)
+boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/image="uid://eyw4c58nywm3"
 config/icon="uid://eyw4c58nywm3"

@@ -28,10 +28,13 @@ enum EngineState {
 var current_state : EngineState = -1
 
 func reset() -> void:
-	remaining_fuel = starting_fuel
+	reset_remaining_fuel()
 	@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
 	current_state = -1
 	set_process(true)
+
+func reset_remaining_fuel() -> void:
+	remaining_fuel = starting_fuel
 
 func _process(delta: float) -> void:
 	set_engine_state()

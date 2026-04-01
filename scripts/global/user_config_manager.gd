@@ -28,6 +28,17 @@ func load_config_file() -> void:
 	
 	_validate_config_file()
 
+func get_config_value(key: String) -> Variant:
+	if not current_config:
+		printerr("Config wasn't loaded.")
+		return
+	
+	if not current_config.has_section_key(DEFAULT_USER, key):
+		printerr("Attempted to get invalid key from config.")
+		return
+	
+	return current_config.get_value(DEFAULT_USER, key)
+
 func set_config_value(key: String, value: Variant) -> void:
 	if not current_config:
 		printerr("Config wasn't loaded.")

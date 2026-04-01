@@ -31,9 +31,12 @@ func reset() -> void:
 	_speed_scale = STARTING_SPEED
 	set_process(true)
 
+func emit_distance_travelled() -> void:
+	distance_traveled.emit(_metres_travelled)
+
 func _process(delta: float) -> void:
 	_metres_travelled += _speed_scale * delta * COMPLETE_CYCLE_DISTANCE / 20
-	distance_traveled.emit(_metres_travelled)
+	emit_distance_travelled()
 	
 	var normalised_acceleration : float = 1
 	match(_engine_state):

@@ -16,17 +16,17 @@ func set_sfx_mute(muted: bool) -> void:
 	sfx_muted_set.emit(muted)
 
 func load_audio_settings() -> void:
-	var music_muted : bool = ConfigManager.get_config_value(ConfigManager.MUSIC_MUTE_KEY)
+	var music_muted : bool = OptionsConfigManager.get_config_value(OptionsConfigManager.MUSIC_MUTE_KEY)
 	set_music_mute(music_muted)
 	
-	var sfx_muted : bool = ConfigManager.get_config_value(ConfigManager.SFX_MUTE_KEY)
+	var sfx_muted : bool = OptionsConfigManager.get_config_value(OptionsConfigManager.SFX_MUTE_KEY)
 	set_sfx_mute(sfx_muted)
 
 func save_audio_settings() -> void:
 	var sfx_muted : bool = AudioServer.is_bus_mute(sfx_bus_index)
-	ConfigManager.set_config_value(ConfigManager.SFX_MUTE_KEY, sfx_muted)
+	OptionsConfigManager.set_config_value(OptionsConfigManager.SFX_MUTE_KEY, sfx_muted)
 	
 	var music_muted : bool = AudioServer.is_bus_mute(music_bus_index)
-	ConfigManager.set_config_value(ConfigManager.MUSIC_MUTE_KEY, music_muted)
+	OptionsConfigManager.set_config_value(OptionsConfigManager.MUSIC_MUTE_KEY, music_muted)
 	
-	ConfigManager.save_config_file()
+	OptionsConfigManager.save_config_file()

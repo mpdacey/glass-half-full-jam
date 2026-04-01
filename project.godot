@@ -24,6 +24,7 @@ config/icon="uid://eyw4c58nywm3"
 [autoload]
 
 OptionsConfigManager="*res://scripts/global/options_config_manager.gd"
+UserConfigManager="*res://scripts/global/user_config_manager.gd"
 GlobalSignalBus="*res://scripts/global/global_signal_bus.gd"
 MusicPlayer="*res://scenes/music_manager.tscn"
 ScreenshotGrabber="*res://scripts/editor/screenshot_grabber.gd"

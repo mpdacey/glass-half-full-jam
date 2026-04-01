@@ -10,7 +10,7 @@ func _on_gameover() -> void:
 	drive_controller.emit_distance_travelled()
 
 func _update_highscore(metres_travelled: float) -> void:
-	metres_travelled = floor(metres_travelled * 10) * 0.1
+	metres_travelled = floor(metres_travelled * 0.1) * 0.1
 	
 	var current_highscore : float = UserConfigManager.get_config_value(UserConfigManager.HIGHSCORE_KEY)
 	if current_highscore >= metres_travelled:

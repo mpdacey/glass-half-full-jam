@@ -1,7 +1,7 @@
 extends Node3D
 class_name RoadSegmentController
 
-const ROAD_SEGMENT_LENGTH = 200
+const ROAD_SEGMENT_LENGTH = GlobalConstants.COMPLETE_CYCLE_DISTANCE * 0.5
 const STARTING_TRAFFIC = 2
 const MAX_TRAFFIC = 7
 

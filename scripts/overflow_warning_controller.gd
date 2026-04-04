@@ -46,7 +46,5 @@ func _calculate_projected_fuel_amount() -> void:
 	else:
 		overflow_safe.emit()
 	
-	print(str("Projected_fuel_amount: ", projected_fuel_amount))
-	
 	_current_fuel_value = 0.0
 	_current_speed_value = 0.0

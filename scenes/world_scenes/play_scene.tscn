@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=76 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
@@ -30,6 +30,8 @@
 [ext_resource type="Shader" uid="uid://7sfyxlr738lf" path="res://shader/odometer_shader.gdshader" id="24_63m0j"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="24_dfpoj"]
 [ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/sizzle.ogg" id="24_q6ljc"]
+[ext_resource type="PackedScene" uid="uid://cdhjckfl8a3gc" path="res://scenes/highscore_gate.tscn" id="25_6bbup"]
+[ext_resource type="Script" uid="uid://c0j7uh55ha0pq" path="res://scripts/highscore_gate_controller.gd" id="25_83g3t"]
 [ext_resource type="AnimationLibrary" uid="uid://dy6jegyq0i7t5" path="res://resources/animation_libraries/gameover_library.tres" id="25_ssu4d"]
 [ext_resource type="AnimationLibrary" uid="uid://cid6yse2ny4tw" path="res://resources/animation_libraries/car_flip_library.tres" id="26_kf746"]
 [ext_resource type="PackedScene" uid="uid://c3jvcbh5u7b75" path="res://scenes/traffic_paths.tscn" id="26_l0tpv"]
@@ -298,6 +300,20 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Interactables/HighscoreGatePositioner")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kd3qq"]
@@ -635,6 +651,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [Vector3(0, 0, 0), Vector3(400, 0, 0)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Interactables/HighscoreGatePositioner")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_new_cycle"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dfpoj"]
 _data = {
@@ -766,6 +796,7 @@ _data = {
 libraries = {
 &"": SubResource("AnimationLibrary_kd3qq")
 }
+autoplay = "start"
 
 [node name="TerrainResetEmitter" type="Node" parent="PlaySceneResetter"]
 script = ExtResource("12_dyabf")
@@ -996,6 +1027,14 @@ speed_scale = 2.3
 script = ExtResource("12_dyabf")
 global_signal_name = &"speed_scale_updated"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="HighscoreGatePositioner" type="Node3D" parent="Interactables"]
+script = ExtResource("25_83g3t")
+
+[node name="HighscoreGate" parent="Interactables/HighscoreGatePositioner" instance=ExtResource("25_6bbup")]
+
+[node name="HighscoreGate2" parent="Interactables/HighscoreGatePositioner" instance=ExtResource("25_6bbup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
 
 [node name="UI" type="Node" parent="."]
 

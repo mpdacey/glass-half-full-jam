@@ -240,6 +240,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 490, 0, 0)
 [node name="Fence50" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
 
+[node name="Fence51" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510, 0, 0)
+
+[node name="Fence52" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 520, 0, 0)
+
 [node name="FenceLine2" type="Node3D" parent="Terrain"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 496.008, 0, 11.103)
 
@@ -252,6 +258,9 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 script = ExtResource("3_gil8y")
 global_signal_name = &"scene_changed_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="Fence0" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
 [node name="Fence" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 

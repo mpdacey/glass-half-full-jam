@@ -15,6 +15,7 @@ run/main_scene="uid://kaxdymo06lyx"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
+run/low_processor_mode=true
 boot_splash/bg_color=Color(0.09, 0.080835, 0.07830001, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
@@ -59,6 +60,7 @@ sensors/enable_gyroscope=true
 3d_physics/layer_1="Pickups"
 3d_physics/layer_2="Obstacle"
 3d_physics/layer_3="PlayerProximity"
+3d_physics/layer_4="PlayerHurtbox"
 3d_physics/layer_5="Road"
 
 [rendering]
@@ -67,3 +69,4 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/msaa_3d=3
+2d/snap/snap_2d_transforms_to_pixel=true

@@ -471,28 +471,28 @@ odometer_values = [NodePath("TenthsTexture"), NodePath("OnesTexture"), NodePath(
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
 instance_shader_parameters/display_number = 0.0
-position = Vector2(-128.57169, 36.50187)
+position = Vector2(-128.57169, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
 [node name="ThousandsTexture" type="Sprite2D" parent="Root/Odometer"]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
-position = Vector2(-93.232635, 36.50187)
+position = Vector2(-93.232635, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
 [node name="HundredsTexture" type="Sprite2D" parent="Root/Odometer"]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
-position = Vector2(-57.29016, 36.50187)
+position = Vector2(-57.29016, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
 [node name="TensTexture" type="Sprite2D" parent="Root/Odometer"]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
-position = Vector2(-21.193115, 36.50187)
+position = Vector2(-21.193115, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
@@ -500,7 +500,7 @@ texture = ExtResource("12_koxlg")
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
 instance_shader_parameters/display_number = 0.0
-position = Vector2(14.49353, 36.50187)
+position = Vector2(14.49353, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
@@ -508,7 +508,7 @@ texture = ExtResource("12_koxlg")
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
 instance_shader_parameters/display_number = 0.0
-position = Vector2(62.925415, 36.50187)
+position = Vector2(62.925415, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 

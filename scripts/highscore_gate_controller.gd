@@ -12,6 +12,17 @@ func reset() -> void:
 	visible = true
 	near_gate.visible = false
 	far_gate.visible = false
+	
+	var banners : Array[HighscoreBanner] = [
+		near_gate.get_child(0),
+		near_gate.get_child(1),
+		far_gate.get_child(0),
+		far_gate.get_child(1)
+	]
+	
+	for banner in banners:
+		banner.reset()
+	
 
 func _on_new_cycle() -> void:
 	var has_passed_highscore : bool = near_gate.visible

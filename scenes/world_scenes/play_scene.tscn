@@ -834,9 +834,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
 shape = SubResource("SphereShape3D_c1pb6")
 
 [node name="PlayerHurtboxArea" type="Area3D" parent="Player/PlayerVehicle"]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 2
-monitorable = false
 
 [node name="PlayerHurtbox" type="CollisionShape3D" parent="Player/PlayerVehicle/PlayerHurtboxArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6268599, 0.34667945, 0)
@@ -1305,6 +1304,8 @@ drive_controller = NodePath("../Player/DriveController")
 [connection signal="next_canister_placed" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Player/PlayerVehicle/PlayerHitboxArea" method="set_monitoring" flags=3 binds= [true]]
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
+[connection signal="banner_scale_changed" from="Interactables/HighscoreGatePositioner/HighscoreGate2/HighscoreBanner" to="Interactables/HighscoreGatePositioner/HighscoreGate/HighscoreBanner" method="set_scale"]
+[connection signal="banner_scale_changed" from="Interactables/HighscoreGatePositioner/HighscoreGate2/HighscoreBanner2" to="Interactables/HighscoreGatePositioner/HighscoreGate/HighscoreBanner2" method="set_scale"]
 [connection signal="pressed" from="UI/DriveHUD/Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="UI/PauseMenu" method="show"]
 [connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD/DisplayAnimator" method="play" binds= ["show"]]
 [connection signal="pressed" from="UI/GameoverLayer/TryAgainButton" to="GameoverNodes/ResetHandler" method="request_reset"]
@@ -1316,4 +1317,6 @@ drive_controller = NodePath("../Player/DriveController")
 
 [editable path="Player/PlayerVehicle"]
 [editable path="Player/PlayerVehicle/fuel-canister"]
+[editable path="Interactables/HighscoreGatePositioner/HighscoreGate"]
+[editable path="Interactables/HighscoreGatePositioner/HighscoreGate2"]
 [editable path="UI/DriveHUD"]

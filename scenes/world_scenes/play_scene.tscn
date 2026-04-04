@@ -1028,8 +1028,10 @@ script = ExtResource("12_dyabf")
 global_signal_name = &"speed_scale_updated"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="HighscoreGatePositioner" type="Node3D" parent="Interactables"]
+[node name="HighscoreGatePositioner" type="Node3D" parent="Interactables" node_paths=PackedStringArray("near_gate", "far_gate")]
 script = ExtResource("25_83g3t")
+near_gate = NodePath("HighscoreGate")
+far_gate = NodePath("HighscoreGate2")
 
 [node name="HighscoreGate" parent="Interactables/HighscoreGatePositioner" instance=ExtResource("25_6bbup")]
 

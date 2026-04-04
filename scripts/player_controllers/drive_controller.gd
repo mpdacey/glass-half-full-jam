@@ -4,7 +4,6 @@ class_name DriveController
 signal distance_traveled(metres: float)
 signal speed_scale_updated(changed_speed_scale: float)
 
-const COMPLETE_CYCLE_DISTANCE : float = 400.0
 const STARTING_SPEED : float = 2.3
 
 @export_group("Acceleration Rates")
@@ -31,9 +30,12 @@ func reset() -> void:
 	_speed_scale = STARTING_SPEED
 	set_process(true)
 
-func _process(delta: float) -> void:
-	_metres_travelled += _speed_scale * delta * COMPLETE_CYCLE_DISTANCE / 20
+func emit_distance_travelled() -> void:
 	distance_traveled.emit(_metres_travelled)
+
+func _process(delta: float) -> void:
+	_metres_travelled += _speed_scale * delta * GlobalConstants.COMPLETE_CYCLE_DISTANCE / 20
+	emit_distance_travelled()
 	
 	var normalised_acceleration : float = 1
 	match(_engine_state):
@@ -45,7 +47,7 @@ func _process(delta: float) -> void:
 			normalised_acceleration = drained_acceleration_rate * delta
 	
 	normalised_acceleration += _surface_type_dampener * delta
-	normalised_acceleration /= COMPLETE_CYCLE_DISTANCE
+	normalised_acceleration /= GlobalConstants.COMPLETE_CYCLE_DISTANCE
 	_speed_scale += normalised_acceleration
 	speed_scale_updated.emit(_speed_scale)
 

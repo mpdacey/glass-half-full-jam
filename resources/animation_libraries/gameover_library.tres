@@ -737,6 +737,20 @@ tracks/33/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/34/type = "method"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("../HighscoreManager")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_gameover"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_sryra"]
 resource_name = "retry"

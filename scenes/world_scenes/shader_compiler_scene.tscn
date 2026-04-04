@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b210kvlm3hw7d"]
+[gd_scene load_steps=13 format=3 uid="uid://b210kvlm3hw7d"]
 
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="1_r0vov"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_mwelm"]
@@ -8,6 +8,7 @@
 [ext_resource type="SphereMesh" uid="uid://bnrbp8k1ac10m" path="res://scenes/particles/dust_particle_mesh.tres" id="7_e1u2q"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="7_sa032"]
 [ext_resource type="SphereMesh" uid="uid://dt68ilnohkb2q" path="res://scenes/particles/smoke_particle_mesh.tres" id="8_v6nyv"]
+[ext_resource type="PackedScene" uid="uid://tll0ck20v3ph" path="res://scenes/highscore_banner.tscn" id="9_v6nyv"]
 
 [sub_resource type="Animation" id="Animation_wsgjl"]
 length = 0.001
@@ -141,6 +142,9 @@ mesh = ExtResource("7_e1u2q")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5704515, 2.2729483, 0)
 mesh = ExtResource("8_v6nyv")
+
+[node name="HighscoreBanner" parent="." instance=ExtResource("9_v6nyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6394374, 0, -1.772831)
 
 [connection signal="ready" from="PlayerVehicle/OffRoadNodes/DustCloudEmitter" to="PlayerVehicle/OffRoadNodes/DustCloudEmitter" method="set_emitting" binds= [true]]
 

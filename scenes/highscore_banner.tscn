@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://tll0ck20v3ph"]
+
+[ext_resource type="Material" uid="uid://dwd82ivtkeqsl" path="res://materials/highscore_banner_material.tres" id="1_ruqks"]
+[ext_resource type="Script" uid="uid://dfxs65t8ibgv6" path="res://scripts/highscore_banner.gd" id="1_wkwog"]
+[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="2_ruqks"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wkwog"]
+material = ExtResource("1_ruqks")
+size = Vector2(1, 4)
+subdivide_depth = 6
+orientation = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkwog"]
+render_priority = 0
+shader = ExtResource("2_ruqks")
+shader_parameter/albedo = Color(0.109952345, 0.109952345, 0.109952345, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = 0.0999999977648
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a6j7l"]
+material = SubResource("ShaderMaterial_wkwog")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.1
+radial_segments = 8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wkwog"]
+radius = 0.75
+height = 3.571
+
+[node name="HighscoreBanner" type="Node3D" node_paths=PackedStringArray("banner_scaler")]
+script = ExtResource("1_wkwog")
+banner_scaler = NodePath("BannerOffset")
+
+[node name="BannerOffset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+
+[node name="WavyBanner" type="MeshInstance3D" parent="BannerOffset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+mesh = SubResource("PlaneMesh_wkwog")
+skeleton = NodePath("../..")
+
+[node name="BannerPuck" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_a6j7l")
+
+[node name="BannerCollisionDetection" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 10
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BannerCollisionDetection"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_wkwog")
+
+[connection signal="area_entered" from="BannerCollisionDetection" to="." method="_on_collision_entered"]
+[connection signal="area_exited" from="BannerCollisionDetection" to="." method="_on_collision_exited"]

@@ -1,6 +1,8 @@
 extends Node3D
 class_name HighscoreGateController
 
+signal prime_confetti
+
 @export var near_gate: Node3D
 @export var far_gate: Node3D
 
@@ -47,3 +49,4 @@ func _on_new_cycle() -> void:
 	position.x = distance_to_highscore
 	near_gate.visible = true
 	far_gate.visible = false
+	prime_confetti.emit()

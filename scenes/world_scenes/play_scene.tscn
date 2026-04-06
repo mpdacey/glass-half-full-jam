@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=78 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://b67sj3e8sr1yb" path="res://scenes/ui/drive_hud.tscn" id="29_7m3n2"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="33_7m3n2"]
 [ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="33_wjfxh"]
+[ext_resource type="PackedScene" uid="uid://bn3qvukddfjfg" path="res://scenes/ui/highscore_confetti_ui.tscn" id="36_ekkaj"]
 [ext_resource type="Script" uid="uid://clrbnqvmohmjv" path="res://scripts/highscore_manager.gd" id="40_kd3qq"]
 
 [sub_resource type="Animation" id="Animation_kd3qq"]
@@ -672,6 +673,10 @@ _data = {
 &"dressing": SubResource("Animation_7iuxc")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_edg7r"]
+radius = 1.0
+height = 20.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pj8nq"]
 resource_local_to_scene = true
 shader = ExtResource("24_63m0j")
@@ -1037,6 +1042,16 @@ far_gate = NodePath("HighscoreGate2")
 [node name="HighscoreGate2" parent="Interactables/HighscoreGatePositioner" instance=ExtResource("25_6bbup")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
 
+[node name="HighscoreArea" type="Area3D" parent="Interactables/HighscoreGatePositioner"]
+collision_layer = 0
+collision_mask = 8
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/HighscoreGatePositioner/HighscoreArea"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.825, 0)
+shape = SubResource("CapsuleShape3D_edg7r")
+
 [node name="UI" type="Node" parent="."]
 
 [node name="DriveHUD" parent="UI" instance=ExtResource("29_7m3n2")]
@@ -1190,6 +1205,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="HighscoreConfettiUI" parent="UI" instance=ExtResource("36_ekkaj")]
+
 [node name="GameoverNodes" type="Node" parent="."]
 
 [node name="GameoverAudio" type="Node" parent="GameoverNodes"]
@@ -1304,11 +1321,14 @@ drive_controller = NodePath("../Player/DriveController")
 [connection signal="next_canister_placed" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Player/PlayerVehicle/PlayerHitboxArea" method="set_monitoring" flags=3 binds= [true]]
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
+[connection signal="prime_confetti" from="Interactables/HighscoreGatePositioner" to="Interactables/HighscoreGatePositioner/HighscoreArea" method="set_monitoring" binds= [true]]
 [connection signal="banner_scale_changed" from="Interactables/HighscoreGatePositioner/HighscoreGate2/HighscoreBanner" to="Interactables/HighscoreGatePositioner/HighscoreGate/HighscoreBanner" method="set_scale"]
 [connection signal="banner_scale_changed" from="Interactables/HighscoreGatePositioner/HighscoreGate2/HighscoreBanner2" to="Interactables/HighscoreGatePositioner/HighscoreGate/HighscoreBanner2" method="set_scale"]
+[connection signal="area_entered" from="Interactables/HighscoreGatePositioner/HighscoreArea" to="UI/HighscoreConfettiUI" method="pop_confetti" unbinds=1]
 [connection signal="pressed" from="UI/DriveHUD/Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="UI/PauseMenu" method="show"]
 [connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD/DisplayAnimator" method="play" binds= ["show"]]
 [connection signal="pressed" from="UI/GameoverLayer/TryAgainButton" to="GameoverNodes/ResetHandler" method="request_reset"]
+[connection signal="confetti_popped" from="UI/HighscoreConfettiUI" to="Interactables/HighscoreGatePositioner/HighscoreArea" method="set_monitoring" flags=3 binds= [false]]
 [connection signal="reset_called" from="GameoverNodes/ResetHandler" to="PlaySceneResetter" method="play" binds= [&"start"]]
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"retry"]]
 [connection signal="global_signal_emitted" from="GameoverNodes/GameoverInterfacers/TerrainGameoverEmitter" to="Interactables/TerrainDressingPlayer" method="stop" binds= [true]]

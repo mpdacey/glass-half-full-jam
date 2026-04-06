@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn3qvukddfjfg"]
+
+[ext_resource type="PackedScene" uid="uid://bxb3bfdh8p0vy" path="res://scenes/ui/highscore-confetti.tscn" id="1_85qg1"]
+[ext_resource type="Script" uid="uid://dg5dlgs4o22b2" path="res://scripts/highscore_confetti_ui_controller.gd" id="1_p3pco"]
+[ext_resource type="AudioStream" uid="uid://cxwhvnrv6cqbh" path="res://audio/sfx/highscore_confetti_cannons.ogg" id="3_2p1w7"]
+[ext_resource type="AudioStream" uid="uid://58piyy1y4wvl" path="res://audio/sfx/highscore_confetti_fizzle.ogg" id="4_bxinh"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bxinh"]
+random_pitch = 1.1
+random_volume_offset_db = 0.4
+streams_count = 1
+stream_0/stream = ExtResource("3_2p1w7")
+
+[node name="HighscoreConfettiUI" type="CanvasLayer"]
+script = ExtResource("1_p3pco")
+
+[node name="ConfettiCannon" parent="." instance=ExtResource("1_85qg1")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="ConfettiCannon2" parent="." instance=ExtResource("1_85qg1")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(-1, 1)
+
+[node name="CannonSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bxinh")
+bus = &"SFX"
+
+[node name="ConfettiSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bxinh")
+pitch_scale = 1.13
+bus = &"SFX"
+
+[connection signal="confetti_popped" from="." to="CannonSFX" method="play"]
+[connection signal="confetti_popped" from="." to="ConfettiSFX" method="play"]

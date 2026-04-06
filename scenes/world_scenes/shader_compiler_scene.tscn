@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b210kvlm3hw7d"]
+[gd_scene load_steps=14 format=3 uid="uid://b210kvlm3hw7d"]
 
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="1_r0vov"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_mwelm"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="7_sa032"]
 [ext_resource type="SphereMesh" uid="uid://dt68ilnohkb2q" path="res://scenes/particles/smoke_particle_mesh.tres" id="8_v6nyv"]
 [ext_resource type="PackedScene" uid="uid://tll0ck20v3ph" path="res://scenes/highscore_banner.tscn" id="9_v6nyv"]
+[ext_resource type="PackedScene" uid="uid://bxb3bfdh8p0vy" path="res://scenes/ui/highscore-confetti.tscn" id="10_x73n1"]
 
 [sub_resource type="Animation" id="Animation_wsgjl"]
 length = 0.001
@@ -146,6 +147,17 @@ mesh = ExtResource("8_v6nyv")
 [node name="HighscoreBanner" parent="." instance=ExtResource("9_v6nyv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6394374, 0, -1.772831)
 
+[node name="ConfettiCannon" parent="." instance=ExtResource("10_x73n1")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Particles" parent="ConfettiCannon" index="0"]
+emitting = true
+one_shot = false
+
 [connection signal="ready" from="PlayerVehicle/OffRoadNodes/DustCloudEmitter" to="PlayerVehicle/OffRoadNodes/DustCloudEmitter" method="set_emitting" binds= [true]]
 
 [editable path="PlayerVehicle"]
+[editable path="ConfettiCannon"]

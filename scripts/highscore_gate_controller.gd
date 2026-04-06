@@ -7,6 +7,7 @@ signal prime_confetti
 @export var far_gate: Node3D
 
 var distance_to_highscore : float = 0.0
+var highscore_set : bool = false
 
 func reset() -> void:
 	distance_to_highscore = UserConfigManager.get_config_value(UserConfigManager.HIGHSCORE_KEY)
@@ -14,6 +15,8 @@ func reset() -> void:
 	visible = true
 	near_gate.visible = false
 	far_gate.visible = false
+	
+	highscore_set = distance_to_highscore > 0
 	
 	var banners : Array[HighscoreBanner] = [
 		near_gate.get_child(0),
@@ -27,6 +30,9 @@ func reset() -> void:
 	
 
 func _on_new_cycle() -> void:
+	if not highscore_set:
+		return
+	
 	var has_passed_highscore : bool = near_gate.visible
 	if has_passed_highscore:
 		visible = false

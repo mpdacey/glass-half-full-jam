@@ -23,6 +23,7 @@ uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
 uniform float curve_amount : hint_range(0.01, 1.0, 0.01) = 0.01;
+uniform float swerve_amount : hint_range(-5.0, 5.0, 0.01) = -1.25;
 
 float remap(float value, float i_min, float i_max, float o_min, float o_max) {
     return o_min + ((value - i_min) / (i_max - i_min) * (o_max - o_min));
@@ -34,6 +35,7 @@ void vertex(){
 	// Vertex code pinched from svenar-nl godot issue
 	// https://github.com/godotengine/godot/issues/91894
 	VERTEX.y -= pow(length(MAIN_CAM_INV_VIEW_MATRIX[3].xyx - VERTEX.xyx) * log((10.0 + curve_amount) * 0.1), 4);
+	VERTEX.z += pow(length(MAIN_CAM_INV_VIEW_MATRIX[3].xzx - VERTEX.xzx) * log((10.0 + abs(swerve_amount * 0.1)) * 0.1), 4) * sign(swerve_amount);
 }
 
 void fragment() {

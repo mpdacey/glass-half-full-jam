@@ -3,6 +3,8 @@ render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_disabled, di
 
 uniform sampler2D banner_texture : source_color, filter_linear_mipmap, repeat_disable;
 uniform float curve_amount : hint_range(0.01, 1.0, 0.01) = 0.1;
+uniform float swerve_amount : hint_range(-5.0, 5.0, 0.01) = -1.25;
+
 uniform float flap_multiplier = 0.1;
 
 uniform vec4 main_colour: source_color;
@@ -33,7 +35,7 @@ void vertex() {
 	// Vertex code pinched from svenar-nl godot issue
 	// https://github.com/godotengine/godot/issues/91894
 	VERTEX.y -= pow(length(MAIN_CAM_INV_VIEW_MATRIX[3].xyx - VERTEX.xyx) * log((10.0 + curve_amount) * 0.1), 4);
-	
+	VERTEX.z += pow(length(MAIN_CAM_INV_VIEW_MATRIX[3].xzx - VERTEX.xzx) * log((10.0 + abs(swerve_amount * 0.1)) * 0.1), 4) * sign(swerve_amount);
 }
 
 void fragment() {

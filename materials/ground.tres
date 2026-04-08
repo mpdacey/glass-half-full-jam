@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dp37utuyuaulr"]
+
+[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_yl0ol"]
+[ext_resource type="Texture2D" uid="uid://bmy84snp5l1el" path="res://models/traffic/Textures/offroad/Rock029_1K-PNG_Color.png" id="2_26x61"]
+[ext_resource type="Texture2D" uid="uid://cowgv8gpdrktb" path="res://models/traffic/Textures/offroad/Rock029_1K-PNG_NormalDX.png" id="3_317h2"]
+[ext_resource type="Texture2D" uid="uid://8hs54vgjcsq" path="res://models/traffic/Textures/offroad/Rock029_1K-PNG_Roughness.png" id="4_3qde7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yl0ol")
+shader_parameter/albedo = Color(1, 0.626, 0.49, 1)
+shader_parameter/texture_albedo = ExtResource("2_26x61")
+shader_parameter/albedo_texture_size = Vector2i(1080, 720)
+shader_parameter/point_size = 6.700000099838039
+shader_parameter/roughness = 0.9850000467875
+shader_parameter/texture_metallic = ExtResource("3_317h2")
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/texture_roughness = ExtResource("4_3qde7")
+shader_parameter/specular = 0.0499999988824
+shader_parameter/metallic = 0.40999999083568
+shader_parameter/uv1_scale = Vector3(3.75, 2.5, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = 0.0999999977648

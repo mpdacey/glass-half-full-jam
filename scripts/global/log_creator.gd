@@ -35,8 +35,9 @@ func end_log() -> void:
 	current_log.store_line(str("End Time: ", Time.get_time_string_from_system()))
 	current_log.store_line(str("Drive Duration: ", drive_duration_time))
 	current_log.store_line(str("Kilometres Travelled: ", kilometres_travelled))
-	current_log.store_line(str("Top Speed: ", BASE_SPEED * top_speed_modifier))
+	current_log.store_line(str("Top Speed: ", floor(BASE_SPEED * top_speed_modifier * 10) * 0.1))
 	current_log.store_line(str("Fuel Canisters Collected: ", fuel_canisters_collected))
+	current_log.close()
 
 func _on_fuel_collected() -> void:
 	fuel_canisters_collected += 1

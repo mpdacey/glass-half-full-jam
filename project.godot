@@ -24,6 +24,7 @@ config/icon="uid://eyw4c58nywm3"
 
 [autoload]
 
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 OptionsConfigManager="*res://scripts/global/options_config_manager.gd"
 UserConfigManager="*res://scripts/global/user_config_manager.gd"
 GlobalSignalBus="*res://scripts/global/global_signal_bus.gd"
@@ -42,6 +43,10 @@ window/size/viewport_height=2280
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg")
 
 [input]
 

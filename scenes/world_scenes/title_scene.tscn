@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=29 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="2_pyl7j"]
@@ -14,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="9_bmxmj"]
 [ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="10_1ot34"]
 [ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="13_via76"]
+[ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="14_53e5g"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="14_ycxqd"]
+[ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="17_bi3h3"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
 _data = {
@@ -570,6 +572,10 @@ font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi3h3"]
+atlas = ExtResource("14_53e5g")
+region = Rect2(4010, 995, 400, 400)
+
 [node name="TitleScene" type="Node3D"]
 
 [node name="Paths" type="Node3D" parent="."]
@@ -718,9 +724,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -379.0
-offset_top = -287.0
+offset_top = -492.76
 offset_right = -2.9995117
-offset_bottom = -203.0
+offset_bottom = -408.75977
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
@@ -735,10 +741,20 @@ desktop_text = "Click to play"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer"]
 
+[node name="LeaderboardButton" type="TextureButton" parent="TitleCanvasLayer"]
+offset_left = 807.0
+offset_top = 2008.0
+offset_right = 1057.0
+offset_bottom = 2258.0
+texture_normal = SubResource("AtlasTexture_bi3h3")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="MusicManager" type="Node" parent="."]
 script = ExtResource("10_1ot34")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -751,7 +767,16 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("14_ycxqd")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
+[node name="PlayServicesNodes" type="Node" parent="."]
+
+[node name="PlayGamesLeaderboardsClient" type="Node" parent="PlayServicesNodes"]
+script = ExtResource("17_bi3h3")
+metadata/_custom_type_script = "uid://cafyylq66psjo"
+
 [connection signal="pressed" from="TitleCanvasLayer/Button" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
+[connection signal="button_down" from="TitleCanvasLayer/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButton" method="set_self_modulate" binds= [Color(0.7121294, 0.7121294, 0.71212935, 1)]]
+[connection signal="button_up" from="TitleCanvasLayer/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
+[connection signal="pressed" from="TitleCanvasLayer/LeaderboardButton" to="PlayServicesNodes/PlayGamesLeaderboardsClient" method="show_all_leaderboards"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
 
 [editable path="Paths/PolicePath/PoliceCore"]

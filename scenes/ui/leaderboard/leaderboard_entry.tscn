@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://gqut7x3b0vj7"]
+
+[ext_resource type="Texture2D" uid="uid://di7q3iwunf60j" path="res://textures/leaderboard_default_profile.svg" id="1_bgdjl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1os8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.31801978, 0.31801984, 0.31801954, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LeaderboardEntry" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="LeaderboardEntryMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="LeaderboardEntryHBox" type="HBoxContainer" parent="LeaderboardEntryMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="RankLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.46
+text = "100"
+
+[node name="ProfilePictureMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="ProfilePictureTexture" type="TextureRect" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin"]
+layout_mode = 2
+texture = ExtResource("1_bgdjl")
+expand_mode = 2
+
+[node name="ProfilePictureBorderMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = -4
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_right = -4
+theme_override_constants/margin_bottom = -4
+
+[node name="ProfilePictureBorder" type="Panel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin/ProfilePictureBorderMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l1os8")
+
+[node name="ProfileUsernameMask" type="Control" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="ProfileUsernameScroll" type="ScrollContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="ProfileUsernameLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask/ProfileUsernameScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 56
+text = "Test User"
+vertical_alignment = 1
+
+[node name="ScoreMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_top = -24
+theme_override_constants/margin_bottom = 4
+
+[node name="ScoreVBox" type="VBoxContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin"]
+layout_mode = 2
+
+[node name="ScoreTitleLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Peak Distance"
+horizontal_alignment = 2
+
+[node name="ScorePanelContainer" type="PanelContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "10.0[font_size=24]KM[/font_size]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1

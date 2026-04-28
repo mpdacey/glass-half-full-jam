@@ -4,8 +4,6 @@ class_name HighscoreManager
 signal new_highscore_set
 signal update_leaderboard(id: String, value: float)
 
-const LEADERBOARD_ID = "CgkInsTW6vgPEAIQAA"
-
 @export var drive_controller: DriveController
 
 func _on_gameover() -> void:
@@ -15,7 +13,7 @@ func _on_gameover() -> void:
 func _update_highscore(metres_travelled: float) -> void:
 	metres_travelled = floor(metres_travelled * 0.1) * 0.1
 	
-	update_leaderboard.emit(LEADERBOARD_ID, metres_travelled * 10)
+	update_leaderboard.emit(GlobalConstants.LEADERBOARD_ID, metres_travelled * 10)
 	
 	var current_highscore : float = UserConfigManager.get_config_value(UserConfigManager.HIGHSCORE_KEY)
 	if current_highscore >= metres_travelled:

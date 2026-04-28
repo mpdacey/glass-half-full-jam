@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://gqut7x3b0vj7"]
+[gd_scene load_steps=4 format=3 uid="uid://gqut7x3b0vj7"]
 
 [ext_resource type="Texture2D" uid="uid://di7q3iwunf60j" path="res://textures/leaderboard_default_profile.svg" id="1_bgdjl"]
+[ext_resource type="Script" uid="uid://bgxwt4wb3dwpg" path="res://scripts/leaderboard/leaderboard_entry_controller.gd" id="1_l1os8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1os8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -14,13 +15,17 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="LeaderboardEntry" type="PanelContainer"]
+[node name="LeaderboardEntry" type="PanelContainer" node_paths=PackedStringArray("username_label", "score_label", "rank_label")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 160.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
+script = ExtResource("1_l1os8")
+username_label = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask/ProfileUsernameScroll/ProfileUsernameLabel")
+score_label = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel/ScoreMargin/ScoreLabel")
+rank_label = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/RankLabel")
 
 [node name="LeaderboardEntryMargin" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -101,15 +106,15 @@ theme_override_font_sizes/font_size = 32
 text = "Peak Distance"
 horizontal_alignment = 2
 
-[node name="ScorePanelContainer" type="PanelContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox"]
+[node name="ScorePanel" type="PanelContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanelContainer"]
+[node name="ScoreMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
-[node name="RichTextLabel" type="RichTextLabel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanelContainer/MarginContainer"]
+[node name="ScoreLabel" type="RichTextLabel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel/ScoreMargin"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true

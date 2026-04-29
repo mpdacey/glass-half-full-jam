@@ -12,7 +12,8 @@ func set_entry_values(data: PlayGamesLeaderboardScore) -> void:
 	
 	username_label.text = data.score_holder_display_name
 	
-	score_label.text = str(data.raw_score)
+	score_label.clear()
+	score_label.add_text(str(data.raw_score))
 	score_label.push_font_size(24)
 	score_label.add_text("KM")
 	score_label.pop()

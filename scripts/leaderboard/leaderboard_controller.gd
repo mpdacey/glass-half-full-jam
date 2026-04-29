@@ -20,17 +20,22 @@ const LEADERBOARD_ENTRY_SCENE = preload("uid://gqut7x3b0vj7")
 const MAX_RESULTS = 20
 
 @export var entries_container : Container
-var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_WEEKLY
+var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
 
 func request_scores() -> void:
+	if OS.is_debug_build():
+		_generate_list_of_scores()
+		return
+	
 	if _want_to_display_personal:
 		_request_personal_leaderboard()
 	else:
 		_request_most_wanted_leaderboard()
 
 func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
-	var children : Array[LeaderboardEntryController] = entries_container.get_children() as Array[LeaderboardEntryController]
+	var children : Array[LeaderboardEntryController] = []
+	children.assign(entries_container.get_children())
 	
 	if scores.size() > children.size():
 		for i in scores.size():
@@ -64,6 +69,27 @@ func _request_personal_leaderboard() -> void:
 		MAX_RESULTS,
 		false
 	)
+
+func _generate_list_of_scores() -> void:
+	var names_file := "res://resources/debug_players.txt"
+	var list := FileAccess.open(names_file, FileAccess.READ)
+	
+	var selected_names : Dictionary[int, String]
+	while not list.eof_reached() and selected_names.size() < MAX_RESULTS:
+		var random_name := list.get_line()
+		if randf() > 0.1:
+			continue
+		selected_names[selected_names.size()] = random_name
+	
+	var leaderboard_scores : Array[PlayGamesLeaderboardScore] = []
+	for i in selected_names.size():
+		var score_dictionary : Dictionary[String,Variant]
+		score_dictionary["rawScore"] = float(MAX_RESULTS - i) + (float(randi_range(0,9))) * 0.1
+		score_dictionary["scoreHolderDisplayName"] = selected_names.values()[i]
+		score_dictionary["displayRank"] = str(i+1)
+		leaderboard_scores.append(PlayGamesLeaderboardScore.new(score_dictionary))
+	
+	set_scores(leaderboard_scores)
 
 #region Google Responses
 func _on_top_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGamesLeaderboardScores) -> void:

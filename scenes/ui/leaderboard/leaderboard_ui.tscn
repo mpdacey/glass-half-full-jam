@@ -28,9 +28,10 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_y0ns5")
 atlas = ExtResource("1_y0ns5")
 region = Rect2(7000, 2000, 370, 370)
 
-[node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container")]
+[node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container")]
 script = ExtResource("1_1y2m6")
 entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
+scroll_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll")
 
 [node name="LeaderboardsPanel" type="PanelContainer" parent="."]
 anchors_preset = 15

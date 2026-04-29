@@ -20,6 +20,7 @@ const LEADERBOARD_ENTRY_SCENE = preload("uid://gqut7x3b0vj7")
 const MAX_RESULTS = 20
 
 @export var entries_container : Container
+@export var scroll_container: ScrollContainer
 var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
 
@@ -34,6 +35,8 @@ func request_scores() -> void:
 		_request_most_wanted_leaderboard()
 
 func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
+	_set_scroll_to_top.call_deferred()
+	
 	var children : Array[LeaderboardEntryController] = []
 	children.assign(entries_container.get_children())
 	
@@ -69,6 +72,10 @@ func _request_personal_leaderboard() -> void:
 		MAX_RESULTS,
 		false
 	)
+
+func _set_scroll_to_top() -> void:
+	var scroll_bar := scroll_container.get_v_scroll_bar()
+	scroll_bar.value = 0
 
 func _generate_list_of_scores() -> void:
 	var names_file := "res://resources/debug_players.txt"

@@ -38,7 +38,6 @@ func set_scrolling_animation() -> void:
 		_username_scroll.changed.connect(_on_scroll_changed)
 
 func _on_scroll_changed() -> void:
-	print(get_index())
 	_username_scroll.value = 0
 	if _username_scroll.max_value == _username_scroll.page:
 		return

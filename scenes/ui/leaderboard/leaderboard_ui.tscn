@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=19 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
 [ext_resource type="ButtonGroup" uid="uid://bynhmbwnvqill" path="res://scenes/ui/leaderboard/leaderboards_standing_button_group.tres" id="2_1y2m6"]
 [ext_resource type="ButtonGroup" uid="uid://btx4j1qk6x13e" path="res://scenes/ui/leaderboard/leaderboards_timespan_button_group.tres" id="3_u6w2y"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="5_1y2m6"]
+[ext_resource type="Texture2D" uid="uid://cp2toi07bdpx" path="res://textures/flair_arrow_3.svg" id="5_tlust"]
+[ext_resource type="Script" uid="uid://cgcoppk14egd3" path="res://scenes/ui/leaderboard/between_leaderboard_controller.gd" id="6_7ik3k"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_u6w2y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0ns5"]
@@ -28,10 +30,137 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_y0ns5")
 atlas = ExtResource("1_y0ns5")
 region = Rect2(7000, 2000, 370, 370)
 
+[sub_resource type="Animation" id="Animation_6jraj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7ik3k"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1rsoi"]
+_data = {
+&"RESET": SubResource("Animation_6jraj"),
+&"idle": SubResource("Animation_7ik3k")
+}
+
+[sub_resource type="Animation" id="Animation_1rsoi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EntriesPanelMargin:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadingReticleTexture:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a7u1u"]
+resource_name = "switch_to_entries"
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EntriesPanelMargin:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadingReticleTexture:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tlust"]
+resource_name = "switch_to_loading"
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EntriesPanelMargin:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadingReticleTexture:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ly8w5"]
+_data = {
+&"RESET": SubResource("Animation_1rsoi"),
+&"switch_to_entries": SubResource("Animation_a7u1u"),
+&"switch_to_loading": SubResource("Animation_tlust")
+}
+
 [node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container")]
 script = ExtResource("1_1y2m6")
-entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
-scroll_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll")
+entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
+scroll_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll")
 
 [node name="LeaderboardsPanel" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -130,33 +259,72 @@ text = "All Time"
 [node name="HSeparator" type="HSeparator" parent="LeaderboardsPanel/LeaderboardsVBox"]
 layout_mode = 2
 
-[node name="EntriesPanelMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox"]
+[node name="EntriesPosition" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EntriesPanelMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 48
 
-[node name="EntriesPanel" type="PanelContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPanelMargin"]
+[node name="EntriesPanel" type="PanelContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin"]
 layout_mode = 2
 
-[node name="EntriesMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPanelMargin/EntriesPanel"]
+[node name="EntriesMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="EntriesScroll" type="ScrollContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPanelMargin/EntriesPanel/EntriesMargin"]
+[node name="EntriesScroll" type="ScrollContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="EntriesVBox" type="VBoxContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll"]
+[node name="EntriesVBox" type="VBoxContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LoadingReticleTexture" type="TextureRect" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("5_tlust")
+
+[node name="LoadingReticleAnimator" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/LoadingReticleTexture"]
+libraries = {
+&"": SubResource("AnimationLibrary_1rsoi")
+}
+autoplay = "idle"
+
+[node name="BetweenLoadingController" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition"]
+libraries = {
+&"": SubResource("AnimationLibrary_ly8w5")
+}
+script = ExtResource("6_7ik3k")
 
 [node name="PlayGamesLeaderboardsClient" type="Node" parent="."]
 script = ExtResource("5_1y2m6")
@@ -167,7 +335,9 @@ script = ExtResource("6_u6w2y")
 metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
+[connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
 [connection signal="load_personal_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_player_centered_scores"]
+[connection signal="load_personal_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
 [connection signal="button_down" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" method="set_self_modulate" binds= [Color(0.5019608, 0.5019608, 0.5019608, 1)]]
 [connection signal="button_up" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="." method="hide"]
@@ -177,5 +347,7 @@ metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardScopeMargin/LeaderboardScopeHBox/LeaderboardScopeWeekly" to="." method="_on_timespan_button_pressed" binds= [1]]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardScopeMargin/LeaderboardScopeHBox/LeaderboardScopeAllTime" to="." method="_on_timespan_button_pressed" binds= [2]]
 [connection signal="player_centered_scores_loaded" from="PlayGamesLeaderboardsClient" to="." method="_on_player_centered_scores_loaded"]
+[connection signal="player_centered_scores_loaded" from="PlayGamesLeaderboardsClient" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_loaded" unbinds=2]
 [connection signal="top_scores_loaded" from="PlayGamesLeaderboardsClient" to="." method="_on_top_scores_loaded"]
+[connection signal="top_scores_loaded" from="PlayGamesLeaderboardsClient" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_loaded" unbinds=2]
 [connection signal="shown" from="VisibilityListener" to="." method="request_scores"]

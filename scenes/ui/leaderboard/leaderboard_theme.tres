@@ -1,0 +1,56 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://blr5n325b2jgi"]
+
+[ext_resource type="FontFile" uid="uid://b0i53eqnnet6n" path="res://resources/fonts/Arimo/static/Arimo-Bold.ttf" id="1_tmak2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rsoi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rsoi"]
+bg_color = Color(0.83, 0.78849995, 0.79195833, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+expand_margin_bottom = 200.0
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7u1u"]
+bg_color = Color(0.7630726, 0.720563, 0.7415306, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+expand_margin_bottom = 200.0
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ly8w5"]
+bg_color = Color(0.95686275, 0.9137255, 0.91764706, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+expand_margin_bottom = 200.0
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0ns5"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9569234, 0.91382945, 0.91719776, 1)
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_detail = 5
+expand_margin_left = 60.0
+expand_margin_right = 12.0
+shadow_size = 12
+
+[resource]
+Button/colors/font_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+Button/colors/font_focus_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+Button/colors/font_hover_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+Button/colors/font_hover_pressed_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+Button/colors/font_pressed_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+Button/font_sizes/font_size = 48
+Button/fonts/font = null
+Button/styles/focus = SubResource("StyleBoxEmpty_1rsoi")
+Button/styles/hover = SubResource("StyleBoxFlat_1rsoi")
+Button/styles/normal = SubResource("StyleBoxFlat_a7u1u")
+Button/styles/pressed = SubResource("StyleBoxFlat_ly8w5")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_tmak2")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_y0ns5")

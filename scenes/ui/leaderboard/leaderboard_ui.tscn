@@ -1,34 +1,38 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=22 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
 [ext_resource type="ButtonGroup" uid="uid://bynhmbwnvqill" path="res://scenes/ui/leaderboard/leaderboards_standing_button_group.tres" id="2_1y2m6"]
+[ext_resource type="Theme" uid="uid://blr5n325b2jgi" path="res://scenes/ui/leaderboard/leaderboard_theme.tres" id="2_7ik3k"]
+[ext_resource type="FontFile" uid="uid://douiqg5815mjs" path="res://resources/fonts/Tinos/Tinos-Bold.ttf" id="3_1rsoi"]
 [ext_resource type="ButtonGroup" uid="uid://btx4j1qk6x13e" path="res://scenes/ui/leaderboard/leaderboards_timespan_button_group.tres" id="3_u6w2y"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="5_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://cp2toi07bdpx" path="res://textures/flair_arrow_3.svg" id="5_tlust"]
 [ext_resource type="Script" uid="uid://cgcoppk14egd3" path="res://scenes/ui/leaderboard/between_leaderboard_controller.gd" id="6_7ik3k"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_u6w2y"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0ns5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvvg5"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_left = 24
+bg_color = Color(0.06666667, 0.23921569, 0.46666667, 1)
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
-corner_radius_bottom_left = 24
 corner_detail = 5
-
-[sub_resource type="Theme" id="Theme_i0kmf"]
-Button/font_sizes/font_size = 48
-Label/font_sizes/font_size = 64
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_y0ns5")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4e2ik"]
 atlas = ExtResource("1_y0ns5")
 region = Rect2(7000, 2000, 370, 370)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7u1u"]
+font = ExtResource("3_1rsoi")
+font_size = 90
+outline_size = 5
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.56078434)
+
+[sub_resource type="Theme" id="Theme_g8cov"]
 
 [sub_resource type="Animation" id="Animation_6jraj"]
 length = 0.001
@@ -168,7 +172,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_i0kmf")
+mouse_filter = 1
+theme = ExtResource("2_7ik3k")
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvvg5")
 
 [node name="LeaderboardsVBox" type="VBoxContainer" parent="LeaderboardsPanel"]
 layout_mode = 2
@@ -194,19 +200,20 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_horizontal = 3
 text = "POLICE RECORDS"
+label_settings = SubResource("LabelSettings_a7u1u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LeaderboardFocusMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox"]
 layout_mode = 2
+theme = SubResource("Theme_g8cov")
 theme_override_constants/margin_left = 60
 theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 30
 
 [node name="LeaderboardFocusHBox" type="HBoxContainer" parent="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 40
 
 [node name="LeaderboardFocusMostWanted" type="Button" parent="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox"]
 layout_mode = 2
@@ -227,12 +234,12 @@ text = "Personal Standing"
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_bottom = 0
 
 [node name="LeaderboardScopeHBox" type="HBoxContainer" parent="LeaderboardsPanel/LeaderboardsVBox/LeaderboardScopeMargin"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 16
 
 [node name="LeaderboardScopeDaily" type="Button" parent="LeaderboardsPanel/LeaderboardsVBox/LeaderboardScopeMargin/LeaderboardScopeHBox"]
 layout_mode = 2
@@ -256,15 +263,14 @@ toggle_mode = true
 button_group = ExtResource("3_u6w2y")
 text = "All Time"
 
-[node name="HSeparator" type="HSeparator" parent="LeaderboardsPanel/LeaderboardsVBox"]
-layout_mode = 2
-
 [node name="EntriesPosition" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="EntriesPanelMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition"]
 modulate = Color(1, 1, 1, 0)
+visibility_layer = 17
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -273,12 +279,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 48
 
 [node name="EntriesPanel" type="PanelContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="EntriesMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel"]
 layout_mode = 2
@@ -294,11 +301,13 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
 [node name="EntriesVBox" type="VBoxContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll"]
+visibility_layer = 17
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LoadingReticleTexture" type="TextureRect" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

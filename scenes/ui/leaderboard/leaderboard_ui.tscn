@@ -1,25 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=27 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
 [ext_resource type="ButtonGroup" uid="uid://bynhmbwnvqill" path="res://scenes/ui/leaderboard/leaderboards_standing_button_group.tres" id="2_1y2m6"]
 [ext_resource type="Theme" uid="uid://blr5n325b2jgi" path="res://scenes/ui/leaderboard/leaderboard_theme.tres" id="2_7ik3k"]
 [ext_resource type="FontFile" uid="uid://douiqg5815mjs" path="res://resources/fonts/Tinos/Tinos-Bold.ttf" id="3_1rsoi"]
+[ext_resource type="StyleBox" uid="uid://b1ejw4y18ngll" path="res://scenes/ui/leaderboard/leaderboard_cover_panel_stylebox.tres" id="3_a7u1u"]
 [ext_resource type="ButtonGroup" uid="uid://btx4j1qk6x13e" path="res://scenes/ui/leaderboard/leaderboards_timespan_button_group.tres" id="3_u6w2y"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="5_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://cp2toi07bdpx" path="res://textures/flair_arrow_3.svg" id="5_tlust"]
 [ext_resource type="Script" uid="uid://cgcoppk14egd3" path="res://scenes/ui/leaderboard/between_leaderboard_controller.gd" id="6_7ik3k"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_u6w2y"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvvg5"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.06666667, 0.23921569, 0.46666667, 1)
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_detail = 5
+[ext_resource type="Texture2D" uid="uid://28ajs5ji27t0" path="res://textures/police_badge.png" id="10_ly8w5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4e2ik"]
 atlas = ExtResource("1_y0ns5")
@@ -76,7 +68,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EntriesPanelMargin:modulate")
+tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,7 +80,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LoadingReticleTexture:modulate")
+tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -104,7 +96,7 @@ capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EntriesPanelMargin:modulate")
+tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -116,7 +108,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LoadingReticleTexture:modulate")
+tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -132,7 +124,7 @@ capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EntriesPanelMargin:modulate")
+tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -144,7 +136,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LoadingReticleTexture:modulate")
+tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -161,6 +153,212 @@ _data = {
 &"switch_to_loading": SubResource("Animation_tlust")
 }
 
+[sub_resource type="Animation" id="Animation_yvvg5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeaderboardsPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoverPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoverPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CoverPanel:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoverPanel:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ly8w5"]
+resource_name = "open"
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeaderboardsPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoverPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.41666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoverPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.25, 0.41666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.42090002, 0.51060003, 0.69, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CoverPanel:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 500, 0, 0, 0, -225),
+"times": PackedFloat32Array(0.25, 0.41666666)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoverPanel:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.03, -0.08333337, 1.1136994, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_g8cov"]
+resource_name = "open"
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeaderboardsPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoverPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoverPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.4166667, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.42090002, 0.51060003, 0.69, 1)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CoverPanel:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(500, 0, 0, 0, -225, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoverPanel:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.03, -0.08333337, 1.1136994, 0, 0),
+"times": PackedFloat32Array(0.25, 0.6666667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g8cov"]
+_data = {
+&"RESET": SubResource("Animation_yvvg5"),
+&"close": SubResource("Animation_ly8w5"),
+&"open": SubResource("Animation_g8cov")
+}
+
 [node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container")]
 script = ExtResource("1_1y2m6")
 entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
@@ -174,7 +372,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("2_7ik3k")
-theme_override_styles/panel = SubResource("StyleBoxFlat_yvvg5")
+theme_override_styles/panel = ExtResource("3_a7u1u")
 
 [node name="LeaderboardsVBox" type="VBoxContainer" parent="LeaderboardsPanel"]
 layout_mode = 2
@@ -269,7 +467,6 @@ size_flags_vertical = 3
 mouse_filter = 1
 
 [node name="EntriesPanelMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition"]
-modulate = Color(1, 1, 1, 0)
 visibility_layer = 17
 layout_mode = 1
 anchors_preset = 15
@@ -295,6 +492,7 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="EntriesScroll" type="ScrollContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
@@ -306,8 +504,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LoadingReticleTexture" type="TextureRect" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition"]
-visible = false
+[node name="LoadingReticleAnchor" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="LoadingReticleTexture" type="TextureRect" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor"]
+self_modulate = Color(0.31, 0.31, 0.31, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -323,17 +527,77 @@ grow_vertical = 2
 pivot_offset = Vector2(128, 128)
 texture = ExtResource("5_tlust")
 
-[node name="LoadingReticleAnimator" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/LoadingReticleTexture"]
+[node name="LoadingReticleAnimator" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture"]
 libraries = {
 &"": SubResource("AnimationLibrary_1rsoi")
 }
 autoplay = "idle"
+
+[node name="ChangePageAnchor" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ChangePagePanel" type="PanelContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/ChangePageAnchor"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-100, 0)
+mouse_filter = 2
 
 [node name="BetweenLoadingController" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition"]
 libraries = {
 &"": SubResource("AnimationLibrary_ly8w5")
 }
 script = ExtResource("6_7ik3k")
+
+[node name="CoverPanel" type="PanelContainer" parent="."]
+visible = false
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-50, 0)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_a7u1u")
+
+[node name="CoverVBox" type="VBoxContainer" parent="CoverPanel"]
+layout_mode = 2
+
+[node name="CoverTitleMargin" type="MarginContainer" parent="CoverPanel/CoverVBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_bottom = 64
+
+[node name="TitleHBox" type="HBoxContainer" parent="CoverPanel/CoverVBox/CoverTitleMargin"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CoverPanel/CoverVBox/CoverTitleMargin/TitleHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "POLICE RECORDS"
+label_settings = SubResource("LabelSettings_a7u1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CoverPanel/CoverVBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 240
+
+[node name="TextureRect" type="TextureRect" parent="CoverPanel/CoverVBox/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("10_ly8w5")
+expand_mode = 5
 
 [node name="PlayGamesLeaderboardsClient" type="Node" parent="."]
 script = ExtResource("5_1y2m6")
@@ -343,13 +607,19 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 script = ExtResource("6_u6w2y")
 metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
+[node name="BookAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g8cov")
+}
+speed_scale = 1.4
+
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
 [connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
 [connection signal="load_personal_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_player_centered_scores"]
 [connection signal="load_personal_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
 [connection signal="button_down" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" method="set_self_modulate" binds= [Color(0.5019608, 0.5019608, 0.5019608, 1)]]
 [connection signal="button_up" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="." method="hide"]
+[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="BookAnimator" method="play" binds= [&"close"]]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusMostWanted" to="." method="_on_focus_most_wanted_button_pressed"]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusPersonal" to="." method="_on_focus_personal_button_pressed"]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardScopeMargin/LeaderboardScopeHBox/LeaderboardScopeDaily" to="." method="_on_timespan_button_pressed" binds= [0]]
@@ -360,3 +630,4 @@ metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 [connection signal="top_scores_loaded" from="PlayGamesLeaderboardsClient" to="." method="_on_top_scores_loaded"]
 [connection signal="top_scores_loaded" from="PlayGamesLeaderboardsClient" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_loaded" unbinds=2]
 [connection signal="shown" from="VisibilityListener" to="." method="request_scores"]
+[connection signal="shown" from="VisibilityListener" to="BookAnimator" method="play" binds= [&"open"]]

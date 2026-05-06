@@ -5,9 +5,11 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rsoi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rsoi"]
+content_margin_bottom = 25.0
 bg_color = Color(0.83, 0.78849995, 0.79195833, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
+expand_margin_top = 25.0
 expand_margin_bottom = 200.0
 shadow_size = 12
 
@@ -19,9 +21,11 @@ expand_margin_bottom = 200.0
 shadow_size = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ly8w5"]
+content_margin_bottom = 25.0
 bg_color = Color(0.95686275, 0.9137255, 0.91764706, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
+expand_margin_top = 25.0
 expand_margin_bottom = 200.0
 shadow_size = 12
 

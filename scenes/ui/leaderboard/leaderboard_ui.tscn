@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=36 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
@@ -64,45 +64,19 @@ _data = {
 &"idle": SubResource("Animation_7ik3k")
 }
 
-[sub_resource type="Animation" id="Animation_0841h"]
-resource_name = "page_up"
-length = 0.3333417
-step = 0.083333336
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ChangePagePanel:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.16667084, 0, 0.16667084, 0, -0.025, -0.05555556, 0.16666669, 0, 0),
-"times": PackedFloat32Array(0.083333336, 0.33333334)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ChangePagePanel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.33333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ChangePagePanel:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.2509804), Color(1, 1, 1, 1), Color(0.9493391, 0.89535624, 0.8783347, 1)]
-}
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvvg5"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9569234, 0.91382945, 0.91719776, 1)
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_detail = 5
+expand_margin_left = 60.0
+expand_margin_right = 12.0
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 12
 
 [sub_resource type="Animation" id="Animation_u220q"]
 length = 0.001
@@ -141,10 +115,81 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChangePagePanel:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../EntriesPanelAnchor/EntriesPanel:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.16667084, 0, 0.16667084, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../EntriesPanelAnchor/EntriesPanel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../EntriesPanelAnchor/EntriesPanel:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ChangePagePanel:theme_override_styles/panel")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_yvvg5")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../EntriesPanelAnchor/EntriesPanel:theme_override_styles/panel")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
 
 [sub_resource type="Animation" id="Animation_h10y8"]
 resource_name = "page_up"
-length = 0.3333417
+length = 0.416675
 step = 0.083333336
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -164,7 +209,7 @@ tracks/1/path = NodePath("ChangePagePanel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.33333334),
+"times": PackedFloat32Array(0, 0.41666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -176,10 +221,150 @@ tracks/2/path = NodePath("ChangePagePanel:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.083333336, 0.33333334),
+"times": PackedFloat32Array(0, 0.16666667, 0.41666666),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.9493391, 0.89535624, 0.8783347, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8cov"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9569234, 0.91382945, 0.91719776, 1)
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_detail = 5
+expand_margin_left = 60.0
+expand_margin_right = 12.0
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0841h"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9569234, 0.91382945, 0.91719776, 1)
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_detail = 5
+expand_margin_left = 60.0
+expand_margin_right = 12.0
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u220q"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9569234, 0.91382945, 0.91719776, 1)
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_detail = 5
+expand_margin_left = 60.0
+expand_margin_right = 12.0
+shadow_size = 12
+
+[sub_resource type="Animation" id="Animation_0841h"]
+resource_name = "page_up"
+length = 0.3333417
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChangePagePanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChangePagePanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.2509804)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChangePagePanel:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../EntriesPanelAnchor/EntriesPanel:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 1),
+"points": PackedFloat32Array(1, -0.16667084, 0, 0.16667084, 0, -0.025, -0.041368254, 0.16960983, 0.00029841563, -0.0012235041, 0.9942988, -0.05555556, 0.16666669, 0, 0, 1, -0.16667084, 0, 0.16667084, 0),
+"times": PackedFloat32Array(0, 0.16487618, 0.16666667, 0.25)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../EntriesPanelAnchor/EntriesPanel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.16486783, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.9493391, 0.89535624, 0.8783347, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../EntriesPanelAnchor/EntriesPanel:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ChangePagePanel:theme_override_styles/panel")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_g8cov"), SubResource("StyleBoxFlat_yvvg5")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../EntriesPanelAnchor/EntriesPanel:theme_override_styles/panel")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_0841h"), SubResource("StyleBoxFlat_u220q")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h10y8"]
@@ -194,7 +379,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll:modulate")
+tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -206,7 +391,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture:modulate")
+tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -222,7 +407,7 @@ capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll:modulate")
+tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -234,7 +419,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture:modulate")
+tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -250,7 +435,7 @@ capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll:modulate")
+tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -262,7 +447,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture:modulate")
+tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -487,8 +672,8 @@ _data = {
 
 [node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container")]
 script = ExtResource("1_1y2m6")
-entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
-scroll_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll")
+entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
+scroll_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll")
 
 [node name="LeaderboardsPanel" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -600,43 +785,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.9993358, 1)
 size_flags_vertical = 3
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 48
 
-[node name="EntriesPanel" type="PanelContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin"]
+[node name="EntriesPanelAnchor" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin"]
 layout_mode = 2
+
+[node name="EntriesPanel" type="PanelContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-100, 0)
 mouse_filter = 1
 
-[node name="EntriesMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel"]
+[node name="EntriesMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="EntriesScroll" type="ScrollContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin"]
+[node name="EntriesScroll" type="ScrollContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="EntriesVBox" type="VBoxContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/EntriesScroll"]
+[node name="EntriesVBox" type="VBoxContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll"]
 visibility_layer = 17
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LoadingReticleAnchor" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin"]
+[node name="LoadingReticleAnchor" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="LoadingReticleTexture" type="TextureRect" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor"]
+[node name="LoadingReticleTexture" type="TextureRect" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/LoadingReticleAnchor"]
 self_modulate = Color(0.31, 0.31, 0.31, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -653,7 +848,7 @@ grow_vertical = 2
 pivot_offset = Vector2(128, 128)
 texture = ExtResource("5_tlust")
 
-[node name="LoadingReticleAnimator" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture"]
+[node name="LoadingReticleAnimator" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/LoadingReticleAnchor/LoadingReticleTexture"]
 libraries = {
 &"": SubResource("AnimationLibrary_1rsoi")
 }
@@ -674,6 +869,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(-100, 0)
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvvg5")
 
 [node name="ChangePageAnimator" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/ChangePageAnchor"]
 libraries = {

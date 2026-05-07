@@ -91,7 +91,7 @@ func _generate_list_of_scores() -> void:
 	var leaderboard_scores : Array[PlayGamesLeaderboardScore] = []
 	for i in selected_names.size():
 		var score_dictionary : Dictionary[String,Variant]
-		score_dictionary["rawScore"] = float(MAX_RESULTS - i) + (float(randi_range(0,9))) * 0.1
+		score_dictionary["rawScore"] = (MAX_RESULTS - i) * 10 + randi_range(0,9)
 		score_dictionary["scoreHolderDisplayName"] = selected_names.values()[i]
 		score_dictionary["displayRank"] = str(i+1)
 		leaderboard_scores.append(PlayGamesLeaderboardScore.new(score_dictionary))

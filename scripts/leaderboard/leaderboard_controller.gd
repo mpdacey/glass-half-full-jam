@@ -109,14 +109,11 @@ func _on_player_centered_scores_loaded(_leaderboard_id: String, leaderboard_scor
 #region Button Listeners
 func _on_focus_most_wanted_button_pressed() -> void:
 	_want_to_display_personal = false
-	request_scores()
 
 func _on_focus_personal_button_pressed() -> void:
 	_want_to_display_personal = true
-	request_scores()
 
 func _on_timespan_button_pressed(button_index: int) -> void:
 	button_index = clampi(button_index, 0, 2)
 	_current_timespan = button_index as PlayGamesLeaderboardVariant.TimeSpan
-	request_scores()
 #endregion

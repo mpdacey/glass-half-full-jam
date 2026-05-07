@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=37 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cp2toi07bdpx" path="res://textures/flair_arrow_3.svg" id="5_tlust"]
 [ext_resource type="Script" uid="uid://cgcoppk14egd3" path="res://scenes/ui/leaderboard/between_leaderboard_controller.gd" id="6_7ik3k"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_u6w2y"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="9_g8cov"]
 [ext_resource type="Script" uid="uid://frvenhtov1fi" path="res://scenes/ui/leaderboard/change_page_controller.gd" id="9_yvvg5"]
 [ext_resource type="Texture2D" uid="uid://28ajs5ji27t0" path="res://textures/police_badge.png" id="10_ly8w5"]
 
@@ -226,6 +227,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(0.9493391, 0.89535624, 0.8783347, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChangePageAnimator/ScoreRequestEmitter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_global_signal"
+}]
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8cov"]
 content_margin_left = 0.0
@@ -269,7 +284,7 @@ shadow_size = 12
 
 [sub_resource type="Animation" id="Animation_0841h"]
 resource_name = "page_up"
-length = 0.3333417
+length = 0.416675
 step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -278,7 +293,7 @@ tracks/0/path = NodePath("ChangePagePanel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334),
+"times": PackedFloat32Array(0, 0.41666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -290,7 +305,7 @@ tracks/1/path = NodePath("ChangePagePanel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.16666667, 0.33333334),
+"times": PackedFloat32Array(0.16666667, 0.41666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.2509804)]
@@ -302,7 +317,7 @@ tracks/2/path = NodePath("ChangePagePanel:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.33333334),
+"times": PackedFloat32Array(0, 0.41666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
@@ -365,6 +380,20 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [SubResource("StyleBoxFlat_0841h"), SubResource("StyleBoxFlat_u220q")]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ChangePageAnimator/ScoreRequestEmitter")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_global_signal"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h10y8"]
@@ -876,6 +905,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_h10y8")
 }
 
+[node name="ScoreRequestEmitter" type="Node" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/ChangePageAnchor/ChangePageAnimator"]
+script = ExtResource("9_g8cov")
+global_signal_name = &"trigger_score_request"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
 [node name="ChangePageController" type="Node" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/ChangePageAnchor" node_paths=PackedStringArray("animator")]
 script = ExtResource("9_yvvg5")
 animator = NodePath("../ChangePageAnimator")
@@ -930,19 +964,25 @@ layout_mode = 2
 texture = ExtResource("10_ly8w5")
 expand_mode = 5
 
-[node name="PlayGamesLeaderboardsClient" type="Node" parent="."]
-script = ExtResource("5_1y2m6")
-metadata/_custom_type_script = "uid://cafyylq66psjo"
-
-[node name="VisibilityListener" type="Node" parent="."]
-script = ExtResource("6_u6w2y")
-metadata/_custom_type_script = "uid://ydy2ddfw32k0"
-
-[node name="BookAnimator" type="AnimationPlayer" parent="."]
+[node name="BookAnimator" type="AnimationPlayer" parent="CoverPanel"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_g8cov")
 }
 speed_scale = 1.4
+
+[node name="PlayGamesLeaderboardsClient" type="Node" parent="."]
+script = ExtResource("5_1y2m6")
+metadata/_custom_type_script = "uid://cafyylq66psjo"
+
+[node name="ScoreRequestListener" type="Node" parent="."]
+script = ExtResource("9_g8cov")
+global_signal_name = &"trigger_score_request"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="VisibilityListener" type="Node" parent="."]
+script = ExtResource("6_u6w2y")
+metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
 [connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
@@ -950,7 +990,7 @@ speed_scale = 1.4
 [connection signal="load_personal_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
 [connection signal="button_down" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" method="set_self_modulate" binds= [Color(0.5019608, 0.5019608, 0.5019608, 1)]]
 [connection signal="button_up" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="BookAnimator" method="play" binds= [&"close"]]
+[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="CoverPanel/BookAnimator" method="play" binds= [&"close"]]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusMostWanted" to="." method="_on_focus_most_wanted_button_pressed"]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusMostWanted" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/ChangePageAnchor/ChangePageController" method="change_catagory" binds= [0]]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusPersonal" to="." method="_on_focus_personal_button_pressed"]
@@ -965,5 +1005,6 @@ speed_scale = 1.4
 [connection signal="player_centered_scores_loaded" from="PlayGamesLeaderboardsClient" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_loaded" unbinds=2]
 [connection signal="top_scores_loaded" from="PlayGamesLeaderboardsClient" to="." method="_on_top_scores_loaded"]
 [connection signal="top_scores_loaded" from="PlayGamesLeaderboardsClient" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_loaded" unbinds=2]
+[connection signal="global_signal_emitted" from="ScoreRequestListener" to="." method="request_scores"]
 [connection signal="shown" from="VisibilityListener" to="." method="request_scores"]
-[connection signal="shown" from="VisibilityListener" to="BookAnimator" method="play" binds= [&"open"]]
+[connection signal="shown" from="VisibilityListener" to="CoverPanel/BookAnimator" method="play" binds= [&"open"]]

@@ -19,6 +19,7 @@ func _flip_page(current_value: int, new_value: int) -> void:
 	if current_value == new_value:
 		return
 	
+	animator.stop()
 	if current_value > new_value:
 		animator.play(PAGE_DOWN_KEY)
 	else:

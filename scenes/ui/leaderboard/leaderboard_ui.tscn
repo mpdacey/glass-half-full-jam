@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=36 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
@@ -12,8 +12,11 @@
 [ext_resource type="Script" uid="uid://cgcoppk14egd3" path="res://scenes/ui/leaderboard/between_leaderboard_controller.gd" id="6_7ik3k"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_u6w2y"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="9_g8cov"]
+[ext_resource type="StyleBox" uid="uid://b0fek1088qdql" path="res://scenes/ui/leaderboard/leaderboard_turning_page_panel_style.tres" id="9_h10y8"]
 [ext_resource type="Script" uid="uid://frvenhtov1fi" path="res://scenes/ui/leaderboard/change_page_controller.gd" id="9_yvvg5"]
+[ext_resource type="StyleBox" uid="uid://qurbgedfhs57" path="res://scenes/ui/leaderboard/leaderboard_still_page_panel_style.tres" id="10_h64fj"]
 [ext_resource type="Texture2D" uid="uid://28ajs5ji27t0" path="res://textures/police_badge.png" id="10_ly8w5"]
+[ext_resource type="StyleBox" uid="uid://cjbyycuff12uo" path="res://scenes/ui/leaderboard/leaderboard_fading_page_panel_style.tres" id="11_ko0uc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4e2ik"]
 atlas = ExtResource("1_y0ns5")
@@ -64,20 +67,6 @@ _data = {
 &"RESET": SubResource("Animation_6jraj"),
 &"idle": SubResource("Animation_7ik3k")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvvg5"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.9569234, 0.91382945, 0.91719776, 1)
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_detail = 5
-expand_margin_left = 60.0
-expand_margin_right = 12.0
-shadow_color = Color(0, 0, 0, 0)
-shadow_size = 12
 
 [sub_resource type="Animation" id="Animation_u220q"]
 length = 0.001
@@ -173,7 +162,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [SubResource("StyleBoxFlat_yvvg5")]
+"values": [ExtResource("9_h10y8")]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -251,48 +240,44 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [2]
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8cov"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.9569234, 0.91382945, 0.91719776, 1)
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_detail = 5
-expand_margin_left = 60.0
-expand_margin_right = 12.0
-shadow_size = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0841h"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.9569234, 0.91382945, 0.91719776, 1)
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_detail = 5
-expand_margin_left = 60.0
-expand_margin_right = 12.0
-shadow_color = Color(0, 0, 0, 0)
-shadow_size = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u220q"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.9569234, 0.91382945, 0.91719776, 1)
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_detail = 5
-expand_margin_left = 60.0
-expand_margin_right = 12.0
-shadow_size = 12
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../EntriesPanelAnchor/EntriesPanel:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ChangePagePanel:theme_override_styles/panel")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_h10y8")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../EntriesPanelAnchor/EntriesPanel:theme_override_styles/panel")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_h64fj")]
+}
 
 [sub_resource type="Animation" id="Animation_0841h"]
 resource_name = "page_up"
@@ -332,7 +317,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [1]
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -367,7 +352,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.16666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1, 0]
+"values": [2, 0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -376,10 +361,10 @@ tracks/6/path = NodePath("ChangePagePanel:theme_override_styles/panel")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.16666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StyleBoxFlat_g8cov"), SubResource("StyleBoxFlat_yvvg5")]
+"values": [ExtResource("10_h64fj"), ExtResource("11_ko0uc")]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -388,10 +373,10 @@ tracks/7/path = NodePath("../EntriesPanelAnchor/EntriesPanel:theme_override_styl
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.16666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StyleBoxFlat_0841h"), SubResource("StyleBoxFlat_u220q")]
+"values": [ExtResource("9_h10y8"), ExtResource("10_h64fj")]
 }
 tracks/8/type = "method"
 tracks/8/imported = false
@@ -406,6 +391,18 @@ tracks/8/keys = {
 "args": [],
 "method": &"emit_global_signal"
 }]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ChangePagePanel:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h10y8"]
@@ -910,7 +907,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(-100, 0)
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yvvg5")
+theme_override_styles/panel = ExtResource("9_h10y8")
 
 [node name="ChangePageAnimator" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/ChangePageAnchor"]
 libraries = {

@@ -900,6 +900,7 @@ theme_override_constants/margin_bottom = 48
 
 [node name="EntriesPanelAnchor" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="EntriesPanel" type="PanelContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor"]
 layout_mode = 1
@@ -930,7 +931,6 @@ visibility_layer = 17
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 0
 
 [node name="LoadingReticleAnchor" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin"]
 layout_mode = 2

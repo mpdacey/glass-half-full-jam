@@ -29,6 +29,7 @@ offset_bottom = 160.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
+mouse_filter = 1
 theme = ExtResource("1_6m02m")
 script = ExtResource("1_l1os8")
 username_label = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask/ProfileUsernameScroll/ProfileUsernameLabel")
@@ -51,6 +52,7 @@ theme_override_constants/separation = 16
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.46
+mouse_filter = 1
 text = "100"
 
 [node name="ProfilePictureMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
@@ -74,12 +76,14 @@ theme_override_constants/margin_bottom = -4
 
 [node name="ProfilePictureBorder" type="Panel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin/ProfilePictureBorderMargin"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="ProfileUsernameMask" type="Control" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
+mouse_filter = 1
 
 [node name="ProfileUsernameScroll" type="ScrollContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask"]
 layout_mode = 1
@@ -97,6 +101,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 size_flags_stretch_ratio = 5.0
+mouse_filter = 1
 theme_override_font_sizes/font_size = 56
 text = "Test User"
 vertical_alignment = 1
@@ -112,12 +117,14 @@ layout_mode = 2
 
 [node name="ScoreTitleLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_font_sizes/font_size = 32
 text = "Peak Distance"
 horizontal_alignment = 2
 
 [node name="ScorePanel" type="PanelContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_gcih8")
 
 [node name="ScoreMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel"]
@@ -127,6 +134,7 @@ theme_override_constants/margin_right = 16
 
 [node name="ScoreLabel" type="RichTextLabel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel/ScoreMargin"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "10.0[font_size=24]KM[/font_size]"

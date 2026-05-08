@@ -24,15 +24,15 @@ const MAX_RESULTS = 20
 var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
 
-func request_scores() -> void:
+func request_scores(force_refresh: bool = false) -> void:
 	if OS.is_debug_build():
 		_generate_list_of_scores()
 		return
 	
 	if _want_to_display_personal:
-		_request_personal_leaderboard()
+		_request_personal_leaderboard(force_refresh)
 	else:
-		_request_most_wanted_leaderboard()
+		_request_most_wanted_leaderboard(force_refresh)
 
 func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
 	_set_scroll_to_top.call_deferred()
@@ -55,22 +55,22 @@ func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
 			else:
 				children[i].set_entry_values(null)
 
-func _request_most_wanted_leaderboard() -> void:
+func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
 	load_most_wanted_scores_request.emit(
 		GlobalConstants.LEADERBOARD_ID,
 		_current_timespan,
 		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
 		MAX_RESULTS,
-		false
+		force_refresh
 	)
 
-func _request_personal_leaderboard() -> void:
+func _request_personal_leaderboard(force_refresh: bool = false) -> void:
 	load_personal_scores_request.emit(
 		GlobalConstants.LEADERBOARD_ID,
 		_current_timespan,
 		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
 		MAX_RESULTS,
-		false
+		force_refresh
 	)
 
 func _set_scroll_to_top() -> void:

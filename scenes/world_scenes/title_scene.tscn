@@ -598,70 +598,6 @@ font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_xq2ei"]
-resource_name = "idle"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2.7886147, 3, 3.1333334, 3.2666667, 3.4, 3.5333333, 3.7, 3.8522515),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 0.17453292519943295, -0.17453292519943295, 0.17453292519943295, -0.17453292519943295, 0.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../LeaderboardButtonAuraTexture:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 9.42477796076938]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0046650725, 0.9846651, 2.024665, 2.9946651),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(807, 2008), Vector2(807, 1958), Vector2(807, 2008), Vector2(807, 1958)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../LeaderboardButtonAuraTexture:scale")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.9983255, 2, 2.9983256),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.88, 0.88), Vector2(1, 1), Vector2(0.88, 0.88)]
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../LeaderboardButtonAuraTexture:modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0.5372549, -0.25, 0, 0.25, 0, 0.327, -0.25, 0, 0.25, 0, 0.5372549, -0.25, 0, 0.25, 0, 0.327, -0.25, 0, 0.25, 0, 0.5372549, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.9983255, 1.996651, 2.9949765, 4)
-}
-
 [sub_resource type="Animation" id="Animation_ohq1l"]
 length = 0.001
 tracks/0/type = "value"
@@ -722,6 +658,70 @@ tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0.5372549, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_xq2ei"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.7886147, 3, 3.1333334, 3.2666667, 3.4, 3.5333333, 3.7, 3.8522515),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.17453292519943295, -0.17453292519943295, 0.17453292519943295, -0.17453292519943295, 0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../LeaderboardButtonAuraTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 9.42477796076938]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0046650725, 0.9846651, 2.024665, 2.9946651),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0), Vector2(0, -100)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../LeaderboardButtonAuraTexture:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9983255, 2, 2.9983256),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.88, 0.88), Vector2(1, 1), Vector2(0.88, 0.88)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../LeaderboardButtonAuraTexture:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.5372549, -0.25, 0, 0.25, 0, 0.327, -0.25, 0, 0.25, 0, 0.5372549, -0.25, 0, 0.25, 0, 0.327, -0.25, 0, 0.25, 0, 0.5372549, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.9983255, 1.996651, 2.9949765, 4)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n41ns"]
@@ -897,14 +897,27 @@ desktop_text = "Click to play"
 
 [node name="LeaderboardButtonAnchor" type="Control" parent="TitleCanvasLayer"]
 layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -273.0
+offset_top = -303.10693
+offset_right = -273.0
+offset_bottom = -303.10693
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="LeaderboardButtonMover" type="Control" parent="TitleCanvasLayer/LeaderboardButtonAnchor"]
 anchors_preset = 0
 offset_left = 807.0
 offset_top = 1958.383
 offset_right = 807.0
 offset_bottom = 1958.383
-mouse_filter = 2
 
-[node name="LeaderboardButton" type="TextureButton" parent="TitleCanvasLayer/LeaderboardButtonAnchor"]
+[node name="LeaderboardButton" type="TextureButton" parent="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover"]
 layout_mode = 0
 offset_right = 250.0
 offset_bottom = 250.00012
@@ -913,7 +926,7 @@ texture_normal = ExtResource("14_xq2ei")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ButtonOutline" type="TextureRect" parent="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButton"]
+[node name="ButtonOutline" type="TextureRect" parent="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton"]
 modulate = Color(0, 0, 0, 1)
 z_index = -1
 layout_mode = 1
@@ -930,19 +943,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_xq2ei")
 
-[node name="LeaderboardButtonAuraTexture" type="TextureRect" parent="TitleCanvasLayer/LeaderboardButtonAnchor"]
+[node name="LeaderboardButtonAuraTexture" type="TextureRect" parent="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover"]
 modulate = Color(1, 1, 1, 0.5372549)
 z_index = -2
 layout_mode = 0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 384.0
-offset_bottom = 384.0
+offset_left = -128.00006
+offset_top = -127.99997
+offset_right = 383.99994
+offset_bottom = 384.00003
 pivot_offset = Vector2(256, 256)
 mouse_filter = 2
 texture = ExtResource("15_ohq1l")
 
-[node name="LeaderboardButtonAnimator" type="AnimationPlayer" parent="TitleCanvasLayer/LeaderboardButtonAnchor"]
+[node name="LeaderboardButtonAnimator" type="AnimationPlayer" parent="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover"]
 root_node = NodePath("../LeaderboardButton")
 libraries = {
 &"": SubResource("AnimationLibrary_n41ns")
@@ -976,9 +989,9 @@ script = ExtResource("17_bi3h3")
 metadata/_custom_type_script = "uid://cafyylq66psjo"
 
 [connection signal="pressed" from="TitleCanvasLayer/Button" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
-[connection signal="button_down" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButton" method="set_self_modulate" binds= [Color(0.7121294, 0.7121294, 0.71212935, 1)]]
-[connection signal="button_up" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButton" to="LeaderboardsUI" method="show"]
+[connection signal="button_down" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" method="set_self_modulate" binds= [Color(0.7121294, 0.7121294, 0.71212935, 1)]]
+[connection signal="button_up" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
+[connection signal="pressed" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="LeaderboardsUI" method="show"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
 
 [editable path="Paths/PolicePath/PoliceCore"]

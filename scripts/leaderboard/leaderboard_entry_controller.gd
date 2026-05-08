@@ -1,6 +1,7 @@
 extends PanelContainer
 class_name LeaderboardEntryController
 
+const DEFAULT_PROFILE_TEXTURE := preload("uid://di7q3iwunf60j")
 const SCROLL_AMOUNT_PER_SECOND = 30
 const DELAY_BETWEEN_PING_PONG = 0.7
 
@@ -8,6 +9,8 @@ const DELAY_BETWEEN_PING_PONG = 0.7
 @export var username_scroll_container: ScrollContainer
 @export var score_label : RichTextLabel
 @export var rank_label : Label
+@export var profile_picture : TextureRect
+@export var http_request: HTTPRequest
 var _username_scroll : HScrollBar
 var _scroll_tween : Tween
 
@@ -25,6 +28,10 @@ func set_entry_values(data: PlayGamesLeaderboardScore) -> void:
 	score_label.pop()
 	
 	rank_label.text = str(data.display_rank)
+	
+	profile_picture.texture = DEFAULT_PROFILE_TEXTURE
+	if data.score_holder_icon_image_uri != null and data.score_holder_icon_image_uri != "":
+		_set_user_icon.bind(data.score_holder_icon_image_uri).call_deferred()
 	
 	set_scrolling_animation.call_deferred()
 
@@ -52,3 +59,25 @@ func _on_scroll_changed() -> void:
 	_scroll_tween.tween_property(_username_scroll, "value", scroll_range, scroll_time).set_delay(DELAY_BETWEEN_PING_PONG)
 	_scroll_tween.tween_property(_username_scroll, "value", 0, scroll_time).set_delay(DELAY_BETWEEN_PING_PONG)
 	_scroll_tween.set_loops()
+
+func _set_user_icon(url: String) -> void:
+	http_request.request(url)
+
+func _on_http_icon_request_completed(
+	result: int, 
+	response_code: int, 
+	_headers: PackedStringArray, 
+	body: PackedByteArray
+) -> void:
+	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
+		push_warning("Icon image could not be downloaded.")
+		return
+	
+	var icon_image : Image = Image.new()
+	var error: Error = icon_image.load_png_from_buffer(body)
+	
+	if error != OK:
+		push_warning("Icon image could not be loaded")
+		return
+	
+	profile_picture.texture = ImageTexture.create_from_image(icon_image)

@@ -22,7 +22,7 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 corner_detail = 5
 
-[node name="LeaderboardEntry" type="PanelContainer" node_paths=PackedStringArray("username_label", "username_scroll_container", "score_label", "rank_label")]
+[node name="LeaderboardEntry" type="PanelContainer" node_paths=PackedStringArray("username_label", "username_scroll_container", "score_label", "rank_label", "profile_picture", "http_request")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 160.0
@@ -36,6 +36,8 @@ username_label = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUs
 username_scroll_container = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask/ProfileUsernameScroll")
 score_label = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel/ScoreMargin/ScoreLabel")
 rank_label = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/RankLabel")
+profile_picture = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin/ProfilePictureTexture")
+http_request = NodePath("HTTPRequest")
 
 [node name="LeaderboardEntryMargin" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -142,3 +144,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_icon_request_completed"]

@@ -94,6 +94,7 @@ func _generate_list_of_scores() -> void:
 		score_dictionary["rawScore"] = (MAX_RESULTS - i) * 10 + randi_range(0,9)
 		score_dictionary["scoreHolderDisplayName"] = selected_names.values()[i]
 		score_dictionary["displayRank"] = str(i+1)
+		score_dictionary["scoreHolderIconImageUri"] = "https://godotengine.org/assets/press/icon_color_outline.png"
 		leaderboard_scores.append(PlayGamesLeaderboardScore.new(score_dictionary))
 	
 	set_scores(leaderboard_scores)

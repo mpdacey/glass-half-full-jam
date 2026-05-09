@@ -22,6 +22,7 @@ const DEBUG_PROFILE_ICON_PATH = "user://icon_color.png"
 
 @export var entries_container : Container
 @export var scroll_container: ScrollContainer
+@export var empty_collection_label: RichTextLabel
 var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
 
@@ -37,6 +38,8 @@ func request_scores(force_refresh: bool = false) -> void:
 
 func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
 	_set_scroll_to_top.call_deferred()
+	
+	empty_collection_label.visible = scores.size() == 0
 	
 	var children : Array[LeaderboardEntryController] = []
 	children.assign(entries_container.get_children())

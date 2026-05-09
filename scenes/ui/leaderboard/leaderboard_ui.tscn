@@ -476,6 +476,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EmptyListText:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_a7u1u"]
 resource_name = "switch_to_entries"
@@ -504,10 +516,22 @@ tracks/1/keys = {
 "update": 2,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EmptyListText:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_tlust"]
 resource_name = "switch_to_loading"
-capture_included = true
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -515,9 +539,9 @@ tracks/0/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/Ent
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 2,
+"update": 1,
 "values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
@@ -527,10 +551,22 @@ tracks/1/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/Ent
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 2,
+"update": 1,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EmptyListText:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ly8w5"]
@@ -776,10 +812,11 @@ _data = {
 &"open": SubResource("Animation_g8cov")
 }
 
-[node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container")]
+[node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container", "empty_collection_label")]
 script = ExtResource("1_1y2m6")
 entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
 scroll_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll")
+empty_collection_label = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EmptyListText")
 
 [node name="LeaderboardsPanel" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -930,7 +967,18 @@ vertical_scroll_mode = 3
 visibility_layer = 17
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+
+[node name="EmptyListText" type="RichTextLabel" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+theme_override_fonts/normal_font = ExtResource("3_1rsoi")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[font_size=96]No Offenders Yet.[/font_size]
+Officers are instructed
+to remain vigilant!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LoadingReticleAnchor" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin"]
 layout_mode = 2
@@ -939,7 +987,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 
 [node name="LoadingReticleTexture" type="TextureRect" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/LoadingReticleAnchor"]
-self_modulate = Color(0.31, 0.31, 0.31, 1)
+self_modulate = Color(0.16862746, 0.16862746, 0.16862746, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

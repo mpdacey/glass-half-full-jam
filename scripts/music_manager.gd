@@ -59,6 +59,13 @@ func play_gameover() -> void:
 	tween.tween_callback(gameover_player.play).set_delay(0.2)
 	tween.tween_property(gameover_player, "volume_db", 0, 0.7)
 
+func fade_gameover() -> void:
+	var gameover_player : AudioStreamPlayer = MusicPlayer.get_node(MusicPlayer.get_meta(MUSIC_PLAYERS[TrackList.GAMEOVER]))
+	
+	var tween : Tween = create_tween()
+	tween.tween_property(gameover_player, "volume_db", 0, 0.4)
+	tween.tween_callback(gameover_player.stop)
+
 func _stop_tracks() -> void:
 	var audio_player : AudioStreamPlayer
 	audio_player = MusicPlayer.get_node(MusicPlayer.get_meta(MUSIC_PLAYERS[TrackList.MAIN]))

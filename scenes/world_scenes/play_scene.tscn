@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=81 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://b67sj3e8sr1yb" path="res://scenes/ui/drive_hud.tscn" id="29_7m3n2"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="33_7m3n2"]
 [ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="33_wjfxh"]
+[ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="36_b3xk2"]
 [ext_resource type="PackedScene" uid="uid://bn3qvukddfjfg" path="res://scenes/ui/highscore_confetti_ui.tscn" id="36_ekkaj"]
 [ext_resource type="Script" uid="uid://clrbnqvmohmjv" path="res://scripts/highscore_manager.gd" id="40_kd3qq"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="44_edg7r"]
@@ -698,6 +699,10 @@ outline_color = Color(0, 0, 0, 1)
 RichTextLabel/font_sizes/normal_font_size = 48
 RichTextLabel/fonts/normal_font = ExtResource("22_1b2ky")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e2ik"]
+atlas = ExtResource("36_b3xk2")
+region = Rect2(7000, 2000, 370, 370)
+
 [sub_resource type="Animation" id="Animation_dwlll"]
 length = 0.001
 tracks/0/type = "value"
@@ -1084,7 +1089,6 @@ script = ExtResource("24_dfpoj")
 metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
 [node name="GameoverLayer" type="CanvasLayer" parent="UI"]
-visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="UI/GameoverLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -1099,7 +1103,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1080, 2280)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="CarFollowerOffset" type="Node3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
 
@@ -1111,6 +1115,17 @@ environment = SubResource("Environment_6wevv")
 fov = 50.0
 near = 6.0
 far = 120.0
+
+[node name="QuitOverlayColorRect" type="ColorRect" parent="UI/GameoverLayer"]
+visible = false
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="CrashColorRect" type="ColorRect" parent="UI/GameoverLayer"]
 visible = false
@@ -1127,9 +1142,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -448.0
-offset_top = 123.99999
+offset_top = 175.0
 offset_right = 171.0
-offset_bottom = 384.0
+offset_bottom = 435.0
 grow_horizontal = 2
 scale = Vector2(1.45, 1.45)
 
@@ -1196,8 +1211,7 @@ metadata/_custom_type_script = "uid://42ah5w3n1b"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="UI/GameoverLayer"]
 
-[node name="TryAgainButton" type="Button" parent="UI/GameoverLayer"]
-modulate = Color(1, 1, 1, 0)
+[node name="TryAgainButtonRegion" type="MarginContainer" parent="UI/GameoverLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1205,6 +1219,34 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 96
+theme_override_constants/margin_bottom = 96
+
+[node name="TryAgainButton" type="Button" parent="UI/GameoverLayer/TryAgainButtonRegion"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="UI/GameoverLayer/TryAgainButtonRegion"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ReturnToMenuButton" type="TextureButton" parent="UI/GameoverLayer/TryAgainButtonRegion/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 64.0
+offset_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_4e2ik")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="HighscoreConfettiUI" parent="UI" instance=ExtResource("36_ekkaj")]
 
@@ -1248,6 +1290,11 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [node name="TerrainRetryEmitter" type="Node" parent="GameoverNodes/GameoverInterfacers"]
 script = ExtResource("12_dyabf")
 global_signal_name = &"terrain_retry"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="LoadTitleSceneEmitter" type="Node" parent="GameoverNodes/GameoverInterfacers"]
+script = ExtResource("12_dyabf")
+global_signal_name = &"scene_change_request_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [node name="SurroundPolice" type="Node3D" parent="GameoverNodes"]
@@ -1334,7 +1381,11 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="area_entered" from="Interactables/HighscoreGatePositioner/HighscoreArea" to="UI/HighscoreConfettiUI" method="pop_confetti" unbinds=1]
 [connection signal="pressed" from="UI/DriveHUD/Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="UI/PauseMenu" method="show"]
 [connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD/DisplayAnimator" method="play" binds= ["show"]]
-[connection signal="pressed" from="UI/GameoverLayer/TryAgainButton" to="GameoverNodes/ResetHandler" method="request_reset"]
+[connection signal="ready" from="UI/GameoverLayer" to="UI/GameoverLayer" method="hide"]
+[connection signal="pressed" from="UI/GameoverLayer/TryAgainButtonRegion/TryAgainButton" to="GameoverNodes/ResetHandler" method="request_reset"]
+[connection signal="button_down" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" method="set_self_modulate" binds= [Color(0.53, 0.53, 0.53, 1)]]
+[connection signal="button_up" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
+[connection signal="pressed" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"quit"]]
 [connection signal="confetti_popped" from="UI/HighscoreConfettiUI" to="Interactables/HighscoreGatePositioner/HighscoreArea" method="set_monitoring" flags=3 binds= [false]]
 [connection signal="reset_called" from="GameoverNodes/ResetHandler" to="PlaySceneResetter" method="play" binds= [&"start"]]
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/GameoverPlayer" method="play" binds= [&"retry"]]

@@ -12,3 +12,5 @@ signal scene_change_request_title
 signal scene_changed_play
 signal scene_changed_title
 #endregion
+
+signal trigger_score_request

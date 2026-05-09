@@ -26,3 +26,7 @@ Chain-link Metal Wire Fencing Texture by TextureCan.com -- https://www.textureca
 Worn Planks by Dimitrios Savva -- https://polyhaven.com/a/worn_planks -- License: Creative Commons 0
 door_slams_r.wav by ddohler -- https://freesound.org/s/34263/ -- License: Attribution 4.0
 Sparkler by iainmccurdy -- https://freesound.org/s/712677/ -- License: Attribution 4.0
+Tinos font by Steven Matteson -- https://fonts.google.com/specimen/Tinos -- License: Apache License 2.0
+Arimo font by Steven Matteson -- https://fonts.google.com/specimen/Arimo -- License: Apache License 2.0
+Index Card Flips (handle business paper mvmt) 02.wav by cmorris035 -- https://freesound.org/s/319154/ -- License: Creative Commons 0
+Light Masks by Kenney -- https://kenney.nl/assets/light-masks -- License: Creative Commons 0

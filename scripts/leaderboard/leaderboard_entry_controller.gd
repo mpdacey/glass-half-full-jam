@@ -28,14 +28,12 @@ func set_entry_values(data: PlayGamesLeaderboardScore) -> void:
 	score_label.pop()
 	
 	rank_label.text = str(data.display_rank)
+	_set_scrolling_animation.call_deferred()
 	
-	profile_picture.texture = DEFAULT_PROFILE_TEXTURE
-	if data.score_holder_icon_image_uri != null and data.score_holder_icon_image_uri != "":
-		_set_user_icon.bind(data.score_holder_icon_image_uri).call_deferred()
-	
-	set_scrolling_animation.call_deferred()
+	if data.score_holder.has_icon_image:
+		_set_profile_picture(data.score_holder.icon_image_uri)
 
-func set_scrolling_animation() -> void:
+func _set_scrolling_animation() -> void:
 	if _scroll_tween:
 		_scroll_tween.kill()
 	
@@ -43,6 +41,18 @@ func set_scrolling_animation() -> void:
 	#I don't like how this signal gets emitted multiple times before its finally "ready" but whatever
 	if not _username_scroll.changed.is_connected(_on_scroll_changed):
 		_username_scroll.changed.connect(_on_scroll_changed)
+
+func _set_profile_picture(icon_image_uri: String) -> void:
+	profile_picture.texture = DEFAULT_PROFILE_TEXTURE
+	if icon_image_uri == "":
+		return
+		
+	var image := Image.load_from_file(icon_image_uri)
+	if not image:
+		return
+	
+	var texture_image := ImageTexture.create_from_image(image)
+	profile_picture.texture = texture_image
 
 func _on_scroll_changed() -> void:
 	_username_scroll.value = 0
@@ -59,25 +69,3 @@ func _on_scroll_changed() -> void:
 	_scroll_tween.tween_property(_username_scroll, "value", scroll_range, scroll_time).set_delay(DELAY_BETWEEN_PING_PONG)
 	_scroll_tween.tween_property(_username_scroll, "value", 0, scroll_time).set_delay(DELAY_BETWEEN_PING_PONG)
 	_scroll_tween.set_loops()
-
-func _set_user_icon(url: String) -> void:
-	http_request.request(url)
-
-func _on_http_icon_request_completed(
-	result: int, 
-	response_code: int, 
-	_headers: PackedStringArray, 
-	body: PackedByteArray
-) -> void:
-	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
-		push_warning("Icon image could not be downloaded.")
-		return
-	
-	var icon_image : Image = Image.new()
-	var error: Error = icon_image.load_png_from_buffer(body)
-	
-	if error != OK:
-		push_warning("Icon image could not be loaded")
-		return
-	
-	profile_picture.texture = ImageTexture.create_from_image(icon_image)

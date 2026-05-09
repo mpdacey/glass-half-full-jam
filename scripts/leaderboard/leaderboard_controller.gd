@@ -18,6 +18,7 @@ signal load_personal_scores_request(
 
 const LEADERBOARD_ENTRY_SCENE = preload("uid://gqut7x3b0vj7")
 const MAX_RESULTS = 20
+const DEBUG_PROFILE_ICON_PATH = "user://icon_color.png"
 
 @export var entries_container : Container
 @export var scroll_container: ScrollContainer
@@ -94,7 +95,12 @@ func _generate_list_of_scores() -> void:
 		score_dictionary["rawScore"] = (MAX_RESULTS - i) * 10 + randi_range(0,9)
 		score_dictionary["scoreHolderDisplayName"] = selected_names.values()[i]
 		score_dictionary["displayRank"] = str(i+1)
-		score_dictionary["scoreHolderIconImageUri"] = "https://godotengine.org/assets/press/icon_color_outline.png"
+		score_dictionary["scoreHolderIconImageUri"] = DEBUG_PROFILE_ICON_PATH
+		score_dictionary["scoreHolder"] = {
+			"hasIconImage" = true,
+			"iconImageUri" = DEBUG_PROFILE_ICON_PATH
+		}
+		
 		leaderboard_scores.append(PlayGamesLeaderboardScore.new(score_dictionary))
 	
 	set_scores(leaderboard_scores)

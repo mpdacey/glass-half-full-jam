@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=41 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://douiqg5815mjs" path="res://resources/fonts/Tinos/Tinos-Bold.ttf" id="3_1rsoi"]
 [ext_resource type="StyleBox" uid="uid://b1ejw4y18ngll" path="res://scenes/ui/leaderboard/leaderboard_cover_panel_stylebox.tres" id="3_a7u1u"]
 [ext_resource type="ButtonGroup" uid="uid://btx4j1qk6x13e" path="res://scenes/ui/leaderboard/leaderboards_timespan_button_group.tres" id="3_u6w2y"]
+[ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="5_0y08k"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="5_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://cp2toi07bdpx" path="res://textures/flair_arrow_3.svg" id="5_tlust"]
 [ext_resource type="Script" uid="uid://cgcoppk14egd3" path="res://scenes/ui/leaderboard/between_leaderboard_controller.gd" id="6_7ik3k"]
@@ -847,6 +848,10 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_4e2ik")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="AndroidBackListener" type="Node" parent="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton"]
+script = ExtResource("5_0y08k")
+metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
 [node name="TitleLabel" type="Label" parent="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox"]
 layout_mode = 2

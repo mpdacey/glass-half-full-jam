@@ -113,7 +113,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("TitleCanvasLayer/Button:visible")
+tracks/5/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -446,7 +446,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TitleCanvasLayer/Button:visible")
+tracks/3/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -847,13 +847,22 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [node name="TitleCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="TitleCanvasLayer"]
-modulate = Color(1, 1, 1, 0)
+[node name="MarginContainer" type="MarginContainer" parent="TitleCanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 96
+theme_override_constants/margin_bottom = 96
+
+[node name="PlayButton" type="Button" parent="TitleCanvasLayer/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 focus_mode = 1
 
 [node name="Logo" type="TextureRect" parent="TitleCanvasLayer"]
@@ -988,7 +997,7 @@ metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 script = ExtResource("17_bi3h3")
 metadata/_custom_type_script = "uid://cafyylq66psjo"
 
-[connection signal="pressed" from="TitleCanvasLayer/Button" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
+[connection signal="pressed" from="TitleCanvasLayer/MarginContainer/PlayButton" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
 [connection signal="button_down" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" method="set_self_modulate" binds= [Color(0.7121294, 0.7121294, 0.71212935, 1)]]
 [connection signal="button_up" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
 [connection signal="pressed" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="LeaderboardsUI" method="show"]

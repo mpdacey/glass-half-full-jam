@@ -1119,10 +1119,18 @@ metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 volume_db = 4.0
 bus = &"SFX"
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="WaitForResponseTimer" type="Timer" parent="Timers"]
+wait_time = 4.0
+
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
 [connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
+[connection signal="load_most_wanted_scores_request" from="." to="Timers/WaitForResponseTimer" method="start" unbinds=5]
 [connection signal="load_personal_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_player_centered_scores"]
 [connection signal="load_personal_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
+[connection signal="load_personal_scores_request" from="." to="Timers/WaitForResponseTimer" method="start" unbinds=5]
+[connection signal="scores_set" from="." to="Timers/WaitForResponseTimer" method="stop"]
 [connection signal="button_down" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" method="set_self_modulate" binds= [Color(0.5019608, 0.5019608, 0.5019608, 1)]]
 [connection signal="button_up" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/TitleMargin/TitleHBox/EscapeButton" to="CoverPanel/BookAnimator" method="play" binds= [&"close"]]
@@ -1143,3 +1151,4 @@ bus = &"SFX"
 [connection signal="global_signal_emitted" from="ScoreRequestListener" to="." method="request_scores"]
 [connection signal="shown" from="VisibilityListener" to="." method="request_scores"]
 [connection signal="shown" from="VisibilityListener" to="CoverPanel/BookAnimator" method="play" binds= [&"open"]]
+[connection signal="timeout" from="Timers/WaitForResponseTimer" to="." method="set_scores" binds= [[]]]

@@ -1123,6 +1123,11 @@ bus = &"SFX"
 
 [node name="WaitForResponseTimer" type="Timer" parent="Timers"]
 wait_time = 4.0
+ignore_time_scale = true
+
+[node name="RefreshTimer" type="Timer" parent="Timers"]
+wait_time = 30.0
+ignore_time_scale = true
 
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
 [connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
@@ -1149,6 +1154,11 @@ wait_time = 4.0
 [connection signal="top_scores_loaded" from="PlayGamesLeaderboardsClient" to="." method="_on_top_scores_loaded"]
 [connection signal="top_scores_loaded" from="PlayGamesLeaderboardsClient" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_loaded" unbinds=2]
 [connection signal="global_signal_emitted" from="ScoreRequestListener" to="." method="request_scores"]
-[connection signal="shown" from="VisibilityListener" to="." method="request_scores"]
+[connection signal="hidden" from="VisibilityListener" to="Timers/RefreshTimer" method="stop"]
+[connection signal="shown" from="VisibilityListener" to="." method="reset_refresh_states"]
+[connection signal="shown" from="VisibilityListener" to="." method="request_scores" flags=3]
+[connection signal="shown" from="VisibilityListener" to="Timers/RefreshTimer" method="start"]
 [connection signal="shown" from="VisibilityListener" to="CoverPanel/BookAnimator" method="play" binds= [&"open"]]
 [connection signal="timeout" from="Timers/WaitForResponseTimer" to="." method="set_scores" binds= [[]]]
+[connection signal="timeout" from="Timers/RefreshTimer" to="." method="reset_refresh_states"]
+[connection signal="timeout" from="Timers/RefreshTimer" to="Timers/RefreshTimer" method="start"]

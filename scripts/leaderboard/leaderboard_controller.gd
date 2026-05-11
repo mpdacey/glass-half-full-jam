@@ -27,11 +27,29 @@ const DEBUG_PROFILE_ICON_PATH = "user://icon_color.png"
 @export var empty_collection_label: RichTextLabel
 var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
+var _refresh_leaderboard: Dictionary = {}
 
-func request_scores(force_refresh: bool = false) -> void:
+func reset_refresh_states() -> void:
+	_refresh_leaderboard = {
+		true: {
+			PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY : true,
+			PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_WEEKLY : true,
+			PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME : true
+		},
+		false: {
+			PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY : true,
+			PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_WEEKLY : true,
+			PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME : true
+		}
+	}
+
+func request_scores() -> void:
 	if OS.is_debug_build():
 		_generate_list_of_scores()
 		return
+	
+	var force_refresh : bool = _refresh_leaderboard[_want_to_display_personal][_current_timespan]
+	_refresh_leaderboard[_want_to_display_personal][_current_timespan] = false
 	
 	if _want_to_display_personal:
 		_request_personal_leaderboard(force_refresh)

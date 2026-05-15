@@ -31,6 +31,7 @@ UserConfigManager="*res://scripts/global/user_config_manager.gd"
 GlobalSignalBus="*res://scripts/global/global_signal_bus.gd"
 GlobalConstants="*res://scripts/global/global_constants.gd"
 MusicPlayer="*res://scenes/music_manager.tscn"
+LivesSystem="*res://scenes/lives_system.tscn"
 ScreenshotGrabber="*res://scripts/editor/screenshot_grabber.gd"
 
 [debug]

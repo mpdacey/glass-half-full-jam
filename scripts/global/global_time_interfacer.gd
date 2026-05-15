@@ -7,7 +7,7 @@ const TIME_URL = "https://time.now/developer/api/timezone/Europe/London"
 
 @export var http_request: HTTPRequest
 
-func request_global_datetime() -> void:
+func request_global_time() -> void:
 	var error : Error = http_request.request(TIME_URL, [], HTTPClient.METHOD_GET)
 	if error != OK:
 		print(error)
@@ -33,10 +33,10 @@ func request_recieved(
 	if datetime.is_empty():
 		printerr("No datetime in json data.")
 	else:
-		print(datetime)
 		global_datetime_recieved.emit(datetime)
 	
 	var unix_time : int = json_data["unixtime"]
 	if unix_time and unix_time > 0:
-		print(unix_time)
 		global_unix_time_recieved.emit(unix_time)
+	else:
+		printerr("No unix time in json data.")

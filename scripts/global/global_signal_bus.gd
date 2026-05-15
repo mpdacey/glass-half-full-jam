@@ -14,3 +14,9 @@ signal scene_changed_title
 #endregion
 
 signal trigger_score_request
+
+#region Lives System
+signal spend_life_requested
+signal spend_life_granted
+signal spend_life_denied
+#endregion

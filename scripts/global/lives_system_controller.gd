@@ -27,8 +27,6 @@ func emit_signals(force_emit_lives: bool = false) -> void:
 	var modulo_time_left : int = _current_time_left % LIFE_REGENERATION_RATE
 	var lives_left : int = MAX_LIVES - ceili(float(_current_time_left) / LIFE_REGENERATION_RATE)
 	
-	print(_current_time_left)
-	
 	if modulo_time_left == 0:
 		life_regenerated.emit(lives_left)
 		if _current_time_left == 0:

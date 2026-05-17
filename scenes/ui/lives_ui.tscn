@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvb01gwjc7pvc"]
+[gd_scene load_steps=8 format=3 uid="uid://bvb01gwjc7pvc"]
 
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="1_3xddg"]
+[ext_resource type="Script" uid="uid://wque3schxmr1" path="res://scripts/lives_ui_controller.gd" id="1_lwv0y"]
 [ext_resource type="Texture2D" uid="uid://dkcqcpdao2v71" path="res://textures/life_icon.svg" id="1_ohavu"]
 
 [sub_resource type="Theme" id="Theme_lwv0y"]
@@ -14,14 +15,17 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwv0y"]
 bg_color = Color(0.21950114, 0.21950093, 0.21950102, 1)
+border_width_left = 40
 border_width_top = 6
 border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
 corner_radius_top_right = 40
 corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 corner_detail = 13
-expand_margin_left = 60.0
+expand_margin_left = 20.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_nkiqw"]
 font = ExtResource("1_3xddg")
@@ -29,7 +33,10 @@ font_size = 80
 outline_size = 24
 outline_color = Color(0, 0, 0, 1)
 
-[node name="LivesUI" type="CanvasLayer"]
+[node name="LivesUI" type="CanvasLayer" node_paths=PackedStringArray("lives_label", "regen_timer_label")]
+script = ExtResource("1_lwv0y")
+lives_label = NodePath("LivesUIMargin/HBoxMargin/ContentHBox/LivesLabel")
+regen_timer_label = NodePath("LivesUIMargin/HBoxMargin/ContentHBox/RegenTimerPanelMargin/RegenTimerPanel/RegenTimerMargin/RegenTimerLabel")
 
 [node name="LivesUIMargin" type="MarginContainer" parent="."]
 anchors_preset = 1
@@ -69,6 +76,7 @@ vertical_alignment = 1
 
 [node name="RegenTimerPanelMargin" type="MarginContainer" parent="LivesUIMargin/HBoxMargin/ContentHBox"]
 layout_mode = 2
+theme_override_constants/margin_left = -40
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_bottom = 21
 
@@ -80,11 +88,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lwv0y")
 [node name="RegenTimerMargin" type="MarginContainer" parent="LivesUIMargin/HBoxMargin/ContentHBox/RegenTimerPanelMargin/RegenTimerPanel"]
 layout_mode = 2
 theme_override_constants/margin_top = -6
-theme_override_constants/margin_right = 12
+theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = -10
 
 [node name="RegenTimerLabel" type="Label" parent="LivesUIMargin/HBoxMargin/ContentHBox/RegenTimerPanelMargin/RegenTimerPanel/RegenTimerMargin"]
-custom_minimum_size = Vector2(192, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1

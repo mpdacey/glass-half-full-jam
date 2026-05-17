@@ -1,20 +1,44 @@
 extends Node
 
 signal life_regenerated(current_lives: int)
-signal lives_fully_replenished()
+signal timer_remaining_seconds(time_left: int)
 
 const MAX_LIVES : int = 5
 ## Number of seconds to regenerate a life
-const LIFE_REGENERATION_RATE = 300
+const LIFE_REGENERATION_RATE : int = 60
 
 @export var regen_timer : Timer
+var _current_time_left : int = 0
 
 func _ready() -> void:
 	_request_initial_time()
 
 func _process(_delta: float) -> void:
-	if regen_timer.time_left > 0:
-		print(ceili(regen_timer.time_left))
+	var ceil_time_left : int = ceili(regen_timer.time_left)
+	
+	if _current_time_left == ceil_time_left:
+		return
+	
+	_current_time_left = ceil_time_left
+	
+	emit_signals()
+
+func emit_signals(force_emit_lives: bool = false) -> void:
+	var modulo_time_left : int = _current_time_left % LIFE_REGENERATION_RATE
+	var lives_left : int = MAX_LIVES - ceili(float(_current_time_left) / LIFE_REGENERATION_RATE)
+	
+	print(_current_time_left)
+	
+	if modulo_time_left == 0:
+		life_regenerated.emit(lives_left)
+		if _current_time_left == 0:
+			timer_remaining_seconds.emit(0)
+		else:
+			timer_remaining_seconds.emit(LIFE_REGENERATION_RATE)
+	else:
+		timer_remaining_seconds.emit(modulo_time_left)
+		if force_emit_lives:
+			life_regenerated.emit(lives_left)
 
 func can_spend_life() -> bool:
 	return regen_timer.time_left < LIFE_REGENERATION_RATE * (MAX_LIVES - 1)

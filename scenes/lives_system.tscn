@@ -10,6 +10,7 @@ regen_timer = NodePath("FullRegenerationTimer")
 
 [node name="FullRegenerationTimer" type="Timer" parent="."]
 wait_time = 60.0
+one_shot = true
 
 [node name="SpendLifeRequestListener" type="Node" parent="."]
 script = ExtResource("2_8whx0")

@@ -1019,6 +1019,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="LivesUI" parent="TitleCanvasLayer" instance=ExtResource("16_n41ns")]
+layer = 0
 
 [node name="LivesCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer/LivesUI"]
 

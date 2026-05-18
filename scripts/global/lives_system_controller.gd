@@ -7,11 +7,9 @@ const MAX_LIVES : int = 5
 ## Number of seconds to regenerate a life
 const LIFE_REGENERATION_RATE : int = 60
 
+@export var lives_save_controller: LivesSaveController
 @export var regen_timer : Timer
 var _current_time_left : int = 0
-
-func _ready() -> void:
-	_request_initial_time()
 
 func _process(_delta: float) -> void:
 	var ceil_time_left : int = ceili(regen_timer.time_left)
@@ -57,7 +55,7 @@ func _request_initial_time() -> void:
 	GlobalTimeInterfacer.request_global_time()
 	
 func _set_initial_timer(global_unix_time: int) -> void:
-	var stored_regeneration_time : int = UserConfigManager.get_config_value(UserConfigManager.LIVES_REGENERATION_UNIX_KEY)
+	var stored_regeneration_time : int = lives_save_controller.get_encrypted_regen_time()
 	if stored_regeneration_time < global_unix_time:
 		return
 	
@@ -65,8 +63,8 @@ func _set_initial_timer(global_unix_time: int) -> void:
 
 func _set_stored_regeneration_time(global_unix_time: int) -> void:
 	var fully_regeneration_unix_time := global_unix_time + ceili(regen_timer.time_left)
-	UserConfigManager.set_config_value(UserConfigManager.LIVES_REGENERATION_UNIX_KEY, fully_regeneration_unix_time)
-	UserConfigManager.save_config_file() 
+	lives_save_controller.set_encrypted_regen_time(fully_regeneration_unix_time)
+	lives_save_controller.save_config_file()
 
 func _on_spend_life_request() -> void:
 	if can_spend_life():

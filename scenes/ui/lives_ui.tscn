@@ -105,9 +105,9 @@ layout_mode = 2
 theme_override_constants/separation = 24
 
 [node name="LivesLabel" type="Label" parent="LivesUIMargin/HBoxMargin/ContentHBox"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
-text = "5"
+text = "0"
 label_settings = SubResource("LabelSettings_3xddg")
 horizontal_alignment = 1
 vertical_alignment = 1

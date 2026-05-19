@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://boscxn2xgn85t"]
+[gd_scene load_steps=18 format=3 uid="uid://boscxn2xgn85t"]
 
 [ext_resource type="Script" uid="uid://cmg8osgdawrnd" path="res://scenes/ui/leaderboard/info_box_controller.gd" id="1_rl0sw"]
 [ext_resource type="FontFile" uid="uid://douiqg5815mjs" path="res://resources/fonts/Tinos/Tinos-Bold.ttf" id="2_0vwu3"]
+[ext_resource type="FontFile" uid="uid://b0i53eqnnet6n" path="res://resources/fonts/Arimo/static/Arimo-Bold.ttf" id="2_s13iy"]
 [ext_resource type="FontFile" uid="uid://7up8r46epdiu" path="res://resources/fonts/Arimo/static/Arimo-Regular.ttf" id="3_s13iy"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="4_a2yy2"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="5_qofcg"]
@@ -34,6 +35,8 @@ shadow_size = 16
 shadow_offset = Vector2(0, 6.49)
 
 [sub_resource type="Theme" id="Theme_132qw"]
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("2_s13iy")
 Button/styles/focus = SubResource("StyleBoxEmpty_gpe5i")
 Button/styles/hover = SubResource("StyleBoxFlat_132qw")
 Button/styles/normal = SubResource("StyleBoxFlat_132qw")

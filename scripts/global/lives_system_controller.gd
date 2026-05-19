@@ -5,7 +5,7 @@ signal timer_remaining_seconds(time_left: int)
 
 const MAX_LIVES : int = 5
 ## Number of seconds to regenerate a life
-const LIFE_REGENERATION_RATE : int = 60
+const LIFE_REGENERATION_RATE : int = 300
 
 @export var lives_save_controller: LivesSaveController
 @export var regen_timer : Timer
@@ -23,10 +23,9 @@ func _process(_delta: float) -> void:
 
 func emit_signals(force_emit_lives: bool = false) -> void:
 	var modulo_time_left : int = _current_time_left % LIFE_REGENERATION_RATE
-	var lives_left : int = MAX_LIVES - ceili(float(_current_time_left) / LIFE_REGENERATION_RATE)
 	
 	if modulo_time_left == 0:
-		life_regenerated.emit(lives_left)
+		_emit_lives_left()
 		if _current_time_left == 0:
 			timer_remaining_seconds.emit(0)
 		else:
@@ -34,7 +33,7 @@ func emit_signals(force_emit_lives: bool = false) -> void:
 	else:
 		timer_remaining_seconds.emit(modulo_time_left)
 		if force_emit_lives:
-			life_regenerated.emit(lives_left)
+			_emit_lives_left()
 
 func can_spend_life() -> bool:
 	return regen_timer.time_left < LIFE_REGENERATION_RATE * (MAX_LIVES - 1)
@@ -46,6 +45,8 @@ func spend_life() -> void:
 	
 	var remaining_time := regen_timer.time_left
 	regen_timer.start(remaining_time + LIFE_REGENERATION_RATE)
+	_current_time_left = ceili(regen_timer.time_left)
+	_emit_lives_left()
 	
 	GlobalTimeInterfacer.global_unix_time_recieved.connect(_set_stored_regeneration_time, CONNECT_ONE_SHOT)
 	GlobalTimeInterfacer.request_global_time()
@@ -72,3 +73,8 @@ func _on_spend_life_request() -> void:
 		GlobalSignalBus.spend_life_granted.emit()
 	else:
 		GlobalSignalBus.spend_life_denied.emit()
+
+func _emit_lives_left() -> void:
+	var lives_left : int = MAX_LIVES - ceili(float(_current_time_left) / LIFE_REGENERATION_RATE)
+	life_regenerated.emit(lives_left)
+	

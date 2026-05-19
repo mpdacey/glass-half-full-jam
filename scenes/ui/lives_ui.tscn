@@ -72,6 +72,7 @@ _data = {
 }
 
 [node name="LivesUI" type="CanvasLayer" node_paths=PackedStringArray("lives_label", "regen_timer_label")]
+process_mode = 3
 script = ExtResource("1_lwv0y")
 lives_label = NodePath("LivesUIMargin/HBoxMargin/ContentHBox/LivesLabel")
 regen_timer_label = NodePath("LivesUIMargin/HBoxMargin/ContentHBox/RegenTimerPanelMargin/RegenTimerPanel/RegenTimerMargin/RegenTimerLabel")

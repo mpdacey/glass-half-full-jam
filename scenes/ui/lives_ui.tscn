@@ -1,0 +1,224 @@
+[gd_scene load_steps=16 format=3 uid="uid://bvb01gwjc7pvc"]
+
+[ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="1_3xddg"]
+[ext_resource type="Script" uid="uid://wque3schxmr1" path="res://scripts/lives_ui_controller.gd" id="1_lwv0y"]
+[ext_resource type="Texture2D" uid="uid://dkcqcpdao2v71" path="res://textures/life_icon.svg" id="1_ohavu"]
+[ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="4_nkiqw"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="5_tnpra"]
+
+[sub_resource type="Theme" id="Theme_lwv0y"]
+RichTextLabel/fonts/normal_font = ExtResource("1_3xddg")
+
+[sub_resource type="LabelSettings" id="LabelSettings_3xddg"]
+font = ExtResource("1_3xddg")
+font_size = 96
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwv0y"]
+bg_color = Color(0.21950114, 0.21950093, 0.21950102, 1)
+border_width_left = 40
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 40
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 13
+expand_margin_left = 20.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkiqw"]
+font = ExtResource("1_3xddg")
+font_size = 80
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_nkiqw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LivesUIMargin/FuelCanisterVector:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.93244433, 0.13497174, 0.05580964, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lwv0y"]
+resource_name = "life_flash"
+length = 0.50000834
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LivesUIMargin/FuelCanisterVector:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.93244433, 0.13497174, 0.05580964, 1), Color(1, 1, 1, 1), Color(0.99, 0.70488, 0.5148, 1), Color(0.93244433, 0.13497174, 0.05580964, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tnpra"]
+_data = {
+&"RESET": SubResource("Animation_nkiqw"),
+&"flash": SubResource("Animation_lwv0y")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkiqw"]
+bg_color = Color(0.23700002, 0.79, 0.26465, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.20264995, 0.63, 0.16379999, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.23529412)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnpra"]
+bg_color = Color(0.19500001, 0.65, 0.21774998, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.14796664, 0.46, 0.1196, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.23529412)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0csj"]
+bg_color = Color(0.37170002, 0.63, 0.38461497, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.231375, 0.45, 0.2115, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.23529412)
+shadow_size = 8
+
+[node name="LivesUI" type="CanvasLayer" node_paths=PackedStringArray("lives_label", "regen_timer_label")]
+process_mode = 3
+script = ExtResource("1_lwv0y")
+lives_label = NodePath("LivesUIMargin/HBoxMargin/ContentHBox/LivesLabel")
+regen_timer_label = NodePath("LivesUIMargin/HBoxMargin/ContentHBox/RegenTimerPanelMargin/RegenTimerPanel/RegenTimerMargin/RegenTimerLabel")
+
+[node name="LivesUIMargin" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -360.0
+offset_bottom = 133.0
+grow_horizontal = 0
+theme = SubResource("Theme_lwv0y")
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 24
+
+[node name="FuelCanisterVector" type="TextureRect" parent="LivesUIMargin"]
+modulate = Color(0.93244433, 0.13497174, 0.05580964, 1)
+layout_mode = 2
+texture = ExtResource("1_ohavu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HBoxMargin" type="MarginContainer" parent="LivesUIMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 57
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_bottom = -12
+
+[node name="ContentHBox" type="HBoxContainer" parent="LivesUIMargin/HBoxMargin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="LivesLabel" type="Label" parent="LivesUIMargin/HBoxMargin/ContentHBox"]
+custom_minimum_size = Vector2(62, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_3xddg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RegenTimerPanelMargin" type="MarginContainer" parent="LivesUIMargin/HBoxMargin/ContentHBox"]
+layout_mode = 2
+theme_override_constants/margin_left = -40
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 21
+
+[node name="RegenTimerPanel" type="PanelContainer" parent="LivesUIMargin/HBoxMargin/ContentHBox/RegenTimerPanelMargin"]
+z_index = -1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lwv0y")
+
+[node name="RegenTimerMargin" type="MarginContainer" parent="LivesUIMargin/HBoxMargin/ContentHBox/RegenTimerPanelMargin/RegenTimerPanel"]
+layout_mode = 2
+theme_override_constants/margin_top = -6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = -10
+
+[node name="RegenTimerLabel" type="Label" parent="LivesUIMargin/HBoxMargin/ContentHBox/RegenTimerPanelMargin/RegenTimerPanel/RegenTimerMargin"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "FULL"
+label_settings = SubResource("LabelSettings_nkiqw")
+vertical_alignment = 2
+uppercase = true
+
+[node name="LivesUIAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tnpra")
+}
+
+[node name="InfoBox" parent="." instance=ExtResource("4_nkiqw")]
+
+[node name="TitleLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin" index="0"]
+text = "[b][i]OUT OF LIVES[/i][/b]"
+
+[node name="ContentLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="1"]
+text = "Your lives will need to regenerate
+before you can play again."
+
+[node name="HyperLinkLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="2"]
+text = "However, purchasing this game will
+grant unlimited lives with no wait time!"
+
+[node name="PurchaseGameButton" type="Button" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="3"]
+custom_minimum_size = Vector2(0, 160.685)
+layout_mode = 2
+theme_override_constants/icon_max_width = 125
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_nkiqw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tnpra")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nkiqw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n0csj")
+text = "Purchase Game"
+
+[node name="SpendLifeDeniedListener" type="Node" parent="InfoBox"]
+script = ExtResource("5_tnpra")
+global_signal_name = &"spend_life_denied"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[connection signal="lives_value_changed" from="." to="LivesUIAnimator" method="play" binds= [&"flash"]]
+[connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="show"]
+
+[editable path="InfoBox"]

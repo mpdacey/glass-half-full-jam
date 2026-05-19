@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=44 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
@@ -21,8 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://chfaeaqemwcek" path="res://audio/sfx/leaderboard/leaderboard_page_turn.wav" id="11_t1ah0"]
 [ext_resource type="AudioStream" uid="uid://buidtptyttd8f" path="res://audio/sfx/leaderboard/leaderboard_book_close.wav" id="16_ko0uc"]
 [ext_resource type="AudioStream" uid="uid://copts6wfejoon" path="res://audio/sfx/leaderboard/leaderboard_book_open.wav" id="17_t1ah0"]
-[ext_resource type="Script" uid="uid://cmg8osgdawrnd" path="res://scenes/ui/leaderboard/info_box_controller.gd" id="22_4qtqu"]
-[ext_resource type="FontFile" uid="uid://7up8r46epdiu" path="res://resources/fonts/Arimo/static/Arimo-Regular.ttf" id="22_gpe5i"]
+[ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="22_gpe5i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4e2ik"]
 atlas = ExtResource("1_y0ns5")
@@ -832,173 +831,6 @@ _data = {
 &"open": SubResource("Animation_g8cov")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpe5i"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_132qw"]
-bg_color = Color(0.89, 0.27738333, 0.26700002, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.68, 0.0884, 0.0884, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.23529412)
-shadow_size = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qtqu"]
-bg_color = Color(0.9340804, 0.9340805, 0.93408036, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_color = Color(0, 0, 0, 0.24313726)
-shadow_size = 16
-shadow_offset = Vector2(0, 6.49)
-
-[sub_resource type="Theme" id="Theme_132qw"]
-Button/styles/focus = SubResource("StyleBoxEmpty_gpe5i")
-Button/styles/hover = SubResource("StyleBoxFlat_132qw")
-Button/styles/normal = SubResource("StyleBoxFlat_132qw")
-Button/styles/pressed = SubResource("StyleBoxFlat_132qw")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_4qtqu")
-RichTextLabel/colors/default_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
-RichTextLabel/font_sizes/bold_italics_font_size = 80
-RichTextLabel/font_sizes/normal_font_size = 48
-RichTextLabel/fonts/bold_italics_font = ExtResource("3_1rsoi")
-RichTextLabel/fonts/normal_font = ExtResource("22_gpe5i")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34rw3"]
-bg_color = Color(0.64341307, 0.8421839, 0.98281866, 1)
-border_width_bottom = 16
-border_color = Color(0.5544973, 0.7315068, 0.8922218, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 64
-corner_radius_bottom_left = 64
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_34rw3"]
-atlas = ExtResource("1_y0ns5")
-region = Rect2(1039.7, 1019.94147, 320.1001, 320.55853)
-
-[sub_resource type="Animation" id="Animation_4qtqu"]
-resource_name = "show"
-length = 0.50000834
-step = 0.083333336
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InfoBoxColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InfoBoxColorRect/InfoBoxMargin:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.33333334, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1.035, 1.035), Vector2(0.95, 0.95)]
-}
-
-[sub_resource type="Animation" id="Animation_132qw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InfoBoxColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InfoBoxColorRect/InfoBoxMargin:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_34rw3"]
-resource_name = "hide"
-length = 0.3333417
-step = 0.083333336
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InfoBoxColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.08333334, 0.33333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InfoBoxColorRect/InfoBoxMargin:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.33333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.95, 0.95), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.33333334),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_34rw3"]
-_data = {
-&"RESET": SubResource("Animation_132qw"),
-&"hide": SubResource("Animation_34rw3"),
-&"show": SubResource("Animation_4qtqu")
-}
-
 [node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container", "empty_collection_label")]
 script = ExtResource("1_1y2m6")
 entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
@@ -1346,135 +1178,19 @@ ignore_time_scale = true
 wait_time = 30.0
 ignore_time_scale = true
 
-[node name="InfoBox" type="CanvasLayer" parent="."]
-layer = 2
-visible = false
-script = ExtResource("22_4qtqu")
+[node name="InfoBox" parent="." instance=ExtResource("22_gpe5i")]
 
-[node name="InfoBoxColorRect" type="ColorRect" parent="InfoBox"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_132qw")
-color = Color(0.22010002, 0.23508333, 0.31, 0.62352943)
-
-[node name="InfoBoxMargin" type="MarginContainer" parent="InfoBox/InfoBoxColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -491.0
-offset_top = -95.5
-offset_right = 491.0
-offset_bottom = 95.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(502.5, 215.5)
-
-[node name="InfoBoxPanel" type="PanelContainer" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin"]
-layout_mode = 2
-
-[node name="InfoBoxContentMargin" type="MarginContainer" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="InfoBoxContentVBox" type="VBoxContainer" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin"]
-layout_mode = 2
-theme_override_constants/separation = 32
-
-[node name="TitleMargin" type="MarginContainer" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
-layout_mode = 2
-theme_override_constants/margin_left = -32
-theme_override_constants/margin_top = -32
-theme_override_constants/margin_right = -32
-
-[node name="TitlePanel" type="PanelContainer" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_34rw3")
-
-[node name="TitleContentMargin" type="MarginContainer" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="TitleLabel" type="RichTextLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin"]
-layout_mode = 2
-bbcode_enabled = true
+[node name="TitleLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin" index="0"]
 text = "[b][i]Where is my record?[/i][/b]
 "
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
 
-[node name="ContentLabel" type="RichTextLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
-layout_mode = 2
-bbcode_enabled = true
+[node name="ContentLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="1"]
 text = "Your record might not be visible because
 your Play Games profile is set to private."
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
 
-[node name="HyperLinkLabel" type="RichTextLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
-layout_mode = 2
-theme_override_colors/default_color = Color(0, 0.5137611, 1, 1)
-bbcode_enabled = true
+[node name="HyperLinkLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="2"]
 text = "[url=\"https://support.google.com/googleplay/answer/16562063#profile_privacy_settings\"]How to make your play games profile public.
 "
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="CloseButtonAnchor" type="Control" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="CloseButton" type="Button" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor"]
-layout_mode = 0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 80.0
-offset_bottom = 80.0
-
-[node name="CloseButtonMargin" type="MarginContainer" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="CloseButtonTexture" type="TextureRect" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton/CloseButtonMargin"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_34rw3")
-expand_mode = 5
-
-[node name="AndroidBackListener" type="Node" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton"]
-script = ExtResource("5_0y08k")
-metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
-
-[node name="VisibilityListener" type="Node" parent="InfoBox"]
-script = ExtResource("6_u6w2y")
-metadata/_custom_type_script = "uid://ydy2ddfw32k0"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InfoBox"]
-libraries = {
-&"": SubResource("AnimationLibrary_34rw3")
-}
 
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
 [connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
@@ -1512,10 +1228,5 @@ libraries = {
 [connection signal="timeout" from="Timers/WaitForResponseTimer" to="." method="set_scores" binds= [[]]]
 [connection signal="timeout" from="Timers/RefreshTimer" to="." method="reset_refresh_states"]
 [connection signal="timeout" from="Timers/RefreshTimer" to="Timers/RefreshTimer" method="start"]
-[connection signal="meta_clicked" from="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/HyperLinkLabel" to="InfoBox" method="_on_hyper_link_clicked"]
-[connection signal="button_down" from="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" method="set_modulate" binds= [Color(0.646029, 0.646029, 0.646029, 1)]]
-[connection signal="button_up" from="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" method="set_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="InfoBox/AnimationPlayer" method="play" binds= [&"hide"]]
-[connection signal="hidden" from="InfoBox/VisibilityListener" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" method="set_disabled" binds= [false]]
-[connection signal="shown" from="InfoBox/VisibilityListener" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" method="set_disabled" binds= [true]]
-[connection signal="shown" from="InfoBox/VisibilityListener" to="InfoBox/AnimationPlayer" method="play" binds= [&"show"]]
+
+[editable path="InfoBox"]

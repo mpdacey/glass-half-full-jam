@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccr17xigag2q7"]
+
+[ext_resource type="Script" uid="uid://cypgebacta8cx" path="res://scripts/global/global_time_interfacer.gd" id="1_vd114"]
+
+[node name="GlobalTimeInterfacer" type="Node" node_paths=PackedStringArray("http_request")]
+script = ExtResource("1_vd114")
+http_request = NodePath("HTTPRequest")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="request_recieved"]

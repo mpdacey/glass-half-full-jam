@@ -251,7 +251,7 @@ _data = {
 &"show": SubResource("Animation_4qtqu")
 }
 
-[node name="InfoBox" type="CanvasLayer" node_paths=PackedStringArray("title_label", "body_label", "hyper_link_label", "action_button", "dismiss_button")]
+[node name="InfoBox" type="CanvasLayer" node_paths=PackedStringArray("title_label", "body_label", "hyper_link_label", "action_button", "dismiss_button", "animator")]
 layer = 2
 visible = false
 script = ExtResource("1_rl0sw")
@@ -260,6 +260,7 @@ body_label = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxConten
 hyper_link_label = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/HyperLinkLabel")
 action_button = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/ActionButton")
 dismiss_button = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton")
+animator = NodePath("AnimationPlayer")
 
 [node name="InfoBoxColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

@@ -5,12 +5,15 @@ signal action_button_pressed
 
 const CONTENT_RESOURCE_METADATA_KEY = &"content"
 const CHANGING_USER_SIGNAL = &"changing"
+const ANIMATION_CHANGE_KEY = &"change"
+const ANIMATION_HIDE_KEY = &"hide"
 
 @export var title_label: RichTextLabel
 @export var body_label: RichTextLabel
 @export var hyper_link_label: RichTextLabel
 @export var action_button: Button
 @export var dismiss_button: Button
+@export var animator: AnimationPlayer
 
 func _enter_tree() -> void:
 	_assign_content_metadata()
@@ -52,6 +55,10 @@ func set_action_button(action_button_text: String) -> void:
 
 func set_dismiss_button_visibility(can_dismiss: bool) -> void:
 	dismiss_button.visible = can_dismiss
+
+func emit_changing() -> void:
+	if has_user_signal(CHANGING_USER_SIGNAL):
+		emit_signal(CHANGING_USER_SIGNAL)
 
 func _assign_content_metadata() -> void:
 	if not has_meta(CONTENT_RESOURCE_METADATA_KEY):

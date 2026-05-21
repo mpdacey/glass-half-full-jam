@@ -3,12 +3,14 @@ class_name InfoBoxController
 
 signal action_button_pressed
 
+const CONTENT_RESOURCE_METADATA_KEY = &"content"
 const CHANGING_USER_SIGNAL = &"changing"
 
 @export var title_label: RichTextLabel
 @export var body_label: RichTextLabel
 @export var hyper_link_label: RichTextLabel
 @export var action_button: Button
+@export var dismiss_button: Button
 
 func _enter_tree() -> void:
 	_assign_content_metadata()
@@ -21,6 +23,7 @@ func set_content(content: InfoBoxContentsResource) -> void:
 	set_body(content.body)
 	set_hyper_link(content.hyperlink_text, content.hyperlink_url)
 	set_action_button(content.button_content)
+	set_dismiss_button_visibility(content.can_dismiss)
 
 func set_title(title: String) -> void:
 	title_label.clear()
@@ -46,6 +49,9 @@ func set_hyper_link(hyper_link_text: String, url: String = "") -> void:
 func set_action_button(action_button_text: String) -> void:
 	action_button.text = action_button_text
 	action_button.visible = action_button_text != ""
+
+func set_dismiss_button_visibility(can_dismiss: bool) -> void:
+	dismiss_button.visible = can_dismiss
 
 func _assign_content_metadata() -> void:
 	if not has_meta(CONTENT_RESOURCE_METADATA_KEY):

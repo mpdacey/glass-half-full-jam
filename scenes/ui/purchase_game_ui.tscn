@@ -1,11 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwoyqeu2rgpmk"]
+[gd_scene load_steps=7 format=3 uid="uid://dwoyqeu2rgpmk"]
 
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="1_4ml56"]
+[ext_resource type="Script" uid="uid://byg2ofwvgnj6p" path="res://scripts/billing/purchase_ui_controller.gd" id="1_idhgv"]
+[ext_resource type="Resource" uid="uid://gm0adfhcfmh8" path="res://resources/info_box_resources/purchase_content/purchase_initial_resource.tres" id="2_nng5t"]
+[ext_resource type="Resource" uid="uid://b44elrk5ibvsw" path="res://resources/info_box_resources/purchase_content/purchase_pending_resource.tres" id="3_kmtw6"]
+[ext_resource type="Resource" uid="uid://cyy1xhltj76cc" path="res://resources/info_box_resources/purchase_content/purchase_successful_resource.tres" id="4_17jvu"]
+[ext_resource type="Resource" uid="uid://c5usbuurcexuq" path="res://resources/info_box_resources/purchase_content/purchase_failed_resource.tres" id="5_sr5pi"]
 
-[node name="PurchaseGameUI" type="CanvasLayer"]
+[node name="PurchaseGameUI" type="CanvasLayer" node_paths=PackedStringArray("info_box")]
+script = ExtResource("1_idhgv")
+info_box = NodePath("PurchaseQueryBox")
+initial_resource = ExtResource("2_nng5t")
+pending_resource = ExtResource("3_kmtw6")
+success_resource = ExtResource("4_17jvu")
+failed_resource = ExtResource("5_sr5pi")
 
 [node name="PurchaseQueryBox" parent="." instance=ExtResource("1_4ml56")]
 
-[connection signal="tree_entered" from="PurchaseQueryBox" to="PurchaseQueryBox" method="set_title" binds= ["PURCHASE GAME?"]]
-[connection signal="tree_entered" from="PurchaseQueryBox" to="PurchaseQueryBox" method="set_action_button" binds= ["AUD $2.99"]]
-[connection signal="tree_entered" from="PurchaseQueryBox" to="PurchaseQueryBox" method="set_content" binds= ["Game purchases assist development[br]and keep this game AD-FREE![br][br]Pay a one-time fee to unlock the following:[br]- Unlimited Lives[br]- Friends Only Leaderboards[br]- Additional perks in future updates"]]
+[connection signal="action_button_pressed" from="PurchaseQueryBox" to="." method="_on_action_button_pressed"]

@@ -1180,18 +1180,6 @@ ignore_time_scale = true
 
 [node name="InfoBox" parent="." instance=ExtResource("22_gpe5i")]
 
-[node name="TitleLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin" index="0"]
-text = "[b][i]Where is my record?[/i][/b]
-"
-
-[node name="ContentLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="1"]
-text = "Your record might not be visible because
-your Play Games profile is set to private."
-
-[node name="HyperLinkLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="2"]
-text = "[url=\"https://support.google.com/googleplay/answer/16562063#profile_privacy_settings\"]How to make your play games profile public.
-"
-
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
 [connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
 [connection signal="load_most_wanted_scores_request" from="." to="Timers/WaitForResponseTimer" method="start" unbinds=5]
@@ -1228,5 +1216,6 @@ text = "[url=\"https://support.google.com/googleplay/answer/16562063#profile_pri
 [connection signal="timeout" from="Timers/WaitForResponseTimer" to="." method="set_scores" binds= [[]]]
 [connection signal="timeout" from="Timers/RefreshTimer" to="." method="reset_refresh_states"]
 [connection signal="timeout" from="Timers/RefreshTimer" to="Timers/RefreshTimer" method="start"]
-
-[editable path="InfoBox"]
+[connection signal="tree_entered" from="InfoBox" to="InfoBox" method="set_title" binds= ["Where is my record?"]]
+[connection signal="tree_entered" from="InfoBox" to="InfoBox" method="set_hyper_link" binds= ["How to make your play games profile public.", "https://support.google.com/googleplay/answer/16562063#profile_privacy_settings"]]
+[connection signal="tree_entered" from="InfoBox" to="InfoBox" method="set_content" binds= ["Your record might not be visible because[br]your Play Games profile is set to private."]]

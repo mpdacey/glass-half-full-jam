@@ -1,5 +1,40 @@
 extends CanvasLayer
 class_name InfoBoxController
 
+signal action_button_pressed
+
+@export var title_label: RichTextLabel
+@export var content_label: RichTextLabel
+@export var hyper_link_label: RichTextLabel
+@export var action_button: Button
+
+func _ready() -> void:
+	action_button.pressed.connect(action_button_pressed.emit)
+
+func set_title(title: String) -> void:
+	title_label.clear()
+	title_label.push_bold_italics()
+	title_label.add_text(title)
+	title_label.pop_all()
+
+func set_content(content: String) -> void:
+	content_label.visible = content != ""
+	content_label.text = content
+
+func set_hyper_link(hyper_link_text: String, url: String = "") -> void:
+	hyper_link_label.visible = hyper_link_text != ""
+	
+	if url == "":
+		hyper_link_label.text = hyper_link_text
+		return
+	
+	hyper_link_label.push_meta(url, RichTextLabel.META_UNDERLINE_ALWAYS)
+	hyper_link_label.add_text(hyper_link_text)
+	title_label.pop_all()
+
+func set_action_button(action_button_text: String) -> void:
+	action_button.text = action_button_text
+	action_button.visible = action_button_text != ""
+
 func _on_hyper_link_clicked(url: String) -> void:
 	OS.shell_open(url)

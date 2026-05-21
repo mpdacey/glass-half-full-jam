@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwoyqeu2rgpmk"]
+
+[ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="1_4ml56"]
+
+[node name="PurchaseGameUI" type="CanvasLayer"]
+
+[node name="PurchaseQueryBox" parent="." instance=ExtResource("1_4ml56")]
+
+[connection signal="tree_entered" from="PurchaseQueryBox" to="PurchaseQueryBox" method="set_title" binds= ["PURCHASE GAME?"]]
+[connection signal="tree_entered" from="PurchaseQueryBox" to="PurchaseQueryBox" method="set_action_button" binds= ["AUD $2.99"]]
+[connection signal="tree_entered" from="PurchaseQueryBox" to="PurchaseQueryBox" method="set_content" binds= ["Game purchases assist development[br]and keep this game AD-FREE![br][br]Pay a one-time fee to unlock the following:[br]- Unlimited Lives[br]- Friends Only Leaderboards[br]- Additional perks in future updates"]]

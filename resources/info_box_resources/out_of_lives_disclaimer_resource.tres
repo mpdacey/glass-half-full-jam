@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InfoBoxContentsResource" load_steps=2 format=3 uid="uid://c7br0mwv1h0bp"]
+
+[ext_resource type="Script" uid="uid://dajftf844g2xs" path="res://scripts/resource_scripts/info_box_resource_script.gd" id="1_wn64x"]
+
+[resource]
+script = ExtResource("1_wn64x")
+title = "OUT OF LIVES"
+body = "Your lives will need to regenerate
+before you can play again."
+hyperlink_text = "However, purchasing this game will
+grant unlimited lives with no wait time!"
+button_content = "Purchase Game"
+metadata/_custom_type_script = "uid://dajftf844g2xs"

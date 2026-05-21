@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvb01gwjc7pvc"]
+[gd_scene load_steps=14 format=3 uid="uid://bvb01gwjc7pvc"]
 
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="1_3xddg"]
 [ext_resource type="Script" uid="uid://wque3schxmr1" path="res://scripts/lives_ui_controller.gd" id="1_lwv0y"]
 [ext_resource type="Texture2D" uid="uid://dkcqcpdao2v71" path="res://textures/life_icon.svg" id="1_ohavu"]
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="4_nkiqw"]
+[ext_resource type="Resource" uid="uid://c7br0mwv1h0bp" path="res://resources/info_box_resources/out_of_lives_disclaimer_resource.tres" id="5_n0csj"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="5_tnpra"]
 
 [sub_resource type="Theme" id="Theme_lwv0y"]
@@ -148,6 +149,7 @@ libraries = {
 }
 
 [node name="InfoBox" parent="." instance=ExtResource("4_nkiqw")]
+metadata/content = ExtResource("5_n0csj")
 
 [node name="SpendLifeDeniedListener" type="Node" parent="InfoBox"]
 script = ExtResource("5_tnpra")
@@ -155,8 +157,4 @@ global_signal_name = &"spend_life_denied"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [connection signal="lives_value_changed" from="." to="LivesUIAnimator" method="play" binds= [&"flash"]]
-[connection signal="tree_entered" from="InfoBox" to="InfoBox" method="set_title" binds= ["OUT OF LIVES"]]
-[connection signal="tree_entered" from="InfoBox" to="InfoBox" method="set_action_button" binds= ["Purchase Game"]]
-[connection signal="tree_entered" from="InfoBox" to="InfoBox" method="set_hyper_link" binds= ["However, purchasing this game will[br]grant unlimited lives with no wait time!"]]
-[connection signal="tree_entered" from="InfoBox" to="InfoBox" method="set_content" binds= ["Your lives will need to regenerate[br]before you can play again."]]
 [connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="show"]

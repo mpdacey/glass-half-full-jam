@@ -219,12 +219,12 @@ _data = {
 &"show": SubResource("Animation_4qtqu")
 }
 
-[node name="InfoBox" type="CanvasLayer" node_paths=PackedStringArray("title_label", "content_label", "hyper_link_label", "action_button")]
+[node name="InfoBox" type="CanvasLayer" node_paths=PackedStringArray("title_label", "body_label", "hyper_link_label", "action_button")]
 layer = 2
 visible = false
 script = ExtResource("1_rl0sw")
 title_label = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin/TitleLabel")
-content_label = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/ContentLabel")
+body_label = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/BodyLabel")
 hyper_link_label = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/HyperLinkLabel")
 action_button = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/ActionButton")
 
@@ -290,7 +290,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="ContentLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
+[node name="BodyLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
 layout_mode = 2
 bbcode_enabled = true
 fit_content = true

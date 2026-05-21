@@ -3,13 +3,24 @@ class_name InfoBoxController
 
 signal action_button_pressed
 
+const CHANGING_USER_SIGNAL = &"changing"
+
 @export var title_label: RichTextLabel
-@export var content_label: RichTextLabel
+@export var body_label: RichTextLabel
 @export var hyper_link_label: RichTextLabel
 @export var action_button: Button
 
+func _enter_tree() -> void:
+	_assign_content_metadata()
+
 func _ready() -> void:
 	action_button.pressed.connect(action_button_pressed.emit)
+
+func set_content(content: InfoBoxContentsResource) -> void:
+	set_title(content.title)
+	set_body(content.body)
+	set_hyper_link(content.hyperlink_text, content.hyperlink_url)
+	set_action_button(content.button_content)
 
 func set_title(title: String) -> void:
 	title_label.clear()
@@ -17,9 +28,9 @@ func set_title(title: String) -> void:
 	title_label.add_text(title)
 	title_label.pop_all()
 
-func set_content(content: String) -> void:
-	content_label.visible = content != ""
-	content_label.text = content
+func set_body(body: String) -> void:
+	body_label.visible = body != ""
+	body_label.text = body
 
 func set_hyper_link(hyper_link_text: String, url: String = "") -> void:
 	hyper_link_label.visible = hyper_link_text != ""
@@ -35,6 +46,16 @@ func set_hyper_link(hyper_link_text: String, url: String = "") -> void:
 func set_action_button(action_button_text: String) -> void:
 	action_button.text = action_button_text
 	action_button.visible = action_button_text != ""
+
+func _assign_content_metadata() -> void:
+	if not has_meta(CONTENT_RESOURCE_METADATA_KEY):
+		return
+	
+	var raw_content: Variant = get_meta(CONTENT_RESOURCE_METADATA_KEY)
+	if not raw_content or raw_content is not InfoBoxContentsResource:
+		return
+	
+	set_content(raw_content as InfoBoxContentsResource)
 
 func _on_hyper_link_clicked(url: String) -> void:
 	OS.shell_open(url)

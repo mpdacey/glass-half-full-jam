@@ -6,7 +6,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_gkpmr")
-shader_parameter/albedo = Color(1, 0.904, 0.88, 1)
+shader_parameter/albedo = Color(0.82, 0.71545, 0.6806, 1)
 shader_parameter/texture_albedo = ExtResource("2_6bfxd")
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 0.0
@@ -19,3 +19,5 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/curve_amount = 0.0999999977648
+shader_parameter/distant_albeno = Color(0.9476064, 0.8929843, 0.85160893, 0.42352942)
+shader_parameter/has_seperate_distant_texture = true

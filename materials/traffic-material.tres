@@ -19,3 +19,5 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/curve_amount = 0.0999999977648
+shader_parameter/distant_albeno = Color(1, 1, 1, 0.17254902)
+shader_parameter/has_seperate_distant_texture = true

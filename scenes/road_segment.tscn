@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://bdo53jatg2dfc"]
 
-[ext_resource type="Material" uid="uid://ccx8siq7mgu0e" path="res://materials/desert_offroad.tres" id="2_x8o06"]
+[ext_resource type="Material" uid="uid://ccx8siq7mgu0e" path="res://materials/desert_offroad_material.tres" id="2_x8o06"]
 [ext_resource type="Material" uid="uid://dlsj6rc4l6h2o" path="res://materials/canyon_material.tres" id="3_uhe04"]
 [ext_resource type="Material" uid="uid://sqealwhnnkao" path="res://materials/road.tres" id="6_8oith"]
 
@@ -213,8 +213,22 @@ mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
+[node name="CanyonSegment13" type="MeshInstance3D" parent="CanyonWall"]
+transform = Transform3D(-2.0277398, 0, 2.1219087, 0, 2.935, 0, -2.1219087, 0, -2.0277398, -62.003, 10.596, -81.148)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_amwk1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_uhe04")
+
 [node name="CanyonSegment11" type="MeshInstance3D" parent="CanyonWall"]
 transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, 156.26668, 13.530693, -91.48607)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_amwk1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_uhe04")
+
+[node name="CanyonSegment12" type="MeshInstance3D" parent="CanyonWall"]
+transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, -43.733, 13.531, -91.486)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
@@ -286,6 +300,13 @@ mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
+[node name="CanyonSegment11" type="MeshInstance3D" parent="CanyonWall2"]
+transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, 156.26668, 13.530693, -91.48607)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_gf765")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_uhe04")
+
 [node name="CanyonSegment10" type="MeshInstance3D" parent="CanyonWall2"]
 transform = Transform3D(-2.0277398, 0, 2.1219087, 0, 2.935, 0, -2.1219087, 0, -2.0277398, 137.99681, 10.596378, -81.14812)
 cast_shadow = 0
@@ -293,8 +314,15 @@ mesh = SubResource("ArrayMesh_gf765")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment11" type="MeshInstance3D" parent="CanyonWall2"]
-transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, 156.26668, 13.530693, -91.48607)
+[node name="CanyonSegment13" type="MeshInstance3D" parent="CanyonWall2"]
+transform = Transform3D(-2.0277398, 0, 2.1219087, 0, 2.935, 0, -2.1219087, 0, -2.0277398, -62.003, 10.596, -81.148)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_gf765")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_uhe04")
+
+[node name="CanyonSegment12" type="MeshInstance3D" parent="CanyonWall2"]
+transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, -43.733, 13.531, -91.486)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_gf765")
 skeleton = NodePath("../..")

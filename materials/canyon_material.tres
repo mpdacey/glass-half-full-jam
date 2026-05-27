@@ -7,16 +7,16 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_ogv45")
-shader_parameter/albedo = Color(1, 0.49366665, 0.38, 1)
+shader_parameter/albedo = Color(1, 0.836, 0.59000003, 1)
 shader_parameter/texture_albedo = ExtResource("2_ry38f")
 shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
 shader_parameter/point_size = 6.700000099838039
-shader_parameter/roughness = 0.8970000426075
+shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/texture_roughness = ExtResource("3_w3kqt")
-shader_parameter/specular = 0.2999999932944
-shader_parameter/metallic = 0.999999977648
-shader_parameter/uv1_scale = Vector3(32, 8, 1)
+shader_parameter/specular = 0.999999977648
+shader_parameter/metallic = 0.0999999977648
+shader_parameter/uv1_scale = Vector3(16, 16, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)

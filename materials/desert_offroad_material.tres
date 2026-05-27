@@ -7,7 +7,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_ebi8j")
-shader_parameter/albedo = Color(0.99, 0.53625, 0.4455, 1)
+shader_parameter/albedo = Color(0.99, 0.759, 0.7128, 1)
 shader_parameter/texture_albedo = ExtResource("2_mg6kp")
 shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
 shader_parameter/point_size = 6.700000099838039
@@ -16,10 +16,10 @@ shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/texture_roughness = ExtResource("3_ebi8j")
 shader_parameter/specular = 0.2999999932944
 shader_parameter/metallic = 0.999999977648
-shader_parameter/uv1_scale = Vector3(32, 8, 1)
+shader_parameter/uv1_scale = Vector3(8, 6, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/curve_amount = 0.0999999977648
-shader_parameter/distant_albeno = Color(1, 0.90833336, 0.45, 1)
+shader_parameter/distant_albeno = Color(1, 0.9266667, 0.56, 1)
 shader_parameter/has_seperate_distant_texture = false

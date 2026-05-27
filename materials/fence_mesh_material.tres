@@ -1,8 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c4hwyjg4piyay"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c4hwyjg4piyay"]
 
-[ext_resource type="Texture2D" uid="uid://yl7sglbp2g4p" path="res://textures/material_textures/chain_link_textures/metal_texture.png" id="2_lffy5"]
-[ext_resource type="Texture2D" uid="uid://do4xa5ttjw77c" path="res://textures/material_textures/chain_link_textures/metal_metallic.jpg" id="3_70pp7"]
-[ext_resource type="Texture2D" uid="uid://c4kjasckh16wr" path="res://textures/material_textures/chain_link_textures/metal_roughness.jpg" id="4_oou6n"]
+[ext_resource type="Texture2D" uid="uid://ctqgrtbafqpmx" path="res://textures/material_textures/chain_link_textures/metal_texture.png" id="1_n0a02"]
 
 [sub_resource type="Shader" id="Shader_c7ld5"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's StandardMaterial3D.
@@ -11,14 +9,14 @@ shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx;
 
 uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_albedo : source_color, filter_nearest, repeat_enable;
 uniform ivec2 albedo_texture_size;
 uniform float point_size : hint_range(0.1, 128.0, 0.1);
 
 uniform float roughness : hint_range(0.0, 1.0);
-uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_metallic : hint_default_white, filter_nearest, repeat_enable;
 uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_nearest, repeat_enable;
 
 uniform float specular : hint_range(0.0, 1.0, 0.01);
 uniform float metallic : hint_range(0.0, 1.0, 0.01);
@@ -65,16 +63,14 @@ void fragment() {
 render_priority = 0
 shader = SubResource("Shader_c7ld5")
 shader_parameter/albedo = Color(0.47, 0.47, 0.47, 1)
-shader_parameter/texture_albedo = ExtResource("2_lffy5")
+shader_parameter/texture_albedo = ExtResource("1_n0a02")
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 0.10000000149012
 shader_parameter/roughness = 0.262000012445
-shader_parameter/texture_metallic = ExtResource("3_70pp7")
 shader_parameter/metallic_texture_channel = Vector4(1.135, 1.995, 1.245, 0)
-shader_parameter/texture_roughness = ExtResource("4_oou6n")
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.249999994412
-shader_parameter/uv1_scale = Vector3(0.25, 0.1, 1)
+shader_parameter/uv1_scale = Vector3(8, 4, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)

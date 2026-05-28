@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://drbth85p4ot8"]
+
+[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_aljws"]
+[ext_resource type="Texture2D" uid="uid://crpwrnmadqaxq" path="res://textures/material_textures/post_textures/wooden_post_texture.jpg" id="2_g5itn"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_aljws")
+shader_parameter/albedo = Color(0.98, 0.98, 0.98, 1)
+shader_parameter/texture_albedo = ExtResource("2_g5itn")
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(2.935, 1.56, 1)
+shader_parameter/uv1_offset = Vector3(0, 0.34, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = 0.0999999977648
+shader_parameter/distant_albeno = Color(1, 1, 1, 0)
+shader_parameter/has_seperate_distant_texture = false

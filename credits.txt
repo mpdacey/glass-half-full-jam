@@ -14,7 +14,6 @@ Red Scarlet by Darren Curtis -- https://www.darrencurtismusic.com/ -- License: A
 Taking Out the Garbage by Darren Curtis -- https://www.darrencurtismusic.com/ -- License: Attribution 4.0
 Car Kit by Kenney -- https://kenney.nl/assets/car-kit -- License: Creative Commons 0
 Road 007 by amblentCG -- https://ambientcg.com/view?id=Road007 -- License: Creative Commons 0
-Rock 029 by amblentCG -- https://ambientcg.com/view?id=Rock029 -- License: Creative Commons 0
 Car Horn sound by Legnalegna55 -- https://freesound.org/s/545015/ -- License: Creative Commons 0
 auto car or van stop brake skid gravel short.flac by kyles -- https://freesound.org/people/kyles/sounds/637161/ -- License: Creative Commons 0
 auto truck jeep onboard driving rough terrain dirt rock various speeds slow to stop and pull up MS.wav by kyles -- https://freesound.org/people/kyles/sounds/451044/ -- License: Creative Commons 0
@@ -22,8 +21,6 @@ Mobile Controls by Kenney -- https://kenney.nl/assets/mobile-controls -- License
 rope twist fiber twisted cable knot string thread -- https://pxhere.com/en/photo/1284623 -- License: Creative Commons 0
 Cushion Impacts.wav by mincedbeats -- https://freesound.org/s/593948/ -- License: Creative Commons 0
 Interface Sounds by Kenney -- https://kenney.nl/assets/interface-sounds -- License: Creative Commons 0
-Chain-link Metal Wire Fencing Texture by TextureCan.com -- https://www.texturecan.com/details/134/ -- License: Creative Commons 0
-Worn Planks by Dimitrios Savva -- https://polyhaven.com/a/worn_planks -- License: Creative Commons 0
 door_slams_r.wav by ddohler -- https://freesound.org/s/34263/ -- License: Attribution 4.0
 Sparkler by iainmccurdy -- https://freesound.org/s/712677/ -- License: Attribution 4.0
 Tinos font by Steven Matteson -- https://fonts.google.com/specimen/Tinos -- License: Apache License 2.0
@@ -31,3 +28,4 @@ Arimo font by Steven Matteson -- https://fonts.google.com/specimen/Arimo -- Lice
 Index Card Flips (handle business paper mvmt) 02.wav by cmorris035 -- https://freesound.org/s/319154/ -- License: Creative Commons 0
 Light Masks by Kenney -- https://kenney.nl/assets/light-masks -- License: Creative Commons 0
 Global Time by Time.now -- https://time.now -- License: Attribution 4.0
+Nature Kit by Kenney -- https://kenney.nl/assets/nature-kit -- License: Creative Commons 0

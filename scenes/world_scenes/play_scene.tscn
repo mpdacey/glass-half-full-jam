@@ -934,7 +934,7 @@ far = 180.0
 [node name="AudioListener3D" type="AudioListener3D" parent="Player/CameraFollower/MainCamera3D"]
 
 [node name="PseudoSun" type="Sprite3D" parent="Player/CameraFollower"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.831, 11.475, -6.817)
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 174.225, 22.985, -32.747)
 billboard = 1
 texture = SubResource("GradientTexture2D_u0fll")
 

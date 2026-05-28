@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do4xa5ttjw77c"
-path.s3tc="res://.godot/imported/metal_metallic.jpg-ed928d5f730654f524674cd03ebf5e93.s3tc.ctex"
-path.etc2="res://.godot/imported/metal_metallic.jpg-ed928d5f730654f524674cd03ebf5e93.etc2.ctex"
+uid="uid://dyow1giupdlgx"
+path.s3tc="res://.godot/imported/terrain_roughness_texture.png-72fc0dda51bfde6db1dae2fdc6f9d74c.s3tc.ctex"
+path.etc2="res://.godot/imported/terrain_roughness_texture.png-72fc0dda51bfde6db1dae2fdc6f9d74c.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/material_textures/chain_link_textures/metal_metallic.jpg"
-dest_files=["res://.godot/imported/metal_metallic.jpg-ed928d5f730654f524674cd03ebf5e93.s3tc.ctex", "res://.godot/imported/metal_metallic.jpg-ed928d5f730654f524674cd03ebf5e93.etc2.ctex"]
+source_file="res://textures/material_textures/desert_textures/terrain_roughness_texture.png"
+dest_files=["res://.godot/imported/terrain_roughness_texture.png-72fc0dda51bfde6db1dae2fdc6f9d74c.s3tc.ctex", "res://.godot/imported/terrain_roughness_texture.png-72fc0dda51bfde6db1dae2fdc6f9d74c.etc2.ctex"]
 
 [params]
 

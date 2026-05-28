@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://darohcmfymg0i"]
+
+[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_yafd8"]
+[ext_resource type="Texture2D" uid="uid://d286emqj8t8wp" path="res://textures/material_textures/desert_textures/cactus_texture.png" id="2_gropu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yafd8")
+shader_parameter/albedo = Color(0.6880043, 0.77541095, 0.24121058, 1)
+shader_parameter/texture_albedo = ExtResource("2_gropu")
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(0.075, 0.155, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = 0.0999999977648
+shader_parameter/distant_albeno = Color(0.94666666, 1, 0.6, 0.7607843)
+shader_parameter/has_seperate_distant_texture = false

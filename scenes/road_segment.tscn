@@ -1,8 +1,8 @@
 [gd_scene load_steps=31 format=4 uid="uid://bdo53jatg2dfc"]
 
-[ext_resource type="Material" uid="uid://ccx8siq7mgu0e" path="res://materials/desert_offroad_material.tres" id="2_x8o06"]
-[ext_resource type="Material" uid="uid://dlsj6rc4l6h2o" path="res://materials/canyon_material.tres" id="3_uhe04"]
-[ext_resource type="Material" uid="uid://dsoceymjof8y2" path="res://materials/desert_plant_material.tres" id="5_c3e3h"]
+[ext_resource type="Material" uid="uid://ccx8siq7mgu0e" path="res://materials/desert_materials/desert_offroad_material.tres" id="2_x8o06"]
+[ext_resource type="Material" uid="uid://dlsj6rc4l6h2o" path="res://materials/desert_materials/desert_canyon_material.tres" id="3_uhe04"]
+[ext_resource type="Material" uid="uid://dsoceymjof8y2" path="res://materials/desert_materials/desert_grass_material.tres" id="5_c3e3h"]
 [ext_resource type="Material" uid="uid://sqealwhnnkao" path="res://materials/road.tres" id="6_8oith"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhvqo"]

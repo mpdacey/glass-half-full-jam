@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://buc7s25oweoq1"]
 
 [ext_resource type="PackedScene" uid="uid://dlwpw2jgytnr8" path="res://models/post.blend" id="1_6ixbi"]
-[ext_resource type="Material" uid="uid://c4hwyjg4piyay" path="res://materials/fence_mesh_material.tres" id="2_agt3l"]
-[ext_resource type="Material" uid="uid://drbth85p4ot8" path="res://materials/fence_post_material.tres" id="3_b3etb"]
+[ext_resource type="Material" uid="uid://c4hwyjg4piyay" path="res://materials/desert_materials/desert_fence_mesh_material.tres" id="2_agt3l"]
+[ext_resource type="Material" uid="uid://drbth85p4ot8" path="res://materials/desert_materials/desert_fence_post_material.tres" id="3_b3etb"]
 [ext_resource type="Script" uid="uid://nbektii3ygrb" path="res://scenes/post_base_planter.gd" id="4_d2c0n"]
 [ext_resource type="PackedScene" uid="uid://dxnu2k6lm3aa0" path="res://models/plants/plant_bush.fbx" id="5_w85du"]
 [ext_resource type="PackedScene" uid="uid://mwjearggpayr" path="res://models/plants/plant_bushLarge.fbx" id="6_d2c0n"]

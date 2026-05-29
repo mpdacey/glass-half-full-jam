@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_2dqks"]
 [ext_resource type="ArrayMesh" uid="uid://bgojhnnpwqf0e" path="res://models/traffic/hatchback-sports.obj" id="2_km2h6"]
-[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="3_km2h6"]
+[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="3_km2h6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km2h6"]
 size = Vector3(2.2574768, 2.8142242, 5.1678467)

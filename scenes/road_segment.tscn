@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://darohcmfymg0i" path="res://materials/desert_materials/desert_cacti_material.tres" id="5_47du0"]
 [ext_resource type="Material" uid="uid://dsoceymjof8y2" path="res://materials/desert_materials/desert_grass_material.tres" id="5_c3e3h"]
 [ext_resource type="PackedScene" uid="uid://dltrglufu1dp1" path="res://models/plants/cactus_tall.fbx" id="6_2xm5a"]
-[ext_resource type="Material" uid="uid://sqealwhnnkao" path="res://materials/road.tres" id="6_8oith"]
+[ext_resource type="Material" uid="uid://sqealwhnnkao" path="res://materials/road_material.tres" id="6_8oith"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhvqo"]
 resource_name = "Road"

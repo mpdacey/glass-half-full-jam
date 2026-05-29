@@ -2,8 +2,6 @@ shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx;
 
 uniform sampler2D banner_texture : source_color, filter_linear_mipmap, repeat_disable;
-uniform float curve_amount : hint_range(0.01, 1.0, 0.01) = 0.1;
-uniform float flap_multiplier = 0.1;
 
 uniform vec4 main_colour: source_color;
 uniform vec4 shading_colour: source_color;
@@ -17,6 +15,10 @@ uniform float attenuation_influence: hint_range(0.,1.,.01) = 1.0;
 
 uniform vec3 uv1_scale = vec3(1.0);
 uniform vec3 uv1_offset;
+
+uniform float bend_multiplier = 0.0;
+uniform float curve_amount : hint_range(0.01, 1.0, 0.01) = 0.1;
+uniform float flap_multiplier = 0.1;
 
 float remap(float value, float i_min, float i_max, float o_min, float o_max) {
     return o_min + ((value - i_min) / (i_max - i_min) * (o_max - o_min));
@@ -32,8 +34,24 @@ void vertex() {
 
 	// Vertex code pinched from svenar-nl godot issue
 	// https://github.com/godotengine/godot/issues/91894
-	VERTEX.y -= pow(length(MAIN_CAM_INV_VIEW_MATRIX[3].xyx - VERTEX.xyx) * log((10.0 + curve_amount) * 0.1), 4);
+	float calculated_curve = pow(length(MAIN_CAM_INV_VIEW_MATRIX[3].xyx - VERTEX.xyx) * log((10.0 + curve_amount) * 0.1), 4);
+	VERTEX.y -= calculated_curve;
 	
+	// Calculate the sine and cosine of the angle
+    float angle = calculated_curve*bend_multiplier / 360.0;
+    float s = sin(angle);
+    float c = cos(angle);
+    
+    // Create a 3x3 rotation matrix around the Y axis
+    mat3 rotation_matrix = mat3(
+        vec3(c, 0.0, s),
+        vec3(0.0, 1.0, 0.0),
+        vec3(-s, 0.0, c)
+    );
+    
+    // Apply the rotation matrix to the vertex and normal
+    VERTEX = rotation_matrix * VERTEX;
+    NORMAL = rotation_matrix * NORMAL;
 }
 
 void fragment() {

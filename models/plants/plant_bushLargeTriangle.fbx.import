@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "grass": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/desert_plant_material.tres",
+"use_external/fallback_path": "res://materials/desert_materials/desert_grass_material.tres",
 "use_external/path": "uid://dsoceymjof8y2"
 }
 }

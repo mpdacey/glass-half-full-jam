@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=95 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
@@ -58,6 +58,7 @@
 [ext_resource type="Material" uid="uid://dwd82ivtkeqsl" path="res://materials/highscore_banner_material.tres" id="55_dn6n4"]
 [ext_resource type="Material" uid="uid://sqealwhnnkao" path="res://materials/road_material.tres" id="56_lpm56"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="57_cb5hf"]
+[ext_resource type="Material" uid="uid://5n3fflpyc8fo" path="res://materials/gas-canister-outline.tres" id="59_7djt8"]
 
 [sub_resource type="Animation" id="Animation_kd3qq"]
 length = 0.001
@@ -1390,7 +1391,7 @@ max_bend_transition_length = 700.0
 min_distance_between_bends = 550.0
 max_distance_between_bends = 800.0
 max_range_of_bend = 2.0
-bendable_materials = Array[ShaderMaterial]([ExtResource("48_r5uu4"), ExtResource("49_rlg2y"), ExtResource("50_7djt8"), ExtResource("51_42rsq"), ExtResource("52_ylj86"), ExtResource("53_5lmlm"), ExtResource("54_4xlrq"), ExtResource("55_dn6n4"), ExtResource("56_lpm56"), ExtResource("57_cb5hf")])
+bendable_materials = Array[ShaderMaterial]([ExtResource("48_r5uu4"), ExtResource("49_rlg2y"), ExtResource("50_7djt8"), ExtResource("51_42rsq"), ExtResource("52_ylj86"), ExtResource("53_5lmlm"), ExtResource("54_4xlrq"), ExtResource("55_dn6n4"), ExtResource("56_lpm56"), ExtResource("57_cb5hf"), ExtResource("59_7djt8")])
 drive_controller = NodePath("../Player/DriveController")
 
 [connection signal="turned_sharply" from="Player/PlayerVehicle" to="Player/PlayerVehicle/CarNoises/TireScreechAudioPlayer" method="play"]

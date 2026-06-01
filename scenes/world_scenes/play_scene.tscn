@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dpfq7m4viuno"]
+[gd_scene load_steps=83 format=3 uid="uid://dpfq7m4viuno"]
 
 [ext_resource type="Script" uid="uid://l383to4ytmpq" path="res://scripts/player_controllers/fuel_hitbox_controller.gd" id="2_owpoa"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
@@ -509,6 +509,12 @@ Vector2i(-1, -1): {
 }
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vtgkk"]
+random_pitch = 1.1
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("12_wjfxh")
+
 [sub_resource type="Gradient" id="Gradient_to7gp"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.018072288, 0.69076306)
@@ -899,9 +905,9 @@ script = ExtResource("11_dwjdh")
 
 [node name="HornAudioPlayer" type="AudioStreamPlayer3D" parent="Player/PlayerVehicle/CarNoises"]
 visible = false
-stream = ExtResource("12_wjfxh")
+stream = SubResource("AudioStreamRandomizer_vtgkk")
+volume_db = -0.8
 unit_size = 23.7
-max_db = 3.005
 panning_strength = 2.6
 bus = &"SFX"
 playback_type = 2

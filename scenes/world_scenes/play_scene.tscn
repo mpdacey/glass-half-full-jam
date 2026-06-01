@@ -349,6 +349,7 @@ shader_parameter/uv1_scale = Vector3(0, 0, 0)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/bend_multiplier = 0.0
 shader_parameter/curve_amount = 0.0999999977648
 
 [sub_resource type="Animation" id="Animation_c1pb6"]

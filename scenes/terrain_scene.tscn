@@ -1,9 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://2byllt2m3knb"]
+[gd_scene load_steps=20 format=3 uid="uid://2byllt2m3knb"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_l47ob"]
 [ext_resource type="AnimationLibrary" uid="uid://jc8fcqbdm5j4" path="res://resources/terrain_animation_library.tres" id="2_rtf8o"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="3_gil8y"]
 [ext_resource type="PackedScene" uid="uid://buc7s25oweoq1" path="res://scenes/fence.tscn" id="4_rtf8o"]
+[ext_resource type="Script" uid="uid://3w32j7t20216" path="res://scripts/road_bend_controller.gd" id="5_gil8y"]
+[ext_resource type="Material" uid="uid://darohcmfymg0i" path="res://materials/desert_materials/desert_cacti_material.tres" id="6_pjfaa"]
+[ext_resource type="Material" uid="uid://dlsj6rc4l6h2o" path="res://materials/desert_materials/desert_canyon_material.tres" id="7_a74q1"]
+[ext_resource type="Material" uid="uid://c4hwyjg4piyay" path="res://materials/desert_materials/desert_fence_mesh_material.tres" id="8_tjrou"]
+[ext_resource type="Material" uid="uid://drbth85p4ot8" path="res://materials/desert_materials/desert_fence_post_material.tres" id="9_uu3wy"]
+[ext_resource type="Material" uid="uid://dsoceymjof8y2" path="res://materials/desert_materials/desert_grass_material.tres" id="10_1qsac"]
+[ext_resource type="Material" uid="uid://ccx8siq7mgu0e" path="res://materials/desert_materials/desert_offroad_material.tres" id="11_p83al"]
+[ext_resource type="Material" uid="uid://c0gpax6g2inuo" path="res://materials/gas-canister-body.tres" id="12_m3e78"]
+[ext_resource type="Material" uid="uid://5n3fflpyc8fo" path="res://materials/gas-canister-outline.tres" id="13_sp145"]
+[ext_resource type="Material" uid="uid://dwd82ivtkeqsl" path="res://materials/highscore_banner_material.tres" id="14_3dlmi"]
+[ext_resource type="Material" uid="uid://sqealwhnnkao" path="res://materials/road_material.tres" id="15_xgvo4"]
+[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="16_fh12i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qsc2p"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -53,46 +65,43 @@ environment = SubResource("Environment_2libc")
 [node name="RoadSegment2" parent="Terrain" instance=ExtResource("1_l47ob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="TerrainAnimators" type="Node" parent="Terrain"]
-
-[node name="TerrainDrivingPlayer" type="AnimationPlayer" parent="Terrain/TerrainAnimators"]
-root_node = NodePath("../..")
+[node name="TerrainDrivingPlayer" type="AnimationPlayer" parent="Terrain"]
 libraries = {
 &"": ExtResource("2_rtf8o")
 }
 speed_scale = 2.3
 
-[node name="TerrainSpeedListener" type="Node" parent="Terrain/TerrainAnimators"]
+[node name="TerrainGlobalListeners" type="Node" parent="Terrain"]
+
+[node name="TerrainSpeedListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"speed_scale_updated"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="PlaySceneLoadedListener" type="Node" parent="Terrain/TerrainAnimators"]
+[node name="PlaySceneLoadedListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"scene_changed_play"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TitleSceneLoadedListener" type="Node" parent="Terrain/TerrainAnimators"]
+[node name="TitleSceneLoadedListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"scene_changed_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TerrainResetListener" type="Node" parent="Terrain/TerrainAnimators"]
+[node name="TerrainResetListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_reset"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TerrainGlobalInterfacers" type="Node" parent="Terrain"]
-
-[node name="TerrainGameoverEmitter" type="Node" parent="Terrain/TerrainGlobalInterfacers"]
+[node name="TerrainGameoverListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_gameover"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="HideTerrainTimer" type="Timer" parent="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter"]
+[node name="HideTerrainTimer" type="Timer" parent="Terrain/TerrainGlobalListeners/TerrainGameoverListener"]
 wait_time = 0.3
 
-[node name="TerrainRetryEmitter" type="Node" parent="Terrain/TerrainGlobalInterfacers"]
+[node name="TerrainRetryListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_retry"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
@@ -543,15 +552,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
 [node name="PlantBase" parent="Terrain/FenceLine2/Fence50/Post" index="0"]
 visible = false
 
-[connection signal="global_signal_emitted_with_value" from="Terrain/TerrainAnimators/TerrainSpeedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="set_speed_scale"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/PlaySceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
-[connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/TitleSceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="stop" binds= [false]]
-[connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/TerrainResetListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="start"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="stop" binds= [true]]
-[connection signal="timeout" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" to="Terrain" method="hide"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain" method="show"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="stop"]
+[node name="RoadBendController" type="Node" parent="Terrain" node_paths=PackedStringArray("signal_emitter")]
+script = ExtResource("5_gil8y")
+min_bend_length = 160.0
+max_bend_length = 400.0
+max_bend_transition_length = 75.0
+min_distance_between_bends = 550.0
+max_distance_between_bends = 800.0
+max_range_of_bend = 2.0
+bendable_materials = Array[ShaderMaterial]([ExtResource("6_pjfaa"), ExtResource("7_a74q1"), ExtResource("8_tjrou"), ExtResource("9_uu3wy"), ExtResource("10_1qsac"), ExtResource("11_p83al"), ExtResource("12_m3e78"), ExtResource("13_sp145"), ExtResource("14_3dlmi"), ExtResource("15_xgvo4"), ExtResource("16_fh12i")])
+signal_emitter = NodePath("../TerrainGlobalListeners/TerrainSpeedListener")
+signal_name = &"global_signal_emitted_with_value"
+metadata/_custom_type_script = "uid://3w32j7t20216"
+
+[connection signal="global_signal_emitted_with_value" from="Terrain/TerrainGlobalListeners/TerrainSpeedListener" to="Terrain/TerrainDrivingPlayer" method="set_speed_scale"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/PlaySceneLoadedListener" to="Terrain/RoadBendController" method="start_bend"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/PlaySceneLoadedListener" to="Terrain/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TitleSceneLoadedListener" to="Terrain/RoadBendController" method="reset_bend"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TitleSceneLoadedListener" to="Terrain/TerrainDrivingPlayer" method="stop" binds= [false]]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainResetListener" to="Terrain/RoadBendController" method="start_bend"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainResetListener" to="Terrain/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainGameoverListener" to="Terrain/TerrainGlobalListeners/TerrainGameoverListener/HideTerrainTimer" method="start"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainGameoverListener" to="Terrain/RoadBendController" method="stop_bend"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainGameoverListener" to="Terrain/TerrainDrivingPlayer" method="stop" binds= [true]]
+[connection signal="timeout" from="Terrain/TerrainGlobalListeners/TerrainGameoverListener/HideTerrainTimer" to="Terrain" method="hide"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainRetryListener" to="Terrain" method="show"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainRetryListener" to="Terrain/TerrainGlobalListeners/TerrainGameoverListener/HideTerrainTimer" method="stop"]
 [connection signal="global_signal_emitted" from="Terrain/FenceLine2/SceneChangedPlayListener" to="Terrain/FenceLine2" method="show"]
 [connection signal="global_signal_emitted" from="Terrain/FenceLine2/SceneChangedTitleListener" to="Terrain/FenceLine2" method="hide"]
 

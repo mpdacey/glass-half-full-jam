@@ -14,13 +14,14 @@ const BEND_MULTIPLIER_PARAMETER = "bend_multiplier"
 
 @export_group("References")
 @export var bendable_materials : Array[ShaderMaterial]
-@export var drive_controller : DriveController
+@export var signal_emitter : Node
+@export var signal_name : StringName
 
 var bend_tween: Tween
 
 func start_bend() -> void:
 	reset_bend()
-	drive_controller.speed_scale_updated.connect(_set_bend_tween, CONNECT_ONE_SHOT)
+	signal_emitter.connect(signal_name, _set_bend_tween, CONNECT_ONE_SHOT)
 
 func reset_bend() -> void:
 	if bend_tween:

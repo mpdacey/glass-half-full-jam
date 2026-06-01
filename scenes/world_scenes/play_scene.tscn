@@ -927,14 +927,15 @@ texture = SubResource("GradientTexture2D_u0fll")
 script = ExtResource("13_kd3qq")
 cruise_threshold = 0.66
 drained_threshold = 0.33
-cruise_decay_rate = 0.1
-drained_decay_rate = 0.12
+cruise_decay_rate = 0.09
+drained_decay_rate = 0.06
 
 [node name="DriveController" type="Node" parent="Player"]
 script = ExtResource("14_6bbup")
 boosted_acceleration_rate = 15.0
 cruise_acceleration_rate = 5.0
-drained_acceleration_rate = -25.0
+drained_acceleration_rate = -3.0
+starting_speed = 2.1
 
 [node name="SpeedUpdatedEmitter" type="Node" parent="Player/DriveController"]
 script = ExtResource("12_dyabf")
@@ -972,8 +973,11 @@ shape = SubResource("CylinderShape3D_18nlu")
 
 [node name="TrafficPaths" parent="Interactables" instance=ExtResource("26_l0tpv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, -0.15, 0)
+incremental_traffic_value = 0.8
 
 [node name="TrafficPaths2" parent="Interactables" instance=ExtResource("26_l0tpv")]
+incremental_traffic_value = 0.7
+starting_traffic = 1
 
 [node name="FuelLanePath" type="Path3D" parent="Interactables"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 0)
@@ -1005,7 +1009,6 @@ shape = SubResource("SphereShape3D_4nao0")
 script = ExtResource("27_x2qcq")
 lane_follower = NodePath("..")
 placement_follower = NodePath("../FuelPlacementPath/FuelPlacementFollower")
-warp_shift_amount = 401.88
 fuel_canister = NodePath("../FuelPlacementPath/FuelPlacementFollower/fuel-canister")
 
 [node name="FuelWarningController" type="Node" parent="Interactables/FuelLanePath/FuelLanePathFollower" node_paths=PackedStringArray("fuel_canister")]

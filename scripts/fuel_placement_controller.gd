@@ -6,7 +6,6 @@ signal next_canister_placed
 @export var lane_follower : PathFollow3D
 @export var placement_follower : PathFollow3D
 @export var canister_distance : float = 100
-@export var warp_shift_amount : float = 400
 @export var fuel_canister : Node3D
 
 func reset() -> void:
@@ -19,4 +18,4 @@ func place_next_canister() -> void:
 	next_canister_placed.emit()
 
 func warp_back() -> void:
-	lane_follower.progress -= warp_shift_amount
+	lane_follower.progress -= GlobalConstants.COMPLETE_CYCLE_DISTANCE

@@ -4,8 +4,6 @@ class_name DriveController
 signal distance_traveled(metres: float)
 signal speed_scale_updated(changed_speed_scale: float)
 
-const STARTING_SPEED : float = 2.3
-
 @export_group("Acceleration Rates")
 ## Acceleration value is meters per second
 @export var boosted_acceleration_rate := 4.5
@@ -19,6 +17,7 @@ const STARTING_SPEED : float = 2.3
 	SurfaceController.SurfaceType.DIRT : -4,
 	SurfaceController.SurfaceType.OIL : -1,
 }
+@export var starting_speed : float = 2.3
 
 var _engine_state : FuelController.EngineState = FuelController.EngineState.CRUISE
 var _surface_type_dampener := 0.0
@@ -27,7 +26,7 @@ var _speed_scale := 2.3
 
 func reset() -> void:
 	_metres_travelled = 0.0
-	_speed_scale = STARTING_SPEED
+	_speed_scale = starting_speed
 	set_process(true)
 
 func emit_distance_travelled() -> void:

@@ -78,11 +78,6 @@ script = ExtResource("3_gil8y")
 global_signal_name = &"speed_scale_updated"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="PlaySceneLoadedListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
-script = ExtResource("3_gil8y")
-global_signal_name = &"scene_changed_play"
-metadata/_custom_type_script = "uid://lu4gei6pype6"
-
 [node name="TitleSceneLoadedListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"scene_changed_title"
@@ -566,8 +561,6 @@ signal_name = &"global_signal_emitted_with_value"
 metadata/_custom_type_script = "uid://3w32j7t20216"
 
 [connection signal="global_signal_emitted_with_value" from="Terrain/TerrainGlobalListeners/TerrainSpeedListener" to="Terrain/TerrainDrivingPlayer" method="set_speed_scale"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/PlaySceneLoadedListener" to="Terrain/RoadBendController" method="start_bend"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/PlaySceneLoadedListener" to="Terrain/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
 [connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TitleSceneLoadedListener" to="Terrain/RoadBendController" method="reset_bend"]
 [connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TitleSceneLoadedListener" to="Terrain/TerrainDrivingPlayer" method="stop" binds= [false]]
 [connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainResetListener" to="Terrain/RoadBendController" method="start_bend"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://bick452yv4p3p"]
+[gd_scene load_steps=17 format=4 uid="uid://bick452yv4p3p"]
 
 [ext_resource type="AnimationLibrary" uid="uid://j1ir62h613ec" path="res://scenes/obstacles/fuel_animation_library.tres" id="1_whhod"]
-[ext_resource type="Material" uid="uid://c0gpax6g2inuo" path="res://materials/gas-canister-body.tres" id="2_whhod"]
-[ext_resource type="Texture2D" uid="uid://c2t4hlwo6cn28" path="res://textures/high-fuel-warning.png" id="3_whhod"]
+[ext_resource type="Material" path="res://materials/gas_canister-body.tres" id="2_whhod"]
+[ext_resource type="Material" uid="uid://dpqdulph3whly" path="res://materials/gas-canister-warning.tres" id="3_whhod"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_whhod"]
 custom_solver_bias = 0.095
@@ -25,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Model/WarningAlarm:visible")
+tracks/1/path = NodePath("WarningAlarm:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -72,39 +72,39 @@ tracks/2/keys = {
 "points": PackedFloat32Array(1.0048927, -0.25, 0, 0.1, -0.24694562, 0.03082937, -0.13329732, 0.027430989, 0.13333334, -0.027438402, 0.07198697, -0.099999994, -0.04115759, 0, 0),
 "times": PackedFloat32Array(0, 0.3, 0.4)
 }
-tracks/3/type = "bezier"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Model/WarningAlarm:modulate:a")
+tracks/3/path = NodePath("WarningAlarm:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.16802141, -0.2, 0, 0.2, 0, 0.9362967, -0.33333334, 0.027438402, 0.06666666, -0.10241991),
-"times": PackedFloat32Array(0, 0.4)
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Model/WarningAlarm:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Model/Cube:surface_material_override/0:next_pass:shader_parameter/albedo:a")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Model/Cube:surface_material_override/0:next_pass:shader_parameter/albedo:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WarningAlarm:surface_material_override/0:shader_parameter/albedo:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.16802141, -0.2, 0, 0.2, 0, 0.9362967, -0.33333334, 0.027438402, 0.06666666, -0.10241991),
+"times": PackedFloat32Array(0, 0.4)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7s7n5"]
@@ -215,6 +215,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kvbde")
 
+[sub_resource type="QuadMesh" id="QuadMesh_whhod"]
+size = Vector2(1.8, 1.6)
+
 [node name="fuel-canister" type="Node3D"]
 metadata/animator = NodePath("GrowPlayer")
 metadata/warning_animator = NodePath("WarningPlayer")
@@ -269,14 +272,9 @@ mesh = SubResource("ArrayMesh_cuh0w")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_whhod")
 
-[node name="WarningAlarm" type="Sprite3D" parent="Model"]
-transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 0, 1.3407254, 0)
+[node name="WarningAlarm" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.7850163, 1.9039898, 0)
 visible = false
-cast_shadow = 0
-lod_bias = 0.001
-modulate = Color(1, 1, 1, 0.39607844)
-billboard = 1
-no_depth_test = true
-texture_filter = 1
-render_priority = 2
-texture = ExtResource("3_whhod")
+mesh = SubResource("QuadMesh_whhod")
+skeleton = NodePath("../Model")
+surface_material_override/0 = ExtResource("3_whhod")

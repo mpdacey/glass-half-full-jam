@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://2byllt2m3knb"]
+[gd_scene load_steps=21 format=3 uid="uid://2byllt2m3knb"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_l47ob"]
 [ext_resource type="AnimationLibrary" uid="uid://jc8fcqbdm5j4" path="res://resources/terrain_animation_library.tres" id="2_rtf8o"]
@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://dwd82ivtkeqsl" path="res://materials/highscore_banner_material.tres" id="14_3dlmi"]
 [ext_resource type="Material" uid="uid://sqealwhnnkao" path="res://materials/road_material.tres" id="15_xgvo4"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="16_fh12i"]
+[ext_resource type="Material" uid="uid://dpqdulph3whly" path="res://materials/gas-canister-warning.tres" id="17_a74q1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qsc2p"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -555,7 +556,7 @@ max_bend_transition_length = 75.0
 min_distance_between_bends = 550.0
 max_distance_between_bends = 800.0
 max_range_of_bend = 2.0
-bendable_materials = Array[ShaderMaterial]([ExtResource("6_pjfaa"), ExtResource("7_a74q1"), ExtResource("8_tjrou"), ExtResource("9_uu3wy"), ExtResource("10_1qsac"), ExtResource("11_p83al"), ExtResource("12_m3e78"), ExtResource("13_sp145"), ExtResource("14_3dlmi"), ExtResource("15_xgvo4"), ExtResource("16_fh12i")])
+bendable_materials = Array[ShaderMaterial]([ExtResource("6_pjfaa"), ExtResource("7_a74q1"), ExtResource("8_tjrou"), ExtResource("9_uu3wy"), ExtResource("10_1qsac"), ExtResource("11_p83al"), ExtResource("12_m3e78"), ExtResource("13_sp145"), ExtResource("14_3dlmi"), ExtResource("15_xgvo4"), ExtResource("16_fh12i"), ExtResource("17_a74q1")])
 signal_emitter = NodePath("../TerrainGlobalListeners/TerrainSpeedListener")
 signal_name = &"global_signal_emitted_with_value"
 metadata/_custom_type_script = "uid://3w32j7t20216"

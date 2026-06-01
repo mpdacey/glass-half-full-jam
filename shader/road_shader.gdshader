@@ -28,6 +28,7 @@ uniform sampler2D distant_texture_albedo: source_color, filter_linear, repeat_en
 uniform bool has_seperate_distant_texture = false;
 
 uniform float bend_multiplier = 0.0;
+uniform float bend_amplifier : hint_range (0, 1.0, 0.01) = 1.0;
 varying float calculated_curve;
 
 float remap(float value, float i_min, float i_max, float o_min, float o_max) {
@@ -43,7 +44,7 @@ void vertex(){
 	VERTEX.y -= calculated_curve;
 	
 	// Calculate the sine and cosine of the angle
-    float angle = calculated_curve*bend_multiplier / 360.0;
+    float angle = calculated_curve*bend_multiplier / 360.0 * bend_amplifier;
     float s = sin(angle);
     float c = cos(angle);
     

@@ -1384,10 +1384,9 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 
 [node name="RoadBendController" type="Node" parent="." node_paths=PackedStringArray("drive_controller")]
 script = ExtResource("47_vtgkk")
-min_bend_length = 200.0
-max_bend_length = 500.0
-min_bend_transition_length = 300.0
-max_bend_transition_length = 700.0
+min_bend_length = 160.0
+max_bend_length = 400.0
+max_bend_transition_length = 75.0
 min_distance_between_bends = 550.0
 max_distance_between_bends = 800.0
 max_range_of_bend = 2.0

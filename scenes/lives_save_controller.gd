@@ -46,7 +46,6 @@ func load_config_file() -> void:
 		return
 	
 	var key : String = str(FileAccess.get_modified_time(KEY_FILE_PATH))
-	print(key)
 	var error : Error = current_config.load_encrypted_pass(STORAGE_CONFIG_FILE_PATH, key)
 	
 	if error != OK:

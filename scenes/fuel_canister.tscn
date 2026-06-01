@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=4 uid="uid://bick452yv4p3p"]
 
 [ext_resource type="AnimationLibrary" uid="uid://j1ir62h613ec" path="res://scenes/obstacles/fuel_animation_library.tres" id="1_whhod"]
-[ext_resource type="Material" path="res://materials/gas_canister-body.tres" id="2_whhod"]
-[ext_resource type="Material" uid="uid://dpqdulph3whly" path="res://materials/gas-canister-warning.tres" id="3_whhod"]
+[ext_resource type="Material" uid="uid://c0gpax6g2inuo" path="res://materials/gas_canister_materials/canister_body_material.tres" id="2_whhod"]
+[ext_resource type="Material" uid="uid://dpqdulph3whly" path="res://materials/gas_canister_materials/canister_warning_material.tres" id="3_whhod"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_whhod"]
 custom_solver_bias = 0.095

@@ -1,10 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://5n3fflpyc8fo"]
 
-[ext_resource type="Shader" uid="uid://cd85f0xacf4xm" path="res://shader/outline_canister_shader.gdshader" id="1_egdht"]
+[ext_resource type="Shader" uid="uid://cd85f0xacf4xm" path="res://shader/outline_canister_shader.gdshader" id="1_wefbn"]
 
 [resource]
 render_priority = 1
-shader = ExtResource("1_egdht")
+shader = ExtResource("1_wefbn")
 shader_parameter/albedo = Color(0, 0, 0, 0)
 shader_parameter/grow = 0.10000076
 shader_parameter/albedo_texture_size = Vector2i(0, 0)

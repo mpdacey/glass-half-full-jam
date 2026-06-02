@@ -8,5 +8,6 @@ enum TimeConnectionResponses
 {
 	OK,
 	NO_CONNECTION,
-	NO_RESPONSE
+	NO_RESPONSE,
+	TIMEOUT
 }

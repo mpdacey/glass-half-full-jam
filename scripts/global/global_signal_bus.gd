@@ -25,4 +25,5 @@ signal spend_life_denied
 signal time_check_connection
 signal time_no_connection
 signal time_no_response
+signal time_timed_out
 #endregion

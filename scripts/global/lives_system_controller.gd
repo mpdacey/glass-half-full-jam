@@ -6,10 +6,10 @@ signal timer_remaining_seconds(time_left: int)
 const MAX_LIVES : int = 5
 ## Number of seconds to regenerate a life
 const LIFE_REGENERATION_RATE : int = 300
-const NULL_UNIX_TIME : int = -1
 
 @export var lives_save_controller: LivesSaveController
 @export var regen_timer : Timer
+@export var timeout_timer : Timer 
 var _current_time_left : int = 0
 var _connected := false
 
@@ -56,6 +56,7 @@ func spend_life() -> void:
 func check_connection() -> void:
 	GlobalTimeInterfacer.status_found.connect(_on_status_found, CONNECT_ONE_SHOT)
 	GlobalTimeInterfacer.ping_global_time()
+	timeout_timer.start()
 
 func _request_initial_time() -> void:
 	GlobalTimeInterfacer.global_unix_time_recieved.connect(_set_initial_timer, CONNECT_ONE_SHOT)
@@ -91,6 +92,8 @@ func _emit_lives_left() -> void:
 
 func _on_status_found(status: GlobalConstants.TimeConnectionResponses) -> void:
 	_connected = false
+	timeout_timer.stop()
+	
 	match status:
 		GlobalConstants.TimeConnectionResponses.OK:
 			_connected = true
@@ -98,3 +101,5 @@ func _on_status_found(status: GlobalConstants.TimeConnectionResponses) -> void:
 			GlobalSignalBus.time_no_connection.emit()
 		GlobalConstants.TimeConnectionResponses.NO_RESPONSE:
 			GlobalSignalBus.time_no_response.emit()
+		GlobalConstants.TimeConnectionResponses.TIMEOUT:
+			GlobalSignalBus.time_timed_out.emit()

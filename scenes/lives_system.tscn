@@ -4,15 +4,17 @@
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="2_8whx0"]
 [ext_resource type="Script" uid="uid://c0qe4xdqr1dt1" path="res://scenes/lives_save_controller.gd" id="3_8upvp"]
 
-[node name="LivesSystem" type="Node" node_paths=PackedStringArray("lives_save_controller", "regen_timer")]
+[node name="LivesSystem" type="Node" node_paths=PackedStringArray("lives_save_controller", "regen_timer", "timeout_timer")]
 process_mode = 3
 script = ExtResource("1_mtu6a")
 lives_save_controller = NodePath("LivesSaveController")
 regen_timer = NodePath("FullRegenerationTimer")
+timeout_timer = NodePath("ConnectionTimeoutTimer")
 
 [node name="FullRegenerationTimer" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
+ignore_time_scale = true
 
 [node name="SpendLifeRequestListener" type="Node" parent="."]
 script = ExtResource("2_8whx0")
@@ -34,7 +36,13 @@ script = ExtResource("2_8whx0")
 global_signal_name = &"terrain_gameover"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
+[node name="ConnectionTimeoutTimer" type="Timer" parent="."]
+wait_time = 300.0
+one_shot = true
+ignore_time_scale = true
+
 [connection signal="global_signal_emitted" from="SpendLifeRequestListener" to="." method="_on_spend_life_request"]
 [connection signal="config_loaded" from="LivesSaveController" to="." method="_request_initial_time"]
 [connection signal="global_signal_emitted" from="TestConnectionEventListeners/TitleLoadedListener" to="." method="check_connection"]
 [connection signal="global_signal_emitted" from="TestConnectionEventListeners/GameoverListener" to="." method="check_connection"]
+[connection signal="timeout" from="ConnectionTimeoutTimer" to="." method="_on_status_found" binds= [3]]

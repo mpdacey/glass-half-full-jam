@@ -22,5 +22,19 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [node name="LivesSaveController" type="Node" parent="."]
 script = ExtResource("3_8upvp")
 
+[node name="TestConnectionEventListeners" type="Node" parent="."]
+
+[node name="TitleLoadedListener" type="Node" parent="TestConnectionEventListeners"]
+script = ExtResource("2_8whx0")
+global_signal_name = &"scene_changed_title"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="GameoverListener" type="Node" parent="TestConnectionEventListeners"]
+script = ExtResource("2_8whx0")
+global_signal_name = &"terrain_gameover"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
 [connection signal="global_signal_emitted" from="SpendLifeRequestListener" to="." method="_on_spend_life_request"]
 [connection signal="config_loaded" from="LivesSaveController" to="." method="_request_initial_time"]
+[connection signal="global_signal_emitted" from="TestConnectionEventListeners/TitleLoadedListener" to="." method="check_connection"]
+[connection signal="global_signal_emitted" from="TestConnectionEventListeners/GameoverListener" to="." method="check_connection"]

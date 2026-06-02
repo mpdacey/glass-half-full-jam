@@ -4,7 +4,7 @@ const COMPLETE_CYCLE_DISTANCE = 400.0
 const COMPLETE_CYCLE_DEFAULT_TIME = 20.0
 const LEADERBOARD_ID = "CgkInsTW6vgPEAIQAA"
 
-enum SpendLifeResponses
+enum TimeConnectionResponses
 {
 	OK,
 	NO_CONNECTION,

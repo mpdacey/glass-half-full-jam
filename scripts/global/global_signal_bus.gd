@@ -20,3 +20,9 @@ signal spend_life_requested
 signal spend_life_granted
 signal spend_life_denied
 #endregion
+
+#region Connection Related
+signal time_check_connection
+signal time_no_connection
+signal time_no_response
+#endregion

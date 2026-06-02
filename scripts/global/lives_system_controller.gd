@@ -11,6 +11,7 @@ const NULL_UNIX_TIME : int = -1
 @export var lives_save_controller: LivesSaveController
 @export var regen_timer : Timer
 var _current_time_left : int = 0
+var _connected := false
 
 func _process(_delta: float) -> void:
 	var ceil_time_left : int = ceili(regen_timer.time_left)
@@ -52,6 +53,10 @@ func spend_life() -> void:
 	GlobalTimeInterfacer.global_unix_time_recieved.connect(_set_stored_regeneration_time, CONNECT_ONE_SHOT)
 	GlobalTimeInterfacer.request_global_time()
 
+func check_connection() -> void:
+	GlobalTimeInterfacer.status_found.connect(_on_status_found, CONNECT_ONE_SHOT)
+	GlobalTimeInterfacer.ping_global_time()
+
 func _request_initial_time() -> void:
 	GlobalTimeInterfacer.global_unix_time_recieved.connect(_set_initial_timer, CONNECT_ONE_SHOT)
 	GlobalTimeInterfacer.request_global_time()
@@ -69,13 +74,27 @@ func _set_stored_regeneration_time(global_unix_time: int) -> void:
 	lives_save_controller.save_config_file()
 
 func _on_spend_life_request() -> void:
+	if not _connected:
+		return
+	
 	if can_spend_life():
 		spend_life()
 		GlobalSignalBus.spend_life_granted.emit()
 	else:
 		GlobalSignalBus.spend_life_denied.emit()
+	
+	_connected = false
 
 func _emit_lives_left() -> void:
 	var lives_left : int = MAX_LIVES - ceili(float(_current_time_left) / LIFE_REGENERATION_RATE)
 	life_regenerated.emit(lives_left)
-	
+
+func _on_status_found(status: GlobalConstants.TimeConnectionResponses) -> void:
+	_connected = false
+	match status:
+		GlobalConstants.TimeConnectionResponses.OK:
+			_connected = true
+		GlobalConstants.TimeConnectionResponses.NO_CONNECTION:
+			GlobalSignalBus.time_no_connection.emit()
+		GlobalConstants.TimeConnectionResponses.NO_RESPONSE:
+			GlobalSignalBus.time_no_response.emit()

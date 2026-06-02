@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=45 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://buidtptyttd8f" path="res://audio/sfx/leaderboard/leaderboard_book_close.wav" id="16_ko0uc"]
 [ext_resource type="AudioStream" uid="uid://copts6wfejoon" path="res://audio/sfx/leaderboard/leaderboard_book_open.wav" id="17_t1ah0"]
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="22_gpe5i"]
+[ext_resource type="Resource" uid="uid://daf1qa5w8sp1p" path="res://resources/info_box_resources/leaderboard_disclaimer_resource.tres" id="23_4qtqu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4e2ik"]
 atlas = ExtResource("1_y0ns5")
@@ -1179,18 +1180,7 @@ wait_time = 30.0
 ignore_time_scale = true
 
 [node name="InfoBox" parent="." instance=ExtResource("22_gpe5i")]
-
-[node name="TitleLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin" index="0"]
-text = "[b][i]Where is my record?[/i][/b]
-"
-
-[node name="ContentLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="1"]
-text = "Your record might not be visible because
-your Play Games profile is set to private."
-
-[node name="HyperLinkLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="2"]
-text = "[url=\"https://support.google.com/googleplay/answer/16562063#profile_privacy_settings\"]How to make your play games profile public.
-"
+metadata/content = ExtResource("23_4qtqu")
 
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
 [connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
@@ -1228,5 +1218,3 @@ text = "[url=\"https://support.google.com/googleplay/answer/16562063#profile_pri
 [connection signal="timeout" from="Timers/WaitForResponseTimer" to="." method="set_scores" binds= [[]]]
 [connection signal="timeout" from="Timers/RefreshTimer" to="." method="reset_refresh_states"]
 [connection signal="timeout" from="Timers/RefreshTimer" to="Timers/RefreshTimer" method="start"]
-
-[editable path="InfoBox"]

@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c4hwyjg4piyay"]
+
+[ext_resource type="Shader" uid="uid://ps16vcev4gh1" path="res://shader/fence_link_shader.gdshader" id="1_krb5k"]
+[ext_resource type="Texture2D" uid="uid://ctqgrtbafqpmx" path="res://textures/material_textures/chain_link_textures/metal_texture.png" id="2_qvpaf"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_krb5k")
+shader_parameter/albedo = Color(0.23392546, 0.23392549, 0.23392531, 1)
+shader_parameter/texture_albedo = ExtResource("2_qvpaf")
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.10000000149012
+shader_parameter/roughness = 0.262000012445
+shader_parameter/metallic_texture_channel = Vector4(1.135, 1.995, 1.245, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.249999994412
+shader_parameter/uv1_scale = Vector3(8, 4, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = 0.0999999977648
+shader_parameter/bend_multiplier = 0.0

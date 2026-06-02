@@ -1,9 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://2byllt2m3knb"]
+[gd_scene load_steps=21 format=3 uid="uid://2byllt2m3knb"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_l47ob"]
 [ext_resource type="AnimationLibrary" uid="uid://jc8fcqbdm5j4" path="res://resources/terrain_animation_library.tres" id="2_rtf8o"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="3_gil8y"]
 [ext_resource type="PackedScene" uid="uid://buc7s25oweoq1" path="res://scenes/fence.tscn" id="4_rtf8o"]
+[ext_resource type="Script" uid="uid://3w32j7t20216" path="res://scripts/road_bend_controller.gd" id="5_gil8y"]
+[ext_resource type="Material" uid="uid://darohcmfymg0i" path="res://materials/desert_materials/desert_cacti_material.tres" id="6_a74q1"]
+[ext_resource type="Material" uid="uid://dlsj6rc4l6h2o" path="res://materials/desert_materials/desert_canyon_material.tres" id="7_tjrou"]
+[ext_resource type="Material" uid="uid://c4hwyjg4piyay" path="res://materials/desert_materials/desert_fence_mesh_material.tres" id="8_uu3wy"]
+[ext_resource type="Material" uid="uid://drbth85p4ot8" path="res://materials/desert_materials/desert_fence_post_material.tres" id="9_1qsac"]
+[ext_resource type="Material" uid="uid://dsoceymjof8y2" path="res://materials/desert_materials/desert_grass_material.tres" id="10_p83al"]
+[ext_resource type="Material" uid="uid://ccx8siq7mgu0e" path="res://materials/desert_materials/desert_offroad_material.tres" id="11_m3e78"]
+[ext_resource type="Material" uid="uid://c0gpax6g2inuo" path="res://materials/gas_canister_materials/canister_body_material.tres" id="12_sp145"]
+[ext_resource type="Material" uid="uid://5n3fflpyc8fo" path="res://materials/gas_canister_materials/canister_outline_material.tres" id="13_3dlmi"]
+[ext_resource type="Material" uid="uid://dpqdulph3whly" path="res://materials/gas_canister_materials/canister_warning_material.tres" id="14_xgvo4"]
+[ext_resource type="Material" uid="uid://dwd82ivtkeqsl" path="res://materials/highscore_banner_material.tres" id="15_fh12i"]
+[ext_resource type="Material" uid="uid://sqealwhnnkao" path="res://materials/road_material.tres" id="16_xla8q"]
+[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="17_y8dsr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qsc2p"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -20,15 +33,27 @@ sky_material = SubResource("ProceduralSkyMaterial_qsc2p")
 background_mode = 2
 sky = SubResource("Sky_w2twt")
 ambient_light_source = 2
-ambient_light_color = Color(0.30588236, 0.7019608, 0.78039217, 1)
+ambient_light_color = Color(0.5874539, 0.8710717, 0.9736617, 1)
+ambient_light_energy = 0.8
 
 [node name="TerrainScene" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="MainDirectionalLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.46462807, -0.12539037, 0.87658316, 0.36627865, 0.8740532, 0.3191724, -0.80620146, 0.46937016, -0.3601818, 12.871048, 9, -6)
 layers = 3
 light_color = Color(0.97, 0.8406667, 0.7275, 1)
+light_energy = 0.864
+light_indirect_energy = 1.684
 shadow_enabled = true
+sky_mode = 1
+
+[node name="SupportingDirectionalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.42081025, -0.46152538, 0.7809692, 0.36627862, 0.8740531, 0.31917235, -0.8299148, 0.1517413, 0.53685737, 12.871048, 9, -6)
+layers = 32
+light_color = Color(0.97, 0.8406667, 0.7275, 1)
+light_energy = 0.5
+light_indirect_energy = 1.684
+light_cull_mask = 4294966272
 sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -41,46 +66,38 @@ environment = SubResource("Environment_2libc")
 [node name="RoadSegment2" parent="Terrain" instance=ExtResource("1_l47ob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="TerrainAnimators" type="Node" parent="Terrain"]
-
-[node name="TerrainDrivingPlayer" type="AnimationPlayer" parent="Terrain/TerrainAnimators"]
-root_node = NodePath("../..")
+[node name="TerrainDrivingPlayer" type="AnimationPlayer" parent="Terrain"]
 libraries = {
 &"": ExtResource("2_rtf8o")
 }
 speed_scale = 2.3
 
-[node name="TerrainSpeedListener" type="Node" parent="Terrain/TerrainAnimators"]
+[node name="TerrainGlobalListeners" type="Node" parent="Terrain"]
+
+[node name="TerrainSpeedListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"speed_scale_updated"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="PlaySceneLoadedListener" type="Node" parent="Terrain/TerrainAnimators"]
-script = ExtResource("3_gil8y")
-global_signal_name = &"scene_changed_play"
-metadata/_custom_type_script = "uid://lu4gei6pype6"
-
-[node name="TitleSceneLoadedListener" type="Node" parent="Terrain/TerrainAnimators"]
+[node name="TitleSceneLoadedListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"scene_changed_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TerrainResetListener" type="Node" parent="Terrain/TerrainAnimators"]
+[node name="TerrainResetListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_reset"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TerrainGlobalInterfacers" type="Node" parent="Terrain"]
-
-[node name="TerrainGameoverEmitter" type="Node" parent="Terrain/TerrainGlobalInterfacers"]
+[node name="TerrainGameoverListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_gameover"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="HideTerrainTimer" type="Timer" parent="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter"]
+[node name="HideTerrainTimer" type="Timer" parent="Terrain/TerrainGlobalListeners/TerrainGameoverListener"]
 wait_time = 0.3
 
-[node name="TerrainRetryEmitter" type="Node" parent="Terrain/TerrainGlobalInterfacers"]
+[node name="TerrainRetryListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
 script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_retry"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
@@ -90,32 +107,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9917965, 0, -11.102576)
 
 [node name="Fence" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence/Post" index="0"]
+visible = false
+
 [node name="Fence2" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence2/Post" index="0"]
+visible = false
 
 [node name="Fence3" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence3/Post" index="0"]
+visible = false
+
 [node name="Fence4" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence4/Post" index="0"]
+visible = false
 
 [node name="Fence5" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence5/Post" index="0"]
+visible = false
+
 [node name="Fence6" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence6/Post" index="0"]
+visible = false
 
 [node name="Fence7" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence7/Post" index="0"]
+visible = false
+
 [node name="Fence8" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence8/Post" index="0"]
+visible = false
 
 [node name="Fence9" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence9/Post" index="0"]
+visible = false
+
 [node name="Fence10" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence10/Post" index="0"]
+visible = false
 
 [node name="Fence11" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
@@ -219,32 +266,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 420, 0, 0)
 [node name="Fence43" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence43/Post" index="0"]
+visible = false
+
 [node name="Fence44" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 440, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence44/Post" index="0"]
+visible = false
 
 [node name="Fence45" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence45/Post" index="0"]
+visible = false
+
 [node name="Fence46" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence46/Post" index="0"]
+visible = false
 
 [node name="Fence47" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence47/Post" index="0"]
+visible = false
+
 [node name="Fence48" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 480, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence48/Post" index="0"]
+visible = false
 
 [node name="Fence49" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 490, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence49/Post" index="0"]
+visible = false
+
 [node name="Fence50" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence50/Post" index="0"]
+visible = false
 
 [node name="Fence51" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine/Fence51/Post" index="0"]
+visible = false
+
 [node name="Fence52" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 520, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine/Fence52/Post" index="0"]
+visible = false
 
 [node name="FenceLine2" type="Node3D" parent="Terrain"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 496.008, 0, 11.103)
@@ -262,28 +339,55 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [node name="Fence0" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence0/Post" index="0"]
+visible = false
+
 [node name="Fence" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence/Post" index="0"]
+visible = false
 
 [node name="Fence2" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence2/Post" index="0"]
+visible = false
+
 [node name="Fence3" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence3/Post" index="0"]
+visible = false
 
 [node name="Fence4" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence4/Post" index="0"]
+visible = false
+
 [node name="Fence5" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence5/Post" index="0"]
+visible = false
 
 [node name="Fence6" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence6/Post" index="0"]
+visible = false
+
 [node name="Fence7" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence7/Post" index="0"]
+visible = false
+
 [node name="Fence8" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence8/Post" index="0"]
+visible = false
 
 [node name="Fence9" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
@@ -387,41 +491,126 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
 [node name="Fence41" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 410, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence41/Post" index="0"]
+visible = false
+
 [node name="Fence42" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 420, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence42/Post" index="0"]
+visible = false
 
 [node name="Fence43" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence43/Post" index="0"]
+visible = false
+
 [node name="Fence44" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 440, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence44/Post" index="0"]
+visible = false
 
 [node name="Fence45" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence45/Post" index="0"]
+visible = false
+
 [node name="Fence46" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence46/Post" index="0"]
+visible = false
 
 [node name="Fence47" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence47/Post" index="0"]
+visible = false
+
 [node name="Fence48" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 480, 0, 0)
+
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence48/Post" index="0"]
+visible = false
 
 [node name="Fence49" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 490, 0, 0)
 
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence49/Post" index="0"]
+visible = false
+
 [node name="Fence50" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
 
-[connection signal="global_signal_emitted_with_value" from="Terrain/TerrainAnimators/TerrainSpeedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="set_speed_scale"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/PlaySceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
-[connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/TitleSceneLoadedListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="stop" binds= [false]]
-[connection signal="global_signal_emitted" from="Terrain/TerrainAnimators/TerrainResetListener" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="start"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter" to="Terrain/TerrainAnimators/TerrainDrivingPlayer" method="stop" binds= [true]]
-[connection signal="timeout" from="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" to="Terrain" method="hide"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain" method="show"]
-[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalInterfacers/TerrainRetryEmitter" to="Terrain/TerrainGlobalInterfacers/TerrainGameoverEmitter/HideTerrainTimer" method="stop"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence50/Post" index="0"]
+visible = false
+
+[node name="RoadBendController" type="Node" parent="Terrain" node_paths=PackedStringArray("signal_emitter")]
+script = ExtResource("5_gil8y")
+min_bend_length = 160.0
+max_bend_length = 400.0
+max_bend_transition_length = 75.0
+min_distance_between_bends = 550.0
+max_distance_between_bends = 800.0
+max_range_of_bend = 2.0
+bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("15_fh12i"), ExtResource("16_xla8q"), ExtResource("17_y8dsr")])
+signal_emitter = NodePath("../TerrainGlobalListeners/TerrainSpeedListener")
+signal_name = &"global_signal_emitted_with_value"
+metadata/_custom_type_script = "uid://3w32j7t20216"
+
+[connection signal="global_signal_emitted_with_value" from="Terrain/TerrainGlobalListeners/TerrainSpeedListener" to="Terrain/TerrainDrivingPlayer" method="set_speed_scale"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TitleSceneLoadedListener" to="Terrain/RoadBendController" method="reset_bend"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TitleSceneLoadedListener" to="Terrain/TerrainDrivingPlayer" method="stop" binds= [false]]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainResetListener" to="Terrain/RoadBendController" method="start_bend"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainResetListener" to="Terrain/TerrainDrivingPlayer" method="play" binds= [&"drive"]]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainGameoverListener" to="Terrain/TerrainGlobalListeners/TerrainGameoverListener/HideTerrainTimer" method="start"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainGameoverListener" to="Terrain/RoadBendController" method="stop_bend"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainGameoverListener" to="Terrain/TerrainDrivingPlayer" method="stop" binds= [true]]
+[connection signal="timeout" from="Terrain/TerrainGlobalListeners/TerrainGameoverListener/HideTerrainTimer" to="Terrain" method="hide"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainRetryListener" to="Terrain" method="show"]
+[connection signal="global_signal_emitted" from="Terrain/TerrainGlobalListeners/TerrainRetryListener" to="Terrain/TerrainGlobalListeners/TerrainGameoverListener/HideTerrainTimer" method="stop"]
 [connection signal="global_signal_emitted" from="Terrain/FenceLine2/SceneChangedPlayListener" to="Terrain/FenceLine2" method="show"]
 [connection signal="global_signal_emitted" from="Terrain/FenceLine2/SceneChangedTitleListener" to="Terrain/FenceLine2" method="hide"]
+
+[editable path="Terrain/FenceLine/Fence"]
+[editable path="Terrain/FenceLine/Fence2"]
+[editable path="Terrain/FenceLine/Fence3"]
+[editable path="Terrain/FenceLine/Fence4"]
+[editable path="Terrain/FenceLine/Fence5"]
+[editable path="Terrain/FenceLine/Fence6"]
+[editable path="Terrain/FenceLine/Fence7"]
+[editable path="Terrain/FenceLine/Fence8"]
+[editable path="Terrain/FenceLine/Fence9"]
+[editable path="Terrain/FenceLine/Fence10"]
+[editable path="Terrain/FenceLine/Fence43"]
+[editable path="Terrain/FenceLine/Fence44"]
+[editable path="Terrain/FenceLine/Fence45"]
+[editable path="Terrain/FenceLine/Fence46"]
+[editable path="Terrain/FenceLine/Fence47"]
+[editable path="Terrain/FenceLine/Fence48"]
+[editable path="Terrain/FenceLine/Fence49"]
+[editable path="Terrain/FenceLine/Fence50"]
+[editable path="Terrain/FenceLine/Fence51"]
+[editable path="Terrain/FenceLine/Fence52"]
+[editable path="Terrain/FenceLine2/Fence0"]
+[editable path="Terrain/FenceLine2/Fence"]
+[editable path="Terrain/FenceLine2/Fence2"]
+[editable path="Terrain/FenceLine2/Fence3"]
+[editable path="Terrain/FenceLine2/Fence4"]
+[editable path="Terrain/FenceLine2/Fence5"]
+[editable path="Terrain/FenceLine2/Fence6"]
+[editable path="Terrain/FenceLine2/Fence7"]
+[editable path="Terrain/FenceLine2/Fence8"]
+[editable path="Terrain/FenceLine2/Fence41"]
+[editable path="Terrain/FenceLine2/Fence42"]
+[editable path="Terrain/FenceLine2/Fence43"]
+[editable path="Terrain/FenceLine2/Fence44"]
+[editable path="Terrain/FenceLine2/Fence45"]
+[editable path="Terrain/FenceLine2/Fence46"]
+[editable path="Terrain/FenceLine2/Fence47"]
+[editable path="Terrain/FenceLine2/Fence48"]
+[editable path="Terrain/FenceLine2/Fence49"]
+[editable path="Terrain/FenceLine2/Fence50"]

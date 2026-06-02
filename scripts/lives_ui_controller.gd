@@ -16,7 +16,7 @@ func set_lives_label(new_lives: int) -> void:
 	lives_value_changed.emit()
 
 func set_regen_timer_label(seconds_left: int) -> void:
-	if seconds_left == 0:
+	if seconds_left <= 0:
 		regen_timer_label.text = "FULL"
 		return
 	

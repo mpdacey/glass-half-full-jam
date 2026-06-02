@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dpqdulph3whly"]
+
+[ext_resource type="Shader" uid="uid://blrajoc6cbixh" path="res://shader/warning_canister_shader.gdshader" id="1_e0bxo"]
+[ext_resource type="Texture2D" uid="uid://c2t4hlwo6cn28" path="res://textures/high-fuel-warning.png" id="2_yir1h"]
+
+[resource]
+render_priority = 2
+shader = ExtResource("1_e0bxo")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_yir1h")
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/curve_amount = 0.0999999977648
+shader_parameter/bend_multiplier = 0.165
+shader_parameter/bend_amplifier = 1.0
+shader_parameter/uv_counter_weight = -0.35

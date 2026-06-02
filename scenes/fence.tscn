@@ -1,26 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://buc7s25oweoq1"]
+[gd_scene load_steps=10 format=3 uid="uid://buc7s25oweoq1"]
 
 [ext_resource type="PackedScene" uid="uid://dlwpw2jgytnr8" path="res://models/post.blend" id="1_6ixbi"]
-[ext_resource type="Material" uid="uid://c4hwyjg4piyay" path="res://materials/fence_mesh_material.tres" id="2_agt3l"]
-[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="3_3ip11"]
-[ext_resource type="Texture2D" uid="uid://bav6kw50pbnu1" path="res://textures/material_textures/post_textures/wooden_post_texture.jpg" id="4_0uhok"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvy02"]
-render_priority = 0
-shader = ExtResource("3_3ip11")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("4_0uhok")
-shader_parameter/albedo_texture_size = Vector2i(0, 0)
-shader_parameter/point_size = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(0.355, 0.475, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(0, 0, 0)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/curve_amount = 0.0999999977648
+[ext_resource type="Material" uid="uid://c4hwyjg4piyay" path="res://materials/desert_materials/desert_fence_mesh_material.tres" id="2_agt3l"]
+[ext_resource type="Material" uid="uid://drbth85p4ot8" path="res://materials/desert_materials/desert_fence_post_material.tres" id="3_b3etb"]
+[ext_resource type="Script" uid="uid://nbektii3ygrb" path="res://scenes/post_base_planter.gd" id="4_d2c0n"]
+[ext_resource type="PackedScene" uid="uid://dxnu2k6lm3aa0" path="res://models/plants/plant_bush.fbx" id="5_w85du"]
+[ext_resource type="PackedScene" uid="uid://mwjearggpayr" path="res://models/plants/plant_bushLarge.fbx" id="6_d2c0n"]
+[ext_resource type="PackedScene" uid="uid://cim3y7ujh5mvo" path="res://models/plants/plant_bushLargeTriangle.fbx" id="7_46brt"]
+[ext_resource type="PackedScene" uid="uid://cihd7rim0lmuu" path="res://models/plants/plant_bushSmall.fbx" id="8_opiew"]
+[ext_resource type="PackedScene" uid="uid://d2t28ug00a4rb" path="res://models/plants/plant_bushTriangle.fbx" id="9_3yd0h"]
 
 [node name="Fence" instance=ExtResource("1_6ixbi")]
 
@@ -28,4 +16,18 @@ shader_parameter/curve_amount = 0.0999999977648
 surface_material_override/0 = ExtResource("2_agt3l")
 
 [node name="Post" parent="." index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_gvy02")
+surface_material_override/0 = ExtResource("3_b3etb")
+
+[node name="PlantBase" type="Node3D" parent="Post" index="0"]
+transform = Transform3D(30.090221, 0, 29.820814, 0, 2.277, 0, -30.090221, 0, 29.820814, 0, -0.745, 0)
+script = ExtResource("4_d2c0n")
+
+[node name="plant_bush" parent="Post/PlantBase" index="0" instance=ExtResource("5_w85du")]
+
+[node name="plant_bushLarge" parent="Post/PlantBase" index="1" instance=ExtResource("6_d2c0n")]
+
+[node name="plant_bushLargeTriangle" parent="Post/PlantBase" index="2" instance=ExtResource("7_46brt")]
+
+[node name="plant_bushSmall" parent="Post/PlantBase" index="3" instance=ExtResource("8_opiew")]
+
+[node name="plant_bushTriangle" parent="Post/PlantBase" index="4" instance=ExtResource("9_3yd0h")]

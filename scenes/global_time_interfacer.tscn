@@ -4,8 +4,8 @@
 
 [node name="GlobalTimeInterfacer" type="Node" node_paths=PackedStringArray("http_request")]
 script = ExtResource("1_vd114")
-http_request = NodePath("HTTPRequest")
+http_request = NodePath("TimeHTTPRequest")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="TimeHTTPRequest" type="HTTPRequest" parent="."]
 
-[connection signal="request_completed" from="HTTPRequest" to="." method="request_recieved"]
+[connection signal="request_completed" from="TimeHTTPRequest" to="." method="request_recieved"]

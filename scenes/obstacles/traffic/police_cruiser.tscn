@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_bjd10"]
 [ext_resource type="ArrayMesh" uid="uid://d2qp4xbd5cebb" path="res://models/traffic/police.obj" id="2_kefah"]
-[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="3_03auq"]
+[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="3_03auq"]
 [ext_resource type="Texture2D" uid="uid://xw2e5nsicaql" path="res://textures/halo_texture.tres" id="4_kefah"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30yfe"]

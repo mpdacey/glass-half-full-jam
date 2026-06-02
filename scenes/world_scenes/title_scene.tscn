@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
-[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic-material.tres" id="2_pyl7j"]
+[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="2_pyl7j"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_yql1r"]
 [ext_resource type="PackedScene" uid="uid://dpuwv1tntbgm2" path="res://scenes/obstacles/traffic/hatchback.tscn" id="3_6ppm8"]
 [ext_resource type="PackedScene" uid="uid://cqo2bxdhr3dui" path="res://scenes/obstacles/traffic/flat_truck.tscn" id="4_bre4b"]
@@ -302,6 +302,18 @@ tracks/20/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Paths:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.15, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7rdyk"]
@@ -619,6 +631,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Paths:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 3.01, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector3(200, -0.15, 0), Vector3(0, -0.15, 0), Vector3(200, -0.15, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hiwto"]

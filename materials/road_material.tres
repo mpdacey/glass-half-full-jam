@@ -1,13 +1,13 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://sqealwhnnkao"]
 
-[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_gkpmr"]
-[ext_resource type="Texture2D" uid="uid://dr8px6kbtv7y4" path="res://models/traffic/Textures/road_texture.png" id="2_6bfxd"]
+[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_r7gjq"]
+[ext_resource type="Texture2D" uid="uid://dr8px6kbtv7y4" path="res://models/traffic/Textures/road_texture.png" id="2_ikj2u"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_gkpmr")
-shader_parameter/albedo = Color(1, 0.904, 0.88, 1)
-shader_parameter/texture_albedo = ExtResource("2_6bfxd")
+shader = ExtResource("1_r7gjq")
+shader_parameter/albedo = Color(0.82, 0.71545, 0.6806, 1)
+shader_parameter/texture_albedo = ExtResource("2_ikj2u")
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 0.0
 shader_parameter/roughness = 0.0
@@ -19,3 +19,6 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/curve_amount = 0.0999999977648
+shader_parameter/distant_albeno = Color(0.9476064, 0.8929843, 0.85160893, 0.42352942)
+shader_parameter/has_seperate_distant_texture = true
+shader_parameter/bend_multiplier = 0.0

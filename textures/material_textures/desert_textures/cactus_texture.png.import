@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4kjasckh16wr"
-path.s3tc="res://.godot/imported/metal_roughness.jpg-830dd17dc9999ae133529e4e7ffe1b8b.s3tc.ctex"
-path.etc2="res://.godot/imported/metal_roughness.jpg-830dd17dc9999ae133529e4e7ffe1b8b.etc2.ctex"
+uid="uid://d286emqj8t8wp"
+path.s3tc="res://.godot/imported/cactus_texture.png-a6c8c13d3bd4ee1834e650a1eeba2e3f.s3tc.ctex"
+path.etc2="res://.godot/imported/cactus_texture.png-a6c8c13d3bd4ee1834e650a1eeba2e3f.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/material_textures/chain_link_textures/metal_roughness.jpg"
-dest_files=["res://.godot/imported/metal_roughness.jpg-830dd17dc9999ae133529e4e7ffe1b8b.s3tc.ctex", "res://.godot/imported/metal_roughness.jpg-830dd17dc9999ae133529e4e7ffe1b8b.etc2.ctex"]
+source_file="res://textures/material_textures/desert_textures/cactus_texture.png"
+dest_files=["res://.godot/imported/cactus_texture.png-a6c8c13d3bd4ee1834e650a1eeba2e3f.s3tc.ctex", "res://.godot/imported/cactus_texture.png-a6c8c13d3bd4ee1834e650a1eeba2e3f.etc2.ctex"]
 
 [params]
 

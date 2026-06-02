@@ -9,6 +9,8 @@ const LIFE_REGENERATION_RATE : int = 300
 
 @export var lives_save_controller: LivesSaveController
 @export var regen_timer : Timer
+@export_group("Connection References")
+@export var connecting_canvas: CanvasLayer
 @export var timeout_timer : Timer 
 var _current_time_left : int = 0
 var _connected := false
@@ -57,6 +59,7 @@ func check_connection() -> void:
 	GlobalTimeInterfacer.status_found.connect(_on_status_found, CONNECT_ONE_SHOT)
 	GlobalTimeInterfacer.ping_global_time()
 	timeout_timer.start()
+	connecting_canvas.show()
 
 func _request_initial_time() -> void:
 	GlobalTimeInterfacer.global_unix_time_recieved.connect(_set_initial_timer, CONNECT_ONE_SHOT)
@@ -93,6 +96,7 @@ func _emit_lives_left() -> void:
 func _on_status_found(status: GlobalConstants.TimeConnectionResponses) -> void:
 	_connected = false
 	timeout_timer.stop()
+	connecting_canvas.hide()
 	
 	match status:
 		GlobalConstants.TimeConnectionResponses.OK:

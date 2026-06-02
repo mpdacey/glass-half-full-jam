@@ -1,14 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvkrff2txpo0q"]
+[gd_scene load_steps=9 format=3 uid="uid://cvkrff2txpo0q"]
 
 [ext_resource type="Script" uid="uid://l555wbjr4e0h" path="res://scripts/global/lives_system_controller.gd" id="1_mtu6a"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="2_8whx0"]
 [ext_resource type="Script" uid="uid://c0qe4xdqr1dt1" path="res://scenes/lives_save_controller.gd" id="3_8upvp"]
+[ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="4_j546u"]
 
-[node name="LivesSystem" type="Node" node_paths=PackedStringArray("lives_save_controller", "regen_timer", "timeout_timer")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcc7a"]
+atlas = ExtResource("4_j546u")
+region = Rect2(4040, 2020, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef2l0"]
+atlas = ExtResource("4_j546u")
+region = Rect2(4540, 2020, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37yil"]
+atlas = ExtResource("4_j546u")
+region = Rect2(5040, 2020, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_74cde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcc7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef2l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37yil")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LivesSystem" type="Node" node_paths=PackedStringArray("lives_save_controller", "regen_timer", "connecting_canvas", "timeout_timer")]
 process_mode = 3
 script = ExtResource("1_mtu6a")
 lives_save_controller = NodePath("LivesSaveController")
 regen_timer = NodePath("FullRegenerationTimer")
+connecting_canvas = NodePath("ConnectingCanvasLayer")
 timeout_timer = NodePath("ConnectionTimeoutTimer")
 
 [node name="FullRegenerationTimer" type="Timer" parent="."]
@@ -40,6 +71,30 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 wait_time = 300.0
 one_shot = true
 ignore_time_scale = true
+
+[node name="ConnectingCanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ConnectingSpriteMargin" type="MarginContainer" parent="ConnectingCanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 0
+
+[node name="ConnectingSpriteAnchor" type="Control" parent="ConnectingCanvasLayer/ConnectingSpriteMargin"]
+layout_mode = 2
+
+[node name="ConnectingSprite" type="AnimatedSprite2D" parent="ConnectingCanvasLayer/ConnectingSpriteMargin/ConnectingSpriteAnchor"]
+process_mode = 3
+scale = Vector2(0.16, 0.16)
+sprite_frames = SubResource("SpriteFrames_74cde")
+autoplay = "default"
+frame_progress = 0.70683783
 
 [connection signal="global_signal_emitted" from="SpendLifeRequestListener" to="." method="_on_spend_life_request"]
 [connection signal="config_loaded" from="LivesSaveController" to="." method="_request_initial_time"]

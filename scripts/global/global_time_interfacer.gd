@@ -25,16 +25,12 @@ func request_recieved(
 		status_found.emit(GlobalConstants.SpendLifeResponses.NO_RESPONSE)
 		return
 	
-	status_found.emit(GlobalConstants.SpendLifeResponses.OK)
-	
-	if !body:
-		return
-	
 	var json_string : String = body.get_string_from_utf8()
 	var json_data : Dictionary = JSON.parse_string(json_string)
 	
 	if json_data == null:
 		printerr("Failed to parse time data.")
+		status_found.emit(GlobalConstants.SpendLifeResponses.OK)
 		return
 	
 	var datetime : String = json_data["datetime"]
@@ -48,3 +44,5 @@ func request_recieved(
 		global_unix_time_recieved.emit(unix_time)
 	else:
 		printerr("No unix time in json data.")
+	
+	status_found.emit(GlobalConstants.SpendLifeResponses.OK)

@@ -6,11 +6,13 @@ signal timer_remaining_seconds(time_left: int)
 const MAX_LIVES : int = 5
 ## Number of seconds to regenerate a life
 const LIFE_REGENERATION_RATE : int = 300
+const NULL_UNIX_TIME : int = -1
 
 @export var lives_save_controller: LivesSaveController
 @export var regen_timer : Timer
 var _current_time_left : int = 0
 var _responce_code : GlobalConstants.SpendLifeResponses
+var _cached_unix_time: int = NULL_UNIX_TIME
 
 func _process(_delta: float) -> void:
 	var ceil_time_left : int = ceili(regen_timer.time_left)
@@ -41,12 +43,21 @@ func can_spend_life() -> GlobalConstants.SpendLifeResponses:
 	var set_response_code: Callable = func (response: GlobalConstants.SpendLifeResponses) -> void:
 		_responce_code = response
 	
+	_cached_unix_time = NULL_UNIX_TIME
+	var set_unix_time: Callable = func (global_unix_time: int) -> void:
+		_cached_unix_time = global_unix_time
+	
 	GlobalTimeInterfacer.status_found.connect(set_response_code, CONNECT_ONE_SHOT)
+	GlobalTimeInterfacer.global_unix_time_recieved.connect(set_unix_time, CONNECT_ONE_SHOT)
+	
 	GlobalTimeInterfacer.request_global_time()
 	if _responce_code == GlobalConstants.SpendLifeResponses.NO_LIVES:
 		await GlobalTimeInterfacer.status_found
+	else:
+		GlobalTimeInterfacer.status_found.disconnect(set_response_code)
 	
 	if _responce_code != GlobalConstants.SpendLifeResponses.OK:
+		GlobalTimeInterfacer.global_unix_time_recieved.disconnect(set_unix_time)
 		return _responce_code
 	
 	if regen_timer.time_left < LIFE_REGENERATION_RATE * (MAX_LIVES - 1):
@@ -58,6 +69,11 @@ func spend_life() -> void:
 	regen_timer.start(remaining_time + LIFE_REGENERATION_RATE)
 	_current_time_left = ceili(regen_timer.time_left)
 	_emit_lives_left()
+	
+	if _cached_unix_time != NULL_UNIX_TIME:
+		_set_stored_regeneration_time(_cached_unix_time)
+		_cached_unix_time = NULL_UNIX_TIME
+		return
 	
 	GlobalTimeInterfacer.global_unix_time_recieved.connect(_set_stored_regeneration_time, CONNECT_ONE_SHOT)
 	GlobalTimeInterfacer.request_global_time()

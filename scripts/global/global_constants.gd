@@ -7,7 +7,6 @@ const LEADERBOARD_ID = "CgkInsTW6vgPEAIQAA"
 enum SpendLifeResponses
 {
 	OK,
-	NO_LIVES,
 	NO_CONNECTION,
 	NO_RESPONSE
 }

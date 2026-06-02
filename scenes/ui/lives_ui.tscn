@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://wque3schxmr1" path="res://scripts/lives_ui_controller.gd" id="1_lwv0y"]
 [ext_resource type="Texture2D" uid="uid://dkcqcpdao2v71" path="res://textures/life_icon.svg" id="1_ohavu"]
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="4_nkiqw"]
-[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="5_tnpra"]
+[ext_resource type="PackedScene" uid="uid://oya4anrlimwi" path="res://scenes/lives_denied_listener.tscn" id="5_tnpra"]
 
 [sub_resource type="Theme" id="Theme_lwv0y"]
 RichTextLabel/fonts/normal_font = ExtResource("1_3xddg")
@@ -213,12 +213,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nkiqw")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_n0csj")
 text = "Purchase Game"
 
-[node name="SpendLifeDeniedListener" type="Node" parent="InfoBox"]
-script = ExtResource("5_tnpra")
-global_signal_name = &"spend_life_denied"
-metadata/_custom_type_script = "uid://lu4gei6pype6"
+[node name="LivesDeniedListener" parent="InfoBox" instance=ExtResource("5_tnpra")]
 
 [connection signal="lives_value_changed" from="." to="LivesUIAnimator" method="play" binds= [&"flash"]]
-[connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="show"]
+[connection signal="no_lives" from="InfoBox/LivesDeniedListener" to="InfoBox" method="show"]
 
 [editable path="InfoBox"]

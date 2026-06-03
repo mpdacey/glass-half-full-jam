@@ -21,6 +21,22 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	action_button.pressed.connect(action_button_pressed.emit)
 
+func set_content_using_metadata(metadata_key: StringName) -> void:
+	if not has_meta(metadata_key):
+		printerr("Tried to apply content to infobox with invalid metadata key.")
+		return
+	
+	var raw_metadata : Variant = get_meta(metadata_key)
+	if not raw_metadata is InfoBoxContentsResource:
+		printerr(
+			str("Infobox with metadata `", metadata_key,
+			"` was not of type InfoBoxContentsResource")
+		)
+		return
+	
+	var metadata_content : InfoBoxContentsResource = raw_metadata
+	set_content(metadata_content)
+
 func set_content(content: InfoBoxContentsResource) -> void:
 	set_title(content.title)
 	set_body(content.body)

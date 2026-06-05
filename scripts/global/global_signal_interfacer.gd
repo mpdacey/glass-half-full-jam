@@ -6,7 +6,7 @@ signal global_signal_emitted_with_value(value: Variant)
 
 @export var global_signal_name: StringName
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	connect_to_global_signal()
 	connect_to_global_signal_with_value()
 

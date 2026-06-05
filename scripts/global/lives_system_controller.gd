@@ -55,16 +55,10 @@ func spend_life() -> void:
 	GlobalTimeInterfacer.global_unix_time_recieved.connect(_set_stored_regeneration_time, CONNECT_ONE_SHOT)
 	GlobalTimeInterfacer.request_global_time()
 
-func check_connection() -> void:
-	GlobalTimeInterfacer.status_found.connect(_on_status_found, CONNECT_ONE_SHOT)
-	GlobalTimeInterfacer.ping_global_time()
-	timeout_timer.start()
-	connecting_canvas.show()
-
 func _request_initial_time() -> void:
 	GlobalTimeInterfacer.global_unix_time_recieved.connect(_set_initial_timer, CONNECT_ONE_SHOT)
-	GlobalTimeInterfacer.request_global_time()
-	
+	GlobalSignalBus.time_established_connection.connect(GlobalTimeInterfacer.request_global_time, CONNECT_ONE_SHOT)
+
 func _set_initial_timer(global_unix_time: int) -> void:
 	var stored_regeneration_time : int = lives_save_controller.get_encrypted_regen_time()
 	if stored_regeneration_time < global_unix_time:
@@ -81,29 +75,16 @@ func _on_spend_life_request() -> void:
 	if not _connected:
 		return
 	
+	_connected = false
 	if can_spend_life():
 		spend_life()
 		GlobalSignalBus.spend_life_granted.emit()
 	else:
 		GlobalSignalBus.spend_life_denied.emit()
-	
-	_connected = false
 
 func _emit_lives_left() -> void:
 	var lives_left : int = MAX_LIVES - ceili(float(_current_time_left) / LIFE_REGENERATION_RATE)
 	life_regenerated.emit(lives_left)
 
-func _on_status_found(status: GlobalConstants.TimeConnectionResponses) -> void:
-	_connected = false
-	timeout_timer.stop()
-	connecting_canvas.hide()
-	
-	match status:
-		GlobalConstants.TimeConnectionResponses.OK:
-			_connected = true
-		GlobalConstants.TimeConnectionResponses.NO_CONNECTION:
-			GlobalSignalBus.time_no_connection.emit()
-		GlobalConstants.TimeConnectionResponses.NO_RESPONSE:
-			GlobalSignalBus.time_no_response.emit()
-		GlobalConstants.TimeConnectionResponses.TIMEOUT:
-			GlobalSignalBus.time_timed_out.emit()
+func _on_connected() -> void:
+	_connected = true

@@ -26,6 +26,7 @@ config/icon="uid://eyw4c58nywm3"
 
 GodotPlayGameServices="*res://addons/GodotPlayGameServices/scripts/autoloads/godot_play_game_services.gd"
 GlobalTimeInterfacer="*res://scenes/global_time_interfacer.tscn"
+InternetConnectionChecker="*res://scenes/internet_connection_checker.tscn"
 OptionsConfigManager="*res://scripts/global/options_config_manager.gd"
 UserConfigManager="*res://scripts/global/user_config_manager.gd"
 GlobalSignalBus="*res://scripts/global/global_signal_bus.gd"

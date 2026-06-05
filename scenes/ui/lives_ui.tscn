@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvb01gwjc7pvc"]
+[gd_scene load_steps=14 format=3 uid="uid://bvb01gwjc7pvc"]
 
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="1_3xddg"]
 [ext_resource type="Script" uid="uid://wque3schxmr1" path="res://scripts/lives_ui_controller.gd" id="1_lwv0y"]
@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="4_nkiqw"]
 [ext_resource type="Resource" uid="uid://c7br0mwv1h0bp" path="res://resources/info_box_resources/out_of_lives_disclaimer_resource.tres" id="5_n0csj"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="5_tnpra"]
-[ext_resource type="Resource" uid="uid://s6ks7v3aph5h" path="res://resources/info_box_resources/connection_issues_content/no_response_disclaimer_resource.tres" id="6_5d56n"]
-[ext_resource type="Resource" uid="uid://b4jvrtm48g0co" path="res://resources/info_box_resources/connection_issues_content/no_connection_disclaimer_resource.tres" id="7_pbpra"]
-[ext_resource type="Resource" uid="uid://boehpolw7uv2d" path="res://resources/info_box_resources/connection_issues_content/timeout_disclaimer_resource.tres" id="8_4kire"]
 
 [sub_resource type="Theme" id="Theme_lwv0y"]
 RichTextLabel/fonts/normal_font = ExtResource("1_3xddg")
@@ -153,36 +150,11 @@ libraries = {
 
 [node name="InfoBox" parent="." instance=ExtResource("4_nkiqw")]
 metadata/content = ExtResource("5_n0csj")
-metadata/no_response = ExtResource("6_5d56n")
-metadata/no_connection = ExtResource("7_pbpra")
-metadata/timeout = ExtResource("8_4kire")
 
 [node name="SpendLifeDeniedListener" type="Node" parent="InfoBox"]
 script = ExtResource("5_tnpra")
 global_signal_name = &"spend_life_denied"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="NoResponseListener" type="Node" parent="InfoBox"]
-script = ExtResource("5_tnpra")
-global_signal_name = &"time_no_response"
-metadata/_custom_type_script = "uid://lu4gei6pype6"
-
-[node name="NoConnectionListener" type="Node" parent="InfoBox"]
-script = ExtResource("5_tnpra")
-global_signal_name = &"time_no_connection"
-metadata/_custom_type_script = "uid://lu4gei6pype6"
-
-[node name="TimeoutListener" type="Node" parent="InfoBox"]
-script = ExtResource("5_tnpra")
-global_signal_name = &"time_timed_out"
-metadata/_custom_type_script = "uid://lu4gei6pype6"
-
 [connection signal="lives_value_changed" from="." to="LivesUIAnimator" method="play" binds= [&"flash"]]
-[connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="set_content_using_metadata" binds= [&"content"]]
-[connection signal="global_signal_emitted" from="InfoBox/NoResponseListener" to="InfoBox" method="show" flags=3]
-[connection signal="global_signal_emitted" from="InfoBox/NoResponseListener" to="InfoBox" method="set_content_using_metadata" binds= [&"no_response"]]
-[connection signal="global_signal_emitted" from="InfoBox/NoConnectionListener" to="InfoBox" method="show" flags=3]
-[connection signal="global_signal_emitted" from="InfoBox/NoConnectionListener" to="InfoBox" method="set_content_using_metadata" binds= [&"no_connection"]]
-[connection signal="global_signal_emitted" from="InfoBox/TimeoutListener" to="InfoBox" method="show" flags=3]
-[connection signal="global_signal_emitted" from="InfoBox/TimeoutListener" to="InfoBox" method="set_content_using_metadata" binds= [&"timeout"]]
 [connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="display_info_box" flags=3]

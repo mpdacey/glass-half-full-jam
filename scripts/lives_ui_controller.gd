@@ -9,6 +9,7 @@ signal lives_value_changed()
 func _ready() -> void:
 	LivesSystem.life_regenerated.connect(set_lives_label)
 	LivesSystem.timer_remaining_seconds.connect(set_regen_timer_label)
+	LivesSystem.initial_timer_set.connect(grab_values)
 	grab_values()
 
 func set_lives_label(new_lives: int) -> void:

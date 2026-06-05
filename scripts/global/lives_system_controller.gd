@@ -2,6 +2,7 @@ extends Node
 
 signal life_regenerated(current_lives: int)
 signal timer_remaining_seconds(time_left: int)
+signal initial_timer_set
 
 const MAX_LIVES : int = 5
 ## Number of seconds to regenerate a life
@@ -64,7 +65,9 @@ func _set_initial_timer(global_unix_time: int) -> void:
 	if stored_regeneration_time < global_unix_time:
 		return
 	
-	regen_timer.start(stored_regeneration_time - global_unix_time)
+	_current_time_left = stored_regeneration_time - global_unix_time
+	regen_timer.start(_current_time_left)
+	initial_timer_set.emit()
 
 func _set_stored_regeneration_time(global_unix_time: int) -> void:
 	var fully_regeneration_unix_time := global_unix_time + ceili(regen_timer.time_left)

@@ -123,6 +123,7 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [connection signal="global_signal_emitted" from="ConnectionErrorInfoBox/DisplayInfoBoxListeners/NoConnectionListener" to="ConnectionErrorInfoBox" method="set_content_using_metadata" binds= [&"no_connection"]]
 [connection signal="global_signal_emitted" from="ConnectionErrorInfoBox/DisplayInfoBoxListeners/TimeoutListener" to="ConnectionErrorInfoBox" method="display_info_box" flags=3]
 [connection signal="global_signal_emitted" from="ConnectionErrorInfoBox/DisplayInfoBoxListeners/TimeoutListener" to="ConnectionErrorInfoBox" method="set_content_using_metadata" binds= [&"timeout"]]
+[connection signal="timeout" from="ConnectionTimeoutTimer" to="." method="_on_status_found" binds= [3]]
 [connection signal="global_signal_emitted" from="TestConnectionEventListeners/TitleLoadedListener" to="." method="check_connection"]
 [connection signal="global_signal_emitted" from="TestConnectionEventListeners/GameoverListener" to="." method="check_connection"]
 [connection signal="global_signal_emitted" from="TestConnectionEventListeners/CheckConnectionListener" to="." method="check_connection"]

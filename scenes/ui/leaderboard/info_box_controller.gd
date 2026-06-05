@@ -6,6 +6,7 @@ signal action_button_pressed
 const CONTENT_RESOURCE_METADATA_KEY = &"content"
 const CHANGING_USER_SIGNAL = &"changing"
 const ANIMATION_CHANGE_KEY = &"change"
+const ANIMATION_SHOW_KEY = &"show"
 const ANIMATION_HIDE_KEY = &"hide"
 
 @export var title_label: RichTextLabel
@@ -75,6 +76,12 @@ func set_dismiss_button_visibility(can_dismiss: bool) -> void:
 func emit_changing() -> void:
 	if has_user_signal(CHANGING_USER_SIGNAL):
 		emit_signal(CHANGING_USER_SIGNAL)
+
+func display_info_box() -> void:
+	animator.play(ANIMATION_SHOW_KEY)
+
+func dismiss_info_box() -> void:
+	animator.play(ANIMATION_HIDE_KEY)
 
 func _assign_content_metadata() -> void:
 	if not has_meta(CONTENT_RESOURCE_METADATA_KEY):

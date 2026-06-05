@@ -178,7 +178,6 @@ global_signal_name = &"time_timed_out"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [connection signal="lives_value_changed" from="." to="LivesUIAnimator" method="play" binds= [&"flash"]]
-[connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="show" flags=3]
 [connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="set_content_using_metadata" binds= [&"content"]]
 [connection signal="global_signal_emitted" from="InfoBox/NoResponseListener" to="InfoBox" method="show" flags=3]
 [connection signal="global_signal_emitted" from="InfoBox/NoResponseListener" to="InfoBox" method="set_content_using_metadata" binds= [&"no_response"]]
@@ -186,3 +185,4 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [connection signal="global_signal_emitted" from="InfoBox/NoConnectionListener" to="InfoBox" method="set_content_using_metadata" binds= [&"no_connection"]]
 [connection signal="global_signal_emitted" from="InfoBox/TimeoutListener" to="InfoBox" method="show" flags=3]
 [connection signal="global_signal_emitted" from="InfoBox/TimeoutListener" to="InfoBox" method="set_content_using_metadata" binds= [&"timeout"]]
+[connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="display_info_box" flags=3]

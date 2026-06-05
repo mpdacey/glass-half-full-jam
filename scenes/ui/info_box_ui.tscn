@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://boscxn2xgn85t"]
+[gd_scene load_steps=21 format=3 uid="uid://boscxn2xgn85t"]
 
 [ext_resource type="Script" uid="uid://cmg8osgdawrnd" path="res://scenes/ui/leaderboard/info_box_controller.gd" id="1_rl0sw"]
 [ext_resource type="FontFile" uid="uid://douiqg5815mjs" path="res://resources/fonts/Tinos/Tinos-Bold.ttf" id="2_0vwu3"]
@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://7up8r46epdiu" path="res://resources/fonts/Arimo/static/Arimo-Regular.ttf" id="3_s13iy"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="4_a2yy2"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="5_qofcg"]
-[ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_3x5uq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpe5i"]
 
@@ -127,7 +126,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -242,6 +241,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1.035, 1.035), Vector2(0.95, 0.95)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_34rw3"]
 _data = {
@@ -284,6 +295,7 @@ offset_right = 491.0
 offset_bottom = 95.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(502.5, 215.5)
 
 [node name="InfoBoxPanel" type="PanelContainer" parent="InfoBoxColorRect/InfoBoxMargin"]
@@ -383,10 +395,6 @@ expand_mode = 5
 script = ExtResource("5_qofcg")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
-[node name="VisibilityListener" type="Node" parent="."]
-script = ExtResource("6_3x5uq")
-metadata/_custom_type_script = "uid://ydy2ddfw32k0"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_34rw3")
@@ -395,5 +403,4 @@ libraries = {
 [connection signal="meta_clicked" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/HyperLinkLabel" to="." method="_on_hyper_link_clicked"]
 [connection signal="button_down" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" method="set_modulate" binds= [Color(0.646029, 0.646029, 0.646029, 1)]]
 [connection signal="button_up" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" method="set_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="AnimationPlayer" method="play" binds= [&"hide"]]
-[connection signal="shown" from="VisibilityListener" to="AnimationPlayer" method="play" binds= [&"show"]]
+[connection signal="pressed" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="." method="dismiss_info_box"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=36 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="2_pyl7j"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_6ppm8"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="9_bmxmj"]
 [ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="10_1ot34"]
+[ext_resource type="Script" uid="uid://s6j3is1wgonh" path="res://scripts/established_internet_caller.gd" id="11_08vub"]
 [ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="13_via76"]
 [ext_resource type="Texture2D" uid="uid://ca0aske73svnd" path="res://textures/leaderboard_menu_icon.svg" id="14_xq2ei"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="14_ycxqd"]
@@ -464,6 +465,20 @@ tracks/9/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AnimationPlayers/TransitionPlayer/MethodOnConnectionExecuter")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [NodePath("../../InternetReadyPlayer"), &"play", [&"on_connected"]],
+"method": &"execute_method_on_connection_by_node"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4rr2b"]
 resource_name = "start"
@@ -680,7 +695,7 @@ tracks/0/path = NodePath("TitleCanvasLayer/ClickToPlayText:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.7, 0.99999994, 1.2),
+"times": PackedFloat32Array(0.19999999, 0.49999994, 0.70000005),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(2.08, 1.2), Vector2(2, 2), Vector2(2, 2)]
@@ -692,7 +707,7 @@ tracks/1/path = NodePath("TitleCanvasLayer/ClickToPlayText:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.69999987, 0.99999994),
+"times": PackedFloat32Array(0.19999987, 0.49999994),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -704,7 +719,7 @@ tracks/2/path = NodePath("TitleCanvasLayer/ClickToPlayText:pivot_offset")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.5, 1, 1.2),
+"times": PackedFloat32Array(0, 0.5, 0.70000005),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(300, -200), Vector2(0, 0), Vector2(0, 0)]
@@ -716,7 +731,7 @@ tracks/3/path = NodePath("TitleCanvasLayer/LeaderboardButtonAnchor:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.2, 1.7),
+"times": PackedFloat32Array(0.70000005, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -728,7 +743,7 @@ tracks/4/path = NodePath("TitleCanvasLayer/LivesUI/LivesCanvasModulate:color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.99999994, 1.5),
+"times": PackedFloat32Array(0.49999994, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -740,7 +755,7 @@ tracks/5/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1.5),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -752,7 +767,7 @@ tracks/6/path = NodePath("TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardBu
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.7),
+"times": PackedFloat32Array(1.2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -1001,30 +1016,12 @@ no_depth_test = false
 
 [node name="AnimationPlayers" type="Node" parent="."]
 
-[node name="SceneLoopPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_hiwto")
-}
-autoplay = "initial"
-
-[node name="InternetReadyPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_hiwto")
-}
-
-[node name="InternetConnectedListener" type="Node" parent="AnimationPlayers/InternetReadyPlayer"]
-script = ExtResource("8_6ppm8")
-global_signal_name = &"time_established_connection"
-metadata/_custom_type_script = "uid://lu4gei6pype6"
-
 [node name="TransitionPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_hiwto")
 }
-autoplay = "title"
+autoplay = "initial"
 
 [node name="LoadPlaySceneEmitter" type="Node" parent="AnimationPlayers/TransitionPlayer"]
 script = ExtResource("8_6ppm8")
@@ -1035,6 +1032,22 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 script = ExtResource("8_6ppm8")
 global_signal_name = &"spend_life_granted"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="MethodOnConnectionExecuter" type="Node" parent="AnimationPlayers/TransitionPlayer"]
+script = ExtResource("11_08vub")
+
+[node name="InternetReadyPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_hiwto")
+}
+
+[node name="SceneLoopPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_hiwto")
+}
+autoplay = "title"
 
 [node name="TitleCanvasLayer" type="CanvasLayer" parent="."]
 
@@ -1203,7 +1216,6 @@ metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 script = ExtResource("17_bi3h3")
 metadata/_custom_type_script = "uid://cafyylq66psjo"
 
-[connection signal="global_signal_emitted" from="AnimationPlayers/InternetReadyPlayer/InternetConnectedListener" to="AnimationPlayers/InternetReadyPlayer" method="play" binds= [&"on_connected"]]
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
 [connection signal="pressed" from="TitleCanvasLayer/MarginContainer/PlayButton" to="TitleCanvasLayer/MarginContainer/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
 [connection signal="button_down" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" method="set_self_modulate" binds= [Color(0.7121294, 0.7121294, 0.71212935, 1)]]

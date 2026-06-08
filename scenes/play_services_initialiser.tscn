@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dggy33nqsvre7"]
+
+[ext_resource type="Script" uid="uid://da207ib136tbf" path="res://scripts/play_services/PlayServicesInitialiser.gd" id="1_asatt"]
+[ext_resource type="Script" uid="uid://dqdastj4q4ev0" path="res://addons/GodotPlayGameServices/scripts/sign_in/sign_in_client.gd" id="2_ok74q"]
+
+[node name="PlayServicesInitialiser" type="Node" node_paths=PackedStringArray("play_games_sign_in_client")]
+script = ExtResource("1_asatt")
+play_games_sign_in_client = NodePath("PlayGamesSignInClient")
+
+[node name="PlayGamesSignInClient" type="Node" parent="."]
+script = ExtResource("2_ok74q")
+metadata/_custom_type_script = "uid://dqdastj4q4ev0"

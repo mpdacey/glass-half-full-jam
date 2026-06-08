@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b210kvlm3hw7d"]
+[gd_scene load_steps=18 format=3 uid="uid://b210kvlm3hw7d"]
 
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="1_r0vov"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_mwelm"]
+[ext_resource type="Texture2D" uid="uid://cq0busacsh6j2" path="res://textures/car_silhouette_body.svg" id="2_w23pu"]
+[ext_resource type="Texture2D" uid="uid://dtuk3eiby3oe5" path="res://textures/car_silhouette_wheel.svg" id="3_5x1wh"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="3_sltll"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="6_6c71x"]
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="6_tle65"]
@@ -10,6 +12,14 @@
 [ext_resource type="SphereMesh" uid="uid://dt68ilnohkb2q" path="res://scenes/particles/smoke_particle_mesh.tres" id="8_v6nyv"]
 [ext_resource type="PackedScene" uid="uid://tll0ck20v3ph" path="res://scenes/highscore_banner.tscn" id="9_v6nyv"]
 [ext_resource type="PackedScene" uid="uid://bxb3bfdh8p0vy" path="res://scenes/ui/highscore-confetti.tscn" id="10_x73n1"]
+
+[sub_resource type="Curve" id="Curve_ne2yj"]
+_data = [Vector2(0.022421531, 0), 0.0, 3.1320229, 0, 0, Vector2(0.4932736, 0.55056185), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ia3k5"]
+offsets = PackedFloat32Array(0, 0.29441625, 0.5532995, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.8715596, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Animation" id="Animation_wsgjl"]
 length = 0.001
@@ -25,10 +35,22 @@ tracks/0/keys = {
 "update": 1,
 "values": ["Compiling Shaders..."]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteBody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(565, 904)]
+}
 
 [sub_resource type="Animation" id="Animation_x81ys"]
 resource_name = "compile_animation"
-step = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -60,6 +82,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"emit_global_signal"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteBody:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rx5xi"]
@@ -95,6 +129,65 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Compiling Shaders..."
 label_settings = ExtResource("1_r0vov")
+
+[node name="CarSilhouette" type="Control" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -232.0
+offset_bottom = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CarSilhouetteBody" type="Sprite2D" parent="CanvasLayer/ColorRect/CarSilhouette"]
+position = Vector2(565, 904)
+scale = Vector2(1.0554167, 1.0763415)
+texture = ExtResource("2_w23pu")
+
+[node name="CarSilhouetteWheel" type="Sprite2D" parent="CanvasLayer/ColorRect/CarSilhouette"]
+position = Vector2(153.18417, 58.309456)
+scale = Vector2(0.84375, 0.84375)
+texture = ExtResource("3_5x1wh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteWheel"]
+position = Vector2(0, 46.222)
+scale = Vector2(1.1851852, 1.1851852)
+texture = ExtResource("3_5x1wh")
+lifetime = 0.79
+preprocess = 0.2
+direction = Vector2(-1, -0.25)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 393.62
+initial_velocity_max = 606.69
+scale_amount_min = 1.2
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_ne2yj")
+color_ramp = SubResource("Gradient_ia3k5")
+
+[node name="CarSilhouetteWheel2" type="Sprite2D" parent="CanvasLayer/ColorRect/CarSilhouette"]
+position = Vector2(-156.81586, 58.309456)
+scale = Vector2(0.84375, 0.84375)
+texture = ExtResource("3_5x1wh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteWheel2"]
+position = Vector2(0, 46.222)
+scale = Vector2(1.1851852, 1.1851852)
+amount = 15
+texture = ExtResource("3_5x1wh")
+lifetime = 0.79
+direction = Vector2(-1, -0.5)
+spread = 25.85
+gravity = Vector2(0, 0)
+initial_velocity_min = 393.62
+initial_velocity_max = 606.69
+scale_amount_min = 1.2
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_ne2yj")
+color_ramp = SubResource("Gradient_ia3k5")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.9834009, 0, 5.474494, 11.435804)

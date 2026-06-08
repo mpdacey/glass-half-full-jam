@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvb01gwjc7pvc"]
+[gd_scene load_steps=14 format=3 uid="uid://bvb01gwjc7pvc"]
 
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="1_3xddg"]
 [ext_resource type="Script" uid="uid://wque3schxmr1" path="res://scripts/lives_ui_controller.gd" id="1_lwv0y"]
 [ext_resource type="Texture2D" uid="uid://dkcqcpdao2v71" path="res://textures/life_icon.svg" id="1_ohavu"]
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="4_nkiqw"]
+[ext_resource type="Resource" uid="uid://c7br0mwv1h0bp" path="res://resources/info_box_resources/out_of_lives_disclaimer_resource.tres" id="5_n0csj"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="5_tnpra"]
 
 [sub_resource type="Theme" id="Theme_lwv0y"]
@@ -72,48 +73,6 @@ _data = {
 &"RESET": SubResource("Animation_nkiqw"),
 &"flash": SubResource("Animation_lwv0y")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkiqw"]
-bg_color = Color(0.23700002, 0.79, 0.26465, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.20264995, 0.63, 0.16379999, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.23529412)
-shadow_size = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnpra"]
-bg_color = Color(0.19500001, 0.65, 0.21774998, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.14796664, 0.46, 0.1196, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.23529412)
-shadow_size = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0csj"]
-bg_color = Color(0.37170002, 0.63, 0.38461497, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.231375, 0.45, 0.2115, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.23529412)
-shadow_size = 8
 
 [node name="LivesUI" type="CanvasLayer" node_paths=PackedStringArray("lives_label", "regen_timer_label")]
 process_mode = 3
@@ -190,28 +149,7 @@ libraries = {
 }
 
 [node name="InfoBox" parent="." instance=ExtResource("4_nkiqw")]
-
-[node name="TitleLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin" index="0"]
-text = "[b][i]OUT OF LIVES[/i][/b]"
-
-[node name="ContentLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="1"]
-text = "Your lives will need to regenerate
-before you can play again."
-
-[node name="HyperLinkLabel" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="2"]
-text = "However, purchasing this game will
-grant unlimited lives with no wait time!"
-
-[node name="PurchaseGameButton" type="Button" parent="InfoBox/InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" index="3"]
-custom_minimum_size = Vector2(0, 160.685)
-layout_mode = 2
-theme_override_constants/icon_max_width = 125
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxFlat_nkiqw")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tnpra")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nkiqw")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_n0csj")
-text = "Purchase Game"
+metadata/content = ExtResource("5_n0csj")
 
 [node name="SpendLifeDeniedListener" type="Node" parent="InfoBox"]
 script = ExtResource("5_tnpra")
@@ -219,6 +157,4 @@ global_signal_name = &"spend_life_denied"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [connection signal="lives_value_changed" from="." to="LivesUIAnimator" method="play" binds= [&"flash"]]
-[connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="show"]
-
-[editable path="InfoBox"]
+[connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="display_info_box" flags=3]

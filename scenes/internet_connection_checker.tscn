@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=3 uid="uid://dpsrpqjg572c0"]
+
+[ext_resource type="Script" uid="uid://bhhmlq7ggr754" path="res://scripts/global/internet_connection_checker.gd" id="1_2a1wj"]
+[ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="2_s6yb0"]
+[ext_resource type="Resource" uid="uid://s6ks7v3aph5h" path="res://resources/info_box_resources/connection_issues_content/no_response_disclaimer_resource.tres" id="3_tn8yh"]
+[ext_resource type="Resource" uid="uid://b4jvrtm48g0co" path="res://resources/info_box_resources/connection_issues_content/no_connection_disclaimer_resource.tres" id="4_tebu5"]
+[ext_resource type="Resource" uid="uid://boehpolw7uv2d" path="res://resources/info_box_resources/connection_issues_content/timeout_disclaimer_resource.tres" id="5_xvtb2"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="6_4jws0"]
+[ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="7_tn8yh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcc7a"]
+atlas = ExtResource("7_tn8yh")
+region = Rect2(4040, 2020, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef2l0"]
+atlas = ExtResource("7_tn8yh")
+region = Rect2(4540, 2020, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37yil"]
+atlas = ExtResource("7_tn8yh")
+region = Rect2(5040, 2020, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tebu5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcc7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef2l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37yil")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="InternetConnectionChecker" type="Node" node_paths=PackedStringArray("connecting_canvas", "timeout_timer")]
+script = ExtResource("1_2a1wj")
+connecting_canvas = NodePath("ConnectingCanvasLayer")
+timeout_timer = NodePath("ConnectionTimeoutTimer")
+
+[node name="ConnectionErrorInfoBox" parent="." instance=ExtResource("2_s6yb0")]
+layer = 3
+metadata/no_response = ExtResource("3_tn8yh")
+metadata/no_connection = ExtResource("4_tebu5")
+metadata/timeout = ExtResource("5_xvtb2")
+
+[node name="CheckConnectionEmitter" type="Node" parent="ConnectionErrorInfoBox"]
+script = ExtResource("6_4jws0")
+global_signal_name = &"time_check_connection"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="DisplayInfoBoxListeners" type="Node" parent="ConnectionErrorInfoBox"]
+
+[node name="NoResponseListener" type="Node" parent="ConnectionErrorInfoBox/DisplayInfoBoxListeners"]
+script = ExtResource("6_4jws0")
+global_signal_name = &"time_no_response"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="NoConnectionListener" type="Node" parent="ConnectionErrorInfoBox/DisplayInfoBoxListeners"]
+script = ExtResource("6_4jws0")
+global_signal_name = &"time_no_connection"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="TimeoutListener" type="Node" parent="ConnectionErrorInfoBox/DisplayInfoBoxListeners"]
+script = ExtResource("6_4jws0")
+global_signal_name = &"time_timed_out"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="ConnectingCanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ConnectingSpriteMargin" type="MarginContainer" parent="ConnectingCanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 0
+
+[node name="ConnectingSpriteAnchor" type="Control" parent="ConnectingCanvasLayer/ConnectingSpriteMargin"]
+layout_mode = 2
+
+[node name="ConnectingSprite" type="AnimatedSprite2D" parent="ConnectingCanvasLayer/ConnectingSpriteMargin/ConnectingSpriteAnchor"]
+process_mode = 3
+scale = Vector2(0.16, 0.16)
+sprite_frames = SubResource("SpriteFrames_tebu5")
+autoplay = "default"
+
+[node name="ConnectionTimeoutTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+ignore_time_scale = true
+
+[node name="TestConnectionEventListeners" type="Node" parent="."]
+
+[node name="TitleLoadedListener" type="Node" parent="TestConnectionEventListeners"]
+script = ExtResource("6_4jws0")
+global_signal_name = &"scene_changed_title"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="GameoverListener" type="Node" parent="TestConnectionEventListeners"]
+script = ExtResource("6_4jws0")
+global_signal_name = &"terrain_gameover"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[node name="CheckConnectionListener" type="Node" parent="TestConnectionEventListeners"]
+script = ExtResource("6_4jws0")
+global_signal_name = &"time_check_connection"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[connection signal="action_button_pressed" from="ConnectionErrorInfoBox" to="ConnectionErrorInfoBox" method="dismiss_info_box"]
+[connection signal="action_button_pressed" from="ConnectionErrorInfoBox" to="ConnectionErrorInfoBox/CheckConnectionEmitter" method="emit_global_signal"]
+[connection signal="global_signal_emitted" from="ConnectionErrorInfoBox/DisplayInfoBoxListeners/NoResponseListener" to="ConnectionErrorInfoBox" method="display_info_box" flags=3]
+[connection signal="global_signal_emitted" from="ConnectionErrorInfoBox/DisplayInfoBoxListeners/NoResponseListener" to="ConnectionErrorInfoBox" method="set_content_using_metadata" binds= [&"no_response"]]
+[connection signal="global_signal_emitted" from="ConnectionErrorInfoBox/DisplayInfoBoxListeners/NoConnectionListener" to="ConnectionErrorInfoBox" method="display_info_box" flags=3]
+[connection signal="global_signal_emitted" from="ConnectionErrorInfoBox/DisplayInfoBoxListeners/NoConnectionListener" to="ConnectionErrorInfoBox" method="set_content_using_metadata" binds= [&"no_connection"]]
+[connection signal="global_signal_emitted" from="ConnectionErrorInfoBox/DisplayInfoBoxListeners/TimeoutListener" to="ConnectionErrorInfoBox" method="display_info_box" flags=3]
+[connection signal="global_signal_emitted" from="ConnectionErrorInfoBox/DisplayInfoBoxListeners/TimeoutListener" to="ConnectionErrorInfoBox" method="set_content_using_metadata" binds= [&"timeout"]]
+[connection signal="timeout" from="ConnectionTimeoutTimer" to="." method="_on_status_found" binds= [3]]
+[connection signal="global_signal_emitted" from="TestConnectionEventListeners/TitleLoadedListener" to="." method="check_connection"]
+[connection signal="global_signal_emitted" from="TestConnectionEventListeners/GameoverListener" to="." method="check_connection"]
+[connection signal="global_signal_emitted" from="TestConnectionEventListeners/CheckConnectionListener" to="." method="check_connection"]

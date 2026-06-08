@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://boscxn2xgn85t"]
+[gd_scene load_steps=21 format=3 uid="uid://boscxn2xgn85t"]
 
 [ext_resource type="Script" uid="uid://cmg8osgdawrnd" path="res://scenes/ui/leaderboard/info_box_controller.gd" id="1_rl0sw"]
 [ext_resource type="FontFile" uid="uid://douiqg5815mjs" path="res://resources/fonts/Tinos/Tinos-Bold.ttf" id="2_0vwu3"]
@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://7up8r46epdiu" path="res://resources/fonts/Arimo/static/Arimo-Regular.ttf" id="3_s13iy"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="4_a2yy2"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="5_qofcg"]
-[ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_3x5uq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpe5i"]
 
@@ -57,6 +56,48 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vwu3"]
+bg_color = Color(0.23700002, 0.79, 0.26465, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.20264995, 0.63, 0.16379999, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.23529412)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s13iy"]
+bg_color = Color(0.19500001, 0.65, 0.21774998, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.14796664, 0.46, 0.1196, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.23529412)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2yy2"]
+bg_color = Color(0.37170002, 0.63, 0.38461497, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.231375, 0.45, 0.2115, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.23529412)
+shadow_size = 8
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_34rw3"]
 atlas = ExtResource("4_a2yy2")
 region = Rect2(1039.7, 1019.94147, 320.1001, 320.55853)
@@ -85,7 +126,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -98,6 +139,37 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0vwu3"]
+resource_name = "change"
+length = 0.58334166
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InfoBoxColorRect/InfoBoxMargin:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4166667, 0.5833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.95, 0.95), Vector2(0, 0), Vector2(1.035, 1.035), Vector2(0.95, 0.95)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_changing"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_34rw3"]
@@ -169,18 +241,37 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1.035, 1.035), Vector2(0.95, 0.95)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_34rw3"]
 _data = {
 &"RESET": SubResource("Animation_132qw"),
+&"change": SubResource("Animation_0vwu3"),
 &"hide": SubResource("Animation_34rw3"),
 &"show": SubResource("Animation_4qtqu")
 }
 
-[node name="InfoBox" type="CanvasLayer"]
+[node name="InfoBox" type="CanvasLayer" node_paths=PackedStringArray("title_label", "body_label", "hyper_link_label", "action_button", "dismiss_button", "animator")]
 layer = 2
 visible = false
 script = ExtResource("1_rl0sw")
+title_label = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin/TitleLabel")
+body_label = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/BodyLabel")
+hyper_link_label = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/HyperLinkLabel")
+action_button = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/ActionButton")
+dismiss_button = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton")
+animator = NodePath("AnimationPlayer")
 
 [node name="InfoBoxColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -204,6 +295,7 @@ offset_right = 491.0
 offset_bottom = 95.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(502.5, 215.5)
 
 [node name="InfoBoxPanel" type="PanelContainer" parent="InfoBoxColorRect/InfoBoxMargin"]
@@ -244,7 +336,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="ContentLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
+[node name="BodyLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
 layout_mode = 2
 bbcode_enabled = true
 fit_content = true
@@ -258,6 +350,17 @@ bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
+
+[node name="ActionButton" type="Button" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
+visible = false
+custom_minimum_size = Vector2(0, 160.685)
+layout_mode = 2
+theme_override_constants/icon_max_width = 125
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_0vwu3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s13iy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0vwu3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_a2yy2")
 
 [node name="CloseButtonAnchor" type="Control" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel"]
 layout_mode = 2
@@ -292,10 +395,6 @@ expand_mode = 5
 script = ExtResource("5_qofcg")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
-[node name="VisibilityListener" type="Node" parent="."]
-script = ExtResource("6_3x5uq")
-metadata/_custom_type_script = "uid://ydy2ddfw32k0"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_34rw3")
@@ -304,5 +403,4 @@ libraries = {
 [connection signal="meta_clicked" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/HyperLinkLabel" to="." method="_on_hyper_link_clicked"]
 [connection signal="button_down" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" method="set_modulate" binds= [Color(0.646029, 0.646029, 0.646029, 1)]]
 [connection signal="button_up" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" method="set_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="AnimationPlayer" method="play" binds= [&"hide"]]
-[connection signal="shown" from="VisibilityListener" to="AnimationPlayer" method="play" binds= [&"show"]]
+[connection signal="pressed" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="." method="dismiss_info_box"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InfoBoxContentsResource" load_steps=2 format=3 uid="uid://b4jvrtm48g0co"]
+
+[ext_resource type="Script" uid="uid://dajftf844g2xs" path="res://scripts/resource_scripts/info_box_resource_script.gd" id="1_rxbfc"]
+
+[resource]
+script = ExtResource("1_rxbfc")
+title = "No Internet Connection"
+body = "An established internet connection
+is required to play this game.
+
+Please connect to the
+internet and try again."
+button_content = "Retry Connection"
+can_dismiss = false
+metadata/_custom_type_script = "uid://dajftf844g2xs"

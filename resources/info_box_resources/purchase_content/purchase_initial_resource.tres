@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InfoBoxContentsResource" load_steps=2 format=3 uid="uid://gm0adfhcfmh8"]
+
+[ext_resource type="Script" uid="uid://dajftf844g2xs" path="res://scripts/resource_scripts/info_box_resource_script.gd" id="1_ywi12"]
+
+[resource]
+script = ExtResource("1_ywi12")
+title = "PURCHASE GAME?"
+body = "Game purchases assist development
+and keep this game AD-FREE!
+
+Pay a one-time fee to unlock the following:
+- Unlimited Lives
+- Friends Only Leaderboards
+- Additional perks in future updates"
+button_content = "AUD $2.99"
+metadata/_custom_type_script = "uid://dajftf844g2xs"

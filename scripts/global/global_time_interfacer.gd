@@ -28,7 +28,10 @@ func request_recieved(
 ) -> void:
 	if result != HTTPRequest.RESULT_SUCCESS:
 		printerr(str("Error with the request. Error Code: ", response_code))
-		status_found.emit(GlobalConstants.TimeConnectionResponses.NO_RESPONSE)
+		if response_code == 0:
+			status_found.emit(GlobalConstants.TimeConnectionResponses.NO_CONNECTION)
+		else:
+			status_found.emit(GlobalConstants.TimeConnectionResponses.NO_RESPONSE)
 		return
 	
 	status_found.emit(GlobalConstants.TimeConnectionResponses.OK)

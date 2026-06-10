@@ -1,0 +1,479 @@
+[gd_scene load_steps=17 format=3 uid="uid://p04yt3lrjt4h"]
+
+[ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_b72n7"]
+[ext_resource type="Theme" uid="uid://blr5n325b2jgi" path="res://scenes/ui/leaderboard/leaderboard_theme.tres" id="2_j4ngn"]
+[ext_resource type="StyleBox" uid="uid://daq2cl34wypj4" path="res://scenes/ui/credits/drivers-manual-cover-stylebox.tres" id="3_o0qha"]
+[ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="4_mndyu"]
+[ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="5_syvef"]
+[ext_resource type="FontFile" uid="uid://douiqg5815mjs" path="res://resources/fonts/Tinos/Tinos-Bold.ttf" id="6_4h11b"]
+[ext_resource type="Texture2D" uid="uid://c3eroqw2sdfbg" path="res://textures/driver-manual-badge.svg" id="7_afllf"]
+[ext_resource type="FontFile" uid="uid://ksq55p5l0eiw" path="res://resources/fonts/Arimo/Arimo-VariableFont_wght.ttf" id="7_c0yd7"]
+[ext_resource type="AudioStream" uid="uid://buidtptyttd8f" path="res://audio/sfx/leaderboard/leaderboard_book_close.wav" id="8_gbtmv"]
+[ext_resource type="AudioStream" uid="uid://copts6wfejoon" path="res://audio/sfx/leaderboard/leaderboard_book_open.wav" id="9_fnnn4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e2ik"]
+atlas = ExtResource("4_mndyu")
+region = Rect2(7000, 2000, 370, 370)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7u1u"]
+font = ExtResource("6_4h11b")
+font_size = 106
+outline_size = 5
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.56078434)
+
+[sub_resource type="Animation" id="Animation_yvvg5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeaderboardsPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoverPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoverPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CoverPanel:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoverPanel:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ly8w5"]
+resource_name = "open"
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeaderboardsPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoverPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.41666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoverPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.25, 0.41666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.42090002, 0.51060003, 0.69, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CoverPanel:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 500, 0, 0, 0, -225),
+"times": PackedFloat32Array(0.25, 0.41666666)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoverPanel:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.03, -0.08333337, 1.1136994, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LeaderboardSFXPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_gbtmv")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="Animation" id="Animation_g8cov"]
+resource_name = "open"
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeaderboardsPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoverPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoverPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.4166667, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.42090002, 0.51060003, 0.69, 1)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CoverPanel:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(500, 0, 0, 0, -225, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoverPanel:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.03, -0.08333337, 1.1136994, 0, 0),
+"times": PackedFloat32Array(0.25, 0.6666667)
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LeaderboardSFXPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_fnnn4")
+}],
+"times": PackedFloat32Array(0.083333336)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g8cov"]
+_data = {
+&"RESET": SubResource("Animation_yvvg5"),
+&"close": SubResource("Animation_ly8w5"),
+&"open": SubResource("Animation_g8cov")
+}
+
+[node name="CreditsManualUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container", "empty_collection_label")]
+script = ExtResource("1_b72n7")
+entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
+scroll_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll")
+empty_collection_label = NodePath("")
+
+[node name="LeaderboardsPanel" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("2_j4ngn")
+theme_override_styles/panel = ExtResource("3_o0qha")
+
+[node name="LeaderboardsVBox" type="VBoxContainer" parent="LeaderboardsPanel"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+
+[node name="EscapeButton" type="TextureButton" parent="LeaderboardsPanel/LeaderboardsVBox/MarginContainer"]
+modulate = Color(0.85, 0.6998334, 0.39950004, 1)
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_4e2ik")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="AndroidBackListener" type="Node" parent="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton"]
+script = ExtResource("5_syvef")
+metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
+
+[node name="TitleMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 48
+
+[node name="TitleLabel" type="Label" parent="LeaderboardsPanel/LeaderboardsVBox/TitleMargin"]
+modulate = Color(0.85, 0.6998334, 0.39950004, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Driver's Manual"
+label_settings = SubResource("LabelSettings_a7u1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EntriesPosition" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="EntriesPanelMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition"]
+visibility_layer = 17
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9993358, 1)
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 48
+
+[node name="EntriesPanelAnchor" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="EntriesPanel" type="PanelContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-100, 0)
+mouse_filter = 1
+
+[node name="EntriesMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="EntriesScroll" type="ScrollContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="EntriesVBox" type="VBoxContainer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll"]
+visibility_layer = 17
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.19, 0.19, 0.19, 1)
+theme_override_fonts/normal_font = ExtResource("7_c0yd7")
+theme_override_font_sizes/normal_font_size = 70
+text = "TABLE OF CREDITS
+
+Created By.............................	2
+Michael Dacey
+
+Music By................................	3
+Darren Curtis
+
+Additional Visual Assets........	4
+Kenney
+PxHere
+Steven Matteson
+
+Audio Assets..........................	5
+DylanSmithSound
+spycrah
+LukaCafuka
+luffy	
+GiocoSound
+Gecop
+Tomlija
+audible-edge
+amblentCG
+kyles
+mincedbeats
+ddohler
+iainmccurdy
+cmorris035
+
+Plugins & Open Source.....	6
+
+Tools Used.........................	7
+Godot
+Blender
+Time.now
+Krita
+
+Special Thanks..................	8
+Closed testing playtesters
+Tas Game Makers community
+UtasPlay community
+My friends and family"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="CoverPanel" type="PanelContainer" parent="."]
+visible = false
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-50, 0)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_o0qha")
+
+[node name="CoverVBox" type="VBoxContainer" parent="CoverPanel"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CoverTitleMargin" type="MarginContainer" parent="CoverPanel/CoverVBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 136
+theme_override_constants/margin_bottom = 64
+
+[node name="TitleHBox" type="HBoxContainer" parent="CoverPanel/CoverVBox/CoverTitleMargin"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CoverPanel/CoverVBox/CoverTitleMargin/TitleHBox"]
+modulate = Color(0.85, 0.6998334, 0.39950004, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Driver's Manual"
+label_settings = SubResource("LabelSettings_a7u1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CoverPanel/CoverVBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 240
+
+[node name="TextureRect" type="TextureRect" parent="CoverPanel/CoverVBox/MarginContainer"]
+modulate = Color(0.85, 0.6998334, 0.39950004, 1)
+layout_mode = 2
+texture = ExtResource("7_afllf")
+expand_mode = 5
+
+[node name="BookAnimator" type="AnimationPlayer" parent="CoverPanel"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_g8cov")
+}
+speed_scale = 1.4
+
+[node name="LeaderboardSFXPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 4.0
+bus = &"SFX"
+
+[connection signal="button_down" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" method="set_self_modulate" binds= [Color(0.5019608, 0.5019608, 0.5019608, 1)]]
+[connection signal="button_up" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
+[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="CoverPanel/BookAnimator" method="play" binds= [&"close"]]

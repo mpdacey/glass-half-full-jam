@@ -1,6 +1,5 @@
 [gd_scene load_steps=17 format=3 uid="uid://p04yt3lrjt4h"]
 
-[ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_b72n7"]
 [ext_resource type="Theme" uid="uid://blr5n325b2jgi" path="res://scenes/ui/leaderboard/leaderboard_theme.tres" id="2_j4ngn"]
 [ext_resource type="StyleBox" uid="uid://daq2cl34wypj4" path="res://scenes/ui/credits/drivers-manual-cover-stylebox.tres" id="3_o0qha"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="4_mndyu"]
@@ -10,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://ksq55p5l0eiw" path="res://resources/fonts/Arimo/Arimo-VariableFont_wght.ttf" id="7_c0yd7"]
 [ext_resource type="AudioStream" uid="uid://buidtptyttd8f" path="res://audio/sfx/leaderboard/leaderboard_book_close.wav" id="8_gbtmv"]
 [ext_resource type="AudioStream" uid="uid://copts6wfejoon" path="res://audio/sfx/leaderboard/leaderboard_book_open.wav" id="9_fnnn4"]
+[ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="12_2js1q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4e2ik"]
 atlas = ExtResource("4_mndyu")
@@ -258,11 +258,7 @@ _data = {
 &"open": SubResource("Animation_g8cov")
 }
 
-[node name="CreditsManualUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container", "empty_collection_label")]
-script = ExtResource("1_b72n7")
-entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
-scroll_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll")
-empty_collection_label = NodePath("")
+[node name="CreditsManualUI" type="CanvasLayer"]
 
 [node name="LeaderboardsPanel" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -474,6 +470,11 @@ speed_scale = 1.4
 volume_db = 4.0
 bus = &"SFX"
 
+[node name="VisibilityListener" type="Node" parent="."]
+script = ExtResource("12_2js1q")
+metadata/_custom_type_script = "uid://ydy2ddfw32k0"
+
 [connection signal="button_down" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" method="set_self_modulate" binds= [Color(0.5019608, 0.5019608, 0.5019608, 1)]]
 [connection signal="button_up" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="CoverPanel/BookAnimator" method="play" binds= [&"close"]]
+[connection signal="shown" from="VisibilityListener" to="CoverPanel/BookAnimator" method="play" binds= [&"open"]]

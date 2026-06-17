@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cugl55bmupwp7"]
+
+[ext_resource type="Texture2D" uid="uid://diwjk13a44eep" path="res://textures/ui/snackbar/snackbar_button.svg" id="1_xfo8g"]
+[ext_resource type="Texture2D" uid="uid://blk8miek3ltyr" path="res://textures/ui/snackbar/snackbar_wheel_icon.svg" id="2_wb0fp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvk6p"]
+bg_color = Color(0.6, 0, 0, 0)
+border_width_left = 24
+border_width_top = 24
+border_width_right = 24
+border_width_bottom = 24
+border_color = Color(0.8, 0.69280005, 0.264, 0.62352943)
+border_blend = true
+corner_radius_top_left = 72
+corner_radius_top_right = 72
+corner_radius_bottom_right = 72
+corner_radius_bottom_left = 72
+corner_detail = 12
+
+[node name="SnackBarButtonMargin" type="MarginContainer"]
+
+[node name="SnackBarButtonTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_xfo8g")
+expand_mode = 3
+
+[node name="SnackBarIconMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="SnackBarIcon" type="TextureRect" parent="SnackBarIconMargin"]
+layout_mode = 2
+texture = ExtResource("2_wb0fp")
+expand_mode = 3
+
+[node name="SnackBarButtonMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SnackBarButton" type="Button" parent="SnackBarButtonMargin"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xvk6p")

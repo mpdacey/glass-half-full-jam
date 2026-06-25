@@ -1,5 +1,5 @@
 extends Node
-class_name InAppUpdatePluginInterfacer
+class_name InAppUpdatePlugin
 
 signal update_found(is_urgent: bool)
 signal update_ready

@@ -49,7 +49,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotPlayGameServices/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotAndroidInAppUpdate/plugin.cfg", "res://addons/GodotPlayGameServices/plugin.cfg")
 
 [input]
 

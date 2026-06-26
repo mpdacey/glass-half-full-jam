@@ -31,9 +31,9 @@ script = ExtResource("8_uvaut")
 global_signal_name = &"scene_changed_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="PlaySceneLoadedListener" type="Node" parent="."]
+[node name="InternetConnectedListener" type="Node" parent="."]
 script = ExtResource("8_uvaut")
-global_signal_name = &"scene_changed_play"
+global_signal_name = &"time_established_connection"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [connection signal="update_failed" from="InAppUpdatePlugin" to="InAppUpdateUIController" method="_on_update_failed"]
@@ -44,5 +44,5 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [connection signal="set_flexible_request" from="InAppUpdateUIController" to="InAppUpdatePlugin" method="start_flexible_update"]
 [connection signal="set_immediate_request" from="InAppUpdateUIController" to="InAppUpdatePlugin" method="start_immediate_update"]
 [connection signal="action_button_pressed" from="InAppUpdateInfoBox" to="InAppUpdateUIController" method="_on_action_button_pressed"]
-[connection signal="global_signal_emitted" from="TitleSceneLoadedListener" to="InAppUpdateUIController" method="_on_title_scene_loaded"]
-[connection signal="global_signal_emitted" from="PlaySceneLoadedListener" to="InAppUpdateUIController" method="_on_play_scene_loaded"]
+[connection signal="global_signal_emitted" from="TitleSceneLoadedListener" to="InAppUpdateUIController" method="_on_title_scene_loaded" flags=6]
+[connection signal="global_signal_emitted" from="InternetConnectedListener" to="InAppUpdateUIController" method="_on_connected_to_interent" flags=6]

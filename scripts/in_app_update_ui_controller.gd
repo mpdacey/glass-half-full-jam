@@ -14,6 +14,8 @@ enum UpdateStatus {
 	UPDATE_FAILED
 }
 
+const STORE_PAGE_URL = "https://play.google.com/store/apps/details?id=com.mpdacey.gashalffuel"
+
 @export_group("Infobox_Resources")
 @export var update_found_resource: InfoBoxContentsResource
 @export var update_ready_resource: InfoBoxContentsResource
@@ -25,9 +27,10 @@ enum UpdateStatus {
 
 var _current_status: UpdateStatus = UpdateStatus.NO_UPDATE
 var _on_title: bool = false
+var _is_connected: bool = false
 
 func _display_info_box() -> void:
-	if _on_title:
+	if _on_title and _is_connected:
 		infobox.display_info_box()
 
 func _on_update_ready() -> void:
@@ -52,26 +55,29 @@ func _on_update_failed(_error_message: String, error_code: int) -> void:
 	_current_status = UpdateStatus.UPDATE_FAILED
 	_display_info_box()
 
-
 func _on_action_button_pressed() -> void:
-	infobox.dismiss_info_box()
+	#infobox.dismiss_info_box()
 	match _current_status:
 		UpdateStatus.UPDATE_FLEXIBLE_FOUND:
-			set_flexible_request.emit()
+			_open_store_page()
+			#set_flexible_request.emit()
 		UpdateStatus.UPDATE_IMMEDIATE_FOUND:
-			set_immediate_request.emit()
-		UpdateStatus.UPDATE_READY:
-			complete_update_request.emit()
-		UpdateStatus.UPDATE_FAILED:
-			set_immediate_request.emit()
+			_open_store_page()
+			#set_immediate_request.emit()
+		#UpdateStatus.UPDATE_READY:
+		#	complete_update_request.emit()
+		#UpdateStatus.UPDATE_FAILED:
+		#	set_immediate_request.emit()
 
 func _on_title_scene_loaded() -> void:
 	_on_title = true
-	
-	if _current_status == UpdateStatus.NO_UPDATE:
-		check_updates_request.emit()
-	else:
+	if _current_status != UpdateStatus.NO_UPDATE:
 		_display_info_box()
 
-func _on_play_scene_loaded() -> void:
-	_on_title = false
+func _on_connected_to_interent() -> void:
+	_is_connected = true
+	if _current_status == UpdateStatus.NO_UPDATE:
+		check_updates_request.emit()
+
+func _open_store_page() -> void:
+	OS.shell_open(STORE_PAGE_URL)

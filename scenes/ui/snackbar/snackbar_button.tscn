@@ -93,4 +93,4 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_jmrqk")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gjjxi")
 toggle_mode = true
 
-[connection signal="pressed" from="SnackBarButtonMargin/SnackBarButton" to="." method="emit_signal" binds= [&"snackbar_button_pressed"]]
+[connection signal="toggled" from="SnackBarButtonMargin/SnackBarButton" to="." method="_on_button_toggled"]

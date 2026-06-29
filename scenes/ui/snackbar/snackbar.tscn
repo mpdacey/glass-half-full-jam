@@ -53,10 +53,10 @@ shadow_size = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkky0"]
 bg_color = Color(0.6, 0, 0, 0)
-border_width_left = 32
-border_width_top = 32
-border_width_right = 32
-border_width_bottom = 32
+border_width_left = 48
+border_width_top = 48
+border_width_right = 48
+border_width_bottom = 48
 border_color = Color(0.8, 0.69280005, 0.264, 0.62352943)
 border_blend = true
 corner_radius_top_left = 113

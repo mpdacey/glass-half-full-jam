@@ -16,13 +16,13 @@ shadow_size = 25
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfo8g"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvk6p"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvech"]
 bg_color = Color(0.6, 0, 0, 0)
-border_width_left = 24
-border_width_top = 24
-border_width_right = 24
-border_width_bottom = 24
-border_color = Color(0.8, 0.69280005, 0.264, 0.62352943)
+border_width_left = 32
+border_width_top = 32
+border_width_right = 32
+border_width_bottom = 32
+border_color = Color(0.8, 0.69280005, 0.264, 0.78039217)
 border_blend = true
 corner_radius_top_left = 72
 corner_radius_top_right = 72
@@ -88,7 +88,7 @@ theme_override_constants/margin_bottom = 20
 [node name="SnackBarButton" type="Button" parent="SnackBarButtonMargin"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xfo8g")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xvk6p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kvech")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wb0fp")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_jmrqk")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gjjxi")

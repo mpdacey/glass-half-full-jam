@@ -1,7 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cugl55bmupwp7"]
+[gd_scene load_steps=5 format=3 uid="uid://cugl55bmupwp7"]
 
 [ext_resource type="Texture2D" uid="uid://diwjk13a44eep" path="res://textures/ui/snackbar/snackbar_button.svg" id="1_xfo8g"]
 [ext_resource type="Texture2D" uid="uid://blk8miek3ltyr" path="res://textures/ui/snackbar/snackbar_wheel_icon.svg" id="2_wb0fp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfo8g"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.6862745)
+shadow_size = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvk6p"]
 bg_color = Color(0.6, 0, 0, 0)
@@ -18,6 +28,17 @@ corner_radius_bottom_left = 72
 corner_detail = 12
 
 [node name="SnackBarButtonMargin" type="MarginContainer"]
+
+[node name="SnackbarShadowMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 0
+
+[node name="SnackbarShadow" type="Panel" parent="SnackbarShadowMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfo8g")
 
 [node name="SnackBarButtonTexture" type="TextureRect" parent="."]
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctu6qrmvuu4q1"]
+[gd_scene load_steps=13 format=3 uid="uid://ctu6qrmvuu4q1"]
 
 [ext_resource type="PackedScene" uid="uid://cugl55bmupwp7" path="res://scenes/ui/snackbar/snackbar_button.tscn" id="1_fdalm"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="2_vab1p"]
@@ -74,8 +74,6 @@ corner_radius_top_right = 113
 corner_radius_bottom_right = 113
 corner_radius_bottom_left = 113
 corner_detail = 12
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_4v1fr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4v1fr"]
 atlas = ExtResource("2_vab1p")
@@ -163,7 +161,6 @@ theme_override_constants/margin_bottom = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fdalm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vkky0")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_nmrw2")
-button_group = SubResource("ButtonGroup_4v1fr")
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2

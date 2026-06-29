@@ -85,9 +85,11 @@ atlas = ExtResource("2_vab1p")
 region = Rect2(4535, 1035, 330, 330)
 margin = Rect2(10, 0, 20, 0)
 
-[node name="CanvasLayer" type="CanvasLayer"]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TitleSnackbar" type="CanvasLayer"]
+layer = 4
+
+[node name="SnackbarMargin" type="MarginContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -98,89 +100,92 @@ size_flags_horizontal = 3
 theme_override_constants/margin_left = -60
 theme_override_constants/margin_right = -60
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="SnackbarBackgroundPanel" type="PanelContainer" parent="SnackbarMargin"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1evc8")
 
-[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer"]
+[node name="SnackbarBorderPanel" type="Panel" parent="SnackbarMargin/SnackbarBackgroundPanel"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eucdu")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="RootButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel"]
 layout_mode = 2
 theme_override_constants/margin_top = -88
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="RootButtonsHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin"]
 layout_mode = 2
 alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="LeftButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_top = 95
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer2"]
+[node name="LeftButtonsHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="SettingsButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource("1_fdalm")]
+[node name="SettingsButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_04j7s")
 
-[node name="ShopButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource("1_fdalm")]
+[node name="ShopButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_vab1p")
 
-[node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_fdalm")]
+[node name="PlayButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox" instance=ExtResource("1_fdalm")]
 layout_mode = 2
 
-[node name="SnackbarShadowMargin" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PlayButton" index="0"]
+[node name="SnackbarShadowMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="0"]
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = -5
 
-[node name="SnackbarShadow" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PlayButton/SnackbarShadowMargin" index="0"]
+[node name="SnackbarShadow" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackbarShadowMargin" index="0"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_fdalm")
 
-[node name="SnackBarButtonTexture" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PlayButton" index="1"]
+[node name="SnackBarButtonTexture" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="1"]
 expand_mode = 0
 
-[node name="SnackBarIconMargin" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PlayButton" index="2"]
+[node name="SnackBarIconMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="2"]
 theme_override_constants/margin_left = 80
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 80
 
-[node name="SnackBarButtonMargin" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PlayButton" index="3"]
+[node name="SnackBarButtonMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="3"]
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="SnackBarButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PlayButton/SnackBarButtonMargin" index="0"]
+[node name="SnackBarButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin" index="0"]
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fdalm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vkky0")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_nmrw2")
+button_pressed = true
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="RightButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_top = 95
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3"]
+[node name="RightButtonHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="LockedButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3/HBoxContainer" instance=ExtResource("1_fdalm")]
+[node name="LockedButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_4v1fr")
 
-[node name="SnackBarButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3/HBoxContainer/LockedButton/SnackBarButtonMargin" index="0"]
+[node name="SnackBarButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton/SnackBarButtonMargin" index="0"]
 disabled = true
 
-[node name="LeaderboardButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3/HBoxContainer" instance=ExtResource("1_fdalm")]
+[node name="LeaderboardButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_13qua")
 
-[editable path="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PlayButton"]
-[editable path="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3/HBoxContainer/LockedButton"]
+[editable path="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton"]
+[editable path="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton"]

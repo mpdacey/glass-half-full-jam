@@ -45,6 +45,7 @@ corner_detail = 12
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjjxi"]
 
 [node name="SnackBarButtonMargin" type="MarginContainer" node_paths=PackedStringArray("button_icon_node", "button_reference")]
+size_flags_horizontal = 6
 script = ExtResource("1_oisdv")
 button_icon_node = NodePath("SnackBarIconMargin/SnackBarIcon")
 button_reference = NodePath("SnackBarButtonMargin/SnackBarButton")

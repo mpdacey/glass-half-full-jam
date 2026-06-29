@@ -1,0 +1,145 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctu6qrmvuu4q1"]
+
+[ext_resource type="PackedScene" uid="uid://cugl55bmupwp7" path="res://scenes/ui/snackbar_button.tscn" id="1_fdalm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1evc8"]
+content_margin_left = 60.0
+content_margin_top = 4.0
+content_margin_right = 60.0
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_color = Color(0.1111969, 0.11119684, 0.11119681, 1)
+border_blend = true
+corner_radius_top_left = 160
+corner_radius_top_right = 160
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eucdu"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+draw_center = false
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+corner_radius_top_left = 195
+corner_radius_top_right = 195
+corner_detail = 16
+expand_margin_left = 96.0
+expand_margin_top = 42.0
+expand_margin_right = 96.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdalm"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.6862745)
+shadow_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkky0"]
+bg_color = Color(0.6, 0, 0, 0)
+border_width_left = 32
+border_width_top = 32
+border_width_right = 32
+border_width_bottom = 32
+border_color = Color(0.8, 0.69280005, 0.264, 0.62352943)
+border_blend = true
+corner_radius_top_left = 113
+corner_radius_top_right = 113
+corner_radius_bottom_right = 113
+corner_radius_bottom_left = 113
+corner_detail = 12
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = -60
+theme_override_constants/margin_right = -60
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1evc8")
+
+[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eucdu")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -88
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 95
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SnackBarButtonMargin" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+
+[node name="SnackBarButtonMargin2" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+
+[node name="SnackBarButtonMargin" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+
+[node name="SnackbarShadowMargin" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SnackBarButtonMargin" index="0"]
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = -5
+
+[node name="SnackbarShadow" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SnackBarButtonMargin/SnackbarShadowMargin" index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_fdalm")
+
+[node name="SnackBarButtonTexture" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SnackBarButtonMargin" index="1"]
+expand_mode = 0
+
+[node name="SnackBarIconMargin" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SnackBarButtonMargin" index="2"]
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="SnackBarButtonMargin" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SnackBarButtonMargin" index="3"]
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="SnackBarButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SnackBarButtonMargin/SnackBarButtonMargin" index="0"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_vkky0")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 95
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SnackBarButtonMargin" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3/HBoxContainer" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+
+[node name="SnackBarButtonMargin2" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3/HBoxContainer" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+
+[editable path="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SnackBarButtonMargin"]

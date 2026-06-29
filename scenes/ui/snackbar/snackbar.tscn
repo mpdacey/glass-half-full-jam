@@ -175,8 +175,12 @@ theme_override_constants/separation = 6
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_4v1fr")
 
+[node name="SnackBarButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3/HBoxContainer/LockedButton/SnackBarButtonMargin" index="0"]
+disabled = true
+
 [node name="LeaderboardButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3/HBoxContainer" instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_13qua")
 
 [editable path="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PlayButton"]
+[editable path="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer3/HBoxContainer/LockedButton"]

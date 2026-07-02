@@ -31,13 +31,13 @@ expand_margin_left = 96.0
 expand_margin_top = 42.0
 expand_margin_right = 96.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_04j7s"]
-atlas = ExtResource("2_vab1p")
-region = Rect2(6545, 1015, 330, 330)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_vab1p"]
 atlas = ExtResource("2_vab1p")
 region = Rect2(5525, 2527.5, 360, 340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04j7s"]
+atlas = ExtResource("2_vab1p")
+region = Rect2(6545, 1015, 330, 330)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdalm"]
 bg_color = Color(0, 0, 0, 0)
@@ -84,60 +84,6 @@ margin = Rect2(10, 10, 20, 20)
 atlas = ExtResource("2_vab1p")
 region = Rect2(4535, 1035, 330, 330)
 margin = Rect2(10, 0, 20, 0)
-
-[sub_resource type="Animation" id="Animation_vab1p"]
-resource_name = "show"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SnackbarMargin:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.25881627, 1),
-"update": 0,
-"values": [Vector2(0, 2300), Vector2(0, 2070)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SnackbarMargin:mouse_filter")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SnackbarMargin:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.25881627, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.03529412), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"show"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_04j7s"]
 length = 0.001
@@ -232,6 +178,60 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_vab1p"]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SnackbarMargin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.25881627, 1),
+"update": 0,
+"values": [Vector2(0, 2300), Vector2(0, 2070)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SnackbarMargin:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SnackbarMargin:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.25881627, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.03529412), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_04j7s"]
 _data = {
 &"RESET": SubResource("Animation_04j7s"),
@@ -280,13 +280,13 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="SettingsButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
-layout_mode = 2
-button_icon = SubResource("AtlasTexture_04j7s")
-
 [node name="ShopButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_vab1p")
+
+[node name="SettingsButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+button_icon = SubResource("AtlasTexture_04j7s")
 
 [node name="PlayButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox" instance=ExtResource("1_fdalm")]
 layout_mode = 2
@@ -304,7 +304,7 @@ expand_mode = 0
 
 [node name="SnackBarIconMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="2"]
 theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 80
+theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 80
 

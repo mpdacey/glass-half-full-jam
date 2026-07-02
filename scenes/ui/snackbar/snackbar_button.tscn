@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cugl55bmupwp7"]
+[gd_scene load_steps=11 format=3 uid="uid://cugl55bmupwp7"]
 
 [ext_resource type="Script" uid="uid://dsp0fywqivarh" path="res://scripts/snackbar_button_controller.gd" id="1_oisdv"]
 [ext_resource type="Texture2D" uid="uid://diwjk13a44eep" path="res://textures/ui/snackbar/snackbar_button.svg" id="1_xfo8g"]
 [ext_resource type="Texture2D" uid="uid://blk8miek3ltyr" path="res://textures/ui/snackbar/snackbar_wheel_icon.svg" id="2_wb0fp"]
+[ext_resource type="StyleBox" uid="uid://bvnq8hjtkstin" path="res://scenes/ui/snackbar/underline_unlit_stylebox.tres" id="4_oisdv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfo8g"]
 bg_color = Color(0, 0, 0, 0)
@@ -44,11 +45,12 @@ corner_detail = 12
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjjxi"]
 
-[node name="SnackBarButtonMargin" type="MarginContainer" node_paths=PackedStringArray("button_icon_node", "button_reference")]
+[node name="SnackBarButtonMargin" type="MarginContainer" node_paths=PackedStringArray("button_icon_node", "button_reference", "button_underline")]
 size_flags_horizontal = 6
 script = ExtResource("1_oisdv")
-button_icon_node = NodePath("SnackBarIconMargin/SnackBarIcon")
+button_icon_node = NodePath("SnackBarIconMargin/SnackBarIconVBox/SnackBarIcon")
 button_reference = NodePath("SnackBarButtonMargin/SnackBarButton")
+button_underline = NodePath("SnackBarIconMargin/SnackBarIconVBox/SnackBarIconUnderlineMargin/SnackBarIconUnderline")
 
 [node name="SnackbarShadowMargin" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -69,14 +71,32 @@ expand_mode = 3
 [node name="SnackBarIconMargin" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 48
+theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 48
 
-[node name="SnackBarIcon" type="TextureRect" parent="SnackBarIconMargin"]
+[node name="SnackBarIconVBox" type="VBoxContainer" parent="SnackBarIconMargin"]
 layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SnackBarIcon" type="TextureRect" parent="SnackBarIconMargin/SnackBarIconVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
 texture = ExtResource("2_wb0fp")
-expand_mode = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SnackBarIconUnderlineMargin" type="MarginContainer" parent="SnackBarIconMargin/SnackBarIconVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="SnackBarIconUnderline" type="Panel" parent="SnackBarIconMargin/SnackBarIconVBox/SnackBarIconUnderlineMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("4_oisdv")
 
 [node name="SnackBarButtonMargin" type="MarginContainer" parent="."]
 layout_mode = 2

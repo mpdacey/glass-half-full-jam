@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=36 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="2_pyl7j"]
@@ -17,7 +17,6 @@
 [ext_resource type="FontFile" uid="uid://djykx72pris0a" path="res://resources/fonts/Arimo/static/Arimo-Medium.ttf" id="12_0oqx5"]
 [ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="13_via76"]
 [ext_resource type="Script" uid="uid://dqd7mv3jjahqy" path="res://scripts/version_name_labeller.gd" id="13_wsrf4"]
-[ext_resource type="Texture2D" uid="uid://ca0aske73svnd" path="res://textures/leaderboard_menu_icon.svg" id="14_xq2ei"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="14_ycxqd"]
 [ext_resource type="PackedScene" uid="uid://dsg1rgktwcdb" path="res://scenes/ui/leaderboard/leaderboard_ui.tscn" id="15_xq2ei"]
 [ext_resource type="PackedScene" uid="uid://bvb01gwjc7pvc" path="res://scenes/ui/lives_ui.tscn" id="16_n41ns"]
@@ -319,18 +318,6 @@ tracks/21/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("TitleCanvasLayer/VersionNameMargin:modulate")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_7rdyk"]
 resource_name = "initial"
@@ -457,107 +444,6 @@ tracks/9/keys = {
 "args": [NodePath("../../InternetReadyPlayer"), &"play", [&"on_connected"]],
 "method": &"execute_method_on_connection_by_node"
 }]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("TitleCanvasLayer/VersionNameMargin:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(1.7, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_n41ns"]
-resource_name = "initial"
-length = 2.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TitleCanvasLayer/ClickToPlayText:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.19999999, 0.49999994, 0.70000005),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2.08, 1.2), Vector2(2, 2), Vector2(2, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TitleCanvasLayer/ClickToPlayText:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.19999987, 0.49999994),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TitleCanvasLayer/ClickToPlayText:pivot_offset")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.70000005),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(300, -200), Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TitleCanvasLayer/LeaderboardButtonAnchor:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.70000005, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("TitleCanvasLayer/LivesUI/LivesCanvasModulate:color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.49999994, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_n41ns"]

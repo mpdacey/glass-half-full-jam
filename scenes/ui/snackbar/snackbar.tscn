@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctu6qrmvuu4q1"]
+[gd_scene load_steps=19 format=3 uid="uid://ctu6qrmvuu4q1"]
 
 [ext_resource type="Script" uid="uid://di1n0xuqv3bp6" path="res://scripts/snackbar/snackbar_ui_controller.gd" id="1_04j7s"]
 [ext_resource type="PackedScene" uid="uid://cugl55bmupwp7" path="res://scenes/ui/snackbar/snackbar_button.tscn" id="1_fdalm"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="2_vab1p"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="4_4v1fr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1evc8"]
 content_margin_left = 60.0
@@ -242,10 +243,11 @@ _data = {
 &"show": SubResource("Animation_vab1p")
 }
 
-[node name="TitleSnackbar" type="CanvasLayer" node_paths=PackedStringArray("animator")]
+[node name="TitleSnackbar" type="CanvasLayer" node_paths=PackedStringArray("animator", "global_signal_emitter")]
 layer = 4
 script = ExtResource("1_04j7s")
 animator = NodePath("AnimationPlayer")
+global_signal_emitter = NodePath("SnackbarButtonTypeEmitter")
 
 [node name="SnackbarMargin" type="MarginContainer" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -352,6 +354,11 @@ button_icon = SubResource("AtlasTexture_13qua")
 libraries = {
 &"": SubResource("AnimationLibrary_04j7s")
 }
+
+[node name="SnackbarButtonTypeEmitter" type="Node" parent="."]
+script = ExtResource("4_4v1fr")
+global_signal_name = &"snackbar_button_pressed"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [editable path="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton"]
 [editable path="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton"]

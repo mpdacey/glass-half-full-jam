@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctu6qrmvuu4q1"]
+[gd_scene load_steps=18 format=3 uid="uid://ctu6qrmvuu4q1"]
 
+[ext_resource type="Script" uid="uid://di1n0xuqv3bp6" path="res://scripts/snackbar/snackbar_ui_controller.gd" id="1_04j7s"]
 [ext_resource type="PackedScene" uid="uid://cugl55bmupwp7" path="res://scenes/ui/snackbar/snackbar_button.tscn" id="1_fdalm"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="2_vab1p"]
 
@@ -16,6 +17,7 @@ border_blend = true
 corner_radius_top_left = 160
 corner_radius_top_right = 160
 corner_detail = 16
+expand_margin_bottom = 64.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eucdu"]
 bg_color = Color(0.15, 0.15, 0.15, 1)
@@ -30,6 +32,7 @@ corner_detail = 16
 expand_margin_left = 96.0
 expand_margin_top = 42.0
 expand_margin_right = 96.0
+expand_margin_bottom = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vab1p"]
 atlas = ExtResource("2_vab1p")
@@ -97,7 +100,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 2070)]
+"values": [Vector2(0, 2300)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -121,7 +124,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_4v1fr"]
@@ -239,15 +242,19 @@ _data = {
 &"show": SubResource("Animation_vab1p")
 }
 
-[node name="TitleSnackbar" type="CanvasLayer"]
+[node name="TitleSnackbar" type="CanvasLayer" node_paths=PackedStringArray("animator")]
 layer = 4
+script = ExtResource("1_04j7s")
+animator = NodePath("AnimationPlayer")
 
 [node name="SnackbarMargin" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -210.0
+offset_top = 20.0
+offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3

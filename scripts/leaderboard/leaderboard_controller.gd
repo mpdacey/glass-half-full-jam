@@ -22,9 +22,13 @@ const LEADERBOARD_ENTRY_SCENE = preload("uid://gqut7x3b0vj7")
 const MAX_RESULTS = 20
 const DEBUG_PROFILE_ICON_PATH = "user://icon_color.png"
 
+const OPEN_ANIMATION_KEY = &"open"
+const CLOSE_ANIMATION_KEY = &"close"
+
 @export var entries_container : Container
 @export var scroll_container: ScrollContainer
 @export var empty_collection_label: RichTextLabel
+@export var book_animator: AnimationPlayer
 var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
 var _refresh_leaderboard: Dictionary = {}
@@ -80,6 +84,12 @@ func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
 				children[i].set_entry_values(null)
 	
 	scores_set.emit()
+
+func open_leaderboards() -> void:
+	book_animator.play(OPEN_ANIMATION_KEY)
+
+func close_leaderboards() -> void:
+	book_animator.play(CLOSE_ANIMATION_KEY)
 
 func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
 	load_most_wanted_scores_request.emit(

@@ -1214,7 +1214,7 @@ metadata/content = ExtResource("23_4qtqu")
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="CoverPanel/BookAnimator" method="play" binds= [&"close"]]
 [connection signal="button_down" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" method="set_modulate" binds= [Color(0.646029, 0.646029, 0.646029, 1)]]
 [connection signal="button_up" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" method="set_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" to="InfoBox" method="show"]
+[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" to="InfoBox" method="display_info_box"]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusMostWanted" to="." method="_on_focus_most_wanted_button_pressed"]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusMostWanted" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/ChangePageAnchor/ChangePageController" method="change_catagory" binds= [0]]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusPersonal" to="." method="_on_focus_personal_button_pressed"]

@@ -550,12 +550,14 @@ visible = false
 
 [node name="RoadBendController" type="Node" parent="Terrain" node_paths=PackedStringArray("signal_emitter")]
 script = ExtResource("5_gil8y")
-min_bend_length = 160.0
-max_bend_length = 400.0
-max_bend_transition_length = 75.0
-min_distance_between_bends = 550.0
-max_distance_between_bends = 800.0
-max_range_of_bend = 2.0
+min_bend_length = 130.0
+max_bend_length = 300.0
+min_bend_transition_length = 30.0
+max_bend_transition_length = 55.0
+min_distance_between_bends = 600.0
+max_distance_between_bends = 900.0
+min_range_of_bend = 1.25
+max_range_of_bend = 1.65
 bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("15_fh12i"), ExtResource("16_xla8q"), ExtResource("17_y8dsr")])
 signal_emitter = NodePath("../TerrainGlobalListeners/TerrainSpeedListener")
 signal_name = &"global_signal_emitted_with_value"

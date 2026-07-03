@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InfoBoxContentsResource" load_steps=2 format=3 uid="uid://dsehw584js5t7"]
+
+[ext_resource type="Script" uid="uid://dajftf844g2xs" path="res://scripts/resource_scripts/info_box_resource_script.gd" id="1_d26om"]
+
+[resource]
+script = ExtResource("1_d26om")
+title = "Update Ready"
+body = "New update is ready to be installed."
+button_content = "Install Update"
+metadata/_custom_type_script = "uid://dajftf844g2xs"

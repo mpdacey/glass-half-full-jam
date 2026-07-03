@@ -7,7 +7,5 @@ script = ExtResource("1_jc548")
 title = "New Update Found"
 body = "A new update has been found.
 Would you like to update?"
-hyperlink_text = "You can continue playing
-while the update downloads."
-button_content = "Download Update"
+button_content = "Install Update"
 metadata/_custom_type_script = "uid://dajftf844g2xs"

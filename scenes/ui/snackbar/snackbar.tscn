@@ -1,0 +1,379 @@
+[gd_scene load_steps=20 format=3 uid="uid://ctu6qrmvuu4q1"]
+
+[ext_resource type="Script" uid="uid://di1n0xuqv3bp6" path="res://scripts/snackbar/snackbar_ui_controller.gd" id="1_04j7s"]
+[ext_resource type="PackedScene" uid="uid://cugl55bmupwp7" path="res://scenes/ui/snackbar/snackbar_button.tscn" id="1_fdalm"]
+[ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="2_vab1p"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="4_4v1fr"]
+[ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="4_13qua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1evc8"]
+content_margin_left = 60.0
+content_margin_top = 4.0
+content_margin_right = 60.0
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_color = Color(0.1111969, 0.11119684, 0.11119681, 1)
+border_blend = true
+corner_radius_top_left = 160
+corner_radius_top_right = 160
+corner_detail = 16
+expand_margin_bottom = 64.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eucdu"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+draw_center = false
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+corner_radius_top_left = 195
+corner_radius_top_right = 195
+corner_detail = 16
+expand_margin_left = 96.0
+expand_margin_top = 42.0
+expand_margin_right = 96.0
+expand_margin_bottom = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vab1p"]
+atlas = ExtResource("2_vab1p")
+region = Rect2(5525, 2527.5, 360, 340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04j7s"]
+atlas = ExtResource("2_vab1p")
+region = Rect2(6545, 1015, 330, 330)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdalm"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.6862745)
+shadow_size = 25
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdalm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkky0"]
+bg_color = Color(0.6, 0, 0, 0)
+border_width_left = 48
+border_width_top = 48
+border_width_right = 48
+border_width_bottom = 48
+border_color = Color(0.8, 0.69280005, 0.264, 0.62352943)
+border_blend = true
+corner_radius_top_left = 113
+corner_radius_top_right = 113
+corner_radius_bottom_right = 113
+corner_radius_bottom_left = 113
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmrw2"]
+bg_color = Color(0, 0, 0, 0.7019608)
+border_color = Color(0.8, 0.69280005, 0.264, 0.62352943)
+border_blend = true
+corner_radius_top_left = 113
+corner_radius_top_right = 113
+corner_radius_bottom_right = 113
+corner_radius_bottom_left = 113
+corner_detail = 12
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v1fr"]
+atlas = ExtResource("2_vab1p")
+region = Rect2(2545, 1015, 330, 330)
+margin = Rect2(10, 10, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13qua"]
+atlas = ExtResource("2_vab1p")
+region = Rect2(4535, 1035, 330, 330)
+margin = Rect2(10, 0, 20, 0)
+
+[sub_resource type="Animation" id="Animation_04j7s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SnackbarMargin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SnackbarMargin:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SnackbarMargin:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4v1fr"]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SnackbarMargin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.25881627, 1),
+"update": 0,
+"values": [Vector2(0, 2070), Vector2(0, 2300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SnackbarMargin:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SnackbarMargin:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.25881627, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vab1p"]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SnackbarMargin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.25881627, 1),
+"update": 0,
+"values": [Vector2(0, 2300), Vector2(0, 2070)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SnackbarMargin:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SnackbarMargin:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.25881627, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.03529412), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_04j7s"]
+_data = {
+&"RESET": SubResource("Animation_04j7s"),
+&"hide": SubResource("Animation_4v1fr"),
+&"show": SubResource("Animation_vab1p")
+}
+
+[node name="TitleSnackbar" type="CanvasLayer" node_paths=PackedStringArray("animator", "global_signal_emitter")]
+layer = 4
+script = ExtResource("1_04j7s")
+animator = NodePath("AnimationPlayer")
+global_signal_emitter = NodePath("SnackbarButtonTypeEmitter")
+
+[node name="SnackbarMargin" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = -60
+theme_override_constants/margin_right = -60
+
+[node name="SnackbarBackgroundPanel" type="PanelContainer" parent="SnackbarMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1evc8")
+
+[node name="SnackbarBorderPanel" type="Panel" parent="SnackbarMargin/SnackbarBackgroundPanel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eucdu")
+
+[node name="RootButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel"]
+layout_mode = 2
+theme_override_constants/margin_top = -88
+
+[node name="RootButtonsHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin"]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 95
+theme_override_constants/margin_bottom = 10
+
+[node name="LeftButtonsHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ShopButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+button_icon = SubResource("AtlasTexture_vab1p")
+
+[node name="SettingsButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+button_icon = SubResource("AtlasTexture_04j7s")
+
+[node name="PlayButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+
+[node name="SnackbarShadowMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="0"]
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = -5
+
+[node name="SnackbarShadow" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackbarShadowMargin" index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_fdalm")
+
+[node name="SnackBarButtonTexture" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="1"]
+expand_mode = 0
+
+[node name="SnackBarIconMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="2"]
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="SnackBarButtonMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="3"]
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="SnackBarButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin" index="0"]
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fdalm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vkky0")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nmrw2")
+button_pressed = true
+
+[node name="AndroidBackListener" type="Node" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton" index="0"]
+script = ExtResource("4_13qua")
+metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
+
+[node name="RightButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 95
+theme_override_constants/margin_bottom = 10
+
+[node name="RightButtonHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LockedButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+button_icon = SubResource("AtlasTexture_4v1fr")
+
+[node name="SnackBarButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton/SnackBarButtonMargin" index="0"]
+disabled = true
+
+[node name="LeaderboardButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" instance=ExtResource("1_fdalm")]
+layout_mode = 2
+button_icon = SubResource("AtlasTexture_13qua")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_04j7s")
+}
+
+[node name="SnackbarButtonTypeEmitter" type="Node" parent="."]
+script = ExtResource("4_4v1fr")
+global_signal_name = &"snackbar_button_pressed"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" to="." method="_on_snackbar_button_pressed" binds= [3]]
+[connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/SettingsButton" to="." method="_on_snackbar_button_pressed" binds= [2]]
+[connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" to="." method="_on_snackbar_button_pressed" binds= [0]]
+[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" method="_on_button_toggled" binds= [false]]
+[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/SettingsButton" method="_on_button_toggled" binds= [false]]
+[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" method="_on_button_toggled" binds= [false]]
+[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LeaderboardButton" method="_on_button_toggled" binds= [false]]
+[connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" to="." method="_on_snackbar_button_pressed" binds= [4]]
+[connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LeaderboardButton" to="." method="_on_snackbar_button_pressed" binds= [1]]
+
+[editable path="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton"]
+[editable path="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton"]

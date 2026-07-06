@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="88.32pt"
+    height="88.32pt"
+    viewBox="0 0 88.32 88.32">
+<defs>
+  <linearGradient id="gradient0" gradientUnits="objectBoundingBox" x1="0.725714308562109" y1="0.950755522863954" x2="0.269052174695303" y2="0.0632005212497706" spreadMethod="pad">
+   <stop stop-color="#272727" offset="0" stop-opacity="1"/>
+   <stop stop-color="#0e0e0e" offset="1" stop-opacity="1"/>
+  </linearGradient>
+ </defs>
+<circle id="shape0" transform="matrix(0.999999881080087 0 0 0.999999881080087 0.240027262257642 0.0922478322454363)" r="43.9936857026353" cx="43.9936857026353" cy="43.9936857026353" fill="#bfbfbf" fill-rule="evenodd" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel"/><path id="shape01" transform="matrix(0.999999846009275 0 0 0.999999846009275 0.0280658749302383 -0.0556266127116613)" sodipodi:type="arc" sodipodi:rx="44.0491993238066" sodipodi:ry="43.9936857026353" sodipodi:cx="44.0492666847038" sodipodi:cy="43.9941331301518" sodipodi:start="2.53570890240839" sodipodi:end="5.90703857690506" sodipodi:open="true" d="M85.0189 27.8335C78.7929 12.0896 64.0748 1.30958 47.1686 0.110891C30.2623 -1.0878 14.167 7.50742 5.77649 22.215C-2.614 36.9227 -1.81127 55.1337 7.84086 69.048" fill="#e6e6e6" fill-rule="evenodd" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel"/><circle id="shape011" transform="matrix(0.999999867611623 0 0 0.999999867611623 9.83999805119585 9.69221387354194)" r="34.393704898238" cx="34.393704898238" cy="34.393704898238" fill="url(#gradient0)" fill-rule="evenodd" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel"/>
+</svg>

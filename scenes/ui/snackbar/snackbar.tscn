@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctu6qrmvuu4q1"]
+[gd_scene load_steps=20 format=3 uid="uid://ctu6qrmvuu4q1"]
 
 [ext_resource type="Script" uid="uid://di1n0xuqv3bp6" path="res://scripts/snackbar/snackbar_ui_controller.gd" id="1_04j7s"]
 [ext_resource type="PackedScene" uid="uid://cugl55bmupwp7" path="res://scenes/ui/snackbar/snackbar_button.tscn" id="1_fdalm"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="2_vab1p"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="4_4v1fr"]
+[ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="4_13qua"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1evc8"]
 content_margin_left = 60.0
@@ -329,6 +330,10 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_vkky0")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_nmrw2")
 button_pressed = true
 
+[node name="AndroidBackListener" type="Node" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton" index="0"]
+script = ExtResource("4_13qua")
+metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
+
 [node name="RightButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -363,6 +368,10 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" to="." method="_on_snackbar_button_pressed" binds= [3]]
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/SettingsButton" to="." method="_on_snackbar_button_pressed" binds= [2]]
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" to="." method="_on_snackbar_button_pressed" binds= [0]]
+[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" method="_on_button_toggled" binds= [false]]
+[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/SettingsButton" method="_on_button_toggled" binds= [false]]
+[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" method="_on_button_toggled" binds= [false]]
+[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LeaderboardButton" method="_on_button_toggled" binds= [false]]
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" to="." method="_on_snackbar_button_pressed" binds= [4]]
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LeaderboardButton" to="." method="_on_snackbar_button_pressed" binds= [1]]
 

@@ -107,9 +107,12 @@ func _generate_list_of_scores() -> void:
 	var names_file := "res://resources/debug_players.txt"
 	var list := FileAccess.open(names_file, FileAccess.READ)
 	
+	if not list:
+		return
+	
 	var selected_names : Dictionary[int, String]
 	while not list.eof_reached() and selected_names.size() < MAX_RESULTS:
-		var random_name := list.get_line()
+		var random_name := list.get_line() 
 		if randf() > 0.1:
 			continue
 		selected_names[selected_names.size()] = random_name

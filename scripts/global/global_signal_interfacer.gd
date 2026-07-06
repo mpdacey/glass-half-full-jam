@@ -6,6 +6,10 @@ signal global_signal_emitted_with_value(value: Variant)
 
 @export var global_signal_name: StringName
 
+func _init(signal_name: StringName = "") -> void:
+	if signal_name != "" or global_signal_name == "":
+		global_signal_name = signal_name
+
 func _enter_tree() -> void:
 	connect_to_global_signal()
 	connect_to_global_signal_with_value()

@@ -28,3 +28,5 @@ signal time_no_connection
 signal time_no_response
 signal time_timed_out
 #endregion
+
+signal snackbar_button_pressed(button_type: SnackbarUIController.SnackbarButtonType)

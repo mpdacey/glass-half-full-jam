@@ -1012,7 +1012,13 @@ color = Color(0, 0, 0, 1)
 
 [node name="AndroidBackListener" type="Node" parent="."]
 script = ExtResource("14_ycxqd")
+bind_close_application = true
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
+
+[node name="SnackbarButtonListener" type="Node" parent="AndroidBackListener"]
+process_mode = 3
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
 [node name="PlayServicesNodes" type="Node" parent="."]
 
@@ -1027,5 +1033,7 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="target_toggled_off" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="close_leaderboards"]
 [connection signal="target_toggled_on" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="open_leaderboards"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
+[connection signal="target_toggled_off" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [4]]
+[connection signal="target_toggled_on" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [0]]
 
 [editable path="Paths/PolicePath/PoliceCore"]

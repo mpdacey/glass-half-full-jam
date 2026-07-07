@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dsg1rgktwcdb"]
+[gd_scene load_steps=44 format=3 uid="uid://dsg1rgktwcdb"]
 
 [ext_resource type="Script" uid="uid://7jfv5niv6ogy" path="res://scripts/leaderboard/leaderboard_controller.gd" id="1_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="1_y0ns5"]
@@ -7,7 +7,6 @@
 [ext_resource type="FontFile" uid="uid://douiqg5815mjs" path="res://resources/fonts/Tinos/Tinos-Bold.ttf" id="3_1rsoi"]
 [ext_resource type="StyleBox" uid="uid://b1ejw4y18ngll" path="res://scenes/ui/leaderboard/leaderboard_cover_panel_stylebox.tres" id="3_a7u1u"]
 [ext_resource type="ButtonGroup" uid="uid://btx4j1qk6x13e" path="res://scenes/ui/leaderboard/leaderboards_timespan_button_group.tres" id="3_u6w2y"]
-[ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="5_0y08k"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="5_1y2m6"]
 [ext_resource type="Texture2D" uid="uid://cp2toi07bdpx" path="res://textures/flair_arrow_3.svg" id="5_tlust"]
 [ext_resource type="Script" uid="uid://cgcoppk14egd3" path="res://scenes/ui/leaderboard/between_leaderboard_controller.gd" id="6_7ik3k"]
@@ -24,22 +23,19 @@
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="22_gpe5i"]
 [ext_resource type="Resource" uid="uid://daf1qa5w8sp1p" path="res://resources/info_box_resources/leaderboard_disclaimer_resource.tres" id="23_4qtqu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4e2ik"]
-atlas = ExtResource("1_y0ns5")
-region = Rect2(7000, 2000, 370, 370)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpe5i"]
+bg_color = Color(0.95686275, 0.9137255, 0.91764706, 1)
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_top = 200.0
+shadow_size = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y08k"]
-content_margin_left = 115.0
-bg_color = Color(0.76, 0.7144, 0.7372, 0)
-border_width_left = 12
-border_width_top = 12
-border_width_right = 12
-border_width_bottom = 12
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 64
-corner_radius_top_right = 64
-corner_radius_bottom_right = 64
-corner_radius_bottom_left = 64
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qtqu"]
+bg_color = Color(0.83137256, 0.7882353, 0.7921569, 1)
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_top = 200.0
+shadow_size = 12
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qtqu"]
 atlas = ExtResource("1_y0ns5")
@@ -824,6 +820,20 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0.083333336)
 }
 tracks/5/use_blend = true
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g8cov"]
 _data = {
@@ -832,11 +842,12 @@ _data = {
 &"open": SubResource("Animation_g8cov")
 }
 
-[node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container", "empty_collection_label")]
+[node name="LeaderboardsUI" type="CanvasLayer" node_paths=PackedStringArray("entries_container", "scroll_container", "empty_collection_label", "book_animator")]
 script = ExtResource("1_1y2m6")
 entries_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll/EntriesVBox")
 scroll_container = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EntriesScroll")
 empty_collection_label = NodePath("LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanelAnchor/EntriesPanel/EntriesMargin/EmptyListText")
+book_animator = NodePath("CoverPanel/BookAnimator")
 
 [node name="LeaderboardsPanel" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -851,36 +862,31 @@ theme_override_styles/panel = ExtResource("3_a7u1u")
 [node name="LeaderboardsVBox" type="VBoxContainer" parent="LeaderboardsPanel"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox"]
+[node name="InfoButtonMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox"]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 2
 size_flags_stretch_ratio = 0.0
 theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 
-[node name="EscapeButton" type="TextureButton" parent="LeaderboardsPanel/LeaderboardsVBox/MarginContainer"]
-custom_minimum_size = Vector2(100, 120)
+[node name="InfoButtonHBox" type="HBoxContainer" parent="LeaderboardsPanel/LeaderboardsVBox/InfoButtonMargin"]
 layout_mode = 2
-texture_normal = SubResource("AtlasTexture_4e2ik")
-ignore_texture_size = true
-stretch_mode = 4
 
-[node name="AndroidBackListener" type="Node" parent="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton"]
-script = ExtResource("5_0y08k")
-metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
-
-[node name="InfoButton" type="Button" parent="LeaderboardsPanel/LeaderboardsVBox/MarginContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Padding" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox/InfoButtonMargin/InfoButtonHBox"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_stretch_ratio = 0.12
-theme_override_styles/normal = SubResource("StyleBoxFlat_0y08k")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0y08k")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0y08k")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_0y08k")
+size_flags_horizontal = 3
+mouse_filter = 2
 
-[node name="InfoMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton"]
+[node name="InfoButton" type="Button" parent="LeaderboardsPanel/LeaderboardsVBox/InfoButtonMargin/InfoButtonHBox"]
+custom_minimum_size = Vector2(0, 102.285)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/normal = SubResource("StyleBoxFlat_gpe5i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4qtqu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4qtqu")
+
+[node name="InfoIconMargin" type="MarginContainer" parent="LeaderboardsPanel/LeaderboardsVBox/InfoButtonMargin/InfoButtonHBox/InfoButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -888,8 +894,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InfoTexture" type="TextureRect" parent="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton/InfoMargin"]
-custom_minimum_size = Vector2(0, 90)
+[node name="InfoIconTexture" type="TextureRect" parent="LeaderboardsPanel/LeaderboardsVBox/InfoButtonMargin/InfoButtonHBox/InfoButton/InfoIconMargin"]
+modulate = Color(0.16862746, 0.16862746, 0.16862746, 1)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1101,6 +1108,11 @@ libraries = {
 }
 script = ExtResource("6_7ik3k")
 
+[node name="SnackbarPadding" type="Control" parent="LeaderboardsPanel/LeaderboardsVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.18
+
 [node name="CoverPanel" type="PanelContainer" parent="."]
 visible = false
 z_index = 2
@@ -1189,12 +1201,7 @@ metadata/content = ExtResource("23_4qtqu")
 [connection signal="load_personal_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
 [connection signal="load_personal_scores_request" from="." to="Timers/WaitForResponseTimer" method="start" unbinds=5]
 [connection signal="scores_set" from="." to="Timers/WaitForResponseTimer" method="stop"]
-[connection signal="button_down" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" method="set_self_modulate" binds= [Color(0.5019608, 0.5019608, 0.5019608, 1)]]
-[connection signal="button_up" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/EscapeButton" to="CoverPanel/BookAnimator" method="play" binds= [&"close"]]
-[connection signal="button_down" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" method="set_modulate" binds= [Color(0.646029, 0.646029, 0.646029, 1)]]
-[connection signal="button_up" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" to="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" method="set_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/MarginContainer/InfoButton" to="InfoBox" method="show"]
+[connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/InfoButtonMargin/InfoButtonHBox/InfoButton" to="InfoBox" method="display_info_box"]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusMostWanted" to="." method="_on_focus_most_wanted_button_pressed"]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusMostWanted" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/ChangePageAnchor/ChangePageController" method="change_catagory" binds= [0]]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusPersonal" to="." method="_on_focus_personal_button_pressed"]
@@ -1211,10 +1218,9 @@ metadata/content = ExtResource("23_4qtqu")
 [connection signal="top_scores_loaded" from="PlayGamesLeaderboardsClient" to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_loaded" unbinds=2]
 [connection signal="global_signal_emitted" from="ScoreRequestListener" to="." method="request_scores"]
 [connection signal="hidden" from="VisibilityListener" to="Timers/RefreshTimer" method="stop"]
-[connection signal="shown" from="VisibilityListener" to="." method="request_scores" flags=3]
 [connection signal="shown" from="VisibilityListener" to="." method="reset_refresh_states"]
+[connection signal="shown" from="VisibilityListener" to="." method="request_scores" flags=3]
 [connection signal="shown" from="VisibilityListener" to="Timers/RefreshTimer" method="start"]
-[connection signal="shown" from="VisibilityListener" to="CoverPanel/BookAnimator" method="play" binds= [&"open"]]
 [connection signal="timeout" from="Timers/WaitForResponseTimer" to="." method="set_scores" binds= [[]]]
 [connection signal="timeout" from="Timers/RefreshTimer" to="." method="reset_refresh_states"]
 [connection signal="timeout" from="Timers/RefreshTimer" to="Timers/RefreshTimer" method="start"]

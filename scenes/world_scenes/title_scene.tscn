@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=37 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="2_pyl7j"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bvb01gwjc7pvc" path="res://scenes/ui/lives_ui.tscn" id="16_n41ns"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="17_bi3h3"]
 [ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="19_0oqx5"]
+[ext_resource type="Script" uid="uid://byg2ofwvgnj6p" path="res://scripts/billing/purchase_ui_controller.gd" id="20_wsrf4"]
 [ext_resource type="PackedScene" uid="uid://ctu6qrmvuu4q1" path="res://scenes/ui/snackbar/snackbar.tscn" id="22_qk2ae"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
@@ -997,6 +998,15 @@ script = ExtResource("19_0oqx5")
 target_button_type = 1
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
+[node name="PurchaseUIController" type="CanvasLayer" parent="."]
+script = ExtResource("20_wsrf4")
+metadata/_custom_type_script = "uid://byg2ofwvgnj6p"
+
+[node name="SnackbarButtonListener" type="Node" parent="PurchaseUIController"]
+script = ExtResource("19_0oqx5")
+target_button_type = 1
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
 [node name="MusicManager" type="Node" parent="."]
 script = ExtResource("10_1ot34")
 
@@ -1032,6 +1042,9 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="pressed" from="TitleCanvasLayer/MarginContainer/PlayButton" to="TitleCanvasLayer/MarginContainer/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
 [connection signal="target_toggled_off" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="close_leaderboards"]
 [connection signal="target_toggled_on" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="open_leaderboards"]
+[connection signal="processing_finished" from="PurchaseUIController" to="TitleSnackbar" method="unlock_snackbox"]
+[connection signal="processing_started" from="PurchaseUIController" to="TitleSnackbar" method="lock_snackbox"]
+[connection signal="target_toggled_on" from="PurchaseUIController/SnackbarButtonListener" to="PurchaseUIController" method="open_purchase_window"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
 [connection signal="target_toggled_off" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [4]]
 [connection signal="target_toggled_on" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [0]]

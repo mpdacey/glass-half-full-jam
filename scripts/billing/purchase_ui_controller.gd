@@ -1,6 +1,9 @@
 extends CanvasLayer
 class_name PurchaseUIController
 
+signal processing_started()
+signal processing_finished()
+
 enum InfoBoxStatus {
 	INITIAL,
 	PROCESSING,
@@ -38,10 +41,13 @@ func set_info_box() -> void:
 				testing_tween.tween_property(self, "current_status", randi_range(InfoBoxStatus.SUCCESSFUL, InfoBoxStatus.FAILED), 0.0)
 				testing_tween.tween_callback(info_box.animator.play.bind(info_box.ANIMATION_CHANGE_KEY)).set_delay(randf_range(1.5,2.5))
 			
+			processing_started.emit()
 		InfoBoxStatus.SUCCESSFUL:
 			info_box.set_content(success_resource)
+			processing_finished.emit()
 		InfoBoxStatus.FAILED:
 			info_box.set_content(failed_resource)
+			processing_finished.emit()
 
 func _on_action_button_pressed() -> void:
 	match(current_status):

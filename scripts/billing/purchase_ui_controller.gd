@@ -3,6 +3,7 @@ class_name PurchaseUIController
 
 signal processing_started()
 signal processing_finished()
+signal purchase_successful_button_pressed()
 
 enum InfoBoxStatus {
 	INITIAL,
@@ -62,4 +63,4 @@ func _on_action_button_pressed() -> void:
 			info_box.change_info_box()
 			PurchaseController.purchase_premium_button_pressed()
 		InfoBoxStatus.SUCCESSFUL:
-			info_box.dismiss_info_box()
+			purchase_successful_button_pressed.emit()

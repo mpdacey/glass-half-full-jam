@@ -118,7 +118,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:visible")
+tracks/5/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -310,7 +310,7 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:disabled")
+tracks/21/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:disabled")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -449,7 +449,6 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_n41ns"]
 resource_name = "initial"
-length = 2.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -502,7 +501,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:disabled")
+tracks/4/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -568,7 +567,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:visible")
+tracks/3/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -919,7 +918,7 @@ text = "In App Update 1.2"
 label_settings = SubResource("LabelSettings_t3vcv")
 script = ExtResource("13_wsrf4")
 
-[node name="MarginContainer" type="MarginContainer" parent="TitleCanvasLayer"]
+[node name="PlayButtonMargin" type="MarginContainer" parent="TitleCanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -932,13 +931,13 @@ theme_override_constants/margin_top = 96
 theme_override_constants/margin_right = 96
 theme_override_constants/margin_bottom = 96
 
-[node name="PlayButton" type="Button" parent="TitleCanvasLayer/MarginContainer"]
+[node name="PlayButton" type="Button" parent="TitleCanvasLayer/PlayButtonMargin"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_mode = 1
 disabled = true
 
-[node name="SpendLifeRequestEmitter" type="Node" parent="TitleCanvasLayer/MarginContainer/PlayButton"]
+[node name="SpendLifeRequestEmitter" type="Node" parent="TitleCanvasLayer/PlayButtonMargin/PlayButton"]
 script = ExtResource("8_6ppm8")
 global_signal_name = &"spend_life_requested"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
@@ -990,6 +989,10 @@ layer = 0
 [node name="LivesCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer/LivesUI"]
 color = Color(1, 1, 1, 0)
 
+[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer"]
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
 [node name="LeaderboardsUI" parent="." instance=ExtResource("15_xq2ei")]
 visible = false
 
@@ -1004,7 +1007,7 @@ metadata/_custom_type_script = "uid://byg2ofwvgnj6p"
 
 [node name="SnackbarButtonListener" type="Node" parent="PurchaseUIController"]
 script = ExtResource("19_0oqx5")
-target_button_type = 1
+target_button_type = 3
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
 [node name="MusicManager" type="Node" parent="."]
@@ -1039,11 +1042,16 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [node name="TitleSnackbar" parent="." instance=ExtResource("22_qk2ae")]
 
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
-[connection signal="pressed" from="TitleCanvasLayer/MarginContainer/PlayButton" to="TitleCanvasLayer/MarginContainer/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
+[connection signal="pressed" from="TitleCanvasLayer/PlayButtonMargin/PlayButton" to="TitleCanvasLayer/PlayButtonMargin/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
+[connection signal="target_toggled_off" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/PlayButtonMargin" method="hide"]
+[connection signal="target_toggled_off" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/ClickToPlayText" method="hide"]
+[connection signal="target_toggled_on" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/PlayButtonMargin" method="show"]
+[connection signal="target_toggled_on" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/ClickToPlayText" method="show"]
 [connection signal="target_toggled_off" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="close_leaderboards"]
 [connection signal="target_toggled_on" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="open_leaderboards"]
 [connection signal="processing_finished" from="PurchaseUIController" to="TitleSnackbar" method="unlock_snackbox"]
 [connection signal="processing_started" from="PurchaseUIController" to="TitleSnackbar" method="lock_snackbox"]
+[connection signal="target_toggled_off" from="PurchaseUIController/SnackbarButtonListener" to="PurchaseUIController" method="close_purchase_window"]
 [connection signal="target_toggled_on" from="PurchaseUIController/SnackbarButtonListener" to="PurchaseUIController" method="open_purchase_window"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
 [connection signal="target_toggled_off" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [4]]

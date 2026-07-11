@@ -29,6 +29,9 @@ func open_purchase_window() -> void:
 	set_info_box()
 	info_box.display_info_box()
 
+func close_purchase_window() -> void:
+	info_box.dismiss_info_box()
+
 func purchase_status_changed(purchase_successful: bool) -> void:
 	if purchase_successful:
 		current_status = InfoBoxStatus.SUCCESSFUL

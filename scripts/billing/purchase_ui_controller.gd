@@ -29,18 +29,21 @@ func open_purchase_window() -> void:
 	set_info_box()
 	info_box.display_info_box()
 
+func purchase_status_changed(purchase_successful: bool) -> void:
+	if purchase_successful:
+		current_status = InfoBoxStatus.SUCCESSFUL
+	else:
+		current_status = InfoBoxStatus.FAILED
+	
+	info_box.animator.play(info_box.ANIMATION_CHANGE_KEY)
+
 func set_info_box() -> void:
 	match(current_status):
 		InfoBoxStatus.INITIAL:
 			info_box.set_content(initial_resource)
+			info_box.set_action_button(PurchaseController.premium_price)
 		InfoBoxStatus.PROCESSING:
 			info_box.set_content(pending_resource)
-			# Test Stuff
-			if OS.is_debug_build():
-				var testing_tween: Tween = create_tween()
-				testing_tween.tween_property(self, "current_status", randi_range(InfoBoxStatus.SUCCESSFUL, InfoBoxStatus.FAILED), 0.0)
-				testing_tween.tween_callback(info_box.animator.play.bind(info_box.ANIMATION_CHANGE_KEY)).set_delay(randf_range(1.5,2.5))
-			
 			processing_started.emit()
 		InfoBoxStatus.SUCCESSFUL:
 			info_box.set_content(success_resource)
@@ -54,5 +57,6 @@ func _on_action_button_pressed() -> void:
 		InfoBoxStatus.INITIAL:
 			current_status = InfoBoxStatus.PROCESSING
 			info_box.change_info_box()
+			PurchaseController.purchase_premium_button_pressed()
 		InfoBoxStatus.SUCCESSFUL:
 			info_box.dismiss_info_box()

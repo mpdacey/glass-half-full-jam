@@ -21,8 +21,8 @@ func _ready() -> void:
 
 	billing_client.start_connection()
 
-func purchase_button_pressed() -> void:
-	pass
+func purchase_premium_button_pressed() -> void:
+	billing_client.purchase(PREMIUM_ITEM_ID)
 
 func _on_connected() -> void:
 	print("Billing client connected succesfully")

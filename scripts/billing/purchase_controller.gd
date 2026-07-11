@@ -1,6 +1,7 @@
 extends Node
 
 signal premium_purchase_successful
+signal premium_purchase_failed
 signal premium_status_found(has_premium: bool)
 
 const PREMIUM_ITEM_ID = "premium_mode"
@@ -61,7 +62,7 @@ func _on_query_purchases_response(response: Dictionary) -> void:
 		for purchase: Dictionary in response.purchases:
 			_process_purchase(purchase)
 	else:
-		_print_error("Purchase update error", response.response_code, response.debug_message)
+		_print_error("Purchase query error", response.response_code, response.debug_message)
 		premium_status_found.emit(false)
 
 func _process_purchase(purchase: Dictionary) -> void:
@@ -77,7 +78,11 @@ func _process_purchase(purchase: Dictionary) -> void:
 		premium_status_found.emit(false)
 
 func _on_purchase_updated(response: Dictionary) -> void:
-	pass
+	if response.response_code == BillingClient.BillingResponseCode.OK:
+		return
+	
+	_print_error("Purchase update error", response.response_code, response.debug_message)
+	premium_purchase_failed.emit()
 
 func _on_consume_purchase_response(response: Dictionary) -> void:
 	pass
@@ -92,6 +97,8 @@ func _on_acknowledge_purchase_response(response: Dictionary) -> void:
 func _handle_purchase_token(_purchase_token: String, purchase_successful: bool) -> void:
 	if purchase_successful:
 		premium_purchase_successful.emit()
+	else:
+		premium_purchase_failed.emit()
 
 func _print_error(custom_message: String, response_code: int, debug_message: String) -> void:
 		print(custom_message)

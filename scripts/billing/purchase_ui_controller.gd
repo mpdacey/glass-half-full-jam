@@ -27,7 +27,7 @@ func _enter_tree() -> void:
 func open_purchase_window() -> void:
 	current_status = InfoBoxStatus.INITIAL
 	set_info_box()
-	info_box.show()
+	info_box.display_info_box()
 
 func set_info_box() -> void:
 	match(current_status):
@@ -53,6 +53,6 @@ func _on_action_button_pressed() -> void:
 	match(current_status):
 		InfoBoxStatus.INITIAL:
 			current_status = InfoBoxStatus.PROCESSING
-			info_box.animator.play(info_box.ANIMATION_CHANGE_KEY)
+			info_box.change_info_box()
 		InfoBoxStatus.SUCCESSFUL:
-			info_box.animator.play(info_box.ANIMATION_HIDE_KEY)
+			info_box.dismiss_info_box()

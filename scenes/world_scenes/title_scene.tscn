@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bvb01gwjc7pvc" path="res://scenes/ui/lives_ui.tscn" id="16_n41ns"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="17_bi3h3"]
 [ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="19_0oqx5"]
-[ext_resource type="Script" uid="uid://byg2ofwvgnj6p" path="res://scripts/billing/purchase_ui_controller.gd" id="20_wsrf4"]
+[ext_resource type="PackedScene" uid="uid://dwoyqeu2rgpmk" path="res://scenes/ui/purchase_game_ui.tscn" id="20_wsrf4"]
 [ext_resource type="PackedScene" uid="uid://ctu6qrmvuu4q1" path="res://scenes/ui/snackbar/snackbar.tscn" id="22_qk2ae"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
@@ -1001,11 +1001,9 @@ script = ExtResource("19_0oqx5")
 target_button_type = 1
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
-[node name="PurchaseUIController" type="CanvasLayer" parent="."]
-script = ExtResource("20_wsrf4")
-metadata/_custom_type_script = "uid://byg2ofwvgnj6p"
+[node name="PurchaseGameUI" parent="." instance=ExtResource("20_wsrf4")]
 
-[node name="SnackbarButtonListener" type="Node" parent="PurchaseUIController"]
+[node name="SnackbarButtonListener" type="Node" parent="PurchaseGameUI"]
 script = ExtResource("19_0oqx5")
 target_button_type = 3
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
@@ -1049,10 +1047,10 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="target_toggled_on" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/ClickToPlayText" method="show"]
 [connection signal="target_toggled_off" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="close_leaderboards"]
 [connection signal="target_toggled_on" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="open_leaderboards"]
-[connection signal="processing_finished" from="PurchaseUIController" to="TitleSnackbar" method="unlock_snackbox"]
-[connection signal="processing_started" from="PurchaseUIController" to="TitleSnackbar" method="lock_snackbox"]
-[connection signal="target_toggled_off" from="PurchaseUIController/SnackbarButtonListener" to="PurchaseUIController" method="close_purchase_window"]
-[connection signal="target_toggled_on" from="PurchaseUIController/SnackbarButtonListener" to="PurchaseUIController" method="open_purchase_window"]
+[connection signal="processing_finished" from="PurchaseGameUI" to="TitleSnackbar" method="unlock_snackbox"]
+[connection signal="processing_started" from="PurchaseGameUI" to="TitleSnackbar" method="lock_snackbox"]
+[connection signal="target_toggled_off" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="close_purchase_window"]
+[connection signal="target_toggled_on" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="open_purchase_window"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
 [connection signal="target_toggled_off" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [4]]
 [connection signal="target_toggled_on" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [0]]

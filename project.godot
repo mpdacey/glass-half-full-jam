@@ -35,6 +35,7 @@ GlobalConstants="*res://scripts/global/global_constants.gd"
 MusicPlayer="*res://scenes/music_manager.tscn"
 LivesSystem="*res://scenes/lives_system.tscn"
 ScreenshotGrabber="*res://scripts/editor/screenshot_grabber.gd"
+PurchaseController="*res://scripts/billing/purchase_controller.gd"
 
 [debug]
 

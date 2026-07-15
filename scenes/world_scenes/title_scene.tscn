@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=38 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="2_pyl7j"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="19_0oqx5"]
 [ext_resource type="PackedScene" uid="uid://dwoyqeu2rgpmk" path="res://scenes/ui/purchase_game_ui.tscn" id="20_wsrf4"]
 [ext_resource type="PackedScene" uid="uid://ctu6qrmvuu4q1" path="res://scenes/ui/snackbar/snackbar.tscn" id="22_qk2ae"]
+[ext_resource type="Script" uid="uid://c2iwrbcd44v43" path="res://scripts/snackbar_button_auto_selector.gd" id="25_t3vcv"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
 _data = {
@@ -517,11 +518,25 @@ tracks/5/path = NodePath("TitleSnackbar")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.7),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"display"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleSnackbar/SnackbarButtonAutoSelector")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_auto_button"
 }]
 }
 
@@ -1039,6 +1054,9 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 
 [node name="TitleSnackbar" parent="." instance=ExtResource("22_qk2ae")]
 
+[node name="SnackbarButtonAutoSelector" type="Node" parent="TitleSnackbar"]
+script = ExtResource("25_t3vcv")
+
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
 [connection signal="pressed" from="TitleCanvasLayer/PlayButtonMargin/PlayButton" to="TitleCanvasLayer/PlayButtonMargin/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
 [connection signal="target_toggled_off" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/PlayButtonMargin" method="hide"]
@@ -1049,11 +1067,12 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="target_toggled_on" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="open_leaderboards"]
 [connection signal="processing_finished" from="PurchaseGameUI" to="TitleSnackbar" method="unlock_snackbox"]
 [connection signal="processing_started" from="PurchaseGameUI" to="TitleSnackbar" method="lock_snackbox"]
-[connection signal="purchase_successful_button_pressed" from="PurchaseGameUI" to="TitleSnackbar" method="_on_snackbar_button_pressed" binds= [0]]
+[connection signal="purchase_successful_button_pressed" from="PurchaseGameUI" to="TitleSnackbar" method="press_snackbar_button" binds= [0]]
 [connection signal="target_toggled_off" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="close_purchase_window"]
 [connection signal="target_toggled_on" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="open_purchase_window"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
 [connection signal="target_toggled_off" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [4]]
 [connection signal="target_toggled_on" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [0]]
+[connection signal="auto_button_pressed" from="TitleSnackbar/SnackbarButtonAutoSelector" to="TitleSnackbar" method="press_snackbar_button"]
 
 [editable path="Paths/PolicePath/PoliceCore"]

@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name LivesUIController
 
 signal lives_value_changed()
+signal open_shop_requested()
 
 @export var lives_label : Label
 @export var regen_timer_label: Label

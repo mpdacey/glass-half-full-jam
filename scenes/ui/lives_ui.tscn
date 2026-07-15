@@ -157,4 +157,6 @@ global_signal_name = &"spend_life_denied"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [connection signal="lives_value_changed" from="." to="LivesUIAnimator" method="play" binds= [&"flash"]]
+[connection signal="action_button_pressed" from="InfoBox" to="InfoBox" method="dismiss_info_box"]
+[connection signal="action_button_pressed" from="InfoBox" to="." method="emit_signal" binds= [&"open_shop_requested"]]
 [connection signal="global_signal_emitted" from="InfoBox/SpendLifeDeniedListener" to="InfoBox" method="display_info_box" flags=3]

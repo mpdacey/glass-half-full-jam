@@ -1097,6 +1097,7 @@ script = ExtResource("24_dfpoj")
 metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
 [node name="GameoverLayer" type="CanvasLayer" parent="UI"]
+visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="UI/GameoverLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -1111,7 +1112,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1080, 2280)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="CarFollowerOffset" type="Node3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
 
@@ -1424,6 +1425,7 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="button_down" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" method="set_self_modulate" binds= [Color(0.53, 0.53, 0.53, 1)]]
 [connection signal="button_up" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
 [connection signal="pressed" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="GameoverNodes/MainGameoverPlayer" method="play" binds= [&"quit"]]
+[connection signal="open_shop_requested" from="UI/GameoverLayer/LivesUI" to="GameoverNodes/MainGameoverPlayer" method="play" binds= [&"quit_to_shop"]]
 [connection signal="confetti_popped" from="UI/HighscoreConfettiUI" to="Interactables/HighscoreGatePositioner/HighscoreArea" method="set_monitoring" flags=3 binds= [false]]
 [connection signal="reset_called" from="GameoverNodes/ResetHandler" to="PlaySceneResetter" method="play" binds= [&"start"]]
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/MainGameoverPlayer" method="play" binds= [&"retry"]]

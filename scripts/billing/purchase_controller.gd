@@ -79,10 +79,12 @@ func _process_purchase(purchase: Dictionary) -> void:
 
 func _on_purchase_updated(response: Dictionary) -> void:
 	if response.response_code == BillingClient.BillingResponseCode.OK:
+		_print_error("Purchase update error", response.response_code, response.debug_message)
+		premium_purchase_failed.emit()
 		return
 	
-	_print_error("Purchase update error", response.response_code, response.debug_message)
-	premium_purchase_failed.emit()
+	for purchase : Dictionary in response.purchases:
+		_process_purchase(purchase)
 
 func _on_consume_purchase_response(response: Dictionary) -> void:
 	pass

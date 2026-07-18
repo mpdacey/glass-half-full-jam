@@ -3,6 +3,7 @@ class_name LivesUIController
 
 signal lives_value_changed()
 signal open_shop_requested()
+signal banish_requested()
 
 @export var lives_label : Label
 @export var regen_timer_label: Label
@@ -28,3 +29,6 @@ func set_regen_timer_label(seconds_left: int) -> void:
 
 func grab_values() -> void:
 	LivesSystem.emit_signals(true)
+
+func banish_lives() -> void:
+	banish_requested.emit()

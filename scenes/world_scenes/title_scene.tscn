@@ -1028,6 +1028,10 @@ layer = 0
 [node name="LivesCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer/LivesUI"]
 color = Color(1, 1, 1, 0)
 
+[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer/LivesUI"]
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
 [node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer"]
 script = ExtResource("19_0oqx5")
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
@@ -1084,6 +1088,7 @@ script = ExtResource("25_t3vcv")
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
 [connection signal="pressed" from="TitleCanvasLayer/PlayButtonMargin/PlayButton" to="TitleCanvasLayer/PlayButtonMargin/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
 [connection signal="open_shop_requested" from="TitleCanvasLayer/LivesUI" to="TitleSnackbar" method="press_snackbar_button" binds= [3]]
+[connection signal="target_toggled_on" from="TitleCanvasLayer/LivesUI/SnackbarButtonListener" to="TitleCanvasLayer/LivesUI" method="request_banish_lives"]
 [connection signal="target_toggled_off" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/PlayButtonMargin" method="hide"]
 [connection signal="target_toggled_off" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/ClickToPlayText" method="hide"]
 [connection signal="target_toggled_on" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/PlayButtonMargin" method="show"]

@@ -34,5 +34,6 @@ func set_regen_timer_label(seconds_left: int) -> void:
 func grab_values() -> void:
 	LivesSystem.emit_signals(true)
 
-func banish_lives() -> void:
-	banish_requested.emit()
+func request_banish_lives() -> void:
+	if PurchaseController.has_premium and visible:
+		banish_requested.emit()

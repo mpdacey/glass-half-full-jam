@@ -68,57 +68,58 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0.93244433, 0.13497174, 0.05580964, 1)]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LivesUIMargin/BanishPanel:modulate:a")
+tracks/1/path = NodePath("LivesUIMargin/BanishPanel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LivesUIMargin/BanishPanel:visible")
+tracks/2/path = NodePath("LivesUIMargin/FuelCanisterVector:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.0009999999),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("LivesUIMargin/FuelCanisterVector:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LivesUIMargin/LivesHBox:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LivesUIMargin/LivesHBox:modulate")
+tracks/4/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor1/Twinkle1:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor1/Twinkle1:scale")
+tracks/5/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor2/Twinkle2:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -130,7 +131,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor2/Twinkle2:scale")
+tracks/6/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor3/Twinkle3:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -142,19 +143,19 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor3/Twinkle3:scale")
+tracks/7/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor1/Twinkle1:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [0.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor1/Twinkle1:rotation")
+tracks/8/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor2/Twinkle2:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -166,7 +167,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor2/Twinkle2:rotation")
+tracks/9/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor3/Twinkle3:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -178,43 +179,43 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("LivesUIMargin/BanishPanel/TwinklesMargin/TwinklesHBox/TwinkleAnchor3/Twinkle3:rotation")
+tracks/10/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:border_width_right")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [52]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:border_width_right")
+tracks/11/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:border_width_left")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [52]
+"values": [67]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:border_width_left")
+tracks/12/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:expand_margin_top")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [67]
+"update": 0,
+"values": [47.0]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:expand_margin_top")
+tracks/13/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:expand_margin_bottom")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -226,7 +227,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:expand_margin_bottom")
+tracks/14/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:expand_margin_left")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -238,22 +239,10 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:expand_margin_left")
+tracks/15/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:expand_margin_right")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [47.0]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("LivesUIMargin/BanishPanel:theme_override_styles/panel:expand_margin_right")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -562,7 +551,7 @@ vertical_alignment = 2
 uppercase = true
 
 [node name="BanishPanel" type="Panel" parent="LivesUIMargin"]
-modulate = Color(1, 1, 1, 0)
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3q335")

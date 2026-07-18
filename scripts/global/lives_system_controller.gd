@@ -75,6 +75,10 @@ func _set_stored_regeneration_time(global_unix_time: int) -> void:
 	lives_save_controller.save_config_file()
 
 func _on_spend_life_request() -> void:
+	if PurchaseController.has_premium:
+		GlobalSignalBus.spend_life_granted.emit()
+		return
+	
 	if not _connected:
 		return
 	

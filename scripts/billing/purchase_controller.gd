@@ -8,6 +8,9 @@ const PREMIUM_ITEM_ID = "premium_mode"
 
 var billing_client: BillingClient
 var premium_price: String
+var has_premium: bool = false :
+	get():
+		return has_premium
 
 func _ready() -> void:
 	billing_client = BillingClient.new()
@@ -19,7 +22,7 @@ func _ready() -> void:
 	billing_client.on_purchase_updated.connect(_on_purchase_updated) # response: Dictionary
 	billing_client.consume_purchase_response.connect(_on_consume_purchase_response) # response: Dictionary
 	billing_client.acknowledge_purchase_response.connect(_on_acknowledge_purchase_response) # response: Dictionary
-
+	
 	billing_client.start_connection()
 
 func purchase_premium_button_pressed() -> void:
@@ -64,6 +67,7 @@ func _on_query_purchases_response(response: Dictionary) -> void:
 	else:
 		_print_error("Purchase query error", response.response_code, response.debug_message)
 		premium_status_found.emit(false)
+		has_premium = false
 
 func _process_purchase(purchase: Dictionary) -> void:
 	if not PREMIUM_ITEM_ID in purchase.product_ids:
@@ -74,8 +78,10 @@ func _process_purchase(purchase: Dictionary) -> void:
 			billing_client.acknowledge_purchase(purchase.purchase_token)
 		else:
 			premium_status_found.emit(true)
+			has_premium = true
 	else:
 		premium_status_found.emit(false)
+		has_premium = false
 
 func _on_purchase_updated(response: Dictionary) -> void:
 	if response.response_code == BillingClient.BillingResponseCode.OK:
@@ -99,8 +105,10 @@ func _on_acknowledge_purchase_response(response: Dictionary) -> void:
 func _handle_purchase_token(_purchase_token: String, purchase_successful: bool) -> void:
 	if purchase_successful:
 		premium_purchase_successful.emit()
+		has_premium = true
 	else:
 		premium_purchase_failed.emit()
+		has_premium = false
 
 func _print_error(custom_message: String, response_code: int, debug_message: String) -> void:
 		print(custom_message)

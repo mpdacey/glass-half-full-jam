@@ -9,6 +9,10 @@ signal banish_requested()
 @export var regen_timer_label: Label
 
 func _ready() -> void:
+	if PurchaseController.has_premium:
+		hide()
+		return
+	
 	LivesSystem.life_regenerated.connect(set_lives_label)
 	LivesSystem.timer_remaining_seconds.connect(set_regen_timer_label)
 	LivesSystem.initial_timer_set.connect(grab_values)

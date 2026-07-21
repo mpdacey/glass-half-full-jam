@@ -24,9 +24,6 @@ var current_status := InfoBoxStatus.INITIAL
 func _enter_tree() -> void:
 	info_box.add_user_signal(InfoBoxController.CHANGING_USER_SIGNAL)
 	info_box.connect(InfoBoxController.CHANGING_USER_SIGNAL, set_info_box)
-	
-	PurchaseController.premium_purchase_successful.connect(purchase_status_changed.bind(true))
-	PurchaseController.premium_purchase_failed.connect(purchase_status_changed.bind(false))
 
 func open_purchase_window() -> void:
 	current_status = InfoBoxStatus.INITIAL

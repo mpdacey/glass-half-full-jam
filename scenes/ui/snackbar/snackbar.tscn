@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctu6qrmvuu4q1"]
+[gd_scene load_steps=21 format=3 uid="uid://ctu6qrmvuu4q1"]
 
 [ext_resource type="Script" uid="uid://di1n0xuqv3bp6" path="res://scripts/snackbar/snackbar_ui_controller.gd" id="1_04j7s"]
 [ext_resource type="PackedScene" uid="uid://cugl55bmupwp7" path="res://scenes/ui/snackbar/snackbar_button.tscn" id="1_fdalm"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="2_vab1p"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="4_4v1fr"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="4_13qua"]
+[ext_resource type="Script" uid="uid://cntuihfxvma31" path="res://scripts/global/premium_signal_listener.gd" id="4_iohvl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1evc8"]
 content_margin_left = 60.0
@@ -294,6 +295,9 @@ theme_override_constants/separation = 6
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_vab1p")
 
+[node name="PremiumListener" type="Node" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton"]
+script = ExtResource("4_iohvl")
+
 [node name="SettingsButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_04j7s")
@@ -363,6 +367,8 @@ global_signal_name = &"snackbar_button_pressed"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" to="." method="_on_snackbar_button_pressed" binds= [3]]
+[connection signal="premium_purchase_successful" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton/PremiumListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" method="set_disabled" binds= [true]]
+[connection signal="premium_status_found" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton/PremiumListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" method="set_disabled"]
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/SettingsButton" to="." method="_on_snackbar_button_pressed" binds= [2]]
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" to="." method="_on_snackbar_button_pressed" binds= [0]]
 [connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" method="_on_button_toggled" binds= [false]]

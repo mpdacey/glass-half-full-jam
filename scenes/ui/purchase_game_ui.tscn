@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwoyqeu2rgpmk"]
+[gd_scene load_steps=8 format=3 uid="uid://dwoyqeu2rgpmk"]
 
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="1_4ml56"]
 [ext_resource type="Script" uid="uid://byg2ofwvgnj6p" path="res://scripts/billing/purchase_ui_controller.gd" id="1_idhgv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://b44elrk5ibvsw" path="res://resources/info_box_resources/purchase_content/purchase_pending_resource.tres" id="3_kmtw6"]
 [ext_resource type="Resource" uid="uid://cyy1xhltj76cc" path="res://resources/info_box_resources/purchase_content/purchase_successful_resource.tres" id="4_17jvu"]
 [ext_resource type="Resource" uid="uid://c5usbuurcexuq" path="res://resources/info_box_resources/purchase_content/purchase_failed_resource.tres" id="5_sr5pi"]
+[ext_resource type="Script" uid="uid://cntuihfxvma31" path="res://scripts/global/premium_signal_listener.gd" id="7_3gx47"]
 
 [node name="PurchaseGameUI" type="CanvasLayer" node_paths=PackedStringArray("info_box")]
 script = ExtResource("1_idhgv")
@@ -17,4 +18,10 @@ failed_resource = ExtResource("5_sr5pi")
 
 [node name="PurchaseQueryBox" parent="." instance=ExtResource("1_4ml56")]
 
+[node name="PremiumSignalListener" type="Node" parent="."]
+script = ExtResource("7_3gx47")
+metadata/_custom_type_script = "uid://cntuihfxvma31"
+
 [connection signal="action_button_pressed" from="PurchaseQueryBox" to="." method="_on_action_button_pressed"]
+[connection signal="premium_purchase_failed" from="PremiumSignalListener" to="." method="purchase_status_changed" binds= [false]]
+[connection signal="premium_purchase_successful" from="PremiumSignalListener" to="." method="purchase_status_changed" binds= [true]]

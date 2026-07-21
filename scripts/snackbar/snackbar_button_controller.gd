@@ -22,6 +22,9 @@ func _ready() -> void:
 func set_toggle(toggled_on: bool) -> void:
 	_on_button_toggled(toggled_on)
 
+func set_disabled(is_disabled: bool) -> void:
+	button_reference.disabled = is_disabled
+
 func _on_button_toggled(toggled_on: bool) -> void:
 	button_reference.set_pressed_no_signal(toggled_on)
 	_set_underline(toggled_on)

@@ -348,9 +348,6 @@ theme_override_constants/separation = 6
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_4v1fr")
 
-[node name="SnackBarButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton/SnackBarButtonMargin" index="0"]
-disabled = true
-
 [node name="LeaderboardButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_13qua")
@@ -372,8 +369,8 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/SettingsButton" method="_on_button_toggled" binds= [false]]
 [connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" method="_on_button_toggled" binds= [false]]
 [connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LeaderboardButton" method="_on_button_toggled" binds= [false]]
+[connection signal="ready" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" method="set_disabled" binds= [false]]
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" to="." method="_on_snackbar_button_pressed" binds= [4]]
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LeaderboardButton" to="." method="_on_snackbar_button_pressed" binds= [1]]
 
 [editable path="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton"]
-[editable path="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton"]

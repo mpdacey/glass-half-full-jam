@@ -84,7 +84,7 @@ func _process_purchase(purchase: Dictionary) -> void:
 		has_premium = false
 
 func _on_purchase_updated(response: Dictionary) -> void:
-	if response.response_code == BillingClient.BillingResponseCode.OK:
+	if response.response_code != BillingClient.BillingResponseCode.OK:
 		_print_error("Purchase update error", response.response_code, response.debug_message)
 		premium_purchase_failed.emit()
 		return

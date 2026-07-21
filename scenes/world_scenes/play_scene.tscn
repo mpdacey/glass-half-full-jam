@@ -46,7 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://bn3qvukddfjfg" path="res://scenes/ui/highscore_confetti_ui.tscn" id="36_ekkaj"]
 [ext_resource type="PackedScene" uid="uid://bvb01gwjc7pvc" path="res://scenes/ui/lives_ui.tscn" id="37_b3xk2"]
 [ext_resource type="Script" uid="uid://clrbnqvmohmjv" path="res://scripts/highscore_manager.gd" id="40_kd3qq"]
-[ext_resource type="Script" uid="uid://s6j3is1wgonh" path="res://scripts/established_internet_caller.gd" id="43_p8ryb"]
+[ext_resource type="Script" path="res://scripts/established_internet_caller.gd" id="43_p8ryb"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="44_edg7r"]
 
 [sub_resource type="Animation" id="Animation_kd3qq"]
@@ -1268,9 +1268,9 @@ script = ExtResource("36_brhdo")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
 [node name="LivesUI" parent="UI/GameoverLayer" instance=ExtResource("37_b3xk2")]
-visible = false
 
 [node name="LivesCanvasModulate" type="CanvasModulate" parent="UI/GameoverLayer/LivesUI"]
+color = Color(1, 1, 1, 0)
 
 [node name="HighscoreConfettiUI" parent="UI" instance=ExtResource("36_ekkaj")]
 
@@ -1303,7 +1303,6 @@ libraries = {
 
 [node name="CallableOnConnectionExecuter" type="Node" parent="GameoverNodes/MainGameoverPlayer"]
 script = ExtResource("43_p8ryb")
-metadata/_custom_type_script = "uid://s6j3is1wgonh"
 
 [node name="OnConnectionPlayer" type="AnimationPlayer" parent="GameoverNodes"]
 root_motion_local = true

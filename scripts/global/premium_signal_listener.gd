@@ -3,10 +3,14 @@ class_name PremiumSignalListener
 
 signal premium_purchase_successful
 signal premium_purchase_failed
+signal premium_purchase_pending
+signal premium_purchase_interrupted
 signal premium_status_found(has_premium: bool)
 
 func _enter_tree() -> void:
 	PurchaseController.premium_purchase_successful.connect(premium_purchase_successful.emit)
 	PurchaseController.premium_purchase_failed.connect(premium_purchase_failed.emit)
 	PurchaseController.premium_status_found.connect(premium_status_found.emit)
+	PurchaseController.premium_purchase_pending.connect(premium_purchase_pending.emit)
+	PurchaseController.premium_purchase_interrupted.connect(premium_purchase_interrupted.emit)
 	premium_status_found.emit(PurchaseController.has_premium)

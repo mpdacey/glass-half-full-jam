@@ -1,18 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwoyqeu2rgpmk"]
+[gd_scene load_steps=10 format=3 uid="uid://dwoyqeu2rgpmk"]
 
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="1_4ml56"]
 [ext_resource type="Script" uid="uid://byg2ofwvgnj6p" path="res://scripts/billing/purchase_ui_controller.gd" id="1_idhgv"]
 [ext_resource type="Resource" uid="uid://gm0adfhcfmh8" path="res://resources/info_box_resources/purchase_content/purchase_initial_resource.tres" id="2_nng5t"]
 [ext_resource type="Resource" uid="uid://b44elrk5ibvsw" path="res://resources/info_box_resources/purchase_content/purchase_pending_resource.tres" id="3_kmtw6"]
 [ext_resource type="Resource" uid="uid://cyy1xhltj76cc" path="res://resources/info_box_resources/purchase_content/purchase_successful_resource.tres" id="4_17jvu"]
+[ext_resource type="Resource" uid="uid://b64ijpksavd0o" path="res://resources/info_box_resources/purchase_content/purchase_slow_response_resource.tres" id="4_kmtw6"]
+[ext_resource type="Resource" uid="uid://vgmssevt5442" path="res://resources/info_box_resources/purchase_content/purchase_already_purchased_resource.tres" id="5_17jvu"]
 [ext_resource type="Resource" uid="uid://c5usbuurcexuq" path="res://resources/info_box_resources/purchase_content/purchase_failed_resource.tres" id="5_sr5pi"]
 [ext_resource type="Script" uid="uid://cntuihfxvma31" path="res://scripts/global/premium_signal_listener.gd" id="7_3gx47"]
 
-[node name="PurchaseGameUI" type="CanvasLayer" node_paths=PackedStringArray("info_box")]
+[node name="PurchaseGameUI" type="CanvasLayer" node_paths=PackedStringArray("info_box", "pending_timer")]
 script = ExtResource("1_idhgv")
 info_box = NodePath("PurchaseQueryBox")
+pending_timer = NodePath("PremiumPendingTimer")
 initial_resource = ExtResource("2_nng5t")
 pending_resource = ExtResource("3_kmtw6")
+slow_response_resource = ExtResource("4_kmtw6")
+interrupted_resource = ExtResource("5_17jvu")
 success_resource = ExtResource("4_17jvu")
 failed_resource = ExtResource("5_sr5pi")
 
@@ -22,6 +27,14 @@ failed_resource = ExtResource("5_sr5pi")
 script = ExtResource("7_3gx47")
 metadata/_custom_type_script = "uid://cntuihfxvma31"
 
+[node name="PremiumPendingTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+ignore_time_scale = true
+
 [connection signal="action_button_pressed" from="PurchaseQueryBox" to="." method="_on_action_button_pressed"]
 [connection signal="premium_purchase_failed" from="PremiumSignalListener" to="." method="purchase_status_changed" binds= [false]]
+[connection signal="premium_purchase_interrupted" from="PremiumSignalListener" to="." method="purchase_interrupted"]
+[connection signal="premium_purchase_pending" from="PremiumSignalListener" to="." method="purchase_pending"]
 [connection signal="premium_purchase_successful" from="PremiumSignalListener" to="." method="purchase_status_changed" binds= [true]]
+[connection signal="timeout" from="PremiumPendingTimer" to="." method="_on_premium_pending_timer_timeout"]

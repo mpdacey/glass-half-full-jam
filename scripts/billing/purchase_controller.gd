@@ -2,6 +2,8 @@ extends Node
 
 signal premium_purchase_successful
 signal premium_purchase_failed
+signal premium_purchase_pending
+signal premium_purchase_interrupted
 signal premium_status_found(has_premium: bool)
 
 const PREMIUM_ITEM_ID = "premium_mode"
@@ -11,6 +13,7 @@ var premium_price: String
 var has_premium: bool = false :
 	get():
 		return has_premium
+var _has_attempted_to_purchase : bool = true
 
 func _ready() -> void:
 	billing_client = BillingClient.new()
@@ -26,7 +29,14 @@ func _ready() -> void:
 	billing_client.start_connection()
 
 func purchase_premium_button_pressed() -> void:
-	billing_client.purchase(PREMIUM_ITEM_ID)
+	# Catch pending purchases
+	_query_purchases()
+	await billing_client.query_purchases_response
+	
+	if _has_attempted_to_purchase:
+		premium_purchase_interrupted.emit()
+	else:
+		billing_client.purchase(PREMIUM_ITEM_ID)
 
 func _on_connected() -> void:
 	print("Billing client connected succesfully")
@@ -73,12 +83,20 @@ func _process_purchase(purchase: Dictionary) -> void:
 	if not PREMIUM_ITEM_ID in purchase.product_ids:
 		return
 	
+	_has_attempted_to_purchase = (
+		purchase.purchase_state == BillingClient.PurchaseState.PURCHASED
+		or purchase.purchase_state == BillingClient.PurchaseState.PENDING
+	)
+		
 	if purchase.purchase_state == BillingClient.PurchaseState.PURCHASED:
 		if not purchase.is_acknowledged:
 			billing_client.acknowledge_purchase(purchase.purchase_token)
 		else:
 			premium_status_found.emit(true)
 			has_premium = true
+	elif purchase.purchase_state == BillingClient.PurchaseState.PENDING:
+		premium_purchase_pending.emit()
+		has_premium = false
 	else:
 		premium_status_found.emit(false)
 		has_premium = false
@@ -87,6 +105,7 @@ func _on_purchase_updated(response: Dictionary) -> void:
 	if response.response_code != BillingClient.BillingResponseCode.OK:
 		_print_error("Purchase update error", response.response_code, response.debug_message)
 		premium_purchase_failed.emit()
+		_has_attempted_to_purchase = false
 		return
 	
 	for purchase : Dictionary in response.purchases:

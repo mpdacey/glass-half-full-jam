@@ -10,10 +10,9 @@
 [ext_resource type="Resource" uid="uid://c5usbuurcexuq" path="res://resources/info_box_resources/purchase_content/purchase_failed_resource.tres" id="5_sr5pi"]
 [ext_resource type="Script" uid="uid://cntuihfxvma31" path="res://scripts/global/premium_signal_listener.gd" id="7_3gx47"]
 
-[node name="PurchaseGameUI" type="CanvasLayer" node_paths=PackedStringArray("info_box", "pending_timer")]
+[node name="PurchaseGameUI" type="CanvasLayer" node_paths=PackedStringArray("info_box")]
 script = ExtResource("1_idhgv")
 info_box = NodePath("PurchaseQueryBox")
-pending_timer = NodePath("PremiumPendingTimer")
 initial_resource = ExtResource("2_nng5t")
 pending_resource = ExtResource("3_kmtw6")
 slow_response_resource = ExtResource("4_kmtw6")
@@ -32,6 +31,8 @@ wait_time = 15.0
 one_shot = true
 ignore_time_scale = true
 
+[connection signal="processing_finished" from="." to="PremiumPendingTimer" method="stop"]
+[connection signal="processing_started" from="." to="PremiumPendingTimer" method="start"]
 [connection signal="action_button_pressed" from="PurchaseQueryBox" to="." method="_on_action_button_pressed"]
 [connection signal="premium_purchase_failed" from="PremiumSignalListener" to="." method="purchase_status_changed" binds= [false]]
 [connection signal="premium_purchase_interrupted" from="PremiumSignalListener" to="." method="purchase_interrupted"]

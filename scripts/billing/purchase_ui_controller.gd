@@ -15,7 +15,6 @@ enum InfoBoxStatus {
 }
 
 @export var info_box : InfoBoxController
-@export var pending_timer : Timer
 @export_group("Content Resources")
 @export var initial_resource: InfoBoxContentsResource
 @export var pending_resource: InfoBoxContentsResource

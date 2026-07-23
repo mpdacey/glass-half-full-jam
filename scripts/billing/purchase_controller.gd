@@ -13,7 +13,7 @@ var premium_price: String
 var has_premium: bool = false :
 	get():
 		return has_premium
-var _has_attempted_to_purchase : bool = true
+var _has_attempted_to_purchase : bool = false
 
 func _ready() -> void:
 	billing_client = BillingClient.new()
@@ -70,6 +70,7 @@ func _query_purchases() -> void:
 	billing_client.query_purchases(BillingClient.ProductType.INAPP)
 
 func _on_query_purchases_response(response: Dictionary) -> void:
+	_has_attempted_to_purchase = false
 	if response.response_code == BillingClient.BillingResponseCode.OK:
 		print("Purchase query successful")
 		for purchase: Dictionary in response.purchases:
@@ -105,7 +106,6 @@ func _on_purchase_updated(response: Dictionary) -> void:
 	if response.response_code != BillingClient.BillingResponseCode.OK:
 		_print_error("Purchase update error", response.response_code, response.debug_message)
 		premium_purchase_failed.emit()
-		_has_attempted_to_purchase = false
 		return
 	
 	for purchase : Dictionary in response.purchases:

@@ -18,10 +18,10 @@ enum SnackbarButtonType {
 var _current_pressed : SnackbarButtonType = SnackbarButtonType.DRIVE
 
 func lock_snackbox() -> void:
-	get_child(0).mouse_filter = Control.MouseFilter.MOUSE_FILTER_STOP
+	get_child(0).get_child(0).process_mode = Node.PROCESS_MODE_DISABLED
 
 func unlock_snackbox() -> void:
-	get_child(0).mouse_filter = Control.MouseFilter.MOUSE_FILTER_PASS
+	get_child(0).get_child(0).process_mode = Node.PROCESS_MODE_INHERIT
 
 func display() -> void:
 	animator.play(DISPLAY_KEY)

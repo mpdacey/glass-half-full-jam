@@ -7,4 +7,5 @@ script = ExtResource("1_6xncy")
 title = "Purchase Failed."
 body = "You will not be charged.
 Please try again later."
+can_dismiss = false
 metadata/_custom_type_script = "uid://dajftf844g2xs"

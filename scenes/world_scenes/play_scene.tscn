@@ -46,7 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://bn3qvukddfjfg" path="res://scenes/ui/highscore_confetti_ui.tscn" id="36_ekkaj"]
 [ext_resource type="PackedScene" uid="uid://bvb01gwjc7pvc" path="res://scenes/ui/lives_ui.tscn" id="37_b3xk2"]
 [ext_resource type="Script" uid="uid://clrbnqvmohmjv" path="res://scripts/highscore_manager.gd" id="40_kd3qq"]
-[ext_resource type="Script" uid="uid://s6j3is1wgonh" path="res://scripts/established_internet_caller.gd" id="43_p8ryb"]
+[ext_resource type="Script" path="res://scripts/established_internet_caller.gd" id="43_p8ryb"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="44_edg7r"]
 
 [sub_resource type="Animation" id="Animation_kd3qq"]
@@ -1097,6 +1097,7 @@ script = ExtResource("24_dfpoj")
 metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
 [node name="GameoverLayer" type="CanvasLayer" parent="UI"]
+visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="UI/GameoverLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -1111,7 +1112,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1080, 2280)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="CarFollowerOffset" type="Node3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport"]
 
@@ -1267,9 +1268,9 @@ script = ExtResource("36_brhdo")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
 [node name="LivesUI" parent="UI/GameoverLayer" instance=ExtResource("37_b3xk2")]
-visible = false
 
 [node name="LivesCanvasModulate" type="CanvasModulate" parent="UI/GameoverLayer/LivesUI"]
+color = Color(1, 1, 1, 0)
 
 [node name="HighscoreConfettiUI" parent="UI" instance=ExtResource("36_ekkaj")]
 
@@ -1302,7 +1303,6 @@ libraries = {
 
 [node name="CallableOnConnectionExecuter" type="Node" parent="GameoverNodes/MainGameoverPlayer"]
 script = ExtResource("43_p8ryb")
-metadata/_custom_type_script = "uid://s6j3is1wgonh"
 
 [node name="OnConnectionPlayer" type="AnimationPlayer" parent="GameoverNodes"]
 root_motion_local = true
@@ -1424,6 +1424,7 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="button_down" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" method="set_self_modulate" binds= [Color(0.53, 0.53, 0.53, 1)]]
 [connection signal="button_up" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
 [connection signal="pressed" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="GameoverNodes/MainGameoverPlayer" method="play" binds= [&"quit"]]
+[connection signal="open_shop_requested" from="UI/GameoverLayer/LivesUI" to="GameoverNodes/MainGameoverPlayer" method="play" binds= [&"quit_to_shop"]]
 [connection signal="confetti_popped" from="UI/HighscoreConfettiUI" to="Interactables/HighscoreGatePositioner/HighscoreArea" method="set_monitoring" flags=3 binds= [false]]
 [connection signal="reset_called" from="GameoverNodes/ResetHandler" to="PlaySceneResetter" method="play" binds= [&"start"]]
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/MainGameoverPlayer" method="play" binds= [&"retry"]]

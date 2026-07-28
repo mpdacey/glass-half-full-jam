@@ -7,6 +7,10 @@ signal connection_established
 var _current_status : GlobalConstants.TimeConnectionResponses = GlobalConstants.TimeConnectionResponses.NO_CONNECTION
 
 func check_connection() -> void:
+	if PurchaseController.has_premium:
+		_on_status_found(GlobalConstants.TimeConnectionResponses.OK)
+		return
+	
 	_current_status = GlobalConstants.TimeConnectionResponses.NO_CONNECTION
 	timeout_timer.start()
 	connecting_canvas.show()

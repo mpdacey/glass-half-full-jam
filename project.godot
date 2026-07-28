@@ -35,6 +35,7 @@ GlobalConstants="*res://scripts/global/global_constants.gd"
 MusicPlayer="*res://scenes/music_manager.tscn"
 LivesSystem="*res://scenes/lives_system.tscn"
 ScreenshotGrabber="*res://scripts/editor/screenshot_grabber.gd"
+PurchaseController="*res://scripts/billing/purchase_controller.gd"
 
 [debug]
 
@@ -50,7 +51,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotAndroidInAppUpdate/plugin.cfg", "res://addons/GodotPlayGameServices/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotAndroidInAppUpdate/plugin.cfg", "res://addons/GodotGooglePlayBilling/plugin.cfg", "res://addons/GodotPlayGameServices/plugin.cfg")
 
 [input]
 

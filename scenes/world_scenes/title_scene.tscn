@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene load_steps=38 format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="2_pyl7j"]
@@ -22,7 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://bvb01gwjc7pvc" path="res://scenes/ui/lives_ui.tscn" id="16_n41ns"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="17_bi3h3"]
 [ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="19_0oqx5"]
+[ext_resource type="PackedScene" uid="uid://dwoyqeu2rgpmk" path="res://scenes/ui/purchase_game_ui.tscn" id="20_wsrf4"]
 [ext_resource type="PackedScene" uid="uid://ctu6qrmvuu4q1" path="res://scenes/ui/snackbar/snackbar.tscn" id="22_qk2ae"]
+[ext_resource type="Script" uid="uid://c2iwrbcd44v43" path="res://scripts/snackbar_button_auto_selector.gd" id="25_t3vcv"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
 _data = {
@@ -117,7 +119,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:visible")
+tracks/5/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -309,7 +311,7 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:disabled")
+tracks/21/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:disabled")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -317,6 +319,18 @@ tracks/21/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("ColorRect:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_7rdyk"]
@@ -445,10 +459,21 @@ tracks/9/keys = {
 "method": &"execute_method_on_connection_by_node"
 }]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_n41ns"]
 resource_name = "initial"
-length = 2.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -501,7 +526,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:disabled")
+tracks/4/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -517,11 +542,25 @@ tracks/5/path = NodePath("TitleSnackbar")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.7),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"display"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleSnackbar/SnackbarButtonAutoSelector")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_auto_button"
 }]
 }
 
@@ -567,7 +606,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:visible")
+tracks/3/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -918,7 +957,7 @@ text = "In App Update 1.2"
 label_settings = SubResource("LabelSettings_t3vcv")
 script = ExtResource("13_wsrf4")
 
-[node name="MarginContainer" type="MarginContainer" parent="TitleCanvasLayer"]
+[node name="PlayButtonMargin" type="MarginContainer" parent="TitleCanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -931,13 +970,13 @@ theme_override_constants/margin_top = 96
 theme_override_constants/margin_right = 96
 theme_override_constants/margin_bottom = 96
 
-[node name="PlayButton" type="Button" parent="TitleCanvasLayer/MarginContainer"]
+[node name="PlayButton" type="Button" parent="TitleCanvasLayer/PlayButtonMargin"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_mode = 1
 disabled = true
 
-[node name="SpendLifeRequestEmitter" type="Node" parent="TitleCanvasLayer/MarginContainer/PlayButton"]
+[node name="SpendLifeRequestEmitter" type="Node" parent="TitleCanvasLayer/PlayButtonMargin/PlayButton"]
 script = ExtResource("8_6ppm8")
 global_signal_name = &"spend_life_requested"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
@@ -989,12 +1028,27 @@ layer = 0
 [node name="LivesCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer/LivesUI"]
 color = Color(1, 1, 1, 0)
 
+[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer/LivesUI"]
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer"]
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
 [node name="LeaderboardsUI" parent="." instance=ExtResource("15_xq2ei")]
 visible = false
 
 [node name="SnackbarButtonListener" type="Node" parent="LeaderboardsUI"]
 script = ExtResource("19_0oqx5")
 target_button_type = 1
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="PurchaseGameUI" parent="." instance=ExtResource("20_wsrf4")]
+
+[node name="SnackbarButtonListener" type="Node" parent="PurchaseGameUI"]
+script = ExtResource("19_0oqx5")
+target_button_type = 3
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
 [node name="MusicManager" type="Node" parent="."]
@@ -1028,12 +1082,27 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 
 [node name="TitleSnackbar" parent="." instance=ExtResource("22_qk2ae")]
 
+[node name="SnackbarButtonAutoSelector" type="Node" parent="TitleSnackbar"]
+script = ExtResource("25_t3vcv")
+
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
-[connection signal="pressed" from="TitleCanvasLayer/MarginContainer/PlayButton" to="TitleCanvasLayer/MarginContainer/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
+[connection signal="pressed" from="TitleCanvasLayer/PlayButtonMargin/PlayButton" to="TitleCanvasLayer/PlayButtonMargin/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
+[connection signal="open_shop_requested" from="TitleCanvasLayer/LivesUI" to="TitleSnackbar" method="press_snackbar_button" binds= [3]]
+[connection signal="target_toggled_on" from="TitleCanvasLayer/LivesUI/SnackbarButtonListener" to="TitleCanvasLayer/LivesUI" method="request_banish_lives"]
+[connection signal="target_toggled_off" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/PlayButtonMargin" method="hide"]
+[connection signal="target_toggled_off" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/ClickToPlayText" method="hide"]
+[connection signal="target_toggled_on" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/PlayButtonMargin" method="show"]
+[connection signal="target_toggled_on" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/ClickToPlayText" method="show"]
 [connection signal="target_toggled_off" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="close_leaderboards"]
 [connection signal="target_toggled_on" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="open_leaderboards"]
+[connection signal="processing_finished" from="PurchaseGameUI" to="TitleSnackbar" method="unlock_snackbox"]
+[connection signal="processing_started" from="PurchaseGameUI" to="TitleSnackbar" method="lock_snackbox"]
+[connection signal="purchase_successful_button_pressed" from="PurchaseGameUI" to="TitleSnackbar" method="press_snackbar_button" binds= [0]]
+[connection signal="target_toggled_off" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="close_purchase_window"]
+[connection signal="target_toggled_on" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="open_purchase_window"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
 [connection signal="target_toggled_off" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [4]]
 [connection signal="target_toggled_on" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [0]]
+[connection signal="auto_button_pressed" from="TitleSnackbar/SnackbarButtonAutoSelector" to="TitleSnackbar" method="press_snackbar_button"]
 
 [editable path="Paths/PolicePath/PoliceCore"]

@@ -82,9 +82,9 @@ func _on_spend_life_request() -> void:
 	if not _connected:
 		return
 	
-	_connected = false
 	if can_spend_life():
 		spend_life()
+		_connected = false
 		GlobalSignalBus.spend_life_granted.emit()
 	else:
 		GlobalSignalBus.spend_life_denied.emit()

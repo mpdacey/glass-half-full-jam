@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dpqdulph3whly"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dpqdulph3whly"]
 
 [ext_resource type="Shader" uid="uid://blrajoc6cbixh" path="res://shader/warning_canister_shader.gdshader" id="1_e0bxo"]
 [ext_resource type="Texture2D" uid="uid://c2t4hlwo6cn28" path="res://textures/high-fuel-warning.png" id="2_yir1h"]

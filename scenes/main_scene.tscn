@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kaxdymo06lyx"]
+[gd_scene format=3 uid="uid://kaxdymo06lyx"]
 
 [ext_resource type="PackedScene" uid="uid://b210kvlm3hw7d" path="res://scenes/world_scenes/shader_compiler_scene.tscn" id="1_gubc5"]
 [ext_resource type="Script" uid="uid://dixoyaeceooim" path="res://scripts/scene_changer.gd" id="1_pu3yx"]
@@ -7,42 +7,42 @@
 [ext_resource type="PackedScene" uid="uid://dggy33nqsvre7" path="res://scenes/play_services_initialiser.tscn" id="5_gubc5"]
 [ext_resource type="PackedScene" uid="uid://4t0kkknym6bd" path="res://scenes/in_app_update_nodes.tscn" id="6_rt2n2"]
 
-[node name="MainScene" type="Node3D"]
+[node name="MainScene" type="Node3D" unique_id=321168930]
 
-[node name="DynamicSceneContainer" type="Node" parent="."]
+[node name="DynamicSceneContainer" type="Node" parent="." unique_id=1311557001]
 
-[node name="ShaderCompilerScene" parent="DynamicSceneContainer" instance=ExtResource("1_gubc5")]
+[node name="ShaderCompilerScene" parent="DynamicSceneContainer" unique_id=74865934 instance=ExtResource("1_gubc5")]
 
-[node name="TerrainScene" parent="." instance=ExtResource("2_7ykc4")]
+[node name="TerrainScene" parent="." unique_id=1040943644 instance=ExtResource("2_7ykc4")]
 
-[node name="SceneChanger" type="Node" parent="." node_paths=PackedStringArray("scene_container")]
+[node name="SceneChanger" type="Node" parent="." unique_id=948987884 node_paths=PackedStringArray("scene_container")]
 script = ExtResource("1_pu3yx")
 scene_container = NodePath("../DynamicSceneContainer")
 metadata/_custom_type_script = "uid://dixoyaeceooim"
 
-[node name="RequestPlaySceneListener" type="Node" parent="SceneChanger"]
+[node name="RequestPlaySceneListener" type="Node" parent="SceneChanger" unique_id=1555619597]
 script = ExtResource("4_pu3yx")
 global_signal_name = &"scene_change_request_play"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="RequestTitleSceneListener" type="Node" parent="SceneChanger"]
+[node name="RequestTitleSceneListener" type="Node" parent="SceneChanger" unique_id=228068039]
 script = ExtResource("4_pu3yx")
 global_signal_name = &"scene_change_request_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="LoadedPlaySceneEmitter" type="Node" parent="SceneChanger"]
+[node name="LoadedPlaySceneEmitter" type="Node" parent="SceneChanger" unique_id=926436400]
 script = ExtResource("4_pu3yx")
 global_signal_name = &"scene_changed_play"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="LoadedTitleSceneEmitter" type="Node" parent="SceneChanger"]
+[node name="LoadedTitleSceneEmitter" type="Node" parent="SceneChanger" unique_id=798917397]
 script = ExtResource("4_pu3yx")
 global_signal_name = &"scene_changed_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="PlayServicesInitialiser" parent="." instance=ExtResource("5_gubc5")]
+[node name="PlayServicesInitialiser" parent="." unique_id=757641058 instance=ExtResource("5_gubc5")]
 
-[node name="InAppUpdateNodes" parent="." instance=ExtResource("6_rt2n2")]
+[node name="InAppUpdateNodes" parent="." unique_id=20294083 instance=ExtResource("6_rt2n2")]
 
 [connection signal="play_scene_loaded" from="SceneChanger" to="SceneChanger/LoadedPlaySceneEmitter" method="emit_global_signal"]
 [connection signal="title_scene_loaded" from="SceneChanger" to="SceneChanger/LoadedTitleSceneEmitter" method="emit_global_signal"]

@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://dr5pu6etkfqhu" path="res://scenes/ui/options/options_toggle_light.tscn" id="3_wxlxm"]
 [ext_resource type="StyleBox" uid="uid://yx1i00y08w01" path="res://scenes/ui/options/lit_red_base.tres" id="5_wxlxm"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wuery"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfo8g"]
 
 [node name="OptionsButton" type="HBoxContainer" unique_id=430657974 node_paths=PackedStringArray("button", "on_toggle_light", "off_toggle_light")]
 size_flags_horizontal = 6
+mouse_behavior_recursive = 2
 theme_override_constants/separation = 40
 script = ExtResource("1_8jivv")
 button = NodePath("SnackBarButtonMargin")
@@ -17,12 +18,13 @@ off_toggle_light = NodePath("ToggleLightsVBox/ToggleLightOff")
 
 [node name="SnackBarButtonMargin" parent="." unique_id=153830145 instance=ExtResource("1_b2ma0")]
 layout_mode = 2
+connect_button_group = false
 
 [node name="SnackBarIconUnderlineMargin" parent="SnackBarButtonMargin/SnackBarIconMargin/SnackBarIconVBox" index="1"]
 visible = false
 
 [node name="SnackBarButton" parent="SnackBarButtonMargin/SnackBarButtonMargin" index="0"]
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_wuery")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfo8g")
 
 [node name="ToggleLightsVBox" type="VBoxContainer" parent="." unique_id=1574540438]
 layout_mode = 2
@@ -36,5 +38,8 @@ layout_mode = 2
 [node name="ToggleLightOff" parent="ToggleLightsVBox" unique_id=937251563 instance=ExtResource("3_wxlxm")]
 layout_mode = 2
 lit_stylebox = ExtResource("5_wxlxm")
+
+[connection signal="snackbar_button_pressed" from="SnackBarButtonMargin" to="." method="set_toggle" binds= [true]]
+[connection signal="snackbar_button_released" from="SnackBarButtonMargin" to="." method="set_toggle" binds= [false]]
 
 [editable path="SnackBarButtonMargin"]

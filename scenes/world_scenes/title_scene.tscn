@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="2_pyl7j"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="17_bi3h3"]
 [ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="19_0oqx5"]
 [ext_resource type="PackedScene" uid="uid://dwoyqeu2rgpmk" path="res://scenes/ui/purchase_game_ui.tscn" id="20_wsrf4"]
+[ext_resource type="PackedScene" uid="uid://kix35uopnopg" path="res://scenes/ui/options_ui.tscn" id="21_pbe57"]
 [ext_resource type="PackedScene" uid="uid://ctu6qrmvuu4q1" path="res://scenes/ui/snackbar/snackbar.tscn" id="22_qk2ae"]
 [ext_resource type="Script" uid="uid://c2iwrbcd44v43" path="res://scripts/snackbar_button_auto_selector.gd" id="25_t3vcv"]
 
@@ -803,56 +804,56 @@ font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[node name="TitleScene" type="Node3D"]
+[node name="TitleScene" type="Node3D" unique_id=974034880]
 
-[node name="Paths" type="Node3D" parent="."]
+[node name="Paths" type="Node3D" parent="." unique_id=1562818907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
 
-[node name="OngoingLanePath" type="Path3D" parent="Paths"]
+[node name="OngoingLanePath" type="Path3D" parent="Paths" unique_id=1100367976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 2.84618)
 curve = SubResource("Curve3D_c3e3h")
 
-[node name="TrafficCore" parent="Paths/OngoingLanePath" instance=ExtResource("1_4rr2b")]
+[node name="TrafficCore" parent="Paths/OngoingLanePath" unique_id=2009241879 instance=ExtResource("1_4rr2b")]
 transform = Transform3D(0.07743621, 0, -0.99682385, 0, 0.9999627, 0, 0.99682385, 0, 0.07743621, 146.71655, 0, 5.551287)
 progress = 90.43472
 
-[node name="IncomingLanePath" type="Path3D" parent="Paths"]
+[node name="IncomingLanePath" type="Path3D" parent="Paths" unique_id=1031694824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, -2.6153383)
 curve = SubResource("Curve3D_gf765")
 
-[node name="TrafficCore" parent="Paths/IncomingLanePath" instance=ExtResource("2_yql1r")]
+[node name="TrafficCore" parent="Paths/IncomingLanePath" unique_id=1280400313 instance=ExtResource("2_yql1r")]
 transform = Transform3D(-4.3703796e-08, 0, 0.9998263, 0, 1, 0, -0.9998263, 0, -4.3703796e-08, 199.955, 0, -0.08)
 
-[node name="TrafficCore2" parent="Paths/IncomingLanePath" instance=ExtResource("3_6ppm8")]
+[node name="TrafficCore2" parent="Paths/IncomingLanePath" unique_id=1392269383 instance=ExtResource("3_6ppm8")]
 transform = Transform3D(-4.370395e-08, 0, 0.99982977, 0, 1, 0, -0.99982977, 0, -4.370395e-08, 199.955, 0, -0.08)
 
-[node name="TrafficCore3" parent="Paths/IncomingLanePath" instance=ExtResource("4_bre4b")]
+[node name="TrafficCore3" parent="Paths/IncomingLanePath" unique_id=1277558826 instance=ExtResource("4_bre4b")]
 transform = Transform3D(-4.3704166e-08, 0, 0.9998348, 0, 1, 0, -0.9998348, 0, -4.3704166e-08, 199.955, 0, -0.08)
 
-[node name="DollyPath" type="Path3D" parent="Paths"]
+[node name="DollyPath" type="Path3D" parent="Paths" unique_id=251119349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.115, 0.1, 0.082)
 curve = SubResource("Curve3D_4rr2b")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Paths/DollyPath"]
+[node name="PathFollow3D" type="PathFollow3D" parent="Paths/DollyPath" unique_id=1318974089]
 transform = Transform3D(1.4000007, 0, 0, 0, 1.2, 0, 0, 0, 1.8000053, 162.18367, 0, 4.9210906)
 progress = 100.92672
 rotation_mode = 0
 tilt_enabled = false
 
-[node name="Camera3D" type="Camera3D" parent="Paths/DollyPath/PathFollow3D"]
+[node name="Camera3D" type="Camera3D" parent="Paths/DollyPath/PathFollow3D" unique_id=798104694]
 transform = Transform3D(0.37044072, -0.4918062, 0.34993887, 0, 0.5984385, 0.39987633, -0.5928291, -0.30731463, 0.21866608, 5.734, 1.316, 1.261)
 fov = 48.5
 
-[node name="CarPath" type="Path3D" parent="Paths"]
+[node name="CarPath" type="Path3D" parent="Paths" unique_id=379259518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10000001, 0.082)
 curve = SubResource("Curve3D_c3e3h")
 debug_custom_color = Color(0.55, 0.41708338, 0.23100002, 1)
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Paths/CarPath"]
+[node name="PathFollow3D" type="PathFollow3D" parent="Paths/CarPath" unique_id=486095210]
 transform = Transform3D(0.2129375, 0, -1.3331373, 0, 1.35, 0, 1.3331373, 0, 0.2129375, 156.97745, 0, 4.3031716)
 progress = 100.774155
 
-[node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D"]
+[node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D" unique_id=1530341443]
 transform = Transform3D(-1.0000001, 0, -1.509958e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1, 0, 0, 0)
 layers = 2
 mesh = ExtResource("5_uaep1")
@@ -863,13 +864,11 @@ surface_material_override/2 = ExtResource("2_pyl7j")
 surface_material_override/3 = ExtResource("2_pyl7j")
 surface_material_override/4 = ExtResource("2_pyl7j")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports"]
-libraries = {
-&"": ExtResource("7_o7kwv")
-}
-autoplay = "putt"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports" unique_id=1046586961]
+libraries/ = ExtResource("7_o7kwv")
+autoplay = &"putt"
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Paths/CarPath/PathFollow3D/SedanSports"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Paths/CarPath/PathFollow3D/SedanSports" unique_id=1655849690]
 stream = ExtResource("5_ofksa")
 volume_db = -6.0
 unit_size = 6.26
@@ -883,12 +882,12 @@ attenuation_filter_cutoff_hz = 8803.0
 attenuation_filter_db = 0.0
 parameters/looping = true
 
-[node name="PolicePath" type="Path3D" parent="Paths"]
+[node name="PolicePath" type="Path3D" parent="Paths" unique_id=1436197362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.674988, 0.10000001, 0.082)
 curve = SubResource("Curve3D_bmxmj")
 debug_custom_color = Color(0.44550002, 0.23100002, 0.66, 1)
 
-[node name="PoliceCore" parent="Paths/PolicePath" instance=ExtResource("9_bmxmj")]
+[node name="PoliceCore" parent="Paths/PolicePath" unique_id=294529092 instance=ExtResource("9_bmxmj")]
 transform = Transform3D(-0.078318626, 0, -0.84134996, 0, 0.8449875, 0, 0.84134996, 0, -0.078318626, 56.723, 0, 0)
 
 [node name="BumperRedSiren" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" index="2"]
@@ -897,44 +896,41 @@ no_depth_test = false
 [node name="BumperBlueSiren" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" index="3"]
 no_depth_test = false
 
-[node name="AnimationPlayers" type="Node" parent="."]
+[node name="AnimationPlayer" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" index="4"]
+autoplay = &"strobe_lights"
 
-[node name="TransitionPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+[node name="AnimationPlayers" type="Node" parent="." unique_id=1269056083]
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="AnimationPlayers" unique_id=1647780887]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_hiwto")
-}
-autoplay = "initial"
+libraries/ = SubResource("AnimationLibrary_hiwto")
+autoplay = &"initial"
 
-[node name="LoadPlaySceneEmitter" type="Node" parent="AnimationPlayers/TransitionPlayer"]
+[node name="LoadPlaySceneEmitter" type="Node" parent="AnimationPlayers/TransitionPlayer" unique_id=157483322]
 script = ExtResource("8_6ppm8")
 global_signal_name = &"scene_change_request_play"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="SpendLifeGrantedListener" type="Node" parent="AnimationPlayers/TransitionPlayer"]
+[node name="SpendLifeGrantedListener" type="Node" parent="AnimationPlayers/TransitionPlayer" unique_id=1450303080]
 script = ExtResource("8_6ppm8")
 global_signal_name = &"spend_life_granted"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="MethodOnConnectionExecuter" type="Node" parent="AnimationPlayers/TransitionPlayer"]
+[node name="MethodOnConnectionExecuter" type="Node" parent="AnimationPlayers/TransitionPlayer" unique_id=973470067]
 script = ExtResource("11_08vub")
 
-[node name="InternetReadyPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+[node name="InternetReadyPlayer" type="AnimationPlayer" parent="AnimationPlayers" unique_id=1635337059]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_hiwto")
-}
+libraries/ = SubResource("AnimationLibrary_hiwto")
 
-[node name="SceneLoopPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+[node name="SceneLoopPlayer" type="AnimationPlayer" parent="AnimationPlayers" unique_id=1357385871]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_hiwto")
-}
-autoplay = "title"
+libraries/ = SubResource("AnimationLibrary_hiwto")
+autoplay = &"title"
 
-[node name="TitleCanvasLayer" type="CanvasLayer" parent="."]
+[node name="TitleCanvasLayer" type="CanvasLayer" parent="." unique_id=699370989]
 
-[node name="VersionNameMargin" type="MarginContainer" parent="TitleCanvasLayer"]
+[node name="VersionNameMargin" type="MarginContainer" parent="TitleCanvasLayer" unique_id=1271655768]
 modulate = Color(1, 1, 1, 0)
 offset_right = 138.0
 offset_bottom = 23.0
@@ -944,11 +940,11 @@ mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="VersionNameAnchor" type="Control" parent="TitleCanvasLayer/VersionNameMargin"]
+[node name="VersionNameAnchor" type="Control" parent="TitleCanvasLayer/VersionNameMargin" unique_id=939434639]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="VersionNameLabel" type="Label" parent="TitleCanvasLayer/VersionNameMargin/VersionNameAnchor"]
+[node name="VersionNameLabel" type="Label" parent="TitleCanvasLayer/VersionNameMargin/VersionNameAnchor" unique_id=1244410141]
 layout_mode = 0
 offset_right = 260.0
 offset_bottom = 36.0
@@ -957,7 +953,7 @@ text = "In App Update 1.2"
 label_settings = SubResource("LabelSettings_t3vcv")
 script = ExtResource("13_wsrf4")
 
-[node name="PlayButtonMargin" type="MarginContainer" parent="TitleCanvasLayer"]
+[node name="PlayButtonMargin" type="MarginContainer" parent="TitleCanvasLayer" unique_id=2103318651]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -970,18 +966,18 @@ theme_override_constants/margin_top = 96
 theme_override_constants/margin_right = 96
 theme_override_constants/margin_bottom = 96
 
-[node name="PlayButton" type="Button" parent="TitleCanvasLayer/PlayButtonMargin"]
+[node name="PlayButton" type="Button" parent="TitleCanvasLayer/PlayButtonMargin" unique_id=1932922083]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_mode = 1
 disabled = true
 
-[node name="SpendLifeRequestEmitter" type="Node" parent="TitleCanvasLayer/PlayButtonMargin/PlayButton"]
+[node name="SpendLifeRequestEmitter" type="Node" parent="TitleCanvasLayer/PlayButtonMargin/PlayButton" unique_id=1276157286]
 script = ExtResource("8_6ppm8")
 global_signal_name = &"spend_life_requested"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="Logo" type="TextureRect" parent="TitleCanvasLayer"]
+[node name="Logo" type="TextureRect" parent="TitleCanvasLayer" unique_id=687963834]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
@@ -997,7 +993,7 @@ texture = ExtResource("4_pyl7j")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="ClickToPlayText" type="Label" parent="TitleCanvasLayer"]
+[node name="ClickToPlayText" type="Label" parent="TitleCanvasLayer" unique_id=1688510036]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 7
 anchor_left = 0.5
@@ -1015,46 +1011,54 @@ text = "Tap to play"
 label_settings = SubResource("LabelSettings_7rdyk")
 horizontal_alignment = 1
 
-[node name="PlatformDependantTextSetter" type="Node" parent="TitleCanvasLayer/ClickToPlayText"]
+[node name="PlatformDependantTextSetter" type="Node" parent="TitleCanvasLayer/ClickToPlayText" unique_id=721592263]
 script = ExtResource("13_via76")
 mobile_text = "Tap to play"
 desktop_text = "Click to play"
 
-[node name="TitleCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer"]
+[node name="TitleCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer" unique_id=123439303]
 
-[node name="LivesUI" parent="TitleCanvasLayer" instance=ExtResource("16_n41ns")]
+[node name="LivesUI" parent="TitleCanvasLayer" unique_id=1645520818 instance=ExtResource("16_n41ns")]
 layer = 0
 
-[node name="LivesCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer/LivesUI"]
+[node name="LivesCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer/LivesUI" unique_id=2126641906]
 color = Color(1, 1, 1, 0)
 
-[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer/LivesUI"]
+[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer/LivesUI" unique_id=156379386]
 script = ExtResource("19_0oqx5")
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
-[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer"]
+[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer" unique_id=1235881775]
 script = ExtResource("19_0oqx5")
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
-[node name="LeaderboardsUI" parent="." instance=ExtResource("15_xq2ei")]
+[node name="LeaderboardsUI" parent="." unique_id=1404565248 instance=ExtResource("15_xq2ei")]
 visible = false
 
-[node name="SnackbarButtonListener" type="Node" parent="LeaderboardsUI"]
+[node name="SnackbarButtonListener" type="Node" parent="LeaderboardsUI" unique_id=224288237]
 script = ExtResource("19_0oqx5")
 target_button_type = 1
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
-[node name="PurchaseGameUI" parent="." instance=ExtResource("20_wsrf4")]
+[node name="PurchaseGameUI" parent="." unique_id=712328124 instance=ExtResource("20_wsrf4")]
 
-[node name="SnackbarButtonListener" type="Node" parent="PurchaseGameUI"]
+[node name="SnackbarButtonListener" type="Node" parent="PurchaseGameUI" unique_id=1532924519]
 script = ExtResource("19_0oqx5")
 target_button_type = 3
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
-[node name="MusicManager" type="Node" parent="."]
+[node name="OptionsUI" parent="." unique_id=1528372206 instance=ExtResource("21_pbe57")]
+visible = false
+
+[node name="SnackbarButtonListener" type="Node" parent="OptionsUI" unique_id=391441925]
+script = ExtResource("19_0oqx5")
+target_button_type = 2
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="MusicManager" type="Node" parent="." unique_id=866031560]
 script = ExtResource("10_1ot34")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1938606060]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -1064,25 +1068,25 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AndroidBackListener" type="Node" parent="."]
+[node name="AndroidBackListener" type="Node" parent="." unique_id=744324680]
 script = ExtResource("14_ycxqd")
 bind_close_application = true
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
-[node name="SnackbarButtonListener" type="Node" parent="AndroidBackListener"]
+[node name="SnackbarButtonListener" type="Node" parent="AndroidBackListener" unique_id=801252474]
 process_mode = 3
 script = ExtResource("19_0oqx5")
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
-[node name="PlayServicesNodes" type="Node" parent="."]
+[node name="PlayServicesNodes" type="Node" parent="." unique_id=1374731571]
 
-[node name="PlayGamesLeaderboardsClient" type="Node" parent="PlayServicesNodes"]
+[node name="PlayGamesLeaderboardsClient" type="Node" parent="PlayServicesNodes" unique_id=764037678]
 script = ExtResource("17_bi3h3")
 metadata/_custom_type_script = "uid://cafyylq66psjo"
 
-[node name="TitleSnackbar" parent="." instance=ExtResource("22_qk2ae")]
+[node name="TitleSnackbar" parent="." unique_id=1090494315 instance=ExtResource("22_qk2ae")]
 
-[node name="SnackbarButtonAutoSelector" type="Node" parent="TitleSnackbar"]
+[node name="SnackbarButtonAutoSelector" type="Node" parent="TitleSnackbar" unique_id=1432582934]
 script = ExtResource("25_t3vcv")
 
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
@@ -1100,6 +1104,8 @@ script = ExtResource("25_t3vcv")
 [connection signal="purchase_successful_button_pressed" from="PurchaseGameUI" to="TitleSnackbar" method="press_snackbar_button" binds= [0]]
 [connection signal="target_toggled_off" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="close_purchase_window"]
 [connection signal="target_toggled_on" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="open_purchase_window"]
+[connection signal="target_toggled_off" from="OptionsUI/SnackbarButtonListener" to="OptionsUI" method="hide"]
+[connection signal="target_toggled_on" from="OptionsUI/SnackbarButtonListener" to="OptionsUI" method="show"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
 [connection signal="target_toggled_off" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [4]]
 [connection signal="target_toggled_on" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [0]]

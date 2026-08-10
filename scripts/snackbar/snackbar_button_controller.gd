@@ -5,6 +5,7 @@ signal snackbar_button_pressed
 signal snackbar_button_released
 
 @export var button_icon: Texture2D
+@export var connect_button_group : bool = true
 @export_group("References")
 @export var button_icon_node: TextureRect
 @export var button_reference: Button
@@ -15,7 +16,8 @@ var _unlit_underline_stylebox: StyleBoxFlat = preload("uid://bvnq8hjtkstin")
 
 func _ready() -> void:
 	set_button_icon(button_icon)
-	button_reference.button_group = _button_group
+	if connect_button_group:
+		button_reference.button_group = _button_group
 
 func set_toggle(toggled_on: bool) -> void:
 	_on_button_toggled(toggled_on)

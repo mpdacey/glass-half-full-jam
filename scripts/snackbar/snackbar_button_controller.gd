@@ -14,9 +14,7 @@ var _lit_underline_stylebox: StyleBoxFlat = preload("uid://bfjnouwh84kb")
 var _unlit_underline_stylebox: StyleBoxFlat = preload("uid://bvnq8hjtkstin")
 
 func _ready() -> void:
-	if button_icon != null:
-		button_icon_node.texture = button_icon
-	
+	set_button_icon(button_icon)
 	button_reference.button_group = _button_group
 
 func set_toggle(toggled_on: bool) -> void:
@@ -24,6 +22,10 @@ func set_toggle(toggled_on: bool) -> void:
 
 func set_disabled(is_disabled: bool) -> void:
 	button_reference.disabled = is_disabled
+
+func set_button_icon(texture: Texture2D) -> void:
+	if texture != null:
+		button_icon_node.texture = texture
 
 func _on_button_toggled(toggled_on: bool) -> void:
 	button_reference.set_pressed_no_signal(toggled_on)

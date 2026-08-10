@@ -49,8 +49,9 @@ font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
 bg_color = Color(0.2, 0.2, 0.2, 1)
 expand_margin_top = 16.0
 
-[node name="OptionsUI" type="CanvasLayer" unique_id=1528372206]
+[node name="OptionsUI" type="CanvasLayer" unique_id=1528372206 node_paths=PackedStringArray("display_label")]
 script = ExtResource("1_6a7a8")
+display_label = NodePath("OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/DisplayMargin/DisplayPanel/DisplayTextMargin/DisplayTextLabel")
 
 [node name="Mockup" type="TextureRect" parent="." unique_id=1758811196]
 visible = false
@@ -248,7 +249,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.45
 theme_override_styles/panel = SubResource("StyleBoxFlat_68yga")
 
+[connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/MusicMuteButton" to="." method="_on_music_mute_button_toggle_set"]
 [connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/MusicMuteButton" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" method="set_music_mute"]
+[connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/SoundMuteButton" to="." method="_on_sound_mute_button_toggle_set"]
 [connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/SoundMuteButton" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" method="set_sfx_mute"]
 [connection signal="music_muted_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/MusicMuteButton" method="set_toggle" flags=6]
 [connection signal="sfx_muted_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/SoundMuteButton" method="set_toggle" flags=6]

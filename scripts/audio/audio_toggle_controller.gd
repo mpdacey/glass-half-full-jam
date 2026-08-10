@@ -7,6 +7,9 @@ signal sfx_muted_set(is_muted: bool)
 @onready var sfx_bus_index : int = AudioServer.get_bus_index("SFX")
 @onready var music_bus_index : int = AudioServer.get_bus_index("Music")
 
+func _ready() -> void:
+	load_audio_settings.call_deferred()
+
 func set_music_mute(muted: bool) -> void:
 	AudioServer.set_bus_mute(music_bus_index, muted)
 	music_muted_set.emit(muted)

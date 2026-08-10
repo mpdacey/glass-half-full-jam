@@ -153,7 +153,6 @@ metadata/_custom_type_script = "uid://dpdcc7bh4f6ba"
 [node name="StickyNotesMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox" unique_id=1195339095]
 layout_mode = 2
 size_flags_vertical = 3
-mouse_behavior_recursive = 2
 theme = ExtResource("5_ye3ti")
 theme_override_constants/margin_top = 29
 
@@ -168,6 +167,7 @@ size_flags_horizontal = 6
 [node name="CreditsButton" type="Button" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/CreditsButtonMargin" unique_id=2102750900]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_behavior_recursive = 2
 theme = ExtResource("5_ye3ti")
 
 [node name="CreditsContentMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/CreditsButtonMargin" unique_id=260428782]
@@ -206,6 +206,7 @@ size_flags_horizontal = 6
 [node name="PrivacyPolicyButton" type="Button" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PrivacyPolicyButtonMargin" unique_id=248304054]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_behavior_recursive = 2
 theme = ExtResource("5_ye3ti")
 
 [node name="PrivacyPolicyContentMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PrivacyPolicyButtonMargin" unique_id=1261297495]

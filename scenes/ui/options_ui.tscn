@@ -12,9 +12,42 @@
 [ext_resource type="Texture2D" uid="uid://4plnro86uhro" path="res://textures/ui/globe_icon.svg" id="9_wuery"]
 [ext_resource type="Script" uid="uid://dpdcc7bh4f6ba" path="res://scripts/audio/audio_toggle_controller.gd" id="11_wfvgo"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfvgo"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.42, 0.42, 0.42, 1)
+border_width_top = 4
+border_color = Color(0.55, 0.55, 0.55, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42nq3"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+border_width_top = 8
+border_color = Color(0.42, 0.42, 0.42, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_bottom = 12.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84upj"]
 bg_color = Color(0.3, 0.3, 0.3, 1)
-border_color = Color(0.12, 0.12, 0.12, 1)
+border_width_bottom = 871
+border_color = Color(0.21, 0.21, 0.21, 1)
 border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnpdt"]
@@ -27,6 +60,8 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+shadow_size = 8
+shadow_offset = Vector2(0, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_liyg0"]
 atlas = ExtResource("4_ne5w5")
@@ -46,8 +81,11 @@ font_size = 30
 font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68yga"]
-bg_color = Color(0.2, 0.2, 0.2, 1)
-expand_margin_top = 16.0
+bg_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+border_width_top = 8
+border_color = Color(0.21176471, 0.21176471, 0.21176471, 1)
+border_blend = true
+expand_margin_top = 4.0
 
 [node name="OptionsUI" type="CanvasLayer" unique_id=1528372206 node_paths=PackedStringArray("display_label")]
 script = ExtResource("1_6a7a8")
@@ -72,6 +110,30 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.51
 
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsHBox/Padding" unique_id=266071460]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="OptionsHBox/Padding/VBoxContainer" unique_id=1237026164]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="OptionsHBox/Padding/VBoxContainer" unique_id=1897984926]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.01
+theme_override_styles/panel = SubResource("StyleBoxFlat_wfvgo")
+
+[node name="Panel2" type="Panel" parent="OptionsHBox/Padding/VBoxContainer" unique_id=794273459]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+theme_override_styles/panel = SubResource("StyleBoxFlat_42nq3")
+
 [node name="OptionsPanel" type="PanelContainer" parent="OptionsHBox" unique_id=203976926]
 layout_mode = 2
 size_flags_vertical = 3
@@ -83,6 +145,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_84upj")
 layout_mode = 2
 mouse_behavior_recursive = 1
 theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = -871
 
 [node name="OptionsPanelHBox" type="HBoxContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin" unique_id=845050046]
 layout_mode = 2
@@ -242,7 +305,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control2" type="Panel" parent="OptionsHBox" unique_id=2097892143]
+[node name="Control3" type="Panel" parent="OptionsHBox" unique_id=2077481563]
 z_index = -1
 layout_mode = 2
 size_flags_vertical = 3

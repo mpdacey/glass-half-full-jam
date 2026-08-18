@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created using Krita: https://krita.org -->
+
+<svg
+   width="275.76pt"
+   height="227.16pt"
+   viewBox="0 0 275.76 227.16"
+   version="1.1"
+   id="svg524"
+   sodipodi:docname="mic_in.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:krita="http://krita.org/namespaces/svg/krita">
+  <sodipodi:namedview
+     id="namedview526"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="pt"
+     showgrid="false"
+     inkscape:zoom="0.68426438"
+     inkscape:cx="212.63711"
+     inkscape:cy="-73.071171"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg524" />
+  <defs
+     id="defs516">
+    <radialGradient
+       id="gradient0"
+       gradientUnits="userSpaceOnUse"
+       cx="59.160366"
+       cy="59.192577"
+       fx="59.160366"
+       fy="59.192577"
+       r="57.817546"
+       spreadMethod="pad"
+       gradientTransform="matrix(0.99796525,0,0,1.0020386,157.82958,20.318591)">
+      <stop
+         stop-color="#6a6a6a"
+         offset="0.60589998960495"
+         stop-opacity="1"
+         id="stop495" />
+      <stop
+         stop-color="#aaafb4"
+         offset="0.877099990844727"
+         stop-opacity="1"
+         id="stop497" />
+      <stop
+         stop-color="#d7d8d9"
+         offset="0.927999973297119"
+         stop-opacity="1"
+         id="stop499" />
+    </radialGradient>
+    <radialGradient
+       id="gradient1"
+       gradientUnits="userSpaceOnUse"
+       cx="46.450548"
+       cy="46.475839"
+       fx="46.450548"
+       fy="46.475839"
+       r="45.396215"
+       spreadMethod="pad"
+       gradientTransform="matrix(0.99796529,0,0,1.0020386,170.60781,33.823658)">
+      <stop
+         stop-color="#6a6a6a"
+         offset="0.538100004196167"
+         stop-opacity="1"
+         id="stop502" />
+      <stop
+         stop-color="#aaafb4"
+         offset="0.77539998292923"
+         stop-opacity="1"
+         id="stop504" />
+      <stop
+         stop-color="#d7d8d9"
+         offset="0.847457647323608"
+         stop-opacity="1"
+         id="stop506" />
+    </radialGradient>
+    <radialGradient
+       id="gradient2"
+       gradientUnits="userSpaceOnUse"
+       cx="57.421359"
+       cy="-4.2697946"
+       fx="57.421359"
+       fy="-4.2697946"
+       r="147.30797"
+       spreadMethod="pad"
+       gradientTransform="matrix(2.4083185,0,0,0.41522735,-113.41331,160.40454)">
+      <stop
+         stop-color="#343434"
+         offset="0.0244999993592501"
+         stop-opacity="1"
+         id="stop509" />
+      <stop
+         stop-color="#545454"
+         offset="0.380400002002716"
+         stop-opacity="1"
+         id="stop511" />
+      <stop
+         stop-color="#343434"
+         offset="0.972400009632111"
+         stop-opacity="1"
+         id="stop513" />
+    </radialGradient>
+  </defs>
+  <ellipse
+     id="shape0"
+     rx="58.799992"
+     ry="59.039993"
+     cx="216.62956"
+     cy="79.358582"
+     fill="url(#gradient0)"
+     fill-rule="evenodd"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     style="fill:url(#gradient0)" />
+  <ellipse
+     id="shape01"
+     rx="46.167595"
+     ry="46.356033"
+     cx="216.77541"
+     cy="80.179695"
+     fill="url(#gradient1)"
+     fill-rule="evenodd"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     style="fill:url(#gradient1)" />
+  <rect
+     id="shape1"
+     transform="rotate(-32.657817)"
+     fill="url(#gradient2)"
+     fill-rule="evenodd"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     width="274.21396"
+     height="47.278267"
+     rx="23.86931"
+     ry="23.639133"
+     style="fill:url(#gradient2)"
+     x="-113.41331"
+     y="160.40453" />
+  <text
+     id="shape2"
+     krita:useRichText="true"
+     krita:textVersion="2"
+     fill="#e1e1e1"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     font-family="'Arturito Slab'"
+     font-size="20px"
+     font-size-adjust="0.275862"
+     font-stretch="normal"
+     font-weight="700"
+     letter-spacing="0"
+     word-spacing="0"
+     x="189.96606"
+     y="14.209502"><tspan
+       x="189.96606"
+       id="tspan521">MIC IN</tspan></text>
+</svg>

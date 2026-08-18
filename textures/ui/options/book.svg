@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created using Krita: https://krita.org -->
+
+<svg
+   width="371.88pt"
+   height="59.76pt"
+   viewBox="0 0 371.88 59.76"
+   version="1.1"
+   id="svg441"
+   sodipodi:docname="book.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview443"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="pt"
+     showgrid="false"
+     inkscape:zoom="2.4403033"
+     inkscape:cx="294.02083"
+     inkscape:cy="46.30572"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg441" />
+  <defs
+     id="defs431">
+    <linearGradient
+       id="gradient0"
+       gradientUnits="userSpaceOnUse"
+       x1="66.464195"
+       y1="61.869429"
+       x2="66.531378"
+       y2="-30.559811"
+       spreadMethod="pad"
+       gradientTransform="matrix(2.3278706,0,0,0.35938127,66.362008,6.8890777)">
+      <stop
+         stop-color="#cbbaa4"
+         offset="0"
+         stop-opacity="1"
+         id="stop421" />
+      <stop
+         stop-color="#9e8669"
+         offset="0.884599983692169"
+         stop-opacity="1"
+         id="stop423" />
+    </linearGradient>
+    <linearGradient
+       id="gradient1"
+       gradientUnits="userSpaceOnUse"
+       x1="65.808644"
+       y1="61.259197"
+       x2="65.875164"
+       y2="-30.258392"
+       spreadMethod="pad"
+       gradientTransform="matrix(2.3049103,0,0,0.36296124,10.82296,6.8026817)">
+      <stop
+         stop-color="#feefdf"
+         offset="0"
+         stop-opacity="1"
+         id="stop426" />
+      <stop
+         stop-color="#b6a289"
+         offset="1"
+         stop-opacity="1"
+         id="stop428" />
+    </linearGradient>
+  </defs>
+  <rect
+     id="shape0"
+     fill="#ae0823"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     width="68.317955"
+     height="7.6513896"
+     rx="2.5078056"
+     ry="3.5395236"
+     x="303.40799"
+     y="52.003277" />
+  <rect
+     id="shape01"
+     fill="#ae0823"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     width="68.317955"
+     height="8.1600018"
+     rx="2.5078056"
+     ry="3.7748067"
+     x="303.21716"
+     y="0.22328028" />
+  <rect
+     id="shape02"
+     fill="url(#gradient0)"
+     fill-rule="evenodd"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     width="301.58957"
+     height="46.55999"
+     rx="5.1111012"
+     ry="6.1094203"
+     style="fill:url(#gradient0)"
+     x="66.362015"
+     y="6.8890781" />
+  <rect
+     id="shape03"
+     fill="#fe3521"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     width="298.14853"
+     height="6.268147"
+     rx="2.9306951"
+     ry="3.1340735"
+     x="17.812077"
+     y="53.383301" />
+  <rect
+     id="shape011"
+     fill="#fe3521"
+     fill-rule="evenodd"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     width="49.919991"
+     height="59.43615"
+     rx="11.736232"
+     ry="11.736232"
+     x="0.0042670956"
+     y="0.1956466" />
+  <rect
+     id="shape1"
+     fill="#780422"
+     fill-rule="evenodd"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     width="33.599991"
+     height="46.139973"
+     rx="5.8106656"
+     ry="5.7582479"
+     x="7.5137019"
+     y="6.883297" />
+  <rect
+     id="shape04"
+     fill="url(#gradient1)"
+     fill-rule="evenodd"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     width="295.66962"
+     height="46.55999"
+     rx="5.0107746"
+     ry="6.1094203"
+     style="fill:url(#gradient1)"
+     x="10.822963"
+     y="6.8026819" />
+  <rect
+     id="shape021"
+     fill="#fe3521"
+     stroke-opacity="0"
+     stroke="#000000"
+     stroke-width="0"
+     stroke-linecap="square"
+     stroke-linejoin="bevel"
+     width="296.34146"
+     height="6.6902318"
+     rx="2.9129324"
+     ry="3.3451159"
+     x="19.654612"
+     y="0.1105741" />
+</svg>

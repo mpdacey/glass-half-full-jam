@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cugl55bmupwp7"]
+[gd_scene format=3 uid="uid://cugl55bmupwp7"]
 
 [ext_resource type="Script" uid="uid://dsp0fywqivarh" path="res://scripts/snackbar/snackbar_button_controller.gd" id="1_oisdv"]
 [ext_resource type="Texture2D" uid="uid://diwjk13a44eep" path="res://textures/ui/snackbar/snackbar_button.svg" id="1_xfo8g"]
@@ -45,41 +45,42 @@ corner_detail = 12
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjjxi"]
 
-[node name="SnackBarButtonMargin" type="MarginContainer" node_paths=PackedStringArray("button_icon_node", "button_reference", "button_underline")]
+[node name="SnackBarButtonMargin" type="MarginContainer" unique_id=1573277377 node_paths=PackedStringArray("button_icon_node", "button_reference", "button_underline")]
 size_flags_horizontal = 6
+offset_transform_enabled = true
 script = ExtResource("1_oisdv")
 button_icon_node = NodePath("SnackBarIconMargin/SnackBarIconVBox/SnackBarIcon")
 button_reference = NodePath("SnackBarButtonMargin/SnackBarButton")
 button_underline = NodePath("SnackBarIconMargin/SnackBarIconVBox/SnackBarIconUnderlineMargin/SnackBarIconUnderline")
 
-[node name="SnackbarShadowMargin" type="MarginContainer" parent="."]
+[node name="SnackbarShadowMargin" type="MarginContainer" parent="." unique_id=1432862430]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 0
 
-[node name="SnackbarShadow" type="Panel" parent="SnackbarShadowMargin"]
+[node name="SnackbarShadow" type="Panel" parent="SnackbarShadowMargin" unique_id=1317524065]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfo8g")
 
-[node name="SnackBarButtonTexture" type="TextureRect" parent="."]
+[node name="SnackBarButtonTexture" type="TextureRect" parent="." unique_id=185003268]
 layout_mode = 2
 texture = ExtResource("1_xfo8g")
 expand_mode = 3
 
-[node name="SnackBarIconMargin" type="MarginContainer" parent="."]
+[node name="SnackBarIconMargin" type="MarginContainer" parent="." unique_id=294092633]
 layout_mode = 2
 theme_override_constants/margin_left = 48
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 48
 
-[node name="SnackBarIconVBox" type="VBoxContainer" parent="SnackBarIconMargin"]
+[node name="SnackBarIconVBox" type="VBoxContainer" parent="SnackBarIconMargin" unique_id=1385476160]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="SnackBarIcon" type="TextureRect" parent="SnackBarIconMargin/SnackBarIconVBox"]
+[node name="SnackBarIcon" type="TextureRect" parent="SnackBarIconMargin/SnackBarIconVBox" unique_id=957849235]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
@@ -87,25 +88,25 @@ texture = ExtResource("2_wb0fp")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SnackBarIconUnderlineMargin" type="MarginContainer" parent="SnackBarIconMargin/SnackBarIconVBox"]
+[node name="SnackBarIconUnderlineMargin" type="MarginContainer" parent="SnackBarIconMargin/SnackBarIconVBox" unique_id=1054288285]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_right = 12
 
-[node name="SnackBarIconUnderline" type="Panel" parent="SnackBarIconMargin/SnackBarIconVBox/SnackBarIconUnderlineMargin"]
+[node name="SnackBarIconUnderline" type="Panel" parent="SnackBarIconMargin/SnackBarIconVBox/SnackBarIconUnderlineMargin" unique_id=1777036393]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_oisdv")
 
-[node name="SnackBarButtonMargin" type="MarginContainer" parent="."]
+[node name="SnackBarButtonMargin" type="MarginContainer" parent="." unique_id=1817688566]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="SnackBarButton" type="Button" parent="SnackBarButtonMargin"]
+[node name="SnackBarButton" type="Button" parent="SnackBarButtonMargin" unique_id=673707556]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xfo8g")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_kvech")
@@ -114,4 +115,6 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_jmrqk")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gjjxi")
 toggle_mode = true
 
+[connection signal="button_down" from="SnackBarButtonMargin/SnackBarButton" to="." method="_hold_button"]
+[connection signal="button_up" from="SnackBarButtonMargin/SnackBarButton" to="." method="_release_button"]
 [connection signal="toggled" from="SnackBarButtonMargin/SnackBarButton" to="." method="_on_button_toggled"]

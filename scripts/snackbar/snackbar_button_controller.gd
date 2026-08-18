@@ -13,6 +13,7 @@ signal snackbar_button_released
 var _button_group : ButtonGroup = preload("uid://ckjn10ul5kvve")
 var _lit_underline_stylebox: StyleBoxFlat = preload("uid://bfjnouwh84kb")
 var _unlit_underline_stylebox: StyleBoxFlat = preload("uid://bvnq8hjtkstin")
+var _button_pulse_tween : Tween
 
 func _ready() -> void:
 	set_button_icon(button_icon)
@@ -43,3 +44,17 @@ func _set_underline(toggled_on: bool) -> void:
 		button_underline.add_theme_stylebox_override(&"panel", _lit_underline_stylebox)
 	else:
 		button_underline.add_theme_stylebox_override(&"panel", _unlit_underline_stylebox)
+
+func _hold_button() -> void:
+	if _button_pulse_tween:
+		_button_pulse_tween.kill()
+	
+	_button_pulse_tween = create_tween()
+	_button_pulse_tween.tween_property(self, "offset_transform_scale", Vector2.ONE * 0.9, 0.05)
+
+func _release_button() -> void:
+	if _button_pulse_tween:
+		_button_pulse_tween.kill()
+	
+	_button_pulse_tween = create_tween()
+	_button_pulse_tween.tween_property(self, "offset_transform_scale", Vector2.ONE, 0.1)

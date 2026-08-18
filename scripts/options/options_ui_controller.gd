@@ -13,14 +13,12 @@ enum OptionState {
 }
 
 @export var display_label: RichTextLabel
+@export var animator: AnimationPlayer
 @export_group("Display Text Animation Values")
 @export_range(0, 2.0, 0.1) var display_text_seconds: float = 0.4
 @export_range(0, 5.0, 0.1) var hold_text_seconds: float = 2.0
 var display_text_tween: Tween
 var current_display_state : OptionState = OptionState.DEFAULT
-
-func _enter_tree() -> void:
-	visibility_changed.connect(tween_display_text.bind(DEFAULT_DISPLAY_TEXT))
 
 func tween_display_text(message: String, start_character : int = 0) -> void:
 	if display_text_tween:
@@ -39,6 +37,13 @@ func tween_display_text(message: String, start_character : int = 0) -> void:
 	if current_display_state != OptionState.DEFAULT:
 		display_text_tween.tween_property(self, "current_display_state", OptionState.DEFAULT, 0).set_delay(hold_text_seconds)
 		display_text_tween.tween_callback(tween_display_text.bind(DEFAULT_DISPLAY_TEXT))
+
+func display() -> void:
+	current_display_state = OptionState.DEFAULT
+	animator.play(&"show")
+
+func dismiss() -> void:
+	animator.play(&"hide")
 
 func _on_privacy_policy_button_pressed() -> void:
 	OS.shell_open(PRIVACY_POLICY_URL)

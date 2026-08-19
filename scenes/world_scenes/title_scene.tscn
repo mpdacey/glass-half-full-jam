@@ -1085,6 +1085,7 @@ script = ExtResource("17_bi3h3")
 metadata/_custom_type_script = "uid://cafyylq66psjo"
 
 [node name="TitleSnackbar" parent="." unique_id=1090494315 instance=ExtResource("22_qk2ae")]
+layer = 5
 
 [node name="SnackbarButtonAutoSelector" type="Node" parent="TitleSnackbar" unique_id=1432582934]
 script = ExtResource("25_t3vcv")

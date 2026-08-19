@@ -441,6 +441,7 @@ theme_override_constants/margin_right = 39
 
 [node name="AudioHBox" type="HBoxContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin" unique_id=2066800918]
 layout_mode = 2
+theme_override_constants/separation = 36
 
 [node name="MusicMuteButton" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox" unique_id=430657974 instance=ExtResource("3_6a7a8")]
 layout_mode = 2

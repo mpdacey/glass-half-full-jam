@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://c3oo46sjm6esy"]
+
+[ext_resource type="Script" uid="uid://bfycueriobxdq" path="res://scripts/audio_spectrum_controller.gd" id="1_nnmmw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnmmw"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.18, 0.18, 0.18, 0.99215686)
+border_width_left = 24
+border_width_top = 16
+border_width_right = 24
+border_width_bottom = 16
+border_color = Color(0.1, 0.1, 0.1, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmoe2"]
+bg_color = Color(0.109333225, 0.82, 0, 1)
+border_width_left = 24
+border_width_top = 8
+border_width_right = 24
+border_width_bottom = 8
+border_color = Color(0.07199994, 0.54, 0, 1)
+border_blend = true
+shadow_color = Color(0.08533325, 0.64, 0, 0.24313726)
+shadow_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nrvk"]
+bg_color = Color(0.99, 0.99, 0.99, 0.39215687)
+border_width_left = 48
+border_width_top = 48
+border_width_right = 48
+border_width_bottom = 48
+border_color = Color(0.99, 0.99, 0.99, 0)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="AudioSpectrum" type="VBoxContainer" unique_id=40203059 node_paths=PackedStringArray("lights")]
+offset_right = 40.0
+offset_bottom = 135.0
+script = ExtResource("1_nnmmw")
+lights = [NodePath("SpectrumLightBase/SpectrumLight"), NodePath("SpectrumLightBase2/SpectrumLight"), NodePath("SpectrumLightBase3/SpectrumLight"), NodePath("SpectrumLightBase4/SpectrumLight"), NodePath("SpectrumLightBase5/SpectrumLight"), NodePath("SpectrumLightBase6/SpectrumLight"), NodePath("SpectrumLightBase7/SpectrumLight"), NodePath("SpectrumLightBase8/SpectrumLight")]
+
+[node name="SpectrumLightBase" type="Panel" parent="." unique_id=2146646122]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnmmw")
+
+[node name="SpectrumLight" type="Panel" parent="SpectrumLightBase" unique_id=1834379599]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmoe2")
+
+[node name="SpectrumHighlightLight" type="Panel" parent="SpectrumLightBase/SpectrumLight" unique_id=1547675825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nrvk")
+
+[node name="SpectrumLightBase2" type="Panel" parent="." unique_id=177431494]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnmmw")
+
+[node name="SpectrumLight" type="Panel" parent="SpectrumLightBase2" unique_id=1445739450]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmoe2")
+
+[node name="SpectrumHighlightLight" type="Panel" parent="SpectrumLightBase2/SpectrumLight" unique_id=977685314]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nrvk")
+
+[node name="SpectrumLightBase3" type="Panel" parent="." unique_id=303929815]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnmmw")
+
+[node name="SpectrumLight" type="Panel" parent="SpectrumLightBase3" unique_id=1465882002]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmoe2")
+
+[node name="SpectrumHighlightLight" type="Panel" parent="SpectrumLightBase3/SpectrumLight" unique_id=253196230]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nrvk")
+
+[node name="SpectrumLightBase4" type="Panel" parent="." unique_id=136026185]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnmmw")
+
+[node name="SpectrumLight" type="Panel" parent="SpectrumLightBase4" unique_id=1002461112]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmoe2")
+
+[node name="SpectrumHighlightLight" type="Panel" parent="SpectrumLightBase4/SpectrumLight" unique_id=1920869396]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nrvk")
+
+[node name="SpectrumLightBase5" type="Panel" parent="." unique_id=71125231]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnmmw")
+
+[node name="SpectrumLight" type="Panel" parent="SpectrumLightBase5" unique_id=881239372]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmoe2")
+
+[node name="SpectrumHighlightLight" type="Panel" parent="SpectrumLightBase5/SpectrumLight" unique_id=801482594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nrvk")
+
+[node name="SpectrumLightBase6" type="Panel" parent="." unique_id=835361524]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnmmw")
+
+[node name="SpectrumLight" type="Panel" parent="SpectrumLightBase6" unique_id=47019840]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmoe2")
+
+[node name="SpectrumHighlightLight" type="Panel" parent="SpectrumLightBase6/SpectrumLight" unique_id=1435161774]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nrvk")
+
+[node name="SpectrumLightBase7" type="Panel" parent="." unique_id=1371497771]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnmmw")
+
+[node name="SpectrumLight" type="Panel" parent="SpectrumLightBase7" unique_id=1892562716]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmoe2")
+
+[node name="SpectrumHighlightLight" type="Panel" parent="SpectrumLightBase7/SpectrumLight" unique_id=1767468260]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nrvk")
+
+[node name="SpectrumLightBase8" type="Panel" parent="." unique_id=228846094]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnmmw")
+
+[node name="SpectrumLight" type="Panel" parent="SpectrumLightBase8" unique_id=1283389752]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmoe2")
+
+[node name="SpectrumHighlightLight" type="Panel" parent="SpectrumLightBase8/SpectrumLight" unique_id=1216481032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nrvk")

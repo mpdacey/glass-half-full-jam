@@ -1490,5 +1490,4 @@ bus = &"SFX"
 [connection signal="shown" from="VisibilityListener" to="TreePauseInterfacer" method="pause_engine"]
 [connection signal="shown" from="VisibilityListener" to="AnimationPlayer" method="play" flags=3 binds= [&"pause"]]
 [connection signal="music_muted_set" from="AudioToggleController" to="Foreground/MusicButton" method="set_pressed_no_signal"]
-[connection signal="ready" from="AudioToggleController" to="AudioToggleController" method="load_audio_settings"]
 [connection signal="sfx_muted_set" from="AudioToggleController" to="Foreground/SoundButton" method="set_pressed_no_signal"]

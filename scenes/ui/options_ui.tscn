@@ -1,20 +1,19 @@
 [gd_scene format=3 uid="uid://kix35uopnopg"]
 
 [ext_resource type="Script" uid="uid://ud4k700vdj2c" path="res://scripts/options/options_ui_controller.gd" id="1_6a7a8"]
-[ext_resource type="Texture2D" uid="uid://b55yspwh47wd6" path="res://textures/options_mockup.png" id="1_14may"]
 [ext_resource type="FontFile" uid="uid://dyu4vetqihag3" path="res://resources/fonts/Digital/DigitalNormal-xO6j.otf" id="2_kpbx6"]
 [ext_resource type="Texture2D" uid="uid://dd2ohluwlcntr" path="res://textures/ui/options/book.svg" id="3_3awtw"]
 [ext_resource type="PackedScene" uid="uid://45gmwxg5wpqw" path="res://scenes/ui/options/options_button.tscn" id="3_6a7a8"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="4_ne5w5"]
 [ext_resource type="Texture2D" uid="uid://cggnowvstyis8" path="res://textures/ui/options/antenna.svg" id="4_q7mdp"]
 [ext_resource type="Texture2D" uid="uid://dtsmlmmun53i" path="res://textures/ui/options/mic.svg" id="5_6g4do"]
-[ext_resource type="Texture2D" uid="uid://l8sxjlwx8lnr" path="res://textures/ui/audio_unmute_icon.svg" id="5_boedx"]
+[ext_resource type="Texture2D" uid="uid://obes3hyod6p3" path="res://textures/ui/options/audio_unmute_icon.svg" id="5_boedx"]
 [ext_resource type="FontFile" uid="uid://b5ul8igufc6ti" path="res://resources/fonts/Arimo/static/Arimo-BoldItalic.ttf" id="5_ne5w5"]
 [ext_resource type="Theme" uid="uid://eek3xg7cd0t4" path="res://scenes/ui/options/sticky_note_theme.tres" id="5_ye3ti"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="6_6g4do"]
 [ext_resource type="Texture2D" uid="uid://c60qwwn2af4w1" path="res://textures/ui/options/mic_in.svg" id="6_q7mdp"]
-[ext_resource type="Texture2D" uid="uid://2fkk3nh1x6uo" path="res://textures/ui/audio_mute_icon.svg" id="6_wuery"]
-[ext_resource type="Texture2D" uid="uid://4plnro86uhro" path="res://textures/ui/globe_icon.svg" id="9_wuery"]
+[ext_resource type="Texture2D" uid="uid://ca5byh65q30sc" path="res://textures/ui/options/audio_mute_icon.svg" id="6_wuery"]
+[ext_resource type="Texture2D" uid="uid://do5tjfwdn331g" path="res://textures/ui/options/globe_icon.svg" id="9_wuery"]
 [ext_resource type="Script" uid="uid://dpdcc7bh4f6ba" path="res://scripts/audio/audio_toggle_controller.gd" id="11_wfvgo"]
 [ext_resource type="PackedScene" uid="uid://c3oo46sjm6esy" path="res://scenes/ui/options/audio_spectrum_visualiser.tscn" id="17_7bo5f"]
 
@@ -279,12 +278,6 @@ _data = {
 script = ExtResource("1_6a7a8")
 display_label = NodePath("OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/DisplayMargin/DisplayPanel/DisplayTextMargin/DisplayTextLabel")
 animator = NodePath("AnimationPlayer")
-
-[node name="Mockup" type="TextureRect" parent="." unique_id=1758811196]
-visible = false
-offset_right = 1080.0
-offset_bottom = 2280.0
-texture = ExtResource("1_14may")
 
 [node name="OptionsHBox" type="VBoxContainer" parent="." unique_id=2133097301]
 anchors_preset = 15

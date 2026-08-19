@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://2fkk3nh1x6uo" path="res://textures/ui/audio_mute_icon.svg" id="6_wuery"]
 [ext_resource type="Texture2D" uid="uid://4plnro86uhro" path="res://textures/ui/globe_icon.svg" id="9_wuery"]
 [ext_resource type="Script" uid="uid://dpdcc7bh4f6ba" path="res://scripts/audio/audio_toggle_controller.gd" id="11_wfvgo"]
+[ext_resource type="PackedScene" uid="uid://c3oo46sjm6esy" path="res://scenes/ui/options/audio_spectrum_visualiser.tscn" id="17_7bo5f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42nq3"]
 content_margin_left = 0.0
@@ -349,7 +350,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
+theme_override_constants/margin_right = 12
 
 [node name="LeftVBox" type="VBoxContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/LeftMargin" unique_id=1245714201]
 layout_mode = 2
@@ -549,6 +550,24 @@ horizontal_alignment = 1
 [node name="VBoxContainer2" type="VBoxContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox" unique_id=632161290]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/VBoxContainer2" unique_id=1054776601]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="AudioSpectrum" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/VBoxContainer2" unique_id=40203059 instance=ExtResource("17_7bo5f")]
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.465, 0)
+offset_transform_scale = Vector2(1.4, 1)
+theme_override_constants/separation = 20
+
+[node name="Control2" type="Control" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/VBoxContainer2" unique_id=632353441]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
 
 [node name="Control3" type="Panel" parent="OptionsHBox" unique_id=2077481563]
 z_index = -1

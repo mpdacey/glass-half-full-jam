@@ -2,14 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://bj5bhv0qlvq3r" path="res://textures/pause_menu/play_cube.png" id="1_k23cl"]
 [ext_resource type="Texture2D" uid="uid://beqqdeg13gv2k" path="res://textures/pause_menu/music_cube_enabled.png" id="2_4x8ym"]
-[ext_resource type="AnimationLibrary" uid="uid://dtlm46ijkgpoj" path="res://resources/animation_libraries/pause_button_library.tres" id="2_caprb"]
 [ext_resource type="Texture2D" uid="uid://d1jraggcwab1r" path="res://textures/pause_menu/power_cube.png" id="2_qgos8"]
 [ext_resource type="Script" uid="uid://dqkhlso6i86dv" path="res://scripts/ornament_string_path_renderer.gd" id="3_825jt"]
 [ext_resource type="Texture2D" uid="uid://b42rnu12e72a2" path="res://textures/pause_menu/sound_cube_enabled.png" id="3_eq7dk"]
 [ext_resource type="Texture2D" uid="uid://d2hdkk8670mvj" path="res://textures/pause_menu/music_cube_disabled.png" id="3_hi21p"]
+[ext_resource type="Script" uid="uid://c1y1bharsm1gg" path="res://scripts/button_pulser.gd" id="4_ptotp"]
 [ext_resource type="Texture2D" uid="uid://bwg0odu0qshsp" path="res://textures/pause_menu/cube_string.png" id="4_vfyr0"]
 [ext_resource type="Texture2D" uid="uid://bqrm7ip5t3vpn" path="res://textures/pause_menu/mirror.png" id="5_arkwq"]
 [ext_resource type="Texture2D" uid="uid://cteacgk8qu0lq" path="res://textures/pause_menu/sound_cube_disabled.png" id="5_caprb"]
+[ext_resource type="Script" uid="uid://c06upmga0mif1" path="res://scripts/audio/button_sfx_applier.gd" id="5_yqxs4"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="6_eq7dk"]
 [ext_resource type="Script" uid="uid://bw1paub1fikwp" path="res://scripts/tree_pause_interfacer.gd" id="7_arkwq"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_emuhb"]
@@ -1293,9 +1294,6 @@ mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("1_k23cl")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/PlayButton" unique_id=747663982]
-libraries/ = ExtResource("2_caprb")
-
 [node name="PlayPath" type="Path2D" parent="Foreground/PlayButton" unique_id=721913609 node_paths=PackedStringArray("line")]
 curve = SubResource("Curve2D_vfyr0")
 script = ExtResource("3_825jt")
@@ -1309,6 +1307,14 @@ points = PackedVector2Array(216, 208, 0, 0)
 width = 16.0
 texture = ExtResource("4_vfyr0")
 texture_mode = 1
+
+[node name="ButtonPulser" type="Node" parent="Foreground/PlayButton" unique_id=1916631828]
+script = ExtResource("4_ptotp")
+metadata/_custom_type_script = "uid://c1y1bharsm1gg"
+
+[node name="ButtonSFXApplier" type="AudioStreamPlayer" parent="Foreground/PlayButton" unique_id=1756957685]
+script = ExtResource("5_yqxs4")
+metadata/_custom_type_script = "uid://c06upmga0mif1"
 
 [node name="MusicButton" type="TextureButton" parent="Foreground" unique_id=1796257237]
 process_mode = 2
@@ -1327,9 +1333,6 @@ action_mode = 0
 texture_normal = ExtResource("2_4x8ym")
 texture_pressed = ExtResource("3_hi21p")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/MusicButton" unique_id=375088846]
-libraries/ = ExtResource("2_caprb")
-
 [node name="MusicPath" type="Path2D" parent="Foreground/MusicButton" unique_id=1810765751 node_paths=PackedStringArray("line")]
 curve = SubResource("Curve2D_rkf7u")
 script = ExtResource("3_825jt")
@@ -1343,6 +1346,14 @@ points = PackedVector2Array(216, 208, 0, 0)
 width = 16.0
 texture = ExtResource("4_vfyr0")
 texture_mode = 1
+
+[node name="ButtonPulser" type="Node" parent="Foreground/MusicButton" unique_id=690822756]
+script = ExtResource("4_ptotp")
+metadata/_custom_type_script = "uid://c1y1bharsm1gg"
+
+[node name="ButtonSFXApplier" type="AudioStreamPlayer" parent="Foreground/MusicButton" unique_id=1975343527]
+script = ExtResource("5_yqxs4")
+metadata/_custom_type_script = "uid://c06upmga0mif1"
 
 [node name="SoundButton" type="TextureButton" parent="Foreground" unique_id=2070643547]
 process_mode = 2
@@ -1361,9 +1372,6 @@ action_mode = 0
 texture_normal = ExtResource("3_eq7dk")
 texture_pressed = ExtResource("5_caprb")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/SoundButton" unique_id=51619473]
-libraries/ = ExtResource("2_caprb")
-
 [node name="SoundPath" type="Path2D" parent="Foreground/SoundButton" unique_id=39939861 node_paths=PackedStringArray("line")]
 curve = SubResource("Curve2D_nps6y")
 script = ExtResource("3_825jt")
@@ -1377,6 +1385,14 @@ points = PackedVector2Array(216, 208, 0, 0)
 width = 16.0
 texture = ExtResource("4_vfyr0")
 texture_mode = 1
+
+[node name="ButtonPulser" type="Node" parent="Foreground/SoundButton" unique_id=995648784]
+script = ExtResource("4_ptotp")
+metadata/_custom_type_script = "uid://c1y1bharsm1gg"
+
+[node name="ButtonSFXApplier" type="AudioStreamPlayer" parent="Foreground/SoundButton" unique_id=1940753490]
+script = ExtResource("5_yqxs4")
+metadata/_custom_type_script = "uid://c06upmga0mif1"
 
 [node name="QuitButton" type="TextureButton" parent="Foreground" unique_id=1520089251]
 process_mode = 2
@@ -1392,9 +1408,6 @@ pivot_offset = Vector2(158.66663, 58.666687)
 mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("2_qgos8")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/QuitButton" unique_id=2146876368]
-libraries/ = ExtResource("2_caprb")
 
 [node name="QuitPath" type="Path2D" parent="Foreground/QuitButton" unique_id=1682056739 node_paths=PackedStringArray("line")]
 z_index = -1
@@ -1414,6 +1427,14 @@ texture_mode = 1
 [node name="AndroidBackListener" type="Node" parent="Foreground/QuitButton" unique_id=251041471]
 script = ExtResource("10_78mva")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
+
+[node name="ButtonPulser" type="Node" parent="Foreground/QuitButton" unique_id=2117226195]
+script = ExtResource("4_ptotp")
+metadata/_custom_type_script = "uid://c1y1bharsm1gg"
+
+[node name="ButtonSFXApplier" type="AudioStreamPlayer" parent="Foreground/QuitButton" unique_id=1177044612]
+script = ExtResource("5_yqxs4")
+metadata/_custom_type_script = "uid://c06upmga0mif1"
 
 [node name="Mirror" type="TextureRect" parent="Foreground" unique_id=789652084]
 layout_mode = 0
@@ -1465,17 +1486,9 @@ script = ExtResource("11_fosa6")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=41734618]
 bus = &"SFX"
 
-[connection signal="pressed" from="Foreground/PlayButton" to="Foreground/PlayButton/AnimationPlayer" method="stop"]
-[connection signal="pressed" from="Foreground/PlayButton" to="Foreground/PlayButton/AnimationPlayer" method="play" flags=3 binds= [&"pressed"]]
 [connection signal="pressed" from="Foreground/PlayButton" to="AnimationPlayer" method="play" binds= [&"play"]]
-[connection signal="pressed" from="Foreground/MusicButton" to="Foreground/MusicButton/AnimationPlayer" method="stop"]
-[connection signal="pressed" from="Foreground/MusicButton" to="Foreground/MusicButton/AnimationPlayer" method="play" flags=3 binds= [&"pressed"]]
 [connection signal="toggled" from="Foreground/MusicButton" to="AudioToggleController" method="set_music_mute"]
-[connection signal="pressed" from="Foreground/SoundButton" to="Foreground/SoundButton/AnimationPlayer" method="stop"]
-[connection signal="pressed" from="Foreground/SoundButton" to="Foreground/SoundButton/AnimationPlayer" method="play" flags=3 binds= [&"pressed"]]
 [connection signal="toggled" from="Foreground/SoundButton" to="AudioToggleController" method="set_sfx_mute"]
-[connection signal="pressed" from="Foreground/QuitButton" to="Foreground/QuitButton/AnimationPlayer" method="stop"]
-[connection signal="pressed" from="Foreground/QuitButton" to="Foreground/QuitButton/AnimationPlayer" method="play" binds= [&"pressed"]]
 [connection signal="pressed" from="Foreground/QuitButton" to="AnimationPlayer" method="play" binds= [&"quit"]]
 [connection signal="shown" from="VisibilityListener" to="TreePauseInterfacer" method="pause_engine"]
 [connection signal="shown" from="VisibilityListener" to="AnimationPlayer" method="play" flags=3 binds= [&"pause"]]

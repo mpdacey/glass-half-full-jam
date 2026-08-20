@@ -44,17 +44,3 @@ func _set_underline(toggled_on: bool) -> void:
 		button_underline.add_theme_stylebox_override(&"panel", _lit_underline_stylebox)
 	else:
 		button_underline.add_theme_stylebox_override(&"panel", _unlit_underline_stylebox)
-
-func _hold_button() -> void:
-	if _button_pulse_tween:
-		_button_pulse_tween.kill()
-	
-	_button_pulse_tween = create_tween()
-	_button_pulse_tween.tween_property(self, "offset_transform_scale", Vector2.ONE * 0.9, 0.05)
-
-func _release_button() -> void:
-	if _button_pulse_tween:
-		_button_pulse_tween.kill()
-	
-	_button_pulse_tween = create_tween()
-	_button_pulse_tween.tween_property(self, "offset_transform_scale", Vector2.ONE, 0.1)

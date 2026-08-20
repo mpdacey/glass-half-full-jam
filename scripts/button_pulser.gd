@@ -5,11 +5,11 @@ class_name ButtonPulser
 var _button_pulse_tween: Tween
 
 func _enter_tree() -> void:
-	if get_parent() is not Button:
+	if get_parent() is not BaseButton:
 		queue_free()
 		return
 	
-	var parent : Button = get_parent()
+	var parent : BaseButton = get_parent()
 	parent.button_down.connect(_on_button_down)
 	parent.button_up.connect(_on_button_up)
 	

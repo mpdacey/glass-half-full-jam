@@ -7,11 +7,11 @@ const RANDOM_PITCH_SEMITONES = 0.5
 const SFX_BUS_NAME = &"SFX"
 
 func _enter_tree() -> void:
-	if get_parent() is not Button:
+	if get_parent() is not BaseButton:
 		queue_free()
 		return
 	
-	var parent : Button = get_parent()
+	var parent : BaseButton = get_parent()
 	parent.button_down.connect(_on_button_down)
 	parent.button_up.connect(_on_button_up)
 	

@@ -5,7 +5,9 @@
 [ext_resource type="FontFile" uid="uid://b0i53eqnnet6n" path="res://resources/fonts/Arimo/static/Arimo-Bold.ttf" id="2_s13iy"]
 [ext_resource type="FontFile" uid="uid://7up8r46epdiu" path="res://resources/fonts/Arimo/static/Arimo-Regular.ttf" id="3_s13iy"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="4_a2yy2"]
+[ext_resource type="Script" uid="uid://c06upmga0mif1" path="res://scripts/audio/button_sfx_applier.gd" id="5_0vwu3"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="5_qofcg"]
+[ext_resource type="Script" uid="uid://c1y1bharsm1gg" path="res://scripts/button_pulser.gd" id="6_s13iy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpe5i"]
 
@@ -362,6 +364,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_s13iy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0vwu3")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_a2yy2")
 
+[node name="ButtonSFXApplier" type="AudioStreamPlayer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/ActionButton" unique_id=469379007]
+script = ExtResource("5_0vwu3")
+metadata/_custom_type_script = "uid://c06upmga0mif1"
+
+[node name="ButtonPulser" type="Node" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/ActionButton" unique_id=1242892799]
+script = ExtResource("6_s13iy")
+metadata/_custom_type_script = "uid://c1y1bharsm1gg"
+
 [node name="CloseButtonAnchor" type="Control" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel" unique_id=716859872]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -394,6 +404,14 @@ expand_mode = 5
 [node name="AndroidBackListener" type="Node" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" unique_id=2034915659]
 script = ExtResource("5_qofcg")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
+
+[node name="ButtonSFXApplier" type="AudioStreamPlayer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" unique_id=1296993108]
+script = ExtResource("5_0vwu3")
+metadata/_custom_type_script = "uid://c06upmga0mif1"
+
+[node name="ButtonPulser" type="Node" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" unique_id=1801577836]
+script = ExtResource("6_s13iy")
+metadata/_custom_type_script = "uid://c1y1bharsm1gg"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=9152350]
 libraries/ = SubResource("AnimationLibrary_34rw3")

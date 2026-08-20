@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://diwjk13a44eep" path="res://textures/ui/snackbar/snackbar_button.svg" id="1_xfo8g"]
 [ext_resource type="Texture2D" uid="uid://blk8miek3ltyr" path="res://textures/ui/snackbar/snackbar_wheel_icon.svg" id="2_wb0fp"]
 [ext_resource type="StyleBox" uid="uid://bvnq8hjtkstin" path="res://scenes/ui/snackbar/underline_unlit_stylebox.tres" id="4_oisdv"]
+[ext_resource type="Script" uid="uid://c06upmga0mif1" path="res://scripts/audio/button_sfx_applier.gd" id="5_5s2pr"]
+[ext_resource type="Script" uid="uid://c1y1bharsm1gg" path="res://scripts/button_pulser.gd" id="6_jrha6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfo8g"]
 bg_color = Color(0, 0, 0, 0)
@@ -115,6 +117,13 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_jmrqk")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gjjxi")
 toggle_mode = true
 
-[connection signal="button_down" from="SnackBarButtonMargin/SnackBarButton" to="." method="_hold_button"]
-[connection signal="button_up" from="SnackBarButtonMargin/SnackBarButton" to="." method="_release_button"]
+[node name="ButtonSFXApplier" type="AudioStreamPlayer" parent="SnackBarButtonMargin/SnackBarButton" unique_id=1615302474]
+script = ExtResource("5_5s2pr")
+metadata/_custom_type_script = "uid://c06upmga0mif1"
+
+[node name="ButtonPulser" type="Node" parent="SnackBarButtonMargin/SnackBarButton" unique_id=121184727 node_paths=PackedStringArray("target_control")]
+script = ExtResource("6_jrha6")
+target_control = NodePath("../../..")
+metadata/_custom_type_script = "uid://c1y1bharsm1gg"
+
 [connection signal="toggled" from="SnackBarButtonMargin/SnackBarButton" to="." method="_on_button_toggled"]

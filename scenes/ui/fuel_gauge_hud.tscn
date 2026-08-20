@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cooy4rj1ddjjn"]
+[gd_scene format=3 uid="uid://cooy4rj1ddjjn"]
 
 [ext_resource type="Script" uid="uid://dmgkgph7taxvj" path="res://scripts/fuel_gauge_ui_controller.gd" id="1_n1ybh"]
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="2_wkwfr"]
@@ -71,13 +71,13 @@ _data = {
 &"warning-loop": SubResource("Animation_ssxhy")
 }
 
-[node name="FuelGaugeHUD" type="CanvasLayer" node_paths=PackedStringArray("fuel_gauge", "overflow_warning", "underflow_warning")]
+[node name="FuelGaugeHUD" type="CanvasLayer" unique_id=875175658 node_paths=PackedStringArray("fuel_gauge", "overflow_warning", "underflow_warning")]
 script = ExtResource("1_n1ybh")
 fuel_gauge = NodePath("Control/Panel/MarginContainer/VBoxContainer/Control/HSlider")
 overflow_warning = NodePath("Control/Panel/Warnings/OverflowWarning")
 underflow_warning = NodePath("Control/Panel/Warnings/UnderflowWarning")
 
-[node name="Control" type="MarginContainer" parent="."]
+[node name="Control" type="MarginContainer" parent="." unique_id=343650276]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -89,20 +89,20 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.5, 1.5)
 
-[node name="Panel" type="PanelContainer" parent="Control"]
+[node name="Panel" type="PanelContainer" parent="Control" unique_id=741493208]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel" unique_id=1898291612]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 128
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer" unique_id=796311939]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=2026898090]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Fuel"
@@ -110,10 +110,10 @@ label_settings = ExtResource("2_wkwfr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=1573014111]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="Control/Panel/MarginContainer/VBoxContainer/Control"]
+[node name="HSlider" type="HSlider" parent="Control/Panel/MarginContainer/VBoxContainer/Control" unique_id=1720450141]
 layout_mode = 0
 offset_top = -8.0
 offset_right = 635.0
@@ -130,12 +130,12 @@ tick_count = 4
 ticks_on_borders = true
 ticks_position = 2
 
-[node name="Warnings" type="Control" parent="Control/Panel"]
+[node name="Warnings" type="Control" parent="Control/Panel" unique_id=231049264]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="OverflowWarning" type="TextureRect" parent="Control/Panel/Warnings"]
+[node name="OverflowWarning" type="TextureRect" parent="Control/Panel/Warnings" unique_id=1397750059]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -148,7 +148,7 @@ grow_vertical = 0
 texture = ExtResource("3_yjve5")
 expand_mode = 3
 
-[node name="UnderflowWarning" type="TextureRect" parent="Control/Panel/Warnings"]
+[node name="UnderflowWarning" type="TextureRect" parent="Control/Panel/Warnings" unique_id=1651226109]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -161,8 +161,6 @@ grow_vertical = 0
 texture = ExtResource("4_ntk66")
 expand_mode = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Panel/Warnings"]
-libraries = {
-&"": SubResource("AnimationLibrary_x7pte")
-}
-autoplay = "warning-loop"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Panel/Warnings" unique_id=1696237276]
+libraries/ = SubResource("AnimationLibrary_x7pte")
+autoplay = &"warning-loop"

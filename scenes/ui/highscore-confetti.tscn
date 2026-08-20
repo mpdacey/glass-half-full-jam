@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxb3bfdh8p0vy"]
+[gd_scene format=3 uid="uid://bxb3bfdh8p0vy"]
 
 [ext_resource type="Texture2D" uid="uid://c00v36x4ogele" path="res://textures/confetti_particle.png" id="1_hbqkj"]
 
@@ -25,11 +25,11 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, -0.33125567), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="ConfettiCannon" type="Control"]
+[node name="ConfettiCannon" type="Control" unique_id=1285592257]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="Particles" type="CPUParticles2D" parent="."]
+[node name="Particles" type="CPUParticles2D" parent="." unique_id=394002463]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_dqqjj")
 position = Vector2(0, 400)

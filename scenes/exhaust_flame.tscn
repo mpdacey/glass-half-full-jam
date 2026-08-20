@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://0nnbn1qcmf7c"]
+[gd_scene format=4 uid="uid://0nnbn1qcmf7c"]
 
 [ext_resource type="Script" uid="uid://d2sklxf0os8s" path="res://scripts/exhaust/exhaust_flame_controller.gd" id="1_lb12t"]
 [ext_resource type="Texture2D" uid="uid://xw2e5nsicaql" path="res://textures/halo_texture.tres" id="2_ynh7g"]
@@ -366,23 +366,21 @@ _data = {
 &"flame-ignite": SubResource("Animation_ynh7g")
 }
 
-[node name="ExhaustFlame" type="Node3D" node_paths=PackedStringArray("transition_animator")]
+[node name="ExhaustFlame" type="Node3D" unique_id=685915461 node_paths=PackedStringArray("transition_animator")]
 script = ExtResource("1_lb12t")
 transition_animator = NodePath("FlameTransition")
 
-[node name="FlameAnchor" type="Node3D" parent="."]
+[node name="FlameAnchor" type="Node3D" parent="." unique_id=1381011812]
 
-[node name="InnerFlame" type="MeshInstance3D" parent="FlameAnchor"]
+[node name="InnerFlame" type="MeshInstance3D" parent="FlameAnchor" unique_id=605847678]
 transform = Transform3D(62.3465, 0, 0, 0, -2.725252e-06, 74.99972, 0, -62.346497, -3.2783419e-06, 0, 0.4, 0)
 mesh = SubResource("ArrayMesh_lb12t")
-skeleton = NodePath("")
 
-[node name="OuterFlame" type="MeshInstance3D" parent="FlameAnchor"]
+[node name="OuterFlame" type="MeshInstance3D" parent="FlameAnchor" unique_id=1157391247]
 transform = Transform3D(154.85504, 0, 0, 0, -6.768928e-06, 154.85503, 0, -154.85503, -6.768928e-06, 0, 0.6689973, 0)
 mesh = SubResource("ArrayMesh_c7vxp")
-skeleton = NodePath("")
 
-[node name="FlameHalo" type="Sprite3D" parent="."]
+[node name="FlameHalo" type="Sprite3D" parent="." unique_id=1916332857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.076925, 0)
 modulate = Color(0.9372549, 0.8235294, 0.54901963, 0.47058824)
 billboard = 1
@@ -391,13 +389,9 @@ texture_filter = 1
 render_priority = -1
 texture = ExtResource("2_ynh7g")
 
-[node name="FlameAuto" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ynh7g")
-}
-autoplay = "flame-idle"
+[node name="FlameAuto" type="AnimationPlayer" parent="." unique_id=1060255089]
+libraries/ = SubResource("AnimationLibrary_ynh7g")
+autoplay = &"flame-idle"
 
-[node name="FlameTransition" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ynh7g")
-}
+[node name="FlameTransition" type="AnimationPlayer" parent="." unique_id=956784696]
+libraries/ = SubResource("AnimationLibrary_ynh7g")

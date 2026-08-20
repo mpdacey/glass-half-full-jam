@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InfoBoxContentsResource" load_steps=2 format=3 uid="uid://cyy1xhltj76cc"]
+[gd_resource type="Resource" script_class="InfoBoxContentsResource" format=3 uid="uid://cyy1xhltj76cc"]
 
 [ext_resource type="Script" uid="uid://dajftf844g2xs" path="res://scripts/resource_scripts/info_box_resource_script.gd" id="1_aofmc"]
 

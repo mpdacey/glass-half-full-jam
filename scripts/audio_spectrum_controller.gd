@@ -15,7 +15,7 @@ func _ready() -> void:
 	for i : int in lights.size():
 		heights.append(Height.new())
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_draw_to_panels()
 	_update_spectrum_data()
 

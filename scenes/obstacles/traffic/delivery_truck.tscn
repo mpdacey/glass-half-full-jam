@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1aju3boq4443"]
+[gd_scene format=3 uid="uid://b1aju3boq4443"]
 
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_3mm47"]
 [ext_resource type="ArrayMesh" uid="uid://d25b0yjt1tilp" path="res://models/traffic/delivery.obj" id="2_pbdek"]
@@ -7,14 +7,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_30yfe"]
 size = Vector3(2.432, 2.2932217, 5.718)
 
-[node name="TrafficCore" instance=ExtResource("1_3mm47")]
+[node name="TrafficCore" unique_id=380619264 instance=ExtResource("1_3mm47")]
 driving_speed = 12.0
 
-[node name="CollisionShape3D" parent="ObstacleHitBox" index="0"]
+[node name="CollisionShape3D" parent="ObstacleHitBox" parent_id_path=PackedInt32Array(419235475) index="0" unique_id=1926319234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.789281, 0.3523264)
 shape = SubResource("BoxShape3D_30yfe")
 
-[node name="Delivery" type="MeshInstance3D" parent="." index="2"]
+[node name="Delivery" type="MeshInstance3D" parent="." index="2" unique_id=2091386686]
 transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0, 0, 0)
 mesh = ExtResource("2_pbdek")
 surface_material_override/0 = ExtResource("3_pbdek")

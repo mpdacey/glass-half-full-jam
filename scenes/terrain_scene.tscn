@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://2byllt2m3knb"]
+[gd_scene format=3 uid="uid://2byllt2m3knb"]
 
 [ext_resource type="PackedScene" uid="uid://bdo53jatg2dfc" path="res://scenes/road_segment.tscn" id="1_l47ob"]
 [ext_resource type="AnimationLibrary" uid="uid://jc8fcqbdm5j4" path="res://resources/terrain_animation_library.tres" id="2_rtf8o"]
@@ -36,9 +36,9 @@ ambient_light_source = 2
 ambient_light_color = Color(0.5874539, 0.8710717, 0.9736617, 1)
 ambient_light_energy = 0.8
 
-[node name="TerrainScene" type="Node3D"]
+[node name="TerrainScene" type="Node3D" unique_id=1895761886]
 
-[node name="MainDirectionalLight" type="DirectionalLight3D" parent="."]
+[node name="MainDirectionalLight" type="DirectionalLight3D" parent="." unique_id=188091536]
 transform = Transform3D(-0.46462807, -0.12539037, 0.87658316, 0.36627865, 0.8740532, 0.3191724, -0.80620146, 0.46937016, -0.3601818, 12.871048, 9, -6)
 layers = 3
 light_color = Color(0.97, 0.8406667, 0.7275, 1)
@@ -47,7 +47,7 @@ light_indirect_energy = 1.684
 shadow_enabled = true
 sky_mode = 1
 
-[node name="SupportingDirectionalLight" type="DirectionalLight3D" parent="."]
+[node name="SupportingDirectionalLight" type="DirectionalLight3D" parent="." unique_id=950354335]
 transform = Transform3D(0.42081025, -0.46152538, 0.7809692, 0.36627862, 0.8740531, 0.31917235, -0.8299148, 0.1517413, 0.53685737, 12.871048, 9, -6)
 layers = 32
 light_color = Color(0.97, 0.8406667, 0.7275, 1)
@@ -56,499 +56,497 @@ light_indirect_energy = 1.684
 light_cull_mask = 4294966272
 sky_mode = 1
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=909892076]
 environment = SubResource("Environment_2libc")
 
-[node name="Terrain" type="Node3D" parent="."]
+[node name="Terrain" type="Node3D" parent="." unique_id=1902264189]
 
-[node name="RoadSegment" parent="Terrain" instance=ExtResource("1_l47ob")]
+[node name="RoadSegment" parent="Terrain" unique_id=489589509 instance=ExtResource("1_l47ob")]
 
-[node name="RoadSegment2" parent="Terrain" instance=ExtResource("1_l47ob")]
+[node name="RoadSegment2" parent="Terrain" unique_id=2001509705 instance=ExtResource("1_l47ob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="TerrainDrivingPlayer" type="AnimationPlayer" parent="Terrain"]
-libraries = {
-&"": ExtResource("2_rtf8o")
-}
+[node name="TerrainDrivingPlayer" type="AnimationPlayer" parent="Terrain" unique_id=1215779204]
+libraries/ = ExtResource("2_rtf8o")
 speed_scale = 2.3
 
-[node name="TerrainGlobalListeners" type="Node" parent="Terrain"]
+[node name="TerrainGlobalListeners" type="Node" parent="Terrain" unique_id=1780912175]
 
-[node name="TerrainSpeedListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
+[node name="TerrainSpeedListener" type="Node" parent="Terrain/TerrainGlobalListeners" unique_id=2090618758]
 script = ExtResource("3_gil8y")
 global_signal_name = &"speed_scale_updated"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TitleSceneLoadedListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
+[node name="TitleSceneLoadedListener" type="Node" parent="Terrain/TerrainGlobalListeners" unique_id=1582646780]
 script = ExtResource("3_gil8y")
 global_signal_name = &"scene_changed_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TerrainResetListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
+[node name="TerrainResetListener" type="Node" parent="Terrain/TerrainGlobalListeners" unique_id=1734549738]
 script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_reset"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TerrainGameoverListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
+[node name="TerrainGameoverListener" type="Node" parent="Terrain/TerrainGlobalListeners" unique_id=1515556833]
 script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_gameover"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="HideTerrainTimer" type="Timer" parent="Terrain/TerrainGlobalListeners/TerrainGameoverListener"]
+[node name="HideTerrainTimer" type="Timer" parent="Terrain/TerrainGlobalListeners/TerrainGameoverListener" unique_id=726103761]
 wait_time = 0.3
 
-[node name="TerrainRetryListener" type="Node" parent="Terrain/TerrainGlobalListeners"]
+[node name="TerrainRetryListener" type="Node" parent="Terrain/TerrainGlobalListeners" unique_id=1026749207]
 script = ExtResource("3_gil8y")
 global_signal_name = &"terrain_retry"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="FenceLine" type="Node3D" parent="Terrain"]
+[node name="FenceLine" type="Node3D" parent="Terrain" unique_id=269702819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9917965, 0, -11.102576)
 
-[node name="Fence" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence" parent="Terrain/FenceLine" unique_id=1899252466 instance=ExtResource("4_rtf8o")]
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence/Post" parent_id_path=PackedInt32Array(1899252466, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence2" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence2" parent="Terrain/FenceLine" unique_id=1558079774 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence2/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence2/Post" parent_id_path=PackedInt32Array(1558079774, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence3" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence3" parent="Terrain/FenceLine" unique_id=342211821 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence3/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence3/Post" parent_id_path=PackedInt32Array(342211821, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence4" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence4" parent="Terrain/FenceLine" unique_id=1082781080 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence4/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence4/Post" parent_id_path=PackedInt32Array(1082781080, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence5" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence5" parent="Terrain/FenceLine" unique_id=1284927351 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence5/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence5/Post" parent_id_path=PackedInt32Array(1284927351, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence6" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence6" parent="Terrain/FenceLine" unique_id=2147173879 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence6/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence6/Post" parent_id_path=PackedInt32Array(2147173879, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence7" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence7" parent="Terrain/FenceLine" unique_id=1958589571 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence7/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence7/Post" parent_id_path=PackedInt32Array(1958589571, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence8" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence8" parent="Terrain/FenceLine" unique_id=1871753227 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence8/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence8/Post" parent_id_path=PackedInt32Array(1871753227, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence9" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence9" parent="Terrain/FenceLine" unique_id=219864354 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence9/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence9/Post" parent_id_path=PackedInt32Array(219864354, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence10" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence10" parent="Terrain/FenceLine" unique_id=1967164917 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence10/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence10/Post" parent_id_path=PackedInt32Array(1967164917, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence11" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence11" parent="Terrain/FenceLine" unique_id=1863345935 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
 
-[node name="Fence12" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence12" parent="Terrain/FenceLine" unique_id=1179638807 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 0)
 
-[node name="Fence13" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence13" parent="Terrain/FenceLine" unique_id=143335169 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 0)
 
-[node name="Fence14" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence14" parent="Terrain/FenceLine" unique_id=222694842 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 0, 0)
 
-[node name="Fence14a" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence14a" parent="Terrain/FenceLine" unique_id=1014304057 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 0)
 
-[node name="Fence15" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence15" parent="Terrain/FenceLine" unique_id=1046289252 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 0)
 
-[node name="Fence16" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence16" parent="Terrain/FenceLine" unique_id=615523136 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 0, 0)
 
-[node name="Fence17" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence17" parent="Terrain/FenceLine" unique_id=32574250 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170, 0, 0)
 
-[node name="Fence18" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence18" parent="Terrain/FenceLine" unique_id=1590758 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 0)
 
-[node name="Fence19" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence19" parent="Terrain/FenceLine" unique_id=2096704236 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, 0, 0)
 
-[node name="Fence20" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence20" parent="Terrain/FenceLine" unique_id=908750104 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="Fence21" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence21" parent="Terrain/FenceLine" unique_id=1838394212 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 0, 0)
 
-[node name="Fence22" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence22" parent="Terrain/FenceLine" unique_id=2008871902 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220, 0, 0)
 
-[node name="Fence23" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence23" parent="Terrain/FenceLine" unique_id=1905690022 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230, 0, 0)
 
-[node name="Fence24" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence24" parent="Terrain/FenceLine" unique_id=1414169822 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 0)
 
-[node name="Fence25" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence25" parent="Terrain/FenceLine" unique_id=275007991 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
 
-[node name="Fence26" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence26" parent="Terrain/FenceLine" unique_id=1694112886 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260, 0, 0)
 
-[node name="Fence27" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence27" parent="Terrain/FenceLine" unique_id=203557034 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 0, 0)
 
-[node name="Fence28" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence28" parent="Terrain/FenceLine" unique_id=2020979504 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280, 0, 0)
 
-[node name="Fence29" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence29" parent="Terrain/FenceLine" unique_id=1765892646 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290, 0, 0)
 
-[node name="Fence30" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence30" parent="Terrain/FenceLine" unique_id=1325874015 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0)
 
-[node name="Fence31" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence31" parent="Terrain/FenceLine" unique_id=79594101 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310, 0, 0)
 
-[node name="Fence32" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence32" parent="Terrain/FenceLine" unique_id=424228391 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320, 0, 0)
 
-[node name="Fence33" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence33" parent="Terrain/FenceLine" unique_id=750673279 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 330, 0, 0)
 
-[node name="Fence34" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence34" parent="Terrain/FenceLine" unique_id=1437728868 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340, 0, 0)
 
-[node name="Fence35" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence35" parent="Terrain/FenceLine" unique_id=259305880 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350, 0, 0)
 
-[node name="Fence36" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence36" parent="Terrain/FenceLine" unique_id=1254738330 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 360, 0, 0)
 
-[node name="Fence37" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence37" parent="Terrain/FenceLine" unique_id=985669480 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370, 0, 0)
 
-[node name="Fence38" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence38" parent="Terrain/FenceLine" unique_id=381694453 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 380, 0, 0)
 
-[node name="Fence39" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence39" parent="Terrain/FenceLine" unique_id=953865857 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 390, 0, 0)
 
-[node name="Fence40" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence40" parent="Terrain/FenceLine" unique_id=1361872130 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
 
-[node name="Fence41" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence41" parent="Terrain/FenceLine" unique_id=2137094983 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 410, 0, 0)
 
-[node name="Fence42" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence42" parent="Terrain/FenceLine" unique_id=1095903378 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 420, 0, 0)
 
-[node name="Fence43" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence43" parent="Terrain/FenceLine" unique_id=655026513 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence43/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence43/Post" parent_id_path=PackedInt32Array(655026513, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence44" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence44" parent="Terrain/FenceLine" unique_id=956268644 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 440, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence44/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence44/Post" parent_id_path=PackedInt32Array(956268644, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence45" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence45" parent="Terrain/FenceLine" unique_id=1455166857 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence45/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence45/Post" parent_id_path=PackedInt32Array(1455166857, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence46" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence46" parent="Terrain/FenceLine" unique_id=574907814 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence46/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence46/Post" parent_id_path=PackedInt32Array(574907814, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence47" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence47" parent="Terrain/FenceLine" unique_id=1321131961 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence47/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence47/Post" parent_id_path=PackedInt32Array(1321131961, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence48" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence48" parent="Terrain/FenceLine" unique_id=269795187 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 480, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence48/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence48/Post" parent_id_path=PackedInt32Array(269795187, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence49" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence49" parent="Terrain/FenceLine" unique_id=866741649 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 490, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence49/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence49/Post" parent_id_path=PackedInt32Array(866741649, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence50" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence50" parent="Terrain/FenceLine" unique_id=1180674420 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence50/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence50/Post" parent_id_path=PackedInt32Array(1180674420, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence51" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence51" parent="Terrain/FenceLine" unique_id=1592203034 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 510, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence51/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence51/Post" parent_id_path=PackedInt32Array(1592203034, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence52" parent="Terrain/FenceLine" instance=ExtResource("4_rtf8o")]
+[node name="Fence52" parent="Terrain/FenceLine" unique_id=715724653 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 520, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine/Fence52/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine/Fence52/Post" parent_id_path=PackedInt32Array(715724653, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="FenceLine2" type="Node3D" parent="Terrain"]
+[node name="FenceLine2" type="Node3D" parent="Terrain" unique_id=943235191]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 496.008, 0, 11.103)
 
-[node name="SceneChangedPlayListener" type="Node" parent="Terrain/FenceLine2"]
+[node name="SceneChangedPlayListener" type="Node" parent="Terrain/FenceLine2" unique_id=1092610557]
 script = ExtResource("3_gil8y")
 global_signal_name = &"scene_changed_play"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="SceneChangedTitleListener" type="Node" parent="Terrain/FenceLine2"]
+[node name="SceneChangedTitleListener" type="Node" parent="Terrain/FenceLine2" unique_id=1284948719]
 script = ExtResource("3_gil8y")
 global_signal_name = &"scene_changed_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="Fence0" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence0" parent="Terrain/FenceLine2" unique_id=876721188 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence0/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence0/Post" parent_id_path=PackedInt32Array(876721188, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence" parent="Terrain/FenceLine2" unique_id=84366830 instance=ExtResource("4_rtf8o")]
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence/Post" parent_id_path=PackedInt32Array(84366830, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence2" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence2" parent="Terrain/FenceLine2" unique_id=1586623351 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence2/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence2/Post" parent_id_path=PackedInt32Array(1586623351, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence3" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence3" parent="Terrain/FenceLine2" unique_id=2089173821 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence3/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence3/Post" parent_id_path=PackedInt32Array(2089173821, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence4" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence4" parent="Terrain/FenceLine2" unique_id=935807674 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence4/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence4/Post" parent_id_path=PackedInt32Array(935807674, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence5" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence5" parent="Terrain/FenceLine2" unique_id=348995913 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence5/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence5/Post" parent_id_path=PackedInt32Array(348995913, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence6" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence6" parent="Terrain/FenceLine2" unique_id=641780985 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence6/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence6/Post" parent_id_path=PackedInt32Array(641780985, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence7" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence7" parent="Terrain/FenceLine2" unique_id=303259656 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence7/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence7/Post" parent_id_path=PackedInt32Array(303259656, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence8" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence8" parent="Terrain/FenceLine2" unique_id=87957488 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence8/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence8/Post" parent_id_path=PackedInt32Array(87957488, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence9" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence9" parent="Terrain/FenceLine2" unique_id=597025170 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
 
-[node name="Fence10" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence10" parent="Terrain/FenceLine2" unique_id=390803004 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
 
-[node name="Fence11" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence11" parent="Terrain/FenceLine2" unique_id=955854169 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
 
-[node name="Fence12" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence12" parent="Terrain/FenceLine2" unique_id=701106737 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 0, 0)
 
-[node name="Fence13" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence13" parent="Terrain/FenceLine2" unique_id=387166360 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 0)
 
-[node name="Fence14" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence14" parent="Terrain/FenceLine2" unique_id=2101700901 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 0, 0)
 
-[node name="Fence14a" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence14a" parent="Terrain/FenceLine2" unique_id=220570006 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 0)
 
-[node name="Fence15" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence15" parent="Terrain/FenceLine2" unique_id=263461708 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 0)
 
-[node name="Fence16" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence16" parent="Terrain/FenceLine2" unique_id=633213101 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 0, 0)
 
-[node name="Fence17" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence17" parent="Terrain/FenceLine2" unique_id=1602906425 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170, 0, 0)
 
-[node name="Fence18" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence18" parent="Terrain/FenceLine2" unique_id=771198832 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 0)
 
-[node name="Fence19" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence19" parent="Terrain/FenceLine2" unique_id=1711661768 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, 0, 0)
 
-[node name="Fence20" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence20" parent="Terrain/FenceLine2" unique_id=1835916563 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="Fence21" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence21" parent="Terrain/FenceLine2" unique_id=886080942 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 0, 0)
 
-[node name="Fence22" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence22" parent="Terrain/FenceLine2" unique_id=459556413 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220, 0, 0)
 
-[node name="Fence23" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence23" parent="Terrain/FenceLine2" unique_id=633583109 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230, 0, 0)
 
-[node name="Fence24" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence24" parent="Terrain/FenceLine2" unique_id=84773897 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 0)
 
-[node name="Fence25" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence25" parent="Terrain/FenceLine2" unique_id=1855076067 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
 
-[node name="Fence26" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence26" parent="Terrain/FenceLine2" unique_id=218593185 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260, 0, 0)
 
-[node name="Fence27" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence27" parent="Terrain/FenceLine2" unique_id=1112878632 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 0, 0)
 
-[node name="Fence28" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence28" parent="Terrain/FenceLine2" unique_id=696707051 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280, 0, 0)
 
-[node name="Fence29" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence29" parent="Terrain/FenceLine2" unique_id=1458020265 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290, 0, 0)
 
-[node name="Fence30" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence30" parent="Terrain/FenceLine2" unique_id=771857492 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0)
 
-[node name="Fence31" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence31" parent="Terrain/FenceLine2" unique_id=1626210223 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310, 0, 0)
 
-[node name="Fence32" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence32" parent="Terrain/FenceLine2" unique_id=203955221 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320, 0, 0)
 
-[node name="Fence33" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence33" parent="Terrain/FenceLine2" unique_id=363700787 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 330, 0, 0)
 
-[node name="Fence34" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence34" parent="Terrain/FenceLine2" unique_id=1529527814 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340, 0, 0)
 
-[node name="Fence35" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence35" parent="Terrain/FenceLine2" unique_id=664167513 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350, 0, 0)
 
-[node name="Fence36" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence36" parent="Terrain/FenceLine2" unique_id=1747795984 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 360, 0, 0)
 
-[node name="Fence37" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence37" parent="Terrain/FenceLine2" unique_id=464081294 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370, 0, 0)
 
-[node name="Fence38" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence38" parent="Terrain/FenceLine2" unique_id=739717669 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 380, 0, 0)
 
-[node name="Fence39" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence39" parent="Terrain/FenceLine2" unique_id=346015443 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 390, 0, 0)
 
-[node name="Fence40" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence40" parent="Terrain/FenceLine2" unique_id=507857146 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
 
-[node name="Fence41" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence41" parent="Terrain/FenceLine2" unique_id=832388868 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 410, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence41/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence41/Post" parent_id_path=PackedInt32Array(832388868, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence42" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence42" parent="Terrain/FenceLine2" unique_id=1582748918 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 420, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence42/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence42/Post" parent_id_path=PackedInt32Array(1582748918, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence43" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence43" parent="Terrain/FenceLine2" unique_id=247925355 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 430, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence43/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence43/Post" parent_id_path=PackedInt32Array(247925355, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence44" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence44" parent="Terrain/FenceLine2" unique_id=1406839858 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 440, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence44/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence44/Post" parent_id_path=PackedInt32Array(1406839858, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence45" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence45" parent="Terrain/FenceLine2" unique_id=1239774559 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence45/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence45/Post" parent_id_path=PackedInt32Array(1239774559, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence46" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence46" parent="Terrain/FenceLine2" unique_id=1401791162 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence46/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence46/Post" parent_id_path=PackedInt32Array(1401791162, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence47" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence47" parent="Terrain/FenceLine2" unique_id=1538161115 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence47/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence47/Post" parent_id_path=PackedInt32Array(1538161115, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence48" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence48" parent="Terrain/FenceLine2" unique_id=972091815 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 480, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence48/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence48/Post" parent_id_path=PackedInt32Array(972091815, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence49" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence49" parent="Terrain/FenceLine2" unique_id=991227877 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 490, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence49/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence49/Post" parent_id_path=PackedInt32Array(991227877, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="Fence50" parent="Terrain/FenceLine2" instance=ExtResource("4_rtf8o")]
+[node name="Fence50" parent="Terrain/FenceLine2" unique_id=2054231521 instance=ExtResource("4_rtf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
 
-[node name="PlantBase" parent="Terrain/FenceLine2/Fence50/Post" index="0"]
+[node name="PlantBase" parent="Terrain/FenceLine2/Fence50/Post" parent_id_path=PackedInt32Array(2054231521, 1707467208) index="0" unique_id=2111568958]
 visible = false
 
-[node name="RoadBendController" type="Node" parent="Terrain" node_paths=PackedStringArray("signal_emitter")]
+[node name="RoadBendController" type="Node" parent="Terrain" unique_id=875010512 node_paths=PackedStringArray("signal_emitter")]
 script = ExtResource("5_gil8y")
 min_bend_length = 130.0
 max_bend_length = 300.0

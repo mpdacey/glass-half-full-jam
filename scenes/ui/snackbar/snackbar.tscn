@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctu6qrmvuu4q1"]
+[gd_scene format=3 uid="uid://ctu6qrmvuu4q1"]
 
 [ext_resource type="Script" uid="uid://di1n0xuqv3bp6" path="res://scripts/snackbar/snackbar_ui_controller.gd" id="1_04j7s"]
 [ext_resource type="PackedScene" uid="uid://cugl55bmupwp7" path="res://scenes/ui/snackbar/snackbar_button.tscn" id="1_fdalm"]
@@ -264,13 +264,13 @@ _data = {
 &"show": SubResource("Animation_vab1p")
 }
 
-[node name="TitleSnackbar" type="CanvasLayer" node_paths=PackedStringArray("animator", "global_signal_emitter")]
+[node name="TitleSnackbar" type="CanvasLayer" unique_id=290017014 node_paths=PackedStringArray("animator", "global_signal_emitter")]
 layer = 4
 script = ExtResource("1_04j7s")
 animator = NodePath("AnimationPlayer")
 global_signal_emitter = NodePath("SnackbarButtonTypeEmitter")
 
-[node name="SnackbarMargin" type="MarginContainer" parent="."]
+[node name="SnackbarMargin" type="MarginContainer" parent="." unique_id=1075382997]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 12
 anchor_top = 1.0
@@ -284,103 +284,101 @@ size_flags_horizontal = 3
 theme_override_constants/margin_left = -60
 theme_override_constants/margin_right = -60
 
-[node name="SnackbarBackgroundPanel" type="PanelContainer" parent="SnackbarMargin"]
+[node name="SnackbarBackgroundPanel" type="PanelContainer" parent="SnackbarMargin" unique_id=1088545426]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1evc8")
 
-[node name="SnackbarBorderPanel" type="Panel" parent="SnackbarMargin/SnackbarBackgroundPanel"]
+[node name="SnackbarBorderPanel" type="Panel" parent="SnackbarMargin/SnackbarBackgroundPanel" unique_id=1731924700]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eucdu")
 
-[node name="RootButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel"]
+[node name="RootButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel" unique_id=206912496]
 layout_mode = 2
 theme_override_constants/margin_top = -88
 
-[node name="RootButtonsHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin"]
+[node name="RootButtonsHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin" unique_id=2055758091]
 layout_mode = 2
 alignment = 1
 
-[node name="LeftButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox"]
+[node name="LeftButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox" unique_id=1169139570]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 95
 theme_override_constants/margin_bottom = 10
 
-[node name="LeftButtonsHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin"]
+[node name="LeftButtonsHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin" unique_id=265577796]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="ShopButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
+[node name="ShopButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" unique_id=2017793880 instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_vab1p")
 
-[node name="PremiumListener" type="Node" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton"]
+[node name="PremiumListener" type="Node" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" unique_id=663805897]
 script = ExtResource("4_iohvl")
 
-[node name="SettingsButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" instance=ExtResource("1_fdalm")]
+[node name="SettingsButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox" unique_id=397764431 instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_04j7s")
 
-[node name="PlayButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox" instance=ExtResource("1_fdalm")]
+[node name="PlayButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox" unique_id=1283492985 instance=ExtResource("1_fdalm")]
 layout_mode = 2
 
-[node name="SnackbarShadowMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="0"]
+[node name="SnackbarShadowMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="0" unique_id=1432862430]
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = -5
 
-[node name="SnackbarShadow" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackbarShadowMargin" index="0"]
+[node name="SnackbarShadow" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackbarShadowMargin" index="0" unique_id=1317524065]
 theme_override_styles/panel = SubResource("StyleBoxFlat_fdalm")
 
-[node name="SnackBarButtonTexture" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="1"]
+[node name="SnackBarButtonTexture" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="1" unique_id=185003268]
 expand_mode = 0
 
-[node name="SnackBarIconMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="2"]
+[node name="SnackBarIconMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="2" unique_id=294092633]
 theme_override_constants/margin_left = 80
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 80
 
-[node name="SnackBarButtonMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="3"]
+[node name="SnackBarButtonMargin" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" index="3" unique_id=1817688566]
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="SnackBarButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin" index="0"]
+[node name="SnackBarButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin" index="0" unique_id=673707556]
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fdalm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vkky0")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_nmrw2")
 button_pressed = true
 
-[node name="AndroidBackListener" type="Node" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton" index="0"]
+[node name="AndroidBackListener" type="Node" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton" index="0" unique_id=1580676904]
 script = ExtResource("4_13qua")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
-[node name="RightButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox"]
+[node name="RightButtonsMargin" type="MarginContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox" unique_id=1774442444]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 95
 theme_override_constants/margin_bottom = 10
 
-[node name="RightButtonHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin"]
+[node name="RightButtonHBox" type="HBoxContainer" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin" unique_id=1003429554]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="LockedButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" instance=ExtResource("1_fdalm")]
+[node name="LockedButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" unique_id=449933450 instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_4v1fr")
 
-[node name="LeaderboardButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" instance=ExtResource("1_fdalm")]
+[node name="LeaderboardButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" unique_id=216770841 instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_13qua")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_04j7s")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=836299343]
+libraries/ = SubResource("AnimationLibrary_04j7s")
 
-[node name="SnackbarButtonTypeEmitter" type="Node" parent="."]
+[node name="SnackbarButtonTypeEmitter" type="Node" parent="." unique_id=946803239]
 script = ExtResource("4_4v1fr")
 global_signal_name = &"snackbar_button_pressed"
 metadata/_custom_type_script = "uid://lu4gei6pype6"

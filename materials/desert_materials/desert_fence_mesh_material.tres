@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c4hwyjg4piyay"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c4hwyjg4piyay"]
 
 [ext_resource type="Shader" uid="uid://ps16vcev4gh1" path="res://shader/fence_link_shader.gdshader" id="1_krb5k"]
 [ext_resource type="Texture2D" uid="uid://ctqgrtbafqpmx" path="res://textures/material_textures/chain_link_textures/metal_texture.png" id="2_qvpaf"]

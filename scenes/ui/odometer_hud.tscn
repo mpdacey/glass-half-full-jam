@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cereybnuafmsc"]
+[gd_scene format=3 uid="uid://cereybnuafmsc"]
 
 [ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="1_t5pxi"]
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="2_i1qea"]
 
-[node name="OdometerHUD" type="CanvasLayer" node_paths=PackedStringArray("odometer_value_label")]
+[node name="OdometerHUD" type="CanvasLayer" unique_id=1721136587 node_paths=PackedStringArray("odometer_value_label")]
 script = ExtResource("1_t5pxi")
 odometer_value_label = NodePath("Control/PanelContainer/MarginContainer/VBoxContainer/OdometerValue")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=322785447]
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
@@ -15,7 +15,7 @@ grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=344507137]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -26,22 +26,22 @@ offset_bottom = 100.0
 grow_horizontal = 2
 scale = Vector2(1.2, 1.2)
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer" unique_id=1651987186]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer" unique_id=532677670]
 layout_mode = 2
 
-[node name="OdometerTitle" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="OdometerTitle" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=548257217]
 layout_mode = 2
 text = "Odometer: "
 label_settings = ExtResource("2_i1qea")
 
-[node name="OdometerValue" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="OdometerValue" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=960089118]
 layout_mode = 2
 text = "000000.0"
 label_settings = ExtResource("2_i1qea")

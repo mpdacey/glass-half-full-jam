@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ccx8siq7mgu0e"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ccx8siq7mgu0e"]
 
 [ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_ebi8j"]
 [ext_resource type="Texture2D" uid="uid://dyhpcqbb7osob" path="res://textures/material_textures/desert_textures/terrain_texture.png" id="2_mg6kp"]
@@ -23,4 +23,5 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/curve_amount = 0.0999999977648
 shader_parameter/distant_albeno = Color(1, 0.9266667, 0.56, 1)
 shader_parameter/has_seperate_distant_texture = false
-shader_parameter/curve_multiplier = 0.0
+shader_parameter/bend_multiplier = 0.0
+shader_parameter/bend_amplifier = 1.0

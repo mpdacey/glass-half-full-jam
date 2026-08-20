@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwoyqeu2rgpmk"]
+[gd_scene format=3 uid="uid://dwoyqeu2rgpmk"]
 
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="1_4ml56"]
 [ext_resource type="Script" uid="uid://byg2ofwvgnj6p" path="res://scripts/billing/purchase_ui_controller.gd" id="1_idhgv"]
@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://c5usbuurcexuq" path="res://resources/info_box_resources/purchase_content/purchase_failed_resource.tres" id="5_sr5pi"]
 [ext_resource type="Script" uid="uid://cntuihfxvma31" path="res://scripts/global/premium_signal_listener.gd" id="7_3gx47"]
 
-[node name="PurchaseGameUI" type="CanvasLayer" node_paths=PackedStringArray("info_box")]
+[node name="PurchaseGameUI" type="CanvasLayer" unique_id=1196401666 node_paths=PackedStringArray("info_box")]
 script = ExtResource("1_idhgv")
 info_box = NodePath("PurchaseQueryBox")
 initial_resource = ExtResource("2_nng5t")
@@ -20,13 +20,13 @@ interrupted_resource = ExtResource("5_17jvu")
 success_resource = ExtResource("4_17jvu")
 failed_resource = ExtResource("5_sr5pi")
 
-[node name="PurchaseQueryBox" parent="." instance=ExtResource("1_4ml56")]
+[node name="PurchaseQueryBox" parent="." unique_id=1400466139 instance=ExtResource("1_4ml56")]
 
-[node name="PremiumSignalListener" type="Node" parent="."]
+[node name="PremiumSignalListener" type="Node" parent="." unique_id=22656238]
 script = ExtResource("7_3gx47")
 metadata/_custom_type_script = "uid://cntuihfxvma31"
 
-[node name="PremiumPendingTimer" type="Timer" parent="."]
+[node name="PremiumPendingTimer" type="Timer" parent="." unique_id=1346160887]
 wait_time = 15.0
 one_shot = true
 ignore_time_scale = true

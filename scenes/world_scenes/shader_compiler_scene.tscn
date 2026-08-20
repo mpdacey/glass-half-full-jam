@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b210kvlm3hw7d"]
+[gd_scene format=3 uid="uid://b210kvlm3hw7d"]
 
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="1_r0vov"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_mwelm"]
@@ -102,11 +102,11 @@ _data = {
 &"compile_animation": SubResource("Animation_x81ys")
 }
 
-[node name="ShaderCompilerScene" type="Node"]
+[node name="ShaderCompilerScene" type="Node" unique_id=2014038822]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1820831956]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2011154606]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -114,7 +114,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect" unique_id=1180830699]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -130,7 +130,7 @@ grow_vertical = 2
 text = "Compiling Shaders..."
 label_settings = ExtResource("1_r0vov")
 
-[node name="CarSilhouette" type="Control" parent="CanvasLayer/ColorRect"]
+[node name="CarSilhouette" type="Control" parent="CanvasLayer/ColorRect" unique_id=350227706]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,16 +142,16 @@ offset_bottom = -232.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CarSilhouetteBody" type="Sprite2D" parent="CanvasLayer/ColorRect/CarSilhouette"]
+[node name="CarSilhouetteBody" type="Sprite2D" parent="CanvasLayer/ColorRect/CarSilhouette" unique_id=857131816]
 scale = Vector2(1.0554167, 1.0763415)
 texture = ExtResource("2_w23pu")
 
-[node name="CarSilhouetteWheel" type="Sprite2D" parent="CanvasLayer/ColorRect/CarSilhouette"]
+[node name="CarSilhouetteWheel" type="Sprite2D" parent="CanvasLayer/ColorRect/CarSilhouette" unique_id=1693195485]
 position = Vector2(153.18417, 58.309456)
 scale = Vector2(0.84375, 0.84375)
 texture = ExtResource("3_5x1wh")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteWheel"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteWheel" unique_id=938352328]
 position = Vector2(0, 46.222)
 scale = Vector2(1.1851852, 1.1851852)
 texture = ExtResource("3_5x1wh")
@@ -167,12 +167,12 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_ne2yj")
 color_ramp = SubResource("Gradient_ia3k5")
 
-[node name="CarSilhouetteWheel2" type="Sprite2D" parent="CanvasLayer/ColorRect/CarSilhouette"]
+[node name="CarSilhouetteWheel2" type="Sprite2D" parent="CanvasLayer/ColorRect/CarSilhouette" unique_id=426778496]
 position = Vector2(-156.81586, 58.309456)
 scale = Vector2(0.84375, 0.84375)
 texture = ExtResource("3_5x1wh")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteWheel2"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteWheel2" unique_id=1161376899]
 position = Vector2(0, 46.222)
 scale = Vector2(1.1851852, 1.1851852)
 amount = 15
@@ -188,64 +188,62 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_ne2yj")
 color_ramp = SubResource("Gradient_ia3k5")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=81879807]
 transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.9834009, 0, 5.474494, 11.435804)
 
-[node name="TrafficCore" parent="." instance=ExtResource("2_mwelm")]
+[node name="TrafficCore" parent="." unique_id=1410562825 instance=ExtResource("2_mwelm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7918973, 0, -7.0662956)
 script = null
 
-[node name="PlayerVehicle" parent="." instance=ExtResource("3_sltll")]
+[node name="PlayerVehicle" parent="." unique_id=1927190907 instance=ExtResource("3_sltll")]
 script = null
 
-[node name="SedanSports" parent="PlayerVehicle" index="0"]
+[node name="SedanSports" parent="PlayerVehicle" index="0" unique_id=733151807]
 transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.0000001, 0, -1.0000001, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="EngineSmokeEmitter" parent="PlayerVehicle" index="1"]
+[node name="EngineSmokeEmitter" parent="PlayerVehicle" index="1" unique_id=1822746827]
 emitting = true
 
-[node name="DustCloudEmitter" parent="PlayerVehicle/OffRoadNodes" index="0"]
+[node name="DustCloudEmitter" parent="PlayerVehicle/OffRoadNodes" parent_id_path=PackedInt32Array(1927190907, 1100753317) index="0" unique_id=477234670]
 emitting = true
 
-[node name="OffRoadAnimator" parent="PlayerVehicle/OffRoadNodes" index="1"]
+[node name="OffRoadAnimator" parent="PlayerVehicle/OffRoadNodes" parent_id_path=PackedInt32Array(1927190907, 1100753317) index="1" unique_id=351639193]
 active = false
-autoplay = ""
+autoplay = &""
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_rx5xi")
-}
-autoplay = "compile_animation"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1522354889]
+libraries/ = SubResource("AnimationLibrary_rx5xi")
+autoplay = &"compile_animation"
 
-[node name="LoadTitleEmitter" type="Node" parent="."]
+[node name="LoadTitleEmitter" type="Node" parent="." unique_id=1833702916]
 script = ExtResource("6_6c71x")
 global_signal_name = &"scene_change_request_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TrafficCore2" parent="." instance=ExtResource("7_sa032")]
+[node name="TrafficCore2" parent="." unique_id=1650181689 instance=ExtResource("7_sa032")]
 transform = Transform3D(-0.06328675, 0, -0.8447882, 0, 0.99999994, 0, 0.6937904, 0, -0.048542947, -4.2617035, 0.034033537, -2.5469785)
 
-[node name="fuel-canister" parent="." instance=ExtResource("6_tle65")]
+[node name="fuel-canister" parent="." unique_id=1174851898 instance=ExtResource("6_tle65")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8306751, 1.9226065, -4.581192)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=421915853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2729483, 0)
 mesh = ExtResource("7_e1u2q")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1077744198]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5704515, 2.2729483, 0)
 mesh = ExtResource("8_v6nyv")
 
-[node name="HighscoreBanner" parent="." instance=ExtResource("9_v6nyv")]
+[node name="HighscoreBanner" parent="." unique_id=1171241553 instance=ExtResource("9_v6nyv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6394374, 0, -1.772831)
 
-[node name="ConfettiCannon" parent="." instance=ExtResource("10_x73n1")]
+[node name="ConfettiCannon" parent="." unique_id=731159488 instance=ExtResource("10_x73n1")]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="Particles" parent="ConfettiCannon" index="0"]
+[node name="Particles" parent="ConfettiCannon" index="0" unique_id=394002463]
 emitting = true
 one_shot = false
 

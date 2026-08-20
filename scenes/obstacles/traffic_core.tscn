@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://xr8lh41t68bh"]
+[gd_scene format=3 uid="uid://xr8lh41t68bh"]
 
 [ext_resource type="Script" uid="uid://bcbdcaro0ifxp" path="res://scripts/traffic_core_controller.gd" id="1_rw0se"]
 
@@ -6,25 +6,25 @@
 margin = 0.0
 radius = 0.1
 
-[node name="TrafficCore" type="PathFollow3D"]
+[node name="TrafficCore" type="PathFollow3D" unique_id=1360012695]
 loop = false
 script = ExtResource("1_rw0se")
 
-[node name="PlayerNearDetector" type="Area3D" parent="."]
+[node name="PlayerNearDetector" type="Area3D" parent="." unique_id=800358139]
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerNearDetector"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerNearDetector" unique_id=1469558144]
 shape = SubResource("SphereShape3D_rw0se")
 
-[node name="ObstacleHitBox" type="Area3D" parent="."]
+[node name="ObstacleHitBox" type="Area3D" parent="." unique_id=419235475]
 collision_layer = 2
 collision_mask = 0
 monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleHitBox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleHitBox" unique_id=1926319234]
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=48078305]
 
 [connection signal="area_entered" from="PlayerNearDetector" to="." method="_on_player_near" unbinds=1]

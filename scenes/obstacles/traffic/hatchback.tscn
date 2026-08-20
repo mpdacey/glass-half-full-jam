@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpuwv1tntbgm2"]
+[gd_scene format=3 uid="uid://dpuwv1tntbgm2"]
 
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_2dqks"]
 [ext_resource type="ArrayMesh" uid="uid://bgojhnnpwqf0e" path="res://models/traffic/hatchback-sports.obj" id="2_km2h6"]
@@ -7,14 +7,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_km2h6"]
 size = Vector3(2.2574768, 2.8142242, 5.1678467)
 
-[node name="TrafficCore" instance=ExtResource("1_2dqks")]
+[node name="TrafficCore" unique_id=1832251698 instance=ExtResource("1_2dqks")]
 driving_speed = 13.0
 
-[node name="CollisionShape3D" parent="ObstacleHitBox" index="0"]
+[node name="CollisionShape3D" parent="ObstacleHitBox" parent_id_path=PackedInt32Array(419235475) index="0" unique_id=1926319234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09, 0.235)
 shape = SubResource("BoxShape3D_km2h6")
 
-[node name="HatchbackSports" type="MeshInstance3D" parent="." index="2"]
+[node name="HatchbackSports" type="MeshInstance3D" parent="." index="2" unique_id=900145200]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
 mesh = ExtResource("2_km2h6")
 surface_material_override/0 = ExtResource("3_km2h6")

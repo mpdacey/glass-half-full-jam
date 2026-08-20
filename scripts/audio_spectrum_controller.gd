@@ -21,7 +21,8 @@ func _process(_delta: float) -> void:
 
 func _draw_to_panels() -> void:
 	for i: int in lights.size():
-		lights[i].modulate.a = clampf(pow(heights[i].actual* 15, 1.5), 0, 1)
+		var modified_height := clampf(pow(heights[i].actual * 15, 1.5), 0, 1)
+		lights[i].modulate.a = roundf(modified_height * 8) * 0.125 
 
 func _update_spectrum_data() -> void:
 	var prev_hertz: float = 0.0

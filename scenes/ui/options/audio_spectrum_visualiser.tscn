@@ -28,6 +28,10 @@ border_width_right = 24
 border_width_bottom = 8
 border_color = Color(0.07199994, 0.54, 0, 1)
 border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 shadow_color = Color(0.08533325, 0.64, 0, 0.24313726)
 shadow_size = 32
 

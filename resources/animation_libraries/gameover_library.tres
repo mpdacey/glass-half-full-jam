@@ -1,9 +1,9 @@
 [gd_resource type="AnimationLibrary" format=3 uid="uid://dy6jegyq0i7t5"]
 
-[ext_resource type="AudioStream" uid="uid://nu8v60m71787" path="res://audio/sfx/clink.ogg" id="1_g74rb"]
-[ext_resource type="AudioStream" uid="uid://mdwwcvxus853" path="res://audio/sfx/cannon-fire.ogg" id="2_sryra"]
-[ext_resource type="AudioStream" uid="uid://cwjtcmn8bei6t" path="res://audio/sfx/blastoff.ogg" id="3_ixcwm"]
-[ext_resource type="AudioStream" uid="uid://dc4b4sa16ck7g" path="res://audio/sfx/car-crash.ogg" id="4_1hi4a"]
+[ext_resource type="AudioStream" uid="uid://nu8v60m71787" path="res://audio/sfx/gameover/clink.ogg" id="1_g74rb"]
+[ext_resource type="AudioStream" uid="uid://mdwwcvxus853" path="res://audio/sfx/gameover/cannon-fire.ogg" id="2_sryra"]
+[ext_resource type="AudioStream" uid="uid://cwjtcmn8bei6t" path="res://audio/sfx/gameover/blastoff.ogg" id="3_ixcwm"]
+[ext_resource type="AudioStream" uid="uid://dc4b4sa16ck7g" path="res://audio/sfx/gameover/car-crash.ogg" id="4_1hi4a"]
 
 [sub_resource type="Animation" id="Animation_4w45t"]
 length = 0.001

@@ -17,9 +17,9 @@
 [ext_resource type="StyleBox" uid="uid://qurbgedfhs57" path="res://scenes/ui/leaderboard/leaderboard_still_page_panel_style.tres" id="10_h64fj"]
 [ext_resource type="Texture2D" uid="uid://28ajs5ji27t0" path="res://textures/police_badge.png" id="10_ly8w5"]
 [ext_resource type="StyleBox" uid="uid://cjbyycuff12uo" path="res://scenes/ui/leaderboard/leaderboard_fading_page_panel_style.tres" id="11_ko0uc"]
-[ext_resource type="AudioStream" uid="uid://chfaeaqemwcek" path="res://audio/sfx/leaderboard/leaderboard_page_turn.wav" id="11_t1ah0"]
-[ext_resource type="AudioStream" uid="uid://buidtptyttd8f" path="res://audio/sfx/leaderboard/leaderboard_book_close.wav" id="16_ko0uc"]
-[ext_resource type="AudioStream" uid="uid://copts6wfejoon" path="res://audio/sfx/leaderboard/leaderboard_book_open.wav" id="17_t1ah0"]
+[ext_resource type="AudioStream" uid="uid://chfaeaqemwcek" path="res://audio/sfx/ui/leaderboard/leaderboard_page_turn.wav" id="11_t1ah0"]
+[ext_resource type="AudioStream" uid="uid://buidtptyttd8f" path="res://audio/sfx/ui/leaderboard/leaderboard_book_close.wav" id="16_ko0uc"]
+[ext_resource type="AudioStream" uid="uid://copts6wfejoon" path="res://audio/sfx/ui/leaderboard/leaderboard_book_open.wav" id="17_t1ah0"]
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="22_gpe5i"]
 [ext_resource type="Resource" uid="uid://daf1qa5w8sp1p" path="res://resources/info_box_resources/leaderboard_disclaimer_resource.tres" id="23_4qtqu"]
 

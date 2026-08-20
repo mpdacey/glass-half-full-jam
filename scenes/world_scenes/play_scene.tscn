@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cph7yiesffh3n" path="res://textures/drive_ui/odometer_wheel.png" id="24_7m3n2"]
 [ext_resource type="Shader" uid="uid://7sfyxlr738lf" path="res://shader/odometer_shader.gdshader" id="24_63m0j"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="24_dfpoj"]
-[ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/sizzle.ogg" id="24_q6ljc"]
+[ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/gameover/sizzle.ogg" id="24_q6ljc"]
 [ext_resource type="PackedScene" uid="uid://cdhjckfl8a3gc" path="res://scenes/highscore_gate.tscn" id="25_6bbup"]
 [ext_resource type="Script" uid="uid://c0j7uh55ha0pq" path="res://scripts/highscore_gate_controller.gd" id="25_83g3t"]
 [ext_resource type="AnimationLibrary" uid="uid://dy6jegyq0i7t5" path="res://resources/animation_libraries/gameover_library.tres" id="25_ssu4d"]

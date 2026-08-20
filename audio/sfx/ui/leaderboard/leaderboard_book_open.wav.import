@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://copts6wfejoon"
-path="res://.godot/imported/leaderboard_book_open.wav-f3ecab29b473bbf0e5a018a3d7734491.sample"
+path="res://.godot/imported/leaderboard_book_open.wav-65d342ca2db88815533f8cea893686d3.sample"
 
 [deps]
 
-source_file="res://audio/sfx/leaderboard/leaderboard_book_open.wav"
-dest_files=["res://.godot/imported/leaderboard_book_open.wav-f3ecab29b473bbf0e5a018a3d7734491.sample"]
+source_file="res://audio/sfx/ui/leaderboard/leaderboard_book_open.wav"
+dest_files=["res://.godot/imported/leaderboard_book_open.wav-65d342ca2db88815533f8cea893686d3.sample"]
 
 [params]
 

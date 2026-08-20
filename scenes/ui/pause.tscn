@@ -15,9 +15,9 @@
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_emuhb"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="10_78mva"]
 [ext_resource type="Script" uid="uid://dpdcc7bh4f6ba" path="res://scripts/audio/audio_toggle_controller.gd" id="11_fosa6"]
-[ext_resource type="AudioStream" uid="uid://d3uv12tggp77k" path="res://audio/sfx/pause/dice_bounce_1.ogg" id="13_5amhe"]
-[ext_resource type="AudioStream" uid="uid://d35sfwlk3kyjp" path="res://audio/sfx/pause/dice_bounce_2.ogg" id="14_78mva"]
-[ext_resource type="AudioStream" uid="uid://r5kh0yoajo6h" path="res://audio/sfx/pause/dice_bounce_3.ogg" id="15_ptotp"]
+[ext_resource type="AudioStream" uid="uid://d3uv12tggp77k" path="res://audio/sfx/ui/pause/dice_bounce_1.ogg" id="13_5amhe"]
+[ext_resource type="AudioStream" uid="uid://d35sfwlk3kyjp" path="res://audio/sfx/ui/pause/dice_bounce_2.ogg" id="14_78mva"]
+[ext_resource type="AudioStream" uid="uid://r5kh0yoajo6h" path="res://audio/sfx/ui/pause/dice_bounce_3.ogg" id="15_ptotp"]
 
 [sub_resource type="Curve2D" id="Curve2D_vfyr0"]
 _data = {

@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bxb3bfdh8p0vy" path="res://scenes/ui/highscore-confetti.tscn" id="1_85qg1"]
 [ext_resource type="Script" uid="uid://dg5dlgs4o22b2" path="res://scripts/highscore_confetti_ui_controller.gd" id="1_p3pco"]
-[ext_resource type="AudioStream" uid="uid://cxwhvnrv6cqbh" path="res://audio/sfx/highscore_confetti_cannons.ogg" id="3_2p1w7"]
-[ext_resource type="AudioStream" uid="uid://58piyy1y4wvl" path="res://audio/sfx/highscore_confetti_fizzle.ogg" id="4_bxinh"]
+[ext_resource type="AudioStream" uid="uid://cxwhvnrv6cqbh" path="res://audio/sfx/highscore/highscore_confetti_cannons.ogg" id="3_2p1w7"]
+[ext_resource type="AudioStream" uid="uid://58piyy1y4wvl" path="res://audio/sfx/highscore/highscore_confetti_fizzle.ogg" id="4_bxinh"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bxinh"]
 random_pitch = 1.1

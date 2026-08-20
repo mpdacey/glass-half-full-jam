@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://chfaeaqemwcek"
-path="res://.godot/imported/leaderboard_page_turn.wav-fb76fde0d9ec661684662a6e8cc8376c.sample"
+path="res://.godot/imported/leaderboard_page_turn.wav-567824e18d002757cd864eab4884acdb.sample"
 
 [deps]
 
-source_file="res://audio/sfx/leaderboard/leaderboard_page_turn.wav"
-dest_files=["res://.godot/imported/leaderboard_page_turn.wav-fb76fde0d9ec661684662a6e8cc8376c.sample"]
+source_file="res://audio/sfx/ui/leaderboard/leaderboard_page_turn.wav"
+dest_files=["res://.godot/imported/leaderboard_page_turn.wav-567824e18d002757cd864eab4884acdb.sample"]
 
 [params]
 

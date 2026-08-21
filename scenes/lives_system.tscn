@@ -1,31 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvkrff2txpo0q"]
+[gd_scene format=3 uid="uid://cvkrff2txpo0q"]
 
 [ext_resource type="Script" uid="uid://l555wbjr4e0h" path="res://scripts/global/lives_system_controller.gd" id="1_mtu6a"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="2_8whx0"]
 [ext_resource type="Script" uid="uid://c0qe4xdqr1dt1" path="res://scenes/lives_save_controller.gd" id="3_8upvp"]
 
-[node name="LivesSystem" type="Node" node_paths=PackedStringArray("lives_save_controller", "regen_timer", "connecting_canvas", "timeout_timer")]
+[node name="LivesSystem" type="Node" unique_id=207253100 node_paths=PackedStringArray("lives_save_controller", "regen_timer")]
 process_mode = 3
 script = ExtResource("1_mtu6a")
 lives_save_controller = NodePath("LivesSaveController")
 regen_timer = NodePath("FullRegenerationTimer")
-connecting_canvas = NodePath("")
-timeout_timer = NodePath("")
 
-[node name="FullRegenerationTimer" type="Timer" parent="."]
+[node name="FullRegenerationTimer" type="Timer" parent="." unique_id=61070644]
 wait_time = 60.0
 one_shot = true
 ignore_time_scale = true
 
-[node name="SpendLifeRequestListener" type="Node" parent="."]
+[node name="SpendLifeRequestListener" type="Node" parent="." unique_id=1058160716]
 script = ExtResource("2_8whx0")
 global_signal_name = &"spend_life_requested"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="LivesSaveController" type="Node" parent="."]
+[node name="LivesSaveController" type="Node" parent="." unique_id=188230999]
 script = ExtResource("3_8upvp")
 
-[node name="InternetConnectedListener" type="Node" parent="."]
+[node name="InternetConnectedListener" type="Node" parent="." unique_id=363294883]
 script = ExtResource("2_8whx0")
 global_signal_name = &"time_established_connection"
 metadata/_custom_type_script = "uid://lu4gei6pype6"

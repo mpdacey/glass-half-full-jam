@@ -2,11 +2,17 @@ extends CanvasLayer
 class_name LivesUIController
 
 signal lives_value_changed()
+signal open_shop_requested()
+signal banish_requested()
 
 @export var lives_label : Label
 @export var regen_timer_label: Label
 
 func _ready() -> void:
+	if PurchaseController.has_premium:
+		hide()
+		return
+	
 	LivesSystem.life_regenerated.connect(set_lives_label)
 	LivesSystem.timer_remaining_seconds.connect(set_regen_timer_label)
 	LivesSystem.initial_timer_set.connect(grab_values)
@@ -27,3 +33,7 @@ func set_regen_timer_label(seconds_left: int) -> void:
 
 func grab_values() -> void:
 	LivesSystem.emit_signals(true)
+
+func request_banish_lives() -> void:
+	if PurchaseController.has_premium and visible:
+		banish_requested.emit()

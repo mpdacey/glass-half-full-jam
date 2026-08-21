@@ -1,4 +1,4 @@
-[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://bnrbp8k1ac10m"]
+[gd_resource type="SphereMesh" format=3 uid="uid://bnrbp8k1ac10m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esvn5"]
 transparency = 1

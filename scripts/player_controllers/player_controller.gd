@@ -4,6 +4,7 @@ class_name PlayerVehicleController
 signal turned_sharply()
 
 const IDEAL_RATIO = 0.36477986419691
+const MAX_CAR_TILT_DEGREES = 30
 
 @export var max_swerve_distance : float = 8.0
 @export var mouse_tracking_surface_speeds : Dictionary[SurfaceController.SurfaceType, float] = {
@@ -13,31 +14,42 @@ const IDEAL_RATIO = 0.36477986419691
 }
 @export var surface_transition_time := 0.7
 @export var engine_smoke_emitter: CPUParticles3D
+@export var release_tilt_speed := 3.0
 var remapped_vehicle_position := 0.0
 var _mouse_tracking_speed := mouse_tracking_surface_speeds[SurfaceController.SurfaceType.ROAD]
 var _surface_change_tween : Tween
 var _currently_sharp_turning : bool = false
+var _input_is_held: bool = false
 
 func reset() -> void:
 	set_physics_process(true)
 	set_process_unhandled_input(true)
 	remapped_vehicle_position = 0.0
 	_currently_sharp_turning = false
+	_input_is_held = false
 	_set_smoke_particles(false)
 
 func _physics_process(delta: float) -> void:
-	var car_tilt_ratio := clampf(position.z - remapped_vehicle_position, -5.0, 5.0) / 5.0
-	position.z = move_toward(position.z, remapped_vehicle_position, abs(_mouse_tracking_speed * car_tilt_ratio) * delta)
-	rotation.y = move_toward(rotation.y, deg_to_rad(car_tilt_ratio * 30), deg_to_rad(270) * delta)
+	if _input_is_held:
+		var car_tilt_ratio := clampf(position.z - remapped_vehicle_position, -5.0, 5.0) / 5.0
+		position.z = move_toward(position.z, remapped_vehicle_position, abs(_mouse_tracking_speed * car_tilt_ratio) * delta)
+		rotation.y = move_toward(rotation.y, deg_to_rad(car_tilt_ratio * MAX_CAR_TILT_DEGREES), deg_to_rad(270) * delta)
+	else:
+		var remaining_tilt_ratio : float = abs(rotation.y) / deg_to_rad(MAX_CAR_TILT_DEGREES)
+		position.z = move_toward(position.z, remapped_vehicle_position, abs(_mouse_tracking_speed * remaining_tilt_ratio) * delta)
+		rotation.y = move_toward(rotation.y, deg_to_rad(0), deg_to_rad(270) * delta * (1 / release_tilt_speed))
 
 func _unhandled_input(event: InputEvent) -> void:
+	if (event is InputEventMouseMotion):
+		_input_is_held = true
+		_calc_vehicle_position()
+		return
+	
 	if (
-		event is InputEventMouseMotion
-		or (
-			event is InputEventMouseButton
-			and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT
-		)
+		event is InputEventMouseButton
+		and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT
 	):
+		_input_is_held = (event as InputEventMouseButton).pressed
 		_calc_vehicle_position()
 
 func _calc_vehicle_position() -> void:

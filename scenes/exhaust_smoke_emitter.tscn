@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0dh882e62sxv"]
+[gd_scene format=3 uid="uid://c0dh882e62sxv"]
 
 [ext_resource type="SphereMesh" uid="uid://dt68ilnohkb2q" path="res://scenes/particles/smoke_particle_mesh.tres" id="1_eqchy"]
 
@@ -6,7 +6,7 @@
 _data = [Vector2(0, 0), 0.0, 5.518755, 0, 0, Vector2(0.5935961, 0.987701), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="ExhaustSmokeEmitter" type="CPUParticles3D"]
+[node name="ExhaustSmokeEmitter" type="CPUParticles3D" unique_id=1853825921]
 layers = 2
 amount = 5
 lifetime = 0.43

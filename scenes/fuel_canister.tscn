@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bick452yv4p3p"]
+[gd_scene format=4 uid="uid://bick452yv4p3p"]
 
 [ext_resource type="AnimationLibrary" uid="uid://j1ir62h613ec" path="res://scenes/obstacles/fuel_animation_library.tres" id="1_whhod"]
 [ext_resource type="Material" uid="uid://c0gpax6g2inuo" path="res://materials/gas_canister_materials/canister_body_material.tres" id="2_whhod"]
@@ -218,61 +218,52 @@ shadow_mesh = SubResource("ArrayMesh_kvbde")
 [sub_resource type="QuadMesh" id="QuadMesh_whhod"]
 size = Vector2(1.8, 1.6)
 
-[node name="fuel-canister" type="Node3D"]
+[node name="fuel-canister" type="Node3D" unique_id=1794079876]
 metadata/animator = NodePath("GrowPlayer")
 metadata/warning_animator = NodePath("WarningPlayer")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=2135339503]
 collision_mask = 0
 monitoring = false
 metadata/vanish_after_collision = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=530974016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64075375, 0)
 shape = SubResource("SphereShape3D_whhod")
 
-[node name="IdleSpinPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": ExtResource("1_whhod")
-}
-autoplay = "spin"
+[node name="IdleSpinPlayer" type="AnimationPlayer" parent="." unique_id=715966141]
+libraries/ = ExtResource("1_whhod")
+autoplay = &"spin"
 
-[node name="GrowPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": ExtResource("1_whhod")
-}
+[node name="GrowPlayer" type="AnimationPlayer" parent="." unique_id=269412393]
+libraries/ = ExtResource("1_whhod")
 
-[node name="WarningPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": ExtResource("1_whhod"),
-&"fuel-warning": SubResource("AnimationLibrary_7s7n5")
-}
-autoplay = "fuel-warning/hide-warning"
+[node name="WarningPlayer" type="AnimationPlayer" parent="." unique_id=1648392535]
+libraries/ = ExtResource("1_whhod")
+libraries/fuel-warning = SubResource("AnimationLibrary_7s7n5")
+autoplay = &"fuel-warning/hide-warning"
 
-[node name="Model" type="Node3D" parent="."]
+[node name="Model" type="Node3D" parent="." unique_id=1579694635]
 
-[node name="Cube" type="MeshInstance3D" parent="Model"]
+[node name="Cube" type="MeshInstance3D" parent="Model" unique_id=1571757867]
 transform = Transform3D(-0.008615792, 0, 0.8471116, 0, 0.99999994, 0, -0.6954074, 0, -0.010495342, -0.0008723736, 1.2181702, 0.009510875)
 instance_shader_parameters/albedo = Color(0.89411765, 0.12941177, 0.039215688, 1)
 mesh = SubResource("ArrayMesh_6y5df")
-skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_whhod")
 
-[node name="BézierCurve" type="MeshInstance3D" parent="Model"]
+[node name="BézierCurve" type="MeshInstance3D" parent="Model" unique_id=1689410496]
 transform = Transform3D(-0.012388632, 0, 0.9999232, 0, 1, 0, -0.9999232, 0, -0.012388632, -0.0008723736, 0.21817017, 0.009510875)
 instance_shader_parameters/albedo = Color(0.89411765, 0.12941177, 0.039215688, 1)
 mesh = SubResource("ArrayMesh_bpjxw")
-skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_whhod")
 
-[node name="Cylinder" type="MeshInstance3D" parent="Model"]
+[node name="Cylinder" type="MeshInstance3D" parent="Model" unique_id=2068646188]
 transform = Transform3D(-0.008171406, 0.9418036, 0.46636698, 5.9615792e-09, 0.9418761, -0.46640268, -0.6595425, -0.011668585, -0.0057780817, 0.7573488, 1.6936809, 0.000116698444)
 instance_shader_parameters/albedo = Color(0.08, 0.08, 0.08, 1)
 mesh = SubResource("ArrayMesh_cuh0w")
-skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_whhod")
 
-[node name="WarningAlarm" type="MeshInstance3D" parent="."]
+[node name="WarningAlarm" type="MeshInstance3D" parent="." unique_id=1114074591]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.7850163, 1.9039898, 0)
 visible = false
 mesh = SubResource("QuadMesh_whhod")

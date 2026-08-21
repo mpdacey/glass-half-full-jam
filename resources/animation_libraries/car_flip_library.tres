@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" load_steps=2 format=3 uid="uid://cid6yse2ny4tw"]
+[gd_resource type="AnimationLibrary" format=3 uid="uid://cid6yse2ny4tw"]
 
 [sub_resource type="Animation" id="Animation_ylw0i"]
 resource_name = "car_flip"

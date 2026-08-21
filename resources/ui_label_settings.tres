@@ -1,4 +1,4 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cs363ufne8yg3"]
+[gd_resource type="LabelSettings" format=3 uid="uid://cs363ufne8yg3"]
 
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="1_e1q5p"]
 

@@ -10,23 +10,17 @@ var current_config := ConfigFile.new()
 func _ready() -> void:
 	load_config_file()
 
-func create_default_config_file() -> ConfigFile:
-	var config := ConfigFile.new()
-	
+func set_default_config_file(config: ConfigFile) -> void:
 	config.set_value(DEFAULT_USER, HIGHSCORE_KEY, 0)
 	config.set_value(DEFAULT_USER, LIVES_REGENERATION_UNIX_KEY, 0)
-	
-	return config
 
 func load_config_file() -> void:
+	current_config = ConfigFile.new()
 	var err: Error = current_config.load(CONFIG_FILE_PATH)
 	
 	if err != OK:
-		if err == ERR_FILE_NOT_FOUND:
-			current_config = create_default_config_file()
-		else:
-			printerr(str("Config Manager Error: ", error_string(err)))
-			return
+		set_default_config_file(current_config)
+		printerr(str("Config Manager Error: ", error_string(err)))
 	
 	_validate_config_file()
 
@@ -58,7 +52,6 @@ func save_config_file() -> void:
 		return
 	
 	current_config.save(CONFIG_FILE_PATH)
-
 
 func _validate_config_file() -> void:
 	if not current_config.has_section_key(DEFAULT_USER, HIGHSCORE_KEY):

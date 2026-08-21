@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InfoBoxContentsResource" format=3 uid="uid://b64ijpksavd0o"]
+
+[ext_resource type="Script" uid="uid://dajftf844g2xs" path="res://scripts/resource_scripts/info_box_resource_script.gd" id="1_lpjrt"]
+
+[resource]
+script = ExtResource("1_lpjrt")
+title = "Abnormal Response Time"
+body = "The purchase is taking
+longer than expected.
+You may continue playing
+whilst the purchase resolves."
+can_dismiss = false
+metadata/_custom_type_script = "uid://dajftf844g2xs"

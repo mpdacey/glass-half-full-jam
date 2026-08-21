@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://buc7s25oweoq1"]
+[gd_scene format=3 uid="uid://buc7s25oweoq1"]
 
 [ext_resource type="PackedScene" uid="uid://dlwpw2jgytnr8" path="res://models/post.blend" id="1_6ixbi"]
 [ext_resource type="Material" uid="uid://c4hwyjg4piyay" path="res://materials/desert_materials/desert_fence_mesh_material.tres" id="2_agt3l"]
@@ -10,24 +10,24 @@
 [ext_resource type="PackedScene" uid="uid://cihd7rim0lmuu" path="res://models/plants/plant_bushSmall.fbx" id="8_opiew"]
 [ext_resource type="PackedScene" uid="uid://d2t28ug00a4rb" path="res://models/plants/plant_bushTriangle.fbx" id="9_3yd0h"]
 
-[node name="Fence" instance=ExtResource("1_6ixbi")]
+[node name="Fence" unique_id=1226353672 instance=ExtResource("1_6ixbi")]
 
-[node name="FenceLink" parent="." index="0"]
+[node name="FenceLink" parent="." index="0" unique_id=681721171]
 surface_material_override/0 = ExtResource("2_agt3l")
 
-[node name="Post" parent="." index="1"]
+[node name="Post" parent="." index="1" unique_id=1707467208]
 surface_material_override/0 = ExtResource("3_b3etb")
 
-[node name="PlantBase" type="Node3D" parent="Post" index="0"]
+[node name="PlantBase" type="Node3D" parent="Post" index="0" unique_id=2111568958]
 transform = Transform3D(30.090221, 0, 29.820814, 0, 2.277, 0, -30.090221, 0, 29.820814, 0, -0.745, 0)
 script = ExtResource("4_d2c0n")
 
-[node name="plant_bush" parent="Post/PlantBase" index="0" instance=ExtResource("5_w85du")]
+[node name="plant_bush" parent="Post/PlantBase" index="0" unique_id=1790965276 instance=ExtResource("5_w85du")]
 
-[node name="plant_bushLarge" parent="Post/PlantBase" index="1" instance=ExtResource("6_d2c0n")]
+[node name="plant_bushLarge" parent="Post/PlantBase" index="1" unique_id=1434065602 instance=ExtResource("6_d2c0n")]
 
-[node name="plant_bushLargeTriangle" parent="Post/PlantBase" index="2" instance=ExtResource("7_46brt")]
+[node name="plant_bushLargeTriangle" parent="Post/PlantBase" index="2" unique_id=324780474 instance=ExtResource("7_46brt")]
 
-[node name="plant_bushSmall" parent="Post/PlantBase" index="3" instance=ExtResource("8_opiew")]
+[node name="plant_bushSmall" parent="Post/PlantBase" index="3" unique_id=741911352 instance=ExtResource("8_opiew")]
 
-[node name="plant_bushTriangle" parent="Post/PlantBase" index="4" instance=ExtResource("9_3yd0h")]
+[node name="plant_bushTriangle" parent="Post/PlantBase" index="4" unique_id=1582072727 instance=ExtResource("9_3yd0h")]

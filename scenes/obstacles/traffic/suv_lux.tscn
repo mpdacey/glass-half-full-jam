@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdcjrurlteps8"]
+[gd_scene format=3 uid="uid://bdcjrurlteps8"]
 
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_lmph8"]
 [ext_resource type="ArrayMesh" uid="uid://cojfqsiv1ryvp" path="res://models/traffic/suv-luxury.obj" id="2_x6i7l"]
@@ -7,14 +7,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_km2h6"]
 size = Vector3(2.2574768, 2.8142242, 5.1678467)
 
-[node name="TrafficCore" instance=ExtResource("1_lmph8")]
+[node name="TrafficCore" unique_id=1069090428 instance=ExtResource("1_lmph8")]
 driving_speed = 13.0
 
-[node name="CollisionShape3D" parent="ObstacleHitBox" index="0"]
+[node name="CollisionShape3D" parent="ObstacleHitBox" parent_id_path=PackedInt32Array(419235475) index="0" unique_id=1926319234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4314231, 0.14533937)
 shape = SubResource("BoxShape3D_km2h6")
 
-[node name="SuvLuxury" type="MeshInstance3D" parent="." index="2"]
+[node name="SuvLuxury" type="MeshInstance3D" parent="." index="2" unique_id=17214079]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
 mesh = ExtResource("2_x6i7l")
 skeleton = NodePath("../ObstacleHitBox")

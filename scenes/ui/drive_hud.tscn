@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b67sj3e8sr1yb"]
+[gd_scene format=3 uid="uid://b67sj3e8sr1yb"]
 
 [ext_resource type="Texture2D" uid="uid://bfs7rh3h5hxif" path="res://textures/drive_ui/base.png" id="1_6b0x4"]
 [ext_resource type="Texture2D" uid="uid://b6gssdhdww08g" path="res://textures/drive_ui/needle.png" id="2_xw47v"]
@@ -313,9 +313,9 @@ _data = {
 &"show": SubResource("Animation_qtgir")
 }
 
-[node name="DriveHUD" type="CanvasLayer"]
+[node name="DriveHUD" type="CanvasLayer" unique_id=1026874565]
 
-[node name="Root" type="Control" parent="."]
+[node name="Root" type="Control" parent="." unique_id=956887782]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -325,7 +325,7 @@ scale = Vector2(2.565, 2.565)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="BaseHud" type="TextureRect" parent="Root"]
+[node name="BaseHud" type="TextureRect" parent="Root" unique_id=150179859]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -338,7 +338,7 @@ mouse_filter = 2
 texture = ExtResource("1_6b0x4")
 expand_mode = 2
 
-[node name="FuelNeedle" type="TextureRect" parent="Root"]
+[node name="FuelNeedle" type="TextureRect" parent="Root" unique_id=815842882]
 z_index = 1
 layout_mode = 0
 offset_left = -15.095459
@@ -351,7 +351,7 @@ texture = ExtResource("2_xw47v")
 expand_mode = 4
 script = ExtResource("3_ewkrv")
 
-[node name="KMLabel" type="Label" parent="Root"]
+[node name="KMLabel" type="Label" parent="Root" unique_id=775941099]
 modulate = Color(1, 1, 1, 0.92156863)
 layout_mode = 0
 offset_left = 91.17401
@@ -362,7 +362,7 @@ scale = Vector2(0.25, 0.25)
 text = "KM"
 label_settings = SubResource("LabelSettings_b2uum")
 
-[node name="PeriodLabel" type="Label" parent="Root"]
+[node name="PeriodLabel" type="Label" parent="Root" unique_id=650319829]
 material = SubResource("CanvasItemMaterial_xw47v")
 layout_mode = 0
 offset_left = 35.04187
@@ -373,7 +373,7 @@ scale = Vector2(0.25, 0.25)
 text = "."
 label_settings = SubResource("LabelSettings_b2uum")
 
-[node name="PauseButtonRoot" type="Control" parent="Root"]
+[node name="PauseButtonRoot" type="Control" parent="Root" unique_id=1174854954]
 anchors_preset = 0
 offset_left = -178.85501
 offset_top = 91.6082
@@ -381,22 +381,22 @@ offset_right = -178.85501
 offset_bottom = 91.6082
 mouse_filter = 2
 
-[node name="PauseButtonParent" type="Node2D" parent="Root/PauseButtonRoot"]
+[node name="PauseButtonParent" type="Node2D" parent="Root/PauseButtonRoot" unique_id=1034362269]
 
-[node name="PauseButton" type="TextureButton" parent="Root/PauseButtonRoot/PauseButtonParent"]
+[node name="PauseButton" type="TextureButton" parent="Root/PauseButtonRoot/PauseButtonParent" unique_id=1778904027]
 offset_right = 78.030365
 offset_bottom = 77.6911
 texture_normal = ExtResource("4_1287o")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="AndroidBackListener" type="Node" parent="Root/PauseButtonRoot/PauseButtonParent/PauseButton"]
+[node name="AndroidBackListener" type="Node" parent="Root/PauseButtonRoot/PauseButtonParent/PauseButton" unique_id=1712802234]
 script = ExtResource("6_hctyk")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
-[node name="PauseButtonShadowParent" type="Node2D" parent="Root/PauseButtonRoot"]
+[node name="PauseButtonShadowParent" type="Node2D" parent="Root/PauseButtonRoot" unique_id=1669660501]
 
-[node name="PauseButtonShadow" type="TextureRect" parent="Root/PauseButtonRoot/PauseButtonShadowParent"]
+[node name="PauseButtonShadow" type="TextureRect" parent="Root/PauseButtonRoot/PauseButtonShadowParent" unique_id=417201866]
 z_index = -1
 offset_right = 78.03427
 offset_bottom = 77.69499
@@ -404,22 +404,20 @@ mouse_filter = 2
 texture = ExtResource("5_tixjq")
 expand_mode = 1
 
-[node name="PauseButtonAnimator" type="AnimationPlayer" parent="Root/PauseButtonRoot"]
+[node name="PauseButtonAnimator" type="AnimationPlayer" parent="Root/PauseButtonRoot" unique_id=724206022]
 root_node = NodePath("../PauseButtonParent/PauseButton")
-libraries = {
-&"": SubResource("AnimationLibrary_njc0o")
-}
-autoplay = "sway"
+libraries/ = SubResource("AnimationLibrary_njc0o")
+autoplay = &"sway"
 speed_scale = 0.5
 
-[node name="PauseString" type="Line2D" parent="Root/PauseButtonRoot"]
+[node name="PauseString" type="Line2D" parent="Root/PauseButtonRoot" unique_id=309907641]
 z_index = -1
 texture_repeat = 2
 points = PackedVector2Array(37.922028, 10.825226, 38.066437, -37.94648)
 texture = ExtResource("6_tixjq")
 texture_mode = 1
 
-[node name="Warnings" type="Control" parent="Root" node_paths=PackedStringArray("underflow_warning")]
+[node name="Warnings" type="Control" parent="Root" unique_id=314399493 node_paths=PackedStringArray("underflow_warning")]
 modulate = Color(0.84, 0.84, 0.84, 1)
 anchors_preset = 0
 offset_left = 0.6013489
@@ -430,7 +428,7 @@ script = ExtResource("8_eq4iw")
 underflow_warning = NodePath("UnderflowWarning")
 low_fuel_threshold = 0.4
 
-[node name="OverflowWarning" type="TextureRect" parent="Root/Warnings"]
+[node name="OverflowWarning" type="TextureRect" parent="Root/Warnings" unique_id=1176564384]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -443,7 +441,7 @@ grow_horizontal = 2
 texture = ExtResource("8_njc0o")
 expand_mode = 3
 
-[node name="UnderflowWarning" type="TextureRect" parent="Root/Warnings"]
+[node name="UnderflowWarning" type="TextureRect" parent="Root/Warnings" unique_id=1293411394]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -456,18 +454,16 @@ grow_horizontal = 2
 texture = ExtResource("9_eq4iw")
 expand_mode = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Root/Warnings"]
-libraries = {
-&"": SubResource("AnimationLibrary_x7pte")
-}
-autoplay = "warning-loop"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Root/Warnings" unique_id=625836128]
+libraries/ = SubResource("AnimationLibrary_x7pte")
+autoplay = &"warning-loop"
 
-[node name="Odometer" type="Control" parent="Root" node_paths=PackedStringArray("odometer_values")]
+[node name="Odometer" type="Control" parent="Root" unique_id=1962558077 node_paths=PackedStringArray("odometer_values")]
 anchors_preset = 0
 script = ExtResource("11_qtgir")
 odometer_values = [NodePath("TenthsTexture"), NodePath("OnesTexture"), NodePath("TensTexture"), NodePath("HundredsTexture"), NodePath("ThousandsTexture"), NodePath("TenThousandsTexture")]
 
-[node name="TenThousandsTexture" type="Sprite2D" parent="Root/Odometer"]
+[node name="TenThousandsTexture" type="Sprite2D" parent="Root/Odometer" unique_id=53849460]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
 instance_shader_parameters/display_number = 0.0
@@ -475,28 +471,28 @@ position = Vector2(-128.57169, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
-[node name="ThousandsTexture" type="Sprite2D" parent="Root/Odometer"]
+[node name="ThousandsTexture" type="Sprite2D" parent="Root/Odometer" unique_id=463500733]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
 position = Vector2(-93.232635, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
-[node name="HundredsTexture" type="Sprite2D" parent="Root/Odometer"]
+[node name="HundredsTexture" type="Sprite2D" parent="Root/Odometer" unique_id=388083865]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
 position = Vector2(-57.29016, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
-[node name="TensTexture" type="Sprite2D" parent="Root/Odometer"]
+[node name="TensTexture" type="Sprite2D" parent="Root/Odometer" unique_id=299396907]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
 position = Vector2(-21.193115, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
-[node name="OnesTexture" type="Sprite2D" parent="Root/Odometer"]
+[node name="OnesTexture" type="Sprite2D" parent="Root/Odometer" unique_id=970582872]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
 instance_shader_parameters/display_number = 0.0
@@ -504,7 +500,7 @@ position = Vector2(14.49353, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
-[node name="TenthsTexture" type="Sprite2D" parent="Root/Odometer"]
+[node name="TenthsTexture" type="Sprite2D" parent="Root/Odometer" unique_id=696806195]
 texture_repeat = 2
 material = ExtResource("11_jp8lb")
 instance_shader_parameters/display_number = 0.0
@@ -512,11 +508,9 @@ position = Vector2(62.925415, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
 
-[node name="DisplayAnimator" type="AnimationPlayer" parent="."]
+[node name="DisplayAnimator" type="AnimationPlayer" parent="." unique_id=1850846799]
 process_mode = 3
-libraries = {
-&"": SubResource("AnimationLibrary_7efwg")
-}
-autoplay = "show"
+libraries/ = SubResource("AnimationLibrary_7efwg")
+autoplay = &"show"
 
 [connection signal="pressed" from="Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="DisplayAnimator" method="play" binds= ["hide"]]

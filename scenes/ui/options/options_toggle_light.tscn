@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dr5pu6etkfqhu"]
+
+[ext_resource type="StyleBox" uid="uid://b1fvg1winlga1" path="res://scenes/ui/options/lit_green_base.tres" id="1_y8skp"]
+[ext_resource type="Script" uid="uid://kjyibc6rr41q" path="res://scripts/options/options_toggle_light.gd" id="1_ygsue"]
+[ext_resource type="StyleBox" uid="uid://be6hgvbao6egc" path="res://scenes/ui/options/unlit_base.tres" id="3_h8n8o"]
+[ext_resource type="StyleBox" uid="uid://c5mv64237jov4" path="res://scenes/ui/options/lit_highlight.tres" id="3_rbmpu"]
+[ext_resource type="StyleBox" uid="uid://cxv847spwmeso" path="res://scenes/ui/options/unlit_highlight.tres" id="5_5indw"]
+
+[node name="ToggleLight" type="Panel" unique_id=470594431 node_paths=PackedStringArray("highlight_panel")]
+size_flags_horizontal = 0
+theme_override_styles/panel = ExtResource("3_h8n8o")
+script = ExtResource("1_ygsue")
+lit_stylebox = ExtResource("1_y8skp")
+highlight_panel = NodePath("ToggleLightHighlight")
+unlit_stylebox = ExtResource("3_h8n8o")
+highlight_lit_stylebox = ExtResource("3_rbmpu")
+highlight_unlit_stylebox = ExtResource("5_5indw")
+
+[node name="ToggleLightHighlight" type="Panel" parent="." unique_id=1721206890]
+layout_mode = 0
+theme_override_styles/panel = ExtResource("5_5indw")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpsrpqjg572c0"]
+[gd_scene format=3 uid="uid://dpsrpqjg572c0"]
 
 [ext_resource type="Script" uid="uid://bhhmlq7ggr754" path="res://scripts/global/internet_connection_checker.gd" id="1_2a1wj"]
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="2_s6yb0"]
@@ -32,48 +32,48 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_37yil")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="InternetConnectionChecker" type="Node" node_paths=PackedStringArray("connecting_canvas", "timeout_timer")]
+[node name="InternetConnectionChecker" type="Node" unique_id=28935212 node_paths=PackedStringArray("connecting_canvas", "timeout_timer")]
 script = ExtResource("1_2a1wj")
 connecting_canvas = NodePath("ConnectingCanvasLayer")
 timeout_timer = NodePath("ConnectionTimeoutTimer")
 
-[node name="ConnectionErrorInfoBox" parent="." instance=ExtResource("2_s6yb0")]
+[node name="ConnectionErrorInfoBox" parent="." unique_id=2054523315 instance=ExtResource("2_s6yb0")]
 layer = 3
 metadata/no_response = ExtResource("3_tn8yh")
 metadata/no_connection = ExtResource("4_tebu5")
 metadata/timeout = ExtResource("5_xvtb2")
 
-[node name="CheckConnectionEmitter" type="Node" parent="ConnectionErrorInfoBox"]
+[node name="CheckConnectionEmitter" type="Node" parent="ConnectionErrorInfoBox" unique_id=842642413]
 script = ExtResource("6_4jws0")
 global_signal_name = &"time_check_connection"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="DisplayInfoBoxListeners" type="Node" parent="ConnectionErrorInfoBox"]
+[node name="DisplayInfoBoxListeners" type="Node" parent="ConnectionErrorInfoBox" unique_id=1731189105]
 
-[node name="NoResponseListener" type="Node" parent="ConnectionErrorInfoBox/DisplayInfoBoxListeners"]
+[node name="NoResponseListener" type="Node" parent="ConnectionErrorInfoBox/DisplayInfoBoxListeners" unique_id=1980362610]
 script = ExtResource("6_4jws0")
 global_signal_name = &"time_no_response"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="NoConnectionListener" type="Node" parent="ConnectionErrorInfoBox/DisplayInfoBoxListeners"]
+[node name="NoConnectionListener" type="Node" parent="ConnectionErrorInfoBox/DisplayInfoBoxListeners" unique_id=681406480]
 script = ExtResource("6_4jws0")
 global_signal_name = &"time_no_connection"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TimeoutListener" type="Node" parent="ConnectionErrorInfoBox/DisplayInfoBoxListeners"]
+[node name="TimeoutListener" type="Node" parent="ConnectionErrorInfoBox/DisplayInfoBoxListeners" unique_id=314098283]
 script = ExtResource("6_4jws0")
 global_signal_name = &"time_timed_out"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="ConnectingCanvasLayer" type="CanvasLayer" parent="."]
+[node name="ConnectingCanvasLayer" type="CanvasLayer" parent="." unique_id=138983657]
 layer = 5
 
-[node name="ConnectingSpriteMargin" type="MarginContainer" parent="ConnectingCanvasLayer"]
+[node name="ConnectingSpriteMargin" type="MarginContainer" parent="ConnectingCanvasLayer" unique_id=1169864654]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -84,33 +84,33 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 0
 
-[node name="ConnectingSpriteAnchor" type="Control" parent="ConnectingCanvasLayer/ConnectingSpriteMargin"]
+[node name="ConnectingSpriteAnchor" type="Control" parent="ConnectingCanvasLayer/ConnectingSpriteMargin" unique_id=2032695268]
 layout_mode = 2
 
-[node name="ConnectingSprite" type="AnimatedSprite2D" parent="ConnectingCanvasLayer/ConnectingSpriteMargin/ConnectingSpriteAnchor"]
+[node name="ConnectingSprite" type="AnimatedSprite2D" parent="ConnectingCanvasLayer/ConnectingSpriteMargin/ConnectingSpriteAnchor" unique_id=2132376261]
 process_mode = 3
 scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_tebu5")
 autoplay = "default"
 
-[node name="ConnectionTimeoutTimer" type="Timer" parent="."]
+[node name="ConnectionTimeoutTimer" type="Timer" parent="." unique_id=911558332]
 wait_time = 5.0
 one_shot = true
 ignore_time_scale = true
 
-[node name="TestConnectionEventListeners" type="Node" parent="."]
+[node name="TestConnectionEventListeners" type="Node" parent="." unique_id=1026257141]
 
-[node name="TitleLoadedListener" type="Node" parent="TestConnectionEventListeners"]
+[node name="TitleLoadedListener" type="Node" parent="TestConnectionEventListeners" unique_id=419193228]
 script = ExtResource("6_4jws0")
 global_signal_name = &"scene_changed_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="GameoverListener" type="Node" parent="TestConnectionEventListeners"]
+[node name="GameoverListener" type="Node" parent="TestConnectionEventListeners" unique_id=767241606]
 script = ExtResource("6_4jws0")
 global_signal_name = &"terrain_gameover"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="CheckConnectionListener" type="Node" parent="TestConnectionEventListeners"]
+[node name="CheckConnectionListener" type="Node" parent="TestConnectionEventListeners" unique_id=1644658878]
 script = ExtResource("6_4jws0")
 global_signal_name = &"time_check_connection"
 metadata/_custom_type_script = "uid://lu4gei6pype6"

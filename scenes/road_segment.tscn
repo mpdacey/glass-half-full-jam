@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bdo53jatg2dfc"]
+[gd_scene format=4 uid="uid://bdo53jatg2dfc"]
 
 [ext_resource type="Material" uid="uid://ccx8siq7mgu0e" path="res://materials/desert_materials/desert_offroad_material.tres" id="2_x8o06"]
 [ext_resource type="Material" uid="uid://dlsj6rc4l6h2o" path="res://materials/desert_materials/desert_canyon_material.tres" id="3_uhe04"]
@@ -326,292 +326,291 @@ instance_count = 7
 mesh = SubResource("ArrayMesh_72h0p")
 buffer = PackedFloat32Array(-0.19594422, 0, -1.3665094, 66.14017, 0, 1.3804861, 0, 0, 1.3665094, 0, -0.19594422, -12.627779, 0.44159293, 0, 0.457225, 92.35665, 0, 0.63565636, 0, 0, -0.457225, 0, 0.44159293, -21.429092, -0.05151086, 0, -0.9154572, 93.61943, 0, 0.9169052, 0, 0, 0.9154572, 0, -0.05151086, 22.568886, -1.0036044, 0, 0.78026277, 137.47594, 0, 1.2712324, 0, 0, -0.78026277, 0, -1.0036044, 17.436548, -1.3042749, 0, 0.34212434, 105.997025, 0, 1.3483999, 0, 0, -0.34212434, 0, -1.3042749, -17.408072, -0.9193256, 0, -0.31217325, 85.56814, 0, 0.9708819, 0, 0, 0.31217325, 0, -0.9193256, -8.562956, -1.0214238, 0, -0.10954133, 57.639812, 0, 1.0272808, 0, 0, 0.10954133, 0, -1.0214238, 23.552994)
 
-[node name="RoadSegment" type="Node3D"]
+[node name="RoadSegment" type="Node3D" unique_id=503545897]
 
-[node name="Road" type="MeshInstance3D" parent="."]
+[node name="Road" type="MeshInstance3D" parent="." unique_id=1186474202]
 transform = Transform3D(150.1, 0, 0, 0, 1, 0, 0, 0, 120.015, -6.51447, -0.025951385, 0.00614357)
 mesh = SubResource("ArrayMesh_8fmpn")
-skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_8oith")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Road"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Road" unique_id=684597329]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/StaticBody3D" unique_id=1033618957]
 shape = SubResource("ConcavePolygonShape3D_gf765")
 
-[node name="Offroad" type="MeshInstance3D" parent="."]
+[node name="Offroad" type="MeshInstance3D" parent="." unique_id=1318933347]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 0, 0)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_pu3yx")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_x8o06")
 
-[node name="Offroad2" type="MeshInstance3D" parent="."]
+[node name="Offroad2" type="MeshInstance3D" parent="." unique_id=1811456874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 0, 0)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_ifpta")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_x8o06")
 
-[node name="CanyonWall" type="Node3D" parent="."]
+[node name="CanyonWall" type="Node3D" parent="." unique_id=1007635370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.047, 45.393)
 
-[node name="CanyonSegment" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment" type="MeshInstance3D" parent="CanyonWall" unique_id=1155876391]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, -13.182, 14.176, -82.784)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment2" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment2" type="MeshInstance3D" parent="CanyonWall" unique_id=1448510314]
 transform = Transform3D(-4.7660565, 0, 0.4253593, 0, 4.785, 0, -0.4253593, 0, -4.7660565, 5.5109673, 13.484997, -86.309265)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment3" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment3" type="MeshInstance3D" parent="CanyonWall" unique_id=1686989552]
 transform = Transform3D(-1.8413584, 0, 2.7925658, 0, 3.345, 0, -2.7925658, 0, -1.8413584, 23.230118, 8.577103, -78.71173)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment4" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment4" type="MeshInstance3D" parent="CanyonWall" unique_id=1950769636]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, 40.817406, 13.692087, -88.82517)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment5" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment5" type="MeshInstance3D" parent="CanyonWall" unique_id=249251151]
 transform = Transform3D(-2.0277398, 0, 2.1219087, 0, 2.935, 0, -2.1219087, 0, -2.0277398, 57.646015, 10.596378, -81.14812)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment6" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment6" type="MeshInstance3D" parent="CanyonWall" unique_id=1246479776]
 transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, 67.44657, 13.530693, -91.48607)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment7" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment7" type="MeshInstance3D" parent="CanyonWall" unique_id=153755682]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, 87.600426, 11.087383, -83.86479)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment8" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment8" type="MeshInstance3D" parent="CanyonWall" unique_id=899227847]
 transform = Transform3D(-1.8413584, 0, 2.7925658, 0, 3.345, 0, -2.7925658, 0, -1.8413584, 103.58092, 8.577103, -78.71173)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment9" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment9" type="MeshInstance3D" parent="CanyonWall" unique_id=140326564]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, 121.168205, 13.692087, -88.82517)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment10" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment10" type="MeshInstance3D" parent="CanyonWall" unique_id=222069086]
 transform = Transform3D(-2.0277398, 0, 2.1219087, 0, 2.935, 0, -2.1219087, 0, -2.0277398, 140.497, 10.596, -81.148)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment13" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment13" type="MeshInstance3D" parent="CanyonWall" unique_id=1255489396]
 transform = Transform3D(-2.0277398, 0, 2.1219087, 0, 2.935, 0, -2.1219087, 0, -2.0277398, -59.669, 10.596, -81.148)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment11" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment11" type="MeshInstance3D" parent="CanyonWall" unique_id=1824067744]
 transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, 158.767, 13.531, -91.486)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment12" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment12" type="MeshInstance3D" parent="CanyonWall" unique_id=732908856]
 transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, -41.399, 13.531, -91.486)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment14" type="MeshInstance3D" parent="CanyonWall"]
+[node name="CanyonSegment14" type="MeshInstance3D" parent="CanyonWall" unique_id=355870902]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, 186.79, 14.176, -82.784)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonWall2" type="Node3D" parent="."]
+[node name="CanyonWall2" type="Node3D" parent="." unique_id=169816299]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 150, -2.047, -45.393)
 
-[node name="CanyonSegment" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment" type="MeshInstance3D" parent="CanyonWall2" unique_id=857689334]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, -13.182, 14.176, -82.784)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment2" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment2" type="MeshInstance3D" parent="CanyonWall2" unique_id=1799983669]
 transform = Transform3D(-4.7660565, 0, 0.4253593, 0, 4.785, 0, -0.4253593, 0, -4.7660565, 5.5109673, 13.484997, -86.309265)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment3" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment3" type="MeshInstance3D" parent="CanyonWall2" unique_id=593074162]
 transform = Transform3D(-1.8413584, 0, 2.7925658, 0, 3.345, 0, -2.7925658, 0, -1.8413584, 23.230118, 8.577103, -78.71173)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment4" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment4" type="MeshInstance3D" parent="CanyonWall2" unique_id=1200727263]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, 40.817406, 13.692087, -88.82517)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment5" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment5" type="MeshInstance3D" parent="CanyonWall2" unique_id=1117490801]
 transform = Transform3D(-2.0277398, 0, 2.1219087, 0, 2.935, 0, -2.1219087, 0, -2.0277398, 57.646015, 10.596378, -81.14812)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment6" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment6" type="MeshInstance3D" parent="CanyonWall2" unique_id=1804948186]
 transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, 67.44657, 13.530693, -91.48607)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment7" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment7" type="MeshInstance3D" parent="CanyonWall2" unique_id=1211028642]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, 87.600426, 11.087383, -83.86479)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment8" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment8" type="MeshInstance3D" parent="CanyonWall2" unique_id=2015903218]
 transform = Transform3D(-1.8413584, 0, 2.7925658, 0, 3.345, 0, -2.7925658, 0, -1.8413584, 103.58092, 8.577103, -78.71173)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment9" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment9" type="MeshInstance3D" parent="CanyonWall2" unique_id=720179947]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, 121.168205, 13.692087, -88.82517)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment10" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment10" type="MeshInstance3D" parent="CanyonWall2" unique_id=1899866841]
 transform = Transform3D(-2.0277398, 0, 2.1219087, 0, 2.935, 0, -2.1219087, 0, -2.0277398, 140.497, 10.596, -81.148)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment13" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment13" type="MeshInstance3D" parent="CanyonWall2" unique_id=1692103122]
 transform = Transform3D(-2.0277398, 0, 2.1219087, 0, 2.935, 0, -2.1219087, 0, -2.0277398, -59.669, 10.596, -81.148)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment11" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment11" type="MeshInstance3D" parent="CanyonWall2" unique_id=144108526]
 transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, 158.767, 13.531, -91.486)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment12" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment12" type="MeshInstance3D" parent="CanyonWall2" unique_id=1628834962]
 transform = Transform3D(-3.6446218, 0, -2.6479723, 0, 4.505, 0, 2.6479723, 0, -3.6446218, -41.399, 13.531, -91.486)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="CanyonSegment14" type="MeshInstance3D" parent="CanyonWall2"]
+[node name="CanyonSegment14" type="MeshInstance3D" parent="CanyonWall2" unique_id=144304523]
 transform = Transform3D(4.02, 0, 0, 0, 4.02, 0, 0, 0, 4.02, 186.79, 14.176, -82.784)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_amwk1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_uhe04")
 
-[node name="SideRoadGrass" type="Node3D" parent="."]
+[node name="SideRoadGrass" type="Node3D" parent="." unique_id=147478412]
 transform = Transform3D(0.99954313, 0, -0.030224498, 0, 1, 0, 0.030224498, 0, 0.99954313, 0, 0, 0)
 
-[node name="BushMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass"]
+[node name="BushMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass" unique_id=505142181]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_w3p3n")
 
-[node name="BushLargeMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass"]
+[node name="BushLargeMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass" unique_id=2008310069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_hyby4")
 
-[node name="BushLargeTriangleMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass"]
+[node name="BushLargeTriangleMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass" unique_id=762347893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_5ccem")
 
-[node name="BushSmallMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass"]
+[node name="BushSmallMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass" unique_id=1014542300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_rfudy")
 
-[node name="BushTriangleMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass"]
+[node name="BushTriangleMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass" unique_id=1372891586]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_hwsie")
 
-[node name="SideRoadGrass2" type="Node3D" parent="."]
+[node name="SideRoadGrass2" type="Node3D" parent="." unique_id=193086715]
 transform = Transform3D(0.9990106, 0, -0.04447377, 0, 1, 0, 0.04447377, 0, 0.9990106, 0, 0, 35.50496)
 
-[node name="BushMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2"]
+[node name="BushMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2" unique_id=1255765504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_w3p3n")
 
-[node name="BushLargeMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2"]
+[node name="BushLargeMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2" unique_id=582062268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_hyby4")
 
-[node name="BushLargeTriangleMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2"]
+[node name="BushLargeTriangleMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2" unique_id=829262198]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_5ccem")
 
-[node name="BushSmallMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2"]
+[node name="BushSmallMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2" unique_id=905744129]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_rfudy")
 
-[node name="BushTriangleMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2"]
+[node name="BushTriangleMultiMesh" type="MultiMeshInstance3D" parent="SideRoadGrass2" unique_id=608096507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64179134, -14.3348675)
 multimesh = SubResource("MultiMesh_hwsie")
 
-[node name="Cacti" type="Node3D" parent="."]
+[node name="Cacti" type="Node3D" parent="." unique_id=1329850031]
 
-[node name="BottomHalfCactiMultiMesh" type="MultiMeshInstance3D" parent="Cacti"]
+[node name="BottomHalfCactiMultiMesh" type="MultiMeshInstance3D" parent="Cacti" unique_id=454225479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.718647, 0, -4.1628895)
 multimesh = SubResource("MultiMesh_c3e3h")
 
-[node name="TopHalfCactiMultiMesh" type="MultiMeshInstance3D" parent="Cacti"]
+[node name="TopHalfCactiMultiMesh" type="MultiMeshInstance3D" parent="Cacti" unique_id=1686751431]
 transform = Transform3D(-0.99254614, -8.677114e-08, 0.12186928, -8.742278e-08, 1, 0, 0.12186928, 1.0654151e-08, 0.99254614, 229.86003, 0, -13.937416)
 multimesh = SubResource("MultiMesh_c3e3h")
 
-[node name="TheChosenOne" parent="Cacti" instance=ExtResource("6_2xm5a")]
+[node name="TheChosenOne" parent="Cacti" unique_id=1150344333 instance=ExtResource("6_2xm5a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.227207, 0, -15.994877)

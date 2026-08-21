@@ -1,42 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq2rtcoyv5xbn"]
+[gd_scene format=3 uid="uid://dq2rtcoyv5xbn"]
 
 [ext_resource type="AudioStream" uid="uid://jkfxkotxqrne" path="res://audio/music/Taking Out the Garbage OGG.ogg" id="1_hetdf"]
 [ext_resource type="AudioStream" uid="uid://nmscy0nbmrky" path="res://audio/music/Red Scarlet OGG.ogg" id="2_jd6i5"]
 [ext_resource type="Script" uid="uid://h25ldxsm5pu7" path="res://scripts/audio/web_loop_offset_enforcer.gd" id="2_yodp2"]
 [ext_resource type="Script" uid="uid://dpdcc7bh4f6ba" path="res://scripts/audio/audio_toggle_controller.gd" id="3_jd6i5"]
 
-[node name="MusicManager" type="Node"]
+[node name="MusicManager" type="Node" unique_id=1924032954]
 metadata/main_music = NodePath("MainMusicPlayer")
 metadata/title_music = NodePath("TitleMusicPlayer")
 metadata/gameover_music = NodePath("GameoverMusicPlayer")
 
-[node name="MainMusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MainMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1474012074]
 process_mode = 3
 stream = ExtResource("1_hetdf")
 volume_db = -80.0
 bus = &"Music"
 
-[node name="WebLoopOffsetEnforcer" type="Node" parent="MainMusicPlayer"]
+[node name="WebLoopOffsetEnforcer" type="Node" parent="MainMusicPlayer" unique_id=1715495879]
 script = ExtResource("2_yodp2")
 metadata/_custom_type_script = "uid://h25ldxsm5pu7"
 
-[node name="TitleMusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="TitleMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=296407176]
 stream = ExtResource("1_hetdf")
 bus = &"Title Music"
 
-[node name="WebLoopOffsetEnforcer" type="Node" parent="TitleMusicPlayer"]
+[node name="WebLoopOffsetEnforcer" type="Node" parent="TitleMusicPlayer" unique_id=594243537]
 script = ExtResource("2_yodp2")
 metadata/_custom_type_script = "uid://h25ldxsm5pu7"
 
-[node name="GameoverMusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="GameoverMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1036456850]
 stream = ExtResource("2_jd6i5")
 bus = &"Music"
 
-[node name="WebLoopOffsetEnforcer" type="Node" parent="GameoverMusicPlayer"]
+[node name="WebLoopOffsetEnforcer" type="Node" parent="GameoverMusicPlayer" unique_id=1409061493]
 script = ExtResource("2_yodp2")
 metadata/_custom_type_script = "uid://h25ldxsm5pu7"
 
-[node name="AudioToggleController" type="Node" parent="."]
+[node name="AudioToggleController" type="Node" parent="." unique_id=10541416]
 script = ExtResource("3_jd6i5")
 metadata/_custom_type_script = "uid://dpdcc7bh4f6ba"
 

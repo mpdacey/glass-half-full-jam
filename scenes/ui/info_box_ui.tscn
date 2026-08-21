@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://boscxn2xgn85t"]
+[gd_scene format=3 uid="uid://boscxn2xgn85t"]
 
 [ext_resource type="Script" uid="uid://cmg8osgdawrnd" path="res://scenes/ui/leaderboard/info_box_controller.gd" id="1_rl0sw"]
 [ext_resource type="FontFile" uid="uid://douiqg5815mjs" path="res://resources/fonts/Tinos/Tinos-Bold.ttf" id="2_0vwu3"]
 [ext_resource type="FontFile" uid="uid://b0i53eqnnet6n" path="res://resources/fonts/Arimo/static/Arimo-Bold.ttf" id="2_s13iy"]
 [ext_resource type="FontFile" uid="uid://7up8r46epdiu" path="res://resources/fonts/Arimo/static/Arimo-Regular.ttf" id="3_s13iy"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="4_a2yy2"]
+[ext_resource type="Script" uid="uid://c06upmga0mif1" path="res://scripts/audio/button_sfx_applier.gd" id="5_0vwu3"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="5_qofcg"]
+[ext_resource type="Script" uid="uid://c1y1bharsm1gg" path="res://scripts/button_pulser.gd" id="6_s13iy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpe5i"]
 
@@ -262,7 +264,7 @@ _data = {
 &"show": SubResource("Animation_4qtqu")
 }
 
-[node name="InfoBox" type="CanvasLayer" node_paths=PackedStringArray("title_label", "body_label", "hyper_link_label", "action_button", "dismiss_button", "animator")]
+[node name="InfoBox" type="CanvasLayer" unique_id=97066935 node_paths=PackedStringArray("title_label", "body_label", "hyper_link_label", "action_button", "dismiss_button", "animator")]
 layer = 2
 visible = false
 script = ExtResource("1_rl0sw")
@@ -273,7 +275,7 @@ action_button = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxCon
 dismiss_button = NodePath("InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton")
 animator = NodePath("AnimationPlayer")
 
-[node name="InfoBoxColorRect" type="ColorRect" parent="."]
+[node name="InfoBoxColorRect" type="ColorRect" parent="." unique_id=1696979846]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -282,7 +284,7 @@ grow_vertical = 2
 theme = SubResource("Theme_132qw")
 color = Color(0.22010002, 0.23508333, 0.31, 0.62352943)
 
-[node name="InfoBoxMargin" type="MarginContainer" parent="InfoBoxColorRect"]
+[node name="InfoBoxMargin" type="MarginContainer" parent="InfoBoxColorRect" unique_id=1723477611]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -298,52 +300,52 @@ grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(502.5, 215.5)
 
-[node name="InfoBoxPanel" type="PanelContainer" parent="InfoBoxColorRect/InfoBoxMargin"]
+[node name="InfoBoxPanel" type="PanelContainer" parent="InfoBoxColorRect/InfoBoxMargin" unique_id=1647797240]
 layout_mode = 2
 
-[node name="InfoBoxContentMargin" type="MarginContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel"]
+[node name="InfoBoxContentMargin" type="MarginContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel" unique_id=2144965671]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="InfoBoxContentVBox" type="VBoxContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin"]
+[node name="InfoBoxContentVBox" type="VBoxContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin" unique_id=1028603680]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="TitleMargin" type="MarginContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
+[node name="TitleMargin" type="MarginContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" unique_id=787562764]
 layout_mode = 2
 theme_override_constants/margin_left = -32
 theme_override_constants/margin_top = -32
 theme_override_constants/margin_right = -32
 
-[node name="TitlePanel" type="PanelContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin"]
+[node name="TitlePanel" type="PanelContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin" unique_id=2069146569]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_34rw3")
 
-[node name="TitleContentMargin" type="MarginContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel"]
+[node name="TitleContentMargin" type="MarginContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel" unique_id=861832086]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="TitleLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin"]
+[node name="TitleLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/TitleMargin/TitlePanel/TitleContentMargin" unique_id=1959625506]
 layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="BodyLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
+[node name="BodyLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" unique_id=859530255]
 layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="HyperLinkLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
+[node name="HyperLinkLabel" type="RichTextLabel" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" unique_id=947411190]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0.5137611, 1, 1)
 bbcode_enabled = true
@@ -351,7 +353,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="ActionButton" type="Button" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox"]
+[node name="ActionButton" type="Button" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox" unique_id=590667746]
 visible = false
 custom_minimum_size = Vector2(0, 160.685)
 layout_mode = 2
@@ -362,19 +364,27 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_s13iy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0vwu3")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_a2yy2")
 
-[node name="CloseButtonAnchor" type="Control" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel"]
+[node name="ButtonSFXApplier" type="AudioStreamPlayer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/ActionButton" unique_id=469379007]
+script = ExtResource("5_0vwu3")
+metadata/_custom_type_script = "uid://c06upmga0mif1"
+
+[node name="ButtonPulser" type="Node" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/ActionButton" unique_id=1242892799]
+script = ExtResource("6_s13iy")
+metadata/_custom_type_script = "uid://c1y1bharsm1gg"
+
+[node name="CloseButtonAnchor" type="Control" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel" unique_id=716859872]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="CloseButton" type="Button" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor"]
+[node name="CloseButton" type="Button" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor" unique_id=856039371]
 layout_mode = 0
 offset_left = -16.0
 offset_top = -16.0
 offset_right = 80.0
 offset_bottom = 80.0
 
-[node name="CloseButtonMargin" type="MarginContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton"]
+[node name="CloseButtonMargin" type="MarginContainer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" unique_id=1362729624]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -386,19 +396,25 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="CloseButtonTexture" type="TextureRect" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton/CloseButtonMargin"]
+[node name="CloseButtonTexture" type="TextureRect" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton/CloseButtonMargin" unique_id=837422848]
 layout_mode = 2
 texture = SubResource("AtlasTexture_34rw3")
 expand_mode = 5
 
-[node name="AndroidBackListener" type="Node" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton"]
+[node name="AndroidBackListener" type="Node" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" unique_id=2034915659]
 script = ExtResource("5_qofcg")
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_34rw3")
-}
+[node name="ButtonSFXApplier" type="AudioStreamPlayer" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" unique_id=1296993108]
+script = ExtResource("5_0vwu3")
+metadata/_custom_type_script = "uid://c06upmga0mif1"
+
+[node name="ButtonPulser" type="Node" parent="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" unique_id=1801577836]
+script = ExtResource("6_s13iy")
+metadata/_custom_type_script = "uid://c1y1bharsm1gg"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=9152350]
+libraries/ = SubResource("AnimationLibrary_34rw3")
 
 [connection signal="meta_clicked" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/InfoBoxContentMargin/InfoBoxContentVBox/HyperLinkLabel" to="." method="_on_hyper_link_clicked"]
 [connection signal="button_down" from="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" to="InfoBoxColorRect/InfoBoxMargin/InfoBoxPanel/CloseButtonAnchor/CloseButton" method="set_modulate" binds= [Color(0.646029, 0.646029, 0.646029, 1)]]

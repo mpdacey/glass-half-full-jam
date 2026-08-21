@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://gqut7x3b0vj7"]
+[gd_scene format=3 uid="uid://gqut7x3b0vj7"]
 
 [ext_resource type="Theme" uid="uid://vlsvhef8hr75" path="res://scenes/ui/leaderboard/leaderboard_entry_theme.tres" id="1_6m02m"]
 [ext_resource type="Texture2D" uid="uid://di7q3iwunf60j" path="res://textures/leaderboard_default_profile.svg" id="1_bgdjl"]
@@ -22,7 +22,7 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 corner_detail = 5
 
-[node name="LeaderboardEntry" type="PanelContainer" node_paths=PackedStringArray("username_label", "username_scroll_container", "score_label", "rank_label", "profile_picture")]
+[node name="LeaderboardEntry" type="PanelContainer" unique_id=1904443249 node_paths=PackedStringArray("username_label", "username_scroll_container", "score_label", "rank_label", "profile_picture")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 160.0
@@ -38,55 +38,55 @@ score_label = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/
 rank_label = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/RankLabel")
 profile_picture = NodePath("LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin/ProfilePictureTexture")
 
-[node name="LeaderboardEntryMargin" type="MarginContainer" parent="."]
+[node name="LeaderboardEntryMargin" type="MarginContainer" parent="." unique_id=708119358]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="LeaderboardEntryHBox" type="HBoxContainer" parent="LeaderboardEntryMargin"]
+[node name="LeaderboardEntryHBox" type="HBoxContainer" parent="LeaderboardEntryMargin" unique_id=1857146109]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="RankLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
+[node name="RankLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox" unique_id=1246608436]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.46
 mouse_filter = 1
 text = "100"
 
-[node name="ProfilePictureMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
+[node name="ProfilePictureMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox" unique_id=663785492]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = -8
 theme_override_constants/margin_bottom = -8
 
-[node name="ProfilePictureTexture" type="TextureRect" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin"]
+[node name="ProfilePictureTexture" type="TextureRect" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin" unique_id=1157175934]
 z_index = 1
 layout_mode = 2
 texture = ExtResource("1_bgdjl")
 expand_mode = 2
 
-[node name="ProfilePictureBorderMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin"]
+[node name="ProfilePictureBorderMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin" unique_id=1853133541]
 layout_mode = 2
 theme_override_constants/margin_left = -4
 theme_override_constants/margin_top = -4
 theme_override_constants/margin_right = -4
 theme_override_constants/margin_bottom = -4
 
-[node name="ProfilePictureBorder" type="Panel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin/ProfilePictureBorderMargin"]
+[node name="ProfilePictureBorder" type="Panel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfilePictureMargin/ProfilePictureBorderMargin" unique_id=243570243]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="ProfileUsernameMask" type="Control" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
+[node name="ProfileUsernameMask" type="Control" parent="LeaderboardEntryMargin/LeaderboardEntryHBox" unique_id=1013133656]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
 mouse_filter = 1
 
-[node name="ProfileUsernameScroll" type="ScrollContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask"]
+[node name="ProfileUsernameScroll" type="ScrollContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask" unique_id=1851742493]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,7 +97,7 @@ mouse_filter = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="ProfileUsernameLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask/ProfileUsernameScroll"]
+[node name="ProfileUsernameLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ProfileUsernameMask/ProfileUsernameScroll" unique_id=2108539722]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -107,33 +107,33 @@ theme_override_font_sizes/font_size = 56
 text = "Test User"
 vertical_alignment = 1
 
-[node name="ScoreMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox"]
+[node name="ScoreMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox" unique_id=576937527]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/margin_top = -24
 theme_override_constants/margin_bottom = 4
 
-[node name="ScoreVBox" type="VBoxContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin"]
+[node name="ScoreVBox" type="VBoxContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin" unique_id=1465151033]
 layout_mode = 2
 
-[node name="ScoreTitleLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox"]
+[node name="ScoreTitleLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox" unique_id=1743174120]
 layout_mode = 2
 mouse_filter = 1
 theme_override_font_sizes/font_size = 32
 text = "Peak Distance"
 horizontal_alignment = 2
 
-[node name="ScorePanel" type="PanelContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox"]
+[node name="ScorePanel" type="PanelContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox" unique_id=822833298]
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_gcih8")
 
-[node name="ScoreMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel"]
+[node name="ScoreMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel" unique_id=1138686468]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
-[node name="ScoreLabel" type="RichTextLabel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel/ScoreMargin"]
+[node name="ScoreLabel" type="RichTextLabel" parent="LeaderboardEntryMargin/LeaderboardEntryHBox/ScoreMargin/ScoreVBox/ScorePanel/ScoreMargin" unique_id=324420692]
 layout_mode = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 48

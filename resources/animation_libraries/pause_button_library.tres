@@ -1,6 +1,6 @@
-[gd_resource type="AnimationLibrary" load_steps=4 format=3 uid="uid://dtlm46ijkgpoj"]
+[gd_resource type="AnimationLibrary" format=3 uid="uid://dtlm46ijkgpoj"]
 
-[ext_resource type="AudioStream" uid="uid://bgtru8p0p10hy" path="res://audio/sfx/pause/dice_pressed.ogg" id="1_4ivp7"]
+[ext_resource type="AudioStream" uid="uid://bgtru8p0p10hy" path="res://audio/sfx/ui/pause/dice_pressed.ogg" id="1_4ivp7"]
 
 [sub_resource type="Animation" id="Animation_caprb"]
 length = 0.001

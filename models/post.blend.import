@@ -16,6 +16,8 @@ dest_files=["res://.godot/imported/post.blend-d36e5d45a22ebc8f1aefb1373e931191.s
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -45,7 +47,7 @@ _subresources={
 },
 "Material.002": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/fence_post_material.tres",
+"use_external/fallback_path": "res://materials/desert_materials/desert_fence_post_material.tres",
 "use_external/path": "uid://drbth85p4ot8"
 }
 }
@@ -56,10 +58,11 @@ blender/nodes/punctual_lights=true
 blender/nodes/cameras=true
 blender/nodes/custom_properties=true
 blender/nodes/modifiers=1
-blender/meshes/colors=false
+blender/meshes/vertex_colors=2
 blender/meshes/uvs=true
 blender/meshes/normals=true
 blender/meshes/export_geometry_nodes_instances=false
+blender/meshes/gpu_instances=false
 blender/meshes/tangents=true
 blender/meshes/skins=2
 blender/meshes/export_bones_deforming_mesh_only=false
@@ -69,3 +72,4 @@ blender/animation/limit_playback=true
 blender/animation/always_sample=true
 blender/animation/group_tracks=true
 gltf/naming_version=2
+gltf/texture_map_mode=0

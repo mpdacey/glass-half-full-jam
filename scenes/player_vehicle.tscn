@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfjmcr7rm4hc"]
+[gd_scene format=3 uid="uid://dfjmcr7rm4hc"]
 
 [ext_resource type="Script" uid="uid://dc8lavwyjhvjp" path="res://scripts/player_controllers/player_controller.gd" id="1_hw5rl"]
 [ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="2_bol71"]
@@ -169,11 +169,11 @@ _data = {
 &"road": SubResource("Animation_esvn5")
 }
 
-[node name="PlayerVehicle" type="Node3D" node_paths=PackedStringArray("engine_smoke_emitter")]
+[node name="PlayerVehicle" type="Node3D" unique_id=1744966565 node_paths=PackedStringArray("engine_smoke_emitter")]
 script = ExtResource("1_hw5rl")
 engine_smoke_emitter = NodePath("EngineSmokeEmitter")
 
-[node name="SedanSports" type="MeshInstance3D" parent="."]
+[node name="SedanSports" type="MeshInstance3D" parent="." unique_id=733151807]
 transform = Transform3D(-5.6824803e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.6824803e-08, 0, 0, 0)
 layers = 2
 mesh = ExtResource("2_bol71")
@@ -183,18 +183,16 @@ surface_material_override/2 = ExtResource("3_hhg0s")
 surface_material_override/3 = ExtResource("3_hhg0s")
 surface_material_override/4 = ExtResource("3_hhg0s")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SedanSports"]
-libraries = {
-&"car_putt": ExtResource("4_vg1s2")
-}
-autoplay = "car_putt/putt"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SedanSports" unique_id=129879598]
+libraries/car_putt = ExtResource("4_vg1s2")
+autoplay = &"car_putt/putt"
 
-[node name="GlobalSignalInterfacer" type="Node" parent="SedanSports/AnimationPlayer"]
+[node name="GlobalSignalInterfacer" type="Node" parent="SedanSports/AnimationPlayer" unique_id=108120405]
 script = ExtResource("5_esvn5")
 global_signal_name = &"terrain_gameover"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="EngineSmokeEmitter" type="CPUParticles3D" parent="."]
+[node name="EngineSmokeEmitter" type="CPUParticles3D" parent="." unique_id=1822746827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1166298, 0.45262766, 0)
 layers = 2
 emitting = false
@@ -209,41 +207,41 @@ emission_box_extents = Vector3(0.125, 0.2, 0.7)
 gravity = Vector3(1, 3, -0.655)
 scale_amount_curve = SubResource("Curve_buo3h")
 
-[node name="Exhausts" type="Node3D" parent="."]
+[node name="Exhausts" type="Node3D" parent="." unique_id=543706074]
 transform = Transform3D(0.7443116, -0.66783255, 0, 0.66783255, 0.7443116, 0, 0, 0, 1, -2.3093605, 0.30576676, 0)
 
-[node name="ExhaustController" type="Node" parent="Exhausts" node_paths=PackedStringArray("left_flame", "left_smoke", "right_flame", "right_smoke")]
+[node name="ExhaustController" type="Node" parent="Exhausts" unique_id=1836923318 node_paths=PackedStringArray("left_flame", "left_smoke", "right_flame", "right_smoke")]
 script = ExtResource("6_1a7i7")
 left_flame = NodePath("../LeftExhaust/ExhaustFlame")
 left_smoke = NodePath("../LeftExhaust/ExhaustSmokeEmitter")
 right_flame = NodePath("../RightExhaust/ExhaustFlame")
 right_smoke = NodePath("../RightExhaust/ExhaustSmokeEmitter2")
 
-[node name="LeftExhaust" type="Node3D" parent="Exhausts"]
+[node name="LeftExhaust" type="Node3D" parent="Exhausts" unique_id=799405323]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, -0.45)
 
-[node name="ExhaustFlame" parent="Exhausts/LeftExhaust" instance=ExtResource("6_bol71")]
+[node name="ExhaustFlame" parent="Exhausts/LeftExhaust" unique_id=635338348 instance=ExtResource("6_bol71")]
 transform = Transform3D(0.3, 0, -3.5527137e-15, 0, 0.3, -1.7763568e-15, -3.5527137e-15, 0, 0.3, 0, 0, 0)
 
-[node name="ExhaustSmokeEmitter" parent="Exhausts/LeftExhaust" instance=ExtResource("7_bol71")]
+[node name="ExhaustSmokeEmitter" parent="Exhausts/LeftExhaust" unique_id=45960261 instance=ExtResource("7_bol71")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22786295, -0.12738514, 5.9604645e-08)
 layers = 1
 
-[node name="RightExhaust" type="Node3D" parent="Exhausts"]
+[node name="RightExhaust" type="Node3D" parent="Exhausts" unique_id=1214592425]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0.45)
 
-[node name="ExhaustFlame" parent="Exhausts/RightExhaust" instance=ExtResource("6_bol71")]
+[node name="ExhaustFlame" parent="Exhausts/RightExhaust" unique_id=508567390 instance=ExtResource("6_bol71")]
 transform = Transform3D(0.3, 0, -3.5527137e-15, 0, 0.3, -1.7763568e-15, -3.5527137e-15, 0, 0.3, 0, 0, 0)
 
-[node name="ExhaustSmokeEmitter2" parent="Exhausts/RightExhaust" instance=ExtResource("7_bol71")]
+[node name="ExhaustSmokeEmitter2" parent="Exhausts/RightExhaust" unique_id=1649974396 instance=ExtResource("7_bol71")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22786295, -0.12738514, 5.9604645e-08)
 layers = 1
 use_fixed_seed = true
 seed = 4012856251
 
-[node name="OffRoadNodes" type="Node3D" parent="."]
+[node name="OffRoadNodes" type="Node3D" parent="." unique_id=1100753317]
 
-[node name="DustCloudEmitter" parent="OffRoadNodes" instance=ExtResource("7_bol71")]
+[node name="DustCloudEmitter" parent="OffRoadNodes" unique_id=477234670 instance=ExtResource("7_bol71")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22786295, -0.12738514, 5.9604645e-08)
 layers = 1
 emitting = false
@@ -255,15 +253,13 @@ emission_points = PackedVector3Array(1, 0.15, -0.9, 1, 0.15, 0.9, -1.25, 0.15, 0
 direction = Vector3(-1, 0.2, 0)
 spread = 31.52
 
-[node name="OffRoadAnimator" type="AnimationPlayer" parent="OffRoadNodes"]
-libraries = {
-&"": SubResource("AnimationLibrary_xba33")
-}
-autoplay = "road"
+[node name="OffRoadAnimator" type="AnimationPlayer" parent="OffRoadNodes" unique_id=351639193]
+libraries/ = SubResource("AnimationLibrary_xba33")
+autoplay = &"road"
 playback_auto_capture_transition_type = 3
 playback_default_blend_time = 0.35
 
-[node name="OffRoadAudioPlayer" type="AudioStreamPlayer3D" parent="OffRoadNodes"]
+[node name="OffRoadAudioPlayer" type="AudioStreamPlayer3D" parent="OffRoadNodes" unique_id=2145191622]
 stream = ExtResource("10_nojup")
 volume_db = -80.0
 unit_size = 31.63
@@ -272,7 +268,7 @@ autoplay = true
 panning_strength = 1.5
 bus = &"SFX"
 
-[node name="OffRoadVisualsController" type="Node" parent="OffRoadNodes" node_paths=PackedStringArray("off_road_animator")]
+[node name="OffRoadVisualsController" type="Node" parent="OffRoadNodes" unique_id=1346598135 node_paths=PackedStringArray("off_road_animator")]
 script = ExtResource("11_xba33")
 off_road_animator = NodePath("../OffRoadAnimator")
 

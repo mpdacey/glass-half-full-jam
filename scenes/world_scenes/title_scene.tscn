@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://3k54q4ik0b0u"]
+[gd_scene format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="2_pyl7j"]
@@ -13,14 +13,19 @@
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_6ppm8"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="9_bmxmj"]
 [ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="10_1ot34"]
-[ext_resource type="Script" uid="uid://s6j3is1wgonh" path="res://scripts/established_internet_caller.gd" id="11_08vub"]
+[ext_resource type="Script" path="res://scripts/established_internet_caller.gd" id="11_08vub"]
+[ext_resource type="FontFile" uid="uid://djykx72pris0a" path="res://resources/fonts/Arimo/static/Arimo-Medium.ttf" id="12_0oqx5"]
 [ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="13_via76"]
-[ext_resource type="Texture2D" uid="uid://ca0aske73svnd" path="res://textures/leaderboard_menu_icon.svg" id="14_xq2ei"]
+[ext_resource type="Script" uid="uid://dqd7mv3jjahqy" path="res://scripts/version_name_labeller.gd" id="13_wsrf4"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="14_ycxqd"]
-[ext_resource type="Texture2D" uid="uid://cyt48faih1o5o" path="res://textures/starlight.png" id="15_ohq1l"]
 [ext_resource type="PackedScene" uid="uid://dsg1rgktwcdb" path="res://scenes/ui/leaderboard/leaderboard_ui.tscn" id="15_xq2ei"]
 [ext_resource type="PackedScene" uid="uid://bvb01gwjc7pvc" path="res://scenes/ui/lives_ui.tscn" id="16_n41ns"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="17_bi3h3"]
+[ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="19_0oqx5"]
+[ext_resource type="PackedScene" uid="uid://dwoyqeu2rgpmk" path="res://scenes/ui/purchase_game_ui.tscn" id="20_wsrf4"]
+[ext_resource type="PackedScene" uid="uid://kix35uopnopg" path="res://scenes/ui/options_ui.tscn" id="21_pbe57"]
+[ext_resource type="PackedScene" uid="uid://ctu6qrmvuu4q1" path="res://scenes/ui/snackbar/snackbar.tscn" id="22_qk2ae"]
+[ext_resource type="Script" uid="uid://c2iwrbcd44v43" path="res://scripts/snackbar_button_auto_selector.gd" id="25_t3vcv"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
 _data = {
@@ -115,7 +120,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:visible")
+tracks/5/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -283,7 +288,7 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("TitleCanvasLayer/LeaderboardButtonAnchor:modulate")
+tracks/19/path = NodePath("TitleCanvasLayer/LivesUI/LivesCanvasModulate:color")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
@@ -295,50 +300,38 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("TitleCanvasLayer/LivesUI/LivesCanvasModulate:color")
+tracks/20/path = NodePath("Paths:position")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector3(0, -0.15, 0)]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("Paths:position")
+tracks/21/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:disabled")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.15, 0)]
+"update": 1,
+"values": [true]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:disabled")
+tracks/22/path = NodePath("ColorRect:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton:disabled")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_7rdyk"]
@@ -444,39 +437,131 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = false
-tracks/8/path = NodePath("TitleCanvasLayer/LeaderboardButtonAnchor:modulate")
+tracks/8/path = NodePath("TitleCanvasLayer/LivesUI/LivesCanvasModulate:color")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1.5, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = false
-tracks/9/path = NodePath("TitleCanvasLayer/LivesUI/LivesCanvasModulate:color")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(1.3, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("AnimationPlayers/TransitionPlayer/MethodOnConnectionExecuter")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayers/TransitionPlayer/MethodOnConnectionExecuter")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [NodePath("../../InternetReadyPlayer"), &"play", [&"on_connected"]],
 "method": &"execute_method_on_connection_by_node"
+}]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n41ns"]
+resource_name = "initial"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleCanvasLayer/ClickToPlayText:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.19999999, 0.49999994, 0.70000005),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.08, 1.2), Vector2(2, 2), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleCanvasLayer/ClickToPlayText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.19999987, 0.49999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleCanvasLayer/ClickToPlayText:pivot_offset")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.70000005),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(300, -200), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleCanvasLayer/LivesUI/LivesCanvasModulate:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.49999994, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TitleSnackbar")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"display"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleSnackbar/SnackbarButtonAutoSelector")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_auto_button"
 }]
 }
 
@@ -522,7 +607,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:visible")
+tracks/3/path = NodePath("TitleCanvasLayer/PlayButtonMargin/PlayButton:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -556,6 +641,20 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleSnackbar")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"dismiss"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_yql1r"]
@@ -654,7 +753,7 @@ tracks/7/path = NodePath("Paths/PolicePath/PoliceCore/PoliceCruiser/TopBlueSiren
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(1.61, 2.21),
+"times": PackedFloat32Array(1.7134655, 2.21),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -666,7 +765,7 @@ tracks/8/path = NodePath("Paths/PolicePath/PoliceCore/PoliceCruiser/TopRedSiren:
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1.5500001, 2.14),
+"times": PackedFloat32Array(1.6534655, 2.14),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -684,95 +783,6 @@ tracks/9/keys = {
 "values": [Vector3(200, -0.15, 0), Vector3(0, -0.15, 0), Vector3(200, -0.15, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_n41ns"]
-resource_name = "initial"
-length = 2.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TitleCanvasLayer/ClickToPlayText:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.19999999, 0.49999994, 0.70000005),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2.08, 1.2), Vector2(2, 2), Vector2(2, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TitleCanvasLayer/ClickToPlayText:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.19999987, 0.49999994),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TitleCanvasLayer/ClickToPlayText:pivot_offset")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.70000005),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(300, -200), Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TitleCanvasLayer/LeaderboardButtonAnchor:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.70000005, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("TitleCanvasLayer/LivesUI/LivesCanvasModulate:color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.49999994, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("TitleCanvasLayer/MarginContainer/PlayButton:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hiwto"]
 _data = {
 &"RESET": SubResource("Animation_ia1n6"),
@@ -782,194 +792,68 @@ _data = {
 &"title": SubResource("Animation_yql1r")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_t3vcv"]
+font = ExtResource("12_0oqx5")
+font_size = 128
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_7rdyk"]
 font = ExtResource("7_s8xmt")
 font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_ohq1l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../LeaderboardButtonAuraTexture:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(807, 1958.383)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../LeaderboardButtonAuraTexture:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../LeaderboardButtonAuraTexture:modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.5372549, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
+[node name="TitleScene" type="Node3D" unique_id=974034880]
 
-[sub_resource type="Animation" id="Animation_xq2ei"]
-resource_name = "idle"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2.7886147, 3, 3.1333334, 3.2666667, 3.4, 3.5333333, 3.7, 3.8522515),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 0.17453292519943295, -0.17453292519943295, 0.17453292519943295, -0.17453292519943295, 0.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../LeaderboardButtonAuraTexture:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 9.42477796076938]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0046650725, 0.9846651, 2.024665, 2.9946651),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0), Vector2(0, -100)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../LeaderboardButtonAuraTexture:scale")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.9983255, 2, 2.9983256),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.88, 0.88), Vector2(1, 1), Vector2(0.88, 0.88)]
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../LeaderboardButtonAuraTexture:modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0.5372549, -0.25, 0, 0.25, 0, 0.327, -0.25, 0, 0.25, 0, 0.5372549, -0.25, 0, 0.25, 0, 0.327, -0.25, 0, 0.25, 0, 0.5372549, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.9983255, 1.996651, 2.9949765, 4)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_n41ns"]
-_data = {
-&"RESET": SubResource("Animation_ohq1l"),
-&"idle": SubResource("Animation_xq2ei")
-}
-
-[node name="TitleScene" type="Node3D"]
-
-[node name="Paths" type="Node3D" parent="."]
+[node name="Paths" type="Node3D" parent="." unique_id=1562818907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
 
-[node name="OngoingLanePath" type="Path3D" parent="Paths"]
+[node name="OngoingLanePath" type="Path3D" parent="Paths" unique_id=1100367976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 2.84618)
 curve = SubResource("Curve3D_c3e3h")
 
-[node name="TrafficCore" parent="Paths/OngoingLanePath" instance=ExtResource("1_4rr2b")]
+[node name="TrafficCore" parent="Paths/OngoingLanePath" unique_id=2009241879 instance=ExtResource("1_4rr2b")]
 transform = Transform3D(0.07743621, 0, -0.99682385, 0, 0.9999627, 0, 0.99682385, 0, 0.07743621, 146.71655, 0, 5.551287)
 progress = 90.43472
 
-[node name="IncomingLanePath" type="Path3D" parent="Paths"]
+[node name="IncomingLanePath" type="Path3D" parent="Paths" unique_id=1031694824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, -2.6153383)
 curve = SubResource("Curve3D_gf765")
 
-[node name="TrafficCore" parent="Paths/IncomingLanePath" instance=ExtResource("2_yql1r")]
+[node name="TrafficCore" parent="Paths/IncomingLanePath" unique_id=1280400313 instance=ExtResource("2_yql1r")]
 transform = Transform3D(-4.3703796e-08, 0, 0.9998263, 0, 1, 0, -0.9998263, 0, -4.3703796e-08, 199.955, 0, -0.08)
 
-[node name="TrafficCore2" parent="Paths/IncomingLanePath" instance=ExtResource("3_6ppm8")]
+[node name="TrafficCore2" parent="Paths/IncomingLanePath" unique_id=1392269383 instance=ExtResource("3_6ppm8")]
 transform = Transform3D(-4.370395e-08, 0, 0.99982977, 0, 1, 0, -0.99982977, 0, -4.370395e-08, 199.955, 0, -0.08)
 
-[node name="TrafficCore3" parent="Paths/IncomingLanePath" instance=ExtResource("4_bre4b")]
+[node name="TrafficCore3" parent="Paths/IncomingLanePath" unique_id=1277558826 instance=ExtResource("4_bre4b")]
 transform = Transform3D(-4.3704166e-08, 0, 0.9998348, 0, 1, 0, -0.9998348, 0, -4.3704166e-08, 199.955, 0, -0.08)
 
-[node name="DollyPath" type="Path3D" parent="Paths"]
+[node name="DollyPath" type="Path3D" parent="Paths" unique_id=251119349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.115, 0.1, 0.082)
 curve = SubResource("Curve3D_4rr2b")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Paths/DollyPath"]
+[node name="PathFollow3D" type="PathFollow3D" parent="Paths/DollyPath" unique_id=1318974089]
 transform = Transform3D(1.4000007, 0, 0, 0, 1.2, 0, 0, 0, 1.8000053, 162.18367, 0, 4.9210906)
 progress = 100.92672
 rotation_mode = 0
 tilt_enabled = false
 
-[node name="Camera3D" type="Camera3D" parent="Paths/DollyPath/PathFollow3D"]
+[node name="Camera3D" type="Camera3D" parent="Paths/DollyPath/PathFollow3D" unique_id=798104694]
 transform = Transform3D(0.37044072, -0.4918062, 0.34993887, 0, 0.5984385, 0.39987633, -0.5928291, -0.30731463, 0.21866608, 5.734, 1.316, 1.261)
 fov = 48.5
 
-[node name="CarPath" type="Path3D" parent="Paths"]
+[node name="CarPath" type="Path3D" parent="Paths" unique_id=379259518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10000001, 0.082)
 curve = SubResource("Curve3D_c3e3h")
 debug_custom_color = Color(0.55, 0.41708338, 0.23100002, 1)
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Paths/CarPath"]
+[node name="PathFollow3D" type="PathFollow3D" parent="Paths/CarPath" unique_id=486095210]
 transform = Transform3D(0.2129375, 0, -1.3331373, 0, 1.35, 0, 1.3331373, 0, 0.2129375, 156.97745, 0, 4.3031716)
 progress = 100.774155
 
-[node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D"]
+[node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D" unique_id=1530341443]
 transform = Transform3D(-1.0000001, 0, -1.509958e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1, 0, 0, 0)
 layers = 2
 mesh = ExtResource("5_uaep1")
@@ -980,13 +864,11 @@ surface_material_override/2 = ExtResource("2_pyl7j")
 surface_material_override/3 = ExtResource("2_pyl7j")
 surface_material_override/4 = ExtResource("2_pyl7j")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports"]
-libraries = {
-&"": ExtResource("7_o7kwv")
-}
-autoplay = "putt"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports" unique_id=1046586961]
+libraries/ = ExtResource("7_o7kwv")
+autoplay = &"putt"
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Paths/CarPath/PathFollow3D/SedanSports"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Paths/CarPath/PathFollow3D/SedanSports" unique_id=1655849690]
 stream = ExtResource("5_ofksa")
 volume_db = -6.0
 unit_size = 6.26
@@ -1000,58 +882,75 @@ attenuation_filter_cutoff_hz = 8803.0
 attenuation_filter_db = 0.0
 parameters/looping = true
 
-[node name="PolicePath" type="Path3D" parent="Paths"]
+[node name="PolicePath" type="Path3D" parent="Paths" unique_id=1436197362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.674988, 0.10000001, 0.082)
 curve = SubResource("Curve3D_bmxmj")
 debug_custom_color = Color(0.44550002, 0.23100002, 0.66, 1)
 
-[node name="PoliceCore" parent="Paths/PolicePath" instance=ExtResource("9_bmxmj")]
+[node name="PoliceCore" parent="Paths/PolicePath" unique_id=294529092 instance=ExtResource("9_bmxmj")]
 transform = Transform3D(-0.078318626, 0, -0.84134996, 0, 0.8449875, 0, 0.84134996, 0, -0.078318626, 56.723, 0, 0)
 
-[node name="BumperRedSiren" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" index="2"]
+[node name="BumperRedSiren" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" parent_id_path=PackedInt32Array(294529092, 316660543) index="2" unique_id=17250652]
 no_depth_test = false
 
-[node name="BumperBlueSiren" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" index="3"]
+[node name="BumperBlueSiren" parent="Paths/PolicePath/PoliceCore/PoliceCruiser" parent_id_path=PackedInt32Array(294529092, 316660543) index="3" unique_id=233319270]
 no_depth_test = false
 
-[node name="AnimationPlayers" type="Node" parent="."]
+[node name="AnimationPlayers" type="Node" parent="." unique_id=1269056083]
 
-[node name="TransitionPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+[node name="TransitionPlayer" type="AnimationPlayer" parent="AnimationPlayers" unique_id=1647780887]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_hiwto")
-}
-autoplay = "initial"
+libraries/ = SubResource("AnimationLibrary_hiwto")
+autoplay = &"initial"
 
-[node name="LoadPlaySceneEmitter" type="Node" parent="AnimationPlayers/TransitionPlayer"]
+[node name="LoadPlaySceneEmitter" type="Node" parent="AnimationPlayers/TransitionPlayer" unique_id=157483322]
 script = ExtResource("8_6ppm8")
 global_signal_name = &"scene_change_request_play"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="SpendLifeGrantedListener" type="Node" parent="AnimationPlayers/TransitionPlayer"]
+[node name="SpendLifeGrantedListener" type="Node" parent="AnimationPlayers/TransitionPlayer" unique_id=1450303080]
 script = ExtResource("8_6ppm8")
 global_signal_name = &"spend_life_granted"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="MethodOnConnectionExecuter" type="Node" parent="AnimationPlayers/TransitionPlayer"]
+[node name="MethodOnConnectionExecuter" type="Node" parent="AnimationPlayers/TransitionPlayer" unique_id=973470067]
 script = ExtResource("11_08vub")
 
-[node name="InternetReadyPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+[node name="InternetReadyPlayer" type="AnimationPlayer" parent="AnimationPlayers" unique_id=1635337059]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_hiwto")
-}
+libraries/ = SubResource("AnimationLibrary_hiwto")
 
-[node name="SceneLoopPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+[node name="SceneLoopPlayer" type="AnimationPlayer" parent="AnimationPlayers" unique_id=1357385871]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_hiwto")
-}
-autoplay = "title"
+libraries/ = SubResource("AnimationLibrary_hiwto")
+autoplay = &"title"
 
-[node name="TitleCanvasLayer" type="CanvasLayer" parent="."]
+[node name="TitleCanvasLayer" type="CanvasLayer" parent="." unique_id=699370989]
 
-[node name="MarginContainer" type="MarginContainer" parent="TitleCanvasLayer"]
+[node name="VersionNameMargin" type="MarginContainer" parent="TitleCanvasLayer" unique_id=1271655768]
+modulate = Color(1, 1, 1, 0)
+offset_right = 138.0
+offset_bottom = 23.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="VersionNameAnchor" type="Control" parent="TitleCanvasLayer/VersionNameMargin" unique_id=939434639]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VersionNameLabel" type="Label" parent="TitleCanvasLayer/VersionNameMargin/VersionNameAnchor" unique_id=1244410141]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 36.0
+scale = Vector2(0.3, 0.3)
+text = "In App Update 1.2"
+label_settings = SubResource("LabelSettings_t3vcv")
+script = ExtResource("13_wsrf4")
+
+[node name="PlayButtonMargin" type="MarginContainer" parent="TitleCanvasLayer" unique_id=2103318651]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1064,18 +963,18 @@ theme_override_constants/margin_top = 96
 theme_override_constants/margin_right = 96
 theme_override_constants/margin_bottom = 96
 
-[node name="PlayButton" type="Button" parent="TitleCanvasLayer/MarginContainer"]
+[node name="PlayButton" type="Button" parent="TitleCanvasLayer/PlayButtonMargin" unique_id=1932922083]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_mode = 1
 disabled = true
 
-[node name="SpendLifeRequestEmitter" type="Node" parent="TitleCanvasLayer/MarginContainer/PlayButton"]
+[node name="SpendLifeRequestEmitter" type="Node" parent="TitleCanvasLayer/PlayButtonMargin/PlayButton" unique_id=1276157286]
 script = ExtResource("8_6ppm8")
 global_signal_name = &"spend_life_requested"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="Logo" type="TextureRect" parent="TitleCanvasLayer"]
+[node name="Logo" type="TextureRect" parent="TitleCanvasLayer" unique_id=687963834]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
@@ -1091,7 +990,7 @@ texture = ExtResource("4_pyl7j")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="ClickToPlayText" type="Label" parent="TitleCanvasLayer"]
+[node name="ClickToPlayText" type="Label" parent="TitleCanvasLayer" unique_id=1688510036]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 7
 anchor_left = 0.5
@@ -1109,95 +1008,55 @@ text = "Tap to play"
 label_settings = SubResource("LabelSettings_7rdyk")
 horizontal_alignment = 1
 
-[node name="PlatformDependantTextSetter" type="Node" parent="TitleCanvasLayer/ClickToPlayText"]
+[node name="PlatformDependantTextSetter" type="Node" parent="TitleCanvasLayer/ClickToPlayText" unique_id=721592263]
 script = ExtResource("13_via76")
 mobile_text = "Tap to play"
 desktop_text = "Click to play"
 
-[node name="TitleCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer"]
+[node name="TitleCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer" unique_id=123439303]
 
-[node name="LeaderboardButtonAnchor" type="Control" parent="TitleCanvasLayer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -273.0
-offset_top = -303.10693
-offset_right = -273.0
-offset_bottom = -303.10693
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
-
-[node name="LeaderboardButtonMover" type="Control" parent="TitleCanvasLayer/LeaderboardButtonAnchor"]
-anchors_preset = 0
-offset_left = 807.0
-offset_top = 1958.383
-offset_right = 807.0
-offset_bottom = 1958.383
-
-[node name="LeaderboardButton" type="TextureButton" parent="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 250.00012
-pivot_offset = Vector2(125, 125)
-disabled = true
-texture_normal = ExtResource("14_xq2ei")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ButtonOutline" type="TextureRect" parent="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton"]
-modulate = Color(0, 0, 0, 1)
-z_index = -1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -139.0
-offset_top = -135.0116
-offset_right = 136.0
-offset_bottom = 134.9884
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("14_xq2ei")
-
-[node name="LeaderboardButtonAuraTexture" type="TextureRect" parent="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover"]
-modulate = Color(1, 1, 1, 0.5372549)
-z_index = -2
-layout_mode = 0
-offset_left = -128.00006
-offset_top = -127.99997
-offset_right = 383.99994
-offset_bottom = 384.00003
-pivot_offset = Vector2(256, 256)
-mouse_filter = 2
-texture = ExtResource("15_ohq1l")
-
-[node name="LeaderboardButtonAnimator" type="AnimationPlayer" parent="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover"]
-root_node = NodePath("../LeaderboardButton")
-libraries = {
-&"": SubResource("AnimationLibrary_n41ns")
-}
-autoplay = "idle"
-
-[node name="LivesUI" parent="TitleCanvasLayer" instance=ExtResource("16_n41ns")]
+[node name="LivesUI" parent="TitleCanvasLayer" unique_id=1645520818 instance=ExtResource("16_n41ns")]
 layer = 0
 
-[node name="LivesCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer/LivesUI"]
+[node name="LivesCanvasModulate" type="CanvasModulate" parent="TitleCanvasLayer/LivesUI" unique_id=2126641906]
 color = Color(1, 1, 1, 0)
 
-[node name="LeaderboardsUI" parent="." instance=ExtResource("15_xq2ei")]
+[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer/LivesUI" unique_id=156379386]
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="SnackbarButtonListener" type="Node" parent="TitleCanvasLayer" unique_id=1235881775]
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="LeaderboardsUI" parent="." unique_id=1404565248 instance=ExtResource("15_xq2ei")]
 visible = false
 
-[node name="MusicManager" type="Node" parent="."]
+[node name="SnackbarButtonListener" type="Node" parent="LeaderboardsUI" unique_id=224288237]
+script = ExtResource("19_0oqx5")
+target_button_type = 1
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="PurchaseGameUI" parent="." unique_id=712328124 instance=ExtResource("20_wsrf4")]
+
+[node name="SnackbarButtonListener" type="Node" parent="PurchaseGameUI" unique_id=1532924519]
+script = ExtResource("19_0oqx5")
+target_button_type = 3
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="OptionsUI" parent="." unique_id=1528372206 instance=ExtResource("21_pbe57")]
+visible = false
+
+[node name="SnackbarButtonListener" type="Node" parent="OptionsUI" unique_id=391441925]
+script = ExtResource("19_0oqx5")
+target_button_type = 2
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="MusicManager" type="Node" parent="." unique_id=866031560]
 script = ExtResource("10_1ot34")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1938606060]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1206,21 +1065,48 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AndroidBackListener" type="Node" parent="."]
+[node name="AndroidBackListener" type="Node" parent="." unique_id=744324680]
 script = ExtResource("14_ycxqd")
+bind_close_application = true
 metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 
-[node name="PlayServicesNodes" type="Node" parent="."]
+[node name="SnackbarButtonListener" type="Node" parent="AndroidBackListener" unique_id=801252474]
+process_mode = 3
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
-[node name="PlayGamesLeaderboardsClient" type="Node" parent="PlayServicesNodes"]
+[node name="PlayServicesNodes" type="Node" parent="." unique_id=1374731571]
+
+[node name="PlayGamesLeaderboardsClient" type="Node" parent="PlayServicesNodes" unique_id=764037678]
 script = ExtResource("17_bi3h3")
 metadata/_custom_type_script = "uid://cafyylq66psjo"
 
+[node name="TitleSnackbar" parent="." unique_id=1090494315 instance=ExtResource("22_qk2ae")]
+layer = 5
+
+[node name="SnackbarButtonAutoSelector" type="Node" parent="TitleSnackbar" unique_id=1432582934]
+script = ExtResource("25_t3vcv")
+
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
-[connection signal="pressed" from="TitleCanvasLayer/MarginContainer/PlayButton" to="TitleCanvasLayer/MarginContainer/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
-[connection signal="button_down" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" method="set_self_modulate" binds= [Color(0.7121294, 0.7121294, 0.71212935, 1)]]
-[connection signal="button_up" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
-[connection signal="pressed" from="TitleCanvasLayer/LeaderboardButtonAnchor/LeaderboardButtonMover/LeaderboardButton" to="LeaderboardsUI" method="show"]
+[connection signal="pressed" from="TitleCanvasLayer/PlayButtonMargin/PlayButton" to="TitleCanvasLayer/PlayButtonMargin/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
+[connection signal="open_shop_requested" from="TitleCanvasLayer/LivesUI" to="TitleSnackbar" method="press_snackbar_button" binds= [3]]
+[connection signal="target_toggled_on" from="TitleCanvasLayer/LivesUI/SnackbarButtonListener" to="TitleCanvasLayer/LivesUI" method="request_banish_lives"]
+[connection signal="target_toggled_off" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/PlayButtonMargin" method="hide"]
+[connection signal="target_toggled_off" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/ClickToPlayText" method="hide"]
+[connection signal="target_toggled_on" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/PlayButtonMargin" method="show"]
+[connection signal="target_toggled_on" from="TitleCanvasLayer/SnackbarButtonListener" to="TitleCanvasLayer/ClickToPlayText" method="show"]
+[connection signal="target_toggled_off" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="close_leaderboards"]
+[connection signal="target_toggled_on" from="LeaderboardsUI/SnackbarButtonListener" to="LeaderboardsUI" method="open_leaderboards"]
+[connection signal="processing_finished" from="PurchaseGameUI" to="TitleSnackbar" method="unlock_snackbox"]
+[connection signal="processing_started" from="PurchaseGameUI" to="TitleSnackbar" method="lock_snackbox"]
+[connection signal="purchase_successful_button_pressed" from="PurchaseGameUI" to="TitleSnackbar" method="press_snackbar_button" binds= [0]]
+[connection signal="target_toggled_off" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="close_purchase_window"]
+[connection signal="target_toggled_on" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="open_purchase_window"]
+[connection signal="target_toggled_off" from="OptionsUI/SnackbarButtonListener" to="OptionsUI" method="dismiss"]
+[connection signal="target_toggled_on" from="OptionsUI/SnackbarButtonListener" to="OptionsUI" method="display"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
+[connection signal="target_toggled_off" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [4]]
+[connection signal="target_toggled_on" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [0]]
+[connection signal="auto_button_pressed" from="TitleSnackbar/SnackbarButtonAutoSelector" to="TitleSnackbar" method="press_snackbar_button"]
 
 [editable path="Paths/PolicePath/PoliceCore"]

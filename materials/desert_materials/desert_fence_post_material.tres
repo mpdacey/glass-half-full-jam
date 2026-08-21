@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://drbth85p4ot8"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://drbth85p4ot8"]
 
 [ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_aljws"]
 [ext_resource type="Texture2D" uid="uid://crpwrnmadqaxq" path="res://textures/material_textures/post_textures/wooden_post_texture.jpg" id="2_g5itn"]
@@ -21,4 +21,5 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/curve_amount = 0.0999999977648
 shader_parameter/distant_albeno = Color(1, 1, 1, 0)
 shader_parameter/has_seperate_distant_texture = false
-shader_parameter/curve_multiplier = 0.0
+shader_parameter/bend_multiplier = 0.0
+shader_parameter/bend_amplifier = 1.0

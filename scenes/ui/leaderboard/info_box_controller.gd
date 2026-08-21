@@ -83,6 +83,9 @@ func display_info_box() -> void:
 func dismiss_info_box() -> void:
 	animator.play(ANIMATION_HIDE_KEY)
 
+func change_info_box() -> void:
+	animator.play(ANIMATION_CHANGE_KEY)
+
 func _assign_content_metadata() -> void:
 	if not has_meta(CONTENT_RESOURCE_METADATA_KEY):
 		return

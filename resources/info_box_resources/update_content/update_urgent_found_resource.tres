@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InfoBoxContentsResource" format=3 uid="uid://c1br3312dynn6"]
+
+[ext_resource type="Script" uid="uid://dajftf844g2xs" path="res://scripts/resource_scripts/info_box_resource_script.gd" id="1_i20yp"]
+
+[resource]
+script = ExtResource("1_i20yp")
+title = "Update Required"
+body = "A new update is required
+to be installed."
+hyperlink_text = "Please install the update now."
+button_content = "Install Update"
+metadata/_custom_type_script = "uid://dajftf844g2xs"

@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://do5tjfwdn331g" path="res://textures/ui/options/globe_icon.svg" id="9_wuery"]
 [ext_resource type="Script" uid="uid://dpdcc7bh4f6ba" path="res://scripts/audio/audio_toggle_controller.gd" id="11_wfvgo"]
 [ext_resource type="PackedScene" uid="uid://c3oo46sjm6esy" path="res://scenes/ui/options/audio_spectrum_visualiser.tscn" id="17_7bo5f"]
+[ext_resource type="PackedScene" uid="uid://p04yt3lrjt4h" path="res://scenes/ui/credits/credits_manual_ui.tscn" id="17_cta15"]
+[ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="18_cta15"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42nq3"]
 content_margin_left = 0.0
@@ -596,6 +598,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_68yga")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1871364405]
 libraries/ = SubResource("AnimationLibrary_81bvl")
 
+[node name="CreditsManualUI" parent="." unique_id=1192054179 instance=ExtResource("17_cta15")]
+layer = 2
+visible = false
+
+[node name="SnackbarButtonListener" type="Node" parent="CreditsManualUI" unique_id=1004815208]
+script = ExtResource("18_cta15")
+target_button_type = 2
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[connection signal="view_credits_requested" from="." to="CreditsManualUI" method="open_book"]
 [connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/MusicMuteButton" to="." method="_on_music_mute_button_toggle_set"]
 [connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/MusicMuteButton" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" method="set_music_mute"]
 [connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/SoundMuteButton" to="." method="_on_sound_mute_button_toggle_set"]
@@ -604,3 +616,6 @@ libraries/ = SubResource("AnimationLibrary_81bvl")
 [connection signal="sfx_muted_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/SoundMuteButton" method="set_toggle" flags=6]
 [connection signal="pressed" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/CreditsButtonMargin/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PrivacyPolicyButtonMargin/PrivacyPolicyButton" to="." method="_on_privacy_policy_button_pressed"]
+[connection signal="target_retoggled_on" from="CreditsManualUI/SnackbarButtonListener" to="CreditsManualUI" method="close_book"]
+[connection signal="target_toggled_off" from="CreditsManualUI/SnackbarButtonListener" to="CreditsManualUI" method="close_book"]
+[connection signal="target_toggled_on" from="CreditsManualUI/SnackbarButtonListener" to="CreditsManualUI" method="hide"]

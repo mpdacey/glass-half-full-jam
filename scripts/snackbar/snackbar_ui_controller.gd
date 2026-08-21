@@ -43,8 +43,5 @@ func press_snackbar_button(button_type: SnackbarButtonType) -> void:
 	_on_snackbar_button_pressed(button_type)
 
 func _on_snackbar_button_pressed(button_type: SnackbarButtonType) -> void:
-	if button_type == _current_pressed:
-		return
-	
 	_current_pressed = button_type
 	global_signal_emitter.emit_global_signal_with_value(_current_pressed)

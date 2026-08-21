@@ -2,6 +2,7 @@ extends Node
 class_name SnackbarButtonListener
 
 signal target_toggled_on
+signal target_retoggled_on
 signal target_toggled_off
 
 const SNACKBAR_CHANGED_SIGNAL_NAME = &"snackbar_button_pressed"
@@ -19,9 +20,12 @@ func _ready() -> void:
 		_is_toggled = true
 
 func _on_button_type_changed(new_type: SnackbarUIController.SnackbarButtonType) -> void:
-	if new_type == target_button_type and not _is_toggled:
-		_is_toggled = true
-		target_toggled_on.emit()
+	if new_type == target_button_type:
+		if _is_toggled:
+			target_retoggled_on.emit()
+		else:
+			_is_toggled = true
+			target_toggled_on.emit()
 	elif new_type != target_button_type and _is_toggled:
 		_is_toggled = false
 		target_toggled_off.emit()

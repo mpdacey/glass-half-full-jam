@@ -1233,6 +1233,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+disabled = true
 
 [node name="SpendLifeRequestEmitter" type="Node" parent="UI/GameoverLayer/TryAgainButtonRegion/TryAgainButton" unique_id=1393915011]
 script = ExtResource("12_dyabf")

@@ -276,10 +276,215 @@ _data = {
 &"show": SubResource("Animation_42nq3")
 }
 
+[sub_resource type="Animation" id="Animation_cta15"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:offset_transform_position_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.095, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:offset_transform_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CreditsManualUI")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f4osg"]
+resource_name = "close_credits"
+length = 0.4
+capture_included = true
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CreditsManualUI")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"close_book"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:offset_transform_position_ratio")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector2(0.095, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:offset_transform_scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vrc04"]
+resource_name = "open_credits"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CreditsManualUI")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"open_book"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:offset_transform_position_ratio")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.095, 0), Vector2(-0.1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.84599996, 0.873, 0.9, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:offset_transform_scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.11, 1.11)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OptionsHBox/VBoxContainer/TopProps/CreditsBook:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f4osg"]
+_data = {
+&"RESET": SubResource("Animation_cta15"),
+&"close_credits": SubResource("Animation_f4osg"),
+&"open_credits": SubResource("Animation_vrc04")
+}
+
 [node name="OptionsUI" type="CanvasLayer" unique_id=1528372206 node_paths=PackedStringArray("display_label", "animator")]
 script = ExtResource("1_6a7a8")
 display_label = NodePath("OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/DisplayMargin/DisplayPanel/DisplayTextMargin/DisplayTextLabel")
-animator = NodePath("AnimationPlayer")
+animator = NodePath("OptionsAnimator")
 
 [node name="OptionsHBox" type="VBoxContainer" parent="." unique_id=2133097301]
 anchors_preset = 15
@@ -595,19 +800,22 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.45
 theme_override_styles/panel = SubResource("StyleBoxFlat_68yga")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1871364405]
+[node name="OptionsAnimator" type="AnimationPlayer" parent="." unique_id=1871364405]
 libraries/ = SubResource("AnimationLibrary_81bvl")
+
+[node name="CreditsAnimator" type="AnimationPlayer" parent="." unique_id=45380650]
+libraries/ = SubResource("AnimationLibrary_f4osg")
+
+[node name="SnackbarButtonListener" type="Node" parent="CreditsAnimator" unique_id=1004815208]
+script = ExtResource("18_cta15")
+target_button_type = 2
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
 [node name="CreditsManualUI" parent="." unique_id=1192054179 instance=ExtResource("17_cta15")]
 layer = 2
 visible = false
 
-[node name="SnackbarButtonListener" type="Node" parent="CreditsManualUI" unique_id=1004815208]
-script = ExtResource("18_cta15")
-target_button_type = 2
-metadata/_custom_type_script = "uid://doy80gr0iay7o"
-
-[connection signal="view_credits_requested" from="." to="CreditsManualUI" method="open_book"]
+[connection signal="view_credits_requested" from="." to="CreditsAnimator" method="play" binds= [&"open_credits"]]
 [connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/MusicMuteButton" to="." method="_on_music_mute_button_toggle_set"]
 [connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/MusicMuteButton" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" method="set_music_mute"]
 [connection signal="toggle_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/SoundMuteButton" to="." method="_on_sound_mute_button_toggle_set"]
@@ -616,6 +824,6 @@ metadata/_custom_type_script = "uid://doy80gr0iay7o"
 [connection signal="sfx_muted_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/SoundMuteButton" method="set_toggle" flags=6]
 [connection signal="pressed" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/CreditsButtonMargin/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PrivacyPolicyButtonMargin/PrivacyPolicyButton" to="." method="_on_privacy_policy_button_pressed"]
-[connection signal="target_retoggled_on" from="CreditsManualUI/SnackbarButtonListener" to="CreditsManualUI" method="close_book"]
-[connection signal="target_toggled_off" from="CreditsManualUI/SnackbarButtonListener" to="CreditsManualUI" method="close_book"]
-[connection signal="target_toggled_on" from="CreditsManualUI/SnackbarButtonListener" to="CreditsManualUI" method="hide"]
+[connection signal="target_retoggled_on" from="CreditsAnimator/SnackbarButtonListener" to="CreditsAnimator" method="play" binds= [&"close_credits"]]
+[connection signal="target_toggled_off" from="CreditsAnimator/SnackbarButtonListener" to="CreditsAnimator" method="play" binds= [&"close_credits"]]
+[connection signal="target_toggled_on" from="CreditsAnimator/SnackbarButtonListener" to="CreditsAnimator" method="play" binds= [&"RESET"]]

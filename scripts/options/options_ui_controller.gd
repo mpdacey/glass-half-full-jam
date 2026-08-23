@@ -1,6 +1,8 @@
 extends CanvasLayer
 class_name OptionsUIController
 
+signal view_credits_requested
+
 const PRIVACY_POLICY_URL = "https://github.com/mpdacey/glass-half-full-jam/blob/main/app_privacy_policy.md"
 const DEFAULT_DISPLAY_TEXT = "Options"
 
@@ -51,6 +53,7 @@ func _on_privacy_policy_button_pressed() -> void:
 	tween_display_text("View Privacy Policy")
 
 func _on_credits_button_pressed() -> void:
+	view_credits_requested.emit()
 	current_display_state = OptionState.CREDITS
 	tween_display_text("View Credits")
 

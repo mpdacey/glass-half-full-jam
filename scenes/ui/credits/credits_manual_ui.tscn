@@ -326,8 +326,11 @@ theme_override_constants/margin_bottom = 16
 [node name="CreditsBlockScroll" type="ScrollContainer" parent="CreditsBackingPanel/CreditsBookVBox/CreditsPageMargin/CreditsPagePanel/CreditsBlockMargin" unique_id=132021262]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 0
+mouse_behavior_recursive = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+scroll_deadzone = 240
 
 [node name="CreditsTextMargin" type="MarginContainer" parent="CreditsBackingPanel/CreditsBookVBox/CreditsPageMargin/CreditsPagePanel/CreditsBlockMargin/CreditsBlockScroll" unique_id=742747667]
 layout_mode = 2
@@ -339,6 +342,7 @@ theme_override_constants/margin_bottom = 128
 [node name="CreditsRichText" type="RichTextLabel" parent="CreditsBackingPanel/CreditsBookVBox/CreditsPageMargin/CreditsPagePanel/CreditsBlockMargin/CreditsBlockScroll/CreditsTextMargin" unique_id=823391663]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_colors/default_color = Color(0.19, 0.19, 0.19, 1)
 theme_override_fonts/normal_font = ExtResource("7_c0yd7")
 theme_override_fonts/bold_font = ExtResource("5_c0yd7")

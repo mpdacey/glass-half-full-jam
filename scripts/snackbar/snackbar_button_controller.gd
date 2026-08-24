@@ -13,7 +13,6 @@ signal snackbar_button_released
 var _button_group : ButtonGroup = preload("uid://ckjn10ul5kvve")
 var _lit_underline_stylebox: StyleBoxFlat = preload("uid://bfjnouwh84kb")
 var _unlit_underline_stylebox: StyleBoxFlat = preload("uid://bvnq8hjtkstin")
-var _button_pulse_tween : Tween
 
 func _ready() -> void:
 	set_button_icon(button_icon)

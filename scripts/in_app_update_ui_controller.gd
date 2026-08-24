@@ -1,6 +1,7 @@
 extends Node
 class_name InAppUpdateUIController
 
+@warning_ignore_start("unused_signal")
 signal check_updates_request
 signal set_flexible_request
 signal set_immediate_request

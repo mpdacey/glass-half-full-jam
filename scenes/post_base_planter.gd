@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func plant_self() -> void:
 	var rng := RandomNumberGenerator.new()
-	var unix_time : int = Time.get_unix_time_from_system()
+	var unix_time : int = floori(Time.get_unix_time_from_system())
 	var self_index : int = get_index()
 	var fence_index : int = get_parent_node_3d().get_parent_node_3d().get_index()
 	var side_index : int = get_parent_node_3d().get_parent_node_3d().get_parent_node_3d().get_index()

@@ -111,6 +111,7 @@ func _on_purchase_updated(response: Dictionary) -> void:
 	for purchase : Dictionary in response.purchases:
 		_process_purchase(purchase)
 
+@warning_ignore("unused_parameter")
 func _on_consume_purchase_response(response: Dictionary) -> void:
 	pass
 

@@ -1069,6 +1069,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 offset_transform_enabled = true
+mouse_filter = 2
 texture = ExtResource("5_tlust")
 
 [node name="LoadingReticleAnimator" type="AnimationPlayer" parent="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/EntriesPanelMargin/EntriesPanel/EntriesMargin/LoadingReticleTexture" unique_id=1651870185]

@@ -8,6 +8,6 @@ title = "OUT OF LIVES"
 body = "Your lives will need to regenerate
 before you can play again."
 hyperlink_text = "However, purchasing this game will
-grant unlimited lives with no wait time!"
+grant unlimited lives without waiting!"
 button_content = "Purchase Game"
 metadata/_custom_type_script = "uid://dajftf844g2xs"

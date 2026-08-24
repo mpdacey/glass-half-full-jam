@@ -27,6 +27,9 @@ func _on_button_down() -> void:
 	play()
 
 func _on_button_up() -> void:
+	if not is_inside_tree():
+		return
+	
 	stop()
 	(stream as AudioStreamRandomizer).set_stream(0, BUTTON_UP_SFX)
 	play()

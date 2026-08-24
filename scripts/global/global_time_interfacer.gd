@@ -7,18 +7,26 @@ signal status_found(responce: GlobalConstants.TimeConnectionResponses)
 const TIME_URL = "https://time.now/developer/api/timezone/Europe/London"
 
 @export var http_request: HTTPRequest
+var _is_requesting: bool = false
 
 func request_global_time() -> void:
+	if _is_requesting:
+		return
+	
 	var error : Error = http_request.request(TIME_URL, [], HTTPClient.METHOD_GET)
 	if error != OK:
 		status_found.emit(GlobalConstants.TimeConnectionResponses.NO_CONNECTION)
 		print(error)
+	else:
+		_is_requesting = true
 
 func ping_global_time() -> void:
 	var error : Error = http_request.request(TIME_URL, [], HTTPClient.METHOD_HEAD)
 	if error != OK:
 		status_found.emit(GlobalConstants.TimeConnectionResponses.NO_CONNECTION)
 		print(error)
+	else:
+		_is_requesting = true
 
 func request_recieved(
 	result: int,
@@ -26,6 +34,8 @@ func request_recieved(
 	_headers: PackedStringArray,
 	body: PackedByteArray
 ) -> void:
+	_is_requesting = false
+	
 	if result != HTTPRequest.RESULT_SUCCESS:
 		printerr(str("Error with the request. Error Code: ", response_code))
 		if response_code == 0:

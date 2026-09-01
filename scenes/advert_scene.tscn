@@ -1,0 +1,907 @@
+[gd_scene format=3 uid="uid://caogjbw8ntn6m"]
+
+[ext_resource type="PackedScene" uid="uid://2byllt2m3knb" path="res://scenes/terrain_scene.tscn" id="1_6jp70"]
+[ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="2_32en5"]
+[ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="3_a6g37"]
+[ext_resource type="PackedScene" uid="uid://dpuwv1tntbgm2" path="res://scenes/obstacles/traffic/hatchback.tscn" id="4_32en5"]
+
+[sub_resource type="Animation" id="Animation_qlxgk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerVehicle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(314.70053, 2.3093853, -11.127274)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PoliceGroup:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(335.2125, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerVehicle:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.43284166, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.09777518, -1.5682211, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TrafficCore:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(83.076645, 9.536743e-07, -6.3065596)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PoliceGroup:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PoliceGroup/Police Car:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.73076105, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PoliceGroup/Police Car:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PoliceGroup/Police Car2:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.933489, 0, 3.7531128)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PoliceGroup/Police Car2:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PoliceGroup/Police Car3:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.018102e-07, 0, 9.192352)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PoliceGroup/Police Car3:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PlayerVehicle:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PoliceGroup:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Camera3D:fov")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [66.0]
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PlayerVehicle:rotation:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/17/type = "bezier"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("PlayerVehicle:rotation:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/18/type = "bezier"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("PlayerVehicle:rotation:z")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_arkdv"]
+resource_name = "first_scene"
+length = 5.0000043
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerVehicle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.375, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(335, 0, 2), Vector3(335, 0, 2), Vector3(290, 0, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(314.70053, 1.0622001, -8.061337)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PoliceGroup:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.375, 1.7083333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(335.2125, 0, 0), Vector3(335.2125, 0, 0), Vector3(280, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.875, 2.0833333, 2.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0), Vector3(0, 3.1415927, 0), Vector3(0, 3.141593, 0), Vector3(1.5707964, 3.1415927, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerVehicle:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PoliceGroup:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_32en5"]
+resource_name = "first_scene"
+length = 3.0
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerVehicle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.375, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(335, 0, 2), Vector3(335, 0, 3.5), Vector3(290, 0, 3.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7083334, 2.25),
+"transitions": PackedFloat32Array(1.0717733, -1.7411009, 1),
+"update": 0,
+"values": [Vector3(317.567, 27.519, 4.597), Vector3(306.507, 27.519, 4.597), Vector3(276.317, 2.994, 4.597)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PoliceGroup:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.375, 1.7083333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(335.2125, 0, 0), Vector3(335.212, 0, 1.5), Vector3(280, 0, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.875, 2.4583335),
+"transitions": PackedFloat32Array(0, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 1.5707964, 0), Vector3(-1.5707964, 1.5707964, 0), Vector3(1.5707964, 2.0298178, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerVehicle:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PoliceGroup:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerVehicle:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.375, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PoliceGroup:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.375, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_a6g37"]
+resource_name = "second_scene"
+length = 3.3333375
+step = 0.041666668
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"CUT",
+"time": 1.2916666
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"new_marker",
+"time": 2.3333333
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerVehicle:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.29166666, 0.45833334, 0.7083333, 0.8333333, 2.3333335, 2.5833335, 2.875, 3.125, 3.3333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0, 2, 2, 2, 2, 1),
+"update": 0,
+"values": [Vector3(0, -0.43284166, 0), Vector3(0.2617994, 2.2392573, 0), Vector3(-0.21293017, 5.1015973, -0.14137167), Vector3(0.2268928, 6.850417, 0.26703537), Vector3(0.35430184, 8.377581, 0.017453292), Vector3(0, 8.723156, 0), Vector3(0, 2.4399703, 0), Vector3(0, 1.5097098, 0.14137167), Vector3(-0.21293017, -0.1134464, 0), Vector3(0.14137167, 0.3926991, 0), Vector3(0.17453292, 0, 0.03141593)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerVehicle:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.29166666, 0.375, 0.45833334, 0.7083333, 0.9166667, 2.3333335, 2.5833335, 2.875, 3.125, 3.3333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0.84089637, 0, 2, 2, 2, 2, 1),
+"update": 0,
+"values": [Vector3(80.82175, 0, 0.58033967), Vector3(88.228, 0.19, 1.641), Vector3(98.102, 0.478, 3.056), Vector3(103.039, 0, 3.763), Vector3(110.464, 0.7, 3.59), Vector3(124.849815, 0.3181818, 3.3063636), Vector3(132.913, 0, 3.07), Vector3(132.913, 0, 3.07), Vector3(135.515, 0.235, 6.175), Vector3(143.077, 0.1, -1.998), Vector3(151.973, 0.21, 5.603), Vector3(163.697, 0.175, 3.869)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666667, 1.0416667, 1.0417666, 1.2916667, 2.0833333, 2.3333335, 2.375, 3.3333335),
+"transitions": PackedFloat32Array(0.8408965, 1, 0, 1, 0, 1, 1, 1),
+"update": 0,
+"values": [Vector3(81.34003, 2.2740672, 1.5869113), Vector3(121.627, 3.35, 2.8990002), Vector3(121.627, 3.35, 2.8990002), Vector3(123.249, 40.697, 3.696), Vector3(125.424, 36.472, 3.696), Vector3(162.097, 3.473, 6.628), Vector3(162.097, 3.473, 6.628), Vector3(170.05777, 1.4777627, 6.7543526)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.45833334, 0.75, 1.2916666, 2.3333335, 2.375, 3.3333335),
+"transitions": PackedFloat32Array(1, 1, 0, 0, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.045378562, -1.569051, 0), Vector3(-0.14137167, -1.563815, 0), Vector3(-0.14137167, -1.563815, 0), Vector3(-1.5700243, -1.5813121, 0), Vector3(-0.15358898, 1.3927728, 0), Vector3(-0.15358898, 1.3927728, 0), Vector3(-0.012293714, 1.0410491, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TrafficCore:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2916667),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Vector3(79.82, 0, -5.575), Vector3(111.874214, 9.536743e-07, -5.574774)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PoliceGroup:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.2916666, 2),
+"transitions": PackedFloat32Array(0, 0.7578584, 1),
+"update": 0,
+"values": [Vector3(76.18, 0, 8.16), Vector3(105.52, 0, 7.21), Vector3(127.055, 0, 7.225)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PoliceGroup:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.2916667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PoliceGroup/Police Car:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.5416666, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.73076105, 0, 0), Vector3(0.284, 0, -3.205)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PoliceGroup/Police Car:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.5416666, 1.9166666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.28274333, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PoliceGroup/Police Car2:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.5416667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.933489, 0, 3.7531128), Vector3(-7.078, 0, -0.742)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PoliceGroup/Police Car2:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.5833334, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.63529986, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PoliceGroup/Police Car3:position")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.5416666, 1.7916666, 2.0833333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-4.018102e-07, 0, 9.192352), Vector3(-1.085, 0, 9.002), Vector3(-1.485, 0, 4.902)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PoliceGroup/Police Car3:rotation")
+tracks/12/interp = 2
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.5833334, 1.7916666, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.06981317, 0), Vector3(0, 0, 0), Vector3(0, -0.21118484, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rgdlr"]
+resource_name = "second_scene"
+length = 3.625
+step = 0.041666668
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"new_marker",
+"time": 2.3333333
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"CUT",
+"time": 1.2916666
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("PlayerVehicle:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.29166666, 0.45833334, 0.7083333, 0.8333333, 1.0833334, 2.3333335, 2.5833335, 2.875, 3.125, 3.3333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, -1.1486983, 0, 2, 2, 2, 2, 1),
+"update": 0,
+"values": [Vector3(0, -0.43284166, 0), Vector3(0.2617994, 2.2392573, 0), Vector3(-0.21293017, 5.1015973, -0.14137167), Vector3(0.2268928, 6.850417, 0.26703537), Vector3(0.35430184, 8.377581, 0.017453292), Vector3(0, 8.464847, 0), Vector3(0, 8.723156, 0), Vector3(0, 2.4399703, 0), Vector3(0, 1.5097098, 0.14137167), Vector3(-0.21293017, -0.1134464, 0), Vector3(0.14137167, 0.3926991, 0), Vector3(0.17453292, 0, 0.03141593)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerVehicle:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.29166666, 0.375, 0.45833334, 0.7083333, 0.8333333, 1.0833334, 2.3333335, 2.5833335, 2.875, 3.125, 3.3333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0.8122524, 1, 0, 2, 2, 2, 2, 1),
+"update": 0,
+"values": [Vector3(80.82175, 0, 0.58033967), Vector3(88.228, 0.19, 1.641), Vector3(98.102, 0.478, 3.056), Vector3(103.039, 0, 3.763), Vector3(110.464, 0.7, 3.59), Vector3(124.849815, 0.3181818, 3.3063636), Vector3(129.367, 0.464, 3.192), Vector3(132.913, 0, 3.07), Vector3(132.913, 0, 3.07), Vector3(135.515, 0.235, 6.175), Vector3(143.077, 0.1, -1.998), Vector3(151.973, 0.21, 5.603), Vector3(163.697, 0.175, 3.869)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666667, 1.0833334, 1.1666666, 1.2916667, 2.0833333, 2.3333335, 2.375, 3.3333335),
+"transitions": PackedFloat32Array(-1.624505, 0.5, 0, 1, 0, 1, 1, 1),
+"update": 0,
+"values": [Vector3(81.34, 2.274, 1.912), Vector3(121.627, 3.35, 2.8990002), Vector3(121.627, 3.35, 2.8990002), Vector3(123.249, 40.697, 3.696), Vector3(125.424, 36.472, 3.696), Vector3(162.097, 3.473, 6.628), Vector3(162.097, 3.473, 6.628), Vector3(173.888, 1.623, 8.364)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5833333, 1.2916666, 2.3333335, 2.375, 2.7916667, 3.0416667, 3.1666667, 3.3333335),
+"transitions": PackedFloat32Array(1, 0, 0, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.50440013, -1.569051, 0), Vector3(-0.23387411, -1.563815, 0), Vector3(-1.5700243, -1.5813121, 0), Vector3(-0.15358898, 1.3927728, 0), Vector3(-0.15358898, 1.3927728, 0), Vector3(-0.16231562, 1.4835298, 0), Vector3(-0.12217305, 1.1815879, 0), Vector3(-0.03141593, 1.3089969, 0), Vector3(-0.012217305, 1.1170107, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TrafficCore:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2916667),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Vector3(79.82, 0, -5.575), Vector3(111.874214, 9.536743e-07, -5.574774)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PoliceGroup:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.2916666, 2),
+"transitions": PackedFloat32Array(0, 0.7578584, 1),
+"update": 0,
+"values": [Vector3(76.18, 0, 8.16), Vector3(105.52, 0, 7.21), Vector3(127.055, 0, 7.225)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PoliceGroup:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.2916667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PoliceGroup/Police Car:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.5416666, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.73076105, 0, 0), Vector3(0.284, 0, -3.205)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PoliceGroup/Police Car:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.5416666, 1.9166666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.28274333, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PoliceGroup/Police Car2:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.5416667, 1.9583334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.933489, 0, 3.7531128), Vector3(-7.078, 0, -0.742)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PoliceGroup/Police Car2:rotation")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.5833334, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.63529986, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PoliceGroup/Police Car3:position")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.5416666, 1.7916666, 2.0833333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.68, 0, 9.192), Vector3(-1.085, 0, 9.002), Vector3(-1.485, 0, 4.902)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PoliceGroup/Police Car3:rotation")
+tracks/12/interp = 2
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.5833334, 1.7916666, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.034906585, 0), Vector3(0, 0, 0), Vector3(0, -0.21118484, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PlayerVehicle:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PoliceGroup:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Camera3D:fov")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.2083334, 1.2916666, 2.3333333, 3.3333333),
+"transitions": PackedFloat32Array(0, 1, 0.5946035, 1),
+"update": 0,
+"values": [66.0, 51.4, 66.0, 53.1]
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PlayerVehicle:rotation:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0, 2, 0, 2, 2, 2, 2, 2, 0),
+"points": PackedFloat32Array(-0.052, -0.39859152, -2.5236957, 0.041666668, 0.2638139, 0.262, -0.041666664, 0.23102188, 0, 0, -0.213, -0.020833334, 0, 0, 0, 0.227, -0.034722224, 0, 0, 0, 0.354, -0.034722224, 0, 0, 0, 0, -0.20639941, 0.92707163, 0.041443944, -0.18615122, -0.029855222, -0.03472221, 0, 0.1736111, 0, 0, -0.20833331, 0, 0, 0, -0.213, -0.09027779, -0.016078949, 0.041666668, 0.007421052, 0.141, -0.041666668, -0.035272717, 0.03472225, 0.029393952, 0.175, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.125, 0.29166666, 0.45833334, 0.7083333, 1.0833334, 1.25, 2.3333333, 2.875, 3.125, 3.3333335)
+}
+tracks/17/type = "bezier"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("PlayerVehicle:rotation:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2),
+"points": PackedFloat32Array(-0.433, 0, 0, 0.020833334, 0.44533336, 2.239, -0.020833334, -0.3953572, 0.027777776, 0.5271429, 5.102, -0.027777776, -0.38425, 0.027777782, 0.38425004, 6.85, -0.027777782, -0.21840003, 0.041666664, 0.32759997, 8.149636, -0.041666664, -0.124866635, 0.062500015, 0.18730001, 8.723, -0.2527898, -0.104475975, 0.122210264, -0.0002784729, 8.723, -0.0625, 0, 0.12186551, 0.15601635, 7.743516, -0.042701516, -0.019462677, 0.20519876, 0.09352636, 6.034642, -0.13489366, 0.2394414, 0.16391376, -0.29095316, 6.4824786, -0.09322691, -0.208395, 0.07352967, 0.16436473, 6.254, -0.051560163, 0.020083427, 0, 0),
+"times": PackedFloat32Array(0, 0.125, 0.29166666, 0.45833334, 0.7083333, 1.0833334, 2.3333333, 2.5833333, 2.875, 3.125, 3.3333333)
+}
+tracks/18/type = "bezier"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("PlayerVehicle:rotation:z")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.027777776, -0.023500001, -0.141, -0.027777776, -0.022249997, 0.027777782, 0.022250002, 0.267, -0.027777782, -0.010533336, 0.041666664, 0.015800001, 0.017, -0.041666664, 0.029666666, 0.020833334, -0.014833334, 0, -0.020833334, 0.00021794873, 0.25, -0.0026153848, 0, -0.25, -0.020142857, 0.041666668, 0.003357143, 0.141, -0.041666668, 0, 0.048611127, 0, 0, -0.048611127, 0.012653849, 0.041666668, -0.010846153, 0, -0.041666668, -0.002818182, 0.03472221, 0.0023484842, 0.031, -0.03472221, -0.0051666666, 0, 0),
+"times": PackedFloat32Array(0.125, 0.29166666, 0.45833334, 0.7083333, 0.8333333, 2.3333333, 2.5833333, 2.875, 3.125, 3.3333333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgdlr"]
+_data = {
+&"RESET": SubResource("Animation_qlxgk"),
+&"first_scene": SubResource("Animation_arkdv"),
+&"first_scene_portrait": SubResource("Animation_32en5"),
+&"second_scene": SubResource("Animation_a6g37"),
+&"second_scene_portrait": SubResource("Animation_rgdlr")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_421eg"]
+transparency = 1
+albedo_color = Color(0.28, 0.28, 0.28, 0.7529412)
+
+[sub_resource type="SphereMesh" id="SphereMesh_32en5"]
+material = SubResource("StandardMaterial3D_421eg")
+radius = 1.255
+height = 2.509
+radial_segments = 7
+rings = 7
+
+[sub_resource type="Curve" id="Curve_buo3h"]
+_data = [Vector2(0, 0), 0.0, 5.518755, 0, 0, Vector2(0.5935961, 0.987701), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="AdvertScene" type="Node3D" unique_id=697888077]
+
+[node name="TerrainScene" parent="." unique_id=1552924944 instance=ExtResource("1_6jp70")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=275550905]
+transform = Transform3D(0.0025752317, -0.09761913, -0.9952204, 0, 0.99522376, -0.09761946, 0.99999666, 0.00025139272, 0.0025629317, 314.70053, 2.3093853, -11.127274)
+fov = 66.0
+
+[node name="PlayerVehicle" parent="." unique_id=1279282569 instance=ExtResource("2_32en5")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="LeftExhaust" parent="PlayerVehicle/Exhausts" parent_id_path=PackedInt32Array(1279282569, 543706074) index="1" unique_id=799405323]
+visible = false
+
+[node name="ExhaustSmokeEmitter" parent="PlayerVehicle/Exhausts/LeftExhaust" index="1" unique_id=45960261]
+emitting = false
+
+[node name="RightExhaust" parent="PlayerVehicle/Exhausts" parent_id_path=PackedInt32Array(1279282569, 543706074) index="2" unique_id=1214592425]
+visible = false
+
+[node name="ExhaustSmokeEmitter2" parent="PlayerVehicle/Exhausts/RightExhaust" index="1" unique_id=1649974396]
+emitting = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2105895854]
+libraries/ = SubResource("AnimationLibrary_rgdlr")
+autoplay = &"first_scene_portrait"
+
+[node name="PoliceGroup" type="Node3D" parent="." unique_id=1108355277]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 335.2125, 0, 0)
+
+[node name="Police Car" parent="PoliceGroup" unique_id=336010544 instance=ExtResource("3_a6g37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73076105, 0, 0)
+
+[node name="Police Car2" parent="PoliceGroup" unique_id=1812355621 instance=ExtResource("3_a6g37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.933489, 0, 3.7531128)
+
+[node name="Police Car3" parent="PoliceGroup" unique_id=1990323367 instance=ExtResource("3_a6g37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.018102e-07, 0, 9.192352)
+
+[node name="TrafficCore" parent="." unique_id=2086542058 instance=ExtResource("4_32en5")]
+transform = Transform3D(0.9563047, 0, 0.29237166, 0, 1, 0, -0.29237166, 0, 0.9563047, 83.076645, 9.536743e-07, -6.3065596)
+
+[node name="ExhaustSmokeEmitter" type="CPUParticles3D" parent="TrafficCore" unique_id=1750290785]
+transform = Transform3D(-0.76232177, -0.512259, 0.39554548, -0.5577451, 0.83001226, 0, -0.32830757, -0.22061351, -0.91844654, -0.40361023, -0.7358756, -2.2984314)
+layers = 2
+amount = 22
+lifetime = 2.38
+preprocess = 1.0
+explosiveness = 0.06
+randomness = 0.18
+lifetime_randomness = 0.26
+mesh = SubResource("SphereMesh_32en5")
+direction = Vector3(-1, 1, 0)
+spread = 10.49
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 9.35
+initial_velocity_max = 14.02
+scale_amount_curve = SubResource("Curve_buo3h")
+
+[editable path="PlayerVehicle"]

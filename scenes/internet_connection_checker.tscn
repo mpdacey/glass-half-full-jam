@@ -72,6 +72,7 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 
 [node name="ConnectingCanvasLayer" type="CanvasLayer" parent="." unique_id=138983657]
 layer = 5
+visible = false
 
 [node name="ConnectingSpriteMargin" type="MarginContainer" parent="ConnectingCanvasLayer" unique_id=1169864654]
 anchors_preset = 1

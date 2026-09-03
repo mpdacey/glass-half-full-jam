@@ -46,7 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://bn3qvukddfjfg" path="res://scenes/ui/highscore_confetti_ui.tscn" id="36_ekkaj"]
 [ext_resource type="PackedScene" uid="uid://bvb01gwjc7pvc" path="res://scenes/ui/lives_ui.tscn" id="37_b3xk2"]
 [ext_resource type="Script" uid="uid://clrbnqvmohmjv" path="res://scripts/highscore_manager.gd" id="40_kd3qq"]
-[ext_resource type="Script" path="res://scripts/established_internet_caller.gd" id="43_p8ryb"]
+[ext_resource type="Script" uid="uid://s6j3is1wgonh" path="res://scripts/established_internet_caller.gd" id="43_p8ryb"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="44_edg7r"]
 
 [sub_resource type="Animation" id="Animation_kd3qq"]
@@ -773,6 +773,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(-0.34906587, -1.5707964, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/CameraFollower/MainCamera3D:far")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [180.0]
+}
 
 [sub_resource type="Animation" id="Animation_k3g67"]
 resource_name = "intro"
@@ -797,6 +809,18 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": PackedStringArray("show"),
 "times": PackedFloat32Array(0.23333333)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/CameraFollower/MainCamera3D:far")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [200.0, 180.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_02d50"]

@@ -232,6 +232,78 @@ tracks/18/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("PoliceGroup/Police Car/PoliceCruiser/BumperRedSiren:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("PoliceGroup/Police Car/PoliceCruiser/BumperBlueSiren:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("PoliceGroup/Police Car2/PoliceCruiser/BumperRedSiren:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("PoliceGroup/Police Car2/PoliceCruiser/BumperBlueSiren:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("PoliceGroup/Police Car2/PoliceCruiser/TopRedSiren:no_depth_test")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("PoliceGroup/Police Car2/PoliceCruiser/TopBlueSiren:no_depth_test")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_arkdv"]
 resource_name = "first_scene"
@@ -628,7 +700,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.16666667, 1.0833334, 1.1666666, 1.2916667, 2.0833333, 2.3333335, 2.375, 3.3333335),
 "transitions": PackedFloat32Array(-1.624505, 0.5, 0, 1, 0, 1, 1, 1),
 "update": 0,
-"values": [Vector3(81.34, 2.274, 1.912), Vector3(121.627, 3.35, 2.8990002), Vector3(121.627, 3.35, 2.8990002), Vector3(123.249, 40.697, 3.696), Vector3(125.424, 36.472, 3.696), Vector3(162.097, 3.473, 6.628), Vector3(162.097, 3.473, 6.628), Vector3(173.888, 1.623, 8.364)]
+"values": [Vector3(81.34, 2.274, 1.912), Vector3(121.627, 3.35, 2.8990002), Vector3(121.627, 3.35, 2.8990002), Vector3(123.249, 40.697, 3.696), Vector3(125.424, 36.472, 3.696), Vector3(162.097, 3.473, 6.628), Vector3(162.097, 3.473, 6.628), Vector3(181.303, 1.518, 10.944)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -637,10 +709,10 @@ tracks/3/path = NodePath("Camera3D:rotation")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5833333, 1.2916666, 2.3333335, 2.375, 2.7916667, 3.0416667, 3.1666667, 3.3333335),
+"times": PackedFloat32Array(0, 0.5833333, 1.2916666, 2.3333335, 2.375, 2.7916667, 3.0416667, 3.2083333, 3.3333335),
 "transitions": PackedFloat32Array(1, 0, 0, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.50440013, -1.569051, 0), Vector3(-0.23387411, -1.563815, 0), Vector3(-1.5700243, -1.5813121, 0), Vector3(-0.15358898, 1.3927728, 0), Vector3(-0.15358898, 1.3927728, 0), Vector3(-0.16231562, 1.4835298, 0), Vector3(-0.12217305, 1.1815879, 0), Vector3(-0.03141593, 1.3089969, 0), Vector3(-0.012217305, 1.1170107, 0)]
+"values": [Vector3(-0.50440013, -1.569051, 0), Vector3(-0.23387411, -1.563815, 0), Vector3(-1.5700243, -1.5813121, 0), Vector3(-0.15358898, 1.3927728, 0), Vector3(-0.15358898, 1.3927728, 0), Vector3(-0.16231562, 1.3962634, 0), Vector3(-0.12217305, 1.2217305, 0), Vector3(-0.08726646, 1.3962634, 0), Vector3(-0.08028515, 1.1780972, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -784,7 +856,7 @@ tracks/15/keys = {
 "times": PackedFloat32Array(1.2083334, 1.2916666, 2.3333333, 3.3333333),
 "transitions": PackedFloat32Array(0, 1, 0.5946035, 1),
 "update": 0,
-"values": [66.0, 51.4, 66.0, 53.1]
+"values": [66.0, 51.4, 66.0, 31.2]
 }
 tracks/16/type = "bezier"
 tracks/16/imported = false
@@ -819,6 +891,78 @@ tracks/18/keys = {
 "points": PackedFloat32Array(0, 0, 0, 0.027777776, -0.023500001, -0.141, -0.027777776, -0.022249997, 0.027777782, 0.022250002, 0.267, -0.027777782, -0.010533336, 0.041666664, 0.015800001, 0.017, -0.041666664, 0.029666666, 0.020833334, -0.014833334, 0, -0.020833334, 0.00021794873, 0.25, -0.0026153848, 0, -0.25, -0.020142857, 0.041666668, 0.003357143, 0.141, -0.041666668, 0, 0.048611127, 0, 0, -0.048611127, 0.012653849, 0.041666668, -0.010846153, 0, -0.041666668, -0.002818182, 0.03472221, 0.0023484842, 0.031, -0.03472221, -0.0051666666, 0, 0),
 "times": PackedFloat32Array(0.125, 0.29166666, 0.45833334, 0.7083333, 0.8333333, 2.3333333, 2.5833333, 2.875, 3.125, 3.3333333)
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("PoliceGroup/Police Car/PoliceCruiser/BumperRedSiren:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(2.3333335, 2.4583333, 2.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("PoliceGroup/Police Car/PoliceCruiser/BumperBlueSiren:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(2.3333333, 2.5, 2.7083333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("PoliceGroup/Police Car2/PoliceCruiser/BumperRedSiren:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(2.3333333, 2.7083333, 2.875, 3, 3.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("PoliceGroup/Police Car2/PoliceCruiser/BumperBlueSiren:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(2.3333333, 2.7083333, 2.8333333, 3.0416667, 3.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("PoliceGroup/Police Car2/PoliceCruiser/TopRedSiren:no_depth_test")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(2.3333333, 3.125, 3.2916667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("PoliceGroup/Police Car2/PoliceCruiser/TopBlueSiren:no_depth_test")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(2.3333333, 3.125, 3.2916667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgdlr"]
 _data = {
@@ -848,8 +992,11 @@ point_count = 3
 
 [node name="TerrainScene" parent="." unique_id=1552924944 instance=ExtResource("1_6jp70")]
 
+[node name="Offroad2" parent="TerrainScene/Terrain/RoadSegment" parent_id_path=PackedInt32Array(1552924944, 489589509) index="2" unique_id=1811456874]
+visible = false
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=275550905]
-transform = Transform3D(0.0025752317, -0.09761913, -0.9952204, 0, 0.99522376, -0.09761946, 0.99999666, 0.00025139272, 0.0025629317, 314.70053, 2.3093853, -11.127274)
+transform = Transform3D(0.0025752313, -0.09761913, -0.99522024, 0, 0.99522376, -0.097619444, 0.9999965, 0.00025139272, 0.0025629313, 314.70053, 2.3093853, -11.127274)
 fov = 66.0
 
 [node name="PlayerVehicle" parent="." unique_id=1279282569 instance=ExtResource("2_32en5")]
@@ -869,7 +1016,7 @@ emitting = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2105895854]
 libraries/ = SubResource("AnimationLibrary_rgdlr")
-autoplay = &"first_scene_portrait"
+autoplay = &"second_scene_portrait"
 
 [node name="PoliceGroup" type="Node3D" parent="." unique_id=1108355277]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 335.2125, 0, 0)
@@ -882,6 +1029,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.933489, 0, 3.7531128)
 
 [node name="Police Car3" parent="PoliceGroup" unique_id=1990323367 instance=ExtResource("3_a6g37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.018102e-07, 0, 9.192352)
+
+[node name="BumperRedSiren" parent="PoliceGroup/Police Car3/PoliceCruiser" parent_id_path=PackedInt32Array(1990323367, 316660543) index="2" unique_id=17250652]
+visible = false
+
+[node name="BumperBlueSiren" parent="PoliceGroup/Police Car3/PoliceCruiser" parent_id_path=PackedInt32Array(1990323367, 316660543) index="3" unique_id=233319270]
+visible = false
 
 [node name="TrafficCore" parent="." unique_id=2086542058 instance=ExtResource("4_32en5")]
 transform = Transform3D(0.9563047, 0, 0.29237166, 0, 1, 0, -0.29237166, 0, 0.9563047, 83.076645, 9.536743e-07, -6.3065596)
@@ -904,4 +1057,48 @@ initial_velocity_min = 9.35
 initial_velocity_max = 14.02
 scale_amount_curve = SubResource("Curve_buo3h")
 
+[editable path="TerrainScene"]
+[editable path="TerrainScene/Terrain/RoadSegment"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence2"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence3"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence4"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence5"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence6"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence7"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence8"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence9"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence10"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence43"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence44"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence45"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence46"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence47"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence48"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence49"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence50"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence51"]
+[editable path="TerrainScene/Terrain/FenceLine/Fence52"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence0"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence2"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence3"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence4"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence5"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence6"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence7"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence8"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence41"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence42"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence43"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence44"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence45"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence46"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence47"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence48"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence49"]
+[editable path="TerrainScene/Terrain/FenceLine2/Fence50"]
 [editable path="PlayerVehicle"]
+[editable path="PoliceGroup/Police Car"]
+[editable path="PoliceGroup/Police Car2"]
+[editable path="PoliceGroup/Police Car3"]

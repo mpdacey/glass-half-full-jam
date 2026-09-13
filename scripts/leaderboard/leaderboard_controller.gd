@@ -16,6 +16,12 @@ signal load_personal_scores_request(
 	force_reload: bool
 )
 
+signal load_current_player_score_request(
+	leaderboard_id: String,
+	time_span: PlayGamesLeaderboardVariant.TimeSpan,
+	collection: PlayGamesLeaderboardVariant.Collection
+)
+
 signal scores_set()
 
 const LEADERBOARD_ENTRY_SCENE = preload("uid://gqut7x3b0vj7")
@@ -32,6 +38,8 @@ const CLOSE_ANIMATION_KEY = &"close"
 var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
 var _refresh_leaderboard: Dictionary = {}
+var _current_player_score: PlayGamesLeaderboardScore = null
+var _request_leaderboard_callable: Callable
 
 func reset_refresh_states() -> void:
 	_refresh_leaderboard = {
@@ -92,21 +100,32 @@ func close_leaderboards() -> void:
 	book_animator.play(CLOSE_ANIMATION_KEY)
 
 func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
-	load_most_wanted_scores_request.emit(
+	_request_leaderboard_callable = load_most_wanted_scores_request.emit.bind(
 		GlobalConstants.LEADERBOARD_ID,
 		_current_timespan,
 		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
 		MAX_RESULTS,
 		force_refresh
 	)
+	
+	_request_current_player_score()
 
 func _request_personal_leaderboard(force_refresh: bool = false) -> void:
-	load_personal_scores_request.emit(
+	_request_leaderboard_callable = load_personal_scores_request.emit.bind(
 		GlobalConstants.LEADERBOARD_ID,
 		_current_timespan,
 		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
 		MAX_RESULTS,
 		force_refresh
+	)
+	
+	_request_current_player_score()
+
+func _request_current_player_score() -> void:
+	load_current_player_score_request.emit(
+		GlobalConstants.LEADERBOARD_ID,
+		_current_timespan,
+		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
 	)
 
 func _set_scroll_to_top() -> void:
@@ -149,6 +168,10 @@ func _on_top_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGame
 
 func _on_player_centered_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGamesLeaderboardScores) -> void:
 	set_scores(leaderboard_scores.scores)
+
+func _on_current_player_score_loaded(_leaderboard_id: String, score: PlayGamesLeaderboardScore) -> void:
+	_current_player_score = score
+	_request_leaderboard_callable.call()
 #endregion
 
 #region Button Listeners

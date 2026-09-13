@@ -73,6 +73,8 @@ func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
 	
 	empty_collection_label.visible = scores.size() == 0
 	
+	scores = _inject_current_score(scores)
+	
 	var children : Array[LeaderboardEntryController] = []
 	children.assign(entries_container.get_children())
 	
@@ -99,8 +101,25 @@ func open_leaderboards() -> void:
 func close_leaderboards() -> void:
 	book_animator.play(CLOSE_ANIMATION_KEY)
 
+func _inject_current_score(scores: Array[PlayGamesLeaderboardScore]) -> Array[PlayGamesLeaderboardScore]:
+	if _current_player_score == null:
+		return scores
 	
+	var player_found := false
+	for i in scores.size():
+		if scores[i].score_holder == _current_player_score.score_holder:
+			if player_found:
+				scores.remove_at(i)
+			else:
+				scores[i].score_holder_display_name += " (You)"
+			break
+		
+		if not player_found and scores[i].raw_score < _current_player_score.raw_score:
+			_current_player_score.score_holder_display_name += " (You)"
+			scores.insert(i, _current_player_score)
+			player_found = true
 	
+	return scores
 
 func _set_scroll_to_top() -> void:
 	var scroll_bar := scroll_container.get_v_scroll_bar()

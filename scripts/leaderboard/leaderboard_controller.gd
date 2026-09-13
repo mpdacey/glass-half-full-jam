@@ -99,34 +99,8 @@ func open_leaderboards() -> void:
 func close_leaderboards() -> void:
 	book_animator.play(CLOSE_ANIMATION_KEY)
 
-func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
-	_request_leaderboard_callable = load_most_wanted_scores_request.emit.bind(
-		GlobalConstants.LEADERBOARD_ID,
-		_current_timespan,
-		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
-		MAX_RESULTS,
-		force_refresh
-	)
 	
-	_request_current_player_score()
-
-func _request_personal_leaderboard(force_refresh: bool = false) -> void:
-	_request_leaderboard_callable = load_personal_scores_request.emit.bind(
-		GlobalConstants.LEADERBOARD_ID,
-		_current_timespan,
-		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
-		MAX_RESULTS,
-		force_refresh
-	)
 	
-	_request_current_player_score()
-
-func _request_current_player_score() -> void:
-	load_current_player_score_request.emit(
-		GlobalConstants.LEADERBOARD_ID,
-		_current_timespan,
-		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
-	)
 
 func _set_scroll_to_top() -> void:
 	var scroll_bar := scroll_container.get_v_scroll_bar()
@@ -161,6 +135,37 @@ func _generate_list_of_scores() -> void:
 		leaderboard_scores.append(PlayGamesLeaderboardScore.new(score_dictionary))
 	
 	set_scores(leaderboard_scores)
+
+#region Request Methods
+func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
+	_request_leaderboard_callable = load_most_wanted_scores_request.emit.bind(
+		GlobalConstants.LEADERBOARD_ID,
+		_current_timespan,
+		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
+		MAX_RESULTS,
+		force_refresh
+	)
+	
+	_request_current_player_score()
+
+func _request_personal_leaderboard(force_refresh: bool = false) -> void:
+	_request_leaderboard_callable = load_personal_scores_request.emit.bind(
+		GlobalConstants.LEADERBOARD_ID,
+		_current_timespan,
+		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
+		MAX_RESULTS,
+		force_refresh
+	)
+	
+	_request_current_player_score()
+
+func _request_current_player_score() -> void:
+	load_current_player_score_request.emit(
+		GlobalConstants.LEADERBOARD_ID,
+		_current_timespan,
+		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
+	)
+#endregion
 
 #region Google Responses
 func _on_top_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGamesLeaderboardScores) -> void:

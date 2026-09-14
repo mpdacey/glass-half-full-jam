@@ -56,7 +56,7 @@ func reset_refresh_states() -> void:
 	}
 
 func request_scores() -> void:
-	if OS.is_debug_build():
+	if OS.is_debug_build() and not OS.has_feature("android"):
 		_generate_list_of_scores()
 		return
 	
@@ -107,17 +107,25 @@ func _inject_current_score(scores: Array[PlayGamesLeaderboardScore]) -> Array[Pl
 	
 	var player_found := false
 	for i in scores.size():
-		if scores[i].score_holder == _current_player_score.score_holder:
+		if scores[i].score_holder.player_id == _current_player_score.score_holder.player_id:
 			if player_found:
 				scores.remove_at(i)
 			else:
 				scores[i].score_holder_display_name += " (You)"
-			break
+			return scores
 		
 		if not player_found and scores[i].raw_score < _current_player_score.raw_score:
 			_current_player_score.score_holder_display_name += " (You)"
+			_current_player_score.rank = scores[i].rank
 			scores.insert(i, _current_player_score)
 			player_found = true
+	
+	for score in scores:
+		if score.score_holder.player_id == _current_player_score.score_holder.player_id:
+			continue
+		
+		if score.rank >= _current_player_score.rank:
+			score.rank += 1
 	
 	return scores
 
@@ -144,7 +152,7 @@ func _generate_list_of_scores() -> void:
 		var score_dictionary : Dictionary[String,Variant]
 		score_dictionary["rawScore"] = (MAX_RESULTS - i) * 10 + randi_range(0,9)
 		score_dictionary["scoreHolderDisplayName"] = selected_names.values()[i]
-		score_dictionary["displayRank"] = str(i+1)
+		score_dictionary["rank"] = str(i+1)
 		score_dictionary["scoreHolderIconImageUri"] = DEBUG_PROFILE_ICON_PATH
 		score_dictionary["scoreHolder"] = {
 			"hasIconImage" = true,

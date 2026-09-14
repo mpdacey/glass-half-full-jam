@@ -27,7 +27,11 @@ func set_entry_values(data: PlayGamesLeaderboardScore) -> void:
 	score_label.add_text("KM")
 	score_label.pop()
 	
-	rank_label.text = str(data.display_rank)
+	if data.rank >= 100:
+		rank_label.text = str(data.rank)
+	else:
+		rank_label.text = _get_ordinal(data.rank)
+	
 	_set_scrolling_animation.call_deferred()
 	
 	if data.score_holder.has_icon_image:
@@ -69,3 +73,13 @@ func _on_scroll_changed() -> void:
 	_scroll_tween.tween_property(_username_scroll, "value", scroll_range, scroll_time).set_delay(DELAY_BETWEEN_PING_PONG)
 	_scroll_tween.tween_property(_username_scroll, "value", 0, scroll_time).set_delay(DELAY_BETWEEN_PING_PONG)
 	_scroll_tween.set_loops()
+
+func _get_ordinal(number: int) -> String:
+	if number > 10 and number < 14:
+		return str(number, "th")
+	
+	match number % 10:
+		1: return str(number, "st")
+		2: return str(number, "nd")
+		3: return str(number, "rd")
+		_: return str(number, "th")

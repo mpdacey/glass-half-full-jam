@@ -3,20 +3,27 @@ class_name HighscoreGateController
 
 signal prime_confetti
 
+const LEADERBOARD_COLLECTION = PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
+
+@export var leaderboard_client: PlayGamesLeaderboardsClient
+@export var leaderboard_timespan: PlayGamesLeaderboardVariant.TimeSpan \
+	= PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME
+
+@export_group("Local Node References")
 @export var near_gate: Node3D
 @export var far_gate: Node3D
 
 var distance_to_highscore : float = 0.0
 var highscore_set : bool = false
 
+func _ready() -> void:
+	leaderboard_client.score_loaded.connect(_on_leaderboard_score_loaded)
+
 func reset() -> void:
-	distance_to_highscore = UserConfigManager.get_config_value(UserConfigManager.HIGHSCORE_KEY)
-	distance_to_highscore *= 100
 	visible = true
 	near_gate.visible = false
 	far_gate.visible = false
-	
-	highscore_set = distance_to_highscore > 0
+	highscore_set = false
 	
 	var banners : Array[HighscoreBanner] = [
 		near_gate.get_child(0),
@@ -28,6 +35,17 @@ func reset() -> void:
 	for banner in banners:
 		banner.reset()
 	
+	leaderboard_client.load_player_score(
+		GlobalConstants.LEADERBOARD_ID, 
+		leaderboard_timespan, 
+		LEADERBOARD_COLLECTION
+	)
+
+func _on_leaderboard_score_loaded(_leaderboard_id: String, score: PlayGamesLeaderboardScore) -> void:
+	distance_to_highscore = score.raw_score * 10
+	highscore_set = distance_to_highscore > 0
+	distance_to_highscore += 400
+	_on_new_cycle()
 
 func _on_new_cycle() -> void:
 	if not highscore_set:

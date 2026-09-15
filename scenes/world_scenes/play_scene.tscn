@@ -1059,7 +1059,8 @@ script = ExtResource("12_dyabf")
 global_signal_name = &"speed_scale_updated"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="HighscoreGate" parent="Interactables" unique_id=1724752341 instance=ExtResource("25_vtgkk")]
+[node name="HighscoreGate" parent="Interactables" unique_id=1724752341 node_paths=PackedStringArray("leaderboard_client") instance=ExtResource("25_vtgkk")]
+leaderboard_client = NodePath("../../PlayGamesClients/PlayGamesLeaderboardsClient")
 
 [node name="UI" type="Node" parent="." unique_id=740252747]
 
@@ -1417,5 +1418,4 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 
 [editable path="Player/PlayerVehicle"]
 [editable path="Player/PlayerVehicle/fuel-canister"]
-[editable path="Interactables/HighscoreGate"]
 [editable path="UI/DriveHUD"]

@@ -30,9 +30,8 @@
 [ext_resource type="Shader" uid="uid://7sfyxlr738lf" path="res://shader/odometer_shader.gdshader" id="24_63m0j"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="24_dfpoj"]
 [ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/gameover/sizzle.ogg" id="24_q6ljc"]
-[ext_resource type="PackedScene" uid="uid://cdhjckfl8a3gc" path="res://scenes/highscore_gate.tscn" id="25_6bbup"]
-[ext_resource type="Script" uid="uid://c0j7uh55ha0pq" path="res://scripts/highscore_gate_controller.gd" id="25_83g3t"]
 [ext_resource type="AnimationLibrary" uid="uid://dy6jegyq0i7t5" path="res://resources/animation_libraries/gameover_library.tres" id="25_ssu4d"]
+[ext_resource type="PackedScene" uid="uid://cg6axrroec0vl" path="res://scenes/highscore/highscore_gate.tscn" id="25_vtgkk"]
 [ext_resource type="AnimationLibrary" uid="uid://cid6yse2ny4tw" path="res://resources/animation_libraries/car_flip_library.tres" id="26_kf746"]
 [ext_resource type="PackedScene" uid="uid://c3jvcbh5u7b75" path="res://scenes/traffic_paths.tscn" id="26_l0tpv"]
 [ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="26_xbx4t"]
@@ -310,7 +309,7 @@ tracks/16/keys = {
 tracks/17/type = "method"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Interactables/HighscoreGatePositioner")
+tracks/17/path = NodePath("Interactables/HighscoreGate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -651,7 +650,7 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Interactables/HighscoreGatePositioner")
+tracks/5/path = NodePath("Interactables/HighscoreGate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -669,11 +668,7 @@ _data = {
 &"dressing": SubResource("Animation_7iuxc")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_edg7r"]
-radius = 1.0
-height = 20.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8ryb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtgkk"]
 resource_local_to_scene = true
 shader = ExtResource("24_63m0j")
 shader_parameter/numbers = ExtResource("24_7m3n2")
@@ -1064,25 +1059,7 @@ script = ExtResource("12_dyabf")
 global_signal_name = &"speed_scale_updated"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="HighscoreGatePositioner" type="Node3D" parent="Interactables" unique_id=1942606494 node_paths=PackedStringArray("near_gate", "far_gate")]
-script = ExtResource("25_83g3t")
-near_gate = NodePath("HighscoreGate")
-far_gate = NodePath("HighscoreGate2")
-
-[node name="HighscoreGate" parent="Interactables/HighscoreGatePositioner" unique_id=139349948 instance=ExtResource("25_6bbup")]
-
-[node name="HighscoreGate2" parent="Interactables/HighscoreGatePositioner" unique_id=59056588 instance=ExtResource("25_6bbup")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
-
-[node name="HighscoreArea" type="Area3D" parent="Interactables/HighscoreGatePositioner" unique_id=763640724]
-collision_layer = 0
-collision_mask = 8
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/HighscoreGatePositioner/HighscoreArea" unique_id=1158990032]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.825, 0)
-shape = SubResource("CapsuleShape3D_edg7r")
+[node name="HighscoreGate" parent="Interactables" unique_id=1724752341 instance=ExtResource("25_vtgkk")]
 
 [node name="UI" type="Node" parent="." unique_id=740252747]
 
@@ -1090,22 +1067,22 @@ shape = SubResource("CapsuleShape3D_edg7r")
 visible = false
 
 [node name="TenThousandsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="0" unique_id=53849460]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_vtgkk")
 
 [node name="ThousandsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="1" unique_id=463500733]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_vtgkk")
 
 [node name="HundredsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="2" unique_id=388083865]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_vtgkk")
 
 [node name="TensTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="3" unique_id=299396907]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_vtgkk")
 
 [node name="OnesTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="4" unique_id=970582872]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_vtgkk")
 
 [node name="TenthsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="5" unique_id=696806195]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_vtgkk")
 
 [node name="PauseMenu" parent="UI" unique_id=1525170821 instance=ExtResource("23_4nao0")]
 visible = false
@@ -1422,10 +1399,6 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="next_canister_placed" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Player/PlayerVehicle/PlayerHitboxArea" method="set_monitoring" flags=3 binds= [true]]
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
-[connection signal="prime_confetti" from="Interactables/HighscoreGatePositioner" to="Interactables/HighscoreGatePositioner/HighscoreArea" method="set_monitoring" binds= [true]]
-[connection signal="banner_scale_changed" from="Interactables/HighscoreGatePositioner/HighscoreGate2/HighscoreBanner" to="Interactables/HighscoreGatePositioner/HighscoreGate/HighscoreBanner" method="set_scale"]
-[connection signal="banner_scale_changed" from="Interactables/HighscoreGatePositioner/HighscoreGate2/HighscoreBanner2" to="Interactables/HighscoreGatePositioner/HighscoreGate/HighscoreBanner2" method="set_scale"]
-[connection signal="area_entered" from="Interactables/HighscoreGatePositioner/HighscoreArea" to="UI/HighscoreConfettiUI" method="pop_confetti" unbinds=1]
 [connection signal="pressed" from="UI/DriveHUD/Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="UI/PauseMenu" method="show"]
 [connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD/DisplayAnimator" method="play" binds= ["show"]]
 [connection signal="ready" from="UI/GameoverLayer" to="UI/GameoverLayer" method="hide"]
@@ -1434,7 +1407,6 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="button_up" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" method="set_self_modulate" binds= [Color(1, 1, 1, 1)]]
 [connection signal="pressed" from="UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton" to="GameoverNodes/MainGameoverPlayer" method="play" binds= [&"quit"]]
 [connection signal="open_shop_requested" from="UI/GameoverLayer/LivesUI" to="GameoverNodes/MainGameoverPlayer" method="play" binds= [&"quit_to_shop"]]
-[connection signal="confetti_popped" from="UI/HighscoreConfettiUI" to="Interactables/HighscoreGatePositioner/HighscoreArea" method="set_monitoring" flags=3 binds= [false]]
 [connection signal="reset_called" from="GameoverNodes/ResetHandler" to="PlaySceneResetter" method="play" binds= [&"start"]]
 [connection signal="reset_requested" from="GameoverNodes/ResetHandler" to="GameoverNodes/MainGameoverPlayer" method="play" binds= [&"retry"]]
 [connection signal="global_signal_emitted" from="GameoverNodes/ResetHandler/SpendLifeGrantedListener" to="GameoverNodes/ResetHandler" method="request_reset"]
@@ -1445,6 +1417,5 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 
 [editable path="Player/PlayerVehicle"]
 [editable path="Player/PlayerVehicle/fuel-canister"]
-[editable path="Interactables/HighscoreGatePositioner/HighscoreGate"]
-[editable path="Interactables/HighscoreGatePositioner/HighscoreGate2"]
+[editable path="Interactables/HighscoreGate"]
 [editable path="UI/DriveHUD"]

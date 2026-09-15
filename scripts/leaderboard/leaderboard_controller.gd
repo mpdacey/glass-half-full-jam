@@ -16,6 +16,12 @@ signal load_personal_scores_request(
 	force_reload: bool
 )
 
+signal load_current_player_score_request(
+	leaderboard_id: String,
+	time_span: PlayGamesLeaderboardVariant.TimeSpan,
+	collection: PlayGamesLeaderboardVariant.Collection
+)
+
 signal scores_set()
 
 const LEADERBOARD_ENTRY_SCENE = preload("uid://gqut7x3b0vj7")
@@ -32,6 +38,8 @@ const CLOSE_ANIMATION_KEY = &"close"
 var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
 var _refresh_leaderboard: Dictionary = {}
+var _current_player_score: PlayGamesLeaderboardScore = null
+var _request_leaderboard_callable: Callable
 
 func reset_refresh_states() -> void:
 	_refresh_leaderboard = {
@@ -48,7 +56,7 @@ func reset_refresh_states() -> void:
 	}
 
 func request_scores() -> void:
-	if OS.is_debug_build():
+	if OS.is_debug_build() and not OS.has_feature("android"):
 		_generate_list_of_scores()
 		return
 	
@@ -64,6 +72,8 @@ func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
 	_set_scroll_to_top.call_deferred()
 	
 	empty_collection_label.visible = scores.size() == 0
+	
+	scores = _inject_current_score(scores)
 	
 	var children : Array[LeaderboardEntryController] = []
 	children.assign(entries_container.get_children())
@@ -91,23 +101,33 @@ func open_leaderboards() -> void:
 func close_leaderboards() -> void:
 	book_animator.play(CLOSE_ANIMATION_KEY)
 
-func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
-	load_most_wanted_scores_request.emit(
-		GlobalConstants.LEADERBOARD_ID,
-		_current_timespan,
-		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
-		MAX_RESULTS,
-		force_refresh
-	)
-
-func _request_personal_leaderboard(force_refresh: bool = false) -> void:
-	load_personal_scores_request.emit(
-		GlobalConstants.LEADERBOARD_ID,
-		_current_timespan,
-		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
-		MAX_RESULTS,
-		force_refresh
-	)
+func _inject_current_score(scores: Array[PlayGamesLeaderboardScore]) -> Array[PlayGamesLeaderboardScore]:
+	if _current_player_score == null:
+		return scores
+	
+	var player_found := false
+	for i in scores.size():
+		if scores[i].score_holder.player_id == _current_player_score.score_holder.player_id:
+			if player_found:
+				scores.remove_at(i)
+			else:
+				scores[i].score_holder_display_name += " (You)"
+			return scores
+		
+		if not player_found and scores[i].raw_score < _current_player_score.raw_score:
+			_current_player_score.score_holder_display_name += " (You)"
+			_current_player_score.rank = scores[i].rank
+			scores.insert(i, _current_player_score)
+			player_found = true
+	
+	for score in scores:
+		if score.score_holder.player_id == _current_player_score.score_holder.player_id:
+			continue
+		
+		if score.rank >= _current_player_score.rank:
+			score.rank += 1
+	
+	return scores
 
 func _set_scroll_to_top() -> void:
 	var scroll_bar := scroll_container.get_v_scroll_bar()
@@ -132,7 +152,7 @@ func _generate_list_of_scores() -> void:
 		var score_dictionary : Dictionary[String,Variant]
 		score_dictionary["rawScore"] = (MAX_RESULTS - i) * 10 + randi_range(0,9)
 		score_dictionary["scoreHolderDisplayName"] = selected_names.values()[i]
-		score_dictionary["displayRank"] = str(i+1)
+		score_dictionary["rank"] = str(i+1)
 		score_dictionary["scoreHolderIconImageUri"] = DEBUG_PROFILE_ICON_PATH
 		score_dictionary["scoreHolder"] = {
 			"hasIconImage" = true,
@@ -143,12 +163,47 @@ func _generate_list_of_scores() -> void:
 	
 	set_scores(leaderboard_scores)
 
+#region Request Methods
+func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
+	_request_leaderboard_callable = load_most_wanted_scores_request.emit.bind(
+		GlobalConstants.LEADERBOARD_ID,
+		_current_timespan,
+		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
+		MAX_RESULTS,
+		force_refresh
+	)
+	
+	_request_current_player_score()
+
+func _request_personal_leaderboard(force_refresh: bool = false) -> void:
+	_request_leaderboard_callable = load_personal_scores_request.emit.bind(
+		GlobalConstants.LEADERBOARD_ID,
+		_current_timespan,
+		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
+		MAX_RESULTS,
+		force_refresh
+	)
+	
+	_request_current_player_score()
+
+func _request_current_player_score() -> void:
+	load_current_player_score_request.emit(
+		GlobalConstants.LEADERBOARD_ID,
+		_current_timespan,
+		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
+	)
+#endregion
+
 #region Google Responses
 func _on_top_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGamesLeaderboardScores) -> void:
 	set_scores(leaderboard_scores.scores)
 
 func _on_player_centered_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGamesLeaderboardScores) -> void:
 	set_scores(leaderboard_scores.scores)
+
+func _on_current_player_score_loaded(_leaderboard_id: String, score: PlayGamesLeaderboardScore) -> void:
+	_current_player_score = score
+	_request_leaderboard_callable.call()
 #endregion
 
 #region Button Listeners

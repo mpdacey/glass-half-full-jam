@@ -42,3 +42,4 @@ shape = SubResource("CapsuleShape3D_edg7r")
 [connection signal="prime_confetti" from="." to="HighscoreArea" method="set_monitoring" binds= [true]]
 [connection signal="banner_scale_changed" from="FarHighscoreGate/HighscoreBanner" to="NearHighscoreGate/HighscoreBanner" method="set_scale"]
 [connection signal="banner_scale_changed" from="FarHighscoreGate/HighscoreBanner2" to="NearHighscoreGate/HighscoreBanner2" method="set_scale"]
+[connection signal="area_entered" from="HighscoreArea" to="." method="emit_signal" unbinds=1 binds= [&"confetti_triggered"]]

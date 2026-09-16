@@ -30,6 +30,7 @@
 [ext_resource type="Shader" uid="uid://7sfyxlr738lf" path="res://shader/odometer_shader.gdshader" id="24_63m0j"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="24_dfpoj"]
 [ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/gameover/sizzle.ogg" id="24_q6ljc"]
+[ext_resource type="Script" uid="uid://dajfrlja8jd38" path="res://scripts/highscore_gates_manager.gd" id="25_p8ryb"]
 [ext_resource type="AnimationLibrary" uid="uid://dy6jegyq0i7t5" path="res://resources/animation_libraries/gameover_library.tres" id="25_ssu4d"]
 [ext_resource type="PackedScene" uid="uid://cg6axrroec0vl" path="res://scenes/highscore/highscore_gate.tscn" id="25_vtgkk"]
 [ext_resource type="AnimationLibrary" uid="uid://cid6yse2ny4tw" path="res://resources/animation_libraries/car_flip_library.tres" id="26_kf746"]
@@ -309,7 +310,7 @@ tracks/16/keys = {
 tracks/17/type = "method"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Interactables/HighscoreGate")
+tracks/17/path = NodePath("Interactables/HighscoreGatesManager")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -317,7 +318,7 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"reset"
+"method": &"recall_scores"
 }]
 }
 
@@ -650,7 +651,7 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Interactables/HighscoreGate")
+tracks/5/path = NodePath("Interactables/HighscoreGatesManager/AllTimeHighscoreGate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -668,7 +669,7 @@ _data = {
 &"dressing": SubResource("Animation_7iuxc")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtgkk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8ryb"]
 resource_local_to_scene = true
 shader = ExtResource("24_63m0j")
 shader_parameter/numbers = ExtResource("24_7m3n2")
@@ -1059,8 +1060,20 @@ script = ExtResource("12_dyabf")
 global_signal_name = &"speed_scale_updated"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="HighscoreGate" parent="Interactables" unique_id=1724752341 node_paths=PackedStringArray("leaderboard_client") instance=ExtResource("25_vtgkk")]
+[node name="HighscoreGatesManager" type="Node" parent="Interactables" unique_id=1047120657 node_paths=PackedStringArray("leaderboard_client", "gate_all", "gate_weekly", "gate_daily")]
+script = ExtResource("25_p8ryb")
 leaderboard_client = NodePath("../../PlayGamesClients/PlayGamesLeaderboardsClient")
+gate_all = NodePath("AllTimeHighscoreGate")
+gate_weekly = NodePath("WeeklyHighscoreGate2")
+gate_daily = NodePath("DailyHighscoreGate3")
+
+[node name="AllTimeHighscoreGate" parent="Interactables/HighscoreGatesManager" unique_id=1724752341 instance=ExtResource("25_vtgkk")]
+
+[node name="WeeklyHighscoreGate2" parent="Interactables/HighscoreGatesManager" unique_id=604453762 instance=ExtResource("25_vtgkk")]
+visible = false
+
+[node name="DailyHighscoreGate3" parent="Interactables/HighscoreGatesManager" unique_id=708280450 instance=ExtResource("25_vtgkk")]
+visible = false
 
 [node name="UI" type="Node" parent="." unique_id=740252747]
 
@@ -1068,22 +1081,22 @@ leaderboard_client = NodePath("../../PlayGamesClients/PlayGamesLeaderboardsClien
 visible = false
 
 [node name="TenThousandsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="0" unique_id=53849460]
-material = SubResource("ShaderMaterial_vtgkk")
+material = SubResource("ShaderMaterial_p8ryb")
 
 [node name="ThousandsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="1" unique_id=463500733]
-material = SubResource("ShaderMaterial_vtgkk")
+material = SubResource("ShaderMaterial_p8ryb")
 
 [node name="HundredsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="2" unique_id=388083865]
-material = SubResource("ShaderMaterial_vtgkk")
+material = SubResource("ShaderMaterial_p8ryb")
 
 [node name="TensTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="3" unique_id=299396907]
-material = SubResource("ShaderMaterial_vtgkk")
+material = SubResource("ShaderMaterial_p8ryb")
 
 [node name="OnesTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="4" unique_id=970582872]
-material = SubResource("ShaderMaterial_vtgkk")
+material = SubResource("ShaderMaterial_p8ryb")
 
 [node name="TenthsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="5" unique_id=696806195]
-material = SubResource("ShaderMaterial_vtgkk")
+material = SubResource("ShaderMaterial_p8ryb")
 
 [node name="PauseMenu" parent="UI" unique_id=1525170821 instance=ExtResource("23_4nao0")]
 visible = false
@@ -1400,6 +1413,9 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="next_canister_placed" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Player/PlayerVehicle/PlayerHitboxArea" method="set_monitoring" flags=3 binds= [true]]
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
+[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/AllTimeHighscoreGate" to="UI/HighscoreConfettiUI" method="pop_confetti"]
+[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/WeeklyHighscoreGate2" to="UI/HighscoreConfettiUI" method="pop_confetti"]
+[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/DailyHighscoreGate3" to="UI/HighscoreConfettiUI" method="pop_confetti"]
 [connection signal="pressed" from="UI/DriveHUD/Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="UI/PauseMenu" method="show"]
 [connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD/DisplayAnimator" method="play" binds= ["show"]]
 [connection signal="ready" from="UI/GameoverLayer" to="UI/GameoverLayer" method="hide"]

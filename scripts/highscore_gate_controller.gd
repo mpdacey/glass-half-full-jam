@@ -2,12 +2,7 @@ extends Node3D
 class_name HighscoreGateController
 
 signal prime_confetti
-
-const LEADERBOARD_COLLECTION = PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
-
-@export var leaderboard_client: PlayGamesLeaderboardsClient
-@export var leaderboard_timespan: PlayGamesLeaderboardVariant.TimeSpan \
-	= PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME
+signal confetti_triggered
 
 @export_group("Local Node References")
 @export var near_gate: Node3D
@@ -15,9 +10,6 @@ const LEADERBOARD_COLLECTION = PlayGamesLeaderboardVariant.Collection.COLLECTION
 
 var distance_to_highscore : float = 0.0
 var highscore_set : bool = false
-
-func _ready() -> void:
-	leaderboard_client.score_loaded.connect(_on_leaderboard_score_loaded)
 
 func reset() -> void:
 	visible = true
@@ -34,15 +26,9 @@ func reset() -> void:
 	
 	for banner in banners:
 		banner.reset()
-	
-	leaderboard_client.load_player_score(
-		GlobalConstants.LEADERBOARD_ID, 
-		leaderboard_timespan, 
-		LEADERBOARD_COLLECTION
-	)
 
-func _on_leaderboard_score_loaded(_leaderboard_id: String, score: PlayGamesLeaderboardScore) -> void:
-	distance_to_highscore = score.raw_score * 10
+func set_score(score: float) -> void:
+	distance_to_highscore = score * 10
 	highscore_set = distance_to_highscore > 0
 	distance_to_highscore += 400
 	_on_new_cycle()

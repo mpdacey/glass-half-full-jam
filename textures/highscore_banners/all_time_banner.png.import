@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjs2o5igbswvj"
-path.s3tc="res://.godot/imported/highscore_banner.png-e6cc214a0fc7c6c1a8abc0b80d0724a6.s3tc.ctex"
-path.etc2="res://.godot/imported/highscore_banner.png-e6cc214a0fc7c6c1a8abc0b80d0724a6.etc2.ctex"
+uid="uid://dfhrr1wkg7tnf"
+path="res://.godot/imported/all_time_banner.png-c06c80a10c7d3eddd2335cd69c2c2b2e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/highscore_banner.png"
-dest_files=["res://.godot/imported/highscore_banner.png-e6cc214a0fc7c6c1a8abc0b80d0724a6.s3tc.ctex", "res://.godot/imported/highscore_banner.png-e6cc214a0fc7c6c1a8abc0b80d0724a6.etc2.ctex"]
+source_file="res://textures/highscore_banners/all_time_banner.png"
+dest_files=["res://.godot/imported/all_time_banner.png-c06c80a10c7d3eddd2335cd69c2c2b2e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -25,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -39,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -41,9 +41,20 @@ radial_segments = 8
 radius = 0.75
 height = 3.571
 
-[node name="HighscoreBanner" type="Node3D" unique_id=75632958 node_paths=PackedStringArray("banner_scaler")]
+[node name="HighscoreBanner" type="Node3D" unique_id=75632958 node_paths=PackedStringArray("banner_scaler", "banner_mesh")]
 script = ExtResource("1_wkwog")
 banner_scaler = NodePath("BannerOffset")
+banner_mesh = NodePath("BannerOffset/WavyBanner")
+banner_main_colours = Dictionary[int, Color]({
+0: Color(0.22000003, 1, 0.37600005, 1),
+1: Color(0.25, 0.9250001, 1, 1),
+2: Color(1, 0.791, 0.054, 1)
+})
+banner_shade_colours = Dictionary[int, Color]({
+0: Color(0.0684, 0.57, 0.07676001, 1),
+1: Color(0.049699992, 0.51190984, 0.71, 1),
+2: Color(0.89, 0.339, 0.046, 1)
+})
 
 [node name="BannerOffset" type="Node3D" parent="." unique_id=184572008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)

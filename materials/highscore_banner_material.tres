@@ -2,13 +2,14 @@
 
 [ext_resource type="Shader" uid="uid://cbpync2cswwea" path="res://shader/highscore_banner_shader.gdshader" id="1_lfq01"]
 [ext_resource type="Texture2D" uid="uid://bjs2o5igbswvj" path="res://textures/highscore_banners/highscore_banner.png" id="2_dkmen"]
+[ext_resource type="Texture2D" uid="uid://wq575c6s0goj" path="res://textures/highscore_banners/daily_banner.png" id="3_vuvio"]
+[ext_resource type="Texture2D" uid="uid://cdgv0t8kertam" path="res://textures/highscore_banners/weekly_banner.png" id="4_y3cej"]
+[ext_resource type="Texture2D" uid="uid://dfhrr1wkg7tnf" path="res://textures/highscore_banners/all_time_banner.png" id="5_xafyk"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_lfq01")
-shader_parameter/banner_texture = ExtResource("2_dkmen")
-shader_parameter/main_colour = Color(1, 0.90133333, 0.26, 1)
-shader_parameter/shading_colour = Color(0.95, 0.6175, 0.2375, 1)
+shader_parameter/banner_textures = Array[Texture2D]([ExtResource("2_dkmen"), ExtResource("3_vuvio"), ExtResource("4_y3cej"), ExtResource("5_xafyk")])
 shader_parameter/sigma = 0.5
 shader_parameter/power = 5.0
 shader_parameter/scale = 3.3

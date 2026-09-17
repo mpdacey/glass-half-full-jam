@@ -50,6 +50,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 
 [node name="WavyBanner" type="MeshInstance3D" parent="BannerOffset" unique_id=1917483696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+instance_shader_parameters/banner_texture_index = 0
+instance_shader_parameters/main_colour = Color(1, 0.791, 0.054, 1)
+instance_shader_parameters/shading_colour = Color(0.89, 0.339, 0.046, 1)
 mesh = SubResource("PlaneMesh_wkwog")
 skeleton = NodePath("../..")
 

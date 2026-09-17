@@ -1,10 +1,11 @@
 shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx;
 
-uniform sampler2D banner_texture : source_color, filter_linear_mipmap, repeat_disable;
+uniform sampler2D banner_textures[4] : source_color, filter_linear_mipmap, repeat_disable;
 
-uniform vec4 main_colour: source_color;
-uniform vec4 shading_colour: source_color;
+instance uniform vec4 main_colour: source_color = vec4(1.0, 0.791, 0.054, 1.0);
+instance uniform vec4 shading_colour: source_color = vec4(0.89, 0.339, 0.046, 1.0);
+instance uniform int banner_texture_index = 0;
 
 uniform float sigma: hint_range(0.,1.,.01) = 0.5;
 uniform float power: hint_range(0.,100.,.25) = 5.0;
@@ -55,10 +56,10 @@ void vertex() {
 }
 
 void fragment() {
-	vec4 albedo_tex = texture(banner_texture, UV);
+	vec4 albedo_tex = texture(banner_textures[banner_texture_index], UV);
 	
 	float light_wave = (cos(TIME * 5.0 + VERTEX.y) + 1.0) * 0.5;
-	float dark_wave = (sin((TIME - 0.2) * 5.0 + VERTEX.y) + 1.0) * 0.5;
+	float dark_wave = (sin((TIME - 0.4) * 5.0 + VERTEX.y) + 1.0) * 0.5;
 	
 	ALBEDO = albedo_tex.rgb * (main_colour.rgb * light_wave + shading_colour.rgb * dark_wave);
 	ALPHA_SCISSOR_THRESHOLD = 0.2;

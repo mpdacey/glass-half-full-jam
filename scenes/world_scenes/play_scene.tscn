@@ -1068,9 +1068,11 @@ gate_weekly = NodePath("WeeklyHighscoreGate2")
 gate_daily = NodePath("DailyHighscoreGate3")
 
 [node name="AllTimeHighscoreGate" parent="Interactables/HighscoreGatesManager" unique_id=1724752341 instance=ExtResource("25_vtgkk")]
+highscore_type = 2
 
 [node name="WeeklyHighscoreGate2" parent="Interactables/HighscoreGatesManager" unique_id=604453762 instance=ExtResource("25_vtgkk")]
 visible = false
+highscore_type = 1
 
 [node name="DailyHighscoreGate3" parent="Interactables/HighscoreGatesManager" unique_id=708280450 instance=ExtResource("25_vtgkk")]
 visible = false

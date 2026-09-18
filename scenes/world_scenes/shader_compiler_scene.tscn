@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="7_sa032"]
 [ext_resource type="SphereMesh" uid="uid://dt68ilnohkb2q" path="res://scenes/particles/smoke_particle_mesh.tres" id="8_v6nyv"]
 [ext_resource type="PackedScene" uid="uid://tll0ck20v3ph" path="res://scenes/highscore/highscore_banner.tscn" id="9_v6nyv"]
-[ext_resource type="PackedScene" uid="uid://bxb3bfdh8p0vy" path="res://scenes/ui/highscore-confetti.tscn" id="10_x73n1"]
+[ext_resource type="PackedScene" uid="uid://bxb3bfdh8p0vy" path="res://scenes/ui/highscore_confetti_cannon.tscn" id="10_x73n1"]
 
 [sub_resource type="Curve" id="Curve_ne2yj"]
 _data = [Vector2(0.022421531, 0), 0.0, 3.1320229, 0, 0, Vector2(0.4932736, 0.55056185), 0.0, 0.0, 0, 0]

@@ -1284,7 +1284,12 @@ metadata/_custom_type_script = "uid://cbw3hbbcrgafd"
 [node name="LivesCanvasModulate" type="CanvasModulate" parent="UI/GameoverLayer/LivesUI" unique_id=1164090182]
 color = Color(1, 1, 1, 0)
 
-[node name="HighscoreConfettiUI" parent="UI" unique_id=1968100267 instance=ExtResource("36_ekkaj")]
+[node name="HighscoreConfettiUI" parent="UI" unique_id=1968100267 node_paths=PackedStringArray("confetti_cannon_containers") instance=ExtResource("36_ekkaj")]
+confetti_cannon_containers = {
+0: NodePath("DailyCannons"),
+1: NodePath("WeeklyCannons"),
+2: NodePath("AllTimeCannons")
+}
 
 [node name="GameoverNodes" type="Node" parent="." unique_id=1201732555]
 
@@ -1415,9 +1420,9 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="next_canister_placed" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Player/PlayerVehicle/PlayerHitboxArea" method="set_monitoring" flags=3 binds= [true]]
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
-[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/AllTimeHighscoreGate" to="UI/HighscoreConfettiUI" method="pop_confetti"]
-[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/WeeklyHighscoreGate2" to="UI/HighscoreConfettiUI" method="pop_confetti"]
-[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/DailyHighscoreGate3" to="UI/HighscoreConfettiUI" method="pop_confetti"]
+[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/AllTimeHighscoreGate" to="UI/HighscoreConfettiUI" method="pop_confetti" binds= [2]]
+[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/WeeklyHighscoreGate2" to="UI/HighscoreConfettiUI" method="pop_confetti" binds= [1]]
+[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/DailyHighscoreGate3" to="UI/HighscoreConfettiUI" method="pop_confetti" binds= [0]]
 [connection signal="pressed" from="UI/DriveHUD/Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="UI/PauseMenu" method="show"]
 [connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD/DisplayAnimator" method="play" binds= ["show"]]
 [connection signal="ready" from="UI/GameoverLayer" to="UI/GameoverLayer" method="hide"]

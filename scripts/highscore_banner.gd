@@ -12,19 +12,18 @@ const BANNER_TEXTURE_INDEX_INSTANCE_KEY = "banner_texture_index"
 
 @export var banner_scaler: Node3D
 @export var banner_mesh: MeshInstance3D
-@export_category("Banner Colours")
-@export var banner_main_colours: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, Color]
-@export var banner_shade_colours: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, Color]
+@export_category("Banner Override Materials")
+@export var banner_descriptor_materials: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, ShaderMaterial]
+@export var banner_main_materials: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, ShaderMaterial]
 
 var overlapping_cars: Dictionary[Area3D, bool]
 var tween: Tween
 
-func set_banner_type(banner_type: PlayGamesLeaderboardVariant.TimeSpan, is_describer: bool) -> void:
-	banner_mesh.set_instance_shader_parameter(MAIN_COLOUR_INSTANCE_KEY, banner_main_colours[banner_type])
-	banner_mesh.set_instance_shader_parameter(SHADING_COLOUR_INSTANCE_KEY, banner_shade_colours[banner_type])
-	
-	var banner_texture_index : int = 1 + banner_type if is_describer else 0
-	banner_mesh.set_instance_shader_parameter(BANNER_TEXTURE_INDEX_INSTANCE_KEY, banner_texture_index)
+func set_banner_type(banner_type: PlayGamesLeaderboardVariant.TimeSpan, is_describor: bool) -> void:
+	if is_describor:
+		banner_mesh.set_surface_override_material(0, banner_descriptor_materials[banner_type])
+	else:
+		banner_mesh.set_surface_override_material(0, banner_main_materials[banner_type])
 
 func reset() -> void:
 	if tween:

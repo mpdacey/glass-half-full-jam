@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://tll0ck20v3ph"]
 
-[ext_resource type="Material" uid="uid://dwd82ivtkeqsl" path="res://materials/highscore_banner_material.tres" id="1_ruqks"]
 [ext_resource type="Script" uid="uid://dfxs65t8ibgv6" path="res://scripts/highscore_banner.gd" id="1_wkwog"]
+[ext_resource type="Material" uid="uid://1m0oi8p1vcgk" path="res://materials/highscore_banner_materials/green_descriptor_banner_material.tres" id="2_884me"]
 [ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="2_ruqks"]
+[ext_resource type="Material" uid="uid://cto8oo5aefl7p" path="res://materials/highscore_banner_materials/blue_descriptor_banner_material.tres" id="3_xp3lc"]
+[ext_resource type="Material" uid="uid://c42ke6igj2vpc" path="res://materials/highscore_banner_materials/gold_descriptor_banner_material.tres" id="4_omqb3"]
+[ext_resource type="Material" uid="uid://c376xh68uldhb" path="res://materials/highscore_banner_materials/green_highscore_banner_material.tres" id="5_1s30s"]
+[ext_resource type="Material" uid="uid://b86hptrd6ss51" path="res://materials/highscore_banner_materials/blue_highscore_banner_material.tres" id="6_vqmnx"]
+[ext_resource type="Material" uid="uid://8raq11hii3tx" path="res://materials/highscore_banner_materials/gold_highscore_banner_material.tres" id="7_8xuo3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wkwog"]
-material = ExtResource("1_ruqks")
 size = Vector2(1, 4)
 subdivide_depth = 6
 orientation = 0
@@ -45,15 +49,15 @@ height = 3.571
 script = ExtResource("1_wkwog")
 banner_scaler = NodePath("BannerOffset")
 banner_mesh = NodePath("BannerOffset/WavyBanner")
-banner_main_colours = Dictionary[int, Color]({
-0: Color(0.22000003, 1, 0.37600005, 1),
-1: Color(0.25, 0.9250001, 1, 1),
-2: Color(1, 0.791, 0.054, 1)
+banner_descriptor_materials = Dictionary[int, ShaderMaterial]({
+0: ExtResource("2_884me"),
+1: ExtResource("3_xp3lc"),
+2: ExtResource("4_omqb3")
 })
-banner_shade_colours = Dictionary[int, Color]({
-0: Color(0.0684, 0.57, 0.07676001, 1),
-1: Color(0.049699992, 0.51190984, 0.71, 1),
-2: Color(0.89, 0.339, 0.046, 1)
+banner_main_materials = Dictionary[int, ShaderMaterial]({
+0: ExtResource("5_1s30s"),
+1: ExtResource("6_vqmnx"),
+2: ExtResource("7_8xuo3")
 })
 
 [node name="BannerOffset" type="Node3D" parent="." unique_id=184572008]
@@ -61,9 +65,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 
 [node name="WavyBanner" type="MeshInstance3D" parent="BannerOffset" unique_id=1917483696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
-instance_shader_parameters/banner_texture_index = 0
-instance_shader_parameters/main_colour = Color(1, 0.791, 0.054, 1)
-instance_shader_parameters/shading_colour = Color(0.89, 0.339, 0.046, 1)
 mesh = SubResource("PlaneMesh_wkwog")
 skeleton = NodePath("../..")
 

@@ -12,7 +12,7 @@ const COLLECTION = PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
 @export var gate_weekly: HighscoreGateController
 @export var gate_daily: HighscoreGateController
 
-var _gates: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, HighscoreGateController] = {
+@onready var _gates: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, HighscoreGateController] = {
 	TIMESPAN_DAILY: gate_daily,
 	TIMESPAN_WEEKLY: gate_weekly,
 	TIMESPAN_ALL_TIME: gate_all
@@ -37,7 +37,7 @@ func _set_gates() -> void:
 		_gates[i].set_score(_scores[i])
 
 func _request_next_score(required_time_span: PlayGamesLeaderboardVariant.TimeSpan) -> void:
-	leaderboard_client.score_loaded.connect(_score_loaded.bind(required_time_span))
+	leaderboard_client.score_loaded.connect(_score_loaded.bind(required_time_span), CONNECT_ONE_SHOT)
 	leaderboard_client.load_player_score(GlobalConstants.LEADERBOARD_ID, required_time_span, COLLECTION)
 
 func _score_loaded(_leaderboard_id: String, score: PlayGamesLeaderboardScore, timespan: PlayGamesLeaderboardVariant.TimeSpan) -> void:

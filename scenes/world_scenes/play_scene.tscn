@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://b67sj3e8sr1yb" path="res://scenes/ui/drive_hud.tscn" id="29_7m3n2"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="33_7m3n2"]
 [ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="33_wjfxh"]
+[ext_resource type="Script" uid="uid://cwohlwohbk02d" path="res://scripts/highscore_label_ui_controller.gd" id="34_1b2ky"]
 [ext_resource type="Texture2D" uid="uid://73nwmwk5x486" path="res://textures/vector_whiteIcons.svg" id="36_b3xk2"]
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="36_brhdo"]
 [ext_resource type="PackedScene" uid="uid://bn3qvukddfjfg" path="res://scenes/ui/highscore_confetti_ui.tscn" id="36_ekkaj"]
@@ -298,7 +299,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("UI/GameoverLayer/TravelledVBoxContainer/TravelledHighscore:visible")
+tracks/16/path = NodePath("UI/GameoverLayer/TravelledVBoxContainer/TravelledHighscoreLabelContainer/TravelledHighscoreDaily:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1183,7 +1184,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer" unique_id=277981725]
 handle_input_locally = false
 size = Vector2i(1080, 2280)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="CarFollowerOffset" type="Node3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport" unique_id=1932524362]
 
@@ -1250,13 +1251,49 @@ label_settings = SubResource("LabelSettings_01n6w")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="TravelledHighscore" type="RichTextLabel" parent="UI/GameoverLayer/TravelledVBoxContainer" unique_id=1880624823]
+[node name="TravelledHighscoreLabelContainer" type="Control" parent="UI/GameoverLayer/TravelledVBoxContainer" unique_id=1652530727 node_paths=PackedStringArray("labels")]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("34_1b2ky")
+labels = {
+0: NodePath("TravelledHighscoreDaily"),
+1: NodePath("TravelledHighscoreWeekly"),
+2: NodePath("TravelledHighscoreAllTime")
+}
+
+[node name="TravelledHighscoreDaily" type="RichTextLabel" parent="UI/GameoverLayer/TravelledVBoxContainer/TravelledHighscoreLabelContainer" unique_id=1880624823]
 visible = false
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+layout_mode = 0
+offset_right = 619.0
+offset_bottom = 63.0
 theme = SubResource("Theme_wjfxh")
 bbcode_enabled = true
-text = "[pulse color=gold][wave amp=50.0 freq=2.0 connected=1]New Highscore![/wave][/pulse]"
+text = "[pulse color=lime][wave amp=50.0 freq=2.0 connected=1]New Daily Highscore![/wave][/pulse]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="TravelledHighscoreWeekly" type="RichTextLabel" parent="UI/GameoverLayer/TravelledVBoxContainer/TravelledHighscoreLabelContainer" unique_id=762545327]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_right = 619.0
+offset_bottom = 63.0
+theme = SubResource("Theme_wjfxh")
+bbcode_enabled = true
+text = "[pulse color=cyan][wave amp=50.0 freq=2.0 connected=1]New Weekly Highscore![/wave][/pulse]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="TravelledHighscoreAllTime" type="RichTextLabel" parent="UI/GameoverLayer/TravelledVBoxContainer/TravelledHighscoreLabelContainer" unique_id=1008435301]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_right = 619.0
+offset_bottom = 63.0
+theme = SubResource("Theme_wjfxh")
+bbcode_enabled = true
+text = "[pulse color=gold][wave amp=50.0 freq=2.0 connected=1]New All Time Highscore![/wave][/pulse]"
 fit_content = true
 horizontal_alignment = 1
 
@@ -1480,9 +1517,11 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="next_canister_placed" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Player/PlayerVehicle/PlayerHitboxArea" method="set_monitoring" flags=3 binds= [true]]
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
-[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/AllTimeHighscoreGate" to="UI/HighscoreConfettiUI" method="pop_confetti" binds= [2]]
-[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/WeeklyHighscoreGate" to="UI/HighscoreConfettiUI" method="pop_confetti" binds= [1]]
-[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/DailyHighscoreGate" to="UI/HighscoreConfettiUI" method="pop_confetti" binds= [0]]
+[connection signal="highscore_gate_popped" from="Interactables/HighscoreGatesManager" to="UI/HighscoreConfettiUI" method="pop_confetti"]
+[connection signal="highscore_gate_popped" from="Interactables/HighscoreGatesManager" to="UI/GameoverLayer/TravelledVBoxContainer/TravelledHighscoreLabelContainer" method="show_label"]
+[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/AllTimeHighscoreGate" to="Interactables/HighscoreGatesManager" method="emit_signal" binds= [&"highscore_gate_popped", 2]]
+[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/WeeklyHighscoreGate" to="Interactables/HighscoreGatesManager" method="emit_signal" binds= [&"highscore_gate_popped", 1]]
+[connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/DailyHighscoreGate" to="Interactables/HighscoreGatesManager" method="emit_signal" binds= [&"highscore_gate_popped", 0]]
 [connection signal="pressed" from="UI/DriveHUD/Root/PauseButtonRoot/PauseButtonParent/PauseButton" to="UI/PauseMenu" method="show"]
 [connection signal="hidden" from="UI/PauseMenu/PlaySceneVisibilityListener" to="UI/DriveHUD/DisplayAnimator" method="play" binds= ["show"]]
 [connection signal="ready" from="UI/GameoverLayer" to="UI/GameoverLayer" method="hide"]
@@ -1496,7 +1535,6 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="global_signal_emitted" from="GameoverNodes/ResetHandler/SpendLifeGrantedListener" to="GameoverNodes/ResetHandler" method="request_reset"]
 [connection signal="global_signal_emitted" from="GameoverNodes/GameoverInterfacers/TerrainGameoverEmitter" to="Interactables/TerrainDressingPlayer" method="stop" binds= [true]]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="swap_to_main"]
-[connection signal="new_highscore_set" from="HighscoreManager" to="UI/GameoverLayer/TravelledVBoxContainer/TravelledHighscore" method="show"]
 [connection signal="update_leaderboard" from="HighscoreManager" to="PlayGamesClients/PlayGamesLeaderboardsClient" method="submit_score"]
 
 [editable path="Player/PlayerVehicle"]

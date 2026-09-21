@@ -1,6 +1,8 @@
 extends Node3D
 class_name HighscoreGatesManager
 
+signal highscore_gate_popped(gate_type: PlayGamesLeaderboardVariant.TimeSpan)
+
 const TIMESPAN_ALL_TIME = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME
 const TIMESPAN_WEEKLY = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_WEEKLY
 const TIMESPAN_DAILY = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY

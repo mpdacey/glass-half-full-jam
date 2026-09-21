@@ -1,6 +1,7 @@
 extends Node3D
 class_name HighscoreGatesManager
 
+@warning_ignore("unused_signal")
 signal highscore_gate_popped(gate_type: PlayGamesLeaderboardVariant.TimeSpan)
 
 const TIMESPAN_ALL_TIME = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME

@@ -2,6 +2,7 @@ extends Node3D
 class_name HighscoreGateController
 
 signal prime_confetti
+@warning_ignore("unused_signal")
 signal confetti_triggered
 
 @export var highscore_type: PlayGamesLeaderboardVariant.TimeSpan

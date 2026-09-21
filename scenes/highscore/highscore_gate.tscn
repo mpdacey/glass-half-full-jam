@@ -39,7 +39,8 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.825, 0)
 shape = SubResource("CapsuleShape3D_edg7r")
 
-[connection signal="prime_confetti" from="." to="HighscoreArea" method="set_monitoring" binds= [true]]
+[connection signal="confetti_triggered" from="." to="HighscoreArea" method="set_monitoring" flags=3 binds= [false]]
+[connection signal="prime_confetti" from="." to="HighscoreArea" method="set_monitoring" flags=3 binds= [true]]
 [connection signal="banner_scale_changed" from="FarHighscoreGate/HighscoreBanner" to="NearHighscoreGate/HighscoreBanner" method="set_scale"]
 [connection signal="banner_scale_changed" from="FarHighscoreGate/HighscoreBanner2" to="NearHighscoreGate/HighscoreBanner2" method="set_scale"]
 [connection signal="area_entered" from="HighscoreArea" to="." method="emit_signal" unbinds=1 binds= [&"confetti_triggered"]]

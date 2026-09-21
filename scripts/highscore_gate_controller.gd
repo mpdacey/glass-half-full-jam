@@ -17,7 +17,7 @@ func _ready() -> void:
 	_populate_banners()
 	
 	for i in banners.size():
-		banners[i].set_banner_type(highscore_type, i % 2 == 0)
+		banners[i].set_banner_type(highscore_type, i % 2 == 1)
 
 func reset() -> void:
 	visible = true

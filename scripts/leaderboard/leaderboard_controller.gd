@@ -203,7 +203,8 @@ func _on_player_centered_scores_loaded(_leaderboard_id: String, leaderboard_scor
 
 func _on_current_player_score_loaded(_leaderboard_id: String, score: PlayGamesLeaderboardScore) -> void:
 	_current_player_score = score
-	_request_leaderboard_callable.call()
+	if _request_leaderboard_callable:
+		_request_leaderboard_callable.call()
 #endregion
 
 #region Button Listeners

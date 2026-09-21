@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name HighscoreGatesManager
 
 const TIMESPAN_ALL_TIME = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME
@@ -27,7 +27,8 @@ func recall_scores() -> void:
 	_request_next_score(TIMESPAN_DAILY)
 
 func _set_gates() -> void:
-	for i in range(PlayGamesLeaderboardVariant.TimeSpan.size() - 1, 0, -1):
+	for i in range(PlayGamesLeaderboardVariant.TimeSpan.size(), 0, -1):
+		i -= 1
 		if (
 			i < PlayGamesLeaderboardVariant.TimeSpan.size() - 1
 			and _scores[i] >= _scores[i+1]
@@ -37,6 +38,11 @@ func _set_gates() -> void:
 		_gates[i].set_score(_scores[i])
 
 func _request_next_score(required_time_span: PlayGamesLeaderboardVariant.TimeSpan) -> void:
+	if OS.is_debug_build():
+		var debug_score: PlayGamesLeaderboardScore = PlayGamesLeaderboardScore.new({"rawScore": 44 * float(required_time_span+1) })
+		_score_loaded("", debug_score, required_time_span)
+		return
+	
 	leaderboard_client.score_loaded.connect(_score_loaded.bind(required_time_span), CONNECT_ONE_SHOT)
 	leaderboard_client.load_player_score(GlobalConstants.LEADERBOARD_ID, required_time_span, COLLECTION)
 

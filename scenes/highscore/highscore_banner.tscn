@@ -2,40 +2,19 @@
 
 [ext_resource type="Script" uid="uid://dfxs65t8ibgv6" path="res://scripts/highscore_banner.gd" id="1_wkwog"]
 [ext_resource type="Material" uid="uid://1m0oi8p1vcgk" path="res://materials/highscore_banner_materials/green_descriptor_banner_material.tres" id="2_884me"]
-[ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="2_ruqks"]
 [ext_resource type="Material" uid="uid://cto8oo5aefl7p" path="res://materials/highscore_banner_materials/blue_descriptor_banner_material.tres" id="3_xp3lc"]
 [ext_resource type="Material" uid="uid://c42ke6igj2vpc" path="res://materials/highscore_banner_materials/gold_descriptor_banner_material.tres" id="4_omqb3"]
 [ext_resource type="Material" uid="uid://c376xh68uldhb" path="res://materials/highscore_banner_materials/green_highscore_banner_material.tres" id="5_1s30s"]
 [ext_resource type="Material" uid="uid://b86hptrd6ss51" path="res://materials/highscore_banner_materials/blue_highscore_banner_material.tres" id="6_vqmnx"]
 [ext_resource type="Material" uid="uid://8raq11hii3tx" path="res://materials/highscore_banner_materials/gold_highscore_banner_material.tres" id="7_8xuo3"]
+[ext_resource type="Material" uid="uid://ca4lx4yx78d3j" path="res://materials/highscore_banner_materials/highscore_puck_material.tres" id="8_cp5yx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wkwog"]
 size = Vector2(1, 4)
 subdivide_depth = 6
 orientation = 0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkwog"]
-render_priority = 0
-shader = ExtResource("2_ruqks")
-shader_parameter/albedo = Color(0.109952345, 0.109952345, 0.109952345, 1)
-shader_parameter/albedo_texture_size = Vector2i(0, 0)
-shader_parameter/point_size = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(0, 0, 0)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/curve_amount = 0.0999999977648
-shader_parameter/distant_albeno = Color(1, 1, 1, 0)
-shader_parameter/has_seperate_distant_texture = false
-shader_parameter/bend_multiplier = 0.0
-shader_parameter/bend_amplifier = 1.0
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_a6j7l"]
-material = SubResource("ShaderMaterial_wkwog")
 top_radius = 0.2
 bottom_radius = 0.2
 height = 0.1
@@ -70,6 +49,7 @@ skeleton = NodePath("../..")
 
 [node name="BannerPuck" type="MeshInstance3D" parent="." unique_id=167250446]
 mesh = SubResource("CylinderMesh_a6j7l")
+surface_material_override/0 = ExtResource("8_cp5yx")
 
 [node name="BannerCollisionDetection" type="Area3D" parent="." unique_id=169372355]
 collision_layer = 0

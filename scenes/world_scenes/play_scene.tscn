@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="3_owpoa"]
 [ext_resource type="AudioStream" uid="uid://druixlt2nm3ew" path="res://audio/sfx/tire-screech/dirt-screech.ogg" id="4_x2qcq"]
 [ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="5_dfpoj"]
+[ext_resource type="Shader" uid="uid://0t1o1c4mh147" path="res://shader/main_canister_shader.gdshader" id="5_p8ryb"]
 [ext_resource type="Script" uid="uid://2og5ed1ru6gn" path="res://scripts/audio/tire_screech_audio_player.gd" id="5_yov1g"]
 [ext_resource type="AudioStream" uid="uid://o30pcxk1vm37" path="res://resources/audio_streams/tire_screech_stream.tres" id="6_pj8nq"]
 [ext_resource type="AudioStream" uid="uid://dovis7wk8vv8j" path="res://audio/sfx/refuel.ogg" id="7_7m3n2"]
@@ -335,6 +336,40 @@ radius = 1.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c1pb6"]
 radius = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1b2ky"]
+render_priority = 0
+shader = ExtResource("5_p8ryb")
+shader_parameter/albedo = Color(0.98130625, 0.16409835, 0.1428257, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.65
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.36
+shader_parameter/metallic = 0.38
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/bend_multiplier = 0.0
+shader_parameter/curve_amount = 0.0999999977648
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gf1i"]
+render_priority = 0
+shader = ExtResource("5_p8ryb")
+shader_parameter/albedo = Color(0.08, 0.08, 0.08, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.65
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.36
+shader_parameter/metallic = 0.38
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/bend_multiplier = 0.0
+shader_parameter/curve_amount = 0.0999999977648
 
 [sub_resource type="Animation" id="Animation_c1pb6"]
 length = 0.001
@@ -668,7 +703,7 @@ _data = {
 &"dressing": SubResource("Animation_7iuxc")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtgkk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8ryb"]
 resource_local_to_scene = true
 shader = ExtResource("24_63m0j")
 shader_parameter/numbers = ExtResource("24_7m3n2")
@@ -883,6 +918,15 @@ monitorable = false
 
 [node name="WarningPlayer" parent="Player/PlayerVehicle/fuel-canister" index="3" unique_id=1648392535]
 active = false
+
+[node name="Cube" parent="Player/PlayerVehicle/fuel-canister/Model" parent_id_path=PackedInt32Array(2097910485, 1579694635) index="0" unique_id=1571757867]
+surface_material_override/0 = SubResource("ShaderMaterial_1b2ky")
+
+[node name="BézierCurve" parent="Player/PlayerVehicle/fuel-canister/Model" parent_id_path=PackedInt32Array(2097910485, 1579694635) index="1" unique_id=1689410496]
+surface_material_override/0 = SubResource("ShaderMaterial_1b2ky")
+
+[node name="Cylinder" parent="Player/PlayerVehicle/fuel-canister/Model" parent_id_path=PackedInt32Array(2097910485, 1579694635) index="2" unique_id=2068646188]
+surface_material_override/0 = SubResource("ShaderMaterial_0gf1i")
 
 [node name="CollectionAnimationPlayer" type="AnimationPlayer" parent="Player/PlayerVehicle" unique_id=32488603]
 libraries/ = SubResource("AnimationLibrary_6wevv")

@@ -38,8 +38,7 @@ const CLOSE_ANIMATION_KEY = &"close"
 var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
 var _refresh_leaderboard: Dictionary = {}
-var _current_player_score: PlayGamesLeaderboardScore = null
-var _request_leaderboard_callable: Callable
+var _current_player_scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, PlayGamesLeaderboardScore]
 
 func reset_refresh_states() -> void:
 	_refresh_leaderboard = {
@@ -54,6 +53,8 @@ func reset_refresh_states() -> void:
 			PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME : true
 		}
 	}
+	
+	HighscoreManager.fetch_current_player_highscores(_populate_current_player_scores)
 
 func request_scores() -> void:
 	if OS.is_debug_build() and not OS.has_feature("android"):
@@ -102,29 +103,32 @@ func close_leaderboards() -> void:
 	book_animator.play(CLOSE_ANIMATION_KEY)
 
 func _inject_current_score(scores: Array[PlayGamesLeaderboardScore]) -> Array[PlayGamesLeaderboardScore]:
-	if _current_player_score == null:
+	if _current_player_scores == null or _current_player_scores.size() == 0:
 		return scores
 	
 	var player_found := false
+	var current_score := _current_player_scores[_current_timespan]
 	for i in scores.size():
-		if scores[i].score_holder.player_id == _current_player_score.score_holder.player_id:
+		if scores[i].score_holder.player_id == current_score.score_holder.player_id:
 			if player_found:
 				scores.remove_at(i)
 			else:
-				scores[i].score_holder_display_name += " (You)"
+				if not current_score.score_holder_display_name.ends_with(" (You)"):
+					scores[i].score_holder_display_name += " (You)"
 			return scores
 		
-		if not player_found and scores[i].raw_score < _current_player_score.raw_score:
-			_current_player_score.score_holder_display_name += " (You)"
-			_current_player_score.rank = scores[i].rank
-			scores.insert(i, _current_player_score)
+		if not player_found and scores[i].raw_score < current_score.raw_score:
+			if not current_score.score_holder_display_name.ends_with(" (You)"):
+				current_score.score_holder_display_name += " (You)"
+			current_score.rank = scores[i].rank
+			scores.insert(i, current_score)
 			player_found = true
 	
 	for score in scores:
-		if score.score_holder.player_id == _current_player_score.score_holder.player_id:
+		if score.score_holder.player_id == current_score.score_holder.player_id:
 			continue
 		
-		if score.rank >= _current_player_score.rank:
+		if score.rank >= current_score.rank:
 			score.rank += 1
 	
 	return scores
@@ -152,45 +156,38 @@ func _generate_list_of_scores() -> void:
 		var score_dictionary : Dictionary[String,Variant]
 		score_dictionary["rawScore"] = (MAX_RESULTS - i) * 10 + randi_range(0,9)
 		score_dictionary["scoreHolderDisplayName"] = selected_names.values()[i]
-		score_dictionary["rank"] = str(i+1)
+		score_dictionary["rank"] = i+1
 		score_dictionary["scoreHolderIconImageUri"] = DEBUG_PROFILE_ICON_PATH
 		score_dictionary["scoreHolder"] = {
 			"hasIconImage" = true,
-			"iconImageUri" = DEBUG_PROFILE_ICON_PATH
+			"iconImageUri" = DEBUG_PROFILE_ICON_PATH,
+			"playerId" = selected_names.values()[i]
 		}
 		
 		leaderboard_scores.append(PlayGamesLeaderboardScore.new(score_dictionary))
 	
 	set_scores(leaderboard_scores)
 
+func _populate_current_player_scores(values: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, PlayGamesLeaderboardScore]) -> void:
+	_current_player_scores.assign(values)
+
 #region Request Methods
 func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
-	_request_leaderboard_callable = load_most_wanted_scores_request.emit.bind(
+	load_most_wanted_scores_request.emit(
 		GlobalConstants.LEADERBOARD_ID,
 		_current_timespan,
 		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
 		MAX_RESULTS,
 		force_refresh
 	)
-	
-	_request_current_player_score()
 
 func _request_personal_leaderboard(force_refresh: bool = false) -> void:
-	_request_leaderboard_callable = load_personal_scores_request.emit.bind(
+	load_personal_scores_request.emit(
 		GlobalConstants.LEADERBOARD_ID,
 		_current_timespan,
 		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
 		MAX_RESULTS,
 		force_refresh
-	)
-	
-	_request_current_player_score()
-
-func _request_current_player_score() -> void:
-	load_current_player_score_request.emit(
-		GlobalConstants.LEADERBOARD_ID,
-		_current_timespan,
-		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
 	)
 #endregion
 
@@ -201,10 +198,6 @@ func _on_top_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGame
 func _on_player_centered_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGamesLeaderboardScores) -> void:
 	set_scores(leaderboard_scores.scores)
 
-func _on_current_player_score_loaded(_leaderboard_id: String, score: PlayGamesLeaderboardScore) -> void:
-	_current_player_score = score
-	if _request_leaderboard_callable:
-		_request_leaderboard_callable.call()
 #endregion
 
 #region Button Listeners

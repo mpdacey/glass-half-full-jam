@@ -22,13 +22,13 @@ func recall_scores() -> void:
 	gate_daily.reset()
 	HighscoreManager.fetch_current_player_highscores(_set_gates)
 
-func _set_gates(scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, int]) -> void:
+func _set_gates(scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, PlayGamesLeaderboardScore]) -> void:
 	for i in range(PlayGamesLeaderboardVariant.TimeSpan.size(), 0, -1):
 		i -= 1
 		if (
 			i < PlayGamesLeaderboardVariant.TimeSpan.size() - 1
-			and scores[i] >= scores[i+1]
+			and scores[i].raw_score >= scores[i+1].raw_score
 		):
 			return
 		
-		_gates[i].set_score(scores[i])
+		_gates[i].set_score(scores[i].raw_score)

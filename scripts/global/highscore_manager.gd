@@ -1,6 +1,6 @@
 extends Node
 
-signal current_player_scores_loaded(scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, int])
+signal current_player_scores_loaded(scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, PlayGamesLeaderboardScore])
 
 const TIME_SPAN_ALL_TIME = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME
 const TIME_SPAN_WEEKLY = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_WEEKLY
@@ -8,12 +8,13 @@ const TIME_SPAN_DAILY = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 const COLLECTION = PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
 
 @export var leaderboard_client: PlayGamesLeaderboardsClient
-var _current_player_scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, int]
+var _current_player_scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, PlayGamesLeaderboardScore]
 var _current_player_scores_loaded: bool = false
 
 func fetch_current_player_highscores(recieving_callable: Callable) -> void:
 	if _current_player_scores_loaded:
-		recieving_callable.call(_current_player_scores)
+		if recieving_callable != null:
+			recieving_callable.call(_current_player_scores)
 	else:
 		current_player_scores_loaded.connect(recieving_callable, CONNECT_ONE_SHOT)
 
@@ -24,8 +25,8 @@ func set_score(new_score: int) -> void:
 	var new_highscore: bool = false
 	
 	for time_span : PlayGamesLeaderboardVariant.TimeSpan in PlayGamesLeaderboardVariant.TimeSpan.values():
-		if new_score > _current_player_scores[time_span]:
-			_current_player_scores[time_span] = new_score
+		if new_score > _current_player_scores[time_span].raw_score:
+			_current_player_scores[time_span].raw_score = new_score
 			new_highscore = true
 	
 	if new_highscore:
@@ -36,7 +37,16 @@ func _load_current_player_highscores() -> void:
 
 func _request_next_score(required_time_span: PlayGamesLeaderboardVariant.TimeSpan) -> void:
 	if OS.is_debug_build():
-		var debug_score: PlayGamesLeaderboardScore = PlayGamesLeaderboardScore.new({"rawScore": 44 * float(required_time_span+1) })
+		var debug_score: PlayGamesLeaderboardScore = PlayGamesLeaderboardScore.new(
+			{
+				"scoreHolderDisplayName": "Test User",
+				"rawScore": 44 * float(required_time_span+1),
+				"scoreHolder": {
+					"hasIconImage" = false,
+					"playerId" = "Test User"
+				}
+			}
+		)
 		_score_loaded("", debug_score, required_time_span)
 		return
 	
@@ -45,9 +55,9 @@ func _request_next_score(required_time_span: PlayGamesLeaderboardVariant.TimeSpa
 
 func _score_loaded(_leaderboard_id: String, score: PlayGamesLeaderboardScore, timespan: PlayGamesLeaderboardVariant.TimeSpan) -> void:
 	if score == null or score.raw_score == null or score.raw_score == 0:
-		_current_player_scores[timespan] = -1
+		_current_player_scores[timespan] = PlayGamesLeaderboardScore.new({"rawScore": -1}) 
 	else:
-		_current_player_scores[timespan] = score.raw_score
+		_current_player_scores[timespan] = score
 	
 	match timespan:
 		TIME_SPAN_DAILY:

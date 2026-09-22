@@ -36,6 +36,8 @@ func set_entry_values(data: PlayGamesLeaderboardScore) -> void:
 	
 	if data.score_holder.has_icon_image:
 		_set_profile_picture(data.score_holder.icon_image_uri)
+	else:
+		_set_profile_picture("")
 
 func _set_scrolling_animation() -> void:
 	if _scroll_tween:

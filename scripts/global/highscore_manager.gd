@@ -23,7 +23,7 @@ func sumbit_metres_travelled(metres_travelled: float) -> void:
 func set_score(new_score: int) -> void:
 	var new_highscore: bool = false
 	
-	for time_span : PlayGamesLeaderboardVariant.TimeSpan in PlayGamesLeaderboardVariant.TimeSpan.keys():
+	for time_span : PlayGamesLeaderboardVariant.TimeSpan in PlayGamesLeaderboardVariant.TimeSpan.values():
 		if new_score > _current_player_scores[time_span]:
 			_current_player_scores[time_span] = new_score
 			new_highscore = true

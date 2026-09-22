@@ -46,9 +46,9 @@
 [ext_resource type="Script" uid="uid://cbw3hbbcrgafd" path="res://scripts/android_back_listener.gd" id="36_brhdo"]
 [ext_resource type="PackedScene" uid="uid://bn3qvukddfjfg" path="res://scenes/ui/highscore_confetti_ui.tscn" id="36_ekkaj"]
 [ext_resource type="PackedScene" uid="uid://bvb01gwjc7pvc" path="res://scenes/ui/lives_ui.tscn" id="37_b3xk2"]
-[ext_resource type="Script" uid="uid://clrbnqvmohmjv" path="res://scripts/highscore_manager.gd" id="40_kd3qq"]
 [ext_resource type="Script" uid="uid://s6j3is1wgonh" path="res://scripts/established_internet_caller.gd" id="43_p8ryb"]
 [ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="44_edg7r"]
+[ext_resource type="Script" uid="uid://d23oy1w6s4q6f" path="res://scripts/highscore_submitter.gd" id="47_1b2ky"]
 
 [sub_resource type="Animation" id="Animation_kd3qq"]
 length = 0.001
@@ -1456,6 +1456,10 @@ transform = Transform3D(-0.45621142, 0, 0.49068433, 0, 0.67, 0, -0.49068433, 0, 
 [node name="TrafficCore4" parent="GameoverNodes/SurroundPolice" unique_id=1086880885 instance=ExtResource("33_7m3n2")]
 transform = Transform3D(-0.36729783, 0, -0.5603502, 0, 0.67000014, 0, 0.5603502, 0, -0.36729783, -2.5641549, 0.05822611, 1.6903043)
 
+[node name="HighscoreSubmitter" type="Node" parent="GameoverNodes" unique_id=963314710 node_paths=PackedStringArray("drive_controller")]
+script = ExtResource("47_1b2ky")
+drive_controller = NodePath("../../Player/DriveController")
+
 [node name="IntroAnimationPlayer" type="AnimationPlayer" parent="." unique_id=233413560]
 libraries/ = SubResource("AnimationLibrary_02d50")
 autoplay = &"intro"
@@ -1463,10 +1467,6 @@ autoplay = &"intro"
 [node name="MusicManager" type="Node" parent="." unique_id=197347060]
 script = ExtResource("26_xbx4t")
 metadata/_custom_type_script = "uid://dpbbwesnmyu7e"
-
-[node name="HighscoreManager" type="Node" parent="." unique_id=1122815577 node_paths=PackedStringArray("drive_controller")]
-script = ExtResource("40_kd3qq")
-drive_controller = NodePath("../Player/DriveController")
 
 [node name="PlayGamesClients" type="Node" parent="." unique_id=484732295]
 
@@ -1535,7 +1535,6 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="global_signal_emitted" from="GameoverNodes/ResetHandler/SpendLifeGrantedListener" to="GameoverNodes/ResetHandler" method="request_reset"]
 [connection signal="global_signal_emitted" from="GameoverNodes/GameoverInterfacers/TerrainGameoverEmitter" to="Interactables/TerrainDressingPlayer" method="stop" binds= [true]]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="swap_to_main"]
-[connection signal="update_leaderboard" from="HighscoreManager" to="PlayGamesClients/PlayGamesLeaderboardsClient" method="submit_score"]
 
 [editable path="Player/PlayerVehicle"]
 [editable path="Player/PlayerVehicle/fuel-canister"]

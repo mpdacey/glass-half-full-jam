@@ -810,50 +810,36 @@ tracks/32/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/33/type = "method"
+tracks/33/type = "value"
 tracks/33/imported = false
 tracks/33/enabled = true
-tracks/33/path = NodePath("../HighscoreManager")
+tracks/33/path = NodePath("../UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton:disabled")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_gameover"
-}]
-}
-tracks/34/type = "value"
-tracks/34/imported = false
-tracks/34/enabled = true
-tracks/34/path = NodePath("../UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton:disabled")
-tracks/34/interp = 1
-tracks/34/loop_wrap = true
-tracks/34/keys = {
 "times": PackedFloat32Array(0, 2.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/35/type = "bezier"
-tracks/35/imported = false
-tracks/35/enabled = true
-tracks/35/path = NodePath("../UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton:modulate:a")
-tracks/35/interp = 1
-tracks/35/loop_wrap = true
-tracks/35/keys = {
+tracks/34/type = "bezier"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("../UI/GameoverLayer/TryAgainButtonRegion/Control/ReturnToMenuButton:modulate:a")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.13424873, 0.16666667, 0, 0),
 "times": PackedFloat32Array(2.1, 2.9054923)
 }
-tracks/36/type = "method"
-tracks/36/imported = false
-tracks/36/enabled = true
-tracks/36/path = NodePath("MainGameoverPlayer/CallableOnConnectionExecuter")
-tracks/36/interp = 1
-tracks/36/loop_wrap = true
-tracks/36/keys = {
+tracks/35/type = "method"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("MainGameoverPlayer/CallableOnConnectionExecuter")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -861,17 +847,31 @@ tracks/36/keys = {
 "method": &"execute_method_on_connection_by_node"
 }]
 }
-tracks/37/type = "value"
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("../UI/GameoverLayer/TryAgainLabel:modulate")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/37/type = "method"
 tracks/37/imported = false
 tracks/37/enabled = true
-tracks/37/path = NodePath("../UI/GameoverLayer/TryAgainLabel:modulate")
+tracks/37/path = NodePath("HighscoreSubmitter")
 tracks/37/interp = 1
 tracks/37/loop_wrap = true
 tracks/37/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [{
+"args": [],
+"method": &"_on_gameover"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_aqgt3"]

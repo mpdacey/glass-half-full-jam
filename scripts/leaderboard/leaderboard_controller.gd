@@ -16,12 +16,6 @@ signal load_personal_scores_request(
 	force_reload: bool
 )
 
-signal load_current_player_score_request(
-	leaderboard_id: String,
-	time_span: PlayGamesLeaderboardVariant.TimeSpan,
-	collection: PlayGamesLeaderboardVariant.Collection
-)
-
 signal scores_set()
 
 const LEADERBOARD_ENTRY_SCENE = preload("uid://gqut7x3b0vj7")

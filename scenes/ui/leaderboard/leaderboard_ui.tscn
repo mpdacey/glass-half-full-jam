@@ -1189,11 +1189,12 @@ ignore_time_scale = true
 [node name="InfoBox" parent="." unique_id=920866391 instance=ExtResource("22_gpe5i")]
 metadata/content = ExtResource("23_4qtqu")
 
-[connection signal="load_current_player_score_request" from="." to="PlayGamesLeaderboardsClient" method="load_player_score"]
-[connection signal="load_current_player_score_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=3]
-[connection signal="load_current_player_score_request" from="." to="Timers/WaitForResponseTimer" method="start" unbinds=3]
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
+[connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
+[connection signal="load_most_wanted_scores_request" from="." to="Timers/WaitForResponseTimer" method="start" unbinds=5]
 [connection signal="load_personal_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_player_centered_scores"]
+[connection signal="load_personal_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
+[connection signal="load_personal_scores_request" from="." to="Timers/WaitForResponseTimer" method="start" unbinds=5]
 [connection signal="scores_set" from="." to="Timers/WaitForResponseTimer" method="stop"]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/InfoButtonMargin/InfoButtonHBox/InfoButton" to="InfoBox" method="display_info_box"]
 [connection signal="pressed" from="LeaderboardsPanel/LeaderboardsVBox/LeaderboardFocusMargin/LeaderboardFocusHBox/LeaderboardFocusMostWanted" to="." method="_on_focus_most_wanted_button_pressed"]

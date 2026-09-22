@@ -4,11 +4,6 @@ class_name HighscoreGatesManager
 @warning_ignore("unused_signal")
 signal highscore_gate_popped(gate_type: PlayGamesLeaderboardVariant.TimeSpan)
 
-const TIMESPAN_ALL_TIME = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME
-const TIMESPAN_WEEKLY = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_WEEKLY
-const TIMESPAN_DAILY = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
-const COLLECTION = PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
-
 @export var leaderboard_client: PlayGamesLeaderboardsClient
 @export_group("Highscore Gate Controllers")
 @export var gate_all: HighscoreGateController
@@ -16,49 +11,24 @@ const COLLECTION = PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC
 @export var gate_daily: HighscoreGateController
 
 @onready var _gates: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, HighscoreGateController] = {
-	TIMESPAN_DAILY: gate_daily,
-	TIMESPAN_WEEKLY: gate_weekly,
-	TIMESPAN_ALL_TIME: gate_all
+	PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY: gate_daily,
+	PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_WEEKLY: gate_weekly,
+	PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME: gate_all
 }
-
-var _scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, float]
 
 func recall_scores() -> void:
 	gate_all.reset()
 	gate_weekly.reset()
 	gate_daily.reset()
-	_request_next_score(TIMESPAN_DAILY)
+	HighscoreManager.fetch_current_player_highscores(_set_gates)
 
-func _set_gates() -> void:
+func _set_gates(scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, int]) -> void:
 	for i in range(PlayGamesLeaderboardVariant.TimeSpan.size(), 0, -1):
 		i -= 1
 		if (
 			i < PlayGamesLeaderboardVariant.TimeSpan.size() - 1
-			and _scores[i] >= _scores[i+1]
+			and scores[i] >= scores[i+1]
 		):
 			return
 		
-		_gates[i].set_score(_scores[i])
-
-func _request_next_score(required_time_span: PlayGamesLeaderboardVariant.TimeSpan) -> void:
-	if OS.is_debug_build():
-		var debug_score: PlayGamesLeaderboardScore = PlayGamesLeaderboardScore.new({"rawScore": 44 * float(required_time_span+1) })
-		_score_loaded("", debug_score, required_time_span)
-		return
-	
-	leaderboard_client.score_loaded.connect(_score_loaded.bind(required_time_span), CONNECT_ONE_SHOT)
-	leaderboard_client.load_player_score(GlobalConstants.LEADERBOARD_ID, required_time_span, COLLECTION)
-
-func _score_loaded(_leaderboard_id: String, score: PlayGamesLeaderboardScore, timespan: PlayGamesLeaderboardVariant.TimeSpan) -> void:
-	if score == null or score.raw_score == null or score.raw_score == 0:
-		_scores[timespan] = -1
-	else:
-		_scores[timespan] = score.raw_score
-	
-	match timespan:
-		TIMESPAN_DAILY:
-			_request_next_score(TIMESPAN_WEEKLY)
-		TIMESPAN_WEEKLY:
-			_request_next_score(TIMESPAN_ALL_TIME)
-		TIMESPAN_ALL_TIME:
-			_set_gates()
+		_gates[i].set_score(scores[i])

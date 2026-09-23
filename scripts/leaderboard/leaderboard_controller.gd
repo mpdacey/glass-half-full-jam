@@ -66,9 +66,9 @@ func request_scores() -> void:
 func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
 	_set_scroll_to_top.call_deferred()
 	
-	empty_collection_label.visible = scores.size() == 0
-	
 	scores = _inject_current_score(scores)
+	
+	empty_collection_label.visible = scores.size() == 0
 	
 	var children : Array[LeaderboardEntryController] = []
 	children.assign(entries_container.get_children())
@@ -109,6 +109,14 @@ func _inject_current_score(scores: Array[PlayGamesLeaderboardScore]) -> Array[Pl
 	
 	var player_found := false
 	var current_score := _current_player_scores[_current_timespan]
+	
+	if scores.size() == 0:
+		if not current_score.score_holder_display_name.ends_with(" (You)"):
+			current_score.score_holder_display_name += " (You)"
+		current_score.rank = 1
+		scores.append(current_score)
+		return scores
+	
 	for i in scores.size():
 		if scores[i].score_holder.player_id == current_score.score_holder.player_id:
 			if player_found:
@@ -124,6 +132,13 @@ func _inject_current_score(scores: Array[PlayGamesLeaderboardScore]) -> Array[Pl
 			current_score.rank = scores[i].rank
 			scores.insert(i, current_score)
 			player_found = true
+		
+		if i == scores.size() - 1 and not player_found:
+			if not current_score.score_holder_display_name.ends_with(" (You)"):
+				current_score.score_holder_display_name += " (You)"
+			current_score.rank = scores[i].rank + 1
+			scores.append(current_score)
+			return scores
 	
 	for score in scores:
 		if score.score_holder.player_id == current_score.score_holder.player_id:

@@ -732,7 +732,7 @@ _data = {
 &"dressing": SubResource("Animation_7iuxc")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8ryb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6ljc"]
 resource_local_to_scene = true
 shader = ExtResource("24_63m0j")
 shader_parameter/numbers = ExtResource("24_7m3n2")
@@ -1144,22 +1144,22 @@ highscore_type = 1
 visible = false
 
 [node name="TenThousandsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="0" unique_id=53849460]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_q6ljc")
 
 [node name="ThousandsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="1" unique_id=463500733]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_q6ljc")
 
 [node name="HundredsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="2" unique_id=388083865]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_q6ljc")
 
 [node name="TensTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="3" unique_id=299396907]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_q6ljc")
 
 [node name="OnesTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="4" unique_id=970582872]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_q6ljc")
 
 [node name="TenthsTexture" parent="UI/DriveHUD/Root/Odometer" parent_id_path=PackedInt32Array(1229058800, 1962558077) index="5" unique_id=696806195]
-material = SubResource("ShaderMaterial_p8ryb")
+material = SubResource("ShaderMaterial_q6ljc")
 
 [node name="PauseMenu" parent="UI" unique_id=1525170821 instance=ExtResource("23_4nao0")]
 visible = false
@@ -1184,7 +1184,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="UI/GameoverLayer/SubViewportContainer" unique_id=277981725]
 handle_input_locally = false
 size = Vector2i(1080, 2280)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="CarFollowerOffset" type="Node3D" parent="UI/GameoverLayer/SubViewportContainer/SubViewport" unique_id=1932524362]
 
@@ -1517,8 +1517,8 @@ metadata/_custom_type_script = "uid://cafyylq66psjo"
 [connection signal="next_canister_placed" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Player/PlayerVehicle/PlayerHitboxArea" method="set_monitoring" flags=3 binds= [true]]
 [connection signal="ready" from="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" to="Interactables/FuelLanePath/FuelLanePathFollower/FuelPlacementController" method="place_next_canister"]
 [connection signal="global_signal_emitted_with_value" from="Interactables/TerrainDressingPlayer/TerrainSpeedListener" to="Interactables/TerrainDressingPlayer" method="set_speed_scale"]
-[connection signal="highscore_gate_popped" from="Interactables/HighscoreGatesManager" to="UI/HighscoreConfettiUI" method="pop_confetti"]
 [connection signal="highscore_gate_popped" from="Interactables/HighscoreGatesManager" to="UI/GameoverLayer/TravelledVBoxContainer/TravelledHighscoreLabelContainer" method="show_label"]
+[connection signal="highscore_gate_popped" from="Interactables/HighscoreGatesManager" to="UI/HighscoreConfettiUI" method="pop_confetti"]
 [connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/AllTimeHighscoreGate" to="Interactables/HighscoreGatesManager" method="emit_signal" binds= [&"highscore_gate_popped", 2]]
 [connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/WeeklyHighscoreGate" to="Interactables/HighscoreGatesManager" method="emit_signal" binds= [&"highscore_gate_popped", 1]]
 [connection signal="confetti_triggered" from="Interactables/HighscoreGatesManager/DailyHighscoreGate" to="Interactables/HighscoreGatesManager" method="emit_signal" binds= [&"highscore_gate_popped", 0]]

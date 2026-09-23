@@ -52,6 +52,7 @@ layout_mode = 2
 layout_mode = 2
 lit_stylebox = ExtResource("5_wxlxm")
 
+[connection signal="toggle_set" from="." to="SnackBarButtonMargin/SnackBarButtonMargin/SnackBarButton" method="set_pressed_no_signal" flags=6]
 [connection signal="snackbar_button_pressed" from="SnackBarButtonMargin" to="." method="set_toggle" binds= [true]]
 [connection signal="snackbar_button_released" from="SnackBarButtonMargin" to="." method="set_toggle" binds= [false]]
 

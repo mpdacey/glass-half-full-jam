@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bxb3bfdh8p0vy"]
 
-[ext_resource type="Texture2D" uid="uid://c00v36x4ogele" path="res://textures/confetti_particle.png" id="1_hbqkj"]
+[ext_resource type="Texture2D" uid="uid://c00v36x4ogele" path="res://textures/confetti_particle.png" id="1_khkpg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dqqjj"]
 particles_animation = true
@@ -35,7 +35,7 @@ material = SubResource("CanvasItemMaterial_dqqjj")
 position = Vector2(0, 400)
 emitting = false
 amount = 32
-texture = ExtResource("1_hbqkj")
+texture = ExtResource("1_khkpg")
 lifetime = 4.0
 one_shot = true
 speed_scale = 2.0

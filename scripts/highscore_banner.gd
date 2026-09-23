@@ -6,9 +6,24 @@ signal banner_scale_changed(new_scale: Vector3)
 const SQUASH_TWEEN_TIME = 0.05
 const REFORM_TWEEN_TIME = 1.5
 
+const MAIN_COLOUR_INSTANCE_KEY = "main_colour"
+const SHADING_COLOUR_INSTANCE_KEY = "shading_colour"
+const BANNER_TEXTURE_INDEX_INSTANCE_KEY = "banner_texture_index"
+
 @export var banner_scaler: Node3D
+@export var banner_mesh: MeshInstance3D
+@export_category("Banner Override Materials")
+@export var banner_descriptor_materials: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, ShaderMaterial]
+@export var banner_main_materials: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, ShaderMaterial]
+
 var overlapping_cars: Dictionary[Area3D, bool]
 var tween: Tween
+
+func set_banner_type(banner_type: PlayGamesLeaderboardVariant.TimeSpan, is_describor: bool) -> void:
+	if is_describor:
+		banner_mesh.set_surface_override_material(0, banner_descriptor_materials[banner_type])
+	else:
+		banner_mesh.set_surface_override_material(0, banner_main_materials[banner_type])
 
 func reset() -> void:
 	if tween:

@@ -110,6 +110,9 @@ func _inject_current_score(scores: Array[PlayGamesLeaderboardScore]) -> Array[Pl
 	var player_found := false
 	var current_score := _current_player_scores[_current_timespan]
 	
+	if current_score.raw_score <= 0:
+		return scores
+	
 	if scores.size() == 0:
 		if not current_score.score_holder_display_name.ends_with(" (You)"):
 			current_score.score_holder_display_name += " (You)"

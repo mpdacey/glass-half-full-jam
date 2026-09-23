@@ -100,6 +100,13 @@ func _inject_current_score(scores: Array[PlayGamesLeaderboardScore]) -> Array[Pl
 	if _current_player_scores == null or _current_player_scores.size() == 0:
 		return scores
 	
+	var index := 0
+	for score in scores:
+		if score == null:
+			scores.remove_at(index)
+		else:
+			index += 1
+	
 	var player_found := false
 	var current_score := _current_player_scores[_current_timespan]
 	for i in scores.size():

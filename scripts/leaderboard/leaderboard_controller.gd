@@ -32,6 +32,7 @@ const CLOSE_ANIMATION_KEY = &"close"
 var _current_timespan : PlayGamesLeaderboardVariant.TimeSpan = PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_DAILY
 var _want_to_display_personal := false
 var _refresh_leaderboard: Dictionary = {}
+var _current_player_scores: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, PlayGamesLeaderboardScore]
 
 func reset_refresh_states() -> void:
 	_refresh_leaderboard = {
@@ -46,9 +47,11 @@ func reset_refresh_states() -> void:
 			PlayGamesLeaderboardVariant.TimeSpan.TIME_SPAN_ALL_TIME : true
 		}
 	}
+	
+	HighscoreManager.fetch_current_player_highscores(_populate_current_player_scores)
 
 func request_scores() -> void:
-	if OS.is_debug_build():
+	if OS.is_debug_build() and not OS.has_feature("android"):
 		_generate_list_of_scores()
 		return
 	
@@ -62,6 +65,8 @@ func request_scores() -> void:
 
 func set_scores(scores: Array[PlayGamesLeaderboardScore]) -> void:
 	_set_scroll_to_top.call_deferred()
+	
+	scores = _inject_current_score(scores)
 	
 	empty_collection_label.visible = scores.size() == 0
 	
@@ -91,23 +96,61 @@ func open_leaderboards() -> void:
 func close_leaderboards() -> void:
 	book_animator.play(CLOSE_ANIMATION_KEY)
 
-func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
-	load_most_wanted_scores_request.emit(
-		GlobalConstants.LEADERBOARD_ID,
-		_current_timespan,
-		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
-		MAX_RESULTS,
-		force_refresh
-	)
-
-func _request_personal_leaderboard(force_refresh: bool = false) -> void:
-	load_personal_scores_request.emit(
-		GlobalConstants.LEADERBOARD_ID,
-		_current_timespan,
-		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
-		MAX_RESULTS,
-		force_refresh
-	)
+func _inject_current_score(scores: Array[PlayGamesLeaderboardScore]) -> Array[PlayGamesLeaderboardScore]:
+	if _current_player_scores == null or _current_player_scores.size() == 0:
+		return scores
+	
+	var index := 0
+	for score in scores:
+		if score == null:
+			scores.remove_at(index)
+		else:
+			index += 1
+	
+	var player_found := false
+	var current_score := _current_player_scores[_current_timespan]
+	
+	if current_score.raw_score <= 0:
+		return scores
+	
+	if scores.size() == 0:
+		if not current_score.score_holder_display_name.ends_with(" (You)"):
+			current_score.score_holder_display_name += " (You)"
+		current_score.rank = 1
+		scores.append(current_score)
+		return scores
+	
+	for i in scores.size():
+		if scores[i].score_holder.player_id == current_score.score_holder.player_id:
+			if player_found:
+				scores.remove_at(i)
+			else:
+				if not current_score.score_holder_display_name.ends_with(" (You)"):
+					scores[i].score_holder_display_name += " (You)"
+			return scores
+		
+		if not player_found and scores[i].raw_score < current_score.raw_score:
+			if not current_score.score_holder_display_name.ends_with(" (You)"):
+				current_score.score_holder_display_name += " (You)"
+			current_score.rank = scores[i].rank
+			scores.insert(i, current_score)
+			player_found = true
+		
+		if i == scores.size() - 1 and not player_found:
+			if not current_score.score_holder_display_name.ends_with(" (You)"):
+				current_score.score_holder_display_name += " (You)"
+			current_score.rank = scores[i].rank + 1
+			scores.append(current_score)
+			return scores
+	
+	for score in scores:
+		if score.score_holder.player_id == current_score.score_holder.player_id:
+			continue
+		
+		if score.rank >= current_score.rank:
+			score.rank += 1
+	
+	return scores
 
 func _set_scroll_to_top() -> void:
 	var scroll_bar := scroll_container.get_v_scroll_bar()
@@ -132,16 +175,40 @@ func _generate_list_of_scores() -> void:
 		var score_dictionary : Dictionary[String,Variant]
 		score_dictionary["rawScore"] = (MAX_RESULTS - i) * 10 + randi_range(0,9)
 		score_dictionary["scoreHolderDisplayName"] = selected_names.values()[i]
-		score_dictionary["displayRank"] = str(i+1)
+		score_dictionary["rank"] = i+1
 		score_dictionary["scoreHolderIconImageUri"] = DEBUG_PROFILE_ICON_PATH
 		score_dictionary["scoreHolder"] = {
 			"hasIconImage" = true,
-			"iconImageUri" = DEBUG_PROFILE_ICON_PATH
+			"iconImageUri" = DEBUG_PROFILE_ICON_PATH,
+			"playerId" = selected_names.values()[i]
 		}
 		
 		leaderboard_scores.append(PlayGamesLeaderboardScore.new(score_dictionary))
 	
 	set_scores(leaderboard_scores)
+
+func _populate_current_player_scores(values: Dictionary[PlayGamesLeaderboardVariant.TimeSpan, PlayGamesLeaderboardScore]) -> void:
+	_current_player_scores.assign(values)
+
+#region Request Methods
+func _request_most_wanted_leaderboard(force_refresh: bool = false) -> void:
+	load_most_wanted_scores_request.emit(
+		GlobalConstants.LEADERBOARD_ID,
+		_current_timespan,
+		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
+		MAX_RESULTS,
+		force_refresh
+	)
+
+func _request_personal_leaderboard(force_refresh: bool = false) -> void:
+	load_personal_scores_request.emit(
+		GlobalConstants.LEADERBOARD_ID,
+		_current_timespan,
+		PlayGamesLeaderboardVariant.Collection.COLLECTION_PUBLIC,
+		MAX_RESULTS,
+		force_refresh
+	)
+#endregion
 
 #region Google Responses
 func _on_top_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGamesLeaderboardScores) -> void:
@@ -149,6 +216,7 @@ func _on_top_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGame
 
 func _on_player_centered_scores_loaded(_leaderboard_id: String, leaderboard_scores: PlayGamesLeaderboardScores) -> void:
 	set_scores(leaderboard_scores.scores)
+
 #endregion
 
 #region Button Listeners

@@ -1329,7 +1329,6 @@ offset_bottom = 917.3334
 pivot_offset = Vector2(136.66663, 69.93465)
 mouse_default_cursor_shape = 2
 toggle_mode = true
-action_mode = 0
 texture_normal = ExtResource("2_4x8ym")
 texture_pressed = ExtResource("3_hi21p")
 
@@ -1368,7 +1367,6 @@ offset_bottom = 922.3334
 pivot_offset = Vector2(175, 69.99999)
 mouse_default_cursor_shape = 2
 toggle_mode = true
-action_mode = 0
 texture_normal = ExtResource("3_eq7dk")
 texture_pressed = ExtResource("5_caprb")
 

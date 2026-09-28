@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bn3qvukddfjfg"]
 
-[ext_resource type="PackedScene" uid="uid://bxb3bfdh8p0vy" path="res://scenes/ui/highscore-confetti.tscn" id="1_85qg1"]
+[ext_resource type="PackedScene" uid="uid://bxb3bfdh8p0vy" path="res://scenes/ui/highscore_confetti_cannon.tscn" id="1_85qg1"]
 [ext_resource type="Script" uid="uid://dg5dlgs4o22b2" path="res://scripts/highscore_confetti_ui_controller.gd" id="1_p3pco"]
 [ext_resource type="AudioStream" uid="uid://cxwhvnrv6cqbh" path="res://audio/sfx/highscore/highscore_confetti_cannons.ogg" id="3_2p1w7"]
 [ext_resource type="AudioStream" uid="uid://58piyy1y4wvl" path="res://audio/sfx/highscore/highscore_confetti_fizzle.ogg" id="4_bxinh"]
@@ -11,16 +11,32 @@ random_volume_offset_db = 0.4
 streams_count = 1
 stream_0/stream = ExtResource("3_2p1w7")
 
-[node name="HighscoreConfettiUI" type="CanvasLayer" unique_id=2096718191]
+[node name="HighscoreConfettiUI" type="CanvasLayer" unique_id=2096718191 node_paths=PackedStringArray("confetti_cannon_containers")]
 script = ExtResource("1_p3pco")
+confetti_cannon_containers = {
+0: NodePath("DailyCannons"),
+1: NodePath("WeeklyCannons"),
+2: NodePath("AllTimeCannons")
+}
 
-[node name="ConfettiCannon" parent="." unique_id=1259296256 instance=ExtResource("1_85qg1")]
+[node name="AllTimeCannons" type="Control" parent="." unique_id=692445358]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ConfettiCannon" parent="AllTimeCannons" unique_id=1259296256 instance=ExtResource("1_85qg1")]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="ConfettiCannon2" parent="." unique_id=1328589405 instance=ExtResource("1_85qg1")]
+[node name="ConfettiCannon2" parent="AllTimeCannons" unique_id=1328589405 instance=ExtResource("1_85qg1")]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -29,6 +45,74 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(-1, 1)
+
+[node name="WeeklyCannons" type="Control" parent="." unique_id=1198266046]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ConfettiCannon" parent="WeeklyCannons" unique_id=1285592257 instance=ExtResource("1_85qg1")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Particles" parent="WeeklyCannons/ConfettiCannon" index="0" unique_id=394002463]
+color = Color(0.1235, 0.60562515, 0.95, 1)
+hue_variation_min = -0.05
+
+[node name="ConfettiCannon2" parent="WeeklyCannons" unique_id=571494943 instance=ExtResource("1_85qg1")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(-1, 1)
+
+[node name="Particles" parent="WeeklyCannons/ConfettiCannon2" index="0" unique_id=394002463]
+color = Color(0.1235, 0.60562515, 0.95, 1)
+hue_variation_min = -0.05
+
+[node name="DailyCannons" type="Control" parent="." unique_id=716041940]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ConfettiCannon" parent="DailyCannons" unique_id=895223640 instance=ExtResource("1_85qg1")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Particles" parent="DailyCannons/ConfettiCannon" index="0" unique_id=394002463]
+color = Color(0.13, 1, 0.17349994, 1)
+
+[node name="ConfettiCannon2" parent="DailyCannons" unique_id=615605322 instance=ExtResource("1_85qg1")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(-1, 1)
+
+[node name="Particles" parent="DailyCannons/ConfettiCannon2" index="0" unique_id=394002463]
+color = Color(0.13, 1, 0.17349994, 1)
 
 [node name="CannonSFX" type="AudioStreamPlayer" parent="." unique_id=1045301418]
 stream = SubResource("AudioStreamRandomizer_bxinh")
@@ -41,3 +125,8 @@ bus = &"SFX"
 
 [connection signal="confetti_popped" from="." to="CannonSFX" method="play"]
 [connection signal="confetti_popped" from="." to="ConfettiSFX" method="play"]
+
+[editable path="WeeklyCannons/ConfettiCannon"]
+[editable path="WeeklyCannons/ConfettiCannon2"]
+[editable path="DailyCannons/ConfettiCannon"]
+[editable path="DailyCannons/ConfettiCannon2"]

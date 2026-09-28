@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bxl2h0mapeb3l"]
+
+[ext_resource type="Script" uid="uid://dvsivy6ctrm7o" path="res://scripts/global/highscore_manager.gd" id="1_vcked"]
+[ext_resource type="Script" uid="uid://cafyylq66psjo" path="res://addons/GodotPlayGameServices/scripts/leaderboards/leaderboards_client.gd" id="2_qdc06"]
+[ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="3_cqrd7"]
+
+[node name="HighscoreManager" type="Node" unique_id=1075750257 node_paths=PackedStringArray("leaderboard_client")]
+script = ExtResource("1_vcked")
+leaderboard_client = NodePath("PlayGamesLeaderboardsClient")
+
+[node name="PlayGamesLeaderboardsClient" type="Node" parent="." unique_id=1205489256]
+script = ExtResource("2_qdc06")
+metadata/_custom_type_script = "uid://cafyylq66psjo"
+
+[node name="InternetConnectedListener" type="Node" parent="." unique_id=977824477]
+script = ExtResource("3_cqrd7")
+global_signal_name = &"time_established_connection"
+metadata/_custom_type_script = "uid://lu4gei6pype6"
+
+[connection signal="global_signal_emitted" from="InternetConnectedListener" to="." method="_load_current_player_highscores" flags=6]

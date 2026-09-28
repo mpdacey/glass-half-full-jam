@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cg6axrroec0vl"]
+
+[ext_resource type="Script" uid="uid://c0j7uh55ha0pq" path="res://scripts/highscore_gate_controller.gd" id="1_snj1f"]
+[ext_resource type="PackedScene" uid="uid://tll0ck20v3ph" path="res://scenes/highscore/highscore_banner.tscn" id="2_snj1f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_edg7r"]
+radius = 1.0
+height = 20.0
+
+[node name="HighscoreGate" type="Node3D" unique_id=1724752341 node_paths=PackedStringArray("near_gate", "far_gate")]
+script = ExtResource("1_snj1f")
+near_gate = NodePath("NearHighscoreGate")
+far_gate = NodePath("FarHighscoreGate")
+
+[node name="NearHighscoreGate" type="Node3D" parent="." unique_id=1323395792]
+
+[node name="HighscoreBanner" parent="NearHighscoreGate" unique_id=1006156951 instance=ExtResource("2_snj1f")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 8)
+
+[node name="HighscoreBanner2" parent="NearHighscoreGate" unique_id=1675051882 instance=ExtResource("2_snj1f")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, -8)
+
+[node name="FarHighscoreGate" type="Node3D" parent="." unique_id=2048774668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
+
+[node name="HighscoreBanner" parent="FarHighscoreGate" unique_id=304087656 instance=ExtResource("2_snj1f")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 8)
+
+[node name="HighscoreBanner2" parent="FarHighscoreGate" unique_id=1261327397 instance=ExtResource("2_snj1f")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, -8)
+
+[node name="HighscoreArea" type="Area3D" parent="." unique_id=262696750]
+collision_layer = 0
+collision_mask = 8
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HighscoreArea" unique_id=23692001]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.825, 0)
+shape = SubResource("CapsuleShape3D_edg7r")
+
+[connection signal="confetti_triggered" from="." to="HighscoreArea" method="set_monitoring" flags=3 binds= [false]]
+[connection signal="prime_confetti" from="." to="HighscoreArea" method="set_monitoring" flags=3 binds= [true]]
+[connection signal="banner_scale_changed" from="FarHighscoreGate/HighscoreBanner" to="NearHighscoreGate/HighscoreBanner" method="set_scale"]
+[connection signal="banner_scale_changed" from="FarHighscoreGate/HighscoreBanner2" to="NearHighscoreGate/HighscoreBanner2" method="set_scale"]
+[connection signal="area_entered" from="HighscoreArea" to="." method="emit_signal" unbinds=1 binds= [&"confetti_triggered"]]

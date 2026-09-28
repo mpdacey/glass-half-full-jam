@@ -2,6 +2,7 @@
 
 [ext_resource type="AnimationLibrary" uid="uid://j1ir62h613ec" path="res://scenes/obstacles/fuel_animation_library.tres" id="1_whhod"]
 [ext_resource type="Material" uid="uid://c0gpax6g2inuo" path="res://materials/gas_canister_materials/canister_body_material.tres" id="2_whhod"]
+[ext_resource type="Material" uid="uid://0xa7hwiy76v7" path="res://materials/gas_canister_materials/canister_lid_material.tres" id="3_7s7n5"]
 [ext_resource type="Material" uid="uid://dpqdulph3whly" path="res://materials/gas_canister_materials/canister_warning_material.tres" id="3_whhod"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_whhod"]
@@ -247,21 +248,18 @@ autoplay = &"fuel-warning/hide-warning"
 
 [node name="Cube" type="MeshInstance3D" parent="Model" unique_id=1571757867]
 transform = Transform3D(-0.008615792, 0, 0.8471116, 0, 0.99999994, 0, -0.6954074, 0, -0.010495342, -0.0008723736, 1.2181702, 0.009510875)
-instance_shader_parameters/albedo = Color(0.89411765, 0.12941177, 0.039215688, 1)
 mesh = SubResource("ArrayMesh_6y5df")
 surface_material_override/0 = ExtResource("2_whhod")
 
 [node name="BézierCurve" type="MeshInstance3D" parent="Model" unique_id=1689410496]
 transform = Transform3D(-0.012388632, 0, 0.9999232, 0, 1, 0, -0.9999232, 0, -0.012388632, -0.0008723736, 0.21817017, 0.009510875)
-instance_shader_parameters/albedo = Color(0.89411765, 0.12941177, 0.039215688, 1)
 mesh = SubResource("ArrayMesh_bpjxw")
 surface_material_override/0 = ExtResource("2_whhod")
 
 [node name="Cylinder" type="MeshInstance3D" parent="Model" unique_id=2068646188]
 transform = Transform3D(-0.008171406, 0.9418036, 0.46636698, 5.9615792e-09, 0.9418761, -0.46640268, -0.6595425, -0.011668585, -0.0057780817, 0.7573488, 1.6936809, 0.000116698444)
-instance_shader_parameters/albedo = Color(0.08, 0.08, 0.08, 1)
 mesh = SubResource("ArrayMesh_cuh0w")
-surface_material_override/0 = ExtResource("2_whhod")
+surface_material_override/0 = ExtResource("3_7s7n5")
 
 [node name="WarningAlarm" type="MeshInstance3D" parent="." unique_id=1114074591]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.7850163, 1.9039898, 0)

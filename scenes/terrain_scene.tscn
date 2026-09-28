@@ -13,10 +13,17 @@
 [ext_resource type="Material" uid="uid://ccx8siq7mgu0e" path="res://materials/desert_materials/desert_offroad_material.tres" id="11_m3e78"]
 [ext_resource type="Material" uid="uid://c0gpax6g2inuo" path="res://materials/gas_canister_materials/canister_body_material.tres" id="12_sp145"]
 [ext_resource type="Material" uid="uid://5n3fflpyc8fo" path="res://materials/gas_canister_materials/canister_outline_material.tres" id="13_3dlmi"]
+[ext_resource type="Material" uid="uid://0xa7hwiy76v7" path="res://materials/gas_canister_materials/canister_lid_material.tres" id="13_sp145"]
 [ext_resource type="Material" uid="uid://dpqdulph3whly" path="res://materials/gas_canister_materials/canister_warning_material.tres" id="14_xgvo4"]
-[ext_resource type="Material" uid="uid://dwd82ivtkeqsl" path="res://materials/highscore_banner_material.tres" id="15_fh12i"]
 [ext_resource type="Material" uid="uid://sqealwhnnkao" path="res://materials/road_material.tres" id="16_xla8q"]
+[ext_resource type="Material" uid="uid://cto8oo5aefl7p" path="res://materials/highscore_banner_materials/blue_descriptor_banner_material.tres" id="17_m3e78"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/traffic_material.tres" id="17_y8dsr"]
+[ext_resource type="Material" uid="uid://b86hptrd6ss51" path="res://materials/highscore_banner_materials/blue_highscore_banner_material.tres" id="18_sp145"]
+[ext_resource type="Material" uid="uid://c42ke6igj2vpc" path="res://materials/highscore_banner_materials/gold_descriptor_banner_material.tres" id="19_3dlmi"]
+[ext_resource type="Material" uid="uid://8raq11hii3tx" path="res://materials/highscore_banner_materials/gold_highscore_banner_material.tres" id="20_xgvo4"]
+[ext_resource type="Material" uid="uid://1m0oi8p1vcgk" path="res://materials/highscore_banner_materials/green_descriptor_banner_material.tres" id="21_fh12i"]
+[ext_resource type="Material" uid="uid://c376xh68uldhb" path="res://materials/highscore_banner_materials/green_highscore_banner_material.tres" id="22_xla8q"]
+[ext_resource type="Material" uid="uid://ca4lx4yx78d3j" path="res://materials/highscore_banner_materials/highscore_puck_material.tres" id="24_3dlmi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qsc2p"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -556,7 +563,7 @@ min_distance_between_bends = 600.0
 max_distance_between_bends = 900.0
 min_range_of_bend = 1.25
 max_range_of_bend = 1.65
-bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("15_fh12i"), ExtResource("16_xla8q"), ExtResource("17_y8dsr")])
+bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("16_xla8q"), ExtResource("17_y8dsr"), ExtResource("17_m3e78"), ExtResource("18_sp145"), ExtResource("19_3dlmi"), ExtResource("20_xgvo4"), ExtResource("21_fh12i"), ExtResource("22_xla8q"), ExtResource("24_3dlmi")])
 signal_emitter = NodePath("../TerrainGlobalListeners/TerrainSpeedListener")
 signal_name = &"global_signal_emitted_with_value"
 metadata/_custom_type_script = "uid://3w32j7t20216"

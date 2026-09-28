@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c376xh68uldhb"]
+
+[ext_resource type="Shader" uid="uid://cbpync2cswwea" path="res://shader/highscore_banner_shader.gdshader" id="1_3gamb"]
+[ext_resource type="Texture2D" uid="uid://bjs2o5igbswvj" path="res://textures/highscore_banners/highscore_banner.png" id="2_35rqk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3gamb")
+shader_parameter/banner_texture = ExtResource("2_35rqk")
+shader_parameter/main_colour = Color(0.22000003, 1, 0.37600005, 1)
+shader_parameter/shading_colour = Color(0.0684, 0.57, 0.07676001, 1)
+shader_parameter/sigma = 0.5
+shader_parameter/power = 5.0
+shader_parameter/scale = 3.3
+shader_parameter/albedo_influence = 0.2999999932944
+shader_parameter/light_color_influence = 0.01999999955296
+shader_parameter/attenuation_influence = 0.20999999530608
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/bend_multiplier = 0.0
+shader_parameter/curve_amount = 0.0999999977648
+shader_parameter/flap_multiplier = 0.055

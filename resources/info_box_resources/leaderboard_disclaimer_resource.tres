@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_md6eh")
-title = "Where is my record?"
-body = "Your record might not be visible because
-your Play Games profile is set to private."
-hyperlink_text = "How to make your play games profile public."
+title = "Can't see some records?"
+body = "Only public Play Games profiles are 
+visible on other players' leaderboards."
+hyperlink_text = "Learn how to make your Play Games
+profile public by tapping me!"
 hyperlink_url = "https://support.google.com/googleplay/answer/16562063#profile_privacy_settings"
 metadata/_custom_type_script = "uid://dajftf844g2xs"

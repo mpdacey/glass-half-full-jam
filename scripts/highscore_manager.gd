@@ -1,5 +1,5 @@
 extends Node
-class_name HighscoreManager
+class_name LocalHighscoreManager
 
 signal new_highscore_set
 signal update_leaderboard(id: String, value: float)

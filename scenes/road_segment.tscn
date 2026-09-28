@@ -53,11 +53,6 @@ size = Vector2(200, 120)
 subdivide_width = 20
 subdivide_depth = 4
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ifpta"]
-size = Vector2(120, 60)
-subdivide_width = 20
-subdivide_depth = 4
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhr56"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cydow"]
@@ -344,13 +339,6 @@ shape = SubResource("ConcavePolygonShape3D_gf765")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 0, 0)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_pu3yx")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_x8o06")
-
-[node name="Offroad2" type="MeshInstance3D" parent="." unique_id=1811456874]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 0, 0)
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_ifpta")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_x8o06")
 

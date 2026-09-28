@@ -2,32 +2,40 @@ extends Node3D
 class_name HighscoreGateController
 
 signal prime_confetti
+@warning_ignore("unused_signal")
+signal confetti_triggered
 
+@export var highscore_type: PlayGamesLeaderboardVariant.TimeSpan
+@export_group("Local Node References")
 @export var near_gate: Node3D
 @export var far_gate: Node3D
 
 var distance_to_highscore : float = 0.0
 var highscore_set : bool = false
+var banners : Array[HighscoreBanner] 
+
+func _ready() -> void:
+	_populate_banners()
+	
+	for i in banners.size():
+		banners[i].set_banner_type(highscore_type, i % 2 == 1)
 
 func reset() -> void:
-	distance_to_highscore = UserConfigManager.get_config_value(UserConfigManager.HIGHSCORE_KEY)
-	distance_to_highscore *= 100
 	visible = true
 	near_gate.visible = false
 	far_gate.visible = false
+	highscore_set = false
 	
-	highscore_set = distance_to_highscore > 0
-	
-	var banners : Array[HighscoreBanner] = [
-		near_gate.get_child(0),
-		near_gate.get_child(1),
-		far_gate.get_child(0),
-		far_gate.get_child(1)
-	]
+	_populate_banners()
 	
 	for banner in banners:
 		banner.reset()
-	
+
+func set_score(score: float) -> void:
+	distance_to_highscore = score * 10
+	highscore_set = distance_to_highscore > 0
+	distance_to_highscore += 400
+	_on_new_cycle()
 
 func _on_new_cycle() -> void:
 	if not highscore_set:
@@ -56,3 +64,14 @@ func _on_new_cycle() -> void:
 	near_gate.visible = true
 	far_gate.visible = false
 	prime_confetti.emit()
+
+func _populate_banners() -> void:
+	if banners.size() > 0:
+		return
+	
+	banners = [
+		near_gate.get_child(0),
+		near_gate.get_child(1),
+		far_gate.get_child(0),
+		far_gate.get_child(1)
+	]

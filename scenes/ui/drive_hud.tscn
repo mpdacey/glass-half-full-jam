@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dkv6y1syb024s" path="res://scripts/warnings_ui_controller.gd" id="8_eq4iw"]
 [ext_resource type="Texture2D" uid="uid://c2t4hlwo6cn28" path="res://textures/high-fuel-warning.png" id="8_njc0o"]
 [ext_resource type="Texture2D" uid="uid://dcm7ribwcs2ir" path="res://textures/low-fuel-warning.png" id="9_eq4iw"]
-[ext_resource type="Material" uid="uid://0btiwkdgpq5e" path="res://materials/odometer_value_material.tres" id="11_jp8lb"]
+[ext_resource type="Material" uid="uid://0btiwkdgpq5e" path="res://materials/ui_materials/odometer_value_material.tres" id="11_jp8lb"]
 [ext_resource type="Script" uid="uid://dkq3ejk2h2h0e" path="res://scripts/odometer_gauge_ui_controller.gd" id="11_qtgir"]
 [ext_resource type="Texture2D" uid="uid://cv6t54bwj2ubm" path="res://textures/blank_texture.tres" id="12_koxlg"]
 

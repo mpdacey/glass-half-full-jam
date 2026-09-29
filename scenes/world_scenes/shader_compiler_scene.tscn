@@ -17,7 +17,7 @@
 [ext_resource type="Material" uid="uid://8raq11hii3tx" path="res://materials/generic_materials/highscore_banner_materials/gold_highscore_banner_material.tres" id="14_r1gu1"]
 [ext_resource type="Material" uid="uid://1m0oi8p1vcgk" path="res://materials/generic_materials/highscore_banner_materials/green_descriptor_banner_material.tres" id="15_8u5yr"]
 [ext_resource type="Material" uid="uid://c376xh68uldhb" path="res://materials/generic_materials/highscore_banner_materials/green_highscore_banner_material.tres" id="16_k6n2x"]
-[ext_resource type="Script" uid="uid://yp6eip3hcs0i" path="res://scripts/shader_loader.gd" id="17_wolln"]
+[ext_resource type="Script" uid="uid://yp6eip3hcs0i" path="res://scripts/material_loader.gd" id="17_wolln"]
 
 [sub_resource type="Curve" id="Curve_ne2yj"]
 _data = [Vector2(0.022421531, 0), 0.0, 3.1320229, 0, 0, Vector2(0.4932736, 0.55056185), 0.0, 0.0, 0, 0]
@@ -277,6 +277,7 @@ surface_material_override/0 = ExtResource("16_k6n2x")
 
 [node name="ShaderLoader" type="Node3D" parent="." unique_id=983016033]
 script = ExtResource("17_wolln")
+mesh_shader_directories = Array[String](["res://materials/desert_materials/", "res://materials/generic_materials/", "res://materials/generic_materials/gas_canister_materials/", "res://materials/generic_materials/highscore_banner_materials/", "res://materials/generic_materials/particle_materials/"])
 
 [node name="ConfettiCannon" parent="." unique_id=731159488 instance=ExtResource("10_x73n1")]
 anchors_preset = 2

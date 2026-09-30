@@ -422,7 +422,6 @@ theme_override_styles/panel = ExtResource("3_o0qha")
 
 [node name="CoverVBox" type="VBoxContainer" parent="CoverPanel" unique_id=1458997368]
 layout_mode = 2
-size_flags_vertical = 0
 
 [node name="CoverTitleMargin" type="MarginContainer" parent="CoverPanel/CoverVBox" unique_id=425452678]
 layout_mode = 2
@@ -443,17 +442,18 @@ vertical_alignment = 1
 
 [node name="EmblemMargin" type="MarginContainer" parent="CoverPanel/CoverVBox" unique_id=1728017505]
 layout_mode = 2
-size_flags_vertical = 6
-theme_override_constants/margin_left = 256
-theme_override_constants/margin_top = 256
-theme_override_constants/margin_right = 256
-theme_override_constants/margin_bottom = 240
+size_flags_vertical = 3
+theme_override_constants/margin_left = 240
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 240
+theme_override_constants/margin_bottom = 700
 
 [node name="EmblemTexture" type="TextureRect" parent="CoverPanel/CoverVBox/EmblemMargin" unique_id=897967878]
 modulate = Color(0.85, 0.6998334, 0.39950004, 1)
 layout_mode = 2
 texture = ExtResource("7_afllf")
-expand_mode = 5
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BookAnimator" type="AnimationPlayer" parent="CoverPanel" unique_id=936011938]
 root_node = NodePath("../..")

@@ -1143,16 +1143,17 @@ vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CoverPanel/CoverVBox" unique_id=234234766]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
 theme_override_constants/margin_left = 128
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 128
-theme_override_constants/margin_bottom = 240
+theme_override_constants/margin_bottom = 500
 
 [node name="TextureRect" type="TextureRect" parent="CoverPanel/CoverVBox/MarginContainer" unique_id=576425591]
 layout_mode = 2
 texture = ExtResource("10_ly8w5")
-expand_mode = 5
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BookAnimator" type="AnimationPlayer" parent="CoverPanel" unique_id=502223031]
 root_node = NodePath("../..")

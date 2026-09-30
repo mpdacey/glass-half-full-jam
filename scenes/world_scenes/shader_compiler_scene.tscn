@@ -1,22 +1,14 @@
 [gd_scene format=3 uid="uid://b210kvlm3hw7d"]
 
 [ext_resource type="LabelSettings" uid="uid://cs363ufne8yg3" path="res://resources/ui_label_settings.tres" id="1_r0vov"]
-[ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_mwelm"]
 [ext_resource type="Texture2D" uid="uid://cq0busacsh6j2" path="res://textures/car_silhouette_body.svg" id="2_w23pu"]
 [ext_resource type="Texture2D" uid="uid://dtuk3eiby3oe5" path="res://textures/car_silhouette_wheel.svg" id="3_5x1wh"]
-[ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="3_sltll"]
+[ext_resource type="Material" uid="uid://0btiwkdgpq5e" path="res://materials/ui_materials/odometer_value_material.tres" id="4_sa032"]
+[ext_resource type="Script" uid="uid://cwohlwohbk02d" path="res://scripts/highscore_label_ui_controller.gd" id="5_x73n1"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="6_6c71x"]
-[ext_resource type="PackedScene" uid="uid://bick452yv4p3p" path="res://scenes/fuel_canister.tscn" id="6_tle65"]
-[ext_resource type="SphereMesh" uid="uid://bnrbp8k1ac10m" path="res://scenes/particles/dust_particle_mesh.tres" id="7_e1u2q"]
-[ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="7_sa032"]
-[ext_resource type="SphereMesh" uid="uid://dt68ilnohkb2q" path="res://scenes/particles/smoke_particle_mesh.tres" id="8_v6nyv"]
+[ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="6_ojrx7"]
+[ext_resource type="PackedScene" uid="uid://dfjmcr7rm4hc" path="res://scenes/player_vehicle.tscn" id="9_w23pu"]
 [ext_resource type="PackedScene" uid="uid://bxb3bfdh8p0vy" path="res://scenes/ui/highscore_confetti_cannon.tscn" id="10_x73n1"]
-[ext_resource type="Material" uid="uid://b86hptrd6ss51" path="res://materials/generic_materials/highscore_banner_materials/blue_highscore_banner_material.tres" id="11_wm5w6"]
-[ext_resource type="Material" uid="uid://cto8oo5aefl7p" path="res://materials/generic_materials/highscore_banner_materials/blue_descriptor_banner_material.tres" id="12_wolln"]
-[ext_resource type="Material" uid="uid://c42ke6igj2vpc" path="res://materials/generic_materials/highscore_banner_materials/gold_descriptor_banner_material.tres" id="13_74gol"]
-[ext_resource type="Material" uid="uid://8raq11hii3tx" path="res://materials/generic_materials/highscore_banner_materials/gold_highscore_banner_material.tres" id="14_r1gu1"]
-[ext_resource type="Material" uid="uid://1m0oi8p1vcgk" path="res://materials/generic_materials/highscore_banner_materials/green_descriptor_banner_material.tres" id="15_8u5yr"]
-[ext_resource type="Material" uid="uid://c376xh68uldhb" path="res://materials/generic_materials/highscore_banner_materials/green_highscore_banner_material.tres" id="16_k6n2x"]
 [ext_resource type="Script" uid="uid://yp6eip3hcs0i" path="res://scripts/material_loader.gd" id="17_wolln"]
 
 [sub_resource type="Curve" id="Curve_ne2yj"]
@@ -56,6 +48,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_x81ys"]
 resource_name = "compile_animation"
+length = 0.6
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -64,42 +58,25 @@ tracks/0/path = NodePath("CanvasLayer/ColorRect/Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["Compiling Shaders.
 ", "Compiling Shaders..
 ", "Compiling Shaders...
-", "Compiling Shaders.
-", "Compiling Shaders..
-", "Compiling Shaders...
 "]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LoadTitleEmitter")
-tracks/1/interp = 1
+tracks/1/path = NodePath("CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteBody:position")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"emit_global_signal"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ColorRect/CarSilhouette/CarSilhouetteBody:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rx5xi"]
@@ -108,7 +85,11 @@ _data = {
 &"compile_animation": SubResource("Animation_x81ys")
 }
 
-[sub_resource type="QuadMesh" id="QuadMesh_68yga"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_68yga"]
+
+[sub_resource type="Theme" id="Theme_5x1wh"]
+RichTextLabel/font_sizes/normal_font_size = 48
+RichTextLabel/fonts/normal_font = ExtResource("6_ojrx7")
 
 [node name="ShaderCompilerScene" type="Node" unique_id=2014038822]
 
@@ -196,88 +177,79 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_ne2yj")
 color_ramp = SubResource("Gradient_ia3k5")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=81879807]
-transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.9834009, 0, 5.474494, 11.435804)
-
-[node name="TrafficCore" parent="." unique_id=1410562825 instance=ExtResource("2_mwelm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7918973, 0, -7.0662956)
-script = null
-
-[node name="PlayerVehicle" parent="." unique_id=1927190907 instance=ExtResource("3_sltll")]
-script = null
-
-[node name="SedanSports" parent="PlayerVehicle" index="0" unique_id=733151807]
-transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.0000001, 0, -1.0000001, 0, -4.371139e-08, 0, 0, 0)
-
-[node name="EngineSmokeEmitter" parent="PlayerVehicle" index="1" unique_id=1822746827]
-emitting = true
-
-[node name="DustCloudEmitter" parent="PlayerVehicle/OffRoadNodes" parent_id_path=PackedInt32Array(1927190907, 1100753317) index="0" unique_id=477234670]
-emitting = true
-
-[node name="OffRoadAnimator" parent="PlayerVehicle/OffRoadNodes" parent_id_path=PackedInt32Array(1927190907, 1100753317) index="1" unique_id=351639193]
-active = false
-autoplay = &""
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1522354889]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1522354889]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_rx5xi")
 autoplay = &"compile_animation"
 
-[node name="LoadTitleEmitter" type="Node" parent="." unique_id=1833702916]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=2015813176]
+z_index = -2
+material = ExtResource("4_sa032")
+scale = Vector2(43, 38)
+texture = SubResource("PlaceholderTexture2D_68yga")
+
+[node name="TravelledHighscoreLabelContainer" type="Control" parent="CanvasLayer" unique_id=603336082 node_paths=PackedStringArray("labels")]
+z_index = -2
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("5_x73n1")
+labels = {
+0: NodePath(""),
+1: NodePath(""),
+2: NodePath("")
+}
+
+[node name="TravelledHighscoreDaily" type="RichTextLabel" parent="CanvasLayer/TravelledHighscoreLabelContainer" unique_id=1919069904]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_right = 619.0
+offset_bottom = 63.0
+theme = SubResource("Theme_5x1wh")
+bbcode_enabled = true
+text = "[pulse color=lime][wave amp=50.0 freq=2.0 connected=1]New Daily Highscore![/wave][/pulse]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="TravelledHighscoreWeekly" type="RichTextLabel" parent="CanvasLayer/TravelledHighscoreLabelContainer" unique_id=2041077574]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_right = 619.0
+offset_bottom = 63.0
+theme = SubResource("Theme_5x1wh")
+bbcode_enabled = true
+text = "[pulse color=cyan][wave amp=50.0 freq=2.0 connected=1]New Weekly Highscore![/wave][/pulse]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="TravelledHighscoreAllTime" type="RichTextLabel" parent="CanvasLayer/TravelledHighscoreLabelContainer" unique_id=1059308046]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_right = 619.0
+offset_bottom = 63.0
+theme = SubResource("Theme_5x1wh")
+bbcode_enabled = true
+text = "[pulse color=gold][wave amp=50.0 freq=2.0 connected=1]New All Time Highscore![/wave][/pulse]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=81879807]
+transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.9834009, 0, 5.474494, 11.435804)
+
+[node name="ShaderLoader" type="Node3D" parent="." unique_id=983016033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2685711, 0)
+script = ExtResource("17_wolln")
+mesh_shader_directories = Array[String](["res://materials/desert_materials/", "res://materials/generic_materials/", "res://materials/generic_materials/gas_canister_materials/", "res://materials/generic_materials/highscore_banner_materials/", "res://materials/generic_materials/particle_materials/"])
+
+[node name="LoadTitleEmitter" type="Node" parent="ShaderLoader" unique_id=1833702916]
 script = ExtResource("6_6c71x")
 global_signal_name = &"scene_change_request_title"
 metadata/_custom_type_script = "uid://lu4gei6pype6"
 
-[node name="TrafficCore2" parent="." unique_id=1650181689 instance=ExtResource("7_sa032")]
-transform = Transform3D(-0.06328675, 0, -0.8447882, 0, 0.99999994, 0, 0.6937904, 0, -0.048542947, -4.2617035, 0.034033537, -2.5469785)
+[node name="PlayerVehicle" parent="." unique_id=1744966565 instance=ExtResource("9_w23pu")]
 
-[node name="fuel-canister" parent="." unique_id=1174851898 instance=ExtResource("6_tle65")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8306751, 1.9226065, -4.581192)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=421915853]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2729483, 0)
-mesh = ExtResource("7_e1u2q")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1077744198]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5704515, 2.2729483, 0)
-mesh = ExtResource("8_v6nyv")
-
-[node name="Node3D" type="Node3D" parent="." unique_id=149660648]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.279501, 0, 0)
-
-[node name="BannerMaterialHolder" type="MeshInstance3D" parent="Node3D" unique_id=693354997]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6548803, 3.746213, -1.772831)
-mesh = SubResource("QuadMesh_68yga")
-surface_material_override/0 = ExtResource("11_wm5w6")
-
-[node name="BannerMaterialHolder2" type="MeshInstance3D" parent="Node3D" unique_id=1663668529]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6394374, 3.746213, -1.772831)
-mesh = SubResource("QuadMesh_68yga")
-surface_material_override/0 = ExtResource("12_wolln")
-
-[node name="BannerMaterialHolder3" type="MeshInstance3D" parent="Node3D" unique_id=1728816405]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6235492, 3.746213, -1.772831)
-mesh = SubResource("QuadMesh_68yga")
-surface_material_override/0 = ExtResource("13_74gol")
-
-[node name="BannerMaterialHolder4" type="MeshInstance3D" parent="Node3D" unique_id=236233270]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6644783, 3.746213, -1.772831)
-mesh = SubResource("QuadMesh_68yga")
-surface_material_override/0 = ExtResource("14_r1gu1")
-
-[node name="BannerMaterialHolder5" type="MeshInstance3D" parent="Node3D" unique_id=1939029558]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7492857, 3.746213, -1.772831)
-mesh = SubResource("QuadMesh_68yga")
-surface_material_override/0 = ExtResource("15_8u5yr")
-
-[node name="BannerMaterialHolder6" type="MeshInstance3D" parent="Node3D" unique_id=1709484519]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7763968, 3.746213, -1.772831)
-mesh = SubResource("QuadMesh_68yga")
-surface_material_override/0 = ExtResource("16_k6n2x")
-
-[node name="ShaderLoader" type="Node3D" parent="." unique_id=983016033]
-script = ExtResource("17_wolln")
-mesh_shader_directories = Array[String](["res://materials/desert_materials/", "res://materials/generic_materials/", "res://materials/generic_materials/gas_canister_materials/", "res://materials/generic_materials/highscore_banner_materials/", "res://materials/generic_materials/particle_materials/"])
+[node name="EngineSmokeEmitter" parent="PlayerVehicle" index="1" unique_id=1822746827]
+emitting = true
 
 [node name="ConfettiCannon" parent="." unique_id=731159488 instance=ExtResource("10_x73n1")]
 anchors_preset = 2
@@ -289,7 +261,7 @@ grow_vertical = 0
 emitting = true
 one_shot = false
 
-[connection signal="ready" from="PlayerVehicle/OffRoadNodes/DustCloudEmitter" to="PlayerVehicle/OffRoadNodes/DustCloudEmitter" method="set_emitting" binds= [true]]
+[connection signal="shaders_done_compiling" from="ShaderLoader" to="ShaderLoader/LoadTitleEmitter" method="emit_global_signal"]
 
 [editable path="PlayerVehicle"]
 [editable path="ConfettiCannon"]

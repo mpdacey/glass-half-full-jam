@@ -384,7 +384,8 @@ mouse_filter = 2
 [node name="PauseButtonParent" type="Node2D" parent="Root/PauseButtonRoot" unique_id=1034362269]
 
 [node name="PauseButton" type="TextureButton" parent="Root/PauseButtonRoot/PauseButtonParent" unique_id=1778904027]
-offset_right = 78.030365
+offset_left = -0.4
+offset_right = 77.63036
 offset_bottom = 77.6911
 texture_normal = ExtResource("4_1287o")
 ignore_texture_size = true
@@ -459,7 +460,11 @@ libraries/ = SubResource("AnimationLibrary_x7pte")
 autoplay = &"warning-loop"
 
 [node name="Odometer" type="Control" parent="Root" unique_id=1962558077 node_paths=PackedStringArray("odometer_values")]
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
 script = ExtResource("11_qtgir")
 odometer_values = [NodePath("TenthsTexture"), NodePath("OnesTexture"), NodePath("TensTexture"), NodePath("HundredsTexture"), NodePath("ThousandsTexture"), NodePath("TenThousandsTexture")]
 
@@ -470,6 +475,7 @@ instance_shader_parameters/display_number = 0.0
 position = Vector2(-128.57169, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
+offset = Vector2(0, 0.49)
 
 [node name="ThousandsTexture" type="Sprite2D" parent="Root/Odometer" unique_id=463500733]
 texture_repeat = 2
@@ -477,6 +483,7 @@ material = ExtResource("11_jp8lb")
 position = Vector2(-93.232635, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
+offset = Vector2(0, 0.49)
 
 [node name="HundredsTexture" type="Sprite2D" parent="Root/Odometer" unique_id=388083865]
 texture_repeat = 2
@@ -484,6 +491,7 @@ material = ExtResource("11_jp8lb")
 position = Vector2(-57.29016, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
+offset = Vector2(0, 0.49)
 
 [node name="TensTexture" type="Sprite2D" parent="Root/Odometer" unique_id=299396907]
 texture_repeat = 2
@@ -491,6 +499,7 @@ material = ExtResource("11_jp8lb")
 position = Vector2(-21.193115, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
+offset = Vector2(0, 0.49)
 
 [node name="OnesTexture" type="Sprite2D" parent="Root/Odometer" unique_id=970582872]
 texture_repeat = 2
@@ -499,6 +508,7 @@ instance_shader_parameters/display_number = 0.0
 position = Vector2(14.49353, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
+offset = Vector2(0, 0.49)
 
 [node name="TenthsTexture" type="Sprite2D" parent="Root/Odometer" unique_id=696806195]
 texture_repeat = 2
@@ -507,6 +517,7 @@ instance_shader_parameters/display_number = 0.0
 position = Vector2(62.925415, 12)
 scale = Vector2(1, 49.82611)
 texture = ExtResource("12_koxlg")
+offset = Vector2(0, 0.49)
 
 [node name="DisplayAnimator" type="AnimationPlayer" parent="." unique_id=1850846799]
 process_mode = 3

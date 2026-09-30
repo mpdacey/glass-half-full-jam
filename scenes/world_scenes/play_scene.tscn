@@ -27,8 +27,6 @@
 [ext_resource type="Script" uid="uid://dqvr18prfj6k" path="res://scripts/fuel_warning_controller.gd" id="22_dwlll"]
 [ext_resource type="Script" uid="uid://nw184rqgi02f" path="res://scripts/odometer_ui_controller.gd" id="23_0gf1i"]
 [ext_resource type="PackedScene" uid="uid://bcdlgci6a3vwr" path="res://scenes/ui/pause.tscn" id="23_4nao0"]
-[ext_resource type="Texture2D" uid="uid://cph7yiesffh3n" path="res://textures/drive_ui/odometer_wheel.png" id="24_7m3n2"]
-[ext_resource type="Shader" uid="uid://7sfyxlr738lf" path="res://shader/odometer_shader.gdshader" id="24_63m0j"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="24_dfpoj"]
 [ext_resource type="AudioStream" uid="uid://degrleg3xlyjy" path="res://audio/sfx/gameover/sizzle.ogg" id="24_q6ljc"]
 [ext_resource type="Script" uid="uid://dajfrlja8jd38" path="res://scripts/highscore_gates_manager.gd" id="25_p8ryb"]
@@ -39,7 +37,9 @@
 [ext_resource type="Script" uid="uid://dpbbwesnmyu7e" path="res://scripts/music_manager.gd" id="26_xbx4t"]
 [ext_resource type="Script" uid="uid://b7dimn244b6j7" path="res://scripts/reset_handler.gd" id="27_deyf2"]
 [ext_resource type="Script" uid="uid://di2puqxd3k4wu" path="res://scripts/fuel_placement_controller.gd" id="27_x2qcq"]
+[ext_resource type="Shader" uid="uid://7sfyxlr738lf" path="res://shader/odometer_shader.gdshader" id="29_0gf1i"]
 [ext_resource type="PackedScene" uid="uid://b67sj3e8sr1yb" path="res://scenes/ui/drive_hud.tscn" id="29_7m3n2"]
+[ext_resource type="Texture2D" uid="uid://cph7yiesffh3n" path="res://textures/drive_ui/odometer_wheel.png" id="30_q6ljc"]
 [ext_resource type="PackedScene" uid="uid://ehjl5dkja5qi" path="res://scenes/obstacles/traffic/police_cruiser.tscn" id="33_7m3n2"]
 [ext_resource type="Script" uid="uid://42ah5w3n1b" path="res://scripts/platform_dependant_text_setter.gd" id="33_wjfxh"]
 [ext_resource type="Script" uid="uid://cwohlwohbk02d" path="res://scripts/highscore_label_ui_controller.gd" id="34_1b2ky"]
@@ -701,8 +701,8 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ssu4d"]
 resource_local_to_scene = true
-shader = ExtResource("24_63m0j")
-shader_parameter/numbers = ExtResource("24_7m3n2")
+shader = ExtResource("29_0gf1i")
+shader_parameter/numbers = ExtResource("30_q6ljc")
 
 [sub_resource type="Environment" id="Environment_6wevv"]
 background_mode = 1

@@ -1,11 +1,9 @@
 [gd_resource type="SphereMesh" format=3 uid="uid://dt68ilnohkb2q"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_421eg"]
-transparency = 1
-albedo_color = Color(0.28, 0.28, 0.28, 0.7529412)
+[ext_resource type="Material" uid="uid://mhr6ad4tx61m" path="res://materials/generic_materials/particle_materials/smoke_particle_material.tres" id="1_66vqy"]
 
 [resource]
-material = SubResource("StandardMaterial3D_421eg")
+material = ExtResource("1_66vqy")
 radius = 0.4
 height = 0.8
 radial_segments = 7

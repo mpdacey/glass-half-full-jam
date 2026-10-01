@@ -51,14 +51,14 @@ theme_override_constants/separation = 16
 
 [node name="RankLabel" type="Label" parent="LeaderboardEntryMargin/LeaderboardEntryHBox" unique_id=1246608436]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.46
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 1.19
 mouse_filter = 1
 text = "100"
 
 [node name="ProfilePictureMargin" type="MarginContainer" parent="LeaderboardEntryMargin/LeaderboardEntryHBox" unique_id=663785492]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 theme_override_constants/margin_top = -8
 theme_override_constants/margin_bottom = -8
 

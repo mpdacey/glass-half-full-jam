@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://tll0ck20v3ph"]
 
 [ext_resource type="Script" uid="uid://dfxs65t8ibgv6" path="res://scripts/highscore_banner.gd" id="1_wkwog"]
-[ext_resource type="Material" uid="uid://1m0oi8p1vcgk" path="res://materials/highscore_banner_materials/green_descriptor_banner_material.tres" id="2_884me"]
-[ext_resource type="Material" uid="uid://cto8oo5aefl7p" path="res://materials/highscore_banner_materials/blue_descriptor_banner_material.tres" id="3_xp3lc"]
-[ext_resource type="Material" uid="uid://c42ke6igj2vpc" path="res://materials/highscore_banner_materials/gold_descriptor_banner_material.tres" id="4_omqb3"]
-[ext_resource type="Material" uid="uid://c376xh68uldhb" path="res://materials/highscore_banner_materials/green_highscore_banner_material.tres" id="5_1s30s"]
-[ext_resource type="Material" uid="uid://b86hptrd6ss51" path="res://materials/highscore_banner_materials/blue_highscore_banner_material.tres" id="6_vqmnx"]
-[ext_resource type="Material" uid="uid://8raq11hii3tx" path="res://materials/highscore_banner_materials/gold_highscore_banner_material.tres" id="7_8xuo3"]
-[ext_resource type="Material" uid="uid://ca4lx4yx78d3j" path="res://materials/highscore_banner_materials/highscore_puck_material.tres" id="8_cp5yx"]
+[ext_resource type="Material" uid="uid://1m0oi8p1vcgk" path="res://materials/generic_materials/highscore_banner_materials/green_descriptor_banner_material.tres" id="2_884me"]
+[ext_resource type="Material" uid="uid://cto8oo5aefl7p" path="res://materials/generic_materials/highscore_banner_materials/blue_descriptor_banner_material.tres" id="3_xp3lc"]
+[ext_resource type="Material" uid="uid://c42ke6igj2vpc" path="res://materials/generic_materials/highscore_banner_materials/gold_descriptor_banner_material.tres" id="4_omqb3"]
+[ext_resource type="Material" uid="uid://c376xh68uldhb" path="res://materials/generic_materials/highscore_banner_materials/green_highscore_banner_material.tres" id="5_1s30s"]
+[ext_resource type="Material" uid="uid://b86hptrd6ss51" path="res://materials/generic_materials/highscore_banner_materials/blue_highscore_banner_material.tres" id="6_vqmnx"]
+[ext_resource type="Material" uid="uid://8raq11hii3tx" path="res://materials/generic_materials/highscore_banner_materials/gold_highscore_banner_material.tres" id="7_8xuo3"]
+[ext_resource type="Material" uid="uid://ca4lx4yx78d3j" path="res://materials/generic_materials/highscore_banner_materials/highscore_puck_material.tres" id="8_cp5yx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wkwog"]
 size = Vector2(1, 4)

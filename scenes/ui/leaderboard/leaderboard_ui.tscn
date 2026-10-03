@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://copts6wfejoon" path="res://audio/sfx/ui/leaderboard/leaderboard_book_open.wav" id="17_t1ah0"]
 [ext_resource type="PackedScene" uid="uid://boscxn2xgn85t" path="res://scenes/ui/info_box_ui.tscn" id="22_gpe5i"]
 [ext_resource type="Resource" uid="uid://daf1qa5w8sp1p" path="res://resources/info_box_resources/leaderboard_disclaimer_resource.tres" id="23_4qtqu"]
+[ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="23_132qw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpe5i"]
 bg_color = Color(0.95686275, 0.9137255, 0.91764706, 1)
@@ -1190,6 +1191,11 @@ ignore_time_scale = true
 [node name="InfoBox" parent="." unique_id=920866391 instance=ExtResource("22_gpe5i")]
 metadata/content = ExtResource("23_4qtqu")
 
+[node name="SnackbarButtonListener" type="Node" parent="InfoBox" unique_id=1982993396]
+script = ExtResource("23_132qw")
+target_button_type = 1
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
 [connection signal="load_most_wanted_scores_request" from="." to="PlayGamesLeaderboardsClient" method="load_top_scores"]
 [connection signal="load_most_wanted_scores_request" from="." to="LeaderboardsPanel/LeaderboardsVBox/EntriesPosition/BetweenLoadingController" method="_on_leaderboard_load_request" unbinds=5]
 [connection signal="load_most_wanted_scores_request" from="." to="Timers/WaitForResponseTimer" method="start" unbinds=5]
@@ -1221,3 +1227,4 @@ metadata/content = ExtResource("23_4qtqu")
 [connection signal="timeout" from="Timers/WaitForResponseTimer" to="." method="set_scores" binds= [[]]]
 [connection signal="timeout" from="Timers/RefreshTimer" to="." method="reset_refresh_states"]
 [connection signal="timeout" from="Timers/RefreshTimer" to="Timers/RefreshTimer" method="start"]
+[connection signal="target_toggled_off" from="InfoBox/SnackbarButtonListener" to="InfoBox" method="dismiss_info_box"]

@@ -3,7 +3,8 @@ class_name OptionsUIController
 
 signal view_credits_requested
 
-const PRIVACY_POLICY_URL = "https://github.com/mpdacey/glass-half-full-jam/blob/main/app_privacy_policy.md"
+const PRIVACY_POLICY_URL = "https://gashalffuel.com/privacy-policy/"
+const UPDATES_URL = "https://gashalffuel.com/updates/"
 const DEFAULT_DISPLAY_TEXT = "Options"
 
 enum OptionState {
@@ -12,6 +13,7 @@ enum OptionState {
 	MUTE_SFX,
 	CREDITS,
 	PRIVACY_POLICY,
+	UPDATES,
 }
 
 @export var display_label: RichTextLabel
@@ -50,12 +52,17 @@ func dismiss() -> void:
 func _on_privacy_policy_button_pressed() -> void:
 	OS.shell_open(PRIVACY_POLICY_URL)
 	current_display_state = OptionState.PRIVACY_POLICY
-	tween_display_text("View Privacy Policy")
+	tween_display_text("Privacy Policy")
 
 func _on_credits_button_pressed() -> void:
 	view_credits_requested.emit()
 	current_display_state = OptionState.CREDITS
 	tween_display_text("View Credits")
+
+func _on_update_button_pressed() -> void:
+	OS.shell_open(UPDATES_URL)
+	current_display_state = OptionState.UPDATES
+	tween_display_text("Update History")
 
 func _on_music_mute_button_toggle_set(toggled_on: bool) -> void:
 	var message := "Music "

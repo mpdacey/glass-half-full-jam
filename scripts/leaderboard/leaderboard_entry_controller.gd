@@ -13,6 +13,7 @@ const DELAY_BETWEEN_PING_PONG = 0.7
 @export var http_request: HTTPRequest
 var _username_scroll : HScrollBar
 var _scroll_tween : Tween
+var _player_id : String = ""
 
 func set_entry_values(data: PlayGamesLeaderboardScore) -> void:
 	visible = data != null
@@ -32,19 +33,21 @@ func set_entry_values(data: PlayGamesLeaderboardScore) -> void:
 	else:
 		rank_label.text = _get_ordinal(data.rank)
 	
-	_set_scrolling_animation.call_deferred()
+	_set_scrolling_animation.call_deferred(_player_id == data.score_holder.player_id)
+	_player_id = data.score_holder.player_id
 	
 	if data.score_holder.has_icon_image:
 		_set_profile_picture(data.score_holder.icon_image_uri)
 	else:
 		_set_profile_picture("")
 
-func _set_scrolling_animation() -> void:
-	if _scroll_tween:
-		_scroll_tween.kill()
-	
+func _set_scrolling_animation(same_player: bool) -> void:
 	_username_scroll = username_scroll_container.get_h_scroll_bar()
-	#I don't like how this signal gets emitted multiple times before its finally "ready" but whatever
+	
+	if same_player:
+		_on_scroll_changed()
+		return
+	
 	if not _username_scroll.changed.is_connected(_on_scroll_changed):
 		_username_scroll.changed.connect(_on_scroll_changed)
 
@@ -61,12 +64,12 @@ func _set_profile_picture(icon_image_uri: String) -> void:
 	profile_picture.texture = texture_image
 
 func _on_scroll_changed() -> void:
+	if _scroll_tween:
+		_scroll_tween.kill()
+		
 	_username_scroll.value = 0
 	if _username_scroll.max_value == _username_scroll.page:
 		return
-	
-	if _scroll_tween:
-		_scroll_tween.kill()
 	
 	var scroll_range := _username_scroll.max_value - _username_scroll.page
 	var scroll_time := float(scroll_range) / SCROLL_AMOUNT_PER_SECOND

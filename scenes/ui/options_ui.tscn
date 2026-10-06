@@ -91,12 +91,16 @@ region = Rect2(2520, 1502, 374, 374)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ye3ti"]
 atlas = ExtResource("4_ne5w5")
-region = Rect2(5536, 0, 328, 328)
+region = Rect2(6988, 476, 430, 430)
 
 [sub_resource type="LabelSettings" id="LabelSettings_84upj"]
 font = ExtResource("5_ne5w5")
 font_size = 30
 font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cta15"]
+atlas = ExtResource("4_ne5w5")
+region = Rect2(6010, 982, 400, 400)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68yga"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
@@ -738,15 +742,17 @@ metadata/_custom_type_script = "uid://doy80gr0iay7o"
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("5_ye3ti")
+theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 29
+theme_override_constants/margin_right = 40
 
 [node name="StickyNotesHBox" type="HBoxContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin" unique_id=456522807]
 layout_mode = 2
-theme_override_constants/separation = -135
+theme_override_constants/separation = 30
 
 [node name="CreditsButtonMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox" unique_id=1384618851]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 7
 
 [node name="CreditsButton" type="Button" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/CreditsButtonMargin" unique_id=2102750900]
 layout_mode = 2
@@ -767,25 +773,64 @@ theme_override_constants/separation = 12
 
 [node name="CreditsTextureMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/CreditsButtonMargin/CreditsContentMargin/CreditsContentVBox" unique_id=896614847]
 layout_mode = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_right = 40
+size_flags_vertical = 3
 
 [node name="CreditsTextureRect" type="TextureRect" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/CreditsButtonMargin/CreditsContentMargin/CreditsContentVBox/CreditsTextureMargin" unique_id=1432025666]
 self_modulate = Color(0.1882353, 0.1882353, 0.1882353, 1)
 layout_mode = 2
 texture = SubResource("AtlasTexture_ye3ti")
-expand_mode = 5
+expand_mode = 3
 stretch_mode = 5
 
 [node name="CreditsLabel" type="Label" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/CreditsButtonMargin/CreditsContentMargin/CreditsContentVBox" unique_id=1277212745]
 layout_mode = 2
-text = "View Credits"
+text = "View
+Credits"
+label_settings = SubResource("LabelSettings_84upj")
+horizontal_alignment = 1
+
+[node name="PatchNotesButtonMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox" unique_id=842870560]
+layout_mode = 2
+size_flags_horizontal = 7
+
+[node name="PatchNotesButton" type="Button" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PatchNotesButtonMargin" unique_id=718433009]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_behavior_recursive = 2
+theme = ExtResource("5_ye3ti")
+
+[node name="PatchNotesContentMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PatchNotesButtonMargin" unique_id=571411855]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 24
+
+[node name="PatchNotesContentVBox" type="VBoxContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PatchNotesButtonMargin/PatchNotesContentMargin" unique_id=244361566]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PatchNotesTextureMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PatchNotesButtonMargin/PatchNotesContentMargin/PatchNotesContentVBox" unique_id=1093505823]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PatchNotesTextureRect" type="TextureRect" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PatchNotesButtonMargin/PatchNotesContentMargin/PatchNotesContentVBox/PatchNotesTextureMargin" unique_id=25730146]
+self_modulate = Color(0.1882353, 0.1882353, 0.1882353, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_cta15")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PatchNotesLabel" type="Label" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PatchNotesButtonMargin/PatchNotesContentMargin/PatchNotesContentVBox" unique_id=1915635251]
+layout_mode = 2
+text = "View
+Update
+History"
 label_settings = SubResource("LabelSettings_84upj")
 horizontal_alignment = 1
 
 [node name="PrivacyPolicyButtonMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox" unique_id=873788941]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 7
 
 [node name="PrivacyPolicyButton" type="Button" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PrivacyPolicyButtonMargin" unique_id=248304054]
 layout_mode = 2
@@ -806,18 +851,19 @@ theme_override_constants/separation = 12
 
 [node name="PrivacyPolicyTextureMargin" type="MarginContainer" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PrivacyPolicyButtonMargin/PrivacyPolicyContentMargin/PrivacyPolicyContentVBox" unique_id=1730121556]
 layout_mode = 2
-theme_override_constants/margin_left = 52
-theme_override_constants/margin_right = 52
+size_flags_vertical = 3
 
 [node name="PrivacyPolicyTextureRect" type="TextureRect" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PrivacyPolicyButtonMargin/PrivacyPolicyContentMargin/PrivacyPolicyContentVBox/PrivacyPolicyTextureMargin" unique_id=1120990098]
 self_modulate = Color(0.1882353, 0.1882353, 0.1882353, 1)
 layout_mode = 2
 texture = ExtResource("9_wuery")
-expand_mode = 5
+expand_mode = 3
+stretch_mode = 5
 
 [node name="PrivacyPolicyLabel" type="Label" parent="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PrivacyPolicyButtonMargin/PrivacyPolicyContentMargin/PrivacyPolicyContentVBox" unique_id=1502965550]
 layout_mode = 2
-text = "Privacy Policy"
+text = "Privacy
+Policy"
 label_settings = SubResource("LabelSettings_84upj")
 horizontal_alignment = 1
 
@@ -874,6 +920,7 @@ visible = false
 [connection signal="sfx_muted_set" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioHBox/SoundMuteButton" method="set_toggle" flags=6]
 [connection signal="target_toggled_off" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController/SnackbarButtonListener" to="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/AudioMargin/AudioToggleController" method="save_audio_settings"]
 [connection signal="pressed" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/CreditsButtonMargin/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PatchNotesButtonMargin/PatchNotesButton" to="." method="_on_update_button_pressed"]
 [connection signal="pressed" from="OptionsHBox/OptionsPanel/OptionsPanelMargin/OptionsPanelHBox/CoreVBox/StickyNotesMargin/StickyNotesHBox/PrivacyPolicyButtonMargin/PrivacyPolicyButton" to="." method="_on_privacy_policy_button_pressed"]
 [connection signal="target_retoggled_on" from="CreditsAnimator/SnackbarButtonListener" to="CreditsAnimator" method="play" binds= [&"close_credits"]]
 [connection signal="target_toggled_off" from="CreditsAnimator/SnackbarButtonListener" to="CreditsAnimator" method="play" binds= [&"close_credits"]]

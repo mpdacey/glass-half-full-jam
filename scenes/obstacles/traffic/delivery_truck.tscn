@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_3mm47"]
 [ext_resource type="ArrayMesh" uid="uid://d25b0yjt1tilp" path="res://models/traffic/delivery.obj" id="2_pbdek"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="3_pbdek"]
+[ext_resource type="Material" uid="uid://b28mhbtgiedhg" path="res://materials/generic_materials/traffic-varients/silver_traffic_material.tres" id="5_6cwju"]
+[ext_resource type="Material" uid="uid://bqqgutfcb6duh" path="res://materials/generic_materials/traffic-varients/green_traffic_material.tres" id="6_vu57e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30yfe"]
 size = Vector3(2.432, 2.2932217, 5.718)
@@ -22,4 +24,6 @@ surface_material_override/1 = ExtResource("3_pbdek")
 surface_material_override/2 = ExtResource("3_pbdek")
 surface_material_override/3 = ExtResource("3_pbdek")
 surface_material_override/4 = ExtResource("3_pbdek")
-surface_material_override/5 = ExtResource("3_pbdek")
+surface_material_override/5 = ExtResource("5_6cwju")
+surface_material_override/6 = ExtResource("6_vu57e")
+surface_material_override/7 = ExtResource("5_6cwju")

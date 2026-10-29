@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_fei0n"]
 [ext_resource type="ArrayMesh" uid="uid://b80e166x1m1ln" path="res://models/traffic/delivery-flat.obj" id="2_n05du"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="3_7hg14"]
+[ext_resource type="Material" uid="uid://h0142jppq2n4" path="res://materials/generic_materials/traffic-varients/orange_traffic_material.tres" id="4_n05du"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30yfe"]
 size = Vector3(2.432, 2.2932217, 5.718)
@@ -22,3 +23,4 @@ surface_material_override/1 = ExtResource("3_7hg14")
 surface_material_override/2 = ExtResource("3_7hg14")
 surface_material_override/3 = ExtResource("3_7hg14")
 surface_material_override/4 = ExtResource("3_7hg14")
+surface_material_override/5 = ExtResource("4_n05du")

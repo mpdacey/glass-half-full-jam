@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://xr8lh41t68bh"]
 
 [ext_resource type="Script" uid="uid://bcbdcaro0ifxp" path="res://scripts/traffic_core_controller.gd" id="1_rw0se"]
+[ext_resource type="Script" uid="uid://boibecwrw30dt" path="res://scripts/traffic_painter.gd" id="2_lufb5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rw0se"]
 margin = 0.0
@@ -26,5 +27,8 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleHitBox" unique_id=1926319234]
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=48078305]
+
+[node name="TrafficPainter" type="Node" parent="." unique_id=1018432734]
+script = ExtResource("2_lufb5")
 
 [connection signal="area_entered" from="PlayerNearDetector" to="." method="_on_player_near" unbinds=1]

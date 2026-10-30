@@ -24,6 +24,22 @@
 [ext_resource type="Material" uid="uid://1m0oi8p1vcgk" path="res://materials/generic_materials/highscore_banner_materials/green_descriptor_banner_material.tres" id="21_fh12i"]
 [ext_resource type="Material" uid="uid://c376xh68uldhb" path="res://materials/generic_materials/highscore_banner_materials/green_highscore_banner_material.tres" id="22_xla8q"]
 [ext_resource type="Material" uid="uid://ca4lx4yx78d3j" path="res://materials/generic_materials/highscore_banner_materials/highscore_puck_material.tres" id="24_3dlmi"]
+[ext_resource type="Material" uid="uid://5e05sexoncyd" path="res://materials/generic_materials/traffic-varients/amber_traffic_material.tres" id="25_380kc"]
+[ext_resource type="Material" uid="uid://cwultvfspsaf3" path="res://materials/generic_materials/traffic-varients/baby_blue_traffic_material.tres" id="26_7r4sc"]
+[ext_resource type="Material" uid="uid://b3eoc0bpkqgas" path="res://materials/generic_materials/traffic-varients/black_traffic_material.tres" id="27_ge4bf"]
+[ext_resource type="Material" uid="uid://dontotv5q0sl2" path="res://materials/generic_materials/traffic-varients/blue_traffic_material.tres" id="28_8a61y"]
+[ext_resource type="Material" uid="uid://dj1p7oil8hvvc" path="res://materials/generic_materials/traffic-varients/brown_traffic_material.tres" id="29_qevne"]
+[ext_resource type="Material" uid="uid://defgr3e5f4dei" path="res://materials/generic_materials/traffic-varients/cream_traffic_material.tres" id="30_mxib1"]
+[ext_resource type="Material" uid="uid://bwfm08ghfd7r2" path="res://materials/generic_materials/traffic-varients/dark_grey_traffic_material.tres" id="31_o4dav"]
+[ext_resource type="Material" uid="uid://bqqgutfcb6duh" path="res://materials/generic_materials/traffic-varients/green_traffic_material.tres" id="32_vdplq"]
+[ext_resource type="Material" uid="uid://h5l1rtc5hcjp" path="res://materials/generic_materials/traffic-varients/light_grey_traffic_material.tres" id="33_8r3pt"]
+[ext_resource type="Material" uid="uid://h0142jppq2n4" path="res://materials/generic_materials/traffic-varients/orange_traffic_material.tres" id="34_sx51j"]
+[ext_resource type="Material" uid="uid://cnb7vsckqa55y" path="res://materials/generic_materials/traffic-varients/purple_traffic_material.tres" id="35_usif2"]
+[ext_resource type="Material" uid="uid://b28mhbtgiedhg" path="res://materials/generic_materials/traffic-varients/silver_traffic_material.tres" id="36_7o1uc"]
+[ext_resource type="Material" uid="uid://dn5rkrscgw1at" path="res://materials/generic_materials/traffic-varients/steel_traffic_material.tres" id="37_pnkhq"]
+[ext_resource type="Material" uid="uid://ud621s8g6ele" path="res://materials/generic_materials/traffic-varients/tan_traffic_material.tres" id="38_lk8de"]
+[ext_resource type="Material" uid="uid://4ci6k34cih3s" path="res://materials/generic_materials/traffic-varients/white_traffic_material.tres" id="39_rykps"]
+[ext_resource type="Material" uid="uid://dlb4b4o5fx0gq" path="res://materials/generic_materials/traffic-varients/yellow_traffic_material.tres" id="40_rfpuf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qsc2p"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -563,7 +579,7 @@ min_distance_between_bends = 600.0
 max_distance_between_bends = 900.0
 min_range_of_bend = 1.25
 max_range_of_bend = 1.65
-bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("16_xla8q"), ExtResource("17_y8dsr"), ExtResource("17_m3e78"), ExtResource("18_sp145"), ExtResource("19_3dlmi"), ExtResource("20_xgvo4"), ExtResource("21_fh12i"), ExtResource("22_xla8q"), ExtResource("24_3dlmi")])
+bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("16_xla8q"), ExtResource("17_y8dsr"), ExtResource("17_m3e78"), ExtResource("18_sp145"), ExtResource("19_3dlmi"), ExtResource("20_xgvo4"), ExtResource("21_fh12i"), ExtResource("22_xla8q"), ExtResource("24_3dlmi"), ExtResource("25_380kc"), ExtResource("26_7r4sc"), ExtResource("27_ge4bf"), ExtResource("28_8a61y"), ExtResource("29_qevne"), ExtResource("30_mxib1"), ExtResource("31_o4dav"), ExtResource("32_vdplq"), ExtResource("33_8r3pt"), ExtResource("34_sx51j"), ExtResource("35_usif2"), ExtResource("36_7o1uc"), ExtResource("37_pnkhq"), ExtResource("38_lk8de"), ExtResource("39_rykps"), ExtResource("40_rfpuf")])
 signal_emitter = NodePath("../TerrainGlobalListeners/TerrainSpeedListener")
 signal_name = &"global_signal_emitted_with_value"
 metadata/_custom_type_script = "uid://3w32j7t20216"

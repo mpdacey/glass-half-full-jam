@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_fei0n"]
 [ext_resource type="ArrayMesh" uid="uid://b80e166x1m1ln" path="res://models/traffic/delivery-flat.obj" id="2_n05du"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="3_7hg14"]
-[ext_resource type="Material" uid="uid://dak2y74y1t5sy" path="res://materials/generic_materials/traffic-varients/red_traffic_material.tres" id="4_mvx30"]
-[ext_resource type="Material" uid="uid://h0142jppq2n4" path="res://materials/generic_materials/traffic-varients/orange_traffic_material.tres" id="4_n05du"]
-[ext_resource type="Material" uid="uid://b28mhbtgiedhg" path="res://materials/generic_materials/traffic-varients/silver_traffic_material.tres" id="5_62bmw"]
-[ext_resource type="Material" uid="uid://cwultvfspsaf3" path="res://materials/generic_materials/traffic-varients/baby_blue_traffic_material.tres" id="6_mvx30"]
-[ext_resource type="Material" uid="uid://ud621s8g6ele" path="res://materials/generic_materials/traffic-varients/tan_traffic_material.tres" id="7_7eepq"]
+[ext_resource type="Material" uid="uid://dak2y74y1t5sy" path="res://materials/generic_materials/traffic_variants/red_traffic_material.tres" id="4_mvx30"]
+[ext_resource type="Material" uid="uid://h0142jppq2n4" path="res://materials/generic_materials/traffic_variants/orange_traffic_material.tres" id="4_n05du"]
+[ext_resource type="Material" uid="uid://b28mhbtgiedhg" path="res://materials/generic_materials/traffic_variants/silver_traffic_material.tres" id="5_62bmw"]
+[ext_resource type="Material" uid="uid://cwultvfspsaf3" path="res://materials/generic_materials/traffic_variants/baby_blue_traffic_material.tres" id="6_mvx30"]
+[ext_resource type="Material" uid="uid://ud621s8g6ele" path="res://materials/generic_materials/traffic_variants/tan_traffic_material.tres" id="7_7eepq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30yfe"]
 size = Vector3(2.432, 2.2932217, 5.718)

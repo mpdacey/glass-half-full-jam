@@ -4,6 +4,11 @@
 [ext_resource type="ArrayMesh" uid="uid://cojfqsiv1ryvp" path="res://models/traffic/suv-luxury.obj" id="2_x6i7l"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="3_x6i7l"]
 [ext_resource type="Material" uid="uid://5e05sexoncyd" path="res://materials/generic_materials/traffic-varients/amber_traffic_material.tres" id="4_3dp4u"]
+[ext_resource type="Material" uid="uid://h0142jppq2n4" path="res://materials/generic_materials/traffic-varients/orange_traffic_material.tres" id="4_wtggv"]
+[ext_resource type="Material" uid="uid://b3eoc0bpkqgas" path="res://materials/generic_materials/traffic-varients/black_traffic_material.tres" id="5_3dp4u"]
+[ext_resource type="Material" uid="uid://dontotv5q0sl2" path="res://materials/generic_materials/traffic-varients/blue_traffic_material.tres" id="6_edf6a"]
+[ext_resource type="Material" uid="uid://b28mhbtgiedhg" path="res://materials/generic_materials/traffic-varients/silver_traffic_material.tres" id="7_wen28"]
+[ext_resource type="Material" uid="uid://bqqgutfcb6duh" path="res://materials/generic_materials/traffic-varients/green_traffic_material.tres" id="8_r2ut3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km2h6"]
 size = Vector3(2.2574768, 2.8142242, 5.1678467)
@@ -25,3 +30,14 @@ surface_material_override/2 = ExtResource("3_x6i7l")
 surface_material_override/3 = ExtResource("3_x6i7l")
 surface_material_override/4 = ExtResource("3_x6i7l")
 surface_material_override/5 = ExtResource("4_3dp4u")
+
+[node name="TrafficPainter" parent="." index="4" unique_id=1018432734 node_paths=PackedStringArray("mesh")]
+mesh = NodePath("../SuvLuxury")
+weighted_paints = Dictionary[Material, float]({
+ExtResource("5_3dp4u"): 1.0,
+ExtResource("4_wtggv"): 0.3,
+ExtResource("6_edf6a"): 3.0,
+ExtResource("7_wen28"): 1.0,
+ExtResource("8_r2ut3"): 2.0,
+ExtResource("4_3dp4u"): 3.0
+})

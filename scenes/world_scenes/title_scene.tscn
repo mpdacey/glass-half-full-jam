@@ -782,6 +782,76 @@ tracks/9/keys = {
 "update": 1,
 "values": [Vector3(200, -0.15, 0), Vector3(0, -0.15, 0), Vector3(200, -0.15, 0)]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Paths/IncomingLanePath/TrafficCore/TrafficPainter")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_random_paint"
+}]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Paths/IncomingLanePath/TrafficCore2/TrafficPainter")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.010000002),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_random_paint"
+}]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Paths/OngoingLanePath/TrafficCore/TrafficPainter")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.029999997),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_random_paint"
+}]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Paths/OngoingLanePath/TrafficCore/TrafficPainter2")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.07),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_random_paint"
+}]
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Paths/IncomingLanePath/TrafficCore3/TrafficPainter")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.11),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_random_paint"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hiwto"]
 _data = {
@@ -1106,4 +1176,8 @@ script = ExtResource("25_t3vcv")
 [connection signal="target_toggled_on" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [0]]
 [connection signal="auto_button_pressed" from="TitleSnackbar/SnackbarButtonAutoSelector" to="TitleSnackbar" method="press_snackbar_button"]
 
+[editable path="Paths/OngoingLanePath/TrafficCore"]
+[editable path="Paths/IncomingLanePath/TrafficCore"]
+[editable path="Paths/IncomingLanePath/TrafficCore2"]
+[editable path="Paths/IncomingLanePath/TrafficCore3"]
 [editable path="Paths/PolicePath/PoliceCore"]

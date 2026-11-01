@@ -188,17 +188,12 @@ material = ExtResource("4_sa032")
 scale = Vector2(43, 38)
 texture = SubResource("PlaceholderTexture2D_68yga")
 
-[node name="TravelledHighscoreLabelContainer" type="Control" parent="CanvasLayer" unique_id=603336082 node_paths=PackedStringArray("labels")]
+[node name="TravelledHighscoreLabelContainer" type="Control" parent="CanvasLayer" unique_id=603336082]
 z_index = -2
 layout_mode = 3
 anchors_preset = 0
 size_flags_vertical = 3
 script = ExtResource("5_x73n1")
-labels = {
-0: NodePath(""),
-1: NodePath(""),
-2: NodePath("")
-}
 
 [node name="TravelledHighscoreDaily" type="RichTextLabel" parent="CanvasLayer/TravelledHighscoreLabelContainer" unique_id=1919069904]
 custom_minimum_size = Vector2(0, 50)
@@ -239,7 +234,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.983
 [node name="ShaderLoader" type="Node3D" parent="." unique_id=983016033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2685711, 0)
 script = ExtResource("17_wolln")
-mesh_shader_directories = Array[String](["res://materials/desert_materials/", "res://materials/generic_materials/", "res://materials/generic_materials/gas_canister_materials/", "res://materials/generic_materials/highscore_banner_materials/", "res://materials/generic_materials/particle_materials/"])
+mesh_shader_directories = Array[String](["res://materials/desert_materials/", "res://materials/generic_materials/", "res://materials/generic_materials/gas_canister_materials/", "res://materials/generic_materials/highscore_banner_materials/", "res://materials/generic_materials/particle_materials/", "res://materials/generic_materials/traffic_variants/"])
 
 [node name="LoadTitleEmitter" type="Node" parent="ShaderLoader" unique_id=1833702916]
 script = ExtResource("6_6c71x")

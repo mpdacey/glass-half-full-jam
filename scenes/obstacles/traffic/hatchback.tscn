@@ -3,6 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_2dqks"]
 [ext_resource type="ArrayMesh" uid="uid://bgojhnnpwqf0e" path="res://models/traffic/hatchback-sports.obj" id="2_km2h6"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="3_km2h6"]
+[ext_resource type="Material" uid="uid://bqqgutfcb6duh" path="res://materials/generic_materials/traffic_variants/green_traffic_material.tres" id="4_auoou"]
+[ext_resource type="Material" uid="uid://cnb7vsckqa55y" path="res://materials/generic_materials/traffic_variants/purple_traffic_material.tres" id="5_3q4qd"]
+[ext_resource type="Material" uid="uid://h0142jppq2n4" path="res://materials/generic_materials/traffic_variants/orange_traffic_material.tres" id="6_t288h"]
+[ext_resource type="Material" uid="uid://dontotv5q0sl2" path="res://materials/generic_materials/traffic_variants/blue_traffic_material.tres" id="7_6x1h5"]
+[ext_resource type="Material" uid="uid://dak2y74y1t5sy" path="res://materials/generic_materials/traffic_variants/red_traffic_material.tres" id="8_t288h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km2h6"]
 size = Vector3(2.2574768, 2.8142242, 5.1678467)
@@ -22,3 +27,14 @@ surface_material_override/1 = ExtResource("3_km2h6")
 surface_material_override/2 = ExtResource("3_km2h6")
 surface_material_override/3 = ExtResource("3_km2h6")
 surface_material_override/4 = ExtResource("3_km2h6")
+surface_material_override/5 = ExtResource("4_auoou")
+
+[node name="TrafficPainter" parent="." index="4" unique_id=1018432734 node_paths=PackedStringArray("mesh")]
+mesh = NodePath("../HatchbackSports")
+weighted_paints = Dictionary[Material, float]({
+ExtResource("4_auoou"): 3.0,
+ExtResource("5_3q4qd"): 1.0,
+ExtResource("6_t288h"): 2.0,
+ExtResource("7_6x1h5"): 2.0,
+ExtResource("8_t288h"): 1.0
+})

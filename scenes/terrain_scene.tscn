@@ -40,6 +40,7 @@
 [ext_resource type="Material" uid="uid://ud621s8g6ele" path="res://materials/generic_materials/traffic_variants/tan_traffic_material.tres" id="38_lk8de"]
 [ext_resource type="Material" uid="uid://4ci6k34cih3s" path="res://materials/generic_materials/traffic_variants/white_traffic_material.tres" id="39_rykps"]
 [ext_resource type="Material" uid="uid://dlb4b4o5fx0gq" path="res://materials/generic_materials/traffic_variants/yellow_traffic_material.tres" id="40_rfpuf"]
+[ext_resource type="Material" uid="uid://dak2y74y1t5sy" path="res://materials/generic_materials/traffic_variants/red_traffic_material.tres" id="41_7r4sc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qsc2p"]
 sky_top_color = Color(0.42240003, 0.8189867, 0.88, 1)
@@ -579,7 +580,7 @@ min_distance_between_bends = 600.0
 max_distance_between_bends = 900.0
 min_range_of_bend = 1.25
 max_range_of_bend = 1.65
-bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("16_xla8q"), ExtResource("17_y8dsr"), ExtResource("17_m3e78"), ExtResource("18_sp145"), ExtResource("19_3dlmi"), ExtResource("20_xgvo4"), ExtResource("21_fh12i"), ExtResource("22_xla8q"), ExtResource("24_3dlmi"), ExtResource("25_380kc"), ExtResource("26_7r4sc"), ExtResource("27_ge4bf"), ExtResource("28_8a61y"), ExtResource("29_qevne"), ExtResource("30_mxib1"), ExtResource("31_o4dav"), ExtResource("32_vdplq"), ExtResource("33_8r3pt"), ExtResource("34_sx51j"), ExtResource("35_usif2"), ExtResource("36_7o1uc"), ExtResource("37_pnkhq"), ExtResource("38_lk8de"), ExtResource("39_rykps"), ExtResource("40_rfpuf")])
+bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("16_xla8q"), ExtResource("17_y8dsr"), ExtResource("17_m3e78"), ExtResource("18_sp145"), ExtResource("19_3dlmi"), ExtResource("20_xgvo4"), ExtResource("21_fh12i"), ExtResource("22_xla8q"), ExtResource("24_3dlmi"), ExtResource("25_380kc"), ExtResource("26_7r4sc"), ExtResource("27_ge4bf"), ExtResource("28_8a61y"), ExtResource("29_qevne"), ExtResource("30_mxib1"), ExtResource("31_o4dav"), ExtResource("32_vdplq"), ExtResource("33_8r3pt"), ExtResource("34_sx51j"), ExtResource("35_usif2"), ExtResource("36_7o1uc"), ExtResource("37_pnkhq"), ExtResource("38_lk8de"), ExtResource("39_rykps"), ExtResource("40_rfpuf"), ExtResource("41_7r4sc")])
 signal_emitter = NodePath("../TerrainGlobalListeners/TerrainSpeedListener")
 signal_name = &"global_signal_emitted_with_value"
 metadata/_custom_type_script = "uid://3w32j7t20216"

@@ -8,6 +8,9 @@ func _ready() -> void:
 	if not mesh:
 		return
 	
+	set_random_paint()
+
+func set_random_paint() -> void:
 	mesh.set_surface_override_material(surface_override_index, _pick_paint())
 
 func _pick_paint() -> Material:

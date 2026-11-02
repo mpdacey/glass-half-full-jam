@@ -28,3 +28,10 @@ surface_material_override/5 = ExtResource("4_n05du")
 
 [node name="TrafficPainter" parent="." index="4" unique_id=1018432734 node_paths=PackedStringArray("mesh")]
 mesh = NodePath("../DeliveryFlat")
+weighted_paints = Dictionary[int, float]({
+1: 2.0,
+9: 1.0,
+12: 2.0,
+13: 1.0,
+15: 1.0
+})

@@ -4,7 +4,6 @@
 [ext_resource type="ArrayMesh" uid="uid://d25b0yjt1tilp" path="res://models/traffic/delivery.obj" id="2_pbdek"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="3_pbdek"]
 [ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="4_rvsqw"]
-[ext_resource type="Script" uid="uid://boibecwrw30dt" path="res://scripts/traffic_painter.gd" id="9_b13s4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30yfe"]
 size = Vector3(2.432, 2.2932217, 5.718)
@@ -18,7 +17,7 @@ shape = SubResource("BoxShape3D_30yfe")
 
 [node name="Delivery" type="MeshInstance3D" parent="." index="2" unique_id=2091386686]
 transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0, 0, 0)
-instance_shader_parameters/paint = 1
+instance_shader_parameters/paint = 10
 mesh = ExtResource("2_pbdek")
 surface_material_override/0 = ExtResource("3_pbdek")
 surface_material_override/1 = ExtResource("3_pbdek")
@@ -31,10 +30,9 @@ surface_material_override/7 = ExtResource("3_pbdek")
 
 [node name="TrafficPainter" parent="." index="4" unique_id=1018432734 node_paths=PackedStringArray("mesh")]
 mesh = NodePath("../Delivery")
-surface_override_index = 6
-
-[node name="TrafficPainter2" type="Node" parent="." index="5" unique_id=1983921949 node_paths=PackedStringArray("mesh")]
-process_mode = 4
-script = ExtResource("9_b13s4")
-mesh = NodePath("../Delivery")
-surface_override_index = 7
+weighted_paints = Dictionary[int, float]({
+3: 3.0,
+7: 3.0,
+9: 3.0,
+11: 1.0
+})

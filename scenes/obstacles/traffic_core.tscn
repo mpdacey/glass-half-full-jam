@@ -29,7 +29,6 @@ monitoring = false
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=48078305]
 
 [node name="TrafficPainter" type="Node" parent="." unique_id=1018432734]
-process_mode = 4
 script = ExtResource("2_lufb5")
 
 [connection signal="area_entered" from="PlayerNearDetector" to="." method="_on_player_near" unbinds=1]

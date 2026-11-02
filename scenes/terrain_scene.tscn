@@ -19,6 +19,7 @@
 [ext_resource type="Material" uid="uid://cto8oo5aefl7p" path="res://materials/generic_materials/highscore_banner_materials/blue_descriptor_banner_material.tres" id="17_m3e78"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="17_y8dsr"]
 [ext_resource type="Material" uid="uid://b86hptrd6ss51" path="res://materials/generic_materials/highscore_banner_materials/blue_highscore_banner_material.tres" id="18_sp145"]
+[ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="18_xgvo4"]
 [ext_resource type="Material" uid="uid://c42ke6igj2vpc" path="res://materials/generic_materials/highscore_banner_materials/gold_descriptor_banner_material.tres" id="19_3dlmi"]
 [ext_resource type="Material" uid="uid://8raq11hii3tx" path="res://materials/generic_materials/highscore_banner_materials/gold_highscore_banner_material.tres" id="20_xgvo4"]
 [ext_resource type="Material" uid="uid://1m0oi8p1vcgk" path="res://materials/generic_materials/highscore_banner_materials/green_descriptor_banner_material.tres" id="21_fh12i"]
@@ -563,7 +564,7 @@ min_distance_between_bends = 600.0
 max_distance_between_bends = 900.0
 min_range_of_bend = 1.25
 max_range_of_bend = 1.65
-bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("16_xla8q"), ExtResource("17_y8dsr"), ExtResource("17_m3e78"), ExtResource("18_sp145"), ExtResource("19_3dlmi"), ExtResource("20_xgvo4"), ExtResource("21_fh12i"), ExtResource("22_xla8q"), ExtResource("24_3dlmi")])
+bendable_materials = Array[ShaderMaterial]([ExtResource("6_a74q1"), ExtResource("7_tjrou"), ExtResource("8_uu3wy"), ExtResource("9_1qsac"), ExtResource("10_p83al"), ExtResource("11_m3e78"), ExtResource("12_sp145"), ExtResource("13_sp145"), ExtResource("13_3dlmi"), ExtResource("14_xgvo4"), ExtResource("16_xla8q"), ExtResource("17_y8dsr"), ExtResource("18_xgvo4"), ExtResource("17_m3e78"), ExtResource("18_sp145"), ExtResource("19_3dlmi"), ExtResource("20_xgvo4"), ExtResource("21_fh12i"), ExtResource("22_xla8q"), ExtResource("24_3dlmi")])
 signal_emitter = NodePath("../TerrainGlobalListeners/TerrainSpeedListener")
 signal_name = &"global_signal_emitted_with_value"
 metadata/_custom_type_script = "uid://3w32j7t20216"

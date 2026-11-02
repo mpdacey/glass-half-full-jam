@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://xr8lh41t68bh" path="res://scenes/obstacles/traffic_core.tscn" id="1_3mm47"]
 [ext_resource type="ArrayMesh" uid="uid://d25b0yjt1tilp" path="res://models/traffic/delivery.obj" id="2_pbdek"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="3_pbdek"]
+[ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="4_rvsqw"]
 [ext_resource type="Script" uid="uid://boibecwrw30dt" path="res://scripts/traffic_painter.gd" id="9_b13s4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30yfe"]
@@ -17,6 +18,7 @@ shape = SubResource("BoxShape3D_30yfe")
 
 [node name="Delivery" type="MeshInstance3D" parent="." index="2" unique_id=2091386686]
 transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0, 0, 0)
+instance_shader_parameters/paint = 1
 mesh = ExtResource("2_pbdek")
 surface_material_override/0 = ExtResource("3_pbdek")
 surface_material_override/1 = ExtResource("3_pbdek")
@@ -24,6 +26,8 @@ surface_material_override/2 = ExtResource("3_pbdek")
 surface_material_override/3 = ExtResource("3_pbdek")
 surface_material_override/4 = ExtResource("3_pbdek")
 surface_material_override/5 = ExtResource("3_pbdek")
+surface_material_override/6 = ExtResource("4_rvsqw")
+surface_material_override/7 = ExtResource("3_pbdek")
 
 [node name="TrafficPainter" parent="." index="4" unique_id=1018432734 node_paths=PackedStringArray("mesh")]
 mesh = NodePath("../Delivery")

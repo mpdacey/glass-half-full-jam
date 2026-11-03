@@ -4,6 +4,8 @@ shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 stencil_mode write, compare_always, 1;
 
+global uniform float bend_multiplier;
+
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
 uniform ivec2 albedo_texture_size;
@@ -22,7 +24,6 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
-uniform float bend_multiplier = 0.0;
 uniform float curve_amount : hint_range(0.01, 1.0, 0.01) = 0.01;
 
 float remap(float value, float i_min, float i_max, float o_min, float o_max) {

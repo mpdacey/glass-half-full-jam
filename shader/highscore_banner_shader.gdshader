@@ -1,6 +1,8 @@
 shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx;
 
+global uniform float bend_multiplier;
+
 uniform sampler2D banner_texture : source_color, filter_linear_mipmap, repeat_disable;
 uniform vec4 main_colour: source_color = vec4(1.0, 0.791, 0.054, 1.0);
 uniform vec4 shading_colour: source_color = vec4(0.89, 0.339, 0.046, 1.0);
@@ -15,7 +17,6 @@ uniform float attenuation_influence: hint_range(0.,1.,.01) = 1.0;
 uniform vec3 uv1_scale = vec3(1.0);
 uniform vec3 uv1_offset;
 
-uniform float bend_multiplier = 0.0;
 uniform float curve_amount : hint_range(0.01, 1.0, 0.01) = 0.1;
 uniform float flap_multiplier = 0.1;
 

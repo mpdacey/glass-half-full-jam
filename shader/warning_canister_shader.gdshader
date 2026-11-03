@@ -3,6 +3,8 @@
 shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded, depth_test_disabled;
 
+global uniform float bend_multiplier;
+
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_nearest;
 
@@ -10,7 +12,6 @@ uniform vec3 uv1_scale;
 uniform vec3 uv1_offset;
 
 uniform float curve_amount : hint_range(0.01, 1.0, 0.01) = 0.01;
-uniform float bend_multiplier = 0.0;
 uniform float bend_amplifier : hint_range (0, 1.0, 0.01) = 1.0;
 uniform float uv_counter_weight = -0.35;
 varying float calculated_curve;

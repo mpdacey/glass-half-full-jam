@@ -13,7 +13,6 @@ const BEND_MULTIPLIER_PARAMETER = "bend_multiplier"
 @export var max_range_of_bend: float = 2.5
 
 @export_group("References")
-@export var bendable_materials : Array[ShaderMaterial]
 @export var signal_emitter : Node
 @export var signal_name : StringName
 
@@ -61,5 +60,4 @@ func _set_bend_tween(current_speed_multiplier: float) -> void:
 	bend_tween.tween_callback(start_bend)
 
 func _set_bend(bend_value: float) -> void:
-	for material in bendable_materials:
-		material.set_shader_parameter(BEND_MULTIPLIER_PARAMETER, bend_value)
+	RenderingServer.global_shader_parameter_set(GlobalConstants.SHADER_BEND_MULTIPLIER_KEY, bend_value)

@@ -3,6 +3,8 @@
 shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
+global uniform float bend_multiplier;
+
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear, repeat_enable;
 uniform ivec2 albedo_texture_size;
@@ -27,7 +29,6 @@ uniform vec4 distant_albeno: source_color = vec4(vec3(1.0), 0.0);
 uniform sampler2D distant_texture_albedo: source_color, filter_linear, repeat_enable;
 uniform bool has_seperate_distant_texture = false;
 
-uniform float bend_multiplier = 0.0;
 uniform float bend_amplifier : hint_range (0, 1.0, 0.01) = 1.0;
 varying float calculated_curve;
 

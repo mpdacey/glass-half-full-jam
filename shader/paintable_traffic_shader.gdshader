@@ -37,58 +37,58 @@ float remap(float value, float i_min, float i_max, float o_min, float o_max) {
 vec2 get_color_uv_offset() {
 	// Amber
 	if (paint == 0) {
-		return vec2(0.82, 0);
+		return vec2(0.8125, 0);
 	// Baby Blue
 	} else if (paint == 1) {
-		return vec2(0.295, -0.25);
+		return vec2(0.3125, -0.25);
 	// Black
 	} else if (paint == 2) {
-		return vec2(0.57, 0.25);
+		return vec2(0.5625, 0.25);
 	// Blue
 	} else if (paint == 3) {
-		return vec2(0.435, 0.25);
+		return vec2(0.4375, 0.25);
 	// Brown
 	} else if (paint == 4) {
-		return vec2(0.3, 0);
+		return vec2(0.3125, 0);
 	// Cream
 	} else if (paint == 5) {
-		return vec2(0.565, 0);
+		return vec2(0.5625, 0);
 	// Dark Grey
 	} else if (paint == 6) {
-		return vec2(0.81, 0.25);
+		return vec2(0.8125, 0.25);
 	// Green
 	} else if (paint == 7) {
-		return vec2(0.62, 0);
+		return vec2(0.625, 0);
 	// Light Grey
 	} else if (paint == 8) {
-		return vec2(0.945, 0.25);
+		return vec2(0.9375, 0.25);
 	// Orange
 	} else if (paint == 9) {
-		return vec2(0.96, 0);
+		return vec2(0.9375, 0);
 	// Pink
 	} else if (paint == 10) {
-		return vec2(0.565, -0.25);
+		return vec2(0.5625, -0.25);
 	// Purple
 	} else if (paint == 11) {
-		return vec2(0.44, -0.25);
+		return vec2(0.4375, -0.25);
 	// Red
 	} else if (paint == 12) {
-		return vec2(0.06, -0.25);
+		return vec2(0.0625, -0.25);
 	// Silver
 	} else if (paint == 13) {
-		return vec2(0.06, 0);
+		return vec2(0.0625, 0);
 	// Steel
 	} else if (paint == 14) {
-		return vec2(0.69, 0.25);
+		return vec2(0.6875, 0.25);
 	// Tan
 	} else if (paint == 15) {
-		return vec2(0.44, 0);
+		return vec2(0.4375, 0);
 	// White
 	} else if (paint == 16) {
-		return vec2(0.05, 0.25);
+		return vec2(0.0625, 0.25);
 	// Yellow
 	} else if (paint == 17) {
-		return vec2(0.185, 0.25);
+		return vec2(0.1875, 0.25);
 	}
 	
 	return vec2(0);

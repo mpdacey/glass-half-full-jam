@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dc8lavwyjhvjp" path="res://scripts/player_controllers/player_controller.gd" id="1_hw5rl"]
 [ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="2_bol71"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="3_hhg0s"]
+[ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="4_bdcq4"]
 [ext_resource type="AnimationLibrary" uid="uid://c5o4iqm3dmff" path="res://resources/animation_libraries/car_putt.tres" id="4_vg1s2"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="5_esvn5"]
 [ext_resource type="Script" uid="uid://cw32dhn70g4b7" path="res://scripts/exhaust/exhaust_controller.gd" id="6_1a7i7"]
@@ -174,14 +175,16 @@ script = ExtResource("1_hw5rl")
 engine_smoke_emitter = NodePath("EngineSmokeEmitter")
 
 [node name="SedanSports" type="MeshInstance3D" parent="." unique_id=733151807]
-transform = Transform3D(-5.6824803e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.6824803e-08, 0, 0, 0)
+transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.0000001, 0, -1.0000001, 0, -4.371139e-08, 0, 0, 0)
 layers = 2
+instance_shader_parameters/paint = 12
 mesh = ExtResource("2_bol71")
 surface_material_override/0 = ExtResource("3_hhg0s")
 surface_material_override/1 = ExtResource("3_hhg0s")
 surface_material_override/2 = ExtResource("3_hhg0s")
 surface_material_override/3 = ExtResource("3_hhg0s")
 surface_material_override/4 = ExtResource("3_hhg0s")
+surface_material_override/5 = ExtResource("4_bdcq4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SedanSports" unique_id=129879598]
 libraries/car_putt = ExtResource("4_vg1s2")

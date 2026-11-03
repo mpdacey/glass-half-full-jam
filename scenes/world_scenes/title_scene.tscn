@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c3o4f68hm2hmk" path="res://logo.png" id="4_pyl7j"]
 [ext_resource type="AudioStream" uid="uid://dfkflwqql0shl" path="res://audio/sfx/engine/engine_rpm_med.ogg" id="5_ofksa"]
 [ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="5_uaep1"]
+[ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="7_jedqc"]
 [ext_resource type="AnimationLibrary" uid="uid://c5o4iqm3dmff" path="res://resources/animation_libraries/car_putt.tres" id="7_o7kwv"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="7_s8xmt"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_6ppm8"]
@@ -856,6 +857,7 @@ progress = 100.774155
 [node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D" unique_id=1530341443]
 transform = Transform3D(-1.0000001, 0, -1.509958e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1, 0, 0, 0)
 layers = 2
+instance_shader_parameters/paint = 12
 mesh = ExtResource("5_uaep1")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = ExtResource("2_pyl7j")
@@ -863,6 +865,7 @@ surface_material_override/1 = ExtResource("2_pyl7j")
 surface_material_override/2 = ExtResource("2_pyl7j")
 surface_material_override/3 = ExtResource("2_pyl7j")
 surface_material_override/4 = ExtResource("2_pyl7j")
+surface_material_override/5 = ExtResource("7_jedqc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports" unique_id=1046586961]
 libraries/ = ExtResource("7_o7kwv")

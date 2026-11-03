@@ -1,25 +1,16 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://dj1p7oil8hvvc"]
-
-[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://models/traffic/Textures/colormap.png" id="1_xxehd"]
-
-[sub_resource type="Shader" id="Shader_xuge5"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's StandardMaterial3D.
+// NOTE: Shader automatically converted from Godot Engine 4.5.stable's StandardMaterial3D.
 
 shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
+instance uniform int paint: hint_enum(
+	"Amber", "Baby Blue", "Black", "Blue", "Brown", "Cream", "Dark Grey",
+	"Green", "Light Grey", "Orange", "Pink", "Purple", "Red", "Silver",
+	"Steel", "Tan", "White", "Yellow"
+	) = 0;
+
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear, repeat_enable;
-uniform ivec2 albedo_texture_size;
-uniform float point_size : hint_range(0.1, 128.0, 0.1);
-
-uniform float roughness : hint_range(0.0, 1.0);
-uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
-
-uniform float specular : hint_range(0.0, 1.0, 0.01);
-uniform float metallic : hint_range(0.0, 1.0, 0.01);
 
 uniform vec3 uv1_scale = vec3(1.0);
 uniform vec3 uv1_offset;
@@ -36,12 +27,77 @@ uniform float bend_multiplier = 0.0;
 uniform float bend_amplifier : hint_range (0, 1.0, 0.01) = 1.0;
 varying float calculated_curve;
 
+uniform bool paintable = false;
+
 float remap(float value, float i_min, float i_max, float o_min, float o_max) {
     return o_min + ((value - i_min) / (i_max - i_min) * (o_max - o_min));
 }
 
+vec2 get_color_uv_offset() {
+	// Amber
+	if (paint == 0) {
+		return vec2(0.82, 0);
+	// Baby Blue
+	} else if (paint == 1) {
+		return vec2(0.295, -0.25);
+	// Black
+	} else if (paint == 2) {
+		return vec2(0.57, 0.25);
+	// Blue
+	} else if (paint == 3) {
+		return vec2(0.435, 0.25);
+	// Brown
+	} else if (paint == 4) {
+		return vec2(0.3, 0);
+	// Cream
+	} else if (paint == 5) {
+		return vec2(0.565, 0);
+	// Dark Grey
+	} else if (paint == 6) {
+		return vec2(0.81, 0.25);
+	// Green
+	} else if (paint == 7) {
+		return vec2(0.62, 0);
+	// Light Grey
+	} else if (paint == 8) {
+		return vec2(0.945, 0.25);
+	// Orange
+	} else if (paint == 9) {
+		return vec2(0.96, 0);
+	// Pink
+	} else if (paint == 10) {
+		return vec2(0.565, -0.25);
+	// Purple
+	} else if (paint == 11) {
+		return vec2(0.44, -0.25);
+	// Red
+	} else if (paint == 12) {
+		return vec2(0.06, -0.25);
+	// Silver
+	} else if (paint == 13) {
+		return vec2(0.06, 0);
+	// Steel
+	} else if (paint == 14) {
+		return vec2(0.69, 0.25);
+	// Tan
+	} else if (paint == 15) {
+		return vec2(0.44, 0);
+	// White
+	} else if (paint == 16) {
+		return vec2(0.05, 0.25);
+	// Yellow
+	} else if (paint == 17) {
+		return vec2(0.185, 0.25);
+	}
+	
+	return vec2(0);
+}
+
 void vertex(){
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
+	
+	if (paintable)
+		UV = UV + get_color_uv_offset();
 
 	// Vertex code pinched from svenar-nl godot issue
 	// https://github.com/godotengine/godot/issues/91894
@@ -95,39 +151,9 @@ void fragment() {
 
 	//ALBEDO = albedo_tex.rgb; //albedo.rgb * albedo_tex.rgb;
 
-	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	SPECULAR = specular;
-
-	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-
 	ALPHA_SCISSOR_THRESHOLD = 0.5;
 	ALPHA = albedo_tex.a * albedo.a;
 
 	//RIM = 0.2;
 	//RIM_TINT = 1.0;
 }
-"
-
-[resource]
-render_priority = 0
-shader = SubResource("Shader_xuge5")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("1_xxehd")
-shader_parameter/albedo_texture_size = Vector2i(0, 0)
-shader_parameter/point_size = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0.3, 0, 0)
-shader_parameter/uv2_scale = Vector3(0, 0, 0)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/curve_amount = 0.0999999977648
-shader_parameter/distant_albeno = Color(1, 1, 1, 0.17254902)
-shader_parameter/has_seperate_distant_texture = true
-shader_parameter/bend_multiplier = 0.0
-shader_parameter/bend_amplifier = 1.0

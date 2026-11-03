@@ -234,7 +234,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9834009, 0.18144606, 0, -0.18144606, 0.983
 [node name="ShaderLoader" type="Node3D" parent="." unique_id=983016033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2685711, 0)
 script = ExtResource("17_wolln")
-mesh_shader_directories = Array[String](["res://materials/desert_materials/", "res://materials/generic_materials/", "res://materials/generic_materials/gas_canister_materials/", "res://materials/generic_materials/highscore_banner_materials/", "res://materials/generic_materials/particle_materials/", "res://materials/generic_materials/traffic_variants/"])
+mesh_shader_directories = Array[String](["res://materials/desert_materials/", "res://materials/generic_materials/", "res://materials/generic_materials/gas_canister_materials/", "res://materials/generic_materials/highscore_banner_materials/", "res://materials/generic_materials/particle_materials/"])
 
 [node name="LoadTitleEmitter" type="Node" parent="ShaderLoader" unique_id=1833702916]
 script = ExtResource("6_6c71x")

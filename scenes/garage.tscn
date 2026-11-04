@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bpqy5xt8ynxc"]
+
+[ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="1_f50xb"]
+[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="2_6thhw"]
+[ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="3_3yerp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_68yga"]
+top_radius = 2.0444336
+bottom_radius = 2.0444336
+height = 1.0371094
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0nb3"]
+albedo_color = Color(0.42, 0.42, 0.42, 1)
+
+[sub_resource type="Environment" id="Environment_84upj"]
+ambient_light_source = 2
+ambient_light_color = Color(0.35906908, 0.35906908, 0.35906908, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84upj"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_68yga"]
+material = SubResource("StandardMaterial3D_84upj")
+
+[node name="GarageUI" type="CanvasLayer" unique_id=556848940]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1372641537]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1966267133]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1080, 2280)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=2084798188]
+
+[node name="PlatformPivot" type="Node3D" parent="SubViewportContainer/SubViewport/Node3D" unique_id=1361446930]
+
+[node name="Platform" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/PlatformPivot" unique_id=402358599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4814453, 0)
+layers = 32
+mesh = SubResource("CylinderMesh_68yga")
+surface_material_override/0 = SubResource("StandardMaterial3D_d0nb3")
+
+[node name="PlayerCar" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/PlatformPivot" unique_id=919580916]
+layers = 32
+instance_shader_parameters/paint = 12
+mesh = ExtResource("1_f50xb")
+surface_material_override/0 = ExtResource("2_6thhw")
+surface_material_override/1 = ExtResource("2_6thhw")
+surface_material_override/2 = ExtResource("2_6thhw")
+surface_material_override/3 = ExtResource("2_6thhw")
+surface_material_override/4 = ExtResource("2_6thhw")
+surface_material_override/5 = ExtResource("3_3yerp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Node3D" unique_id=105894696]
+environment = SubResource("Environment_84upj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Node3D" unique_id=328762550]
+transform = Transform3D(0.70710677, 0.664463, -0.24184477, 0, 0.34202015, 0.9396926, 0.70710677, -0.664463, 0.24184477, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.55
+shadow_blur = 3.445
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D" unique_id=69751574]
+transform = Transform3D(0.825582, 0.2623404, -0.49959165, 0, 0.8853579, 0.46491, 0.5642821, -0.38382134, 0.7309356, -4.1716957, 2.871952, 6.102009)
+fov = 57.7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D" unique_id=1239916225]
+transform = Transform3D(25.8482, 0, 0, 0, 3.5443044, 0, 0, 0, 23.21361, 0, -1.9535011, 0)
+layers = 32
+mesh = SubResource("SphereMesh_68yga")

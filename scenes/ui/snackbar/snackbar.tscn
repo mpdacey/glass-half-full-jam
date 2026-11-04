@@ -371,7 +371,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="LockedButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" unique_id=449933450 instance=ExtResource("1_fdalm")]
+[node name="GarageButton" parent="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox" unique_id=449933450 instance=ExtResource("1_fdalm")]
 layout_mode = 2
 button_icon = SubResource("AtlasTexture_4v1fr")
 
@@ -394,10 +394,9 @@ metadata/_custom_type_script = "uid://lu4gei6pype6"
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton" to="." method="_on_snackbar_button_pressed" binds= [0]]
 [connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/ShopButton" method="_on_button_toggled" binds= [false]]
 [connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/LeftButtonsMargin/LeftButtonsHBox/SettingsButton" method="_on_button_toggled" binds= [false]]
-[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" method="_on_button_toggled" binds= [false]]
+[connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/GarageButton" method="_on_button_toggled" binds= [false]]
 [connection signal="back_requested" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton/SnackBarButtonMargin/SnackBarButton/AndroidBackListener" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LeaderboardButton" method="_on_button_toggled" binds= [false]]
-[connection signal="ready" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" to="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" method="set_disabled" binds= [true]]
-[connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LockedButton" to="." method="_on_snackbar_button_pressed" binds= [4]]
+[connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/GarageButton" to="." method="_on_snackbar_button_pressed" binds= [4]]
 [connection signal="snackbar_button_pressed" from="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/RightButtonsMargin/RightButtonHBox/LeaderboardButton" to="." method="_on_snackbar_button_pressed" binds= [1]]
 
 [editable path="SnackbarMargin/SnackbarBackgroundPanel/RootButtonsMargin/RootButtonsHBox/PlayButton"]

@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://kix35uopnopg" path="res://scenes/ui/options_ui.tscn" id="21_pbe57"]
 [ext_resource type="PackedScene" uid="uid://ctu6qrmvuu4q1" path="res://scenes/ui/snackbar/snackbar.tscn" id="22_qk2ae"]
 [ext_resource type="Script" uid="uid://c2iwrbcd44v43" path="res://scripts/snackbar_button_auto_selector.gd" id="25_t3vcv"]
-[ext_resource type="PackedScene" uid="uid://bpqy5xt8ynxc" path="res://scenes/garage.tscn" id="28_l7fl3"]
+[ext_resource type="PackedScene" uid="uid://bpqy5xt8ynxc" path="res://scenes/ui/garage/garage.tscn" id="28_l7fl3"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
 _data = {

@@ -3,7 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="1_f50xb"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="2_6thhw"]
 [ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="3_3yerp"]
-[ext_resource type="Script" uid="uid://cyrsmcq82ny8" path="res://scripts/garage_swipe_controller.gd" id="4_6thhw"]
+[ext_resource type="Script" uid="uid://cyrsmcq82ny8" path="res://scripts/garage/garage_swipe_controller.gd" id="4_6thhw"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="5_3yerp"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_68yga"]

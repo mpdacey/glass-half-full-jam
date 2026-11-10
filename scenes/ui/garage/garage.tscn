@@ -29,8 +29,6 @@ material = SubResource("StandardMaterial3D_84upj")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7weg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_68yga"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68yga"]
 bg_color = Color(0.67, 0.11390001, 0.11390001, 1)
 
@@ -121,15 +119,15 @@ mouse_filter = 1
 script = ExtResource("4_6thhw")
 platform = NodePath("../../SubViewportContainer/SubViewport/Node3D/PlatformPivot")
 
-[node name="PaintSelector" type="Control" parent="VBoxContainer" unique_id=1191966476 node_paths=PackedStringArray("scroll_container", "scroll_momentum_calculator", "item_list")]
+[node name="PaintSelector" type="Control" parent="VBoxContainer" unique_id=1191966476 node_paths=PackedStringArray("scroll_container", "item_list", "halt_timer")]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("5_7vs20")
 scroll_container = NodePath("PaintSelectorMargin/ScrollContainer")
-scroll_momentum_calculator = NodePath("ScrollMomentumCalculator")
 scroll_ratio = 20.0
 item_list = NodePath("PaintSelectorMargin/ScrollContainer/HBoxContainer/Items")
+halt_timer = NodePath("PaintSelectorMargin/ScrollContainer/HaltMovementTimer")
 
 [node name="PaintSelectorMargin" type="MarginContainer" parent="VBoxContainer/PaintSelector" unique_id=1175145294]
 layout_mode = 1
@@ -280,11 +278,13 @@ layout_mode = 2
 modulate = Color(0.2666669, 0, 1, 1)
 layout_mode = 2
 
-[node name="ScrollMomentumCalculator" type="Node2D" parent="VBoxContainer/PaintSelector" unique_id=786187203]
-position = Vector2(0, -1146)
+[node name="HaltMovementTimer" type="Timer" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer" unique_id=742968242]
+wait_time = 0.02
+one_shot = true
+ignore_time_scale = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/PaintSelector/ScrollMomentumCalculator" unique_id=597837971]
-shape = SubResource("CircleShape2D_68yga")
+[node name="Carousel" type="Node2D" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer" unique_id=786187203]
+position = Vector2(0, -1146)
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=840784326]
 visible = false

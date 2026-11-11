@@ -125,7 +125,6 @@ size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("5_7vs20")
 scroll_container = NodePath("PaintSelectorMargin/ScrollContainer")
-scroll_ratio = 20.0
 item_list = NodePath("PaintSelectorMargin/ScrollContainer/HBoxContainer/Items")
 halt_timer = NodePath("PaintSelectorMargin/ScrollContainer/HaltMovementTimer")
 

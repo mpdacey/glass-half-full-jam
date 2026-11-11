@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dw8578ktcm105"]
+
+[ext_resource type="Shader" uid="uid://bv2apxuovotim" path="res://shader/spray_can_canvas_shader.gdshader" id="1_rok70"]
+[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://models/traffic/Textures/colormap.png" id="2_vpfh0"]
+
+[resource]
+shader = ExtResource("1_rok70")
+shader_parameter/color_map_texture = ExtResource("2_vpfh0")
+shader_parameter/color_segment_size = Vector2(16, 4)
+shader_parameter/segment_offset = Vector2(0, -0.5)

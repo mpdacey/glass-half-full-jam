@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ddfsxelcr0b1w" path="res://textures/ui/garage/spray_can_closed.svg" id="1_c7weg"]
 [ext_resource type="Script" uid="uid://lc0hbfd2yi4a" path="res://scripts/garage/paint_can_size_controller.gd" id="1_swdf7"]
+[ext_resource type="Material" uid="uid://dw8578ktcm105" path="res://materials/ui_materials/spray_can_material.tres" id="1_t73tu"]
 
 [sub_resource type="Curve" id="Curve_t73tu"]
 _data = [Vector2(0, 0.04040408), 0.0, 0.0, 0, 0, Vector2(0.95149255, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -25,6 +26,8 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 48
 
 [node name="PaintCanTexture" type="TextureRect" parent="PaintCanTextureMargin" unique_id=1142689778]
+material = ExtResource("1_t73tu")
+instance_shader_parameters/paint = 17
 layout_mode = 2
 offset_transform_enabled = true
 texture = ExtResource("1_c7weg")

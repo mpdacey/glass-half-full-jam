@@ -278,7 +278,7 @@ modulate = Color(0.2666669, 0, 1, 1)
 layout_mode = 2
 
 [node name="HaltMovementTimer" type="Timer" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer" unique_id=742968242]
-wait_time = 0.02
+wait_time = 0.05
 one_shot = true
 ignore_time_scale = true
 

@@ -38,8 +38,11 @@ func _on_scroll_container_gui_input(event: InputEvent) -> void:
 			cache_scroll_progress = real_scroll_progress
 			if fling_tween:
 				fling_tween.kill()
-		elif event.is_released() and halt_timer.time_left > 0:
-			_fling_carousel()
+		elif event.is_released():
+			if halt_timer.time_left > 0 and abs(drag_velocity) > 200:
+				_fling_carousel()
+			else:
+				_correct_carousel()
 	
 	if event is not InputEventScreenDrag:
 		return
@@ -59,13 +62,27 @@ func _fling_carousel() -> void:
 	var velocity : float = min(abs(drag_velocity), flick_max_velocity) * sign(drag_velocity)
 	var time : float = abs(velocity / flick_time_divisor)
 	var distance : float = -velocity / flick_drag * time
+	
 	var final_scroll_offset := distance / roundf((scroll_bar.max_value - scroll_bar.page) / 3.0)
 	var final_scroll_result := final_scroll_offset + real_scroll_progress
+	var final_targeted_scroll_result := _get_nearest_centred_progress(final_scroll_result)
+	
 	fling_tween = create_tween()
 	fling_tween.set_ease(Tween.EASE_OUT)
 	fling_tween.set_trans(Tween.TRANS_QUAD)
-	fling_tween.tween_property(self, "real_scroll_progress", final_scroll_result, time)
+	fling_tween.tween_property(self, "real_scroll_progress", final_targeted_scroll_result, time)
 
 func _correct_carousel() -> void:
-	fling_tween = create_tween()
+	var nearest_centred_progress := _get_nearest_centred_progress(real_scroll_progress)
 	
+	fling_tween = create_tween()
+	fling_tween.set_ease(Tween.EASE_OUT)
+	fling_tween.set_trans(Tween.TRANS_QUAD)
+	fling_tween.tween_property(self, "real_scroll_progress", nearest_centred_progress, 1.0)
+
+func _get_nearest_centred_progress(raw_progress: float) -> float:
+	var item_index : float = round(raw_progress * item_list.get_child_count())
+	var modulo_swing : float = fmod(raw_progress * item_list.get_child_count() - 0.5, 1.0)
+	var swing_value : float = clamp(round(modulo_swing), 0, 1) - 0.5
+	var targeted_progress : float = (item_index + swing_value) / item_list.get_child_count()
+	return targeted_progress

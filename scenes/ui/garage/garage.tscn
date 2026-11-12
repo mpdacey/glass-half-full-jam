@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="3_3yerp"]
 [ext_resource type="Script" uid="uid://cyrsmcq82ny8" path="res://scripts/garage/garage_swipe_controller.gd" id="4_6thhw"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="5_3yerp"]
-[ext_resource type="Script" uid="uid://du5ni1y78gw1a" path="res://scripts/garage/paint_selector.gd" id="5_7vs20"]
+[ext_resource type="PackedScene" uid="uid://nqojxcy46t8p" path="res://scenes/ui/garage/carousel_scroll_container.tscn" id="5_7vs20"]
 [ext_resource type="FontFile" uid="uid://b0i53eqnnet6n" path="res://resources/fonts/Arimo/static/Arimo-Bold.ttf" id="5_58n5e"]
 [ext_resource type="PackedScene" uid="uid://dtd2y431wiv2w" path="res://scenes/ui/garage/paint_can.tscn" id="5_s25we"]
 
@@ -26,8 +26,6 @@ albedo_color = Color(0.1, 0.1, 0.1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_68yga"]
 material = SubResource("StandardMaterial3D_84upj")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7weg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68yga"]
 bg_color = Color(0.67, 0.11390001, 0.11390001, 1)
@@ -119,14 +117,10 @@ mouse_filter = 1
 script = ExtResource("4_6thhw")
 platform = NodePath("../../SubViewportContainer/SubViewport/Node3D/PlatformPivot")
 
-[node name="PaintSelector" type="Control" parent="VBoxContainer" unique_id=1191966476 node_paths=PackedStringArray("scroll_container", "item_list", "halt_timer")]
+[node name="PaintSelector" type="Control" parent="VBoxContainer" unique_id=1191966476]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
-script = ExtResource("5_7vs20")
-scroll_container = NodePath("PaintSelectorMargin/ScrollContainer")
-item_list = NodePath("PaintSelectorMargin/ScrollContainer/HBoxContainer/Items")
-halt_timer = NodePath("PaintSelectorMargin/ScrollContainer/HaltMovementTimer")
 
 [node name="PaintSelectorMargin" type="MarginContainer" parent="VBoxContainer/PaintSelector" unique_id=1175145294]
 layout_mode = 1
@@ -139,151 +133,62 @@ size_flags_vertical = 3
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_bottom = 800
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PaintSelector/PaintSelectorMargin" unique_id=858756015]
-clip_contents = false
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_c7weg")
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer" unique_id=715289892]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Items" type="HBoxContainer" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer" unique_id=1949443925]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="PaintCan" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items" unique_id=1548355840 instance=ExtResource("5_s25we")]
-modulate = Color(1, 0, 0, 1)
+[node name="CarouselScrollContainer" parent="VBoxContainer/PaintSelector/PaintSelectorMargin" unique_id=367899716 instance=ExtResource("5_7vs20")]
 layout_mode = 2
 
-[node name="PaintCan2" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items" unique_id=1494152343 instance=ExtResource("5_s25we")]
-modulate = Color(1, 0.53333336, 0, 1)
+[node name="PaintCan" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="0" unique_id=1932031658 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan3" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items" unique_id=1854344384 instance=ExtResource("5_s25we")]
-modulate = Color(0.9333333, 1, 0, 1)
+[node name="PaintCan2" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="1" unique_id=266678526 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan4" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items" unique_id=1824522339 instance=ExtResource("5_s25we")]
-modulate = Color(0.39999986, 1, 0, 1)
+[node name="PaintCan3" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="2" unique_id=184940759 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan5" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items" unique_id=654440047 instance=ExtResource("5_s25we")]
-modulate = Color(0, 1, 0.13333344, 1)
+[node name="PaintCan4" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="3" unique_id=1297299647 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan13" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items" unique_id=2033988923 instance=ExtResource("5_s25we")]
-modulate = Color(0, 1, 0.66666675, 1)
+[node name="PaintCan5" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="4" unique_id=948895166 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan14" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items" unique_id=129986131 instance=ExtResource("5_s25we")]
-modulate = Color(0, 0.7999997, 1, 1)
+[node name="PaintCan6" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="5" unique_id=1242598756 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan10" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items" unique_id=1135989542 instance=ExtResource("5_s25we")]
-modulate = Color(0, 0.2666664, 1, 1)
+[node name="PaintCan7" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="6" unique_id=1220905007 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan15" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items" unique_id=289295414 instance=ExtResource("5_s25we")]
-modulate = Color(0.2666669, 0, 1, 1)
+[node name="PaintCan8" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="7" unique_id=1478615657 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="Items2" type="HBoxContainer" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer" unique_id=2063712029]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="PaintCan" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items2" unique_id=1932031658 instance=ExtResource("5_s25we")]
-modulate = Color(1, 0, 0, 1)
+[node name="PaintCan9" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="8" unique_id=714063850 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan2" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items2" unique_id=635939082 instance=ExtResource("5_s25we")]
-modulate = Color(1, 0.53333336, 0, 1)
+[node name="PaintCan10" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="9" unique_id=239839461 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan3" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items2" unique_id=526876620 instance=ExtResource("5_s25we")]
-modulate = Color(0.9333333, 1, 0, 1)
+[node name="PaintCan11" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="10" unique_id=2062144965 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan4" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items2" unique_id=621724746 instance=ExtResource("5_s25we")]
-modulate = Color(0.39999986, 1, 0, 1)
+[node name="PaintCan12" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="11" unique_id=293676981 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan5" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items2" unique_id=841626578 instance=ExtResource("5_s25we")]
-modulate = Color(0, 1, 0.13333344, 1)
+[node name="PaintCan13" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="12" unique_id=1557197606 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan13" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items2" unique_id=58760182 instance=ExtResource("5_s25we")]
-modulate = Color(0, 1, 0.66666675, 1)
+[node name="PaintCan14" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="13" unique_id=217125908 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan14" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items2" unique_id=1037742283 instance=ExtResource("5_s25we")]
-modulate = Color(0, 0.7999997, 1, 1)
+[node name="PaintCan15" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="14" unique_id=1516547988 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan10" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items2" unique_id=30664141 instance=ExtResource("5_s25we")]
-modulate = Color(0, 0.2666664, 1, 1)
+[node name="PaintCan16" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="15" unique_id=1922871887 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="PaintCan15" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items2" unique_id=593952838 instance=ExtResource("5_s25we")]
-modulate = Color(0.2666669, 0, 1, 1)
+[node name="PaintCan17" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="16" unique_id=1448347138 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
-[node name="Items3" type="HBoxContainer" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer" unique_id=942261121]
+[node name="PaintCan18" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="17" unique_id=1589719826 instance=ExtResource("5_s25we")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="PaintCan" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items3" unique_id=716016421 instance=ExtResource("5_s25we")]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 2
-
-[node name="PaintCan2" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items3" unique_id=818933329 instance=ExtResource("5_s25we")]
-modulate = Color(1, 0.53333336, 0, 1)
-layout_mode = 2
-
-[node name="PaintCan3" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items3" unique_id=78590729 instance=ExtResource("5_s25we")]
-modulate = Color(0.9333333, 1, 0, 1)
-layout_mode = 2
-
-[node name="PaintCan4" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items3" unique_id=299815099 instance=ExtResource("5_s25we")]
-modulate = Color(0.39999986, 1, 0, 1)
-layout_mode = 2
-
-[node name="PaintCan5" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items3" unique_id=99849487 instance=ExtResource("5_s25we")]
-modulate = Color(0, 1, 0.13333344, 1)
-layout_mode = 2
-
-[node name="PaintCan13" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items3" unique_id=1418718699 instance=ExtResource("5_s25we")]
-modulate = Color(0, 1, 0.66666675, 1)
-layout_mode = 2
-
-[node name="PaintCan14" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items3" unique_id=1229407715 instance=ExtResource("5_s25we")]
-modulate = Color(0, 0.7999997, 1, 1)
-layout_mode = 2
-
-[node name="PaintCan10" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items3" unique_id=138306257 instance=ExtResource("5_s25we")]
-modulate = Color(0, 0.2666664, 1, 1)
-layout_mode = 2
-
-[node name="PaintCan15" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer/HBoxContainer/Items3" unique_id=126620072 instance=ExtResource("5_s25we")]
-modulate = Color(0.2666669, 0, 1, 1)
-layout_mode = 2
-
-[node name="HaltMovementTimer" type="Timer" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer" unique_id=742968242]
-wait_time = 0.05
-one_shot = true
-ignore_time_scale = true
-
-[node name="Carousel" type="Node2D" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer" unique_id=786187203]
-position = Vector2(0, -1146)
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=840784326]
 visible = false
@@ -355,7 +260,8 @@ script = ExtResource("5_3yerp")
 metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
 [connection signal="gui_input" from="VBoxContainer/GarageSwipeController" to="VBoxContainer/GarageSwipeController" method="_on_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/PaintSelector/PaintSelectorMargin/ScrollContainer" to="VBoxContainer/PaintSelector" method="_on_scroll_container_gui_input"]
 [connection signal="hidden" from="VisibilityListener" to="SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [true]]
 [connection signal="shown" from="VisibilityListener" to="VBoxContainer/PaintSelector" method="ready_carousel"]
 [connection signal="shown" from="VisibilityListener" to="SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [false]]
+
+[editable path="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer"]

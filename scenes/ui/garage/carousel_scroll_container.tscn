@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://nqojxcy46t8p"]
+
+[ext_resource type="Script" uid="uid://dy6y4inlep7u1" path="res://scripts/garage/carousel_controller.gd" id="1_pjyi5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7weg"]
+
+[node name="CarouselScrollContainer" type="ScrollContainer" unique_id=367899716 node_paths=PackedStringArray("item_list", "halt_timer")]
+clip_contents = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_c7weg")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+script = ExtResource("1_pjyi5")
+item_list = NodePath("CarouselHBox/CarouselItems")
+halt_timer = NodePath("HaltMovementTimer")
+
+[node name="CarouselHBox" type="HBoxContainer" parent="." unique_id=1140563986]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CarouselItems" type="HBoxContainer" parent="CarouselHBox" unique_id=1210893658]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="HaltMovementTimer" type="Timer" parent="." unique_id=1768206559]
+wait_time = 0.05
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,6 +1,11 @@
 extends ScrollContainer
 class_name CarouselController
 
+signal carousel_scrolling_started
+signal carousel_scrolling_interrupted
+signal carousel_scrolling_ended
+signal item_selected(item: Control)
+
 @export var flick_time_divisor : float = 4000
 @export var flick_drag : float = 4
 @export var flick_max_velocity : float = 10000
@@ -41,6 +46,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			initial_touch_position = event.position.x
 			cache_scroll_progress = real_scroll_progress
 			if fling_tween:
+				carousel_scrolling_interrupted.emit()
 				fling_tween.kill()
 		elif event.is_released():
 			if halt_timer.time_left > 0 and abs(drag_velocity) > 200:
@@ -71,18 +77,21 @@ func _fling_carousel() -> void:
 	var final_scroll_result := final_scroll_offset + real_scroll_progress
 	var final_targeted_scroll_result := _get_nearest_centred_progress(final_scroll_result)
 	
-	fling_tween = create_tween()
-	fling_tween.set_ease(Tween.EASE_OUT)
-	fling_tween.set_trans(Tween.TRANS_QUAD)
-	fling_tween.tween_property(self, "real_scroll_progress", final_targeted_scroll_result, time)
+	_spin_carousel(final_targeted_scroll_result, time)
 
 func _correct_carousel() -> void:
 	var nearest_centred_progress := _get_nearest_centred_progress(real_scroll_progress)
-	
+	_spin_carousel(nearest_centred_progress)
+
+func _spin_carousel(final_progress: float, time: float = 1.0) -> void:
 	fling_tween = create_tween()
 	fling_tween.set_ease(Tween.EASE_OUT)
 	fling_tween.set_trans(Tween.TRANS_QUAD)
-	fling_tween.tween_property(self, "real_scroll_progress", nearest_centred_progress, 1.0)
+	
+	fling_tween.tween_callback(carousel_scrolling_started.emit)
+	fling_tween.tween_property(self, "real_scroll_progress", final_progress, time)
+	fling_tween.tween_callback(item_selected.emit.bind(_get_item_at_progress(final_progress)))
+	fling_tween.tween_callback(carousel_scrolling_ended.emit)
 
 func _get_nearest_centred_progress(raw_progress: float) -> float:
 	var item_index : float = round(raw_progress * item_list.get_child_count())
@@ -90,3 +99,8 @@ func _get_nearest_centred_progress(raw_progress: float) -> float:
 	var swing_value : float = clamp(round(modulo_swing), 0, 1) - 0.5
 	var targeted_progress : float = (item_index + swing_value) / item_list.get_child_count()
 	return targeted_progress
+
+func _get_item_at_progress(progress: float) -> Control:
+	var child_count : int = item_list.get_child_count()
+	var item_index : int = ceili((100 + progress) * child_count + 1.0) % child_count
+	return item_list.get_child(item_index)

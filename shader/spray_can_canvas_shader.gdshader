@@ -72,8 +72,6 @@ vec2 get_color_uv_offset() {
 }
 
 void fragment(){
-	vec2 segment_uv = (UV) * (vec2(1.0)/color_segment_size) + segment_offset + get_color_uv_offset();
-	
 	vec4 texture_color = texture(TEXTURE, UV);
 	vec4 converted_texture_color = texture_color;
 	if (texture_color.bg != vec2(1.0)){
@@ -86,7 +84,7 @@ void fragment(){
 	vec4 texture_outline = texture(TEXTURE, UV);
 	if (texture_outline.rbg != vec3(1.0) && texture_outline.a > 0.0){
 		texture_outline.a = texture_outline.b;
-		texture_outline.rbg = vec3(1.0);
+		texture_outline.rbg = vec3(1.0); 
 	}
 	
 	vec4 final_color = converted_texture_color;

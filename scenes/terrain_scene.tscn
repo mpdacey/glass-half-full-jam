@@ -21,16 +21,16 @@ sky_material = SubResource("ProceduralSkyMaterial_qsc2p")
 background_mode = 2
 sky = SubResource("Sky_w2twt")
 ambient_light_source = 2
-ambient_light_color = Color(0.5874539, 0.8710717, 0.9736617, 1)
-ambient_light_energy = 0.8
+ambient_light_color = Color(0.7352755, 0.9166117, 0.98444575, 1)
+ambient_light_energy = 0.85
+reflected_light_source = 2
 
 [node name="TerrainScene" type="Node3D" unique_id=1895761886]
 
 [node name="MainDirectionalLight" type="DirectionalLight3D" parent="." unique_id=188091536]
 transform = Transform3D(-0.46462807, -0.12539037, 0.87658316, 0.36627865, 0.8740532, 0.3191724, -0.80620146, 0.46937016, -0.3601818, 12.871048, 9, -6)
 layers = 3
-light_color = Color(0.97, 0.8406667, 0.7275, 1)
-light_energy = 0.864
+light_energy = 1.239
 light_indirect_energy = 1.684
 shadow_enabled = true
 sky_mode = 1
@@ -39,9 +39,9 @@ sky_mode = 1
 transform = Transform3D(0.42081025, -0.46152538, 0.7809692, 0.36627862, 0.8740531, 0.31917235, -0.8299148, 0.1517413, 0.53685737, 12.871048, 9, -6)
 layers = 32
 light_color = Color(0.97, 0.8406667, 0.7275, 1)
-light_energy = 0.5
+light_energy = 0.2
 light_indirect_energy = 1.684
-light_cull_mask = 4294966272
+light_specular = 1.5
 sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=909892076]

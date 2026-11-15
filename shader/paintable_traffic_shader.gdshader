@@ -14,10 +14,8 @@ global uniform float bend_multiplier;
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear, repeat_enable;
 
-uniform vec3 uv1_scale = vec3(1.0);
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
 
 uniform float curve_amount : hint_range(0.01, 1.0, 0.01) = 0.01;
 
@@ -95,8 +93,6 @@ vec2 get_color_uv_offset() {
 }
 
 void vertex(){
-	UV = UV * uv1_scale.xy + uv1_offset.xy;
-	
 	if (paintable)
 		UV = UV + get_color_uv_offset();
 
@@ -149,12 +145,15 @@ void fragment() {
 	float mix_b = mix(mix_near.b, mix_far.b, mix_amount * distant_albeno.a);
 
 	ALBEDO = vec3(mix_r, mix_g, mix_b);
-
+	
+	METALLIC = metallic;
+	SPECULAR = specular;
+	
 	//ALBEDO = albedo_tex.rgb; //albedo.rgb * albedo_tex.rgb;
 
 	ALPHA_SCISSOR_THRESHOLD = 0.5;
 	ALPHA = albedo_tex.a * albedo.a;
-
+	
 	//RIM = 0.2;
 	//RIM_TINT = 1.0;
 }

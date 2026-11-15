@@ -3,12 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://ddfsxelcr0b1w" path="res://textures/ui/garage/spray_can_closed.svg" id="1_c7weg"]
 [ext_resource type="Script" uid="uid://lc0hbfd2yi4a" path="res://scripts/garage/paint_can_size_controller.gd" id="1_swdf7"]
 [ext_resource type="Material" uid="uid://dw8578ktcm105" path="res://materials/ui_materials/spray_can_material.tres" id="1_t73tu"]
+[ext_resource type="Script" uid="uid://b3niimfcyueo" path="res://scripts/garage/paint_can_controller.gd" id="1_weyb8"]
 
 [sub_resource type="Curve" id="Curve_t73tu"]
 _data = [Vector2(0, 0.04040408), 0.0, 0.0, 0, 0, Vector2(0.95149255, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="PaintCan" type="MarginContainer" unique_id=1932031658]
+[node name="PaintCan" type="MarginContainer" unique_id=1932031658 node_paths=PackedStringArray("texture")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,6 +18,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_weyb8")
+texture = NodePath("PaintCanTextureMargin/PaintCanTexture")
 
 [node name="PaintCanTextureMargin" type="MarginContainer" parent="." unique_id=812337493]
 layout_mode = 2
@@ -26,6 +29,7 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 48
 
 [node name="PaintCanTexture" type="TextureRect" parent="PaintCanTextureMargin" unique_id=1142689778]
+self_modulate = Color(1, 0, 0, 1)
 material = ExtResource("1_t73tu")
 instance_shader_parameters/paint = 17
 layout_mode = 2
@@ -33,12 +37,6 @@ offset_transform_enabled = true
 texture = ExtResource("1_c7weg")
 expand_mode = 2
 stretch_mode = 5
-
-[node name="PaintCanButton" type="Button" parent="." unique_id=2011387407]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-mouse_filter = 1
 
 [node name="PaintCanSizeController" type="Node" parent="." unique_id=1928977441 node_paths=PackedStringArray("texture_rext")]
 script = ExtResource("1_swdf7")

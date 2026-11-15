@@ -138,57 +138,74 @@ layout_mode = 2
 
 [node name="PaintCan" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="0" unique_id=1932031658 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 17
 
 [node name="PaintCan2" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="1" unique_id=266678526 instance=ExtResource("5_s25we")]
 layout_mode = 2
 
 [node name="PaintCan3" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="2" unique_id=184940759 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 9
 
 [node name="PaintCan4" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="3" unique_id=1297299647 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 12
 
 [node name="PaintCan5" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="4" unique_id=948895166 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 10
 
 [node name="PaintCan6" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="5" unique_id=1242598756 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 11
 
 [node name="PaintCan7" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="6" unique_id=1220905007 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 3
 
 [node name="PaintCan8" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="7" unique_id=1478615657 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 1
 
 [node name="PaintCan9" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="8" unique_id=714063850 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 7
 
 [node name="PaintCan10" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="9" unique_id=239839461 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 16
 
 [node name="PaintCan11" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="10" unique_id=2062144965 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 13
 
 [node name="PaintCan12" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="11" unique_id=293676981 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 8
 
 [node name="PaintCan13" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="12" unique_id=1557197606 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 14
 
 [node name="PaintCan14" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="13" unique_id=217125908 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 6
 
 [node name="PaintCan15" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="14" unique_id=1516547988 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 2
 
 [node name="PaintCan16" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="15" unique_id=1922871887 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 4
 
 [node name="PaintCan17" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="16" unique_id=1448347138 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 15
 
 [node name="PaintCan18" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="17" unique_id=1589719826 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint_color = 5
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=840784326]
 visible = false

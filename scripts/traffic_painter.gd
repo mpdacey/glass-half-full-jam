@@ -3,14 +3,8 @@ class_name TrafficPainter
 
 const PAINT_SHADER_KEY = "paint"
 
-enum Paint {
-	AMBER, BABY_BLUE, BLACK, BLUE, BROWN, CREAM, DARK_GREY,
-	GREEN, LIGHT_GREY, ORANGE, PINK, PURPLE, RED, SILVER,
-	STEEL, TAN, WHITE, YELLOW
-}
-
 @export var mesh : MeshInstance3D
-@export var weighted_paints: Dictionary[Paint, float]
+@export var weighted_paints: Dictionary[GlobalConstants.Paint, float]
 
 func _ready() -> void:
 	if not mesh:
@@ -23,7 +17,7 @@ func set_random_paint() -> void:
 
 func _pick_paint() -> int:
 	if weighted_paints.size() <= 0:
-		return Paint.SILVER
+		return GlobalConstants.Paint.SILVER
 	
 	var total_weight := 0.0
 	for weight : float in weighted_paints.values():

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="5_3yerp"]
 [ext_resource type="PackedScene" uid="uid://nqojxcy46t8p" path="res://scenes/ui/garage/carousel_scroll_container.tscn" id="5_7vs20"]
 [ext_resource type="FontFile" uid="uid://b0i53eqnnet6n" path="res://resources/fonts/Arimo/static/Arimo-Bold.ttf" id="5_58n5e"]
+[ext_resource type="Script" uid="uid://du5ni1y78gw1a" path="res://scripts/garage/paint_selector.gd" id="5_jo7ee"]
 [ext_resource type="PackedScene" uid="uid://dtd2y431wiv2w" path="res://scenes/ui/garage/paint_can.tscn" id="5_s25we"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_68yga"]
@@ -26,6 +27,50 @@ albedo_color = Color(0.1, 0.1, 0.1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_68yga"]
 material = SubResource("StandardMaterial3D_84upj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jo7ee"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_84upj"]
+material = SubResource("StandardMaterial3D_jo7ee")
+radial_segments = 10
+rings = 4
+
+[sub_resource type="Curve" id="Curve_celfy"]
+_data = [Vector2(0, 0), 0.0, 9.384272, 0, 0, Vector2(0.18534482, 1), 0.0, 0.0, 0, 0, Vector2(0.4784483, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_jo7ee"]
+offsets = PackedFloat32Array(0.029126214, 0.9611651, 1)
+colors = PackedColorArray(0.5571398, 0.53826684, 0.5143315, 1, 0.97, 0.97, 0.97, 1, 1, 1, 1, 0.62600005)
+
+[sub_resource type="Gradient" id="Gradient_wcyka"]
+colors = PackedColorArray(0.83052975, 0.79491234, 0.7537445, 1, 1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_jo7ee"]
+resource_name = "QuarterRingShapeApplier"
+script/source = "extends CPUParticles3D
+
+@export var radius: float = 2.0
+@export var point_count: int = 32
+
+func _ready() -> void:
+	emission_shape = EMISSION_SHAPE_POINTS
+	var points: PackedVector3Array = []
+	
+	for i in range(point_count):
+		# 0 to 90 degrees in radians (PI / 2)
+		var angle := (float(i) / float(point_count - 1)) * (PI / 2.0)
+		var x := cos(angle) * radius
+		var z := sin(angle) * radius
+		points.append(Vector3(x, 0, z))
+		
+	emission_points = points
+"
+
+[sub_resource type="Curve" id="Curve_jo7ee"]
+_data = [Vector2(0, 0), 0.0, 46.052437, 0, 0, Vector2(0.077586204, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68yga"]
 bg_color = Color(0.67, 0.11390001, 0.11390001, 1)
@@ -101,6 +146,61 @@ transform = Transform3D(25.8482, 0, 0, 0, 3.5443044, 0, 0, 0, 23.21361, 0, -1.95
 layers = 32
 mesh = SubResource("SphereMesh_68yga")
 
+[node name="ParticleGenerators" type="Node3D" parent="SubViewportContainer/SubViewport/Node3D" unique_id=284259294]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="GeneralParticleGenerator" type="CPUParticles3D" parent="SubViewportContainer/SubViewport/Node3D/ParticleGenerators" unique_id=1690651133]
+emitting = false
+amount = 20
+lifetime = 0.83
+randomness = 0.06
+lifetime_randomness = 0.07
+mesh = SubResource("SphereMesh_84upj")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.2
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.8
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 9.8, 0)
+initial_velocity_max = 1.0
+damping_max = 1.626
+scale_amount_min = 1.5
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_celfy")
+color_ramp = SubResource("Gradient_jo7ee")
+color_initial_ramp = SubResource("Gradient_wcyka")
+script = SubResource("GDScript_jo7ee")
+radius = 1.0
+
+[node name="PaintParticleGenerator" type="CPUParticles3D" parent="SubViewportContainer/SubViewport/Node3D/ParticleGenerators" unique_id=135453633]
+emitting = false
+amount = 12
+lifetime = 1.3
+one_shot = true
+explosiveness = 1.0
+randomness = 0.06
+lifetime_randomness = 0.07
+mesh = SubResource("SphereMesh_84upj")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.2
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.8
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 3, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+damping_max = 1.626
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_jo7ee")
+color = Color(1, 0, 0, 1)
+script = SubResource("GDScript_jo7ee")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=927813899]
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,10 +217,13 @@ mouse_filter = 1
 script = ExtResource("4_6thhw")
 platform = NodePath("../../SubViewportContainer/SubViewport/Node3D/PlatformPivot")
 
-[node name="PaintSelector" type="Control" parent="VBoxContainer" unique_id=1191966476]
+[node name="PaintSelector" type="Control" parent="VBoxContainer" unique_id=1191966476 node_paths=PackedStringArray("general_particles", "paint_particles")]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
+script = ExtResource("5_jo7ee")
+general_particles = NodePath("../../SubViewportContainer/SubViewport/Node3D/ParticleGenerators/GeneralParticleGenerator")
+paint_particles = NodePath("../../SubViewportContainer/SubViewport/Node3D/ParticleGenerators/PaintParticleGenerator")
 
 [node name="PaintSelectorMargin" type="MarginContainer" parent="VBoxContainer/PaintSelector" unique_id=1175145294]
 layout_mode = 1
@@ -277,6 +380,9 @@ script = ExtResource("5_3yerp")
 metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 
 [connection signal="gui_input" from="VBoxContainer/GarageSwipeController" to="VBoxContainer/GarageSwipeController" method="_on_gui_input"]
+[connection signal="carousel_scrolling_ended" from="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="VBoxContainer/PaintSelector" method="_on_carousel_scrolling_ended"]
+[connection signal="carousel_scrolling_started" from="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="VBoxContainer/PaintSelector" method="_on_carousel_scrolling_started"]
+[connection signal="item_selected" from="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="VBoxContainer/PaintSelector" method="_on_carousel_item_selected"]
 [connection signal="hidden" from="VisibilityListener" to="SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [true]]
 [connection signal="shown" from="VisibilityListener" to="VBoxContainer/PaintSelector" method="ready_carousel"]
 [connection signal="shown" from="VisibilityListener" to="SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [false]]

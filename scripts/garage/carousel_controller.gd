@@ -45,6 +45,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			initial_touch_position = event.position.x
 			cache_scroll_progress = real_scroll_progress
+			carousel_scrolling_started.emit()
 			if fling_tween:
 				carousel_scrolling_interrupted.emit()
 				fling_tween.kill()
@@ -88,7 +89,6 @@ func _spin_carousel(final_progress: float, time: float = 1.0) -> void:
 	fling_tween.set_ease(Tween.EASE_OUT)
 	fling_tween.set_trans(Tween.TRANS_QUAD)
 	
-	fling_tween.tween_callback(carousel_scrolling_started.emit)
 	fling_tween.tween_property(self, "real_scroll_progress", final_progress, time)
 	fling_tween.tween_callback(item_selected.emit.bind(_get_item_at_progress(final_progress)))
 	fling_tween.tween_callback(carousel_scrolling_ended.emit)

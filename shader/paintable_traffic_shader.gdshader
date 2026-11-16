@@ -3,11 +3,7 @@
 shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
-instance uniform int paint: hint_enum(
-	"Amber", "Baby Blue", "Black", "Blue", "Brown", "Cream", "Dark Grey",
-	"Green", "Light Grey", "Orange", "Pink", "Purple", "Red", "Silver",
-	"Steel", "Tan", "White", "Yellow"
-	) = 0;
+instance uniform vec2 paint_offset;
 
 global uniform float bend_multiplier;
 
@@ -26,76 +22,11 @@ uniform bool has_seperate_distant_texture = false;
 uniform float bend_amplifier : hint_range (0, 1.0, 0.01) = 1.0;
 varying float calculated_curve;
 
-uniform bool paintable = false;
-
 float remap(float value, float i_min, float i_max, float o_min, float o_max) {
     return o_min + ((value - i_min) / (i_max - i_min) * (o_max - o_min));
 }
 
-vec2 get_color_uv_offset() {
-	// Amber
-	if (paint == 0) {
-		return vec2(0.8125, 0);
-	// Baby Blue
-	} else if (paint == 1) {
-		return vec2(0.3125, -0.25);
-	// Black
-	} else if (paint == 2) {
-		return vec2(0.5625, 0.25);
-	// Blue
-	} else if (paint == 3) {
-		return vec2(0.4375, 0.25);
-	// Brown
-	} else if (paint == 4) {
-		return vec2(0.3125, 0);
-	// Cream
-	} else if (paint == 5) {
-		return vec2(0.5625, 0);
-	// Dark Grey
-	} else if (paint == 6) {
-		return vec2(0.8125, 0.25);
-	// Green
-	} else if (paint == 7) {
-		return vec2(0.625, 0);
-	// Light Grey
-	} else if (paint == 8) {
-		return vec2(0.9375, 0.25);
-	// Orange
-	} else if (paint == 9) {
-		return vec2(0.9375, 0);
-	// Pink
-	} else if (paint == 10) {
-		return vec2(0.5625, -0.25);
-	// Purple
-	} else if (paint == 11) {
-		return vec2(0.4375, -0.25);
-	// Red
-	} else if (paint == 12) {
-		return vec2(0.0625, -0.25);
-	// Silver
-	} else if (paint == 13) {
-		return vec2(0.0625, 0);
-	// Steel
-	} else if (paint == 14) {
-		return vec2(0.6875, 0.25);
-	// Tan
-	} else if (paint == 15) {
-		return vec2(0.4375, 0);
-	// White
-	} else if (paint == 16) {
-		return vec2(0.0625, 0.25);
-	// Yellow
-	} else if (paint == 17) {
-		return vec2(0.1875, 0.25);
-	}
-	
-	return vec2(0);
-}
-
 void vertex(){
-	if (paintable)
-		UV = UV + get_color_uv_offset();
-
 	// Vertex code pinched from svenar-nl godot issue
 	// https://github.com/godotengine/godot/issues/91894
 	calculated_curve = pow(length(MAIN_CAM_INV_VIEW_MATRIX[3].xyx - VERTEX.xyx) * log((10.0 + curve_amount) * 0.1), 4);
@@ -119,7 +50,7 @@ void vertex(){
 }
 
 void fragment() {
-	vec2 base_uv = UV;
+	vec2 base_uv = UV + paint_offset;
 
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
 

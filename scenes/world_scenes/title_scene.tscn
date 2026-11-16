@@ -858,7 +858,7 @@ progress = 100.774155
 [node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D" unique_id=1530341443]
 transform = Transform3D(-1.0000001, 0, -1.509958e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1, 0, 0, 0)
 layers = 2
-instance_shader_parameters/paint = 12
+instance_shader_parameters/paint_offset = Vector2(0.0625, -0.25)
 mesh = ExtResource("5_uaep1")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = ExtResource("2_pyl7j")

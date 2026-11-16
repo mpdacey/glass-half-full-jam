@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="1_f50xb"]
 [ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="2_6thhw"]
-[ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="3_3yerp"]
+[ext_resource type="Material" uid="uid://dtpk1rvwi2fvp" path="res://materials/generic_materials/player_vehicle_material.tres" id="3_anajk"]
 [ext_resource type="Script" uid="uid://cyrsmcq82ny8" path="res://scripts/garage/garage_swipe_controller.gd" id="4_6thhw"]
 [ext_resource type="Material" uid="uid://bedn4ioqbna51" path="res://materials/generic_materials/particle_materials/spray_cover_particle_material.tres" id="4_anajk"]
 [ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="5_3yerp"]
@@ -144,14 +144,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_d0nb3")
 
 [node name="PlayerCar" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/PlatformPivot" unique_id=919580916]
 layers = 32
-instance_shader_parameters/paint_offset = Vector2(0.0625, -0.25)
 mesh = ExtResource("1_f50xb")
 surface_material_override/0 = ExtResource("2_6thhw")
 surface_material_override/1 = ExtResource("2_6thhw")
 surface_material_override/2 = ExtResource("2_6thhw")
 surface_material_override/3 = ExtResource("2_6thhw")
 surface_material_override/4 = ExtResource("2_6thhw")
-surface_material_override/5 = ExtResource("3_3yerp")
+surface_material_override/5 = ExtResource("3_anajk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Node3D" unique_id=105894696]
 environment = SubResource("Environment_84upj")

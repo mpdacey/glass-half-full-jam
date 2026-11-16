@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name PaintCanController
 
 const PAINT_SHADER_KEY = "paint"
 const PAINT_UV_OFFSET_KEY = "paint_offset"

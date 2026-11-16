@@ -5,8 +5,11 @@ class_name PaintSelector
 @export var paint_particles: CPUParticles3D
 
 func _on_carousel_item_selected(item: Control) -> void:
+	var paint_can := item as PaintCanController
+	var paint := paint_can.paint
+	paint_particles.color = paint.particle_colour
 	paint_particles.emitting = true
-	print(item)
+	print(paint.paint_name)
 
 func _on_carousel_scrolling_started() -> void:
 	general_particles.emitting = true

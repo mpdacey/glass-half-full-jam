@@ -24,7 +24,6 @@ shape = SubResource("BoxShape3D_km2h6")
 
 [node name="SuvLuxury" type="MeshInstance3D" parent="." index="2" unique_id=17214079]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-instance_shader_parameters/paint = 7
 mesh = ExtResource("2_x6i7l")
 skeleton = NodePath("../ObstacleHitBox")
 surface_material_override/0 = ExtResource("3_x6i7l")

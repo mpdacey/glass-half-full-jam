@@ -23,7 +23,6 @@ shape = SubResource("BoxShape3D_30yfe")
 
 [node name="DeliveryFlat" type="MeshInstance3D" parent="." index="2" unique_id=1260971529]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-instance_shader_parameters/paint = 12
 mesh = ExtResource("2_n05du")
 surface_material_override/0 = ExtResource("3_7hg14")
 surface_material_override/1 = ExtResource("3_7hg14")

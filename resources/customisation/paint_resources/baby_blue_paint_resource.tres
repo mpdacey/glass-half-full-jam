@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaintResource" format=3 uid="uid://djh4hhwdfamy7"]
+
+[ext_resource type="Script" uid="uid://bo5tiboahripu" path="res://scripts/resource_scripts/paint_resource_script.gd" id="1_57cmj"]
+
+[resource]
+script = ExtResource("1_57cmj")
+paint_name = &"Baby Blue"
+particle_colour = Color(0.61960787, 0.7529412, 0.92941177, 1)
+shader_uv_offset = Vector2(0.3125, -0.25)
+metadata/_custom_type_script = "uid://bo5tiboahripu"

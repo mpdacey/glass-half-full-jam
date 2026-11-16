@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaintResource" format=3 uid="uid://cvtsrlhctyvxx"]
+
+[ext_resource type="Script" uid="uid://bo5tiboahripu" path="res://scripts/resource_scripts/paint_resource_script.gd" id="1_umuh1"]
+
+[resource]
+script = ExtResource("1_umuh1")
+paint_name = &"Orange"
+particle_colour = Color(1, 0.5254902, 0.26666668, 1)
+shader_uv_offset = Vector2(0.9375, 0)
+metadata/_custom_type_script = "uid://bo5tiboahripu"

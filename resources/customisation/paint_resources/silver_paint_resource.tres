@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaintResource" format=3 uid="uid://pfuxhqyrts11"]
+
+[ext_resource type="Script" uid="uid://bo5tiboahripu" path="res://scripts/resource_scripts/paint_resource_script.gd" id="1_rg1mw"]
+
+[resource]
+script = ExtResource("1_rg1mw")
+paint_name = &"Silver"
+particle_colour = Color(0.7893917, 0.7885404, 0.8642784, 1)
+shader_uv_offset = Vector2(0.0625, 0)
+metadata/_custom_type_script = "uid://bo5tiboahripu"

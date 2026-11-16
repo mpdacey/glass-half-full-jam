@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaintResource" format=3 uid="uid://celwt48sufnk6"]
+
+[ext_resource type="Script" uid="uid://bo5tiboahripu" path="res://scripts/resource_scripts/paint_resource_script.gd" id="1_ee56e"]
+
+[resource]
+script = ExtResource("1_ee56e")
+paint_name = &"Steel"
+particle_colour = Color(0.5254902, 0.54509807, 0.6313726, 1)
+shader_uv_offset = Vector2(0.6875, 0.25)
+metadata/_custom_type_script = "uid://bo5tiboahripu"

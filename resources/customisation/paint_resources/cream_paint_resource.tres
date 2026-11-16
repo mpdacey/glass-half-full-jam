@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaintResource" format=3 uid="uid://dsljavbmsw2w0"]
+
+[ext_resource type="Script" uid="uid://bo5tiboahripu" path="res://scripts/resource_scripts/paint_resource_script.gd" id="1_lholw"]
+
+[resource]
+script = ExtResource("1_lholw")
+paint_name = &"Cream"
+particle_colour = Color(0.99215686, 0.89411765, 0.78039217, 1)
+shader_uv_offset = Vector2(0.5625, 0)
+metadata/_custom_type_script = "uid://bo5tiboahripu"

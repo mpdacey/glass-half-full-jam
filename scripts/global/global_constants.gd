@@ -5,6 +5,7 @@ const COMPLETE_CYCLE_DEFAULT_TIME = 20.0
 const LEADERBOARD_ID = "CgkInsTW6vgPEAIQAA"
 const SNACKBAR_BUTTON_META_KEY = "auto_selected_snackbar_button"
 const SHADER_BEND_MULTIPLIER_KEY = "bend_multiplier"
+const SHADER_PLAYER_PAINT_OFFSET_KEY = "player_paint_offset"
 
 enum TimeConnectionResponses
 {

@@ -9,7 +9,10 @@ func _on_carousel_item_selected(item: Control) -> void:
 	var paint := paint_can.paint
 	paint_particles.color = paint.particle_colour
 	paint_particles.emitting = true
-	print(paint.paint_name)
+	RenderingServer.global_shader_parameter_set(
+		GlobalConstants.SHADER_PLAYER_PAINT_OFFSET_KEY,
+		paint.shader_uv_offset
+	)
 
 func _on_carousel_scrolling_started() -> void:
 	general_particles.emitting = true

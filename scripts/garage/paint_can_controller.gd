@@ -2,9 +2,11 @@
 extends Control
 
 const PAINT_SHADER_KEY = "paint"
+const PAINT_UV_OFFSET_KEY = "paint_offset"
 
-@export var paint_color: GlobalConstants.Paint :
+@export var paint: PaintResource :
 	set(value):
-		paint_color = value
-		texture.set_instance_shader_parameter(PAINT_SHADER_KEY, paint_color)
+		paint = value
+		texture.set_instance_shader_parameter(PAINT_UV_OFFSET_KEY, paint.shader_uv_offset)
+
 @export var texture: TextureRect

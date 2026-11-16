@@ -9,6 +9,24 @@
 [ext_resource type="FontFile" uid="uid://b0i53eqnnet6n" path="res://resources/fonts/Arimo/static/Arimo-Bold.ttf" id="5_58n5e"]
 [ext_resource type="Script" uid="uid://du5ni1y78gw1a" path="res://scripts/garage/paint_selector.gd" id="5_jo7ee"]
 [ext_resource type="PackedScene" uid="uid://dtd2y431wiv2w" path="res://scenes/ui/garage/paint_can.tscn" id="5_s25we"]
+[ext_resource type="Resource" uid="uid://4fwmq7t3bc18" path="res://resources/customisation/paint_resources/yellow_paint_resource.tres" id="8_0a6yr"]
+[ext_resource type="Resource" uid="uid://c63u3nk7d4yxp" path="res://resources/customisation/paint_resources/amber_paint_resource.tres" id="9_cn0j1"]
+[ext_resource type="Resource" uid="uid://cvtsrlhctyvxx" path="res://resources/customisation/paint_resources/orange_paint_resource.tres" id="10_anajk"]
+[ext_resource type="Resource" uid="uid://d3g65l3xed3o6" path="res://resources/customisation/paint_resources/red_paint_resource.tres" id="11_o66mb"]
+[ext_resource type="Resource" uid="uid://o3pweo7pm52n" path="res://resources/customisation/paint_resources/pink_paint_resource.tres" id="12_ocg71"]
+[ext_resource type="Resource" uid="uid://bx6280rpnoapq" path="res://resources/customisation/paint_resources/purple_paint_resource.tres" id="13_srbqb"]
+[ext_resource type="Resource" uid="uid://bpoegbdbqn281" path="res://resources/customisation/paint_resources/blue_paint_resource.tres" id="14_3qrdu"]
+[ext_resource type="Resource" uid="uid://djh4hhwdfamy7" path="res://resources/customisation/paint_resources/baby_blue_paint_resource.tres" id="15_5tpxy"]
+[ext_resource type="Resource" uid="uid://dcpqi7pnog6it" path="res://resources/customisation/paint_resources/mint_paint_resource.tres" id="16_ok80w"]
+[ext_resource type="Resource" uid="uid://bay812tr5wn8c" path="res://resources/customisation/paint_resources/white_paint_resource.tres" id="17_gpa8b"]
+[ext_resource type="Resource" uid="uid://pfuxhqyrts11" path="res://resources/customisation/paint_resources/silver_paint_resource.tres" id="18_4st6w"]
+[ext_resource type="Resource" uid="uid://bjgjpcunceup" path="res://resources/customisation/paint_resources/light_grey_paint_resource.tres" id="19_owd1n"]
+[ext_resource type="Resource" uid="uid://celwt48sufnk6" path="res://resources/customisation/paint_resources/steel_paint_resource.tres" id="20_b8e55"]
+[ext_resource type="Resource" uid="uid://dwl482k3f8hhn" path="res://resources/customisation/paint_resources/dark_grey_paint_resource.tres" id="21_p278u"]
+[ext_resource type="Resource" uid="uid://caao48ryag208" path="res://resources/customisation/paint_resources/black_paint_resource.tres" id="22_12dj6"]
+[ext_resource type="Resource" uid="uid://cm35kynkjp26j" path="res://resources/customisation/paint_resources/brown_paint_resource.tres" id="23_yuxmy"]
+[ext_resource type="Resource" uid="uid://60xdvvachb6p" path="res://resources/customisation/paint_resources/tan_paint_resource.tres" id="24_eqemn"]
+[ext_resource type="Resource" uid="uid://dsljavbmsw2w0" path="res://resources/customisation/paint_resources/cream_paint_resource.tres" id="25_7tpbr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_68yga"]
 top_radius = 2.0444336
@@ -173,7 +191,7 @@ scale_amount_curve = SubResource("Curve_celfy")
 color_ramp = SubResource("Gradient_jo7ee")
 color_initial_ramp = SubResource("Gradient_wcyka")
 script = SubResource("GDScript_jo7ee")
-radius = 1.0
+radius = 1.6
 
 [node name="PaintParticleGenerator" type="CPUParticles3D" parent="SubViewportContainer/SubViewport/Node3D/ParticleGenerators" unique_id=135453633]
 emitting = false
@@ -241,74 +259,75 @@ layout_mode = 2
 
 [node name="PaintCan" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="0" unique_id=1932031658 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 17
+paint = ExtResource("8_0a6yr")
 
 [node name="PaintCan2" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="1" unique_id=266678526 instance=ExtResource("5_s25we")]
 layout_mode = 2
+paint = ExtResource("9_cn0j1")
 
 [node name="PaintCan3" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="2" unique_id=184940759 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 9
+paint = ExtResource("10_anajk")
 
 [node name="PaintCan4" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="3" unique_id=1297299647 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 12
+paint = ExtResource("11_o66mb")
 
 [node name="PaintCan5" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="4" unique_id=948895166 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 10
+paint = ExtResource("12_ocg71")
 
 [node name="PaintCan6" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="5" unique_id=1242598756 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 11
+paint = ExtResource("13_srbqb")
 
 [node name="PaintCan7" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="6" unique_id=1220905007 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 3
+paint = ExtResource("14_3qrdu")
 
 [node name="PaintCan8" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="7" unique_id=1478615657 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 1
+paint = ExtResource("15_5tpxy")
 
 [node name="PaintCan9" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="8" unique_id=714063850 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 7
+paint = ExtResource("16_ok80w")
 
 [node name="PaintCan10" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="9" unique_id=239839461 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 16
+paint = ExtResource("17_gpa8b")
 
 [node name="PaintCan11" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="10" unique_id=2062144965 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 13
+paint = ExtResource("18_4st6w")
 
 [node name="PaintCan12" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="11" unique_id=293676981 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 8
+paint = ExtResource("19_owd1n")
 
 [node name="PaintCan13" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="12" unique_id=1557197606 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 14
+paint = ExtResource("20_b8e55")
 
 [node name="PaintCan14" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="13" unique_id=217125908 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 6
+paint = ExtResource("21_p278u")
 
 [node name="PaintCan15" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="14" unique_id=1516547988 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 2
+paint = ExtResource("22_12dj6")
 
 [node name="PaintCan16" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="15" unique_id=1922871887 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 4
+paint = ExtResource("23_yuxmy")
 
 [node name="PaintCan17" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="16" unique_id=1448347138 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 15
+paint = ExtResource("24_eqemn")
 
 [node name="PaintCan18" parent="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="17" unique_id=1589719826 instance=ExtResource("5_s25we")]
 layout_mode = 2
-paint_color = 5
+paint = ExtResource("25_7tpbr")
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=840784326]
 visible = false

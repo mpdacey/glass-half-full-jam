@@ -413,6 +413,7 @@ metadata/_custom_type_script = "uid://ydy2ddfw32k0"
 [connection signal="item_selected" from="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="VBoxContainer/PaintSelector" method="_on_carousel_item_selected"]
 [connection signal="hidden" from="VisibilityListener" to="SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [true]]
 [connection signal="shown" from="VisibilityListener" to="VBoxContainer/PaintSelector" method="ready_carousel"]
+[connection signal="shown" from="VisibilityListener" to="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" method="ready_carousel"]
 [connection signal="shown" from="VisibilityListener" to="SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [false]]
 
 [editable path="VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer"]

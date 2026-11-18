@@ -24,17 +24,22 @@ var real_scroll_progress : float
 func _ready() -> void:
 	item_list.add_sibling(item_list.duplicate())
 	item_list.add_sibling(item_list.duplicate())
-	ready_carousel()
 
 func _physics_process(_delta: float) -> void:
 	if not scroll_bar:
 		return
 	
+	var screen_width := size.x
+	var item_width : float = item_list.get_child(0).size.x
+	var visible_items : float =  screen_width / item_width
+	# Magic numbers are truly magic. Brute forced these values and they just work. ¯\_(ツ)_/¯
+	var offset : float = (visible_items - 4) * 0.5 / item_list.get_child_count()
+	
 	# There is probably something super obvious I am missing here but this trash works :)
 	if fling_tween and not fling_tween.is_running():
 		real_scroll_progress = fmod(100 + real_scroll_progress, 1.0)
 	
-	var caroucel_progress := fmod(100 + real_scroll_progress, 1.0)
+	var caroucel_progress := fmod(100 + real_scroll_progress - offset, 1.0)
 	scroll_horizontal = floori(caroucel_progress * item_list.size.x)
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -67,7 +72,7 @@ func _on_gui_input(event: InputEvent) -> void:
 func ready_carousel() -> void:
 	await get_tree().process_frame
 	scroll_bar = get_h_scroll_bar()
-	scroll_horizontal = roundi((scroll_bar.max_value - scroll_bar.page) / 3)
+	real_scroll_progress = 0.0833
 
 func _fling_carousel() -> void:
 	var velocity : float = min(abs(drag_velocity), flick_max_velocity) * sign(drag_velocity)

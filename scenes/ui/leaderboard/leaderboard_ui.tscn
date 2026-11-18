@@ -833,10 +833,10 @@ tracks/5/path = NodePath(".:layer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5, 1]
+"values": [5]
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false

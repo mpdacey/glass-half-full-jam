@@ -1053,12 +1053,6 @@ target_button_type = 2
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
 [node name="GarageUI" parent="." unique_id=556848940 instance=ExtResource("28_l7fl3")]
-visible = false
-
-[node name="SnackbarButtonListener" type="Node" parent="GarageUI" unique_id=654743480]
-script = ExtResource("19_0oqx5")
-target_button_type = 4
-metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
 [node name="MusicManager" type="Node" parent="." unique_id=866031560]
 script = ExtResource("10_1ot34")
@@ -1112,8 +1106,6 @@ script = ExtResource("25_t3vcv")
 [connection signal="target_toggled_on" from="PurchaseGameUI/SnackbarButtonListener" to="PurchaseGameUI" method="open_purchase_window"]
 [connection signal="target_toggled_off" from="OptionsUI/SnackbarButtonListener" to="OptionsUI" method="dismiss"]
 [connection signal="target_toggled_on" from="OptionsUI/SnackbarButtonListener" to="OptionsUI" method="display"]
-[connection signal="target_toggled_off" from="GarageUI/SnackbarButtonListener" to="GarageUI" method="hide"]
-[connection signal="target_toggled_on" from="GarageUI/SnackbarButtonListener" to="GarageUI" method="show"]
 [connection signal="ready" from="MusicManager" to="MusicManager" method="play_main_tracks"]
 [connection signal="target_toggled_off" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [4]]
 [connection signal="target_toggled_on" from="AndroidBackListener/SnackbarButtonListener" to="AndroidBackListener" method="set_process_mode" binds= [0]]

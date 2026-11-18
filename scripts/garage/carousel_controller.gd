@@ -4,6 +4,7 @@ class_name CarouselController
 signal carousel_scrolling_started
 signal carousel_scrolling_interrupted
 signal carousel_scrolling_ended
+signal item_hovered(item: Control)
 signal item_selected(item: Control)
 
 @export var flick_time_divisor : float = 4000
@@ -20,6 +21,7 @@ var cache_scroll_progress: float = 0.0
 var drag_velocity: float = 0.0
 var fling_tween: Tween
 var real_scroll_progress : float
+var is_scrolling : bool
 
 func _ready() -> void:
 	item_list.add_sibling(item_list.duplicate())
@@ -50,7 +52,6 @@ func _on_gui_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			initial_touch_position = event.position.x
 			cache_scroll_progress = real_scroll_progress
-			carousel_scrolling_started.emit()
 			if fling_tween:
 				carousel_scrolling_interrupted.emit()
 				fling_tween.kill()
@@ -59,6 +60,7 @@ func _on_gui_input(event: InputEvent) -> void:
 				_fling_carousel()
 			else:
 				_correct_carousel()
+			is_scrolling = false
 	
 	if event is not InputEventScreenDrag:
 		return
@@ -68,6 +70,13 @@ func _on_gui_input(event: InputEvent) -> void:
 	var new_offset_progress : float = (initial_touch_position - drag_position) / item_list.size.x
 	real_scroll_progress = cache_scroll_progress + new_offset_progress
 	halt_timer.start()
+	
+	if (
+		not is_scrolling and
+		abs(cache_scroll_progress - real_scroll_progress) > (0.4 / item_list.get_child_count())
+	):
+		carousel_scrolling_started.emit()
+		is_scrolling = true
 
 func ready_carousel() -> void:
 	await get_tree().process_frame
@@ -95,7 +104,8 @@ func _spin_carousel(final_progress: float, time: float = 1.0) -> void:
 	fling_tween.set_trans(Tween.TRANS_QUAD)
 	
 	fling_tween.tween_property(self, "real_scroll_progress", final_progress, time)
-	fling_tween.tween_callback(item_selected.emit.bind(_get_item_at_progress(final_progress)))
+	if is_scrolling:
+		fling_tween.tween_callback(item_hovered.emit.bind(_get_item_at_progress(final_progress)))
 	fling_tween.tween_callback(carousel_scrolling_ended.emit)
 
 func _get_nearest_centred_progress(raw_progress: float) -> float:

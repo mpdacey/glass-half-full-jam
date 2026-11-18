@@ -4,7 +4,7 @@ class_name PaintSelector
 @export var general_particles: CPUParticles3D
 @export var paint_particles: CPUParticles3D
 
-func _on_carousel_item_selected(item: Control) -> void:
+func _on_carousel_item_hovered(item: Control) -> void:
 	var paint_can := item as PaintCanController
 	var paint := paint_can.paint
 	paint_particles.color = paint.particle_colour

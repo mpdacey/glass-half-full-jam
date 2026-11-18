@@ -50,6 +50,62 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="Animation" id="Animation_l7fl3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.0]
+}
+
+[sub_resource type="Animation" id="Animation_xj18e"]
+resource_name = "off_drive"
+length = 0.3
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [-9.0]
+}
+
+[sub_resource type="Animation" id="Animation_a7bx2"]
+resource_name = "on_drive"
+length = 0.3
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [-6.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7bx2"]
+_data = {
+&"RESET": SubResource("Animation_l7fl3"),
+&"off_drive": SubResource("Animation_xj18e"),
+&"on_drive": SubResource("Animation_a7bx2")
+}
+
 [sub_resource type="Curve3D" id="Curve3D_bmxmj"]
 _data = {
 "points": PackedVector3Array(-31.308388, 0.8552429, -4.7852187, 32.142, 0, 2.992, 56.723, 0, 0, -29.494, 0, 0.746, 29.494, 0, -0.746, 134.037, 0, 5.415, -28.837, 0, -0.465, 28.837, 0, 0.465, 201.07, 0, -5.113, -32.142, 0, -2.992, 32.141556, -0.06802826, 2.99244, 256.723, 0, 0),
@@ -885,6 +941,18 @@ attenuation_filter_cutoff_hz = 8803.0
 attenuation_filter_db = 0.0
 parameters/looping = true
 
+[node name="GarageSnackbarListener" type="Node" parent="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" unique_id=68640441]
+script = ExtResource("19_0oqx5")
+target_button_type = 4
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="CarEngineMixer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" unique_id=1573349168]
+libraries/ = SubResource("AnimationLibrary_a7bx2")
+
+[node name="DriveSnackbarListener" type="Node" parent="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer" unique_id=1092616775]
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
 [node name="PolicePath" type="Path3D" parent="Paths" unique_id=1436197362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.674988, 0.10000001, 0.082)
 curve = SubResource("Curve3D_bmxmj")
@@ -1089,6 +1157,10 @@ layer = 5
 [node name="SnackbarButtonAutoSelector" type="Node" parent="TitleSnackbar" unique_id=1432582934]
 script = ExtResource("25_t3vcv")
 
+[connection signal="target_toggled_off" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/GarageSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" method="set_stream_paused" binds= [false]]
+[connection signal="target_toggled_on" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/GarageSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" method="set_stream_paused" binds= [true]]
+[connection signal="target_toggled_off" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer/DriveSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer" method="play" binds= [&"off_drive"]]
+[connection signal="target_toggled_on" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer/DriveSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer" method="play" binds= [&"on_drive"]]
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
 [connection signal="pressed" from="TitleCanvasLayer/PlayButtonMargin/PlayButton" to="TitleCanvasLayer/PlayButtonMargin/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
 [connection signal="open_shop_requested" from="TitleCanvasLayer/LivesUI" to="TitleSnackbar" method="press_snackbar_button" binds= [3]]

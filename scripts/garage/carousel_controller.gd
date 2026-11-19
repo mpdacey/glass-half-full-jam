@@ -111,7 +111,7 @@ func _spin_carousel(final_progress: float, time: float = 1.0) -> void:
 
 func _get_nearest_centred_progress(raw_progress: float) -> float:
 	var item_index : float = round(raw_progress * item_list.get_child_count())
-	var modulo_swing : float = fmod(raw_progress * item_list.get_child_count() - 0.5, 1.0)
+	var modulo_swing : float = fmod(1.0 + raw_progress * item_list.get_child_count() - 0.5, 1.0)
 	var swing_value : float = clamp(round(modulo_swing), 0, 1) - 0.5
 	var targeted_progress : float = (item_index + swing_value) / item_list.get_child_count()
 	return targeted_progress

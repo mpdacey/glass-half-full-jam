@@ -7,6 +7,12 @@ const PAINT_OVERRIDE_KEY = "override_paint_offset"
 @export var general_particles: CPUParticles3D
 @export var paint_particles: CPUParticles3D
 
+func apply_global_paint() -> void:
+	player_car_mesh.set_instance_shader_parameter(
+		PAINT_OVERRIDE_KEY,
+		RenderingServer.global_shader_parameter_get(GlobalConstants.SHADER_PLAYER_PAINT_OFFSET_KEY)
+	)
+
 func _on_carousel_item_hovered(item: Control) -> void:
 	var paint_can := item as PaintCanController
 	var paint := paint_can.paint

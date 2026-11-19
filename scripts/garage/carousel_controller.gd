@@ -24,8 +24,9 @@ var real_scroll_progress : float
 var is_scrolling : bool
 
 func _ready() -> void:
-	item_list.add_sibling(item_list.duplicate())
-	item_list.add_sibling(item_list.duplicate())
+	item_list.add_sibling(_add_item_buttons(item_list.duplicate()))
+	item_list.add_sibling(_add_item_buttons(item_list.duplicate()))
+	_add_item_buttons(item_list)
 
 func _physics_process(_delta: float) -> void:
 	if not scroll_bar:
@@ -119,3 +120,25 @@ func _get_item_at_progress(progress: float) -> Control:
 	var child_count : int = item_list.get_child_count()
 	var item_index : int = ceili((100 + progress) * child_count + 1.0) % child_count
 	return item_list.get_child(item_index)
+
+func _add_item_buttons(item_container: Node) -> Node:
+	var index := 0
+	for item in item_container.get_children():
+		var button := Button.new()
+		button.modulate = Color.TRANSPARENT
+		button.pressed.connect(_on_item_button_pressed.bind(index))
+		button.mouse_filter = Control.MOUSE_FILTER_PASS
+		item.add_child(button)
+		index += 1
+	
+	return item_container
+
+func _on_item_button_pressed(index: int) -> void:
+	if is_scrolling:
+		return
+	
+	if index != _get_item_at_progress(real_scroll_progress).get_index():
+		return
+	
+	print(item_list.get_child(index))
+	item_selected.emit(item_list.get_child(index))

@@ -19,3 +19,8 @@ func _on_carousel_scrolling_started() -> void:
 
 func _on_carousel_scrolling_ended() -> void:
 	general_particles.emitting = false
+
+func _on_carousel_item_selected(item: Control) -> void:
+	var paint_can := item as PaintCanController
+	var paint := paint_can.paint
+	GlobalSignalBus.paint_applied.emit(paint.paint_name)

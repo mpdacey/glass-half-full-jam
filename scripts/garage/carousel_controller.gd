@@ -134,7 +134,7 @@ func _add_item_buttons(item_container: Node) -> Node:
 	return item_container
 
 func _on_item_button_pressed(index: int) -> void:
-	if is_scrolling:
+	if abs(real_scroll_progress - cache_scroll_progress) > 0.1 / item_list.get_child_count():
 		return
 	
 	if index != _get_item_at_progress(real_scroll_progress).get_index():

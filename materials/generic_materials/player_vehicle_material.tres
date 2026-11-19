@@ -14,3 +14,5 @@ shader_parameter/curve_amount = 0.01
 shader_parameter/distant_albeno = Color(1, 1, 1, 0)
 shader_parameter/has_seperate_distant_texture = false
 shader_parameter/bend_amplifier = 1.0
+shader_parameter/has_override_paint_offset = false
+shader_parameter/override_paint_offset = Vector2(0, 0)

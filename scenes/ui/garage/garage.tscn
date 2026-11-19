@@ -457,11 +457,12 @@ mouse_filter = 1
 script = ExtResource("4_6thhw")
 platform = NodePath("../../SubViewportContainer/SubViewport/Node3D/PlatformPivot")
 
-[node name="PaintSelector" type="Control" parent="CoreGarageUI/VBoxContainer" unique_id=1191966476 node_paths=PackedStringArray("general_particles", "paint_particles")]
+[node name="PaintSelector" type="Control" parent="CoreGarageUI/VBoxContainer" unique_id=1191966476 node_paths=PackedStringArray("player_car_mesh", "general_particles", "paint_particles")]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("5_jo7ee")
+player_car_mesh = NodePath("../../SubViewportContainer/SubViewport/Node3D/PlatformPivot/PlayerCar")
 general_particles = NodePath("../../SubViewportContainer/SubViewport/Node3D/ParticleGenerators/GeneralParticleGenerator")
 paint_particles = NodePath("../../SubViewportContainer/SubViewport/Node3D/ParticleGenerators/PaintParticleGenerator")
 

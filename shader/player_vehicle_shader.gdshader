@@ -6,6 +6,8 @@ render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_back, diffus
 global uniform vec2 player_paint_offset;
 global uniform float bend_multiplier;
 
+instance uniform vec2 override_paint_offset;
+
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear, repeat_enable;
 
@@ -49,7 +51,13 @@ void vertex(){
 }
 
 void fragment() {
-	vec2 base_uv = UV + player_paint_offset;
+	vec2 base_uv = UV;
+
+	if (override_paint_offset == vec2(0,0)) {
+		base_uv += player_paint_offset;
+	} else {
+		base_uv += override_paint_offset;
+	}
 
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
 

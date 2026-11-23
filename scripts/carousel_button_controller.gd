@@ -17,7 +17,7 @@ func _on_button_down(carousel_controller: CarouselController) -> void:
 	
 	if (
 		not carousel_controller.can_select
-		or carousel_controller.get_current_centre_item() != carousel_item
+		or carousel_controller.get_current_centre_item().get_index() != carousel_item.get_index()
 	):
 		return
 	

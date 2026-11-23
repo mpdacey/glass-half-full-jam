@@ -46,17 +46,24 @@ func _on_carousel_scrolling_ended() -> void:
 	scrolling_tween.tween_callback(scrolling_audio_player.stop)
 
 func _on_carousel_item_hovered() -> void:
-	if not hovered_sfx:
-		return
-	
-	var stream_randomizer := instance_audio_player.stream as AudioStreamRandomizer
-	stream_randomizer.set_stream(0, hovered_sfx)
-	instance_audio_player.play()
+	_play_instance_sfx([hovered_sfx])
 
 func _on_carousel_item_selected() -> void:
-	if not selected_sfx:
+	_play_instance_sfx([selected_sfx])
+
+func _play_instance_sfx(sfxs: Array[AudioStream]) -> void:
+	if not (get_parent() as Control).is_visible_in_tree():
+		return
+	
+	if sfxs.size() <= 0:
 		return
 	
 	var stream_randomizer := instance_audio_player.stream as AudioStreamRandomizer
-	stream_randomizer.set_stream(0, selected_sfx)
+	
+	for index in stream_randomizer.streams_count:
+		stream_randomizer.remove_stream(0)
+	
+	for stream in sfxs:
+		stream_randomizer.add_stream(-1, stream)
+	
 	instance_audio_player.play()

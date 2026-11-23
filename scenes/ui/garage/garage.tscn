@@ -649,8 +649,6 @@ bus = &"SFX"
 [connection signal="item_hovered" from="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="CoreGarageUI/VBoxContainer/PaintSelector" method="_on_carousel_item_hovered"]
 [connection signal="item_selected" from="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="CoreGarageUI/VBoxContainer/PaintSelector" method="_on_carousel_item_selected"]
 [connection signal="hidden" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [true]]
-[connection signal="shown" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/VBoxContainer/PaintSelector" method="ready_carousel"]
-[connection signal="shown" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/VBoxContainer/PaintSelector" method="apply_global_paint"]
 [connection signal="shown" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" method="ready_carousel"]
 [connection signal="shown" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [false]]
 [connection signal="target_toggled_off" from="GarageDoorAnimator/SnackbarButtonListener" to="GarageDoorAnimator" method="play" binds= [&"close_garage"]]

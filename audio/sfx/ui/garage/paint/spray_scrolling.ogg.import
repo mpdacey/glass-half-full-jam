@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/spray_scrolling.ogg-09a134df2202e2d56d7fed073
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

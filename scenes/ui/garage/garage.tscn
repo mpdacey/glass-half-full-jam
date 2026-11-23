@@ -29,10 +29,16 @@
 [ext_resource type="Resource" uid="uid://cm35kynkjp26j" path="res://resources/customisation/paint_resources/brown_paint_resource.tres" id="23_yuxmy"]
 [ext_resource type="Resource" uid="uid://60xdvvachb6p" path="res://resources/customisation/paint_resources/tan_paint_resource.tres" id="24_eqemn"]
 [ext_resource type="Resource" uid="uid://dsljavbmsw2w0" path="res://resources/customisation/paint_resources/cream_paint_resource.tres" id="25_7tpbr"]
+[ext_resource type="AudioStream" uid="uid://diwqrr4a0vd04" path="res://audio/sfx/ui/garage/paint/spray_scrolling.ogg" id="28_b8e55"]
+[ext_resource type="AudioStream" uid="uid://uef8x36l4oii" path="res://audio/sfx/ui/garage/paint/spray_hovered.ogg" id="29_p278u"]
+[ext_resource type="AudioStream" uid="uid://ddf23n72h11qo" path="res://audio/sfx/ui/garage/paint/spray_selected.ogg" id="30_12dj6"]
 [ext_resource type="Texture2D" uid="uid://cratbux83suby" path="res://textures/ui/garage/garage_shutter_door.png" id="30_o66mb"]
 [ext_resource type="AudioStream" uid="uid://bt3b3mbni7umj" path="res://audio/sfx/ui/garage/shutter_slam.ogg" id="31_3qrdu"]
 [ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="31_ocg71"]
+[ext_resource type="AudioStream" uid="uid://volt8y5ffjof" path="res://audio/sfx/ui/garage/paint/spray_tick_1.ogg" id="31_yuxmy"]
 [ext_resource type="AudioStream" uid="uid://dw7vmj7seo524" path="res://audio/sfx/ui/garage/shutter_open.ogg" id="32_5tpxy"]
+[ext_resource type="AudioStream" uid="uid://br7c3k3h1tpvf" path="res://audio/sfx/ui/garage/paint/spray_tick_2.ogg" id="32_eqemn"]
+[ext_resource type="AudioStream" uid="uid://c1yqwx4jrka33" path="res://audio/sfx/ui/garage/paint/spray_tick_3.ogg" id="33_7tpbr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_68yga"]
 top_radius = 2.0444336
@@ -566,6 +572,12 @@ paint = ExtResource("24_eqemn")
 [node name="PaintCan18" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="17" unique_id=1589719826 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("25_7tpbr")
+
+[node name="CarouselSoundManager" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" index="2" unique_id=1864483248]
+scrolling_sfx = ExtResource("28_b8e55")
+hovered_sfx = ExtResource("29_p278u")
+selected_sfx = ExtResource("30_12dj6")
+ticks_sfxs = Array[AudioStream]([ExtResource("31_yuxmy"), ExtResource("32_eqemn"), ExtResource("33_7tpbr")])
 
 [node name="PanelContainer" type="PanelContainer" parent="CoreGarageUI/GarageVBox" unique_id=840784326]
 visible = false

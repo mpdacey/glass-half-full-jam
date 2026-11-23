@@ -89,10 +89,19 @@ func _on_gui_input(event: InputEvent) -> void:
 func ready_carousel() -> void:
 	await get_tree().process_frame
 	scroll_bar = get_h_scroll_bar()
-	real_scroll_progress = 0.0833
 
 func get_current_centre_item() -> Node:
 	return _get_item_at_progress(real_scroll_progress)
+
+func find_item_with_matching_property(property_name: String, match_property: Variant) -> Node:
+	for child : Node in item_list.get_children():
+		if child.get(property_name) == match_property:
+			return child
+	return null
+
+func force_select_item_by_index(item_index: int) -> void:
+	real_scroll_progress = (float(item_index) - 1.5) / float(item_list.get_child_count())
+	_on_item_button_pressed(item_index)
 
 func _fling_carousel() -> void:
 	var velocity : float = min(abs(drag_velocity), flick_max_velocity) * sign(drag_velocity)

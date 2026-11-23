@@ -299,6 +299,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CoreGarageUI/GarageVBox/PaintSelector")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"apply_saved_paint"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3qrdu"]
 _data = {
@@ -440,7 +454,7 @@ color_initial_ramp = SubResource("Gradient_anajk")
 script = SubResource("GDScript_jo7ee")
 radius = 1.8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CoreGarageUI" unique_id=927813899]
+[node name="GarageVBox" type="VBoxContainer" parent="CoreGarageUI" unique_id=927813899]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -450,14 +464,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="GarageSwipeController" type="Control" parent="CoreGarageUI/VBoxContainer" unique_id=218403148 node_paths=PackedStringArray("platform")]
+[node name="GarageSwipeController" type="Control" parent="CoreGarageUI/GarageVBox" unique_id=218403148 node_paths=PackedStringArray("platform")]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("4_6thhw")
 platform = NodePath("../../SubViewportContainer/SubViewport/Node3D/PlatformPivot")
 
-[node name="PaintSelector" type="Control" parent="CoreGarageUI/VBoxContainer" unique_id=1191966476 node_paths=PackedStringArray("player_car_mesh", "general_particles", "paint_particles")]
+[node name="PaintSelector" type="Control" parent="CoreGarageUI/GarageVBox" unique_id=1191966476 node_paths=PackedStringArray("player_car_mesh", "general_particles", "paint_particles", "carousel_controller")]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
@@ -465,8 +479,9 @@ script = ExtResource("5_jo7ee")
 player_car_mesh = NodePath("../../SubViewportContainer/SubViewport/Node3D/PlatformPivot/PlayerCar")
 general_particles = NodePath("../../SubViewportContainer/SubViewport/Node3D/ParticleGenerators/GeneralParticleGenerator")
 paint_particles = NodePath("../../SubViewportContainer/SubViewport/Node3D/ParticleGenerators/PaintParticleGenerator")
+carousel_controller = NodePath("PaintSelectorMargin/PaintCarouselContainer")
 
-[node name="PaintSelectorMargin" type="MarginContainer" parent="CoreGarageUI/VBoxContainer/PaintSelector" unique_id=1175145294]
+[node name="PaintSelectorMargin" type="MarginContainer" parent="CoreGarageUI/GarageVBox/PaintSelector" unique_id=1175145294]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -477,98 +492,98 @@ size_flags_vertical = 3
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_bottom = 800
 
-[node name="CarouselScrollContainer" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin" unique_id=367899716 instance=ExtResource("5_7vs20")]
+[node name="PaintCarouselContainer" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin" unique_id=367899716 instance=ExtResource("5_7vs20")]
 layout_mode = 2
 
-[node name="PaintCan" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="0" unique_id=1932031658 instance=ExtResource("5_s25we")]
+[node name="PaintCan" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="0" unique_id=1932031658 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("8_0a6yr")
 
-[node name="PaintCan2" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="1" unique_id=266678526 instance=ExtResource("5_s25we")]
+[node name="PaintCan2" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="1" unique_id=266678526 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("9_cn0j1")
 
-[node name="PaintCan3" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="2" unique_id=184940759 instance=ExtResource("5_s25we")]
+[node name="PaintCan3" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="2" unique_id=184940759 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("10_anajk")
 
-[node name="PaintCan4" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="3" unique_id=1297299647 instance=ExtResource("5_s25we")]
+[node name="PaintCan4" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="3" unique_id=1297299647 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("11_o66mb")
 
-[node name="PaintCan5" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="4" unique_id=948895166 instance=ExtResource("5_s25we")]
+[node name="PaintCan5" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="4" unique_id=948895166 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("12_ocg71")
 
-[node name="PaintCan6" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="5" unique_id=1242598756 instance=ExtResource("5_s25we")]
+[node name="PaintCan6" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="5" unique_id=1242598756 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("13_srbqb")
 
-[node name="PaintCan7" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="6" unique_id=1220905007 instance=ExtResource("5_s25we")]
+[node name="PaintCan7" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="6" unique_id=1220905007 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("14_3qrdu")
 
-[node name="PaintCan8" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="7" unique_id=1478615657 instance=ExtResource("5_s25we")]
+[node name="PaintCan8" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="7" unique_id=1478615657 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("15_5tpxy")
 
-[node name="PaintCan9" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="8" unique_id=714063850 instance=ExtResource("5_s25we")]
+[node name="PaintCan9" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="8" unique_id=714063850 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("16_ok80w")
 
-[node name="PaintCan10" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="9" unique_id=239839461 instance=ExtResource("5_s25we")]
+[node name="PaintCan10" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="9" unique_id=239839461 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("17_gpa8b")
 
-[node name="PaintCan11" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="10" unique_id=2062144965 instance=ExtResource("5_s25we")]
+[node name="PaintCan11" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="10" unique_id=2062144965 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("18_4st6w")
 
-[node name="PaintCan12" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="11" unique_id=293676981 instance=ExtResource("5_s25we")]
+[node name="PaintCan12" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="11" unique_id=293676981 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("19_owd1n")
 
-[node name="PaintCan13" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="12" unique_id=1557197606 instance=ExtResource("5_s25we")]
+[node name="PaintCan13" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="12" unique_id=1557197606 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("20_b8e55")
 
-[node name="PaintCan14" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="13" unique_id=217125908 instance=ExtResource("5_s25we")]
+[node name="PaintCan14" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="13" unique_id=217125908 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("21_p278u")
 
-[node name="PaintCan15" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="14" unique_id=1516547988 instance=ExtResource("5_s25we")]
+[node name="PaintCan15" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="14" unique_id=1516547988 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("22_12dj6")
 
-[node name="PaintCan16" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="15" unique_id=1922871887 instance=ExtResource("5_s25we")]
+[node name="PaintCan16" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="15" unique_id=1922871887 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("23_yuxmy")
 
-[node name="PaintCan17" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="16" unique_id=1448347138 instance=ExtResource("5_s25we")]
+[node name="PaintCan17" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="16" unique_id=1448347138 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("24_eqemn")
 
-[node name="PaintCan18" parent="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="17" unique_id=1589719826 instance=ExtResource("5_s25we")]
+[node name="PaintCan18" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="17" unique_id=1589719826 instance=ExtResource("5_s25we")]
 layout_mode = 2
 paint = ExtResource("25_7tpbr")
 
-[node name="PanelContainer" type="PanelContainer" parent="CoreGarageUI/VBoxContainer" unique_id=840784326]
+[node name="PanelContainer" type="PanelContainer" parent="CoreGarageUI/GarageVBox" unique_id=840784326]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_68yga")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CoreGarageUI/VBoxContainer/PanelContainer" unique_id=155698861]
+[node name="VBoxContainer" type="VBoxContainer" parent="CoreGarageUI/GarageVBox/PanelContainer" unique_id=155698861]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CoreGarageUI/VBoxContainer/PanelContainer/VBoxContainer" unique_id=277103246]
+[node name="Panel" type="Panel" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer" unique_id=277103246]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
 theme_override_styles/panel = SubResource("StyleBoxFlat_s25we")
 
-[node name="Control2" type="MarginContainer" parent="CoreGarageUI/VBoxContainer/PanelContainer/VBoxContainer" unique_id=718918779]
+[node name="Control2" type="MarginContainer" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer" unique_id=718918779]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 48
@@ -576,13 +591,13 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 500
 
-[node name="GridContainer" type="GridContainer" parent="CoreGarageUI/VBoxContainer/PanelContainer/VBoxContainer/Control2" unique_id=208434710]
+[node name="GridContainer" type="GridContainer" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2" unique_id=208434710]
 layout_mode = 2
 theme_override_constants/h_separation = 48
 theme_override_constants/v_separation = 48
 columns = 2
 
-[node name="Button" type="Button" parent="CoreGarageUI/VBoxContainer/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=596045095]
+[node name="Button" type="Button" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=596045095]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -590,7 +605,7 @@ theme_override_fonts/font = ExtResource("5_58n5e")
 theme_override_font_sizes/font_size = 80
 text = "Repaint"
 
-[node name="Button2" type="Button" parent="CoreGarageUI/VBoxContainer/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=957949473]
+[node name="Button2" type="Button" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=957949473]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -599,7 +614,7 @@ theme_override_font_sizes/font_size = 80
 text = "Apply Decals"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="CoreGarageUI/VBoxContainer/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=2117645761]
+[node name="Button3" type="Button" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=2117645761]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -608,7 +623,7 @@ theme_override_font_sizes/font_size = 80
 text = "Switch Car"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="CoreGarageUI/VBoxContainer/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=120655767]
+[node name="Button4" type="Button" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=120655767]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -643,15 +658,16 @@ metadata/_custom_type_script = "uid://doy80gr0iay7o"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=21746460]
 bus = &"SFX"
 
-[connection signal="gui_input" from="CoreGarageUI/VBoxContainer/GarageSwipeController" to="CoreGarageUI/VBoxContainer/GarageSwipeController" method="_on_gui_input"]
-[connection signal="carousel_scrolling_ended" from="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="CoreGarageUI/VBoxContainer/PaintSelector" method="_on_carousel_scrolling_ended"]
-[connection signal="carousel_scrolling_started" from="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="CoreGarageUI/VBoxContainer/PaintSelector" method="_on_carousel_scrolling_started"]
-[connection signal="item_hovered" from="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="CoreGarageUI/VBoxContainer/PaintSelector" method="_on_carousel_item_hovered"]
-[connection signal="item_selected" from="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" to="CoreGarageUI/VBoxContainer/PaintSelector" method="_on_carousel_item_selected"]
+[connection signal="gui_input" from="CoreGarageUI/GarageVBox/GarageSwipeController" to="CoreGarageUI/GarageVBox/GarageSwipeController" method="_on_gui_input"]
+[connection signal="saved_paint_loaded" from="CoreGarageUI/GarageVBox/PaintSelector" to="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" method="force_select_item_by_index"]
+[connection signal="carousel_scrolling_ended" from="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" to="CoreGarageUI/GarageVBox/PaintSelector" method="_on_carousel_scrolling_ended"]
+[connection signal="carousel_scrolling_started" from="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" to="CoreGarageUI/GarageVBox/PaintSelector" method="_on_carousel_scrolling_started"]
+[connection signal="item_hovered" from="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" to="CoreGarageUI/GarageVBox/PaintSelector" method="_on_carousel_item_hovered"]
+[connection signal="item_selected" from="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" to="CoreGarageUI/GarageVBox/PaintSelector" method="_on_carousel_item_selected"]
 [connection signal="hidden" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [true]]
-[connection signal="shown" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer" method="ready_carousel"]
+[connection signal="shown" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" method="ready_carousel"]
 [connection signal="shown" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [false]]
 [connection signal="target_toggled_off" from="GarageDoorAnimator/SnackbarButtonListener" to="GarageDoorAnimator" method="play" binds= [&"close_garage"]]
 [connection signal="target_toggled_on" from="GarageDoorAnimator/SnackbarButtonListener" to="GarageDoorAnimator" method="play" binds= [&"open_garage"]]
 
-[editable path="CoreGarageUI/VBoxContainer/PaintSelector/PaintSelectorMargin/CarouselScrollContainer"]
+[editable path="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer"]

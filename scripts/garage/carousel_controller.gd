@@ -23,6 +23,8 @@ var fling_tween: Tween
 var real_scroll_progress : float
 var is_scrolling : bool
 var can_select : bool = true
+var was_interrupted: bool
+var was_flung: bool
 
 func _ready() -> void:
 	item_list.add_sibling(_add_item_buttons(item_list.duplicate()))
@@ -50,12 +52,15 @@ func _on_gui_input(event: InputEvent) -> void:
 	if not visible:
 		return
 	
+	# I LOVE NESTED IF STATEMENTS! I am a great programmer B^)
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
 			initial_touch_position = event.position.x
 			cache_scroll_progress = real_scroll_progress
 			if fling_tween:
-				carousel_scrolling_interrupted.emit()
+				if fling_tween.is_running():
+					carousel_scrolling_interrupted.emit()
+					was_interrupted = was_interrupted or was_flung
 				fling_tween.kill()
 		elif event.is_released():
 			if halt_timer.time_left > 0 and abs(drag_velocity) > 200:
@@ -112,6 +117,7 @@ func _fling_carousel() -> void:
 	var final_scroll_result := final_scroll_offset + real_scroll_progress
 	var final_targeted_scroll_result := _get_nearest_centred_progress(final_scroll_result)
 	
+	was_flung = true
 	_spin_carousel(final_targeted_scroll_result, time)
 
 func _correct_carousel() -> void:
@@ -124,9 +130,11 @@ func _spin_carousel(final_progress: float, time: float = 1.0) -> void:
 	fling_tween.set_trans(Tween.TRANS_QUAD)
 	
 	fling_tween.tween_property(self, "real_scroll_progress", final_progress, time)
-	if is_scrolling:
+	if is_scrolling or was_interrupted:
 		fling_tween.tween_callback(item_hovered.emit.bind(_get_item_at_progress(final_progress)))
 	fling_tween.tween_callback(carousel_scrolling_ended.emit)
+	fling_tween.tween_property(self, "was_interrupted", false, 0)
+	fling_tween.tween_property(self, "was_flung", false, 0)
 	fling_tween.tween_property(self, "can_select", true, 0)
 
 func _get_nearest_centred_progress(raw_progress: float) -> float:

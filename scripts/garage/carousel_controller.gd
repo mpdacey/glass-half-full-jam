@@ -74,7 +74,7 @@ func _on_gui_input(event: InputEvent) -> void:
 	halt_timer.start()
 	
 	if (
-		not can_select and
+		can_select and
 		abs(real_scroll_progress - cache_scroll_progress) > 0.1 / item_list.get_child_count()
 	):
 		can_select = false

@@ -22,6 +22,7 @@ var drag_velocity: float = 0.0
 var fling_tween: Tween
 var real_scroll_progress : float
 var is_scrolling : bool
+var can_select : bool = true
 
 func _ready() -> void:
 	item_list.add_sibling(_add_item_buttons(item_list.duplicate()))
@@ -73,6 +74,12 @@ func _on_gui_input(event: InputEvent) -> void:
 	halt_timer.start()
 	
 	if (
+		not can_select and
+		abs(real_scroll_progress - cache_scroll_progress) > 0.1 / item_list.get_child_count()
+	):
+		can_select = false
+	
+	if (
 		not is_scrolling and
 		abs(cache_scroll_progress - real_scroll_progress) > (0.4 / item_list.get_child_count())
 	):
@@ -83,6 +90,9 @@ func ready_carousel() -> void:
 	await get_tree().process_frame
 	scroll_bar = get_h_scroll_bar()
 	real_scroll_progress = 0.0833
+
+func get_current_centre_item() -> Node:
+	return _get_item_at_progress(real_scroll_progress)
 
 func _fling_carousel() -> void:
 	var velocity : float = min(abs(drag_velocity), flick_max_velocity) * sign(drag_velocity)
@@ -108,6 +118,7 @@ func _spin_carousel(final_progress: float, time: float = 1.0) -> void:
 	if is_scrolling:
 		fling_tween.tween_callback(item_hovered.emit.bind(_get_item_at_progress(final_progress)))
 	fling_tween.tween_callback(carousel_scrolling_ended.emit)
+	fling_tween.tween_property(self, "can_select", true, 0)
 
 func _get_nearest_centred_progress(raw_progress: float) -> float:
 	var item_index : float = round(raw_progress * item_list.get_child_count())
@@ -124,21 +135,18 @@ func _get_item_at_progress(progress: float) -> Control:
 func _add_item_buttons(item_container: Node) -> Node:
 	var index := 0
 	for item in item_container.get_children():
-		var button := Button.new()
-		button.modulate = Color.TRANSPARENT
+		var button := CarouselButton.new(self)
 		button.pressed.connect(_on_item_button_pressed.bind(index))
-		button.mouse_filter = Control.MOUSE_FILTER_PASS
 		item.add_child(button)
 		index += 1
 	
 	return item_container
 
 func _on_item_button_pressed(index: int) -> void:
-	if abs(real_scroll_progress - cache_scroll_progress) > 0.1 / item_list.get_child_count():
+	if (
+		not can_select
+		or index != get_current_centre_item().get_index()
+	):
 		return
 	
-	if index != _get_item_at_progress(real_scroll_progress).get_index():
-		return
-	
-	print(item_list.get_child(index))
 	item_selected.emit(item_list.get_child(index))

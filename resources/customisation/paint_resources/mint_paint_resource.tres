@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaintResource" format=3 uid="uid://dcpqi7pnog6it"]
+
+[ext_resource type="Script" uid="uid://bo5tiboahripu" path="res://scripts/resource_scripts/paint_resource_script.gd" id="1_g3thq"]
+
+[resource]
+script = ExtResource("1_g3thq")
+paint_name = &"Mint"
+particle_colour = Color(0.38039216, 0.79607844, 0.54509807, 1)
+shader_uv_offset = Vector2(0.625, 0)
+metadata/_custom_type_script = "uid://bo5tiboahripu"

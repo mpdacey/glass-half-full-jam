@@ -4,6 +4,7 @@ const CONFIG_FILE_PATH = "user://userdata.cfg"
 const DEFAULT_USER = "root"
 const HIGHSCORE_KEY = "highscore"
 const LIVES_REGENERATION_UNIX_KEY = "revival"
+const STALLION_PAINT_KEY = "stallion_paint"
 
 var current_config := ConfigFile.new()
 
@@ -59,3 +60,6 @@ func _validate_config_file() -> void:
 	
 	if not current_config.has_section_key(DEFAULT_USER, LIVES_REGENERATION_UNIX_KEY):
 		current_config.set_value(DEFAULT_USER, LIVES_REGENERATION_UNIX_KEY, 0)
+	
+	if not current_config.has_section_key(DEFAULT_USER, STALLION_PAINT_KEY):
+		current_config.set_value(DEFAULT_USER, STALLION_PAINT_KEY, "uid://d3g65l3xed3o6")

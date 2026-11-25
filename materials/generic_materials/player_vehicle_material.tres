@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dtpk1rvwi2fvp"]
+
+[ext_resource type="Shader" uid="uid://bipan3fqguigy" path="res://shader/player_vehicle_shader.gdshader" id="1_8eidr"]
+[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://models/traffic/Textures/colormap.png" id="2_w8xxq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8eidr")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_w8xxq")
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/curve_amount = 0.01
+shader_parameter/distant_albeno = Color(1, 1, 1, 0)
+shader_parameter/has_seperate_distant_texture = false
+shader_parameter/bend_amplifier = 1.0
+shader_parameter/has_override_paint_offset = false
+shader_parameter/override_paint_offset = Vector2(0, 0)

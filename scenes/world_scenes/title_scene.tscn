@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c3o4f68hm2hmk" path="res://logo.png" id="4_pyl7j"]
 [ext_resource type="AudioStream" uid="uid://dfkflwqql0shl" path="res://audio/sfx/engine/engine_rpm_med.ogg" id="5_ofksa"]
 [ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="5_uaep1"]
-[ext_resource type="Material" uid="uid://bajakksrjxb2k" path="res://materials/generic_materials/paintable_traffic_material.tres" id="7_jedqc"]
+[ext_resource type="Material" uid="uid://dtpk1rvwi2fvp" path="res://materials/generic_materials/player_vehicle_material.tres" id="7_l7fl3"]
 [ext_resource type="AnimationLibrary" uid="uid://c5o4iqm3dmff" path="res://resources/animation_libraries/car_putt.tres" id="7_o7kwv"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="7_s8xmt"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_6ppm8"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://kix35uopnopg" path="res://scenes/ui/options_ui.tscn" id="21_pbe57"]
 [ext_resource type="PackedScene" uid="uid://ctu6qrmvuu4q1" path="res://scenes/ui/snackbar/snackbar.tscn" id="22_qk2ae"]
 [ext_resource type="Script" uid="uid://c2iwrbcd44v43" path="res://scripts/snackbar_button_auto_selector.gd" id="25_t3vcv"]
+[ext_resource type="PackedScene" uid="uid://bpqy5xt8ynxc" path="res://scenes/ui/garage/garage.tscn" id="28_l7fl3"]
 
 [sub_resource type="Curve3D" id="Curve3D_c3e3h"]
 _data = {
@@ -48,6 +49,62 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Animation" id="Animation_l7fl3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.0]
+}
+
+[sub_resource type="Animation" id="Animation_xj18e"]
+resource_name = "off_drive"
+length = 0.3
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [-9.0]
+}
+
+[sub_resource type="Animation" id="Animation_a7bx2"]
+resource_name = "on_drive"
+length = 0.3
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [-6.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7bx2"]
+_data = {
+&"RESET": SubResource("Animation_l7fl3"),
+&"off_drive": SubResource("Animation_xj18e"),
+&"on_drive": SubResource("Animation_a7bx2")
+}
 
 [sub_resource type="Curve3D" id="Curve3D_bmxmj"]
 _data = {
@@ -857,7 +914,6 @@ progress = 100.774155
 [node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D" unique_id=1530341443]
 transform = Transform3D(-1.0000001, 0, -1.509958e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1, 0, 0, 0)
 layers = 2
-instance_shader_parameters/paint = 12
 mesh = ExtResource("5_uaep1")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = ExtResource("2_pyl7j")
@@ -865,7 +921,7 @@ surface_material_override/1 = ExtResource("2_pyl7j")
 surface_material_override/2 = ExtResource("2_pyl7j")
 surface_material_override/3 = ExtResource("2_pyl7j")
 surface_material_override/4 = ExtResource("2_pyl7j")
-surface_material_override/5 = ExtResource("7_jedqc")
+surface_material_override/5 = ExtResource("7_l7fl3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports" unique_id=1046586961]
 libraries/ = ExtResource("7_o7kwv")
@@ -884,6 +940,18 @@ emission_angle_filter_attenuation_db = 0.0
 attenuation_filter_cutoff_hz = 8803.0
 attenuation_filter_db = 0.0
 parameters/looping = true
+
+[node name="GarageSnackbarListener" type="Node" parent="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" unique_id=68640441]
+script = ExtResource("19_0oqx5")
+target_button_type = 4
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="CarEngineMixer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" unique_id=1573349168]
+libraries/ = SubResource("AnimationLibrary_a7bx2")
+
+[node name="DriveSnackbarListener" type="Node" parent="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer" unique_id=1092616775]
+script = ExtResource("19_0oqx5")
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
 [node name="PolicePath" type="Path3D" parent="Paths" unique_id=1436197362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.674988, 0.10000001, 0.082)
@@ -1052,6 +1120,8 @@ script = ExtResource("19_0oqx5")
 target_button_type = 2
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
+[node name="GarageUI" parent="." unique_id=556848940 instance=ExtResource("28_l7fl3")]
+
 [node name="MusicManager" type="Node" parent="." unique_id=866031560]
 script = ExtResource("10_1ot34")
 
@@ -1087,6 +1157,10 @@ layer = 5
 [node name="SnackbarButtonAutoSelector" type="Node" parent="TitleSnackbar" unique_id=1432582934]
 script = ExtResource("25_t3vcv")
 
+[connection signal="target_toggled_off" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/GarageSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" method="set_stream_paused" binds= [false]]
+[connection signal="target_toggled_on" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/GarageSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" method="set_stream_paused" binds= [true]]
+[connection signal="target_toggled_off" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer/DriveSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer" method="play" binds= [&"off_drive"]]
+[connection signal="target_toggled_on" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer/DriveSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer" method="play" binds= [&"on_drive"]]
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
 [connection signal="pressed" from="TitleCanvasLayer/PlayButtonMargin/PlayButton" to="TitleCanvasLayer/PlayButtonMargin/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
 [connection signal="open_shop_requested" from="TitleCanvasLayer/LivesUI" to="TitleSnackbar" method="press_snackbar_button" binds= [3]]

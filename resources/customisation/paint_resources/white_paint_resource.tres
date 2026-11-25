@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PaintResource" format=3 uid="uid://bay812tr5wn8c"]
+
+[ext_resource type="Script" uid="uid://bo5tiboahripu" path="res://scripts/resource_scripts/paint_resource_script.gd" id="1_x658y"]
+
+[resource]
+script = ExtResource("1_x658y")
+paint_name = &"White"
+shader_uv_offset = Vector2(0.0625, 0.25)
+metadata/_custom_type_script = "uid://bo5tiboahripu"

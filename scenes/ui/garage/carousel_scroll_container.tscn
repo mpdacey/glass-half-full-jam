@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://nqojxcy46t8p"]
+
+[ext_resource type="Script" uid="uid://dy6y4inlep7u1" path="res://scripts/garage/carousel_controller.gd" id="1_pjyi5"]
+[ext_resource type="Script" uid="uid://2df0a5e21mgg" path="res://scripts/garage/carousel_sound_manager.gd" id="2_nuvwj"]
+[ext_resource type="AudioStream" uid="uid://uef8x36l4oii" path="res://audio/sfx/ui/garage/paint/spray_hovered.ogg" id="4_5t042"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7weg"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nuvwj"]
+random_pitch = 1.035265
+streams_count = 1
+stream_0/stream = ExtResource("4_5t042")
+
+[node name="CarouselScrollContainer" type="ScrollContainer" unique_id=367899716 node_paths=PackedStringArray("item_list", "halt_timer")]
+clip_contents = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_c7weg")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+script = ExtResource("1_pjyi5")
+item_list = NodePath("CarouselHBox/CarouselItems")
+halt_timer = NodePath("HaltMovementTimer")
+
+[node name="CarouselHBox" type="HBoxContainer" parent="." unique_id=1140563986]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="CarouselItems" type="HBoxContainer" parent="CarouselHBox" unique_id=1210893658]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="HaltMovementTimer" type="Timer" parent="." unique_id=1768206559]
+wait_time = 0.05
+one_shot = true
+ignore_time_scale = true
+
+[node name="CarouselSoundManager" type="Node" parent="." unique_id=1864483248 node_paths=PackedStringArray("scrolling_audio_player", "instance_audio_player")]
+script = ExtResource("2_nuvwj")
+scrolling_audio_player = NodePath("ScrollingAudioPlayer")
+instance_audio_player = NodePath("InstanceAudioPlayer")
+metadata/_custom_type_script = "uid://2df0a5e21mgg"
+
+[node name="ScrollingAudioPlayer" type="AudioStreamPlayer" parent="CarouselSoundManager" unique_id=2112172584]
+bus = &"SFX"
+
+[node name="InstanceAudioPlayer" type="AudioStreamPlayer" parent="CarouselSoundManager" unique_id=1314247491]
+stream = SubResource("AudioStreamRandomizer_nuvwj")
+max_polyphony = 2
+bus = &"SFX"
+
+[connection signal="carousel_scrolling_ended" from="." to="CarouselSoundManager" method="_on_carousel_scrolling_ended"]
+[connection signal="carousel_scrolling_started" from="." to="CarouselSoundManager" method="_on_carousel_scrolling_started"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="item_hovered" from="." to="CarouselSoundManager" method="_on_carousel_item_hovered" unbinds=1]
+[connection signal="item_selected" from="." to="CarouselSoundManager" method="_on_carousel_item_selected" unbinds=1]

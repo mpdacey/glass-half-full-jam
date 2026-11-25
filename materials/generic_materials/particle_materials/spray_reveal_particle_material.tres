@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://4jj14ijw0xf1"]
+
+[resource]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 2
+disable_specular_occlusion = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.4745098)
+metallic_specular = 0.0
+grow_amount = -1.468

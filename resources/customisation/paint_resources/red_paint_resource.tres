@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PaintResource" format=3 uid="uid://d3g65l3xed3o6"]
+
+[ext_resource type="Script" uid="uid://bo5tiboahripu" path="res://scripts/resource_scripts/paint_resource_script.gd" id="1_7bqp7"]
+
+[resource]
+script = ExtResource("1_7bqp7")
+paint_name = &"Red"
+particle_colour = Color(0.8784314, 0.36078432, 0.28627452, 1)
+shader_uv_offset = Vector2(0.0625, -0.25)
+metadata/_custom_type_script = "uid://bo5tiboahripu"

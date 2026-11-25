@@ -1,0 +1,685 @@
+[gd_scene format=3 uid="uid://bpqy5xt8ynxc"]
+
+[ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="1_f50xb"]
+[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="2_6thhw"]
+[ext_resource type="Material" uid="uid://dtpk1rvwi2fvp" path="res://materials/generic_materials/player_vehicle_material.tres" id="3_anajk"]
+[ext_resource type="Script" uid="uid://cyrsmcq82ny8" path="res://scripts/garage/garage_swipe_controller.gd" id="4_6thhw"]
+[ext_resource type="Material" uid="uid://bedn4ioqbna51" path="res://materials/generic_materials/particle_materials/spray_cover_particle_material.tres" id="4_anajk"]
+[ext_resource type="Script" uid="uid://ydy2ddfw32k0" path="res://scripts/visibility_listener.gd" id="5_3yerp"]
+[ext_resource type="PackedScene" uid="uid://nqojxcy46t8p" path="res://scenes/ui/garage/carousel_scroll_container.tscn" id="5_7vs20"]
+[ext_resource type="FontFile" uid="uid://b0i53eqnnet6n" path="res://resources/fonts/Arimo/static/Arimo-Bold.ttf" id="5_58n5e"]
+[ext_resource type="Script" uid="uid://du5ni1y78gw1a" path="res://scripts/garage/paint_selector.gd" id="5_jo7ee"]
+[ext_resource type="Material" uid="uid://4jj14ijw0xf1" path="res://materials/generic_materials/particle_materials/spray_reveal_particle_material.tres" id="5_o66mb"]
+[ext_resource type="PackedScene" uid="uid://dtd2y431wiv2w" path="res://scenes/ui/garage/paint_can.tscn" id="5_s25we"]
+[ext_resource type="Resource" uid="uid://4fwmq7t3bc18" path="res://resources/customisation/paint_resources/yellow_paint_resource.tres" id="8_0a6yr"]
+[ext_resource type="Resource" uid="uid://c63u3nk7d4yxp" path="res://resources/customisation/paint_resources/amber_paint_resource.tres" id="9_cn0j1"]
+[ext_resource type="Resource" uid="uid://cvtsrlhctyvxx" path="res://resources/customisation/paint_resources/orange_paint_resource.tres" id="10_anajk"]
+[ext_resource type="Resource" uid="uid://d3g65l3xed3o6" path="res://resources/customisation/paint_resources/red_paint_resource.tres" id="11_o66mb"]
+[ext_resource type="Resource" uid="uid://o3pweo7pm52n" path="res://resources/customisation/paint_resources/pink_paint_resource.tres" id="12_ocg71"]
+[ext_resource type="Resource" uid="uid://bx6280rpnoapq" path="res://resources/customisation/paint_resources/purple_paint_resource.tres" id="13_srbqb"]
+[ext_resource type="Resource" uid="uid://bpoegbdbqn281" path="res://resources/customisation/paint_resources/blue_paint_resource.tres" id="14_3qrdu"]
+[ext_resource type="Resource" uid="uid://djh4hhwdfamy7" path="res://resources/customisation/paint_resources/baby_blue_paint_resource.tres" id="15_5tpxy"]
+[ext_resource type="Resource" uid="uid://dcpqi7pnog6it" path="res://resources/customisation/paint_resources/mint_paint_resource.tres" id="16_ok80w"]
+[ext_resource type="Resource" uid="uid://bay812tr5wn8c" path="res://resources/customisation/paint_resources/white_paint_resource.tres" id="17_gpa8b"]
+[ext_resource type="Resource" uid="uid://pfuxhqyrts11" path="res://resources/customisation/paint_resources/silver_paint_resource.tres" id="18_4st6w"]
+[ext_resource type="Resource" uid="uid://bjgjpcunceup" path="res://resources/customisation/paint_resources/light_grey_paint_resource.tres" id="19_owd1n"]
+[ext_resource type="Resource" uid="uid://celwt48sufnk6" path="res://resources/customisation/paint_resources/steel_paint_resource.tres" id="20_b8e55"]
+[ext_resource type="Resource" uid="uid://dwl482k3f8hhn" path="res://resources/customisation/paint_resources/dark_grey_paint_resource.tres" id="21_p278u"]
+[ext_resource type="Resource" uid="uid://caao48ryag208" path="res://resources/customisation/paint_resources/black_paint_resource.tres" id="22_12dj6"]
+[ext_resource type="Resource" uid="uid://cm35kynkjp26j" path="res://resources/customisation/paint_resources/brown_paint_resource.tres" id="23_yuxmy"]
+[ext_resource type="Resource" uid="uid://60xdvvachb6p" path="res://resources/customisation/paint_resources/tan_paint_resource.tres" id="24_eqemn"]
+[ext_resource type="Resource" uid="uid://dsljavbmsw2w0" path="res://resources/customisation/paint_resources/cream_paint_resource.tres" id="25_7tpbr"]
+[ext_resource type="AudioStream" uid="uid://diwqrr4a0vd04" path="res://audio/sfx/ui/garage/paint/spray_scrolling.ogg" id="28_b8e55"]
+[ext_resource type="AudioStream" uid="uid://uef8x36l4oii" path="res://audio/sfx/ui/garage/paint/spray_hovered.ogg" id="29_p278u"]
+[ext_resource type="AudioStream" uid="uid://ddf23n72h11qo" path="res://audio/sfx/ui/garage/paint/spray_selected.ogg" id="30_12dj6"]
+[ext_resource type="Texture2D" uid="uid://cratbux83suby" path="res://textures/ui/garage/garage_shutter_door.png" id="30_o66mb"]
+[ext_resource type="AudioStream" uid="uid://bt3b3mbni7umj" path="res://audio/sfx/ui/garage/shutter_slam.ogg" id="31_3qrdu"]
+[ext_resource type="Script" uid="uid://doy80gr0iay7o" path="res://scripts/snackbar/snackbar_button_listener.gd" id="31_ocg71"]
+[ext_resource type="AudioStream" uid="uid://volt8y5ffjof" path="res://audio/sfx/ui/garage/paint/spray_tick_1.ogg" id="31_yuxmy"]
+[ext_resource type="AudioStream" uid="uid://dw7vmj7seo524" path="res://audio/sfx/ui/garage/shutter_open.ogg" id="32_5tpxy"]
+[ext_resource type="AudioStream" uid="uid://br7c3k3h1tpvf" path="res://audio/sfx/ui/garage/paint/spray_tick_2.ogg" id="32_eqemn"]
+[ext_resource type="AudioStream" uid="uid://c1yqwx4jrka33" path="res://audio/sfx/ui/garage/paint/spray_tick_3.ogg" id="33_7tpbr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_68yga"]
+top_radius = 2.0444336
+bottom_radius = 2.0444336
+height = 1.0371094
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0nb3"]
+albedo_color = Color(0.42, 0.42, 0.42, 1)
+
+[sub_resource type="Environment" id="Environment_84upj"]
+ambient_light_source = 2
+ambient_light_color = Color(0.35906908, 0.35906908, 0.35906908, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84upj"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_68yga"]
+material = SubResource("StandardMaterial3D_84upj")
+
+[sub_resource type="SphereMesh" id="SphereMesh_84upj"]
+material = ExtResource("4_anajk")
+radial_segments = 10
+rings = 4
+
+[sub_resource type="Curve" id="Curve_celfy"]
+_data = [Vector2(0, 0), 0.0, 9.384272, 0, 0, Vector2(0.18534482, 1), 0.0, 0.0, 0, 0, Vector2(0.4784483, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_jo7ee"]
+offsets = PackedFloat32Array(0.029126214, 0.9611651, 1)
+colors = PackedColorArray(0.5571398, 0.53826684, 0.5143315, 1, 0.97, 0.97, 0.97, 1, 1, 1, 1, 0.62600005)
+
+[sub_resource type="Gradient" id="Gradient_wcyka"]
+colors = PackedColorArray(0.83052975, 0.79491234, 0.7537445, 1, 1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_jo7ee"]
+resource_name = "QuarterRingShapeApplier"
+script/source = "extends CPUParticles3D
+
+@export var radius: float = 2.0
+@export var point_count: int = 32
+
+func _ready() -> void:
+	emission_shape = EMISSION_SHAPE_POINTS
+	var points: PackedVector3Array = []
+	
+	for i in range(point_count):
+		var angle := (float(i) / float(point_count - 1)) * PI * 0.5
+		var x := cos(angle) * radius
+		var z := sin(angle) * radius
+		points.append(Vector3(x, 0, z))
+		
+	emission_points = points
+"
+
+[sub_resource type="SphereMesh" id="SphereMesh_cn0j1"]
+material = ExtResource("5_o66mb")
+radial_segments = 10
+rings = 4
+
+[sub_resource type="Curve" id="Curve_jo7ee"]
+_data = [Vector2(0, 0), 0.0, 46.052437, 0, 0, Vector2(0.077586204, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_anajk"]
+offsets = PackedFloat32Array(0, 0.34951457)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68yga"]
+bg_color = Color(0.67, 0.11390001, 0.11390001, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s25we"]
+bg_color = Color(0.67, 0.11390001, 0.11390001, 1)
+border_width_top = 22
+border_color = Color(0.89, 0.6319, 0.6835201, 1)
+border_blend = true
+
+[sub_resource type="Animation" id="Animation_o66mb"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RollerDoor:offset_transform_position_ratio:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoreGarageUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ocg71"]
+resource_name = "close_garage"
+length = 1.1333333
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RollerDoor:offset_transform_position_ratio:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-1, -0.15, 0, 0.15, 0, 0, -0.15, 0, 0.15, 0, 0, -0.15, 0, 0.15, 0, -1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.20000002, 0.33333334, 0.9)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoreGarageUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_3qrdu")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("32_5tpxy")
+}],
+"times": PackedFloat32Array(0, 0.13333334)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-4.0]
+}
+
+[sub_resource type="Animation" id="Animation_srbqb"]
+resource_name = "open_garage"
+length = 1.1333333
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RollerDoor:offset_transform_position_ratio:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-1, -0.15, 0, 0.15, 0, 0, -0.15, 0, 0.15, 0, 0, -0.15, 0, 0.15, 0, -1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.20000002, 0.33333334, 0.9)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoreGarageUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 1]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_3qrdu")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("32_5tpxy")
+}],
+"times": PackedFloat32Array(0, 0.13333334)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CoreGarageUI/GarageVBox/PaintSelector")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"apply_saved_paint"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3qrdu"]
+_data = {
+&"RESET": SubResource("Animation_o66mb"),
+&"close_garage": SubResource("Animation_ocg71"),
+&"open_garage": SubResource("Animation_srbqb")
+}
+
+[node name="GarageUI" type="CanvasLayer" unique_id=556848940]
+
+[node name="CoreGarageUI" type="Control" parent="." unique_id=330169511]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CoreGarageUI" unique_id=1372641537]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CoreGarageUI/SubViewportContainer" unique_id=1966267133]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1080, 2280)
+render_target_update_mode = 0
+
+[node name="Node3D" type="Node3D" parent="CoreGarageUI/SubViewportContainer/SubViewport" unique_id=2084798188]
+
+[node name="PlatformPivot" type="RigidBody3D" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D" unique_id=97146057]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 1000.0
+gravity_scale = 0.0
+can_sleep = false
+angular_damp = 1.3
+constant_torque = Vector3(0, 0.15, 0)
+
+[node name="Platform" type="MeshInstance3D" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/PlatformPivot" unique_id=402358599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4814453, 0)
+layers = 32
+mesh = SubResource("CylinderMesh_68yga")
+surface_material_override/0 = SubResource("StandardMaterial3D_d0nb3")
+
+[node name="PlayerCar" type="MeshInstance3D" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/PlatformPivot" unique_id=919580916]
+layers = 32
+mesh = ExtResource("1_f50xb")
+surface_material_override/0 = ExtResource("2_6thhw")
+surface_material_override/1 = ExtResource("2_6thhw")
+surface_material_override/2 = ExtResource("2_6thhw")
+surface_material_override/3 = ExtResource("2_6thhw")
+surface_material_override/4 = ExtResource("2_6thhw")
+surface_material_override/5 = ExtResource("3_anajk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D" unique_id=105894696]
+environment = SubResource("Environment_84upj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D" unique_id=328762550]
+transform = Transform3D(0.70710677, 0.664463, -0.24184477, 0, 0.34202015, 0.9396926, 0.70710677, -0.664463, 0.24184477, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.55
+shadow_blur = 3.445
+
+[node name="Camera3D" type="Camera3D" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D" unique_id=69751574]
+transform = Transform3D(0.825582, 0.2623404, -0.49959165, 0, 0.8853579, 0.46491003, 0.5642821, -0.38382134, 0.73093563, -4.1716957, 2.306199, 6.102009)
+fov = 57.7
+
+[node name="Flooring" type="MeshInstance3D" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D" unique_id=1239916225]
+transform = Transform3D(25.8482, 0, 0, 0, 3.5443044, 0, 0, 0, 23.21361, 0, -1.9535011, 0)
+layers = 32
+mesh = SubResource("SphereMesh_68yga")
+
+[node name="ParticleGenerators" type="Node3D" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D" unique_id=284259294]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="GeneralParticleGenerator" type="CPUParticles3D" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/ParticleGenerators" unique_id=1690651133]
+emitting = false
+amount = 20
+lifetime = 0.83
+randomness = 0.09
+lifetime_randomness = 0.07
+mesh = SubResource("SphereMesh_84upj")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.2
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.8
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 16.1
+gravity = Vector3(0, 9.8, 0)
+initial_velocity_max = 1.0
+damping_max = 1.626
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_celfy")
+color_ramp = SubResource("Gradient_jo7ee")
+color_initial_ramp = SubResource("Gradient_wcyka")
+script = SubResource("GDScript_jo7ee")
+radius = 1.28
+
+[node name="PaintParticleGenerator" type="CPUParticles3D" parent="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/ParticleGenerators" unique_id=135453633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+emitting = false
+amount = 24
+one_shot = true
+explosiveness = 0.44
+randomness = 0.39
+lifetime_randomness = 0.07
+mesh = SubResource("SphereMesh_cn0j1")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.2
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.8
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 51.25
+flatness = 0.33
+gravity = Vector3(0, 3, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+damping_max = 1.626
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_jo7ee")
+color = Color(1, 0, 0, 1)
+color_initial_ramp = SubResource("Gradient_anajk")
+script = SubResource("GDScript_jo7ee")
+radius = 1.8
+
+[node name="GarageVBox" type="VBoxContainer" parent="CoreGarageUI" unique_id=927813899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GarageSwipeController" type="Control" parent="CoreGarageUI/GarageVBox" unique_id=218403148 node_paths=PackedStringArray("platform")]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("4_6thhw")
+platform = NodePath("../../SubViewportContainer/SubViewport/Node3D/PlatformPivot")
+
+[node name="PaintSelector" type="Control" parent="CoreGarageUI/GarageVBox" unique_id=1191966476 node_paths=PackedStringArray("player_car_mesh", "general_particles", "paint_particles", "carousel_controller")]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("5_jo7ee")
+player_car_mesh = NodePath("../../SubViewportContainer/SubViewport/Node3D/PlatformPivot/PlayerCar")
+general_particles = NodePath("../../SubViewportContainer/SubViewport/Node3D/ParticleGenerators/GeneralParticleGenerator")
+paint_particles = NodePath("../../SubViewportContainer/SubViewport/Node3D/ParticleGenerators/PaintParticleGenerator")
+carousel_controller = NodePath("PaintSelectorMargin/PaintCarouselContainer")
+
+[node name="PaintSelectorMargin" type="MarginContainer" parent="CoreGarageUI/GarageVBox/PaintSelector" unique_id=1175145294]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 800
+
+[node name="PaintCarouselContainer" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin" unique_id=367899716 instance=ExtResource("5_7vs20")]
+layout_mode = 2
+
+[node name="PaintCan" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="0" unique_id=1932031658 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("8_0a6yr")
+
+[node name="PaintCan2" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="1" unique_id=266678526 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("9_cn0j1")
+
+[node name="PaintCan3" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="2" unique_id=184940759 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("10_anajk")
+
+[node name="PaintCan4" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="3" unique_id=1297299647 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("11_o66mb")
+
+[node name="PaintCan5" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="4" unique_id=948895166 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("12_ocg71")
+
+[node name="PaintCan6" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="5" unique_id=1242598756 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("13_srbqb")
+
+[node name="PaintCan7" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="6" unique_id=1220905007 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("14_3qrdu")
+
+[node name="PaintCan8" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="7" unique_id=1478615657 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("15_5tpxy")
+
+[node name="PaintCan9" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="8" unique_id=714063850 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("16_ok80w")
+
+[node name="PaintCan10" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="9" unique_id=239839461 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("17_gpa8b")
+
+[node name="PaintCan11" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="10" unique_id=2062144965 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("18_4st6w")
+
+[node name="PaintCan12" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="11" unique_id=293676981 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("19_owd1n")
+
+[node name="PaintCan13" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="12" unique_id=1557197606 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("20_b8e55")
+
+[node name="PaintCan14" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="13" unique_id=217125908 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("21_p278u")
+
+[node name="PaintCan15" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="14" unique_id=1516547988 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("22_12dj6")
+
+[node name="PaintCan16" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="15" unique_id=1922871887 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("23_yuxmy")
+
+[node name="PaintCan17" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="16" unique_id=1448347138 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("24_eqemn")
+
+[node name="PaintCan18" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer/CarouselHBox/CarouselItems" parent_id_path=PackedInt32Array(367899716, 1210893658) index="17" unique_id=1589719826 instance=ExtResource("5_s25we")]
+layout_mode = 2
+paint = ExtResource("25_7tpbr")
+
+[node name="CarouselSoundManager" parent="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" index="2" unique_id=1864483248]
+scrolling_sfx = ExtResource("28_b8e55")
+hovered_sfx = ExtResource("29_p278u")
+selected_sfx = ExtResource("30_12dj6")
+ticks_sfxs = Array[AudioStream]([ExtResource("31_yuxmy"), ExtResource("32_eqemn"), ExtResource("33_7tpbr")])
+
+[node name="PanelContainer" type="PanelContainer" parent="CoreGarageUI/GarageVBox" unique_id=840784326]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_68yga")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CoreGarageUI/GarageVBox/PanelContainer" unique_id=155698861]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer" unique_id=277103246]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+theme_override_styles/panel = SubResource("StyleBoxFlat_s25we")
+
+[node name="Control2" type="MarginContainer" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer" unique_id=718918779]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 500
+
+[node name="GridContainer" type="GridContainer" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2" unique_id=208434710]
+layout_mode = 2
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = 48
+columns = 2
+
+[node name="Button" type="Button" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=596045095]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_58n5e")
+theme_override_font_sizes/font_size = 80
+text = "Repaint"
+
+[node name="Button2" type="Button" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=957949473]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_58n5e")
+theme_override_font_sizes/font_size = 80
+text = "Apply Decals"
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=2117645761]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_58n5e")
+theme_override_font_sizes/font_size = 80
+text = "Switch Car"
+autowrap_mode = 2
+
+[node name="Button4" type="Button" parent="CoreGarageUI/GarageVBox/PanelContainer/VBoxContainer/Control2/GridContainer" unique_id=120655767]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_58n5e")
+theme_override_font_sizes/font_size = 80
+text = "Change Body Mods"
+autowrap_mode = 2
+
+[node name="VisibilityListener" type="Node" parent="CoreGarageUI" unique_id=1280611699]
+script = ExtResource("5_3yerp")
+metadata/_custom_type_script = "uid://ydy2ddfw32k0"
+
+[node name="RollerDoor" type="TextureRect" parent="." unique_id=1459482681]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -1)
+mouse_filter = 2
+texture = ExtResource("30_o66mb")
+
+[node name="GarageDoorAnimator" type="AnimationPlayer" parent="." unique_id=1357227904]
+libraries/ = SubResource("AnimationLibrary_3qrdu")
+
+[node name="SnackbarButtonListener" type="Node" parent="GarageDoorAnimator" unique_id=963334009]
+script = ExtResource("31_ocg71")
+target_button_type = 4
+metadata/_custom_type_script = "uid://doy80gr0iay7o"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=21746460]
+bus = &"SFX"
+
+[connection signal="gui_input" from="CoreGarageUI/GarageVBox/GarageSwipeController" to="CoreGarageUI/GarageVBox/GarageSwipeController" method="_on_gui_input"]
+[connection signal="saved_paint_loaded" from="CoreGarageUI/GarageVBox/PaintSelector" to="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" method="force_select_item_by_index"]
+[connection signal="carousel_scrolling_ended" from="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" to="CoreGarageUI/GarageVBox/PaintSelector" method="_on_carousel_scrolling_ended"]
+[connection signal="carousel_scrolling_started" from="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" to="CoreGarageUI/GarageVBox/PaintSelector" method="_on_carousel_scrolling_started"]
+[connection signal="item_hovered" from="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" to="CoreGarageUI/GarageVBox/PaintSelector" method="_on_carousel_item_hovered"]
+[connection signal="item_selected" from="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" to="CoreGarageUI/GarageVBox/PaintSelector" method="_on_carousel_item_selected"]
+[connection signal="hidden" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [true]]
+[connection signal="shown" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer" method="ready_carousel"]
+[connection signal="shown" from="CoreGarageUI/VisibilityListener" to="CoreGarageUI/SubViewportContainer/SubViewport/Node3D/PlatformPivot" method="set_sleeping" binds= [false]]
+[connection signal="target_toggled_off" from="GarageDoorAnimator/SnackbarButtonListener" to="GarageDoorAnimator" method="play" binds= [&"close_garage"]]
+[connection signal="target_toggled_on" from="GarageDoorAnimator/SnackbarButtonListener" to="GarageDoorAnimator" method="play" binds= [&"open_garage"]]
+
+[editable path="CoreGarageUI/GarageVBox/PaintSelector/PaintSelectorMargin/PaintCarouselContainer"]

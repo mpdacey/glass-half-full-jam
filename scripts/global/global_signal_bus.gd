@@ -29,4 +29,9 @@ signal time_no_response
 signal time_timed_out
 #endregion
 
+#region Garage
+signal spray_button_pressed(paint_name: StringName)
+signal paint_applied(paint_name: StringName)
+#endregion
+
 signal snackbar_button_pressed(button_type: SnackbarUIController.SnackbarButtonType)

@@ -1,14 +1,12 @@
 [gd_scene format=3 uid="uid://3k54q4ik0b0u"]
 
 [ext_resource type="PackedScene" uid="uid://b1aju3boq4443" path="res://scenes/obstacles/traffic/delivery_truck.tscn" id="1_4rr2b"]
-[ext_resource type="Material" uid="uid://dsnhumsjai7bg" path="res://materials/generic_materials/traffic_material.tres" id="2_pyl7j"]
 [ext_resource type="PackedScene" uid="uid://bdcjrurlteps8" path="res://scenes/obstacles/traffic/suv_lux.tscn" id="2_yql1r"]
 [ext_resource type="PackedScene" uid="uid://dpuwv1tntbgm2" path="res://scenes/obstacles/traffic/hatchback.tscn" id="3_6ppm8"]
 [ext_resource type="PackedScene" uid="uid://cqo2bxdhr3dui" path="res://scenes/obstacles/traffic/flat_truck.tscn" id="4_bre4b"]
 [ext_resource type="Texture2D" uid="uid://c3o4f68hm2hmk" path="res://logo.png" id="4_pyl7j"]
 [ext_resource type="AudioStream" uid="uid://dfkflwqql0shl" path="res://audio/sfx/engine/engine_rpm_med.ogg" id="5_ofksa"]
-[ext_resource type="ArrayMesh" uid="uid://d1spfwubjssd8" path="res://models/stallion.obj" id="5_uaep1"]
-[ext_resource type="Material" uid="uid://dtpk1rvwi2fvp" path="res://materials/generic_materials/player_vehicle_material.tres" id="7_l7fl3"]
+[ext_resource type="PackedScene" uid="uid://dta2wike2t7sg" path="res://models/stallion.fbx" id="5_pbe57"]
 [ext_resource type="AnimationLibrary" uid="uid://c5o4iqm3dmff" path="res://resources/animation_libraries/car_putt.tres" id="7_o7kwv"]
 [ext_resource type="FontFile" uid="uid://gtd6lqwjlb65" path="res://resources/fonts/Arturito Slab/arturito.ttf" id="7_s8xmt"]
 [ext_resource type="Script" uid="uid://lu4gei6pype6" path="res://scripts/global/global_signal_interfacer.gd" id="8_6ppm8"]
@@ -911,23 +909,15 @@ debug_custom_color = Color(0.55, 0.41708338, 0.23100002, 1)
 transform = Transform3D(0.2129375, 0, -1.3331373, 0, 1.35, 0, 1.3331373, 0, 0.2129375, 156.97745, 0, 4.3031716)
 progress = 100.774155
 
-[node name="SedanSports" type="MeshInstance3D" parent="Paths/CarPath/PathFollow3D" unique_id=1530341443]
-transform = Transform3D(-1.0000001, 0, -1.509958e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1, 0, 0, 0)
-layers = 2
-mesh = ExtResource("5_uaep1")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = ExtResource("2_pyl7j")
-surface_material_override/1 = ExtResource("2_pyl7j")
-surface_material_override/2 = ExtResource("2_pyl7j")
-surface_material_override/3 = ExtResource("2_pyl7j")
-surface_material_override/4 = ExtResource("2_pyl7j")
-surface_material_override/5 = ExtResource("7_l7fl3")
+[node name="Stallion" parent="Paths/CarPath/PathFollow3D" unique_id=998798648 instance=ExtResource("5_pbe57")]
+transform = Transform3D(-1.0000001, 0, 1.509958e-07, 0, 1.0000001, 0, -1.5099582e-07, 0, -1, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports" unique_id=1046586961]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/Stallion" unique_id=1046586961]
 libraries/ = ExtResource("7_o7kwv")
 autoplay = &"putt"
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Paths/CarPath/PathFollow3D/SedanSports" unique_id=1655849690]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Paths/CarPath/PathFollow3D/Stallion" unique_id=1655849690]
+transform = Transform3D(0.74072105, 0, 1.7136335e-07, 0, 0.7407408, 0, -1.7136335e-07, 0, 0.74072105, 0, 0, 0)
 stream = ExtResource("5_ofksa")
 volume_db = -6.0
 unit_size = 6.26
@@ -941,15 +931,15 @@ attenuation_filter_cutoff_hz = 8803.0
 attenuation_filter_db = 0.0
 parameters/looping = true
 
-[node name="GarageSnackbarListener" type="Node" parent="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" unique_id=68640441]
+[node name="GarageSnackbarListener" type="Node" parent="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D" unique_id=68640441]
 script = ExtResource("19_0oqx5")
 target_button_type = 4
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
-[node name="CarEngineMixer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" unique_id=1573349168]
+[node name="CarEngineMixer" type="AnimationPlayer" parent="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D" unique_id=1573349168]
 libraries/ = SubResource("AnimationLibrary_a7bx2")
 
-[node name="DriveSnackbarListener" type="Node" parent="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer" unique_id=1092616775]
+[node name="DriveSnackbarListener" type="Node" parent="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D/CarEngineMixer" unique_id=1092616775]
 script = ExtResource("19_0oqx5")
 metadata/_custom_type_script = "uid://doy80gr0iay7o"
 
@@ -1157,10 +1147,10 @@ layer = 5
 [node name="SnackbarButtonAutoSelector" type="Node" parent="TitleSnackbar" unique_id=1432582934]
 script = ExtResource("25_t3vcv")
 
-[connection signal="target_toggled_off" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/GarageSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" method="set_stream_paused" binds= [false]]
-[connection signal="target_toggled_on" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/GarageSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D" method="set_stream_paused" binds= [true]]
-[connection signal="target_toggled_off" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer/DriveSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer" method="play" binds= [&"off_drive"]]
-[connection signal="target_toggled_on" from="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer/DriveSnackbarListener" to="Paths/CarPath/PathFollow3D/SedanSports/AudioStreamPlayer3D/CarEngineMixer" method="play" binds= [&"on_drive"]]
+[connection signal="target_toggled_off" from="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D/GarageSnackbarListener" to="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D" method="set_stream_paused" binds= [false]]
+[connection signal="target_toggled_on" from="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D/GarageSnackbarListener" to="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D" method="set_stream_paused" binds= [true]]
+[connection signal="target_toggled_off" from="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D/CarEngineMixer/DriveSnackbarListener" to="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D/CarEngineMixer" method="play" binds= [&"off_drive"]]
+[connection signal="target_toggled_on" from="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D/CarEngineMixer/DriveSnackbarListener" to="Paths/CarPath/PathFollow3D/Stallion/AudioStreamPlayer3D/CarEngineMixer" method="play" binds= [&"on_drive"]]
 [connection signal="global_signal_emitted" from="AnimationPlayers/TransitionPlayer/SpendLifeGrantedListener" to="AnimationPlayers/TransitionPlayer" method="play" binds= [&"start"]]
 [connection signal="pressed" from="TitleCanvasLayer/PlayButtonMargin/PlayButton" to="TitleCanvasLayer/PlayButtonMargin/PlayButton/SpendLifeRequestEmitter" method="emit_global_signal"]
 [connection signal="open_shop_requested" from="TitleCanvasLayer/LivesUI" to="TitleSnackbar" method="press_snackbar_button" binds= [3]]

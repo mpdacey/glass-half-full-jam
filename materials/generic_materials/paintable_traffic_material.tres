@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://bajakksrjxb2k"]
 
 [ext_resource type="Shader" uid="uid://cmnxjdwqas6ne" path="res://shader/paintable_traffic_shader.gdshader" id="1_yt0dx"]
-[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://models/traffic/Textures/colormap.png" id="2_hjys3"]
+[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://textures/material_textures/vehicles/colormap.png" id="2_hjys3"]
 
 [resource]
 render_priority = 0

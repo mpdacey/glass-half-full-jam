@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmy84snp5l1el"
-path.s3tc="res://.godot/imported/Rock029_1K-PNG_Color.png-80a8245184719169d24e22a43fadee89.s3tc.ctex"
-path.etc2="res://.godot/imported/Rock029_1K-PNG_Color.png-80a8245184719169d24e22a43fadee89.etc2.ctex"
+uid="uid://dr8px6kbtv7y4"
+path.s3tc="res://.godot/imported/road_texture.png-d3b41b7c02edbb2f9ffada57b00f4048.s3tc.ctex"
+path.etc2="res://.godot/imported/road_texture.png-d3b41b7c02edbb2f9ffada57b00f4048.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/traffic/Textures/offroad/Rock029_1K-PNG_Color.png"
-dest_files=["res://.godot/imported/Rock029_1K-PNG_Color.png-80a8245184719169d24e22a43fadee89.s3tc.ctex", "res://.godot/imported/Rock029_1K-PNG_Color.png-80a8245184719169d24e22a43fadee89.etc2.ctex"]
+source_file="res://textures/material_textures/desert_textures/road_texture.png"
+dest_files=["res://.godot/imported/road_texture.png-d3b41b7c02edbb2f9ffada57b00f4048.s3tc.ctex", "res://.godot/imported/road_texture.png-d3b41b7c02edbb2f9ffada57b00f4048.etc2.ctex"]
 
 [params]
 

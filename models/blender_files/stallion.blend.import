@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://blr3f3h1qd7je"
-path="res://.godot/imported/suv-lux.blend-fc4b02d03c0c25bebc871fc2133308df.scn"
+uid="uid://eattp1em5t0v"
+path="res://.godot/imported/stallion.blend-b84515445759ba8d21805fbda543a25f.scn"
 
 [deps]
 
-source_file="res://models/traffic/blender_files/suv-lux.blend"
-dest_files=["res://.godot/imported/suv-lux.blend-fc4b02d03c0c25bebc871fc2133308df.scn"]
+source_file="res://models/blender_files/stallion.blend"
+dest_files=["res://.godot/imported/stallion.blend-b84515445759ba8d21805fbda543a25f.scn"]
 
 [params]
 
@@ -39,22 +39,14 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"colormap": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://materials/generic_materials/traffic_material.tres",
-"use_external/path": "uid://dsnhumsjai7bg"
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
 blender/nodes/cameras=true
 blender/nodes/custom_properties=true
 blender/nodes/modifiers=1
-blender/meshes/vertex_colors=1
+blender/meshes/vertex_colors=2
 blender/meshes/uvs=true
 blender/meshes/normals=true
 blender/meshes/export_geometry_nodes_instances=false
@@ -68,4 +60,4 @@ blender/animation/limit_playback=true
 blender/animation/always_sample=true
 blender/animation/group_tracks=true
 gltf/naming_version=2
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

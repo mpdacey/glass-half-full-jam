@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c2leo73fwct2w"
-path="res://.godot/imported/exhaust-flame.blend-9e291b7506bd38eaf450d24446e76a15.scn"
+uid="uid://dpkrdgbtij8kp"
+path="res://.godot/imported/road.blend-9f5f86e265775c82afdefad4b067c9e0.scn"
 
 [deps]
 
-source_file="res://models/exhaust-flame.blend"
-dest_files=["res://.godot/imported/exhaust-flame.blend-9e291b7506bd38eaf450d24446e76a15.scn"]
+source_file="res://models/blender_files/road.blend"
+dest_files=["res://.godot/imported/road.blend-9f5f86e265775c82afdefad4b067c9e0.scn"]
 
 [params]
 

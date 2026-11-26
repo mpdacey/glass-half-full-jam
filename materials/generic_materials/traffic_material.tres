@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dsnhumsjai7bg"]
 
 [ext_resource type="Shader" uid="uid://c4c6rp47plcwj" path="res://shader/road_shader.gdshader" id="1_x5kee"]
-[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://models/traffic/Textures/colormap.png" id="2_8xcse"]
+[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://textures/material_textures/vehicles/colormap.png" id="2_8xcse"]
 
 [resource]
 render_priority = 0

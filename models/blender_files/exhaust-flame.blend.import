@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dqj7jmquv2f1v"
-path="res://.godot/imported/desert_canyon_mound.blend-8ddd3d0237be67cc3c4fef69595140d2.scn"
+uid="uid://c2leo73fwct2w"
+path="res://.godot/imported/exhaust-flame.blend-c9f23e8724463a6230d69cd3128b180a.scn"
 
 [deps]
 
-source_file="res://models/desert_canyon_mound.blend"
-dest_files=["res://.godot/imported/desert_canyon_mound.blend-8ddd3d0237be67cc3c4fef69595140d2.scn"]
+source_file="res://models/blender_files/exhaust-flame.blend"
+dest_files=["res://.godot/imported/exhaust-flame.blend-c9f23e8724463a6230d69cd3128b180a.scn"]
 
 [params]
 

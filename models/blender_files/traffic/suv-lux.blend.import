@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dpkrdgbtij8kp"
-path="res://.godot/imported/road.blend-fc0a56f82579e2884cdcf91cac801ab4.scn"
+uid="uid://blr3f3h1qd7je"
+path="res://.godot/imported/suv-lux.blend-d6acd9d04c369f5d6bf789d6e1c43076.scn"
 
 [deps]
 
-source_file="res://models/road.blend"
-dest_files=["res://.godot/imported/road.blend-fc0a56f82579e2884cdcf91cac801ab4.scn"]
+source_file="res://models/blender_files/traffic/suv-lux.blend"
+dest_files=["res://.godot/imported/suv-lux.blend-d6acd9d04c369f5d6bf789d6e1c43076.scn"]
 
 [params]
 
@@ -39,14 +39,22 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"colormap": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://materials/generic_materials/traffic_material.tres",
+"use_external/path": "uid://dsnhumsjai7bg"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
 blender/nodes/cameras=true
 blender/nodes/custom_properties=true
 blender/nodes/modifiers=1
-blender/meshes/vertex_colors=2
+blender/meshes/vertex_colors=1
 blender/meshes/uvs=true
 blender/meshes/normals=true
 blender/meshes/export_geometry_nodes_instances=false
@@ -60,4 +68,4 @@ blender/animation/limit_playback=true
 blender/animation/always_sample=true
 blender/animation/group_tracks=true
 gltf/naming_version=2
-gltf/texture_map_mode=0
+gltf/texture_map_mode=1

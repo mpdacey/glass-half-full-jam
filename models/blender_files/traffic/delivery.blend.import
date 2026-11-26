@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c22vegwpxnjvy"
-path="res://.godot/imported/delivery-flat.blend-07a4f4c59815df714dccdb58cdeaa725.scn"
+uid="uid://3emugr6dmsu2"
+path="res://.godot/imported/delivery.blend-3f85f98b9b696c21c9d1fa646091671a.scn"
 
 [deps]
 
-source_file="res://models/traffic/blender_files/delivery-flat.blend"
-dest_files=["res://.godot/imported/delivery-flat.blend-07a4f4c59815df714dccdb58cdeaa725.scn"]
+source_file="res://models/blender_files/traffic/delivery.blend"
+dest_files=["res://.godot/imported/delivery.blend-3f85f98b9b696c21c9d1fa646091671a.scn"]
 
 [params]
 
@@ -41,7 +41,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"colormap": {
+"colormap.008": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://materials/generic_materials/traffic_material.tres",
 "use_external/path": "uid://dsnhumsjai7bg"

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://buc7s25oweoq1"]
 
-[ext_resource type="PackedScene" uid="uid://dlwpw2jgytnr8" path="res://models/post.blend" id="1_6ixbi"]
+[ext_resource type="PackedScene" uid="uid://dlwpw2jgytnr8" path="res://models/blender_files/post.blend" id="1_6ixbi"]
 [ext_resource type="Material" uid="uid://c4hwyjg4piyay" path="res://materials/desert_materials/desert_fence_mesh_material.tres" id="2_agt3l"]
 [ext_resource type="Material" uid="uid://drbth85p4ot8" path="res://materials/desert_materials/desert_fence_post_material.tres" id="3_b3etb"]
 [ext_resource type="Script" uid="uid://nbektii3ygrb" path="res://scenes/post_base_planter.gd" id="4_d2c0n"]

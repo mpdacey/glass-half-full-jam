@@ -4,10 +4,13 @@ shader_type spatial;
 render_mode world_vertex_coords, blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
 global uniform vec2 player_paint_offset;
+global uniform vec2 player_decal_paint_offset;
+global uniform int player_decal_index;
 global uniform float bend_multiplier;
 
 instance uniform vec2 override_paint_offset;
 instance uniform vec2 override_decal_paint_offset;
+instance uniform int override_decal_index = -1;
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear, repeat_enable;
@@ -29,6 +32,43 @@ varying float calculated_curve;
 
 float remap(float value, float i_min, float i_max, float o_min, float o_max) {
     return o_min + ((value - i_min) / (i_max - i_min) * (o_max - o_min));
+}
+
+vec3 apply_decal(vec3 base, vec2 base_uv, vec2 decal_uv) {
+	vec2 decal_paint_offset = player_decal_paint_offset;
+	int decal_index = player_decal_index;
+	
+	if (override_decal_paint_offset != player_decal_paint_offset) {
+		decal_paint_offset = override_decal_paint_offset;
+	}
+	
+	if (override_decal_index != player_decal_index) {
+		decal_index = override_decal_index;
+	}
+	
+	if (
+		decal_paint_offset == vec2(0,0)
+		|| decal_index < 0
+	) {
+		return base;
+	}
+	
+	
+	vec2 decal_color_uv = base_uv;
+	decal_color_uv += override_decal_paint_offset;
+	
+	vec4 decal_coords = texture(decal_designs, vec3(decal_uv, float(decal_index)));
+	float decal_intensity = decal_coords.r;
+	float remapped_decal_instensity = remap(decal_intensity, 0, 1, 0.01, 0.25);
+	vec4 decal_color = texture(decal_albedo, vec2(0,-0.25 - remapped_decal_instensity) + decal_paint_offset);
+	
+	float mix_decal_r = mix(base.r, decal_color.r, decal_coords.a);
+	float mix_decal_g = mix(base.g, decal_color.g, decal_coords.a);
+	float mix_decal_b = mix(base.b, decal_color.b, decal_coords.a);
+	
+	vec3 final_color = vec3(mix_decal_r, mix_decal_g, mix_decal_b);
+	
+	return final_color;
 }
 
 void vertex(){
@@ -87,23 +127,9 @@ void fragment() {
 	float mix_b = mix(mix_near.b, mix_far.b, mix_amount * distant_albeno.a);
 
 	vec3 final_color = vec3(mix_r, mix_g, mix_b);
-
-	if (override_decal_paint_offset != vec2(0,0)) {
-		vec2 decal_color_uv = UV;
-		decal_color_uv += override_decal_paint_offset;
-		
-		vec4 decal_coords = texture(decal_designs, vec3(UV2, 0));
-		float decal_intensity = decal_coords.r;
-		float remapped_decal_instensity = remap(decal_intensity, 0, 1, 0.01, 0.25);
-		vec4 decal_color = texture(decal_albedo, vec2(0,-0.25 - remapped_decal_instensity) + override_decal_paint_offset);
-		
-		float mix_decal_r = mix(mix_r, decal_color.r, decal_coords.a);
-		float mix_decal_g = mix(mix_g, decal_color.g, decal_coords.a);
-		float mix_decal_b = mix(mix_b, decal_color.b, decal_coords.a);
-		
-		final_color = vec3(mix_decal_r, mix_decal_g, mix_decal_b);
-	}
-
+	
+	final_color = apply_decal(final_color, UV, UV2);
+	
 	ALBEDO = final_color;
 	
 	METALLIC = metallic;

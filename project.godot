@@ -96,3 +96,11 @@ player_paint_offset={
 "type": "vec2",
 "value": Vector2(0.0625, -0.25)
 }
+player_decal_index={
+"type": "int",
+"value": -1
+}
+player_decal_paint_offset={
+"type": "vec2",
+"value": Vector2(0, 0)
+}

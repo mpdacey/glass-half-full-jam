@@ -7,9 +7,13 @@ global uniform vec2 player_paint_offset;
 global uniform float bend_multiplier;
 
 instance uniform vec2 override_paint_offset;
+instance uniform vec2 override_decal_paint_offset;
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear, repeat_enable;
+uniform sampler2D decal_albedo : source_color, filter_nearest;
+uniform sampler2D override_decal_design: source_color, filter_nearest;
+uniform sampler2DArray decal_designs : source_color, filter_linear;
 
 uniform float specular : hint_range(0.0, 1.0, 0.01);
 uniform float metallic : hint_range(0.0, 1.0, 0.01);
@@ -82,7 +86,25 @@ void fragment() {
 	float mix_g = mix(mix_near.g, mix_far.g, mix_amount * distant_albeno.a);
 	float mix_b = mix(mix_near.b, mix_far.b, mix_amount * distant_albeno.a);
 
-	ALBEDO = vec3(mix_r, mix_g, mix_b);
+	vec3 final_color = vec3(mix_r, mix_g, mix_b);
+
+	if (override_decal_paint_offset != vec2(0,0)) {
+		vec2 decal_color_uv = UV;
+		decal_color_uv += override_decal_paint_offset;
+		
+		vec4 decal_coords = texture(decal_designs, vec3(UV2, 0));
+		float decal_intensity = decal_coords.r;
+		float remapped_decal_instensity = remap(decal_intensity, 0, 1, 0.01, 0.25);
+		vec4 decal_color = texture(decal_albedo, vec2(0,-0.25 - remapped_decal_instensity) + override_decal_paint_offset);
+		
+		float mix_decal_r = mix(mix_r, decal_color.r, decal_coords.a);
+		float mix_decal_g = mix(mix_g, decal_color.g, decal_coords.a);
+		float mix_decal_b = mix(mix_b, decal_color.b, decal_coords.a);
+		
+		final_color = vec3(mix_decal_r, mix_decal_g, mix_decal_b);
+	}
+
+	ALBEDO = final_color;
 	
 	METALLIC = metallic;
 	SPECULAR = specular;

@@ -187,6 +187,9 @@ engine_smoke_emitter = NodePath("EngineSmokeEmitter")
 [node name="Stallion" parent="." unique_id=998798648 instance=ExtResource("2_bol71")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
+[node name="Paintable" parent="Stallion" index="0" unique_id=2139739622]
+instance_shader_parameters/override_paint_offset = Vector2(0.4375, -0.25)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stallion" unique_id=129879598]
 root_node = NodePath("")
 libraries/car_putt = ExtResource("4_vg1s2")
@@ -278,3 +281,5 @@ script = ExtResource("11_xba33")
 off_road_animator = NodePath("../OffRoadAnimator")
 
 [connection signal="global_signal_emitted" from="Stallion/AnimationPlayer/GlobalSignalInterfacer" to="Stallion/AnimationPlayer" method="stop"]
+
+[editable path="Stallion"]

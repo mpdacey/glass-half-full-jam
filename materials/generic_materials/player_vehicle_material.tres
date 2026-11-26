@@ -1,13 +1,17 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dtpk1rvwi2fvp"]
 
 [ext_resource type="Shader" uid="uid://bipan3fqguigy" path="res://shader/player_vehicle_shader.gdshader" id="1_8eidr"]
-[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://models/traffic/Textures/colormap.png" id="2_w8xxq"]
+[ext_resource type="Texture2D" uid="uid://bomjr4n5igsn3" path="res://textures/material_textures/vehicles/decal_colormap.png" id="2_c2dtq"]
+[ext_resource type="Texture2D" uid="uid://cgm1ghxlx8o5r" path="res://textures/material_textures/vehicles/colormap.png" id="2_w8xxq"]
+[ext_resource type="CompressedTexture2DArray" uid="uid://w8l4smtdojjv" path="res://textures/material_textures/vehicles/stallion_decals/stallion_decal_array.png" id="3_j411g"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_8eidr")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("2_w8xxq")
+shader_parameter/decal_albedo = ExtResource("2_c2dtq")
+shader_parameter/decal_designs = ExtResource("3_j411g")
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/curve_amount = 0.01

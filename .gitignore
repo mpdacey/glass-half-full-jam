@@ -25,3 +25,5 @@ app_icon_root_image.png.import
 screenshots/
 resources/debug_players.txt
 *.blend1
+textures/material_textures/vehicles/stallion_decals/stallion_uv_map_guidelines.png
+textures/material_textures/vehicles/stallion_decals/stallion_uv_map_guidelines.png.import
